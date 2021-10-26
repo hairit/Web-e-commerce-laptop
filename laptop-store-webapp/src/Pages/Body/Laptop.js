@@ -9,7 +9,7 @@ export default function Laptop() {
     }, [])
     return (
         <div className="laptop">
-            Laptop
+            Laptop Upload test
         </div>
     )
 }
