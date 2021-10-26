@@ -1,5 +1,6 @@
 import React from 'react'
 import '../CSS/Header.css'
+import Logo from '../Images/Chicken-logo.png'
 import {MdLocationOn} from 'react-icons/md'
 import {BsYoutube} from 'react-icons/bs'
 import {AiFillPhone,AiOutlineShoppingCart} from 'react-icons/ai'
@@ -32,7 +33,8 @@ export default function Header() {
         </div> 
         <div className = "header-center header-item" > 
                 <div className="header-center-left">
-                        <img src={'../Images/lappee-logo.png'} alt="" className="logo"/>
+                        <img src={Logo} alt="" className="logo"/>
+                        <p className="lappee-name">Lappee</p>
                         <div className="panel-search-product">
                                 <select className="header-center-left-dropdown">
                                         <option value className="header-center-left-dropdown-option">Xin chào</option>
@@ -45,7 +47,7 @@ export default function Header() {
                 <div className="header-center-right">
                         <NavLink className="header-center-right-menu-item" to="/login">
                                 <HiOutlineUserCircle className="header-center-right-menu-item-icon"/>
-                                <p>Đăng nhập <br /> Đăng ký</p>
+                                <p className="login-text">Đăng nhập<br />Đăng ký</p>
                         </NavLink>
                         <NavLink className="header-center-right-menu-item" to="/giohang">
                                 <AiOutlineShoppingCart className="header-center-right-menu-item-icon"/>

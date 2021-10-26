@@ -10,7 +10,7 @@
     width: 100%;
     height: auto;
     display: flex;
-    padding: 0 7%;
+    padding: 0 5%;
     box-sizing: border-box;
 }
 .header-top{
@@ -35,6 +35,11 @@
 .logo{
     width: 100px;
     height: 100px;
+}.lappee-name{
+    height: 45px;
+    font-size: 30px;
+    color: #E2F208;
+    font-weight: 500;
 }
 .header-center{
     display: flex;
@@ -53,7 +58,7 @@
     align-items: center;
 }
 .header-center-left-dropdown{
-    height: 30px;
+    height: 40px;
     display: flex;
     align-items: center;
     border-top-left-radius: 3px;
@@ -66,7 +71,7 @@
 }
 .input-search-product{
     outline: none;
-    height: 30px;
+    height: 40px;
     border: none;
     width: 300px;
     font-size: 14px;
@@ -75,7 +80,7 @@
     border: none;
     display: flex;
     align-items: center;
-    height: 30px;
+    height: 40px;
     padding: 0 10px;
     font-size: 14px;
     font-weight: 500;
@@ -105,4 +110,7 @@
     font-size: 27px;
     color: #FFFFFF;
     margin-right: 5px;
+}
+.login-text{
+    text-align: left;
 }
