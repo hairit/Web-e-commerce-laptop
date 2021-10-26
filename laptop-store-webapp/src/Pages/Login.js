@@ -3,7 +3,7 @@ import '../CSS/Login.css'
 export default function Login() {
     return (
         <div className="login">
-            Lol Hòa 
+            dmm
         </div>
     )
 }
