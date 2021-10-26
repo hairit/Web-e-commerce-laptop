@@ -1,0 +1,108 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.header {
+    display: flex;
+    flex-direction: column;
+}
+.header-item{
+    width: 100%;
+    height: auto;
+    display: flex;
+    padding: 0 7%;
+    box-sizing: border-box;
+}
+.header-top{
+    flex-direction: row-reverse;
+    background-color : #37449F;
+}
+.header-top-item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: 500;
+    height: 43px;
+    text-decoration: none;
+}
+.header-top-item-icon{
+    font-size: 20px;
+    margin-right: 5px;
+}
+.logo{
+    width: 100px;
+    height: 100px;
+}
+.header-center{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #3F4FC3;
+}
+.header-center-left{
+    display: flex;
+    align-items: center;
+}
+.panel-search-product{
+    position: relative;
+    margin-left: 30px;
+    display: flex;
+    align-items: center;
+}
+.header-center-left-dropdown{
+    height: 30px;
+    display: flex;
+    align-items: center;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    background-color: #FFFFFF;
+    border: none;
+    padding: 0 10px;
+    font-weight: 490;
+    font-size: 14px;
+}
+.input-search-product{
+    outline: none;
+    height: 30px;
+    border: none;
+    width: 300px;
+    font-size: 14px;
+}
+.button-search-product{
+    border: none;
+    display: flex;
+    align-items: center;
+    height: 30px;
+    padding: 0 10px;
+    font-size: 14px;
+    font-weight: 500;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+#button-search-product-icon{
+    font-size: 18px;
+    margin-right: 5px;
+}
+.header-center-right{
+    display: flex;
+    flex-direction: row-reverse;
+
+}
+.header-center-right-menu-item{
+    display: flex;
+    align-items: center;
+    padding:  0 15px;
+    text-decoration: none;
+    color :#FFFFFF;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+}
+.header-center-right-menu-item-icon{
+    font-size: 27px;
+    color: #FFFFFF;
+    margin-right: 5px;
+}

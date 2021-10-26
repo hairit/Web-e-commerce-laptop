@@ -1,0 +1,9 @@
+API Lappee :
+
++Sản phẩm :
+	-Lấy all sản phẩm :
+			API : https://localhost:44343/lappee/product
+
++User 
+	-Login
+			API : https://localhost:44343/lappee/user/login/{email}/{pass}  VD : https://localhost:44343/lappee/user/login/tuonghai.admin@gmail.com/tuonghai2021
