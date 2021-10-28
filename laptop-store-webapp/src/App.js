@@ -12,7 +12,6 @@ function App() {
     <Router>
     <div className="App">
       <Header />
-      <Route path="/" exact component={()=><Body />}></Route>
       <Route path="/sanpham" component={()=><Product />}></Route>
       <Route path="/login" component={()=><Login />}></Route>
       <Route path="/lienhe" component={()=><Lienhe />}></Route>
