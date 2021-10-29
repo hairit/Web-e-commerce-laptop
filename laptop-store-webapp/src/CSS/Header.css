@@ -32,10 +32,16 @@
     font-size: 20px;
     margin-right: 5px;
 }
+.home{
+    align-items: center;
+    display: flex;
+    text-decoration: none;
+}
 .logo{
     width: 100px;
     height: 100px;
-}.lappee-name{
+}
+.lappee-name{
     height: 45px;
     font-size: 30px;
     color: #E2F208;

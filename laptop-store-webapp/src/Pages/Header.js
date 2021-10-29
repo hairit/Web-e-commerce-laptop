@@ -33,8 +33,10 @@ export default function Header() {
         </div> 
         <div className = "header-center header-item" > 
                 <div className="header-center-left">
-                        <img src={Logo} alt="" className="logo"/>
-                        <p className="lappee-name">Lappee</p>
+                        <NavLink to="/" className="home">
+                                <img src={Logo} alt="" className="logo"/>
+                                <p className="lappee-name">Lappee</p>
+                        </NavLink>
                         <div className="panel-search-product">
                                 <select className="header-center-left-dropdown">
                                         <option value className="header-center-left-dropdown-option">Xin chào</option>

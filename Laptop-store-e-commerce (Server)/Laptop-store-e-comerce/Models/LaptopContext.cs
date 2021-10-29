@@ -196,6 +196,11 @@ namespace Laptop_store_e_comerce.Models
                     .HasColumnName("nameImage")
                     .HasMaxLength(100);
 
+                entity.Property(e => e.Path)
+                    .HasColumnName("path")
+                    .HasMaxLength(100)
+                    .IsUnicode(false);
+
                 entity.Property(e => e.Position)
                     .HasColumnName("position")
                     .HasMaxLength(20);
