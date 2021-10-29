@@ -1,36 +1,38 @@
-
-
+import {BsLaptop} from 'react-icons/bs';
+import {RiComputerLine,RiComputerFill} from 'react-icons/ri'
+import {MdKeyboardAlt} from 'react-icons/md'
+import {BsFillMouse2Fill,BsHeadphones} from 'react-icons/bs'
 
 const PRODUCT_OPTIONS = [
     {
-        optionName : 'Laptop & MT xách tay',
+        optionName : 'Laptop',
         path : '/laptop',
-        icon : () => {}
+        icon : () => {return <BsLaptop className="pro-list-item-icon"/>}
     },
     {
-        optionName : 'Máy tính để bàn',
+        optionName : 'PC(Máy tính bàn)',
         path : '',
-        icon : () => {}
+        icon : () => {return<RiComputerLine className="pro-list-item-icon"/>}
     },
     {
         optionName : 'Màn hình',
         path : '',
-        icon : () => {}
+        icon : () => {return <RiComputerFill className="pro-list-item-icon"/>}
     },
     {
         optionName : 'Bàn phím',
         path : '',
-        icon : () => {}
+        icon : () => {return <MdKeyboardAlt className="pro-list-item-icon"/>}
     },
     {
         optionName : 'Chuột',
         path : '',
-        icon : () => {}
+        icon : () => {return <BsFillMouse2Fill className="pro-list-item-icon"/>}
     },
     {
         optionName : 'Tai nghe',
         path : '',
-        icon : () => {}
+        icon : () => {return <BsHeadphones className="pro-list-item-icon"/>}
     },
 ]
 export default PRODUCT_OPTIONS;

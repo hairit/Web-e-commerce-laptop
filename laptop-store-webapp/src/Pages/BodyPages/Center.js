@@ -25,7 +25,10 @@ const LoadingImageWithPosition = (image,index,position) =>{
     //return (<img className="image" key={index} src={`https://localhost:44343/Images/Panels/slideshow3.png`} alt={image.nameImage} />)
 }
 const LoadingProductOptions = (item , index) =>{
-    return (<NavLink className="pro-list-item" key={index} to={item.path}><p>{item.optionName}</p></NavLink>)
+    return (<NavLink className="pro-list-item" key={index} to={item.path}>
+            {item.icon()}
+            <p className="pro-list-item-text">{item.optionName}</p>
+        </NavLink>)
 }
 export default function Center() {
     const [images, setImages] = useState([])

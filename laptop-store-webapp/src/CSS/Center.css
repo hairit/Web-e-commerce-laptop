@@ -17,11 +17,32 @@
 }
 .pro-list-item{
     text-decoration : none ;
-    color: rgb(121, 121, 121);
+    color: rgb(95, 93, 93);
     text-align : left;
-    padding: 5px 0;
+    padding: 7px 15px;
     display: flex;
     align-items: center;
+}
+.pro-list-item:hover{
+    background-color: #3F4FC3;
+}
+.pro-list-item:hover .pro-list-item-icon{
+    color : #FFFFFF
+}
+.pro-list-item:hover .pro-list-item-text{
+    color : #FFFFFF
+}
+.pro-list-item-icon{
+    color: rgb(121, 121, 121);
+    font-size: 20px;
+}
+.pro-list-item-text{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    font-size: 14px ;
+    font-weight: 500;
+    padding-left: 12px;
 }
 .center-image{
     width: 85%;
