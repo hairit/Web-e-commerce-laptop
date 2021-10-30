@@ -1,10 +1,13 @@
 import React from 'react'
 import '../CSS/Body.css'
-import Laptop from './Body/Laptop.js'
+import Center from './BodyPages/Center'
+import Laptop from './BodyPages/Laptop'
+
 export default function Body() {
     return (
         <div className="body">
-            <Laptop />
-        </div> 
+            <Center />
+            {/* <Laptop /> */}
+        </div>
     )
 }

@@ -5,6 +5,7 @@ import heart32px from "../Images/heart32px.png";
 import "../CSS/ProductsCss/style.css";
 
 export default function Product() {
+<<<<<<< HEAD
   return (
     <div className="wrapper">
       <div className="container_fullwidth">
@@ -628,4 +629,7 @@ export default function Product() {
       </div>
     </div>
   );
+=======
+  return <div className="product">Sản phẩm laptop Lappee</div>;
+>>>>>>> f234e74f72c9879741108b8ce4796ea76c81f0a6
 }
