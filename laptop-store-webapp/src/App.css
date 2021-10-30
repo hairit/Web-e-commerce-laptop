@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -8,15 +7,6 @@
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
-=======
-.App {
-  text-align: center;
-  height: 100vh;
-  background-color: #EDEEF2;
-}
-NavLink{
-  text-decoration: none;
->>>>>>> f234e74f72c9879741108b8ce4796ea76c81f0a6
 }
 
 
