@@ -32,7 +32,7 @@ namespace Laptop_store_e_comerce
         {
             services.AddCors(c =>
             {
-                c.AddPolicy(name: MyAllowSpecificOrigins, options => options.WithOrigins("http://localhost:3000").AllowAnyHeader().AllowAnyMethod());
+                c.AddPolicy(name: MyAllowSpecificOrigins, options => options.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
             });
             services.AddMvc(option => option.EnableEndpointRouting = false).SetCompatibilityVersion(CompatibilityVersion.Version_3_0).AddNewtonsoftJson(opt => opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
             services.AddDbContext<LaptopContext>(Options => Options.UseSqlServer(Configuration.GetConnectionString("laptop")));

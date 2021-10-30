@@ -1,8 +1,11 @@
 import "../CSS/ProductsCss/bootstrap.css";
+import "../CSS/ProductsCss/style.css";
+
 import React from "react";
 import LogoFT from "../Images/LogoFT.png";
 import heart32px from "../Images/heart32px.png";
-import "../CSS/ProductsCss/style.css";
+import CALLER from "../API/CALL";
+import { useState, useEffect } from "react";
 
 export default function Product() {
   return (

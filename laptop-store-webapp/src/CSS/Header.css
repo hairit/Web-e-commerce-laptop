@@ -76,9 +76,9 @@
   font-size: 14px;
 }
 .input-search-product {
-  outline: none;
+  outline: none !important;
   height: 40px;
-  border: none;
+  border: none !important;
   width: 300px;
   font-size: 14px;
 }

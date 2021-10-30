@@ -11,10 +11,6 @@ ul {
   list-style: none;
 }
 
-a {
-  transition: all 0.2s ease-in-out 0s;
-  -webkit-transition: all 0.2s ease-in-out 0s;
-}
 a:focus {
   outline: medium none;
   outline-offset: 0;
@@ -69,7 +65,7 @@ img {
 }
 
 /*Transition Animation*/
-a,
+
 button,
 .button,
 .products,
@@ -83,8 +79,7 @@ button,
   transition: all 300ms cubic-bezier(0.25, 0.25, 0.75, 0.75);
 }
 
-.button,
-button {
+.button {
   background: #fff;
   padding: 10px 20px;
   border: 1px solid #cccccc;
@@ -93,8 +88,7 @@ button {
   border-radius: 10px;
   outline: none;
 }
-.button:hover,
-button:hover {
+.button:hover {
   border: 1px solid #fe5252;
   color: #fe5252;
 }
@@ -710,16 +704,7 @@ form.newsletter input[type="submit"]:hover {
   margin-left: 20px;
   font-size: 13px;
 }
-.sort-by select,
-select {
-  padding: 6px;
-  border: 1px solid #e7e7e7;
-  -webkit-border-radius: 5px;
-  border-radius: 5px;
-  margin-left: 10px;
-  color: #f7544a;
-  min-width: 60px;
-}
+
 .sort-by option,
 option {
   color: #666666;
