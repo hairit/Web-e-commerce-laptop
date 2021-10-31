@@ -1,7 +1,7 @@
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Header from "./Pages/Header.js";
-import Product from "./Pages/Product";
+import Product from "./Pages/Products/Product";
 import Login from "./Pages/Login";
 import Body from "./Pages/Body.js";
 import Lienhe from "./Pages/Lienhe";

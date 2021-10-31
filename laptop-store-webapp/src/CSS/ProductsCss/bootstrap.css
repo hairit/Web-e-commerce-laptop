@@ -1690,7 +1690,6 @@ output {
   font-size: 14px;
   line-height: 1.428571429;
   color: #555555;
-  vertical-align: middle;
 }
 .form-control {
   display: block;
@@ -1700,7 +1699,6 @@ output {
   font-size: 14px;
   line-height: 1.428571429;
   color: #555555;
-  vertical-align: middle;
   background-color: #ffffff;
   background-image: none;
   border: 1px solid #cccccc;
@@ -1751,7 +1749,6 @@ textarea.form-control {
   padding-left: 20px;
   margin-top: 10px;
   margin-bottom: 10px;
-  vertical-align: middle;
 }
 .radio label,
 .checkbox label {

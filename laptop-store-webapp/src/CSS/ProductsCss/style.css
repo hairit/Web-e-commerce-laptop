@@ -734,6 +734,18 @@ option {
 .pager a.active {
   color: #f7544a;
 }
+
+.news {
+  margin: 10px 0 auto 6rem;
+  position: absolute;
+}
+
+.news img {
+  float: right;
+  width: 85%;
+  clear: both;
+}
+
 @media (min-width: 768px) {
   .container {
     width: 750px;
