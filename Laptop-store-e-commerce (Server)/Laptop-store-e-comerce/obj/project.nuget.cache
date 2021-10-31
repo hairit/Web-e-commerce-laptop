@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "xU6zuMSuHONofBcNXcvw5DlhUc4E8Bdr0cVb/cEP7yvy0YkeBNvFvehit38Xep5aUEJEi2vmGcmqEgL8ippVIQ==",
+  "dgSpecHash": "UkQN+aXosHIyvZ+TceTZwXPEm8Mb/QXsV7VEz0K+vEQDXkoorXPtCJgHi5iS7jZpMcfJbpqWzlexgl45w7ELCQ==",
   "success": true,
-  "projectFilePath": "D:\\Do an web\\DoAnLappee\\Web-e-commerce-laptop\\Laptop-store-e-commerce (Server)\\Laptop-store-e-comerce\\Laptop-store-e-comerce.csproj",
+  "projectFilePath": "D:\\Do an web\\Web-e-commerce-laptop\\Laptop-store-e-commerce (Server)\\Laptop-store-e-comerce\\Laptop-store-e-comerce.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\pc\\.nuget\\packages\\bricelam.entityframeworkcore.pluralizer\\1.0.0\\bricelam.entityframeworkcore.pluralizer.1.0.0.nupkg.sha512",
     "C:\\Users\\pc\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
