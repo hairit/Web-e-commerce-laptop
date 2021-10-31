@@ -1,0 +1,40 @@
+.laptop-panel{
+    width:87%;
+    margin: 0 auto;
+    height: 300px;
+    background-color: #FFFFFF;
+    margin-top: 30px;
+}
+.laptop-panel-header{
+    width: 100%;
+    display: flex;
+}
+.laptop-panel-header-logo{
+    background-color:#3f4fc3;
+    width: max-content;
+    height: auto;
+    padding: 10px 20px;
+    color : #FFFFFF;
+    font-weight : 500;
+    font-size: 20px;
+    border-top-right-radius: 100px;
+}
+.laptop-panel-header-item{
+    width: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+    border-right : 5px solid #3f4fc3;
+    border-top-right-radius : 100px;
+}
+.laptop-panel-header-item p{
+    color : #424244;
+    font-weight: 400;
+    font-size: 15px;
+    height:min-content;
+}
+.laptop-panel-header-item:hover p{
+    color: #3f4fc3;
+}
+

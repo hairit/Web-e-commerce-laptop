@@ -7,7 +7,7 @@ export default function Body() {
     return (
         <div className="body">
             <Center />
-            {/* <Laptop /> */}
+            <Laptop />
         </div>
     )
 }

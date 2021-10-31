@@ -23,20 +23,21 @@ namespace Laptop_store_e_comerce.Controllers
         {
             return await _context.SanPhams.Include(sp =>  sp.ThongSoLaptop).Include(sp => sp.MoTaLaptop).ToListAsync();
         }
+        [HttpGet("enable")]
+        public async Task<ActionResult<List<SanPham>>> enableProduct()
+        {
+            return await _context.SanPhams.Include(pro => pro.ThongSoLaptop).Include(pro => pro.MoTaLaptop).Where(pro => pro.Hienthi == 1).ToListAsync();
+        }
         [HttpGet("{id}")]
         public async Task<ActionResult<SanPham>> GetSanPham(string id)
         {
             var sanPham = await _context.SanPhams.FindAsync(id);
-
             if (sanPham == null)
             {
                 return NotFound();
             }
-
             return sanPham;
         }
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
         public async Task<IActionResult> PutSanPham(string id, SanPham sanPham)
         {
@@ -62,8 +63,6 @@ namespace Laptop_store_e_comerce.Controllers
             }
             return NoContent();
         }
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
         public async Task<ActionResult<SanPham>> PostSanPham(SanPham sanPham)
         {
@@ -105,3 +104,5 @@ namespace Laptop_store_e_comerce.Controllers
         }
     }
 }
+// To protect from overposting attacks, enable the specific properties you want to bind to, for
+// more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
