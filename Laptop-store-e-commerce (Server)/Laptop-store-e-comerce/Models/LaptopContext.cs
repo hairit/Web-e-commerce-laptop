@@ -150,8 +150,8 @@ namespace Laptop_store_e_comerce.Models
                     .HasColumnName("ngaydat")
                     .HasColumnType("date");
 
-                entity.Property(e => e.Ngaytra)
-                    .HasColumnName("ngaytra")
+                entity.Property(e => e.Ngayhuydon)
+                    .HasColumnName("ngayhuydon")
                     .HasColumnType("date");
 
                 entity.Property(e => e.Phuongthucthanhtoan)

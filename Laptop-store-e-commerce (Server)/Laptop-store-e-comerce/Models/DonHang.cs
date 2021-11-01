@@ -18,7 +18,7 @@ namespace Laptop_store_e_comerce.Models
         public int? Iduser { get; set; }
         public int? Tongtien { get; set; }
         public DateTime? Ngaydat { get; set; }
-        public DateTime? Ngaytra { get; set; }
+        public DateTime? Ngayhuydon { get; set; }
         public string Phuongthucthanhtoan { get; set; }
         public string Tinhtrang { get; set; }
 
