@@ -10,10 +10,9 @@ export default function Product() {
     const [pros, setPros] = useState([]);
     useEffect(() => {
       console.log("Goi API");
-      axios.get('https://localhost:44343/api/laptop/',null)
+      axios.get('https://localhost:44343/data/laptop/',null)
            .then(res => setPros(res.data)).catch(err => console.log(err));
-    }, [])
-    console.log(pros);
+    }, []);
     return (
         <div className="wrapper">
       <div className="container_fullwidth">
