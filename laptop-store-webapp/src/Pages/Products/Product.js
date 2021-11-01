@@ -1,13 +1,23 @@
-import React from 'react'
+import React from "react";
 import axios from "axios";
 
 import "../../CSS/ProductsCss/bootstrap.css";
 import "../../CSS/ProductsCss/style.css";
-import ListProducts from "./ListProducts";
+import { useEffect, useState } from "react";
+import ListProduct from "./ListProduct";
 
-export default function demo() {
-    return (
-        <div className="wrapper">
+export default function Product() {
+  const [pros, setPros] = useState([]);
+  useEffect(() => {
+    console.log("Goi API");
+    axios
+      .get("https://localhost:44343/api/laptop/", null)
+      .then((res) => setPros(res.data))
+      .catch((err) => console.log(err));
+  }, []);
+  console.log(pros);
+  return (
+    <div className="wrapper">
       <div className="container_fullwidth">
         <div className="container">
           <div className="row">
@@ -245,12 +255,7 @@ export default function demo() {
                     </a>
                   </div>
                 </div>
-                <ListProducts
-                  name=""
-                  price="{ item.gia }"
-                  image="https://lh3.googleusercontent.com/AiLttFPYF0ooqs6_pY6zaWwSdfSllmjR9UlrUIp-41zl2wEMSB8WXfoK0FN4RGy57gBEe6oh4ogpADzyYp0=w500-rw"
-                  new={true}
-                />
+                <ListProduct pros={pros} />
                 <div className="toolbar">
                   <div className="sorter bottom">
                     <div className="view-mode">
@@ -322,6 +327,6 @@ export default function demo() {
           </div>
         </div>
       </div>
-        </div>
-    )
+    </div>
+  );
 }

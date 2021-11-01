@@ -8,9 +8,8 @@ import {NavLink} from 'react-router-dom';
 export default function Laptop() {
     const [pros, setPros] = useState([]);
     useEffect(() => {
-        CALLER('GET','lappee/product/enable',null).then(res => setPros(res.data)).catch(err => alert("Errol!! when try to get laptop product"));
+        CALLER('GET','api/laptop/enable',null).then(res => setPros(res.data)).catch(err => alert("Errol!! when try to get laptop product"));
     }, [])
-    console.log(pros);
     return (
         <div className="laptop-panel">
             <div className="laptop-panel-header">

@@ -11,12 +11,8 @@ ul {
   list-style: none;
 }
 
-a:focus {
-  outline: medium none;
-  outline-offset: 0;
-}
-a:hover,
-a:focus,
+
+
 a {
   text-decoration: none;
 }
@@ -66,7 +62,7 @@ img {
 
 /*Transition Animation*/
 
-button,
+
 .button,
 .products,
 .name,
