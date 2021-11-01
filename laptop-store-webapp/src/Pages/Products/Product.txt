@@ -1,13 +1,48 @@
-import React from 'react'
+import React, { Component } from "react";
+import CALLER from "../../API/CALL";
 import axios from "axios";
 
 import "../../CSS/ProductsCss/bootstrap.css";
 import "../../CSS/ProductsCss/style.css";
 import ListProducts from "./ListProducts";
+class Product extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      products: [],
+    };
+  }
 
-export default function demo() {
-    return (
-        <div className="wrapper">
+  componentDidMount() {
+    axios({
+      method: "GET",
+      url: "https://localhost:44343/lappee/product",
+      data: null,
+    })
+      .then(res => {
+        console.log(res);
+        this.setState({
+          products: res.data
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+  showProducts() {
+    const listproduct = this.state.products.map((item) => 
+      <ListProducts
+      name={ item.ten }
+      price={ item.gia }
+      image="https://lh3.googleusercontent.com/AiLttFPYF0ooqs6_pY6zaWwSdfSllmjR9UlrUIp-41zl2wEMSB8WXfoK0FN4RGy57gBEe6oh4ogpADzyYp0=w500-rw"
+      new={true}
+      />
+    );
+  }
+
+  render(){
+  return (
+    <div className="wrapper">
       <div className="container_fullwidth">
         <div className="container">
           <div className="row">
@@ -322,6 +357,8 @@ export default function demo() {
           </div>
         </div>
       </div>
-        </div>
-    )
+    </div>
+  );
 }
+}
+export default Product;
