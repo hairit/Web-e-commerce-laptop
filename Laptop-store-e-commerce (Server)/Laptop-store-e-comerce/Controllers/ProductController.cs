@@ -23,11 +23,6 @@ namespace Laptop_store_e_comerce.Controllers
         {
             return await _context.SanPhams.Include(sp =>  sp.ThongSoLaptop).Include(sp => sp.MoTaLaptop).ToListAsync();
         }
-        [HttpGet("enable")]
-        public async Task<ActionResult<List<SanPham>>> enableProduct()
-        {
-            return await _context.SanPhams.Include(pro => pro.ThongSoLaptop).Include(pro => pro.MoTaLaptop).Where(pro => pro.Hienthi == 1).ToListAsync();
-        }
         [HttpGet("{id}")]
         public async Task<ActionResult<SanPham>> GetSanPham(string id)
         {
@@ -38,6 +33,21 @@ namespace Laptop_store_e_comerce.Controllers
             }
             return sanPham;
         }
+        [HttpGet("name={name}")]
+        public async Task<ActionResult<List<SanPham>>> getProductByName(string name)
+        {
+            try
+            {
+                List<SanPham> list = null;
+                list = await _context.SanPhams.Where(pro => pro.Ten.Contains(name)).ToListAsync();
+                if (list.Count == 0) return NotFound();
+                else return list;
+            }
+            catch (Exception e)
+            {
+                return BadRequest();
+            }
+        }   
         [HttpPut("{id}")]
         public async Task<IActionResult> PutSanPham(string id, SanPham sanPham)
         {
