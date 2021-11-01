@@ -1,9 +1,13 @@
 API Lappee :
 
 +Sản phẩm :
-	-Lấy all sản phẩm :
-			API : https://localhost:44343/lappee/product
+	-Lấy tất cả sản phẩm : 			https://localhost:44343/data/product
+	-Lấy sản phẩm theo tên: 		https://localhost:44343/data/product/name={name}
+	-Lấy tất cả Laptop :			https://localhost:44343/data/laptop
+	-Lấy tất cả Laptop :			https://localhost:44343/data/laptop/enable
+	-Lấy Laptop theo tên:  			https://localhost:44343/data/laptop/name={}
+	-Lấy Laptop theo thương hiệu : 		https://localhost:44343/data/laptop/brand={brand}
 
-+User 
++User:
 	-Login
-			API : https://localhost:44343/lappee/user/login/{email}/{pass}  VD : https://localhost:44343/lappee/user/login/tuonghai.admin@gmail.com/tuonghai2021
+			API : https://localhost:44343/data/user/login/{email}/{pass}

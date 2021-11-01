@@ -9,7 +9,7 @@ using Laptop_store_e_comerce.Models;
 
 namespace Laptop_store_e_comerce.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("data/[controller]")]
     [ApiController]
     public class LaptopController : ControllerBase
     {
