@@ -1,9 +1,12 @@
 import React, { Component } from "react";
-
 import heart32px from "../../Images/heart32px.png";
 import new60px from "../../Images/new60px.png";
+import { useState } from "react";
+import CALLER from "../../API/CALL";
 
 class ListProducts extends Component {
+  
+
   showNew = (news) => {
     if (news === true) {
       return (
@@ -14,6 +17,10 @@ class ListProducts extends Component {
     }
   };
   render() {
+  //   const [products, setProducts] = useState([])
+  //   useEffect(() => {
+  //     CALLER('GET','lappee/product',null).then(res => setProducts(res.data)).catch(err => alert("Errol!! IMG loading failed"));
+  // }, [])
     return (
       <div className="row">
         <div className="col-md-4 col-sm-6">

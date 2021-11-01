@@ -1,10 +1,46 @@
-import React from "react";
+import React, { Component } from "react";
 import CALLER from "../../API/CALL";
+import axios from "axios";
+
 import "../../CSS/ProductsCss/bootstrap.css";
 import "../../CSS/ProductsCss/style.css";
 import ListProducts from "./ListProducts";
+class Product extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      products: [],
+    };
+  }
 
-export default function Product() {
+  componentDidMount() {
+    axios({
+      method: "GET",
+      url: "https://localhost:44343/lappee/product",
+      data: null,
+    })
+      .then(res => {
+        console.log(res);
+        this.setState({
+          products: res.data
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+  showProducts() {
+    const listproduct = this.state.products.map((item) => 
+      <ListProducts
+      name={ item.ten }
+      price={ item.gia }
+      image="https://lh3.googleusercontent.com/AiLttFPYF0ooqs6_pY6zaWwSdfSllmjR9UlrUIp-41zl2wEMSB8WXfoK0FN4RGy57gBEe6oh4ogpADzyYp0=w500-rw"
+      new={true}
+      />
+    );
+  }
+
+  render(){
   return (
     <div className="wrapper">
       <div className="container_fullwidth">
@@ -245,8 +281,8 @@ export default function Product() {
                   </div>
                 </div>
                 <ListProducts
-                  name="Laptop"
-                  price="21.000.000"
+                  name=""
+                  price="{ item.gia }"
                   image="https://lh3.googleusercontent.com/AiLttFPYF0ooqs6_pY6zaWwSdfSllmjR9UlrUIp-41zl2wEMSB8WXfoK0FN4RGy57gBEe6oh4ogpADzyYp0=w500-rw"
                   new={true}
                 />
@@ -324,3 +360,5 @@ export default function Product() {
     </div>
   );
 }
+}
+export default Product;
