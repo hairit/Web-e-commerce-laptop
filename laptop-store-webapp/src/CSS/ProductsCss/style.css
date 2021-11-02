@@ -3,7 +3,7 @@ body {
   font-size: 12px;
   font-weight: 300;
   line-height: 1;
-  background: #f5f5f5;
+  background-color: #F8F8FC;
   color: #434343;
 }
 
@@ -11,12 +11,8 @@ ul {
   list-style: none;
 }
 
-a:focus {
-  outline: medium none;
-  outline-offset: 0;
-}
-a:hover,
-a:focus,
+
+
 a {
   text-decoration: none;
 }
@@ -66,7 +62,7 @@ img {
 
 /*Transition Animation*/
 
-button,
+
 .button,
 .products,
 .name,
@@ -112,8 +108,7 @@ button,
   width: 100%;
 }
 .container_fullwidth {
-  background: #fff;
-  padding-top: 30px;
+  background: #F8F8FC;
   padding-bottom: 30px;
 }
 
@@ -242,9 +237,9 @@ button,
   position: relative;
   width: 100%;
 }
-.products-grid .products {
+/* .products-grid .products {
   margin: 15px 0;
-}
+} */
 .products-listItem {
   float: left;
   position: relative;
@@ -332,8 +327,10 @@ button,
   min-height: 87px;
 }
 .leftbar {
+  margin-bottom: 13px;
   position: relative;
-  margin: 15px 0;
+  background: white;
+  /* margin: 15px 0; */
   padding: 15px;
   border: 1px solid #e1e1e1;
   overflow: hidden;
@@ -606,9 +603,72 @@ form.newsletter input[type="submit"]:hover {
 .leftbanner img {
   width: 100%;
 }
+
+
+.loc{
+  padding-bottom: 10px;
+}
+
+.boloc{
+  font-size:22px;
+  font-weight: 600;
+  margin: 20px 0 20px 0;
+}
+.btn-right{
+  height:30px;
+}
+.title-sort{
+  width: 15%;
+  height: 3rem;
+  font-size:17px;
+  font-weight: 600;
+  margin-right: 10px;
+  float: left;
+}
+
+.sof{
+  margin-bottom: 13px;
+  border-radius: 1rem;
+  background-color:white;
+}
+
+.btn-sort{
+  margin-right: 10px;
+  background-color: #FFFFFF;
+  border: 1px solid rgb(209,213,219);
+  border-radius: .5rem;
+  box-sizing: border-box;
+  color: #111827;
+  font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.25rem;
+  padding: .75rem 1rem;
+  text-align: center;
+  text-decoration: none #D1D5DB solid;
+  text-decoration-thickness: auto;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  
+}
+
+.btn-sort:hover {
+  background-color: rgb(249,250,251);
+}
+.css-thuonghieu{
+  border-radius:1px solid ;
+}
+.asus{
+ 
+  padding: 2px 2px;
+}
+
 .banner {
   width: 100%;
-  height: 180px;
+  height: 32rem;
   position: relative;
   clear: both;
   overflow: hidden;
@@ -758,7 +818,7 @@ option {
 }
 @media (min-width: 1200px) {
   .container {
-    width: 1170px;
+    width: 82%;
   }
 }
 

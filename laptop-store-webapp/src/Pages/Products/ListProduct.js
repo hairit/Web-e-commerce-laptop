@@ -3,7 +3,14 @@ import heart32px from "../../Images/heart32px.png";
 import new60px from "../../Images/new60px.png";
 import { useState } from "react";
 import CALLER from "../../API/CALL";
+
+
 export default function ListProduct({pros}) {
+  function format_curency(price){
+    price = price.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
+    return price;
+    };
+
   return (
     <div className="row">
         {
@@ -17,7 +24,7 @@ export default function ListProduct({pros}) {
                       </a>
                     </div>
                     <div className="productname">{pro.ten}</div>
-                    <h4 className="price">{pro.gia+"đ"}</h4>
+                    <h4 className="price">{format_curency(pro.gia)} VNĐ</h4>
                     <div className="button_group">
                       <button className="button add-cart" type="button">
                         Thêm vào giỏ hàng

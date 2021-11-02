@@ -1,12 +1,13 @@
-import React from 'react'
+import React from "react";
 import axios from "axios";
 
 import "../../CSS/ProductsCss/bootstrap.css";
 import "../../CSS/ProductsCss/style.css";
-import { useEffect , useState } from 'react';
-import ListProduct from './ListProduct';
-
+import { useEffect, useState } from "react";
+import ListProduct from "./ListProduct";
+import fblike from "../../Images/fblike.png";
 export default function Product() {
+<<<<<<< HEAD
     const [pros, setPros] = useState([]);
     useEffect(() => {
       console.log("Goi API");
@@ -15,8 +16,80 @@ export default function Product() {
     }, []);
     return (
         <div className="wrapper">
+=======
+  const [pros, setPros] = useState([]);
+  useEffect(() => {
+    axios
+      .get("https://localhost:44343/data/product", null)
+      .then((res) => setPros(res.data))
+      .catch((err) => console.log(err));
+  }, []);
+  console.log(pros);
+  return (
+    <div className="wrapper">
+>>>>>>> ef066a9cf4abb14cfdd627277ccf2585f3a5a0a6
       <div className="container_fullwidth">
         <div className="container">
+          <div className="col-md-12">
+            <div className="banner">
+              <div className="bannerslide" id="bannerslide">
+                <ul className="slides">
+                  <li>
+                    <a href="#">
+                      <img
+                        src="https://lh3.googleusercontent.com/WcjeCkfujIimMnbJ_v-EGcAe7m_1ow2ZGpGWF8-ANvLEbXaCjne-0ivgCp1QM5j4Su1B6cZ_9yNJG5whZlhjP93glIkHXsAK=rw-w1920"
+                        alt=""
+                      />
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <img
+                        src="https://lh3.googleusercontent.com/2B5ELE4a1XSWf4ngIKoKYfcessffjFjP-uqdPuCVs62ZGku-TGAEeKIDuiQun3yK4W0t2BbMJIRJT2VG7J1jfcIPZqIm7sdlLA=rw-w1920"
+                        alt=""
+                      />
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div className="col-md-12 sof">
+            <div className="col-12 boloc">Bộ lọc</div>
+            <div className="col-12 ">
+              <div className="loc">
+                <div className="title-sort">Thương hiệu</div>
+                <div className="btn-right">
+                  <button type="button" className="btn-sort">Asus</button>
+                  <button type="button" className="btn-sort">Dell</button>
+                  <button type="button" className="btn-sort">HP</button>
+                  <button type="button" className="btn-sort">Acer</button>
+                </div>
+                
+                </div>
+
+                <div className="loc">
+                <div className="title-sort">Tên</div>
+                <div className="btn-right">
+                  <button type="button" className="btn-sort">Asus</button>
+                </div>
+                </div>
+
+                <div className="loc">
+                <div className="title-sort">Tên</div>
+                <div className="btn-right">
+                  <button type="button" className="btn-sort">Asus</button>
+                </div>
+                </div>
+
+                <div className="loc">
+                <div className="title-sort">Tên</div>
+                <div className="btn-right">
+                  <button type="button" className="btn-sort">Asus</button>
+                </div>
+                </div>
+            </div>
+          </div>
           <div className="row">
             <div className="col-md-3">
               <div className="category leftbar">
@@ -30,8 +103,6 @@ export default function Product() {
                   </li>
                 </ul>
               </div>
-              <div className="clearfix"></div>
-              <div className="clearfix"></div>
               <div className="price-filter leftbar">
                 <h3 className="title">Giá</h3>
                 <form className="pricing">
@@ -47,73 +118,6 @@ export default function Product() {
                   <input type="submit" defaultValue="Go" />
                 </form>
               </div>
-              <div className="clearfix"></div>
-              <div className="clolr-filter leftbar">
-                <h3 className="title">Màu</h3>
-                <ul>
-                  <li>
-                    <a href="#" className="red-bg">
-                      light red
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className=" yellow-bg">
-                      yellow"
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="black-bg ">
-                      black
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="pink-bg">
-                      pink
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="dkpink-bg">
-                      dkpink
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="chocolate-bg">
-                      chocolate
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="orange-bg">
-                      orange-bg
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="off-white-bg">
-                      off-white
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="extra-lightgreen-bg">
-                      extra-lightgreen
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="lightgreen-bg">
-                      lightgreen
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="biscuit-bg">
-                      biscuit
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="chocolatelight-bg">
-                      chocolatelight
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <div className="clearfix"></div>
               <div className="product-tag leftbar">
                 <h3 className="title">
                   Products
@@ -160,21 +164,6 @@ export default function Product() {
                   <li>
                     <a href="#"></a>
                   </li>
-                  <li>
-                    <a href="#"></a>
-                  </li>
-                  <li>
-                    <a href="#"></a>
-                  </li>
-                  <li>
-                    <a href="#"></a>
-                  </li>
-                  <li>
-                    <a href="#"></a>
-                  </li>
-                  <li>
-                    <a href="#"></a>
-                  </li>
                 </ul>
                 <div className="fbplug">
                   <a href="#">
@@ -185,7 +174,6 @@ export default function Product() {
                   </a>
                 </div>
               </div>
-              <div className="clearfix"></div>
               <div className="leftbanner">
                 <img
                   src="https://lh3.googleusercontent.com/QDjt1QdJxyKFxTXbyN_E5BZurHMIYg_Uvm7MDOg8wHgLuhC-WFBx6m17HeM9Kk7KnxgWQhvUHSkO9gUJ_-tvZrAa7wrClvGu=rw-w308"
@@ -194,65 +182,8 @@ export default function Product() {
               </div>
             </div>
             <div className="col-md-9">
-              <div className="banner">
-                <div className="bannerslide" id="bannerslide">
-                  <ul className="slides">
-                    <li>
-                      <a href="#">
-                        <img
-                          src="https://lh3.googleusercontent.com/WcjeCkfujIimMnbJ_v-EGcAe7m_1ow2ZGpGWF8-ANvLEbXaCjne-0ivgCp1QM5j4Su1B6cZ_9yNJG5whZlhjP93glIkHXsAK=rw-w1920"
-                          alt=""
-                        />
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <img
-                          src="https://lh3.googleusercontent.com/2B5ELE4a1XSWf4ngIKoKYfcessffjFjP-uqdPuCVs62ZGku-TGAEeKIDuiQun3yK4W0t2BbMJIRJT2VG7J1jfcIPZqIm7sdlLA=rw-w1920"
-                          alt=""
-                        />
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
               <div className="products-grid">
-                <div className="toolbar">
-                  <div className="sorter">
-                    <div className="view-mode">
-                      <a href="productlitst.html" className="list">
-                        List
-                      </a>
-                      <a href="#" className="grid active">
-                        Grid
-                      </a>
-                    </div>
-                    <div className="sort-by">
-                      Xếp theo :
-                      <select name>
-                        <option value="Default" selected>
-                          Default
-                        </option>
-                        <option value="Name">Tên</option>
-                        <option value="Price">Giá</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div className="pager">
-                    <a href="#" className="prev-page">
-                      <i className="fa fa-angle-left"></i>
-                    </a>
-                    <a href="#" className="active">
-                      1
-                    </a>
-                    <a href="#">2</a>
-                    <a href="#">3</a>
-                    <a href="#" className="next-page">
-                      <i className="fa fa-angle-right"></i>
-                    </a>
-                  </div>
-                </div>
-                <ListProduct pros={pros}/>
+                <ListProduct pros={pros} />
                 <div className="toolbar">
                   <div className="sorter bottom">
                     <div className="view-mode">
@@ -324,6 +255,6 @@ export default function Product() {
           </div>
         </div>
       </div>
-        </div>
-    )
+    </div>
+  );
 }
