@@ -8,6 +8,7 @@ import Lienhe from "./Pages/Lienhe";
 import Tintuc from "./Pages/Tintuc";
 import Showroom from "./Pages/Showroom";
 import Footer from "./Pages/Footer";
+import DetailProducts from "./Pages/Products/DetailProducts";
 function App() {
   return (
     <Router>
@@ -19,6 +20,7 @@ function App() {
         <Route path="/lienhe" component={() => <Lienhe />}></Route>
         <Route path="/tincongnghe" component={() => <Tintuc />}></Route>
         <Route path="/showroom" component={() => <Showroom />}></Route>
+        <Route path="/details" component={() => <DetailProducts />}></Route>
         <Footer />
       </div>
     </Router>
