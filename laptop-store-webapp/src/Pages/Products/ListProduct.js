@@ -16,7 +16,6 @@ export default function ListProduct({pros}) {
     price = price.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
     return price;
     };
-
   return (
     <div className="row">
         {
