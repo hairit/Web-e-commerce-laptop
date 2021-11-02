@@ -72,9 +72,7 @@ namespace Laptop_store_e_comerce.Controllers
             {
                 return BadRequest();
             }
-
             database.Entry(user).State = EntityState.Modified;
-
             try
             {
                 await database.SaveChangesAsync();

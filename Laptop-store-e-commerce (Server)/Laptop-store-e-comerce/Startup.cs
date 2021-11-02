@@ -24,7 +24,6 @@ namespace Laptop_store_e_comerce
         {
             Configuration = configuration;
         }
-
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -38,7 +37,6 @@ namespace Laptop_store_e_comerce
             services.AddDbContext<LaptopContext>(Options => Options.UseSqlServer(Configuration.GetConnectionString("laptop")));
             services.AddControllers();
         }
-
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
@@ -57,7 +55,6 @@ namespace Laptop_store_e_comerce
             app.UseRouting();
             app.UseCors(MyAllowSpecificOrigins);
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

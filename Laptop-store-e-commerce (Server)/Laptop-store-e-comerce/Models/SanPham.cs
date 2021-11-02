@@ -15,7 +15,6 @@ namespace Laptop_store_e_comerce.Models
             ChitietGioHangs = new HashSet<ChitietGioHang>();
             DetailKeyBoards = new HashSet<DetailKeyBoard>();
         }
-
         public string Id { get; set; }
         public string Ten { get; set; }
         public int Gia { get; set; }

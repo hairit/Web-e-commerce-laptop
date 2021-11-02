@@ -74,13 +74,12 @@ namespace Laptop_store_e_comerce.Controllers
             }
             return NoContent();
         }
-        /*
-        [HttpPost("body={pro}data={data}")]
-        public async Task<ActionResult<SanPham>> PostSanPham(SanPham pro,Object data)
+        [HttpPost]
+        public async Task<ActionResult<Object>> PostSanPham(Object pro)
         {
-            if (existType(pro.Idloai)) return Conflict();
+            /*if (existType(pro.Idloai)) return Conflict();
             _context.SanPhams.Add(pro);
-            addProductInformation(pro.Id,data);
+            addProductInformation(pro.Id,detail);
             try
             {
                 await _context.SaveChangesAsync();
@@ -89,8 +88,9 @@ namespace Laptop_store_e_comerce.Controllers
             {
                 return BadRequest();
             }
-            return CreatedAtAction("GetSanPham", new { id = pro.Id }, pro);
-        }*/
+            return CreatedAtAction("GetSanPham", new { id = pro.Des }, pro);*/
+            return pro;
+        }
         [HttpDelete("{id}")]
         public async Task<ActionResult<SanPham>> DeleteSanPham(string id)
         {
