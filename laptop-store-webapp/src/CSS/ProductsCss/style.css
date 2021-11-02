@@ -633,7 +633,7 @@ form.newsletter input[type="submit"]:hover {
 }
 
 .btn-sort{
-  margin-right: 10px;
+  margin-right: 20px;
   background-color: #FFFFFF;
   border: 1px solid rgb(209,213,219);
   border-radius: .5rem;
@@ -717,12 +717,7 @@ form.newsletter input[type="submit"]:hover {
   background-color: #f7544a;
   border-color: #f7544a;
 }
-/* .view-mode .list {
-  background-image: url(../Images/list-icon.png);
-}
-.view-mode .grid {
-  background-image: url(../Images/grid-icon.png);
-} */
+
 .view-mode a.active:after,
 .view-mode a.active:before {
   top: 100%;

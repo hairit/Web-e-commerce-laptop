@@ -3,6 +3,12 @@ import heart32px from "../../Images/heart32px.png";
 import new60px from "../../Images/new60px.png";
 import { useState } from "react";
 import CALLER from "../../API/CALL";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  NavLink,
+} from "react-router-dom";
 
 
 export default function ListProduct({pros}) {
@@ -19,9 +25,9 @@ export default function ListProduct({pros}) {
                   <div className="col-md-4 col-sm-6" key={index}>
                   <div className="products">
                     <div className="thumbnail">
-                      <a href="details.html">
+                      <NavLink to="/details">
                         <img src={`https://localhost:44343/Images/Products/${pro.nameimage}`} alt="Product Name" />
-                      </a>
+                      </NavLink>
                     </div>
                     <div className="productname">{pro.ten}</div>
                     <h4 className="price">{format_curency(pro.gia)} VNĐ</h4>
