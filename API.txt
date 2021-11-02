@@ -3,11 +3,22 @@ API Lappee :
 +Sản phẩm :
 	-Lấy tất cả sản phẩm : 			https://localhost:44343/data/product
 	-Lấy sản phẩm theo tên: 		https://localhost:44343/data/product/name={name}
+
+
+	+Laptop
 	-Lấy tất cả Laptop :			https://localhost:44343/data/laptop
 	-Lấy tất cả Laptop :			https://localhost:44343/data/laptop/enable
-	-Lấy Laptop theo tên:  			https://localhost:44343/data/laptop/name={}
-	-Lấy Laptop theo thương hiệu : 		https://localhost:44343/data/laptop/brand={brand}
-
+	-Lấy Laptop theo tên:  			https://localhost:44343/data/laptop/name={value}
+	-Lấy Laptop theo thương hiệu : 		https://localhost:44343/data/laptop/brand={value}
+	-Lấy Laptop theo cpu			https://localhost:44343/data/laptop/cpu={value}
+	-Lấy Laptop theo manhinh		https://localhost:44343/data/laptop/manhinh={value} 
 +User:
-	-Login
-			API : https://localhost:44343/data/user/login/{email}/{pass}
+	-Login					https://localhost:44343/data/user/login/{email}/{pass}
+	-Lấy tất cả User			https://localhost:44343/data/user/
+	-Lấy User theo tên			https://localhost:44343/data/user/name={value}
+	-Lấy User theo email			https://localhost:44343/data/user/email={value}
+	-Lấy User theo id			https://localhost:44343/data/user/{id}
+	-Thêm User				https://localhost:44343/data/user/	data:user
+	-Sửa User				https://localhost:44343/data/user/{id}	data:user
+	-Xóa User				https://localhost:44343/data/user/{id}
+	

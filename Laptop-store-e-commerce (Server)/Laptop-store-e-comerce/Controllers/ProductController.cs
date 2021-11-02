@@ -74,6 +74,7 @@ namespace Laptop_store_e_comerce.Controllers
             }
             return NoContent();
         }
+        /*
         [HttpPost("body={pro}data={data}")]
         public async Task<ActionResult<SanPham>> PostSanPham(SanPham pro,Object data)
         {
@@ -89,7 +90,7 @@ namespace Laptop_store_e_comerce.Controllers
                 return BadRequest();
             }
             return CreatedAtAction("GetSanPham", new { id = pro.Id }, pro);
-        }
+        }*/
         [HttpDelete("{id}")]
         public async Task<ActionResult<SanPham>> DeleteSanPham(string id)
         {
