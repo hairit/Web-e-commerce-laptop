@@ -45,6 +45,7 @@ namespace Laptop_store_e_comerce.Controllers
             }
             catch (Exception e)
             {
+                Console.WriteLine(e.ToString());
                 return BadRequest();
             }
         }   
@@ -62,7 +63,7 @@ namespace Laptop_store_e_comerce.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!SanPhamExists(id))
+                if (!existID(id))
                 {
                     return NotFound();
                 }
@@ -73,26 +74,21 @@ namespace Laptop_store_e_comerce.Controllers
             }
             return NoContent();
         }
-        [HttpPost]
-        public async Task<ActionResult<SanPham>> PostSanPham(SanPham sanPham)
+        [HttpPost("body={pro}data={data}")]
+        public async Task<ActionResult<SanPham>> PostSanPham(SanPham pro,Object data)
         {
-            _context.SanPhams.Add(sanPham);
+            if (existType(pro.Idloai)) return Conflict();
+            _context.SanPhams.Add(pro);
+            addProductInformation(pro.Id,data);
             try
             {
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateException)
             {
-                if (SanPhamExists(sanPham.Id))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
+                return BadRequest();
             }
-            return CreatedAtAction("GetSanPham", new { id = sanPham.Id }, sanPham);
+            return CreatedAtAction("GetSanPham", new { id = pro.Id }, pro);
         }
         [HttpDelete("{id}")]
         public async Task<ActionResult<SanPham>> DeleteSanPham(string id)
@@ -108,11 +104,33 @@ namespace Laptop_store_e_comerce.Controllers
 
             return sanPham;
         }
-        private bool SanPhamExists(string id)
+
+        private bool existID(string id)
         {
             return _context.SanPhams.Any(e => e.Id == id);
         }
+        private bool existType(string type)
+        {
+            return _context.LoaiSanPhams.Any(h => h.Id == type);
+        }
+        private void addProductInformation(string type,Object a)
+        {
+            try
+            {
+                if(type == "laptop")
+                {
+                    LaptopDetail detail = a as LaptopDetail;
+                    return;
+                }
+                if(type == "keyboard")
+                {
+                    DetailKeyBoard detail = a as DetailKeyBoard;
+                    _context.DetailKeyBoards.Add(detail);
+                }
+            }catch(Exception e)
+            {
+                Console.WriteLine("Errol: addProductInformation() has a problem" + e.ToString());
+            }
+        }
     }
 }
-// To protect from overposting attacks, enable the specific properties you want to bind to, for
-// more details, see https://go.microsoft.com/fwlink/?linkid=2123754.

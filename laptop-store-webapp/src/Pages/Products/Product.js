@@ -7,6 +7,16 @@ import { useEffect, useState } from "react";
 import ListProduct from "./ListProduct";
 import fblike from "../../Images/fblike.png";
 export default function Product() {
+<<<<<<< HEAD
+    const [pros, setPros] = useState([]);
+    useEffect(() => {
+      console.log("Goi API");
+      axios.get('https://localhost:44343/data/laptop/',null)
+           .then(res => setPros(res.data)).catch(err => console.log(err));
+    }, []);
+    return (
+        <div className="wrapper">
+=======
   const [pros, setPros] = useState([]);
   useEffect(() => {
     axios
@@ -17,6 +27,7 @@ export default function Product() {
   console.log(pros);
   return (
     <div className="wrapper">
+>>>>>>> ef066a9cf4abb14cfdd627277ccf2585f3a5a0a6
       <div className="container_fullwidth">
         <div className="container">
           <div className="col-md-12">
