@@ -13,8 +13,8 @@ namespace Laptop_store_e_comerce.Controllers
     [ApiController]
     public class ProductController : ControllerBase
     {
-        private readonly LaptopContext _context;
-        public ProductController(LaptopContext context)
+        private readonly StoreContext _context;
+        public ProductController(StoreContext context)
         {
             _context = context;
         }
@@ -105,7 +105,6 @@ namespace Laptop_store_e_comerce.Controllers
 
             return sanPham;
         }
-
         private bool existID(string id)
         {
             return _context.SanPhams.Any(e => e.Id == id);

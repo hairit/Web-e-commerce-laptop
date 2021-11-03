@@ -13,9 +13,9 @@ namespace Laptop_store_e_comerce.Controllers
     [ApiController]
     public class ImageController : ControllerBase
     {
-        private readonly LaptopContext _context;
+        private readonly StoreContext _context;
 
-        public ImageController(LaptopContext context)
+        public ImageController(StoreContext context)
         {
             _context = context;
         }

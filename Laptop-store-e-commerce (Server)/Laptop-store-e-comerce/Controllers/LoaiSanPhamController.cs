@@ -13,9 +13,9 @@ namespace Laptop_store_e_comerce.Controllers
     [ApiController]
     public class LoaiSanPhamController : ControllerBase
     {
-        private readonly LaptopContext _context;
+        private readonly StoreContext _context;
 
-        public LoaiSanPhamController(LaptopContext context)
+        public LoaiSanPhamController(StoreContext context)
         {
             _context = context;
         }

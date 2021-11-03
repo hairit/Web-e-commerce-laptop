@@ -13,8 +13,8 @@ namespace Laptop_store_e_comerce.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly LaptopContext database;
-        public UserController(LaptopContext context)
+        private readonly StoreContext database;
+        public UserController(StoreContext context)
         {
             database = context;
         }

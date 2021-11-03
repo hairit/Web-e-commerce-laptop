@@ -8,13 +8,13 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace Laptop_store_e_comerce.Models
 {
-    public partial class LaptopContext : DbContext
+    public partial class StoreContext : DbContext
     {
-        public LaptopContext()
+        public StoreContext()
         {
         }
 
-        public LaptopContext(DbContextOptions<LaptopContext> options)
+        public StoreContext(DbContextOptions<StoreContext> options)
             : base(options)
         {
         }
@@ -35,7 +35,7 @@ namespace Laptop_store_e_comerce.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("name=laptop");
+                optionsBuilder.UseSqlServer("name=DB");
             }
         }
 
@@ -61,12 +61,12 @@ namespace Laptop_store_e_comerce.Models
                 entity.HasOne(d => d.IddonhangNavigation)
                     .WithMany(p => p.ChitietDonHangs)
                     .HasForeignKey(d => d.Iddonhang)
-                    .HasConstraintName("FK__ChitietDo__iddon__3A81B327");
+                    .HasConstraintName("FK__ChitietDo__iddon__4E88ABD4");
 
                 entity.HasOne(d => d.IdsanphamNavigation)
                     .WithMany(p => p.ChitietDonHangs)
                     .HasForeignKey(d => d.Idsanpham)
-                    .HasConstraintName("FK__ChitietDo__idsan__3B75D760");
+                    .HasConstraintName("FK__ChitietDo__idsan__4F7CD00D");
             });
 
             modelBuilder.Entity<ChitietGioHang>(entity =>
@@ -89,12 +89,12 @@ namespace Laptop_store_e_comerce.Models
                 entity.HasOne(d => d.IdgiohangNavigation)
                     .WithMany(p => p.ChitietGioHangs)
                     .HasForeignKey(d => d.Idgiohang)
-                    .HasConstraintName("FK__ChitietGi__idgio__3C69FB99");
+                    .HasConstraintName("FK__ChitietGi__idgio__5070F446");
 
                 entity.HasOne(d => d.IdsanphamNavigation)
                     .WithMany(p => p.ChitietGioHangs)
                     .HasForeignKey(d => d.Idsanpham)
-                    .HasConstraintName("FK__ChitietGi__idsan__3D5E1FD2");
+                    .HasConstraintName("FK__ChitietGi__idsan__5165187F");
             });
 
             modelBuilder.Entity<DetailKeyBoard>(entity =>
@@ -135,7 +135,7 @@ namespace Laptop_store_e_comerce.Models
                 entity.HasOne(d => d.IdsanphamNavigation)
                     .WithMany(p => p.DetailKeyBoards)
                     .HasForeignKey(d => d.Idsanpham)
-                    .HasConstraintName("FK__DetailKey__idsan__3E52440B");
+                    .HasConstraintName("FK__DetailKey__idsan__52593CB8");
             });
 
             modelBuilder.Entity<DonHang>(entity =>
@@ -169,7 +169,7 @@ namespace Laptop_store_e_comerce.Models
                 entity.HasOne(d => d.IduserNavigation)
                     .WithMany(p => p.DonHangs)
                     .HasForeignKey(d => d.Iduser)
-                    .HasConstraintName("FK__DonHang__iduser__3F466844");
+                    .HasConstraintName("FK__DonHang__iduser__534D60F1");
             });
 
             modelBuilder.Entity<GioHang>(entity =>
@@ -183,7 +183,7 @@ namespace Laptop_store_e_comerce.Models
                 entity.HasOne(d => d.IduserNavigation)
                     .WithMany(p => p.GioHangs)
                     .HasForeignKey(d => d.Iduser)
-                    .HasConstraintName("FK__GioHang__iduser__403A8C7D");
+                    .HasConstraintName("FK__GioHang__iduser__5441852A");
             });
 
             modelBuilder.Entity<Image>(entity =>
@@ -228,7 +228,7 @@ namespace Laptop_store_e_comerce.Models
             modelBuilder.Entity<MoTaLaptop>(entity =>
             {
                 entity.HasKey(e => e.Idsanpham)
-                    .HasName("PK__MoTaLapt__C5FDB0E566E980AC");
+                    .HasName("PK__MoTaLapt__C5FDB0E5748E49B7");
 
                 entity.ToTable("MoTaLaptop");
 
@@ -293,7 +293,7 @@ namespace Laptop_store_e_comerce.Models
                     .WithOne(p => p.MoTaLaptop)
                     .HasForeignKey<MoTaLaptop>(d => d.Idsanpham)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__MoTaLapto__idsan__412EB0B6");
+                    .HasConstraintName("FK__MoTaLapto__idsan__5535A963");
             });
 
             modelBuilder.Entity<SanPham>(entity =>
@@ -337,13 +337,13 @@ namespace Laptop_store_e_comerce.Models
                 entity.HasOne(d => d.IdloaiNavigation)
                     .WithMany(p => p.SanPhams)
                     .HasForeignKey(d => d.Idloai)
-                    .HasConstraintName("FK__SanPham__idloai__4222D4EF");
+                    .HasConstraintName("FK__SanPham__idloai__5629CD9C");
             });
 
             modelBuilder.Entity<ThongSoLaptop>(entity =>
             {
                 entity.HasKey(e => e.Idsanpham)
-                    .HasName("PK__ThongSoL__C5FDB0E55087BBC2");
+                    .HasName("PK__ThongSoL__C5FDB0E5B127A567");
 
                 entity.ToTable("ThongSoLaptop");
 
@@ -372,7 +372,7 @@ namespace Laptop_store_e_comerce.Models
                     .WithOne(p => p.ThongSoLaptop)
                     .HasForeignKey<ThongSoLaptop>(d => d.Idsanpham)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__ThongSoLa__idsan__4316F928");
+                    .HasConstraintName("FK__ThongSoLa__idsan__571DF1D5");
             });
 
             modelBuilder.Entity<User>(entity =>
