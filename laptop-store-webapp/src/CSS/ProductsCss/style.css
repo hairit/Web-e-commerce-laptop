@@ -99,8 +99,9 @@ img {
   position: relative;
   width: 100%;
 }
-.header,
-.footer,
+.af{
+  cursor: pointer;
+}
 .container_fullwidth {
   position: relative;
   margin: 0;
