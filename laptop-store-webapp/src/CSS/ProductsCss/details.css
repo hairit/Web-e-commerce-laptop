@@ -1,111 +1,126 @@
-body {
-  font-family: "Roboto", sans-serif;
-  font-size: 12px;
-  font-weight: 300;
-  line-height: 1;
-  background-color: #f8f8fc;
-  color: #434343;
+
+.section-heading {
+	margin-top: 80px;
+	margin-bottom: 40px;
+}
+.section-heading .line-dec {
+	width: 30px;
+	height: 5px;
+	background-color: #3a8bcd;
+}
+.section-heading h1 {
+	font-size: 22px;
+	font-weight: 700;
+	color: #1e1e1e;
+	margin-top: 15px;
 }
 
-ul {
-  list-style: none;
+.imagesPro{
+	margin-bottom: 20px;
 }
 
-a {
-  text-decoration: none;
+.single-product .product-slider {
+	padding: 20px;
+	border: 1px solid #eee!important;
+	border-radius: 5px;
 }
-ul {
-  list-style: none outside none;
-  margin: 0;
-  padding: 0;
+.flexslider {
+	border: none!important;
 }
-ul:after {
-  clear: both;
-  content: "";
-  display: block;
+#carousel {
+	margin-top: 20px;
 }
-li {
-  line-height: 18px;
-  transition: all 0.2s ease-in-out 0s;
-  -webkit-transition: all 0.2s ease-in-out 0s;
+#carousel .slides li {
+	width: 150px!important;
 }
-img {
-  max-width: 100%;
-  height: auto;
+.single-product .right-content h4 {
+	font-size: 17px;
+	font-weight: 700;
+	margin-top: 0px;
 }
-.center-text {
-  text-align: center;
+.single-product .right-content h6 {
+	color: #3a8bcd;
+	font-size: 17px;
+	font-weight: 700;
+	margin-top: 10px;
 }
-.left-text {
-  text-align: left;
+.single-product .right-content p {
+	margin-top: 20px;
+	margin-bottom: 30px;
 }
-.right-text {
-  text-align: right;
+.single-product .right-content span {
+	font-size: 14px;
+	color: #3a8bcd;
+	font-weight: 500;
+	display: inline-block;
+	margin-bottom: 15px;
 }
-.relative {
-  position: relative;
+.single-product .right-content label {
+	font-size: 14px;
+	color: #4a4a4a;
 }
-.absolute {
-  position: absolute;
+.single-product .right-content .quantity-text {
+	margin-left: 10px;
+	width: 44px;
+	height: 44px;
+	line-height: 42px;
+	font-size: 14px;
+	font-weight: 700;
+	color: #4a4a4a;
+	display: inline-block;
+	text-align: center;
+	outline: none;
+	border: 1px solid #eee;
 }
-.light-red {
-  color: #fe5252;
+.single-product .right-content .button {
+	margin-left: 15px;
+	cursor: pointer;
+	background-color: #3a8bcd;
+	outline: none;
+	border-radius: 5px;
+	padding: 10px 15px;
+	display: inline-block;
+	color: #fff;
+	font-size: 14px;
+	text-transform: uppercase;
+	font-weight: 300;
+	letter-spacing: 0.4px;
+	text-decoration: none;
+	transition: all 0.5s;
+	box-shadow: none;
+	border: none;
 }
-.gray {
-  color: #ccc;
+.single-product .right-content .down-content span {
+	margin-bottom: 0px;
+	display: inline-block;
+	margin-left: 8px;
+	color: #aaa;
 }
-.red {
-  color: #ff3a3a;
+.single-product .right-content .down-content span a {
+	color: #aaa;
+	font-weight: 400;
+	margin-left: 4px;
+	transition: all 0.5s;
+}
+.single-product .right-content .down-content span a:hover {
+	color: #3a8bcd;
+}
+.single-product .right-content .down-content span a:hover i {
+	background-color: #3a8bcd;
+}
+.single-product .right-content .down-content span a i {
+	transition: all 0.5s;
+	background-color: #aaa;
+	width: 26px;
+	height: 26px;
+	display: inline-block;
+	text-align: center;
+	line-height: 26px;
+	border-radius: 50%;
+	color: #fff;
+	font-size: 12px;
+	margin-right: 5px;
 }
 
-/*Transition Animation*/
 
-.button,
-.products,
-.name,
-.price,
-.fa {
-  -webkit-transition: all 300ms cubic-bezier(0.25, 0.25, 0.75, 0.75);
-  -moz-transition: all 300ms cubic-bezier(0.25, 0.25, 0.75, 0.75);
-  -ms-transition: all 300ms cubic-bezier(0.25, 0.25, 0.75, 0.75);
-  -o-transition: all 300ms cubic-bezier(0.25, 0.25, 0.75, 0.75);
-  transition: all 300ms cubic-bezier(0.25, 0.25, 0.75, 0.75);
-}
 
-.button {
-  background: #fff;
-  padding: 10px 20px;
-  border: 1px solid #cccccc;
-  font-size: 14px;
-  -webkit-border-radius: 10px;
-  border-radius: 10px;
-  outline: none;
-}
-.button:hover {
-  border: 1px solid #fe5252;
-  color: #fe5252;
-}
-.detailProduct {
-    margin: 15px 0;
-
-}
-
-.dtpro-top {
-    padding: 10px 10px;
-  height: 1000px;
-  background-color: #ff3a3a;
-  width: 82%;
-  margin: 0 auto;
-}
-.dt-right{    
-    float: left;
-    width: 70%;
-    height: 600px;
-    background-color: #cccccc;
-}
-.dt-left{
-    margin:0 0 10rem 0;
-    width: 10%;
-    height: 600px;
-    background-color: #f1f503;
-}
