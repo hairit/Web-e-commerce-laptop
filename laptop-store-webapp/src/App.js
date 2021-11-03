@@ -15,12 +15,12 @@ function App() {
       <div className="App">
         <Header />
         <Route path="/" exact component={() => <Body />}></Route>
-        <Route path="/sanpham" component={() => <Product />}></Route>
+        <Route path="/sanpham" exact component={() => <Product />}></Route>
+        <Route path="/sanpham/:id" component={() => <DetailProducts />}></Route>
         <Route path="/login" component={() => <Login />}></Route>
         <Route path="/lienhe" component={() => <Lienhe />}></Route>
         <Route path="/tincongnghe" component={() => <Tintuc />}></Route>
         <Route path="/showroom" component={() => <Showroom />}></Route>
-        <Route path="/details" component={() => <DetailProducts />}></Route>
         <Footer />
       </div>
     </Router>
