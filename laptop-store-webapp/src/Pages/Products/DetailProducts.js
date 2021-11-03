@@ -2,6 +2,7 @@ import React from "react";
 import details from "../../CSS/ProductsCss/details.css";
 import { withRouter } from "react-router";
 import { useEffect, useState } from "react";
+import FormatCurrency from "../../Function/FormatCurrency";
 
 import axios from "axios";
 class DetailProducts extends React.Component {
@@ -24,10 +25,10 @@ class DetailProducts extends React.Component {
     let isEmptyObj = Object.keys(detail).length === 0;
     console.log("123", detail);
 
-    function format_curency(price) {
-      price = price.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
-      return price;
-    }
+    // function format_curency(price) {
+    //   price = price.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
+    //   return price;
+    // }
 
     // const [pros, setPros] = useState([]);
     // useEffect(() => {
@@ -92,7 +93,7 @@ class DetailProducts extends React.Component {
                       </div>
                     </div>
                     <div className="tt-price">
-                      {format_curency(detail.gia)} VNĐ
+                      {FormatCurrency("vi-VN", "currency", "VND", detail.gia)}{" "}
                     </div>
                     <div className="tt-sales">Qùa tặng kèm khi mua hàng</div>
                   </div>

@@ -5,6 +5,8 @@ import { useState } from "react";
 import CALLER from "../../API/CALL";
 import { useHistory } from "react-router-dom";
 import { withRouter } from "react-router";
+import FormatCurrency from "../../Function/FormatCurrency";
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -13,10 +15,6 @@ import {
 } from "react-router-dom";
 
 export default function ListProduct({ pros }) {
-  function format_curency(price) {
-    price = price.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
-    return price;
-  }
   const history = useHistory();
 
   function handleViewDetails(detail) {
@@ -36,8 +34,14 @@ export default function ListProduct({ pros }) {
                   />
                 </a>
               </div>
-              <div className="productname">{pro.ten}</div>
-              <h4 className="price">{format_curency(pro.gia)} VNĐ</h4>
+              <div className="productname">
+                {pro.ten} {pro.id} ( {pro.thongSoLaptop.cpu}{" "}
+                {pro.thongSoLaptop.ram} {pro.thongSoLaptop.vga}{" "}
+                {pro.thongSoLaptop.manhinh} )
+              </div>
+              <h4 className="price">
+                {FormatCurrency("vi-VN", "currency", "VND", pro.gia)}
+              </h4>
               <div className="button_group">
                 <button className="button add-cart" type="button">
                   Thêm vào giỏ hàng
