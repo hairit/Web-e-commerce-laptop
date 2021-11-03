@@ -1,5 +1,4 @@
 import axios from "axios"
-const URL = 'https://localhost:44343'
 
 export default function CALLER (method,path,body){
     if(method === 'POST' || method==='PUT' && body === null) {

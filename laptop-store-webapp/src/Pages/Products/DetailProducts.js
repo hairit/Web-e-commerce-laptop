@@ -16,13 +16,18 @@ class DetailProducts extends React.Component {
       this.setState({
         detail: res && res.data ? res.data : {},
       });
-      console.log("acb", this.props);
+      console.log("acb", this.props.detail);
     }
   }
-
   render() {
     let { detail } = this.state;
     let isEmptyObj = Object.keys(detail).length === 0;
+    console.log("123", detail);
+
+    function format_curency(price) {
+      price = price.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
+      return price;
+    }
 
     // const [pros, setPros] = useState([]);
     // useEffect(() => {
@@ -33,7 +38,7 @@ class DetailProducts extends React.Component {
           <div className="row">
             {isEmptyObj === false && (
               <>
-                <div className="col-md-12">
+                <div className="col-md-12 colors tops">
                   <div className="section-heading">
                     <div className="line-dec" />
                     <h1>{detail.ten}</h1>
@@ -71,17 +76,25 @@ class DetailProducts extends React.Component {
                     </div>
                   </div>
                 </div>
-                <div className="col-md-6">
+                <div className="col-md-6 colors">
                   <div className="right-content">
                     <h4>
-                      {detail.ten} {detail.id} {}
+                      {detail.ten} {detail.id} ({" "}
+                      {detail.moTaLaptop.detailmanhinh}{" "}
+                      {detail.moTaLaptop.detailram})
                     </h4>
-                    <h6>{detail.gia} VNĐ</h6>
-                    <p>{detail.moTaLaptop}</p>
-                    <span>trong kho</span>
-                    <form action method="get">
-                      <label htmlFor="quantity">{detail.namsx}:</label>
-                    </form>
+                    <div className="tt">
+                      <div className="thuonghieuL">
+                        Thương hiệu <a href="#">{detail.thuonghieu}</a>
+                      </div>
+                      <div className="thuonghieuR">
+                        <p>|</p> <p>Năm sản xuất: {detail.namsx}</p>
+                      </div>
+                    </div>
+                    <div className="tt-price">
+                      {format_curency(detail.gia)} VNĐ
+                    </div>
+                    <div className="tt-sales">Qùa tặng kèm khi mua hàng</div>
                   </div>
                 </div>
               </>

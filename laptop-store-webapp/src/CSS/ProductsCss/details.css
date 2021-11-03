@@ -1,6 +1,5 @@
 .section-heading {
-  margin-top: 80px;
-  margin-bottom: 40px;
+  margin-top: 10px;
 }
 .section-heading .line-dec {
   width: 30px;
@@ -16,8 +15,11 @@
 
 .imagesPro {
   margin-bottom: 20px;
+  padding-left: 0;
 }
-
+.tops {
+  width: 100%;
+}
 .single-product .product-slider {
   padding: 20px;
   border: 1px solid #eee !important;
@@ -35,20 +37,11 @@
   width: 150px !important;
 }
 .single-product .right-content h4 {
-  font-size: 17px;
-  font-weight: 700;
+  font-size: 28px;
+  font-weight: border;
   margin-top: 0px;
 }
-.single-product .right-content h6 {
-  color: #3a8bcd;
-  font-size: 17px;
-  font-weight: 700;
-  margin-top: 10px;
-}
-.single-product .right-content p {
-  margin-top: 20px;
-  margin-bottom: 30px;
-}
+
 .single-product .right-content span {
   font-size: 14px;
   color: #3a8bcd;
@@ -56,11 +49,46 @@
   display: inline-block;
   margin-bottom: 15px;
 }
+
 .single-product .right-content label {
   font-size: 14px;
   color: #4a4a4a;
 }
+.colors {
+  background-color: white;
+}
+.thuonghieuL {
+  float: left;
+  margin-right: 15px;
+}
+.thuonghieuL a {
+  color: blue;
+}
 
+.thuonghieuR {
+  float: left;
+  width: 300px;
+}
+.thuonghieuR p {
+  float: left;
+  margin-right: 15px;
+}
+.tt {
+  width: 50rem;
+  font-size: 18px;
+}
+.tt-price {
+  width: 300px;
+  font-size: 30px;
+  color: #1435cf;
+  font-weight: 700;
+  margin: 50px 0 10px 0;
+}
+.tt-sales {
+  margin: 50px 0 20px 0;
+  font-size: 20px;
+  font-weight: 700;
+}
 /* .single-product .right-content .quantity-text {
   margin-left: 10px;
   width: 44px;
