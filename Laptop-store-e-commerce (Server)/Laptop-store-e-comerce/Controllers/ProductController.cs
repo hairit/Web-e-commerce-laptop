@@ -26,7 +26,7 @@ namespace Laptop_store_e_comerce.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<SanPham>> GetSanPham(string id)
         {
-            var sanPham = await _context.SanPhams.FindAsync(id);
+            var sanPham = await _context.SanPhams.Include(pro => pro.ThongSoLaptop).Include(pro => pro.MoTaLaptop).Where(pro => pro.Id==id).FirstOrDefaultAsync();
             if (sanPham == null)
             {
                 return NotFound();

@@ -1,7 +1,7 @@
 import React from 'react'
 import '../CSS/Body.css'
 import Center from './BodyPages/Center'
-import Laptop from './BodyPages/Laptop'
+import Laptop from './BodyPages/LaptopPanel'
 
 export default function Body() {
     return (

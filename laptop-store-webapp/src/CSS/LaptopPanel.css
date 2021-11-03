@@ -1,0 +1,120 @@
+.laptop-panel{
+    width:87%;
+    margin: 0 auto;
+    height: auto;
+    background-color: #FFFFFF;
+    margin-top: 30px;
+    border-radius: 10px;
+}
+
+.laptop-panel-header{
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.laptop-panel-header::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 5px;
+    top:-5px;
+    background-color: #3f4fc3;
+}
+.laptop-panel-header-logo{
+    background-color:#3f4fc3;
+    width: max-content;
+    height: 30px;
+    padding: 0 20px;
+    color : #FFFFFF;
+    font-weight : 500;
+    font-size: 20px;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.laptop-panel-header-logo::before{
+    position: absolute;
+    content:'';
+    top: 0;
+    left: -20px;
+    box-sizing: border-box;
+    width: 20px;
+    bottom: 0;
+    border-left: 20px solid #FFFFFF;
+    border-top: 30px solid #3f4fc3;
+    background-color: #3f4fc3;
+}
+.laptop-panel-header-logo::after{
+    position: absolute;
+    content:'';
+    top: 0;
+    right : -20px;
+    box-sizing: border-box;
+    width: 20px;
+    bottom: 0;
+    border-right: 20px solid #FFFFFF;
+    border-top: 30px solid #3f4fc3;
+    background-color: #3f4fc3;
+}
+.laptop-panel-header-item{
+    width: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+    border-right : 5px solid #3f4fc3;
+    border-top-right-radius : 100px;
+}
+.laptop-panel-header-item p{
+    color : #424244;
+    font-weight: 400;
+    font-size: 15px;
+    height:min-content;
+}
+.laptop-panel-header-item:hover p{
+    color: #3f4fc3;
+}
+.laptop-item{
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+.laptop-image{
+    width: 100%;
+    height: auto;
+}
+.laptop-image-img{
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+}
+.laptop-detail-item{
+    padding: 2px 30px;
+    display: flex;
+    justify-content: space-between;
+    color : black;
+}
+.laptop-id{
+    font-size: 13px;
+}
+.laptop-name{
+    font-size: 13px;
+    line-height: 1.40;
+    height: 50px;
+}
+.laptop-name:hover{
+    color: #3f4fc3;
+}
+.laptop-price{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.laptop-price-value{
+    color: #3f4fc3;
+    font-size: 16px;
+    font-weight: 500;
+}
