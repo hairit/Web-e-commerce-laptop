@@ -13,6 +13,7 @@ namespace Laptop_store_e_comerce.Models
         {
             SanPhams = new HashSet<SanPham>();
         }
+
         public string Id { get; set; }
         public string Ten { get; set; }
 

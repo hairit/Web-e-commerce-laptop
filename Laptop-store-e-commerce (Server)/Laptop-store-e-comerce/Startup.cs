@@ -34,7 +34,7 @@ namespace Laptop_store_e_comerce
                 c.AddPolicy(name: MyAllowSpecificOrigins, options => options.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
             });
             services.AddMvc(option => option.EnableEndpointRouting = false).SetCompatibilityVersion(CompatibilityVersion.Version_3_0).AddNewtonsoftJson(opt => opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
-            services.AddDbContext<LaptopContext>(Options => Options.UseSqlServer(Configuration.GetConnectionString("laptop")));
+            services.AddDbContext<StoreContext>(Options => Options.UseSqlServer(Configuration.GetConnectionString("DB")));
             services.AddControllers();
         }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -13,9 +13,9 @@ namespace Laptop_store_e_comerce.Controllers
     [ApiController]
     public class LaptopController : ControllerBase
     {
-        private readonly LaptopContext database;
+        private readonly StoreContext database;
 
-        public LaptopController(LaptopContext context)
+        public LaptopController(StoreContext context)
         {
             database = context;
         }
