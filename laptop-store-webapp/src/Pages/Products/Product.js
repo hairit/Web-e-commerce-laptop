@@ -44,39 +44,87 @@ export default function Product() {
             </div>
           </div>
           <div className="col-md-12 sof">
-            <div className="col-12 boloc">Bộ lọc</div>
+            <div className="col-12 boloc">
+              <div className="line-bl"></div>
+              <p>Bộ lọc</p>
+            </div>
             <div className="col-12 ">
               <div className="loc">
                 <div className="title-sort">Thương hiệu</div>
                 <div className="btn-right">
-                  <button type="button" className="btn-sort">Asus</button>
-                  <button type="button" className="btn-sort">Dell</button>
-                  <button type="button" className="btn-sort">HP</button>
-                  <button type="button" className="btn-sort">Acer</button>
+                  <button type="button" className="btn-sort">
+                    Asus
+                  </button>
+                  <button type="button" className="btn-sort">
+                    Dell
+                  </button>
+                  <button type="button" className="btn-sort">
+                    HP
+                  </button>
+                  <button type="button" className="btn-sort">
+                    Acer
+                  </button>
                 </div>
-                
-                </div>
-
-                <div className="loc">
-                <div className="title-sort">Tên</div>
+              </div>
+              <div className="loc">
+                <div className="title-sort">CPU</div>
                 <div className="btn-right">
-                  <button type="button" className="btn-sort">Asus</button>
+                  <button type="button" className="btn-sort">
+                    Corei3
+                  </button>
+                  <button type="button" className="btn-sort">
+                    Corei5
+                  </button>
+                  <button type="button" className="btn-sort">
+                    Corei7
+                  </button>
+                  <button type="button" className="btn-sort">
+                    Corei9
+                  </button>
                 </div>
-                </div>
+              </div>
 
-                <div className="loc">
-                <div className="title-sort">Tên</div>
+              <div className="loc">
+                <div className="title-sort">Ram</div>
                 <div className="btn-right">
-                  <button type="button" className="btn-sort">Asus</button>
+                  <button type="button" className="btn-sort">
+                    4GB
+                  </button>
+                  <button type="button" className="btn-sort">
+                    8GB
+                  </button>
+                  <button type="button" className="btn-sort">
+                    16GB
+                  </button>
                 </div>
-                </div>
+              </div>
 
-                <div className="loc">
-                <div className="title-sort">Tên</div>
+              <div className="loc">
+                <div className="title-sort">VAG</div>
                 <div className="btn-right">
-                  <button type="button" className="btn-sort">Asus</button>
+                  <button type="button" className="btn-sort">
+                    NVIDIA
+                  </button>
                 </div>
+              </div>
+
+              <div className="loc">
+                <div className="title-sort">Màng hình</div>
+                <div className="btn-right">
+                  <button type="button" className="btn-sort">
+                    13.3 inch
+                  </button>
+                  <button type="button" className="btn-sort">
+                    14 inch
+                  </button>
+                  <button type="button" className="btn-sort">
+                    15 inch
+                  </button>
+                  <button type="button" className="btn-sort">
+                    15.6 inch
+                  </button>
                 </div>
+              </div>
             </div>
           </div>
           <div className="row">

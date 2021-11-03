@@ -3,15 +3,13 @@ body {
   font-size: 12px;
   font-weight: 300;
   line-height: 1;
-  background-color: #F8F8FC;
+  background-color: #f8f8fc;
   color: #434343;
 }
 
 ul {
   list-style: none;
 }
-
-
 
 a {
   text-decoration: none;
@@ -62,7 +60,6 @@ img {
 
 /*Transition Animation*/
 
-
 .button,
 .products,
 .name,
@@ -99,7 +96,7 @@ img {
   position: relative;
   width: 100%;
 }
-.af{
+.af {
   cursor: pointer;
 }
 .container_fullwidth {
@@ -109,7 +106,7 @@ img {
   width: 100%;
 }
 .container_fullwidth {
-  background: #F8F8FC;
+  background: #f8f8fc;
   padding-bottom: 30px;
 }
 
@@ -605,65 +602,70 @@ form.newsletter input[type="submit"]:hover {
   width: 100%;
 }
 
-
-.loc{
+.loc {
   padding-bottom: 10px;
 }
 
-.boloc{
-  font-size:22px;
+.line-bl {
+  width: 30 px;
+  height: 5 px;
+  background-color: #3a8bcd;
+}
+
+.boloc {
+  font-size: 22px;
   font-weight: 600;
   margin: 20px 0 20px 0;
 }
-.btn-right{
-  height:30px;
+.btn-right {
+  height: 30px;
 }
-.title-sort{
+.title-sort {
   width: 15%;
   height: 3rem;
-  font-size:17px;
+  font-size: 17px;
   font-weight: 600;
   margin-right: 10px;
   float: left;
 }
 
-.sof{
+.sof {
   margin-bottom: 13px;
   border-radius: 1rem;
-  background-color:white;
+  background-color: white;
 }
 
-.btn-sort{
+.btn-sort {
   margin-right: 20px;
-  background-color: #FFFFFF;
-  border: 1px solid rgb(209,213,219);
-  border-radius: .5rem;
+  background-color: #ffffff;
+  border: 1px solid rgb(209, 213, 219);
+  border-radius: 0.5rem;
   box-sizing: border-box;
   color: #111827;
-  font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  font-family: "Inter var", ui-sans-serif, system-ui, -apple-system, system-ui,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 1.5rem;
   font-weight: 400;
   line-height: 1.25rem;
-  padding: .75rem 1rem;
+  padding: 0.75rem 1rem;
   text-align: center;
-  text-decoration: none #D1D5DB solid;
+  text-decoration: none #d1d5db solid;
   text-decoration-thickness: auto;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   cursor: pointer;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  
 }
 
 .btn-sort:hover {
-  background-color: rgb(249,250,251);
+  background-color: rgb(249, 250, 251);
 }
-.css-thuonghieu{
-  border-radius:1px solid ;
+.css-thuonghieu {
+  border-radius: 1px solid;
 }
-.asus{
- 
+.asus {
   padding: 2px 2px;
 }
 
