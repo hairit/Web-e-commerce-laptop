@@ -20,6 +20,6 @@ namespace Laptop_store_e_comerce.Models
         public int? Layout { get; set; }
         public string Size { get; set; }
 
-        public virtual SanPham IdProductNavigation { get; set; }
+        public virtual Product IdProductNavigation { get; set; }
     }
 }

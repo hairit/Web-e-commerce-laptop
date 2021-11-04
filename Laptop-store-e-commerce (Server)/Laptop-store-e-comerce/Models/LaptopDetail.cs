@@ -15,6 +15,6 @@ namespace Laptop_store_e_comerce.Models
         public string Vga { get; set; }
         public string Manhinh { get; set; }
 
-        public virtual SanPham IdsanphamNavigation { get; set; }
+        public virtual Product IdsanphamNavigation { get; set; }
     }
 }

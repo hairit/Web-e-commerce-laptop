@@ -11,12 +11,12 @@ namespace Laptop_store_e_comerce.Models
     {
         public LoaiSanPham()
         {
-            SanPhams = new HashSet<SanPham>();
+            Products = new HashSet<Product>();
         }
 
         public string Id { get; set; }
         public string Ten { get; set; }
 
-        public virtual ICollection<SanPham> SanPhams { get; set; }
+        public virtual ICollection<Product> Products { get; set; }
     }
 }

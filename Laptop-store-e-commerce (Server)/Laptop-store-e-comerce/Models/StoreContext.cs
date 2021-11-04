@@ -29,7 +29,7 @@ namespace Laptop_store_e_comerce.Models
         public virtual DbSet<LaptopDetail> LaptopDetails { get; set; }
         public virtual DbSet<LoaiSanPham> LoaiSanPhams { get; set; }
         public virtual DbSet<MoTaLaptop> MoTaLaptops { get; set; }
-        public virtual DbSet<SanPham> SanPhams { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<User> Users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -358,9 +358,9 @@ namespace Laptop_store_e_comerce.Models
                     .HasConstraintName("FK__MoTaLapto__idsan__5535A963");
             });
 
-            modelBuilder.Entity<SanPham>(entity =>
+            modelBuilder.Entity<Product>(entity =>
             {
-                entity.ToTable("SanPham");
+                entity.ToTable("Product");
 
                 entity.Property(e => e.Id)
                     .HasColumnName("id")
@@ -401,7 +401,7 @@ namespace Laptop_store_e_comerce.Models
                     .HasMaxLength(20);
 
                 entity.HasOne(d => d.IdloaiNavigation)
-                    .WithMany(p => p.SanPhams)
+                    .WithMany(p => p.Products)
                     .HasForeignKey(d => d.Idloai)
                     .HasConstraintName("FK__SanPham__idloai__5629CD9C");
             });

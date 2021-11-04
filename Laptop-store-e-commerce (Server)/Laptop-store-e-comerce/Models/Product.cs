@@ -7,9 +7,9 @@ using System.Collections.Generic;
 
 namespace Laptop_store_e_comerce.Models
 {
-    public partial class SanPham
+    public partial class Product
     {
-        public SanPham()
+        public Product()
         {
             ChitietDonHangs = new HashSet<ChitietDonHang>();
             ChitietGioHangs = new HashSet<ChitietGioHang>();
