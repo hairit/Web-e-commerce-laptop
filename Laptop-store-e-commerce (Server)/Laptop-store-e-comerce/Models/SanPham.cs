@@ -13,7 +13,6 @@ namespace Laptop_store_e_comerce.Models
         {
             ChitietDonHangs = new HashSet<ChitietDonHang>();
             ChitietGioHangs = new HashSet<ChitietGioHang>();
-            DetailKeyBoards = new HashSet<DetailKeyBoard>();
         }
 
         public string Id { get; set; }
@@ -27,10 +26,10 @@ namespace Laptop_store_e_comerce.Models
         public string Nameimage { get; set; }
 
         public virtual LoaiSanPham IdloaiNavigation { get; set; }
+        public virtual KeyboardDetail KeyboardDetail { get; set; }
+        public virtual LaptopDetail LaptopDetail { get; set; }
         public virtual MoTaLaptop MoTaLaptop { get; set; }
-        public virtual ThongSoLaptop ThongSoLaptop { get; set; }
         public virtual ICollection<ChitietDonHang> ChitietDonHangs { get; set; }
         public virtual ICollection<ChitietGioHang> ChitietGioHangs { get; set; }
-        public virtual ICollection<DetailKeyBoard> DetailKeyBoards { get; set; }
     }
 }

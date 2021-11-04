@@ -24,7 +24,7 @@ namespace Laptop_store_e_comerce.Controllers
         {
             try
             {
-                List<SanPham> pros = await database.SanPhams.Where(pro => pro.Idloai == "laptop").Include(pro => pro.ThongSoLaptop).Include(pro => pro.MoTaLaptop).ToListAsync();
+                List<SanPham> pros = await database.SanPhams.Where(pro => pro.Idloai == "laptop").Include(pro => pro.LaptopDetail).Include(pro => pro.MoTaLaptop).ToListAsync();
                 if (pros.Count == 0) return NotFound();
                 else return pros;
             }
@@ -36,7 +36,7 @@ namespace Laptop_store_e_comerce.Controllers
             try
             {
                 return await database.SanPhams.Where(pro => pro.Idloai == "Laptop")
-                                              .Include(pro => pro.ThongSoLaptop).Include(pro => pro.MoTaLaptop)
+                                              .Include(pro => pro.LaptopDetail).Include(pro => pro.MoTaLaptop)
                                               .Where(pro => pro.Hienthi == 1)
                                               .ToListAsync();
             }
@@ -48,7 +48,7 @@ namespace Laptop_store_e_comerce.Controllers
             try
             {
                 List<SanPham> pros = await database.SanPhams.Where(pro => pro.Idloai == "laptop")
-                    .Include(pro => pro.ThongSoLaptop)
+                    .Include(pro => pro.LaptopDetail)
                     .Include(pro => pro.MoTaLaptop)
                     .Where(pro => pro.Id == value)
                     .ToListAsync();
@@ -63,9 +63,9 @@ namespace Laptop_store_e_comerce.Controllers
             try
             {
                 List<SanPham> pros = await database.SanPhams.Where(pro => pro.Idloai == "laptop")
-                                                            .Include(pro => pro.ThongSoLaptop)
+                                                            .Include(pro => pro.LaptopDetail)
                                                             .Include(pro => pro.MoTaLaptop)
-                                                            .Where(pro => pro.ThongSoLaptop.Manhinh == value)
+                                                            .Where(pro => pro.LaptopDetail.Manhinh == value)
                                                             .ToListAsync();
                 if (pros.Count == 0) return NotFound();
                 return pros;
@@ -79,7 +79,7 @@ namespace Laptop_store_e_comerce.Controllers
             {
                 List<SanPham> pros = await database.SanPhams.Where(pro => pro.Idloai == "laptop")
                                                             .Where(pro => pro.Ten.Contains(value))
-                                                            .Include(pro => pro.ThongSoLaptop)
+                                                            .Include(pro => pro.LaptopDetail)
                                                             .Include(pro => pro.MoTaLaptop)
                                                             .ToListAsync();
                 if (pros.Count == 0) return NotFound();
@@ -93,7 +93,7 @@ namespace Laptop_store_e_comerce.Controllers
             try
             {
                 List<SanPham> pros = await database.SanPhams.Where(pro => pro.Idloai == "laptop")
-                                                            .Include(pro => pro.ThongSoLaptop)
+                                                            .Include(pro => pro.LaptopDetail)
                                                             .Include(pro => pro.MoTaLaptop)
                                                             .Where(pro => pro.Thuonghieu == value).ToListAsync();
                 if (pros.Count == 0) return NotFound();
@@ -107,9 +107,9 @@ namespace Laptop_store_e_comerce.Controllers
             try
             {
                 List<SanPham> pros = await database.SanPhams.Where(pro => pro.Idloai == "laptop")
-                                                            .Include(pro => pro.ThongSoLaptop)
+                                                            .Include(pro => pro.LaptopDetail)
                                                             .Include(pro => pro.MoTaLaptop)
-                                                            .Where(pro => pro.ThongSoLaptop.Ram == value)
+                                                            .Where(pro => pro.LaptopDetail.Ram == value)
                                                             .ToListAsync();
                 if (pros.Count != 0) return pros;
                 else return NotFound();
@@ -122,9 +122,9 @@ namespace Laptop_store_e_comerce.Controllers
             try
             {
                 List<SanPham> pros = await database.SanPhams.Where(pro => pro.Idloai == "laptop")
-                                                             .Include(pro => pro.ThongSoLaptop)
+                                                             .Include(pro => pro.LaptopDetail)
                                                              .Include(pro => pro.MoTaLaptop)
-                                                             .Where(pro => pro.ThongSoLaptop.Vga == value)
+                                                             .Where(pro => pro.LaptopDetail.Vga == value)
                                                              .ToListAsync();
                 if (pros.Count != 0) return pros;
                 else return NotFound();

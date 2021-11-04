@@ -21,12 +21,12 @@ namespace Laptop_store_e_comerce.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<SanPham>>> GetSanPhams()
         {
-            return await _context.SanPhams.Include(sp =>  sp.ThongSoLaptop).Include(sp => sp.MoTaLaptop).ToListAsync();
+            return await _context.SanPhams.Include(sp =>  sp.LaptopDetail).Include(sp => sp.MoTaLaptop).ToListAsync();
         }
         [HttpGet("{id}")]
         public async Task<ActionResult<SanPham>> GetSanPham(string id)
         {
-            var sanPham = await _context.SanPhams.Include(pro => pro.ThongSoLaptop).Include(pro => pro.MoTaLaptop).Where(pro => pro.Id==id).FirstOrDefaultAsync();
+            var sanPham = await _context.SanPhams.Include(pro => pro.LaptopDetail).Include(pro => pro.MoTaLaptop).Where(pro => pro.Id==id).FirstOrDefaultAsync();
             if (sanPham == null)
             {
                 return NotFound();
@@ -74,22 +74,19 @@ namespace Laptop_store_e_comerce.Controllers
             }
             return NoContent();
         }
-        [HttpPost]
-        public async Task<ActionResult<Object>> PostSanPham(Object pro)
+        [HttpPost()]
+        public async Task<ActionResult<SanPham>> PostSanPham(SanPham pro)
         {
-            /*if (existType(pro.Idloai)) return Conflict();
-            _context.SanPhams.Add(pro);
-            addProductInformation(pro.Id,detail);
-            try
-            {
-                await _context.SaveChangesAsync();
+            if (existID(pro.Id)) return Conflict();
+            try{
+                _context.SanPhams.Add(pro);
+                _context.SaveChangesAsync();
+                return CreatedAtAction("GetSanPham",new { id = pro.Id }, pro);
             }
-            catch (DbUpdateException)
-            {
-                return BadRequest();
-            }
-            return CreatedAtAction("GetSanPham", new { id = pro.Des }, pro);*/
-            return pro;
+            catch(Exception e) {
+                    Console.WriteLine("Errol when add product");
+                    return BadRequest();
+             }
         }
         [HttpDelete("{id}")]
         public async Task<ActionResult<SanPham>> DeleteSanPham(string id)
@@ -99,7 +96,15 @@ namespace Laptop_store_e_comerce.Controllers
             {
                 return NotFound();
             }
-
+            if(sanPham.Idloai == "laptop")
+            {
+                _context.LaptopDetails.Remove(await _context.LaptopDetails.FindAsync(id));
+                _context.MoTaLaptops.Remove(await _context.MoTaLaptops.FindAsync(id));
+            }
+            if(sanPham.Idloai == "keyboard")
+            {
+                _context.KeyboardDetails.Remove(await _context.KeyboardDetails.FindAsync(id));
+            }
             _context.SanPhams.Remove(sanPham);
             await _context.SaveChangesAsync();
 
@@ -124,8 +129,8 @@ namespace Laptop_store_e_comerce.Controllers
                 }
                 if(type == "keyboard")
                 {
-                    DetailKeyBoard detail = a as DetailKeyBoard;
-                    _context.DetailKeyBoards.Add(detail);
+                    KeyboardDetail detail = a as KeyboardDetail;
+                    _context.KeyboardDetails.Add(detail);
                 }
             }catch(Exception e)
             {
