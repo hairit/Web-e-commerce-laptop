@@ -1,7 +1,7 @@
 import React from "react";
 import details from "../../CSS/ProductsCss/details.css";
 import { withRouter } from "react-router";
-
+import freeshipping_4px from "../../Images/freeshipping_4px.png";
 import axios from "axios";
 import Solver from "../../Classes/Solver";
 class DetailProducts extends React.Component {
@@ -37,9 +37,9 @@ class DetailProducts extends React.Component {
                     <h1>{detail.ten}</h1>
                   </div>
                 </div>
-                <div className="col-md-6 imagesPro">
-                  <div className="product-slider">
-                    <div id="slider" className="flexslider">
+                <div className="col-md-5 imagesPro">
+                  <div className="product-slider imgsl">
+                    <div className="flexslider">
                       <ul className="slides">
                         <li>
                           <img
@@ -69,7 +69,7 @@ class DetailProducts extends React.Component {
                     </div>
                   </div>
                 </div>
-                <div className="col-md-6 colors">
+                <div className="col-md-5 colors">
                   <div className="right-content">
                     <h4>
                       {detail.ten} {detail.id} ({" "}
@@ -94,6 +94,18 @@ class DetailProducts extends React.Component {
                     </div>
                     <div className="tt-sales">Qùa tặng kèm khi mua hàng</div>
                   </div>
+                </div>
+                <div className="col-md-4 colors detail-right">
+                  <div className="ship">
+                    <p>
+                      <img src={freeshipping_4px} />
+                      &nbsp;&nbsp;&nbsp; Sản phẩm được giao hàng miễn phí
+                    </p>
+                  </div>
+                  <div className="chinhsachbh">
+                    <p className="font-cs">Chính sách bán hàng</p>
+                  </div>
+                  <div className="service">ddddddddddddddddddddddddddddd</div>
                 </div>
               </>
             )}
