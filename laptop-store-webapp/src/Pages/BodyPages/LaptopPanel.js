@@ -5,7 +5,8 @@ import CALLER from '../../API/CALL'
 import URL from '../../DATA/URL';
 import {useState ,useEffect} from 'react'
 import {NavLink} from 'react-router-dom';
-import FormatCurrency from '../../Function/FormatCurrency';
+import Solver from '../../Classes/Solver';
+const solver = new Solver();
 const renderProductItem = (pro,index) =>{
     return(
         <div className="col-10 c-10-2 laptop-item" key={index}>
@@ -23,7 +24,7 @@ const renderProductItem = (pro,index) =>{
                     </NavLink>
                     <div className="laptop-detail-item laptop-price">
                             <div className="">Giảm 5%</div>
-                            <div className="laptop-price-value">{FormatCurrency("vi-VN",'currency','VND',pro.gia)}</div>
+                            <div className="laptop-price-value">{solver.formatCurrency("vi-VN",'currency','VND',pro.gia)}</div>
                     </div>
                 </div>
             </NavLink>

@@ -1,6 +1,7 @@
 class Solver{
     constructor(){}
-    formatCurrency(number,typeCurrency){
-        return Intl.NumberFormat("vi-VN",{style:'currency',currency:typeCurrency}).format(number);
+    formatCurrency(nationID,style,typeCurrency,number){
+        return Intl.NumberFormat(nationID,{style:style,currency:typeCurrency}).format(number);
     }
 }
+export default Solver;

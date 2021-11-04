@@ -1,10 +1,9 @@
 import React from "react";
 import details from "../../CSS/ProductsCss/details.css";
 import { withRouter } from "react-router";
-import { useEffect, useState } from "react";
-import FormatCurrency from "../../Function/FormatCurrency";
 
 import axios from "axios";
+import Solver from "../../Classes/Solver";
 class DetailProducts extends React.Component {
   state = {
     detail: {},
@@ -23,6 +22,7 @@ class DetailProducts extends React.Component {
   render() {
     let { detail } = this.state;
     let isEmptyObj = Object.keys(detail).length === 0;
+    const solver = new Solver();
     console.log("123", detail);
 
     // function format_curency(price) {
@@ -93,7 +93,7 @@ class DetailProducts extends React.Component {
                       </div>
                     </div>
                     <div className="tt-price">
-                      {FormatCurrency("vi-VN", "currency", "VND", detail.gia)}{" "}
+                      {solver.formatCurrency("vi-VN", "currency", "VND", detail.gia)}{" "}
                     </div>
                     <div className="tt-sales">Qùa tặng kèm khi mua hàng</div>
                   </div>
