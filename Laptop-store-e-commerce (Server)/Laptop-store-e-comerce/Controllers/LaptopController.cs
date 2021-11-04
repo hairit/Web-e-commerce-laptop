@@ -57,6 +57,17 @@ namespace Laptop_store_e_comerce.Controllers
             }
             catch (Exception e) { Console.WriteLine(e.ToString()); return BadRequest(); }
         }
+        [HttpGet("from={price1}to={price2}")]
+        public async Task<ActionResult<List<SanPham>>> getLaptopByPrice(int price1,int price2)
+        {
+            try {
+                List<SanPham> pros = 
+                    price2!=999? await database.SanPhams.Where(pro => pro.Idloai=="laptop" && pro.Gia >= price1 && pro.Gia <= price2).ToListAsync():
+                                 await database.SanPhams.Where(pro => pro.Idloai=="laptop" && pro.Gia >= price1).ToListAsync();
+                if (pros.Count == 0) return NotFound();
+                else return pros;
+            }catch(Exception e) { Console.WriteLine(e.ToString()); return BadRequest(); }
+        }
         [HttpGet("manhinh={value}")]
         public async Task<ActionResult<List<SanPham>>> getLaptopByScreen(string value)
         {

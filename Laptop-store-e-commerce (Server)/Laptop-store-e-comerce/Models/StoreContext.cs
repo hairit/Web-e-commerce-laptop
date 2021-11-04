@@ -208,6 +208,8 @@ namespace Laptop_store_e_comerce.Models
                     .HasColumnName("ketnoi")
                     .HasMaxLength(50);
 
+                entity.Property(e => e.Layout).HasColumnName("layout");
+
                 entity.Property(e => e.Loai)
                     .HasColumnName("loai")
                     .HasMaxLength(50);
@@ -219,6 +221,10 @@ namespace Laptop_store_e_comerce.Models
                 entity.Property(e => e.Motaswitch)
                     .HasColumnName("motaswitch")
                     .HasMaxLength(100);
+
+                entity.Property(e => e.Size)
+                    .HasColumnName("size")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.Typeswitch)
                     .HasColumnName("typeswitch")
@@ -373,6 +379,10 @@ namespace Laptop_store_e_comerce.Models
                     .HasColumnName("idloai")
                     .HasMaxLength(50)
                     .IsUnicode(false);
+
+                entity.Property(e => e.Mau)
+                    .HasColumnName("mau")
+                    .HasMaxLength(20);
 
                 entity.Property(e => e.Nameimage)
                     .HasColumnName("nameimage")

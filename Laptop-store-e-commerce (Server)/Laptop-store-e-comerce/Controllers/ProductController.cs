@@ -118,24 +118,5 @@ namespace Laptop_store_e_comerce.Controllers
         {
             return _context.LoaiSanPhams.Any(h => h.Id == type);
         }
-        private void addProductInformation(string type,Object a)
-        {
-            try
-            {
-                if(type == "laptop")
-                {
-                    LaptopDetail detail = a as LaptopDetail;
-                    return;
-                }
-                if(type == "keyboard")
-                {
-                    KeyboardDetail detail = a as KeyboardDetail;
-                    _context.KeyboardDetails.Add(detail);
-                }
-            }catch(Exception e)
-            {
-                Console.WriteLine("Errol: addProductInformation() has a problem" + e.ToString());
-            }
-        }
     }
 }
