@@ -12,16 +12,43 @@
   color: #1e1e1e;
   margin-top: 15px;
 }
+.slides li img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.clo {
+  background-color: white;
+}
+.imgsl {
+  width: 100%;
+  background: white;
+}
 
 .imagesPro {
+  width: 30%;
   margin-bottom: 20px;
   padding-left: 0;
 }
+.ship {
+  border-bottom: 1px dashed rgb(221, 221, 221);
+  width: 100%;
+  height: auto;
+}
+
+.ship p {
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 400;
+  color: green;
+}
 .tops {
+  margin-bottom: 10px;
   width: 100%;
 }
 .single-product .product-slider {
-  padding: 20px;
   border: 1px solid #eee !important;
   border-radius: 5px;
 }
@@ -29,17 +56,17 @@
   border: none !important;
 }
 #carousel {
-  margin-top: 20px;
+  margin: 20px 20px;
 }
 #carousel .slides li {
   padding-right: 10px;
   float: left;
-  width: 150px !important;
+  width: 70px !important;
 }
 .single-product .right-content h4 {
-  font-size: 28px;
-  font-weight: border;
-  margin-top: 0px;
+  font-size: 22px;
+  font-weight: 500;
+  margin: 0 10px auto auto;
 }
 
 .single-product .right-content span {
@@ -88,6 +115,12 @@
   margin: 50px 0 20px 0;
   font-size: 20px;
   font-weight: 700;
+}
+.detail-right {
+  padding: 10px 10px;
+  width: 27%;
+  height: 200px;
+  margin-left: 15px;
 }
 /* .single-product .right-content .quantity-text {
   margin-left: 10px;

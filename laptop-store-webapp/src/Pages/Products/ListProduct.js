@@ -36,9 +36,9 @@ export default function ListProduct({ pros }) {
               </div>
               <div className="productname">
                 <p>
-                  {pro.ten} {pro.id} ( {pro.thongSoLaptop.cpu}{" "}
-                  {pro.thongSoLaptop.ram} {pro.thongSoLaptop.vga}{" "}
-                  {pro.thongSoLaptop.manhinh} )
+                  {pro.ten} {pro.id}
+                  <br />( {pro.thongSoLaptop.cpu} {pro.thongSoLaptop.ram}{" "}
+                  {pro.thongSoLaptop.vga} {pro.thongSoLaptop.manhinh} )
                 </p>
               </div>
               <h4 className="price">
