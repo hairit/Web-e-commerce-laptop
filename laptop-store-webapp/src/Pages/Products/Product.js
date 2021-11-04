@@ -18,31 +18,31 @@ export default function Product() {
   return (
     <div className="wrapper">
       <div className="container_fullwidth">
-        <div className="container">
-          <div className="col-md-12 leftp">
-            <div className="banner">
-              <div className="bannerslide" id="bannerslide">
-                <ul className="slides">
-                  <li>
-                    <a href="#">
-                      <img
-                        src="https://lh3.googleusercontent.com/WcjeCkfujIimMnbJ_v-EGcAe7m_1ow2ZGpGWF8-ANvLEbXaCjne-0ivgCp1QM5j4Su1B6cZ_9yNJG5whZlhjP93glIkHXsAK=rw-w1920"
-                        alt=""
-                      />
-                    </a>
-                  </li>
-                  <li>
+        <div className="col-md-12 leftp">
+          <div className="banner">
+            <div className="bannerslide" id="bannerslide">
+              <ul className="slides">
+                <li>
+                  <a href="#">
+                    <img
+                      src="https://lh3.googleusercontent.com/fYdGt5_-5ZV4eLU5y3PavUiyFpIxgqIaS1L_d4paiFiT7a2rS3oOrgoHvbvozhOllxuWz_Xo2xVq8U0yng0-nXqyDwnNBMw1PA=w1920-rw"
+                      alt=""
+                    />
+                  </a>
+                </li>
+                {/* <li>
                     <a href="#">
                       <img
                         src="https://lh3.googleusercontent.com/2B5ELE4a1XSWf4ngIKoKYfcessffjFjP-uqdPuCVs62ZGku-TGAEeKIDuiQun3yK4W0t2BbMJIRJT2VG7J1jfcIPZqIm7sdlLA=rw-w1920"
                         alt=""
                       />
                     </a>
-                  </li>
-                </ul>
-              </div>
+                  </li> */}
+              </ul>
             </div>
           </div>
+        </div>
+        <div className="container">
           <div className="col-md-12 sof">
             <div className="col-12 boloc">
               <div className="line-bl"></div>
@@ -109,7 +109,7 @@ export default function Product() {
               </div>
 
               <div className="loc">
-                <div className="title-sort">Màng hình</div>
+                <div className="title-sort">Màn hình</div>
                 <div className="btn-right">
                   <button type="button" className="btn-sort">
                     13.3 inch

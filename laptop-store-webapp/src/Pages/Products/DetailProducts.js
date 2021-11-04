@@ -25,14 +25,6 @@ class DetailProducts extends React.Component {
     const solver = new Solver();
     console.log("123", detail);
 
-    // function format_curency(price) {
-    //   price = price.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
-    //   return price;
-    // }
-
-    // const [pros, setPros] = useState([]);
-    // useEffect(() => {
-
     return (
       <div className="single-product">
         <div className="container">
@@ -93,7 +85,12 @@ class DetailProducts extends React.Component {
                       </div>
                     </div>
                     <div className="tt-price">
-                      {solver.formatCurrency("vi-VN", "currency", "VND", detail.gia)}{" "}
+                      {solver.formatCurrency(
+                        "vi-VN",
+                        "currency",
+                        "VND",
+                        detail.gia
+                      )}{" "}
                     </div>
                     <div className="tt-sales">Qùa tặng kèm khi mua hàng</div>
                   </div>
