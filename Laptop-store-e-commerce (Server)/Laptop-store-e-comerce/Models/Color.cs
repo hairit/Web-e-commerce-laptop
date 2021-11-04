@@ -7,16 +7,9 @@ using System.Collections.Generic;
 
 namespace Laptop_store_e_comerce.Models
 {
-    public partial class LoaiSanPham
+    public partial class Color
     {
-        public LoaiSanPham()
-        {
-            Products = new HashSet<Product>();
-        }
-
         public string Id { get; set; }
-        public string Ten { get; set; }
-
-        public virtual ICollection<Product> Products { get; set; }
+        public string Name { get; set; }
     }
 }

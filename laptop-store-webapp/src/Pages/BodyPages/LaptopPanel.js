@@ -10,17 +10,13 @@ const solver = new Solver();
 const renderProductItem = (pro,index) =>{
     return(
         <div className="col-10 c-10-2 laptop-item" key={index}>
-            <NavLink to="" className="laptop-infor">
+            <NavLink to={`/sanpham/${pro.id}`} className="laptop-infor">
                 <div className="laptop-image">
                     <img  className="laptop-image-img"  src={URL+`/Images/Products/${pro.nameimage}`} alt={pro.nameimage}/>
                 </div>
                 <div className="laptop-detail">
                     <div className="laptop-detail-item laptop-id">Mã SP: {pro.id}</div>
-                    <NavLink to="" className="laptop-detail-item laptop-name">{pro.ten+" ( "+pro.thongSoLaptop.cpu+" | "
-                                                                    +pro.thongSoLaptop.ram+"GB | "
-                                                                    +pro.thongSoLaptop.vga+" | "
-                                                                    +pro.thongSoLaptop.manhinh+"\" )"
-                                                                    }
+                    <NavLink to="" className="laptop-detail-item laptop-name">{pro.ten}
                     </NavLink>
                     <div className="laptop-detail-item laptop-price">
                             <div className="">Giảm 5%</div>
@@ -38,7 +34,6 @@ export default function Laptop() {
     useEffect(() => {
         CALLER('GET','data/laptop/enable',null).then(res => setPros(res.data)).catch(err => alert("Errol!! when try to get laptop product"));
     }, [])
-    console.log(pros);
     return (
         <div className="laptop-panel">
             <div className="laptop-panel-header">

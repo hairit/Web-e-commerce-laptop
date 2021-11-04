@@ -1,21 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
+// Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
+// If you have enabled NRTs for your project, then un-comment the following line:
+// #nullable disable
 
 namespace Laptop_store_e_comerce.Models
 {
-    public class LaptopDetail
+    public partial class LaptopDetail
     {
-        private ThongSoLaptop inf;
-        private MoTaLaptop des;
-        LaptopDetail(ThongSoLaptop inf ,MoTaLaptop des)
-        {
-            this.Inf = inf;
-            this.Des = des;
-        }
+        public string Idsanpham { get; set; }
+        public string Cpu { get; set; }
+        public string Ram { get; set; }
+        public string Vga { get; set; }
+        public string Manhinh { get; set; }
 
-        public ThongSoLaptop Inf { get => inf; set => inf = value; }
-        public MoTaLaptop Des { get => des; set => des = value; }
+        public virtual Product IdsanphamNavigation { get; set; }
     }
 }

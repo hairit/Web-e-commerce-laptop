@@ -23,6 +23,7 @@ export default function ListProduct({ pros }) {
   return (
     <div className="row prolst">
       {pros.map((pro, index) => {
+        console.log(pro);
         return (
           <div className="col-md-4 col-sm-6 lstpro" key={index}>
             <div className="products">
@@ -37,8 +38,8 @@ export default function ListProduct({ pros }) {
               <div className="productname">
                 <p>
                   {pro.ten} {pro.id}
-                  <br />( {pro.thongSoLaptop.cpu} {pro.thongSoLaptop.ram}{" "}
-                  {pro.thongSoLaptop.vga} {pro.thongSoLaptop.manhinh} )
+                  <br />( {pro.laptopDetail.cpu} {pro.laptopDetail.ram}{" "}
+                  {pro.laptopDetail.vga} {pro.laptopDetail.manhinh} )
                 </p>
               </div>
               <h4 className="price">

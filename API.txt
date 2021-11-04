@@ -10,7 +10,9 @@ API Lappee :
 	-Lấy Laptop theo tên:  			https://localhost:44343/data/laptop/name={value}
 	-Lấy Laptop theo thương hiệu : 		https://localhost:44343/data/laptop/brand={value}
 	-Lấy Laptop theo cpu			https://localhost:44343/data/laptop/cpu={value}
-	-Lấy Laptop theo manhinh		https://localhost:44343/data/laptop/manhinh={value} 
+	-Lấy Laptop theo manhinh		https://localhost:44343/data/laptop/manhinh={value}
+	-Lấy Laptop trong khoảng giá		https://localhost:44343/data/laptop/from={price1}to={price2}
+	-Lây Laptop lớn hơn giá			https://localhost:44343/data/laptop/from={price}to=999
 +User:
 	-Login					https://localhost:44343/data/user/login/{email}/{pass}
 	-Lấy tất cả User			https://localhost:44343/data/user/
