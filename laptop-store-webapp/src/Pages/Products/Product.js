@@ -19,7 +19,7 @@ export default function Product() {
     <div className="wrapper">
       <div className="container_fullwidth">
         <div className="container">
-          <div className="col-md-12">
+          <div className="col-md-12 leftp">
             <div className="banner">
               <div className="bannerslide" id="bannerslide">
                 <ul className="slides">
@@ -128,8 +128,8 @@ export default function Product() {
             </div>
           </div>
           <div className="row">
-            <div className="col-md-3">
-              <div className="category leftbar">
+            <div className="col-md-3 sorfprice">
+              {/* <div className="category leftbar ">
                 <h3 className="title">Danh mục sản phẩm</h3>
                 <ul>
                   <li>
@@ -139,7 +139,7 @@ export default function Product() {
                     <a href="#">Bàn phím</a>
                   </li>
                 </ul>
-              </div>
+              </div> */}
               <div className="price-filter leftbar">
                 <h3 className="title">Giá</h3>
                 <form className="pricing">
@@ -155,93 +155,17 @@ export default function Product() {
                   <input type="submit" defaultValue="Go" />
                 </form>
               </div>
-              <div className="product-tag leftbar">
-                <h3 className="title">
-                  Products
-                  <strong>Tags</strong>
-                </h3>
-                <ul>
-                  <li>
-                    <a href="#">Laptop Asus</a>
-                  </li>
-                  <li>
-                    <a href="#">Laptop Dell</a>
-                  </li>
-                  <li>
-                    <a href="#">Laptop sinh viên</a>
-                  </li>
-                  <li>
-                    <a href="#">Laptop giá rẻ</a>
-                  </li>
-                  <li>
-                    <a href="#">Laptop Gaming</a>
-                  </li>
-                  <li>
-                    <a href="#">Bàn phím cơ</a>
-                  </li>
-                  <li>
-                    <a href="#">Bàn phím Gaming</a>
-                  </li>
-                  <li>
-                    <a href="#">Bàn phím giá rẻ</a>
-                  </li>
-                </ul>
-              </div>
-              <div className="fbl-box leftbar">
-                <h3 className="title">Facebook</h3>
-                <span className="likebutton">
-                  <a href="#">
-                    <img src="images/fblike.png" alt="" />
-                  </a>
-                </span>
-                <ul>
-                  <li>
-                    <a href="#"></a>
-                  </li>
-                  <li>
-                    <a href="#"></a>
-                  </li>
-                </ul>
-                <div className="fbplug">
-                  <a href="#">
-                    <span>
-                      <img src="images/fbicon.png" alt="" />
-                    </span>
-                    Nhóm Facebook
-                  </a>
-                </div>
-              </div>
-              <div className="leftbanner">
+              {/* <div className="leftbanner">
                 <img
                   src="https://lh3.googleusercontent.com/QDjt1QdJxyKFxTXbyN_E5BZurHMIYg_Uvm7MDOg8wHgLuhC-WFBx6m17HeM9Kk7KnxgWQhvUHSkO9gUJ_-tvZrAa7wrClvGu=rw-w308"
                   alt=""
                 />
-              </div>
+              </div> */}
             </div>
-            <div className="col-md-9">
+            <div className="col-md-9 prolst">
               <div className="products-grid">
                 <ListProduct pros={pros} />
                 <div className="toolbar">
-                  <div className="sorter bottom">
-                    <div className="view-mode">
-                      <a href="productlitst.html" className="list">
-                        List
-                      </a>
-                      <a href="#" className="grid active">
-                        Grid
-                      </a>
-                    </div>
-                    <div className="sort-by">
-                      Xếp theo :
-                      <select name>
-                        <option value="Default" selected>
-                          Default
-                        </option>
-                        <option value="Name">Tên</option>
-                        <option value>Giá</option>
-                      </select>
-                    </div>
-                  </div>
                   <div className="pager">
                     <a href="#" className="prev-page">
                       <i className="fa fa-angle-left"></i>
@@ -258,6 +182,38 @@ export default function Product() {
                 </div>
               </div>
             </div>
+          </div>
+          <div className="product-tag tags">
+            <h3 className="title">
+              Products
+              <strong>Tags</strong>
+            </h3>
+            <ul>
+              <li>
+                <a href="#">Laptop Asus</a>
+              </li>
+              <li>
+                <a href="#">Laptop Dell</a>
+              </li>
+              <li>
+                <a href="#">Laptop sinh viên</a>
+              </li>
+              <li>
+                <a href="#">Laptop giá rẻ</a>
+              </li>
+              <li>
+                <a href="#">Laptop Gaming</a>
+              </li>
+              <li>
+                <a href="#">Bàn phím cơ</a>
+              </li>
+              <li>
+                <a href="#">Bàn phím Gaming</a>
+              </li>
+              <li>
+                <a href="#">Bàn phím giá rẻ</a>
+              </li>
+            </ul>
           </div>
           <div className="our-brand">
             <h3 className="title">

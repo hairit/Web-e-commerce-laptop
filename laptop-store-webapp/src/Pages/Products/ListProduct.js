@@ -21,10 +21,10 @@ export default function ListProduct({ pros }) {
     history.push(`/sanpham/${detail.id}`);
   }
   return (
-    <div className="row">
+    <div className="row prolst">
       {pros.map((pro, index) => {
         return (
-          <div className="col-md-4 col-sm-6" key={index}>
+          <div className="col-md-4 col-sm-6 lstpro" key={index}>
             <div className="products">
               <div className="thumbnail">
                 <a className="af" onClick={() => handleViewDetails(pro)}>
@@ -35,9 +35,11 @@ export default function ListProduct({ pros }) {
                 </a>
               </div>
               <div className="productname">
-                {pro.ten} {pro.id} ( {pro.thongSoLaptop.cpu}{" "}
-                {pro.thongSoLaptop.ram} {pro.thongSoLaptop.vga}{" "}
-                {pro.thongSoLaptop.manhinh} )
+                <p>
+                  {pro.ten} {pro.id} ( {pro.thongSoLaptop.cpu}{" "}
+                  {pro.thongSoLaptop.ram} {pro.thongSoLaptop.vga}{" "}
+                  {pro.thongSoLaptop.manhinh} )
+                </p>
               </div>
               <h4 className="price">
                 {FormatCurrency("vi-VN", "currency", "VND", pro.gia)}
