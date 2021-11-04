@@ -5,7 +5,6 @@ import { useState } from "react";
 import CALLER from "../../API/CALL";
 import { useHistory } from "react-router-dom";
 import { withRouter } from "react-router";
-import FormatCurrency from "../../Function/FormatCurrency";
 
 import {
   BrowserRouter as Router,
@@ -13,10 +12,11 @@ import {
   Route,
   NavLink,
 } from "react-router-dom";
+import Solver from "../../Classes/Solver";
 
 export default function ListProduct({ pros }) {
   const history = useHistory();
-
+  const solver = new Solver();
   function handleViewDetails(detail) {
     history.push(`/sanpham/${detail.id}`);
   }
@@ -40,7 +40,7 @@ export default function ListProduct({ pros }) {
                 {pro.thongSoLaptop.manhinh} )
               </div>
               <h4 className="price">
-                {FormatCurrency("vi-VN", "currency", "VND", pro.gia)}
+                {solver.formatCurrency("vi-VN", "currency", "VND", pro.gia)}
               </h4>
               <div className="button_group">
                 <button className="button add-cart" type="button">
