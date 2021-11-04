@@ -13,6 +13,7 @@
   margin-top: 15px;
 }
 .slides li img {
+  width: 100%;
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -21,52 +22,63 @@
   background-color: white;
 }
 .imgsl {
-  width: 100%;
+  float: left;
+  width: 40%;
   background: white;
 }
 
 .imagesPro {
-  width: 30%;
-  margin-bottom: 20px;
+  float: left;
+  width: 72%;
+  background-color: white;
   padding-left: 0;
 }
 .ship {
   border-bottom: 1px dashed rgb(221, 221, 221);
   width: 100%;
   height: auto;
+  padding: 0 10px 0 26px;
 }
 
-.ship p {
-  height: 50px;
-  line-height: 50px;
-  text-align: center;
-  font-size: 13px;
+.shipfree {
+  font-size: 14px;
   font-weight: 400;
-  color: green;
+  margin: 10px 0 10px 0;
+  height: 25px;
+  line-height: 25px;
+  color: #16d945;
+}
+.ship img {
+  float: left;
+  padding-right: 10px;
 }
 .tops {
+  padding: 0 0 1px 15px;
   margin-bottom: 10px;
   width: 100%;
 }
 .single-product .product-slider {
-  border: 1px solid #eee !important;
+  border-bottom: 1px dashed rgb(221, 221, 221);
   border-radius: 5px;
 }
 .flexslider {
-  border: none !important;
+  border: none;
 }
 #carousel {
-  margin: 20px 20px;
+  margin: 10px 10px;
 }
 #carousel .slides li {
   padding-right: 10px;
   float: left;
   width: 70px !important;
 }
+.bdbt {
+  border-bottom: 1px dashed #d6d6d6 !important;
+}
 .single-product .right-content h4 {
   font-size: 22px;
   font-weight: 500;
-  margin: 0 10px auto auto;
+  margin: 20px 10px 15px 0;
 }
 
 .single-product .right-content span {
@@ -81,31 +93,24 @@
   font-size: 14px;
   color: #4a4a4a;
 }
+.ttdetail {
+  padding-top: 20px;
+}
 .colors {
   background-color: white;
 }
 .thuonghieuL {
-  float: left;
+  width: 126%;
   margin-right: 15px;
 }
-.thuonghieuL a {
-  color: blue;
-}
 
-.thuonghieuR {
-  float: left;
-  width: 300px;
-}
 .thuonghieuR p {
-  float: left;
   margin-right: 15px;
 }
 .tt {
-  width: 50rem;
-  font-size: 18px;
+  font-size: 15px;
 }
 .tt-price {
-  width: 300px;
   font-size: 30px;
   color: #1435cf;
   font-weight: 700;
@@ -116,12 +121,49 @@
   font-size: 20px;
   font-weight: 700;
 }
-.detail-right {
-  padding: 10px 10px;
+.details-rights {
+  float: right;
+  padding: 0 10px 10px 10px;
   width: 27%;
-  height: 200px;
-  margin-left: 15px;
+  height: auto;
+  margin-left: 0 !important;
 }
+.chinhsachbh {
+  padding: 20px 0 0 0;
+}
+
+.chinhsachbh img {
+  margin-right: 10px;
+  float: left;
+}
+
+.fm {
+  margin-bottom: 20px;
+}
+.detailright-t {
+  font-size: 15px;
+  font-weight: 400;
+  margin: 0 0 0 34px;
+  height: 25px;
+  line-height: 25px;
+}
+.font-cs {
+  margin-bottom: 20px;
+  font-size: 20px !important;
+  font-weight: 500 !important;
+}
+.detail-pro {
+  margin-bottom: 20px;
+  width: 100%;
+  height: auto;
+  padding-left: 0;
+}
+.detail-pro p {
+  font-size: 14px;
+  font-weight: 400;
+  padding: 1rem 1rem 0rem 1rem;
+}
+
 /* .single-product .right-content .quantity-text {
   margin-left: 10px;
   width: 44px;
