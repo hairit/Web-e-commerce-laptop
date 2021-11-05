@@ -10,7 +10,7 @@ export default function Product() {
   const [pros, setPros] = useState([]);
   useEffect(() => {
     axios
-      .get("https://localhost:44343/data/Laptop", null)
+      .get("https://localhost:44343/data/Product/type=laptop", null)
       .then((res) => setPros(res.data))
       .catch((err) => console.log(err));
   }, []);

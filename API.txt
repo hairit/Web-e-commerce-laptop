@@ -1,27 +1,28 @@
 API Lappee :
 
 +Sản phẩm :
-	-Lấy tất cả sản phẩm : 			https://localhost:44343/data/product
-	-Lấy sản phẩm theo tên: 		https://localhost:44343/data/product/name={name}
-
+	-Lấy tất cả sản phẩm : 						https://localhost:44343/data/product
+	-Lấy sản phẩm theo tên: 					https://localhost:44343/data/product/name={name}
+	-Lấy sản phẩm theo loại:					https://localhost:44343/data/product/type={type}
+	-Lấy sản phẩm và chi tiết sản phẩm theo id:	https://localhost:44343/data/product/type={type}/{id}
+	-Lấy sản phẩm theo giá						https://localhost:44343/data/product/type={type}from={price1}to={price2}
+	-Lấy sản phẩm lớn hơn giá					https://localhost:44343/data/product/type={type}from={price1}to=999
 	+Laptop
-	-Lấy tất cả Laptop:			https://localhost:44343/data/laptop
-	-Lấy tất cả Laptop:			https://localhost:44343/data/laptop/enable
-	-Lấy Laptop theo tên:  			https://localhost:44343/data/laptop/name={value}
-	-Lấy Laptop theo thương hiệu : 		https://localhost:44343/data/laptop/brand={value}
-	-Lấy Laptop theo cpu			https://localhost:44343/data/laptop/cpu={value}
-	-Lấy Laptop theo manhinh		https://localhost:44343/data/laptop/manhinh={value}
-	-Lấy Laptop trong khoảng giá		https://localhost:44343/data/laptop/from={price1}to={price2}
-	-Lây Laptop lớn hơn giá			https://localhost:44343/data/laptop/from={price}to=999
+				-Lấy Laptop theo tên:  			https://localhost:44343/data/laptop/name={value}
+				-Lấy Laptop theo thương hiệu : 	https://localhost:44343/data/laptop/brand={value}
+				-Lấy Laptop theo cpu			https://localhost:44343/data/laptop/cpu={value}
+				-Lấy Laptop theo manhinh		https://localhost:44343/data/laptop/manhinh={value}
+				-Lấy Laptop theo VGA			https://localhost:44343/data/laptop/vga={value}
+				-Lấy Laptop theo GB				https://localhost:44343/data/laptop/gb={value}
 +User:
-	-Login					https://localhost:44343/data/user/login/{email}/{pass}
-	-Lấy tất cả User			https://localhost:44343/data/user/
-	-Lấy User theo tên			https://localhost:44343/data/user/name={value}
+	-Login							https://localhost:44343/data/user/login/{email}/{pass}
+	-Lấy tất cả User				https://localhost:44343/data/user/
+	-Lấy User theo tên				https://localhost:44343/data/user/name={value}
 	-Lấy User theo email			https://localhost:44343/data/user/email={value}
-	-Lấy User theo id			https://localhost:44343/data/user/{id}
-	-Thêm User				https://localhost:44343/data/user/	data:user
-	-Sửa User				https://localhost:44343/data/user/{id}	data:user
-	-Xóa User				https://localhost:44343/data/user/{id}
+	-Lấy User theo id				https://localhost:44343/data/user/{id}
+	-Thêm User						https://localhost:44343/data/user/	data:user
+	-Sửa User						https://localhost:44343/data/user/{id}	data:user
+	-Xóa User						https://localhost:44343/data/user/{id}
 Loại Sản phẩm:
 	-Lấy tất cả loại sản phẩm:		https://localhost:44343/data/typeproduct
 	-Lấy loại sản phẩm theo id:		https://localhost:44343/data/typeproduct/{id}

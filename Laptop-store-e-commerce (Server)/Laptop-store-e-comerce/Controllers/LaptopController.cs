@@ -19,64 +19,27 @@ namespace Laptop_store_e_comerce.Controllers
         {
             database = context;
         }
-        [HttpGet()]
-        public async Task<ActionResult<List<Product>>> getAllLaptop()
-        {
-            try
-            {
-                List<Product> pros = await database.Products.Where(pro => pro.Idloai == "laptop").Include(pro => pro.LaptopDetail).Include(pro => pro.MoTaLaptop).ToListAsync();
-                if (pros.Count == 0) return NotFound();
-                else return pros;
-            }
-            catch (Exception e) { Console.WriteLine(e.ToString()); return BadRequest(); }
-        }
-        [HttpGet("enable")]
-        public async Task<ActionResult<List<Product>>> getEnableLaptop()
-        {
-            try
-            {
-                return await database.Products.Where(pro => pro.Idloai == "Laptop")
-                                              .Include(pro => pro.LaptopDetail).Include(pro => pro.MoTaLaptop)
-                                              .Where(pro => pro.Hienthi == 1)
-                                              .ToListAsync();
-            }
-            catch (Exception e) { Console.WriteLine(e.ToString()); return BadRequest(); }
-        }
-        [HttpGet("id={value}")]
-        public async Task<ActionResult<List<Product>>> getLaptopByID(string value)
-        {
-            try
-            {
-                List<Product> pros = await database.Products.Where(pro => pro.Idloai == "laptop")
-                    .Include(pro => pro.LaptopDetail)
-                    .Include(pro => pro.MoTaLaptop)
-                    .Where(pro => pro.Id == value)
-                    .ToListAsync();
-                if (pros.Count == 0) return NotFound();
-                return pros;
-            }
-            catch (Exception e) { Console.WriteLine(e.ToString()); return BadRequest(); }
-        }
-        [HttpGet("from={price1}to={price2}")]
-        public async Task<ActionResult<List<Product>>> getLaptopByPrice(int price1,int price2)
-        {
-            try {
-                List<Product> pros = 
-                    price2!=999? await database.Products.Where(pro => pro.Idloai=="laptop" && pro.Gia >= price1 && pro.Gia <= price2).ToListAsync():
-                                 await database.Products.Where(pro => pro.Idloai=="laptop" && pro.Gia >= price1).ToListAsync();
-                if (pros.Count == 0) return NotFound();
-                else return pros;
-            }catch(Exception e) { Console.WriteLine(e.ToString()); return BadRequest(); }
-        }
+       
         [HttpGet("manhinh={value}")]
         public async Task<ActionResult<List<Product>>> getLaptopByScreen(string value)
         {
             try
             {
                 List<Product> pros = await database.Products.Where(pro => pro.Idloai == "laptop")
-                                                            .Include(pro => pro.LaptopDetail)
-                                                            .Include(pro => pro.MoTaLaptop)
                                                             .Where(pro => pro.LaptopDetail.Manhinh == value)
+                                                            .ToListAsync();
+                if (pros.Count == 0) return NotFound();
+                return pros;
+            }
+            catch (Exception e) { Console.WriteLine(e.ToString()); return BadRequest(); }
+        }
+        [HttpGet("cpu={value}")]
+        public async Task<ActionResult<List<Product>>> getLaptopByCpu(string value)
+        {
+            try
+            {
+                List<Product> pros = await database.Products.Where(pro => pro.Idloai == "laptop")
+                                                            .Where(pro => pro.LaptopDetail.Cpu == value)
                                                             .ToListAsync();
                 if (pros.Count == 0) return NotFound();
                 return pros;
@@ -90,8 +53,6 @@ namespace Laptop_store_e_comerce.Controllers
             {
                 List<Product> pros = await database.Products.Where(pro => pro.Idloai == "laptop")
                                                             .Where(pro => pro.Ten.Contains(value))
-                                                            .Include(pro => pro.LaptopDetail)
-                                                            .Include(pro => pro.MoTaLaptop)
                                                             .ToListAsync();
                 if (pros.Count == 0) return NotFound();
                 else return pros;
@@ -104,8 +65,6 @@ namespace Laptop_store_e_comerce.Controllers
             try
             {
                 List<Product> pros = await database.Products.Where(pro => pro.Idloai == "laptop")
-                                                            .Include(pro => pro.LaptopDetail)
-                                                            .Include(pro => pro.MoTaLaptop)
                                                             .Where(pro => pro.Thuonghieu == value).ToListAsync();
                 if (pros.Count == 0) return NotFound();
                 else return pros;
@@ -118,8 +77,6 @@ namespace Laptop_store_e_comerce.Controllers
             try
             {
                 List<Product> pros = await database.Products.Where(pro => pro.Idloai == "laptop")
-                                                            .Include(pro => pro.LaptopDetail)
-                                                            .Include(pro => pro.MoTaLaptop)
                                                             .Where(pro => pro.LaptopDetail.Ram == value)
                                                             .ToListAsync();
                 if (pros.Count != 0) return pros;
@@ -133,8 +90,6 @@ namespace Laptop_store_e_comerce.Controllers
             try
             {
                 List<Product> pros = await database.Products.Where(pro => pro.Idloai == "laptop")
-                                                             .Include(pro => pro.LaptopDetail)
-                                                             .Include(pro => pro.MoTaLaptop)
                                                              .Where(pro => pro.LaptopDetail.Vga == value)
                                                              .ToListAsync();
                 if (pros.Count != 0) return pros;

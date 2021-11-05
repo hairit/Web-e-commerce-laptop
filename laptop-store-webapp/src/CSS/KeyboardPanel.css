@@ -1,18 +1,22 @@
-.laptop-panel{
+.keyboard-container{
+    text-align: center;
+}
+.keyboard-panel{
     width:87%;
     margin: 0 auto;
     height: auto;
     background-color: #FFFFFF;
     margin-top: 30px;
     border-radius: 10px;
+    
 }
-.laptop-panel-header{
+.keyboard-panel-header{
     position: relative;
     width: 100%;
     display: flex;
     justify-content: center;
 }
-.laptop-panel-header::before{
+.keyboard-panel-header::before{
     content: '';
     position: absolute;
     left: 0;
@@ -21,7 +25,7 @@
     top:-5px;
     background-color: #3f4fc3;
 }
-.laptop-panel-header-logo{
+.keyboard-panel-header-logo{
     background-color:#3f4fc3;
     width: max-content;
     height: 30px;
@@ -33,7 +37,7 @@
     display: flex;
     align-items: center;
 }
-.laptop-panel-header-logo::before{
+.keyboard-panel-header-logo::before{
     position: absolute;
     content:'';
     top: 0;
@@ -45,7 +49,7 @@
     border-top: 30px solid #3f4fc3;
     background-color: #3f4fc3;
 }
-.laptop-panel-header-logo::after{
+.keyboard-panel-header-logo::after{
     position: absolute;
     content:'';
     top: 0;
@@ -57,64 +61,48 @@
     border-top: 30px solid #3f4fc3;
     background-color: #3f4fc3;
 }
-.laptop-panel-header-item{
-    width: 120px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px 0;
-    border-right : 5px solid #3f4fc3;
-    border-top-right-radius : 100px;
-}
-.laptop-panel-header-item p{
-    color : #424244;
-    font-weight: 400;
-    font-size: 15px;
-    height:min-content;
-}
-.laptop-panel-header-item:hover p{
-    color: #3f4fc3;
-}
-.laptop-item{
+.keyboard-item{
     width: auto;
     display: flex;
     flex-direction: column;
     cursor: pointer;
 }
-.laptop-image{
+.keyboard-image{
     width: 100%;
     height: auto;
 }
-.laptop-image-img{
+.keyboard-image-img{
     width: 100%;
     max-width: 100%;
     height: auto;
+    transform: scale(85%);
+    margin-top: 20px;
 }
-.laptop-detail-item{
+.keyboard-detail-item{
     padding: 2px 30px;
     display: flex;
     justify-content: space-between;
     color : black;
 }
-.laptop-id{
+.keyboard-id{
     font-size: 13px;
 }
-.laptop-name{
+.keyboard-name{
     font-size: 13px;
     line-height: 1.40;
     height: 37px;
     overflow: hidden;
 }
-.laptop-name:hover{
+.keyboard-name:hover{
     color: #3f4fc3;
 }
-.laptop-price{
+.keyboard-price{
     margin-top: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.laptop-price-value{
+.keyboard-price-value{
     color: #3f4fc3;
     font-size: 16px;
     font-weight: 600;

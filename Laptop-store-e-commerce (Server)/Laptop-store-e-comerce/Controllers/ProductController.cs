@@ -13,25 +13,30 @@ namespace Laptop_store_e_comerce.Controllers
     [ApiController]
     public class ProductController : ControllerBase
     {
-        private readonly StoreContext _context;
+        private readonly StoreContext database;
         public ProductController(StoreContext context)
         {
-            _context = context;
+            database = context;
         }
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
         {
-            return await _context.Products.Include(pro => pro.LaptopDetail).Include(pro => pro.MoTaLaptop).ToListAsync();
+            return await database.Products.ToListAsync();
         }
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Product>> GetProduct(string id)
+        [HttpGet("type={type}/{id}")]
+        public async Task<ActionResult<Product>> getProductByID(string type,string id)
         {
-            var pro = await _context.Products.Include(pro => pro.LaptopDetail).Include(pro => pro.MoTaLaptop).Where(pro => pro.Id==id).FirstOrDefaultAsync();
-            if (pro == null)
-            {
-                return NotFound();
-            }
-            return pro;
+            if (!existType(type)) return NotFound();
+            Product pro = null;
+            if(type =="laptop")  pro = await database.Products.Include(pro => pro.LaptopDetail)
+                                                              .Include(pro => pro.MoTaLaptop)
+                                                              .Where(pro => pro.Id == id)
+                                                              .FirstOrDefaultAsync();
+            if(type =="keyboard") pro = await database.Products.Include(pro => pro.KeyboardDetail)
+                                                               .Where(pro => pro.Id == id)
+                                                               .FirstOrDefaultAsync();
+            if (pro == null) return NotFound();
+            else return pro;
         }
         [HttpGet("name={name}")]
         public async Task<ActionResult<List<Product>>> getProductByName(string name)
@@ -39,7 +44,7 @@ namespace Laptop_store_e_comerce.Controllers
             try
             {
                 List<Product> list = null;
-                list = await _context.Products.Where(pro => pro.Ten.Contains(name)).ToListAsync();
+                list = await database.Products.Where(pro => pro.Ten.Contains(name)).ToListAsync();
                 if (list.Count == 0) return NotFound();
                 else return list;
             }
@@ -49,14 +54,38 @@ namespace Laptop_store_e_comerce.Controllers
                 return BadRequest();
             }
         }
-        [HttpGet("type={value}/enable")]
-        public async Task<ActionResult<List<Product>>> getProductsToDisPlay(string value)
+        [HttpGet("type={type}")]
+        public async Task<ActionResult<List<Product>>> getProductsByType(string type)
         {
             try
             {
-                return await _context.Products.Where(pro => pro.Idloai == value)
+                List<Product> pros = await database.Products.Where(pro => pro.Idloai == type).ToListAsync();
+                if (pros.Count != 0) return pros;
+                else return NotFound();
+            }
+            catch (Exception e) { Console.WriteLine(e.ToString()); return BadRequest(); }
+        }
+        [HttpGet("type={type}/enable")]
+        public async Task<ActionResult<List<Product>>> getProductsToDisPlay(string type)
+        {
+            try
+            {
+                return await database.Products.Where(pro => pro.Idloai == type)
                                               .Where(pro => pro.Hienthi == 1)
                                               .ToListAsync();
+            }
+            catch (Exception e) { Console.WriteLine(e.ToString()); return BadRequest(); }
+        }
+        [HttpGet("type={type}from={price1}to={price2}")]
+        public async Task<ActionResult<List<Product>>> getProductByPrice(string type,int price1, int price2)
+        {
+            try
+            {
+                List<Product> pros =
+                    price2 != 999 ? await database.Products.Where(pro => pro.Idloai == type && pro.Gia >= price1 && pro.Gia <= price2).ToListAsync() :
+                                 await database.Products.Where(pro => pro.Idloai == type && pro.Gia >= price1).ToListAsync();
+                if (pros.Count == 0) return NotFound();
+                else return pros;
             }
             catch (Exception e) { Console.WriteLine(e.ToString()); return BadRequest(); }
         }
@@ -67,10 +96,10 @@ namespace Laptop_store_e_comerce.Controllers
             {
                 return BadRequest();
             }
-            _context.Entry(pro).State = EntityState.Modified;
+            database.Entry(pro).State = EntityState.Modified;
             try
             {
-                await _context.SaveChangesAsync();
+                await database.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -90,8 +119,8 @@ namespace Laptop_store_e_comerce.Controllers
         {
             if (existID(pro.Id)) return Conflict();
             try{
-                _context.Products.Add(pro);
-                _context.SaveChangesAsync();
+                database.Products.Add(pro);
+                database.SaveChangesAsync();
                 return CreatedAtAction("GetSanPham",new { id = pro.Id }, pro);
             }
             catch(Exception e) {
@@ -102,32 +131,32 @@ namespace Laptop_store_e_comerce.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<Product>> DeleteSanPham(string id)
         {
-            var pro = await _context.Products.FindAsync(id);
+            var pro = await database.Products.FindAsync(id);
             if (pro == null)
             {
                 return NotFound();
             }
             if(pro.Idloai == "laptop")
             {
-                _context.LaptopDetails.Remove(await _context.LaptopDetails.FindAsync(id));
-                _context.MoTaLaptops.Remove(await _context.MoTaLaptops.FindAsync(id));
+                database.LaptopDetails.Remove(await database.LaptopDetails.FindAsync(id));
+                database.MoTaLaptops.Remove(await database.MoTaLaptops.FindAsync(id));
             }
             if(pro.Idloai == "keyboard")
             {
-                _context.KeyboardDetails.Remove(await _context.KeyboardDetails.FindAsync(id));
+                database.KeyboardDetails.Remove(await database.KeyboardDetails.FindAsync(id));
             }
-            _context.Products.Remove(pro);
-            await _context.SaveChangesAsync();
+            database.Products.Remove(pro);
+            await database.SaveChangesAsync();
 
             return pro;
         }
         private bool existID(string id)
         {
-            return _context.Products.Any(e => e.Id == id);
+            return database.Products.Any(e => e.Id == id);
         }
         private bool existType(string type)
         {
-            return _context.LoaiSanPhams.Any(h => h.Id == type);
+            return database.LoaiSanPhams.Any(h => h.Id == type);
         }
     }
 }
