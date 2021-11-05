@@ -14,19 +14,10 @@ namespace Laptop_store_e_comerce.Controllers
     public class KeyboardController : ControllerBase
     {
         private readonly StoreContext database;
-
         public KeyboardController(StoreContext context)
         {
             database = context;
         }
-
-        // GET: api/Keyboard
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Product>>> GetKeyboards()
-        {
-            return await database.Products.ToListAsync();
-        }
-
-
+  
     }
 }
