@@ -17,7 +17,7 @@ class DetailProductsLaptop extends React.Component {
     if (this.props.match && this.props.match.params) {
       let id = this.props.match.params.id;
 
-      let res = await axios.get(`https://localhost:44343/data/product/${id}`);
+      let res = await axios.get(`https://localhost:44343/data/product/type=laptop/${id}`);
       this.setState({
         detail: res && res.data ? res.data : {},
       });
