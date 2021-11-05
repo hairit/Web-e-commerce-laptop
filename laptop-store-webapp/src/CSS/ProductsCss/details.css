@@ -28,6 +28,7 @@
 }
 
 .imagesPro {
+  margin-left: 0px;
   float: left;
   width: 72%;
   background-color: white;
@@ -39,7 +40,10 @@
   height: auto;
   padding: 0 10px 0 26px;
 }
-
+.ttchung {
+  width: auto;
+  height: auto;
+}
 .shipfree {
   font-size: 14px;
   font-weight: 400;
@@ -97,7 +101,7 @@
   padding-top: 20px;
 }
 .colors {
-  background-color: white;
+  background-color: white !important;
 }
 .thuonghieuL {
   width: 126%;
@@ -162,6 +166,78 @@
   font-size: 14px;
   font-weight: 400;
   padding: 1rem 1rem 0rem 1rem;
+}
+.gift {
+  height: auto;
+  background-color: rgb(250, 250, 250);
+  border: solid 1px rgb(221, 221, 221) !important;
+  border-radius: 10px;
+  padding: 15px 15px;
+  width: 115%;
+  margin-bottom: 20px;
+}
+.gift img {
+  padding-right: 18px;
+  float: left;
+  width: 10%;
+}
+.gift p {
+  font-size: 15px;
+  font-weight: 400;
+  height: 25px;
+  line-height: 28px;
+}
+.button-gr {
+  width: 115%;
+}
+.btn-buy {
+  height: 45px;
+  margin-right: 13px;
+  width: 48.5%;
+  background-color: #1230b0;
+}
+.btn-cart {
+  border-color: #1230b0;
+  height: 45px;
+  color: rgb(0, 0, 235);
+  width: 48.5%;
+  background-color: white;
+}
+.bt-if {
+  margin: 700px 0 0 0;
+}
+.info-detail {
+  /* background-color: #16d945; */
+  width: 60%;
+  height: 500px;
+}
+.info-detail p {
+  width: 100%;
+}
+.tb-ifdetail {
+  width: 39%;
+}
+.fn-ttif th {
+  width: 20%;
+  font-size: 13px;
+}
+.fn-ttif td {
+  width: 50%;
+  font-size: 14px;
+}
+.thongso-kt {
+  margin: 20px 0 35px 0;
+}
+.thongso-kt p {
+  font-size: 21px;
+  font-weight: 500;
+}
+.line-if {
+  float: left;
+  width: 4px;
+  height: 22px;
+  background-color: #000000;
+  margin-right: 5px;
 }
 
 /* .single-product .right-content .quantity-text {

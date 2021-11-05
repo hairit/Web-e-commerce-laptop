@@ -209,6 +209,7 @@ img {
   color: #2f2f2f;
   color: #333333;
 }
+
 .products .price {
   float: left;
   width: 100%;
@@ -627,10 +628,12 @@ form.newsletter input[type="submit"]:hover {
   padding-bottom: 10px;
 }
 
-.line-bl {
-  width: 30 px;
-  height: 5 px;
+.section-heading .line-bl {
+  float: left;
+  width: 4px;
+  height: 22px;
   background-color: #3a8bcd;
+  margin-right: 5px;
 }
 
 .boloc {
