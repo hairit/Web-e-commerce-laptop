@@ -36,15 +36,7 @@ export default function ListProductLaptop({ pros }) {
                 </a>
               </div>
               <div className="productname">
-<<<<<<< HEAD:laptop-store-webapp/src/Pages/Products/ListProductLaptop.js
                 <p>{pro.ten}</p>
-=======
-                <p>
-                  {pro.ten} {pro.id}
-                  {/* <br />( {pro.laptopDetail.cpu} {pro.laptopDetail.ram}{" "}
-                  {pro.laptopDetail.vga} {pro.laptopDetail.manhinh} ) */}
-                </p>
->>>>>>> 0ac71d9ba6555cc576f90b189a0e355e640ad06c:laptop-store-webapp/src/Pages/Products/ListProduct.js
               </div>
               <h4 className="price">
                 {solver.formatCurrency("vi-VN", "currency", "VND", pro.gia)}

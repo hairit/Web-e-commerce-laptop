@@ -8,7 +8,7 @@ import Lienhe from "./Pages/Lienhe";
 import Tintuc from "./Pages/Tintuc";
 import Showroom from "./Pages/Showroom";
 import Footer from "./Pages/Footer";
-import DetailProducts from "./Pages/Products/DetailProductsLaptop";
+import DetailProductsLaptop from "./Pages/Products/DetailProductsLaptop";
 function App() {
   return (
     <Router>
@@ -16,7 +16,11 @@ function App() {
         <Header />
         <Route path="/" exact component={() => <Body />}></Route>
         <Route path="/sanpham" exact component={() => <Laptops />}></Route>
-        <Route path="/sanpham/:id" component={() => <DetailProducts />}></Route>
+        <Route path="/laptop" exact component={() => <Laptops />}></Route>
+        <Route
+          path="/sanpham/:id"
+          component={() => <DetailProductsLaptop />}
+        ></Route>
         <Route path="/login" component={() => <Login />}></Route>
         <Route path="/lienhe" component={() => <Lienhe />}></Route>
         <Route path="/tincongnghe" component={() => <Tintuc />}></Route>
