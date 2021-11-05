@@ -12,7 +12,6 @@
     position: relative;
     width: 100%;
     display: flex;
-    justify-content: center;
 }
 .laptop-panel-header::before{
     content: '';
@@ -35,7 +34,7 @@
     display: flex;
     align-items: center;
 }
-.laptop-panel-header-logo::before{
+/* .laptop-panel-header-logo::before{
     position: absolute;
     content:'';
     top: 0;
@@ -46,7 +45,7 @@
     border-left: 20px solid #FFFFFF;
     border-top: 30px solid #3f4fc3;
     background-color: #3f4fc3;
-}
+} */
 .laptop-panel-header-logo::after{
     position: absolute;
     content:'';

@@ -9,7 +9,7 @@ namespace Laptop_store_e_comerce.Models
 {
     public partial class MoTaLaptop
     {
-        public string Idsanpham { get; set; }
+        public string IdProduct { get; set; }
         public string Detailcpu { get; set; }
         public string Detailram { get; set; }
         public string Detailvga { get; set; }
@@ -24,6 +24,6 @@ namespace Laptop_store_e_comerce.Models
         public string Khoiluong { get; set; }
         public string Pin { get; set; }
 
-        public virtual Product IdsanphamNavigation { get; set; }
+        public virtual Product IdProductNavigation { get; set; }
     }
 }
