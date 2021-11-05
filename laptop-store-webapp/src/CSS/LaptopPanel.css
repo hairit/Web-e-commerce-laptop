@@ -5,6 +5,8 @@
     background-color: #FFFFFF;
     margin-top: 30px;
     border-radius: 10px;
+    text-align: center;
+    padding-bottom: 37px;
 }
 .laptop-panel-header{
     position: relative;
@@ -103,6 +105,7 @@
     font-size: 13px;
     line-height: 1.40;
     height: 37px;
+    text-align: left;
     overflow: hidden;
 }
 .laptop-name:hover{
