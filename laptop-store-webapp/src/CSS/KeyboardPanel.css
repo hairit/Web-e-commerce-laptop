@@ -1,5 +1,5 @@
 .keyboard-panel{
-    width:87%;
+    width:80%;
     margin: 0 auto;
     height: auto;
     background-color: #FFFFFF;
@@ -16,7 +16,6 @@
     position: relative;
     width: 100%;
     display: flex;
-    justify-content: center;
 }
 .keyboard-panel-header::before{
     content: '';
@@ -39,7 +38,7 @@
     display: flex;
     align-items: center;
 }
-.keyboard-panel-header-logo::before{
+/* .keyboard-panel-header-logo::before{
     position: absolute;
     content:'';
     top: 0;
@@ -50,7 +49,7 @@
     border-left: 20px solid #FFFFFF;
     border-top: 30px solid #3f4fc3;
     background-color: #3f4fc3;
-}
+} */
 .keyboard-panel-header-logo::after{
     position: absolute;
     content:'';
@@ -93,7 +92,7 @@
     font-size: 13px;
 }
 .keyboard-name{
-    font-size: 13px;
+    /* font-size: 13px; */
     line-height: 1.40;
     height: 37px;
     overflow: hidden;

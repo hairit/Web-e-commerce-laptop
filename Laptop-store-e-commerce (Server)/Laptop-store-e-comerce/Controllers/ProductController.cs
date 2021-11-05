@@ -117,13 +117,15 @@ namespace Laptop_store_e_comerce.Controllers
         [HttpPost()]
         public async Task<ActionResult<Product>> PostProduct(Product pro)
         {
+            
             if (existID(pro.Id)) return Conflict();
+            if (!existType(pro.Idloai)) return BadRequest();
             try{
                 database.Products.Add(pro);
                 database.SaveChangesAsync();
                 return CreatedAtAction("GetSanPham",new { id = pro.Id }, pro);
             }
-            catch(Exception e) {
+            catch(DbUpdateConcurrencyException) {
                     Console.WriteLine("Errol when add product");
                     return BadRequest();
              }
