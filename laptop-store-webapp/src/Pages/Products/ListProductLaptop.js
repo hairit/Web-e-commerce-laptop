@@ -14,7 +14,7 @@ import {
 } from "react-router-dom";
 import Solver from "../../Classes/Solver";
 
-export default function ListProduct({ pros }) {
+export default function ListProductLaptop({ pros }) {
   const history = useHistory();
   const solver = new Solver();
   function handleViewDetails(detail) {
@@ -36,11 +36,7 @@ export default function ListProduct({ pros }) {
                 </a>
               </div>
               <div className="productname">
-                <p>
-                  {pro.ten} {pro.id}
-                  <br />( {pro.laptopDetail.cpu} {pro.laptopDetail.ram}{" "}
-                  {pro.laptopDetail.vga} {pro.laptopDetail.manhinh} )
-                </p>
+                <p>{pro.ten}</p>
               </div>
               <h4 className="price">
                 {solver.formatCurrency("vi-VN", "currency", "VND", pro.gia)}
@@ -62,4 +58,4 @@ export default function ListProduct({ pros }) {
     </div>
   );
 }
-withRouter(ListProduct);
+withRouter(ListProductLaptop);

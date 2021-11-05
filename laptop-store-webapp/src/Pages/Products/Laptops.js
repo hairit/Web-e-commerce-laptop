@@ -4,9 +4,9 @@ import axios from "axios";
 import "../../CSS/ProductsCss/bootstrap.css";
 import "../../CSS/ProductsCss/style.css";
 import { useEffect, useState } from "react";
-import ListProduct from "./ListProduct";
+import ListProductLaptop from "./ListProductLaptop";
 import fblike from "../../Images/fblike.png";
-export default function Product() {
+export default function Laptops() {
   const [pros, setPros] = useState([]);
   useEffect(() => {
     axios
@@ -164,7 +164,7 @@ export default function Product() {
             </div>
             <div className="col-md-9 prolst">
               <div className="products-grid">
-                <ListProduct pros={pros} />
+                <ListProductLaptop pros={pros} />
                 <div className="toolbar">
                   <div className="pager">
                     <a href="#" className="prev-page">

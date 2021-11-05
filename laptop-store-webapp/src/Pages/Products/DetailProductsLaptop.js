@@ -9,7 +9,7 @@ import settings_24px from "../../Images/settings_24px.png";
 import monitor_24px from "../../Images/monitor_24px.png";
 import axios from "axios";
 import Solver from "../../Classes/Solver";
-class DetailProducts extends React.Component {
+class DetailProductsLaptop extends React.Component {
   state = {
     detail: {},
   };
@@ -165,4 +165,4 @@ class DetailProducts extends React.Component {
     );
   }
 }
-export default withRouter(DetailProducts);
+export default withRouter(DetailProductsLaptop);
