@@ -8,7 +8,7 @@ import Solver from '../../Classes/Solver';
 const solver = new Solver();
 const renderKeyboardItem = (pro,index) => {
     return (
-        <div className="col-10 c-10-2 keyboard-Item" key={index}>
+        <div className="col-10-no-padding c-10-2 keyboard-item" key={index}>
             <NavLink className="keyboard-infor" to={`/`}>
                 <div className="keyboard-image">
                     <img className="keyboard-image-img" src={URL+`/Images/Products/${pro.nameimage}`} alt={pro.nameimage} />
@@ -43,12 +43,13 @@ export default function KeyboardPanel() {
                 </div>
             </div>
             <div className="container10Col keyboard-container">
-                <div className="row-10">
+                <div className="row-10-no-margin keyboard-row">
                     {
                         pros.map((pro,index) => renderKeyboardItem(pro,index))
                     }
                 </div>
             </div>
+            <button className="btn-all-product" to="/"><p>Tất cả sản phẩm </p></button>
         </div>
     )
 }
