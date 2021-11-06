@@ -8,6 +8,7 @@ import {NavLink} from 'react-router-dom';
 import Solver from '../../Classes/Solver';
 const solver = new Solver();
 const renderLaptopItem = (pro,index) =>{
+    // console.log(pro);
     return(
         <div className="col-10 c-10-2 laptop-item" key={index}>
             <NavLink to={`/sanpham/${pro.id}`} className="laptop-infor">

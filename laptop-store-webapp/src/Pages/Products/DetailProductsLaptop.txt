@@ -1,7 +1,5 @@
-import React, { useEffect , useState } from 'react'
-import axios from 'axios'
+import React from "react";
 import details from "../../CSS/ProductsCss/details.css";
-import Solver from "../../Classes/Solver";
 import { withRouter } from "react-router";
 import freeshipping_4px from "../../Images/freeshipping_4px.png";
 import freeshippingcs_24px from "../../Images/freeshippingcs_24px.png";
@@ -10,20 +8,74 @@ import replace_24px from "../../Images/replace_24px.png";
 import settings_24px from "../../Images/settings_24px.png";
 import monitor_24px from "../../Images/monitor_24px.png";
 
-
-export default function DetailProductsLaptop({match}) {
+import axios from "axios";
+import Solver from "../../Classes/Solver";
+class DetailProductsLaptop extends React.Component {
+  state = {
+    detail: {
+      id: "14-5406",
+      ten: "Laptop Dell Inspiron ( Core i7-1165G7 | 8GB | NVIDIA GeForce MX330 2GB GDDR5 | 14)",
+      gia: 26690000,
+      idloai: "laptop",
+      thuonghieu: "Dell",
+      namsx: 2021,
+      baohanh: 1,
+      hienthi: 0,
+      nameimage: "14-5406.png",
+      mau: null,
+      idloaiNavigation: null,
+      keyboardDetail: null,
+      laptopDescription: {
+            idProduct: "14-5406",
+            detailcpu: "Intel Core i7-1165G7 ( 4.7 GHz / 12MB / 4 nhân, 8 luồng )",
+            detailram: "1 x 8GB DDR4 3200MHz ( 2 Khe cắm / Hỗ trợ tối đa 32GB )",
+            detailvga: "NVIDIA GeForce MX330 2GB GDDR5 / Intel Iris Xe Graphics",
+            detailmanhinh: "14 ( 1920 x 1080 ) Full HD IPS cảm ứng , HD webcam",
+            ocung: "512GB SSD M.2 NVMe ",
+            kieukhe: "1 x M.2 NVMe",
+            congxuathinh: "1 x HDMI",
+            congketnoi: "1 x USB Type C / DisplayPort , 2 x USB 3.1 , 1 x SD card slot",
+            ketnoikhongday: "WiFi 802.11ax (Wifi 6) , Bluetooth 5.1",
+            hdh: "Windows 10 Home SL 64-bit",
+            size: "32.43 x 22.29 x 1.894 cm",
+            khoiluong: "1.5 kg",
+            pin: "3 cell 40 Wh , Pin liền"
+      },
+      laptopDetail: {
+            idProduct: "14-5406",
+            cpu: "corei7",
+            ram: "8",
+            vga: "NVIDIA",
+            manhinh: "14"
+      },
+      screenDetail: null,
+      chitietDonHangs: [ ],
+      chitietGioHangs: [ ]
+      } ,
+      detailtest : {}
+  };
+  async componentDidMount() {
+    if (this.props.match && this.props.match.params){
+      const res = await axios.get(`https://localhost:44343/data/product/type=laptop/${this.props.match.params.id}`);
+      this.setState({
+        detailtest: res && res.data ? res.data : {},
+      });
+    }
+  }
+  test(){
+    console.log(this.state.detail);
+    console.log(this.state.detailtest);
+    console.log(this.state.detail.laptopDescription.detailcpu);
+    console.log(this.state.detailtest.laptopDescription.detailcpu);
+  }
+  render() 
+  {
+    let { detail } = this.state;
+    this.test();
+    let isEmptyObj = Object.keys(detail).length === 0;
     const solver = new Solver();
-    const [detail, setDetail] = useState({});
-    useEffect(() => {
-        axios.get(`https://localhost:44343/data/product/type=laptop/${match.match.params.id}`)
-                .then(res => {
-                    console.log(res);
-                    setDetail(res.data)
-                }).catch(err => console.log(err+"Khong goi san pham"))
-    }, []);
-    console.log(detail.laptopDescription && detail.laptopDescription.detailcpu);
-    return (
-        <div className="single-product">
+    return(
+      <div className="single-product">
         <div className="container">
           <div className="row">
             {/* {isEmptyObj === false && (
@@ -66,8 +118,8 @@ export default function DetailProductsLaptop({match}) {
                     </ul>
                   </div>
                   <div className="col detail-pro">
-                    <p>- CPU: {detail.laptopDescription && detail.laptopDescription.detailcpu}</p>
-                    {/* <p>- Màn hình: {detail.moTaLaptop.detailmanhinh}</p>
+                    {/* <p>- CPU: {detail.moTaLaptop.detailcpu}</p>
+                    <p>- Màn hình: {detail.moTaLaptop.detailmanhinh}</p>
                     <p>- RAM: {detail.moTaLaptop.detailram}</p>
                     <p>- VGA: {detail.moTaLaptop.detailvga}</p>
                     <p>- Lưu trữ: {detail.moTaLaptop.ocung}</p>
@@ -263,5 +315,7 @@ export default function DetailProductsLaptop({match}) {
           </div>
         </div>
       </div>
-    )
+    );
+  }
 }
+export default withRouter(DetailProductsLaptop);

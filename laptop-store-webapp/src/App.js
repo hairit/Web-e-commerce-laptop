@@ -19,7 +19,7 @@ function App() {
         <Route path="/laptop" component={() => <Laptops />}></Route>
         <Route
           path="/sanpham/:id"
-          component={() => <DetailProductsLaptop />}
+          component={(match) => <DetailProductsLaptop match={match}/>}
         ></Route>
         <Route path="/login" component={() => <Login />}></Route>
         <Route path="/lienhe" component={() => <Lienhe />}></Route>
