@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace Laptop_store_e_comerce.Models
 {
-    public partial class MoTaLaptop
+    public partial class LaptopDescription
     {
         public string IdProduct { get; set; }
         public string Detailcpu { get; set; }

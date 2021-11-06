@@ -15,6 +15,7 @@ class DetailProductsLaptop extends React.Component {
     detail: {},
   };
   async componentDidMount() {
+<<<<<<< HEAD
     if (this.props.match && this.props.match.params) {
       let id = this.props.match.params.id;
 
@@ -28,17 +29,33 @@ class DetailProductsLaptop extends React.Component {
         .catch((err) => {
           console.log("1123123", err);
         });
+=======
+    if (this.props.match && this.props.match.params){
+      const res = await axios.get(`https://localhost:44343/data/product/type=laptop/${this.props.match.params.id}`);
+      this.setState({
+        detail: res && res.data ? res.data : {},
+      });
+>>>>>>> 82ea05dbc55ff15ee5520c7a2443d3a9776131a5
     }
   }
-
-  render() {
+  render() 
+  {
     let { detail } = this.state;
+<<<<<<< HEAD
     console.log(this.props.match);
     console.log("đâsdasd", detail);
     let isEmptyObj = Object.keys(detail).length === 0;
     const solver = new Solver();
 
     return (
+=======
+    console.log("Hai dep trai");
+    console.log(this.state.detail.moTaLaptop.detailcpu);
+    //console.log(detail.moTaLaptop.detailcpu);
+    // let isEmptyObj = Object.keys(detail).length === 0;
+    const solver = new Solver();
+    return(
+>>>>>>> 82ea05dbc55ff15ee5520c7a2443d3a9776131a5
       <div className="single-product">
         <div className="container">
           <div className="row">
@@ -222,8 +239,8 @@ class DetailProductsLaptop extends React.Component {
                     <tr>
                       <th className="row">Chip đồ họa</th>
                       <td>{detail.moTaLaptop.detailvga}</td>
-                    </tr>
-                    <tr>
+                    </tr> */}
+                    {/* <tr>
                       <th className="row">RAM</th>
                       <td>{detail.moTaLaptop.detailram}</td>
                     </tr>

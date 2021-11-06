@@ -26,17 +26,16 @@ const renderLaptopItem = (pro,index) =>{
                             <div className="laptop-price-value">{solver.formatCurrency("vi-VN",'currency','VND',pro.gia)}</div>
                     </div>
                 </div>
-            </NavLink>
-                
+            </NavLink>    
             </div>
     )
 }
-
 export default function Laptop() {
     const [pros, setPros] = useState([]);
     useEffect(() => {
         CALLER('GET','data/product/type=laptop/enable',null).then(res => setPros(res.data)).catch(err => alert("Errol!! when try to get laptop product"));
     }, [])
+
     return (
         <div className="laptop-panel">
             <div className="laptop-panel-header">
