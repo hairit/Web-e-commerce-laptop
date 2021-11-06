@@ -29,7 +29,7 @@ namespace Laptop_store_e_comerce.Controllers
             if (!existType(type)) return NotFound();
             Product pro = null;
             if(type =="laptop")  pro = await database.Products.Include(pro => pro.LaptopDetail)
-                                                              .Include(pro => pro.MoTaLaptop)
+                                                              .Include(pro => pro.LaptopDescription)
                                                               .Where(pro => pro.Id == id)
                                                               .FirstOrDefaultAsync();
             if(type =="keyboard") pro = await database.Products.Include(pro => pro.KeyboardDetail)
@@ -70,7 +70,7 @@ namespace Laptop_store_e_comerce.Controllers
         {
             try
             {
-                return await database.Products.Include(pro => pro.LaptopDetail).Include(pro => pro.MoTaLaptop)
+                return await database.Products.Include(pro => pro.LaptopDetail).Include(pro => pro.LaptopDescription)
                                               .Where(pro => pro.Idloai == type)
                                               .Where(pro => pro.Hienthi == 1)
                                               .ToListAsync();
@@ -142,7 +142,7 @@ namespace Laptop_store_e_comerce.Controllers
             if(pro.Idloai == "laptop")
             {
                 database.LaptopDetails.Remove(await database.LaptopDetails.FindAsync(id));
-                database.MoTaLaptops.Remove(await database.MoTaLaptops.FindAsync(id));
+                database.LaptopDescriptions.Remove(await database.LaptopDescriptions.FindAsync(id));
             }
             if(pro.Idloai == "keyboard")
             {
