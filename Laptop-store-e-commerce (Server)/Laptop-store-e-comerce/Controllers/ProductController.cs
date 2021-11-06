@@ -70,7 +70,8 @@ namespace Laptop_store_e_comerce.Controllers
         {
             try
             {
-                return await database.Products.Where(pro => pro.Idloai == type)
+                return await database.Products.Include(pro => pro.LaptopDetail).Include(pro => pro.MoTaLaptop)
+                                              .Where(pro => pro.Idloai == type)
                                               .Where(pro => pro.Hienthi == 1)
                                               .ToListAsync();
             }

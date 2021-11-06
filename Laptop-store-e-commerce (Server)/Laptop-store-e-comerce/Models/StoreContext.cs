@@ -26,9 +26,9 @@ namespace Laptop_store_e_comerce.Models
         public virtual DbSet<GioHang> GioHangs { get; set; }
         public virtual DbSet<Image> Images { get; set; }
         public virtual DbSet<KeyboardDetail> KeyboardDetails { get; set; }
+        public virtual DbSet<LaptopDescription> LaptopDescriptions { get; set; }
         public virtual DbSet<LaptopDetail> LaptopDetails { get; set; }
         public virtual DbSet<LoaiSanPham> LoaiSanPhams { get; set; }
-        public virtual DbSet<MoTaLaptop> MoTaLaptops { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<ScreenDetail> ScreenDetails { get; set; }
         public virtual DbSet<User> Users { get; set; }
@@ -238,62 +238,12 @@ namespace Laptop_store_e_comerce.Models
                     .HasConstraintName("FK__KeyboardD__motas__02FC7413");
             });
 
-            modelBuilder.Entity<LaptopDetail>(entity =>
-            {
-                entity.HasKey(e => e.IdProduct)
-                    .HasName("PK__ThongSoL__C5FDB0E5B127A567");
-
-                entity.ToTable("LaptopDetail");
-
-                entity.Property(e => e.IdProduct)
-                    .HasColumnName("idProduct")
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Cpu)
-                    .HasColumnName("cpu")
-                    .HasMaxLength(20);
-
-                entity.Property(e => e.Manhinh)
-                    .HasColumnName("manhinh")
-                    .HasMaxLength(10);
-
-                entity.Property(e => e.Ram)
-                    .HasColumnName("ram")
-                    .HasMaxLength(20);
-
-                entity.Property(e => e.Vga)
-                    .HasColumnName("vga")
-                    .HasMaxLength(20);
-
-                entity.HasOne(d => d.IdProductNavigation)
-                    .WithOne(p => p.LaptopDetail)
-                    .HasForeignKey<LaptopDetail>(d => d.IdProduct)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__ThongSoLa__idsan__571DF1D5");
-            });
-
-            modelBuilder.Entity<LoaiSanPham>(entity =>
-            {
-                entity.ToTable("LoaiSanPham");
-
-                entity.Property(e => e.Id)
-                    .HasColumnName("id")
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Ten)
-                    .IsRequired()
-                    .HasColumnName("ten")
-                    .HasMaxLength(40);
-            });
-
-            modelBuilder.Entity<MoTaLaptop>(entity =>
+            modelBuilder.Entity<LaptopDescription>(entity =>
             {
                 entity.HasKey(e => e.IdProduct)
                     .HasName("PK__MoTaLapt__C5FDB0E5748E49B7");
 
-                entity.ToTable("MoTaLaptop");
+                entity.ToTable("LaptopDescription");
 
                 entity.Property(e => e.IdProduct)
                     .HasColumnName("idProduct")
@@ -353,10 +303,60 @@ namespace Laptop_store_e_comerce.Models
                     .HasMaxLength(100);
 
                 entity.HasOne(d => d.IdProductNavigation)
-                    .WithOne(p => p.MoTaLaptop)
-                    .HasForeignKey<MoTaLaptop>(d => d.IdProduct)
+                    .WithOne(p => p.LaptopDescription)
+                    .HasForeignKey<LaptopDescription>(d => d.IdProduct)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__MoTaLapto__idsan__5535A963");
+            });
+
+            modelBuilder.Entity<LaptopDetail>(entity =>
+            {
+                entity.HasKey(e => e.IdProduct)
+                    .HasName("PK__ThongSoL__C5FDB0E5B127A567");
+
+                entity.ToTable("LaptopDetail");
+
+                entity.Property(e => e.IdProduct)
+                    .HasColumnName("idProduct")
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Cpu)
+                    .HasColumnName("cpu")
+                    .HasMaxLength(20);
+
+                entity.Property(e => e.Manhinh)
+                    .HasColumnName("manhinh")
+                    .HasMaxLength(10);
+
+                entity.Property(e => e.Ram)
+                    .HasColumnName("ram")
+                    .HasMaxLength(20);
+
+                entity.Property(e => e.Vga)
+                    .HasColumnName("vga")
+                    .HasMaxLength(20);
+
+                entity.HasOne(d => d.IdProductNavigation)
+                    .WithOne(p => p.LaptopDetail)
+                    .HasForeignKey<LaptopDetail>(d => d.IdProduct)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__ThongSoLa__idsan__571DF1D5");
+            });
+
+            modelBuilder.Entity<LoaiSanPham>(entity =>
+            {
+                entity.ToTable("LoaiSanPham");
+
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Ten)
+                    .IsRequired()
+                    .HasColumnName("ten")
+                    .HasMaxLength(40);
             });
 
             modelBuilder.Entity<Product>(entity =>
