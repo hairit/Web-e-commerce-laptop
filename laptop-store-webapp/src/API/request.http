@@ -1,0 +1,35 @@
+
+GET https://localhost:44343/data/product/type=screen/
+
+###
+POST https://localhost:44343/data/product
+{
+    "id": "VY249HE",
+    "ten": "Màn hình LCD ASUS VY249HE (1920 x 1080/IPS/75Hz/1 ms/FreeSync)",
+    "gia": 3490000,
+    "idloai": "screen",
+    "thuonghieu": "ASUS",
+    "namsx": 2020,
+    "baohanh": 1,
+    "hienthi": 1,
+    "nameimage": "VY249HE.png",
+    "mau": null,
+    "screenDetail" : {
+                "idProduct": "VY249HE",
+                "kichthuoc": 23.8,
+                "dophangiai": "FHD",
+                "dophangiaipixel": "1920 x 1080",
+                "tamnen": "IPS LED",
+                "tanso": 75,
+                "kieumanhinh": "Màn hình phẳng",
+                "thoigianphanhoi": "1ms",
+                "dosang": "250 cd/m2",
+                "gocnhin": "178 (H) / 178 (V)",
+                "mauhienthi": "16.7 triệu màu",
+                "bemat": "Màn hình chống lóa",
+                "hdr": null,
+                "congxuat": "1 x HDMI 1.4 , 1 x VGA/D-sub",
+                "khoiluong": "3.38 kg",
+                "tile": "16:9"
+    }
+}

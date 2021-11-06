@@ -16,7 +16,7 @@ function App() {
         <Header />
         <Route path="/" exact component={() => <Body />}></Route>
         <Route path="/sanpham" exact component={() => <Laptops />}></Route>
-        <Route path="/laptop" component={() => <Laptops />}></Route>
+        {/* <Route path="/laptop" component={() => {}}></Route> */}
         <Route
           path="/sanpham/:id"
           component={(match) => <DetailProductsLaptop match={match}/>}

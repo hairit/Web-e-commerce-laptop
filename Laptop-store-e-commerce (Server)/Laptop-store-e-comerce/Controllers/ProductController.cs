@@ -35,6 +35,9 @@ namespace Laptop_store_e_comerce.Controllers
             if(type =="keyboard") pro = await database.Products.Include(pro => pro.KeyboardDetail)
                                                                .Where(pro => pro.Id == id)
                                                                .FirstOrDefaultAsync();
+            if (type == "screen") pro = await database.Products.Include(pro => pro.ScreenDetail)
+                                                                 .Where(pro => pro.Id == id)
+                                                                 .FirstOrDefaultAsync();
             if (pro == null) return NotFound();
             else return pro;
         }
@@ -124,7 +127,7 @@ namespace Laptop_store_e_comerce.Controllers
             try{
                 database.Products.Add(pro);
                 database.SaveChangesAsync();
-                return CreatedAtAction("GetSanPham",new { id = pro.Id }, pro);
+                return CreatedAtAction("getProductByID", new { type = pro.Idloai ,id = pro.Id  }, pro);
             }
             catch(DbUpdateConcurrencyException) {
                     Console.WriteLine("Errol when add product");
