@@ -10,7 +10,6 @@ import replace_24px from "../../Images/replace_24px.png";
 import settings_24px from "../../Images/settings_24px.png";
 import monitor_24px from "../../Images/monitor_24px.png";
 
-
 export default function DetailProductsLaptop({match}) {
     const solver = new Solver();
     const [detail, setDetail] = useState({});
