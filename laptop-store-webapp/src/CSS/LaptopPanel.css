@@ -118,6 +118,21 @@
 }
 .laptop-price-value{
     color: #3f4fc3;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 600;
+}
+.btn-group-bottom
+{
+    margin-top: 47px;
+    width: 100%;
+    text-align: center;
+}
+.btn-all-product
+{ 
+    border: #3f4fc3 solid 1px;
+    color: #3f4fc3;
+    margin-top: 25px;
+    padding: 10px 35px;
+    font-size: 14px;
+    background-color: #FFFFFF;
 }

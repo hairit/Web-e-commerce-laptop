@@ -71,15 +71,23 @@
     border-right: 0.001px rgb(226, 225, 225) solid;
     border-bottom: 0.001px rgb(226, 225, 225) solid;
 }
+.keyboard-item:hover{
+    box-shadow:  0 0 10px 5px rgb(226, 225, 225);
+}
+.keyboard-item:hover .keyboard-image-img{
+    margin-top: 0;
+    transition: 0.3s;
+}
 .keyboard-image{
     width: 100%;
-    height: auto;
+    height: 258px;
 }
 .keyboard-image-img{
     width: 100%;
     max-width: 100%;
     height: auto;
     transform: scale(85%);
+    margin-top: 20px;
     margin-top: 20px;
 }
 .keyboard-detail-item{
@@ -111,12 +119,4 @@
     color: #3f4fc3;
     font-size: 16px;
     font-weight: 600;
-}
-.btn-all-product{
-    margin-top:50px;
-    padding: 8px 40px;
-    font-weight: 500;
-    border: #3f4fc3 1px solid;
-    color: #3f4fc3;
-    background-color: #FFFFFF;
 }

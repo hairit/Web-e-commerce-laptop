@@ -132,7 +132,7 @@ namespace Laptop_store_e_comerce.Controllers
             catch(DbUpdateConcurrencyException) {
                     Console.WriteLine("Errol when add product");
                     return BadRequest();
-             }
+            }
         }
         [HttpDelete("{id}")]
         public async Task<ActionResult<Product>> DeleteSanPham(string id)
