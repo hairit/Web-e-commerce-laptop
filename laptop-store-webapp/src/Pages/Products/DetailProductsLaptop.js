@@ -18,21 +18,26 @@ class DetailProductsLaptop extends React.Component {
     if (this.props.match && this.props.match.params) {
       let id = this.props.match.params.id;
 
-      let res = await axios.get(
-        `https://localhost:44343/data/product/type=laptop/${id}`
-      );
-      this.setState({
-        detail: res && res.data ? res.data : {},
-      });
-      console.log("acb", this.props.detail);
+      let res = await axios
+        .get(`https://localhost:44343/data/product/type=laptop/${id}`)
+        .then((res) =>
+          this.setState({
+            detail: res.data ? res.data : {},
+          })
+        )
+        .catch((err) => {
+          console.log("1123123", err);
+        });
     }
   }
 
   render() {
     let { detail } = this.state;
+    console.log(this.props.match);
+    console.log("đâsdasd", detail);
     let isEmptyObj = Object.keys(detail).length === 0;
     const solver = new Solver();
-    console.log("ahihi", detail);
+
     return (
       <div className="single-product">
         <div className="container">
@@ -77,24 +82,24 @@ class DetailProductsLaptop extends React.Component {
                     </ul>
                   </div>
                   <div className="col detail-pro">
-                    <p>- CPU: {detail.moTaLaptop.detailcpu}</p>
+                    {/* <p>- CPU: {detail.moTaLaptop.detailcpu}</p>
                     <p>- Màn hình: {detail.moTaLaptop.detailmanhinh}</p>
                     <p>- RAM: {detail.moTaLaptop.detailram}</p>
                     <p>- VGA: {detail.moTaLaptop.detailvga}</p>
                     <p>- Lưu trữ: {detail.moTaLaptop.ocung}</p>
                     <p>- Hệ điều hành: {detail.moTaLaptop.hdh}</p>
-                    <p>- Pin: {detail.moTaLaptop.pin}</p>
+                    <p>- Pin: {detail.moTaLaptop.pin}</p> */}
                   </div>
                 </div>
                 <div className="col-md-6 colors ttdetail">
                   <div className="right-content ">
                     <h4>
-                      {detail.ten} {detail.id} ( {detail.moTaLaptop.detailram} )
+                      {/* {detail.ten} {detail.id} ( {detail.moTaLaptop.detailram} ) */}
                     </h4>
                     <div className="tt">
                       <div className="thuonghieuL">
-                        Thương hiệu <a href="#">{detail.thuonghieu}</a>
-                        &nbsp;&nbsp; |&nbsp;&nbsp;Năm sản xuất: {detail.namsx}
+                        {/* Thương hiệu <a href="#">{detail.thuonghieu}</a>
+                        &nbsp;&nbsp; |&nbsp;&nbsp;Năm sản xuất: {detail.namsx} */}
                       </div>
                     </div>
                     <div className="tt-price">
@@ -210,7 +215,7 @@ class DetailProductsLaptop extends React.Component {
                     <tr>
                       <th className="row">Cấu hình chi tiết</th>
                     </tr>
-                    <tr>
+                    {/* <tr>
                       <th className="row">Thế hệ CPU</th>
                       <td>{detail.moTaLaptop.detailcpu}</td>
                     </tr>
@@ -264,7 +269,7 @@ class DetailProductsLaptop extends React.Component {
                     <tr>
                       <th className="row">Khối lượng</th>
                       <td>{detail.moTaLaptop.khoiluong}</td>
-                    </tr>
+                    </tr> */}
                   </tbody>
                 </table>
               </div>
