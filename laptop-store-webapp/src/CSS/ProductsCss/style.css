@@ -100,6 +100,8 @@ img {
   cursor: pointer;
 }
 .container_fullwidth {
+  display: flex;
+  flex-direction: column;
   position: relative;
   margin: 0;
   padding: 0;
@@ -190,9 +192,11 @@ img {
   margin-bottom: 5px;
   height: 46rem;
   padding-left: 1px;
-  width: 30.5rem;
+  width: 24.25%;
 }
 .prolst {
+  display:flex;
+  flex-wrap: wrap;
   padding-left: 0;
   width: 100.5%;
   margin-right: -12px;
@@ -343,7 +347,8 @@ img {
   min-height: 87px;
 }
 .sorfprice {
-  width: 101.2%;
+  padding-left: 0;
+  width: 100%;
 }
 
 .leftbar {
@@ -654,6 +659,7 @@ form.newsletter input[type="submit"]:hover {
 }
 
 .sof {
+  width: 100%;
   border-top-right-radius: 1rem;
   border-top-left-radius: 1rem;
   background-color: white;
@@ -971,4 +977,10 @@ option {
   .productname {
     font-size: 12px;
   }
+}
+@media screen and  (max-width: 1497.60px) {
+  .lstlaptop{
+    max-width: ;
+  }
+  
 }

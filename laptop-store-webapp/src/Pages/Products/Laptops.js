@@ -43,91 +43,91 @@ export default function Laptops() {
           </div>
         </div>
         <div className="container">
-          <div className="col-md-12 sof">
-            <div className="col-12 boloc section-heading">
-              <div className="line-bl "></div>
-              <p>Bộ lọc</p>
+          <div className="top-pro">
+            <div className="col-md-12 sof">
+              <div className="col-12 boloc section-heading">
+                <div className="line-bl "></div>
+                <p>Bộ lọc</p>
+              </div>
+              <div className="col-12 ">
+                <div className="loc">
+                  <div className="title-sort">Thương hiệu</div>
+                  <div className="btn-right">
+                    <button type="button" className="btn-sort">
+                      Asus
+                    </button>
+                    <button type="button" className="btn-sort">
+                      Dell
+                    </button>
+                    <button type="button" className="btn-sort">
+                      HP
+                    </button>
+                    <button type="button" className="btn-sort">
+                      Acer
+                    </button>
+                  </div>
+                </div>
+                <div className="loc">
+                  <div className="title-sort">CPU</div>
+                  <div className="btn-right">
+                    <button type="button" className="btn-sort">
+                      Corei3
+                    </button>
+                    <button type="button" className="btn-sort">
+                      Corei5
+                    </button>
+                    <button type="button" className="btn-sort">
+                      Corei7
+                    </button>
+                    <button type="button" className="btn-sort">
+                      Corei9
+                    </button>
+                  </div>
+                </div>
+
+                <div className="loc">
+                  <div className="title-sort">Ram</div>
+                  <div className="btn-right">
+                    <button type="button" className="btn-sort">
+                      4GB
+                    </button>
+                    <button type="button" className="btn-sort">
+                      8GB
+                    </button>
+                    <button type="button" className="btn-sort">
+                      16GB
+                    </button>
+                  </div>
+                </div>
+
+                <div className="loc">
+                  <div className="title-sort">VAG</div>
+                  <div className="btn-right">
+                    <button type="button" className="btn-sort">
+                      NVIDIA
+                    </button>
+                  </div>
+                </div>
+
+                <div className="loc">
+                  <div className="title-sort">Màn hình</div>
+                  <div className="btn-right">
+                    <button type="button" className="btn-sort">
+                      13.3 inch
+                    </button>
+                    <button type="button" className="btn-sort">
+                      14 inch
+                    </button>
+                    <button type="button" className="btn-sort">
+                      15 inch
+                    </button>
+                    <button type="button" className="btn-sort">
+                      15.6 inch
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="col-12 ">
-              <div className="loc">
-                <div className="title-sort">Thương hiệu</div>
-                <div className="btn-right">
-                  <button type="button" className="btn-sort">
-                    Asus
-                  </button>
-                  <button type="button" className="btn-sort">
-                    Dell
-                  </button>
-                  <button type="button" className="btn-sort">
-                    HP
-                  </button>
-                  <button type="button" className="btn-sort">
-                    Acer
-                  </button>
-                </div>
-              </div>
-              <div className="loc">
-                <div className="title-sort">CPU</div>
-                <div className="btn-right">
-                  <button type="button" className="btn-sort">
-                    Corei3
-                  </button>
-                  <button type="button" className="btn-sort">
-                    Corei5
-                  </button>
-                  <button type="button" className="btn-sort">
-                    Corei7
-                  </button>
-                  <button type="button" className="btn-sort">
-                    Corei9
-                  </button>
-                </div>
-              </div>
-
-              <div className="loc">
-                <div className="title-sort">Ram</div>
-                <div className="btn-right">
-                  <button type="button" className="btn-sort">
-                    4GB
-                  </button>
-                  <button type="button" className="btn-sort">
-                    8GB
-                  </button>
-                  <button type="button" className="btn-sort">
-                    16GB
-                  </button>
-                </div>
-              </div>
-
-              <div className="loc">
-                <div className="title-sort">VAG</div>
-                <div className="btn-right">
-                  <button type="button" className="btn-sort">
-                    NVIDIA
-                  </button>
-                </div>
-              </div>
-
-              <div className="loc">
-                <div className="title-sort">Màn hình</div>
-                <div className="btn-right">
-                  <button type="button" className="btn-sort">
-                    13.3 inch
-                  </button>
-                  <button type="button" className="btn-sort">
-                    14 inch
-                  </button>
-                  <button type="button" className="btn-sort">
-                    15 inch
-                  </button>
-                  <button type="button" className="btn-sort">
-                    15.6 inch
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="row">
             <div className="col-md-3 sorfprice">
               {/* <div className="category leftbar ">
                 <h3 className="title">Danh mục sản phẩm</h3>
@@ -155,30 +155,26 @@ export default function Laptops() {
                   <input type="submit" defaultValue="Go" />
                 </form>
               </div>
-              {/* <div className="leftbanner">
-                <img
-                  src="https://lh3.googleusercontent.com/QDjt1QdJxyKFxTXbyN_E5BZurHMIYg_Uvm7MDOg8wHgLuhC-WFBx6m17HeM9Kk7KnxgWQhvUHSkO9gUJ_-tvZrAa7wrClvGu=rw-w308"
-                  alt=""
-                />
-              </div> */}
             </div>
+          </div>
+          <div className="row">
             <div className="col-md-9 prolst">
-              <div className="products-grid">
+              <div className="products-grid lstlaptop">
                 <ListProductLaptop pros={pros} />
-                <div className="toolbar">
-                  <div className="pager">
-                    <a href="#" className="prev-page">
-                      <i className="fa fa-angle-left"></i>
-                    </a>
-                    <a href="#" className="active">
-                      1
-                    </a>
-                    <a href="#">2</a>
-                    <a href="#">3</a>
-                    <a href="#" className="next-page">
-                      <i className="fa fa-angle-right"></i>
-                    </a>
-                  </div>
+              </div>
+              <div className="toolbar">
+                <div className="pager">
+                  <a href="#" className="prev-page">
+                    <i className="fa fa-angle-left"></i>
+                  </a>
+                  <a href="#" className="active">
+                    1
+                  </a>
+                  <a href="#">2</a>
+                  <a href="#">3</a>
+                  <a href="#" className="next-page">
+                    <i className="fa fa-angle-right"></i>
+                  </a>
                 </div>
               </div>
             </div>

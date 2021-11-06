@@ -66,12 +66,12 @@ export default function DetailProductsLaptop({match}) {
                   </div>
                   <div className="col detail-pro">
                     <p>- CPU: {detail.laptopDescription && detail.laptopDescription.detailcpu}</p>
-                    {/* <p>- Màn hình: {detail.moTaLaptop.detailmanhinh}</p>
-                    <p>- RAM: {detail.moTaLaptop.detailram}</p>
-                    <p>- VGA: {detail.moTaLaptop.detailvga}</p>
-                    <p>- Lưu trữ: {detail.moTaLaptop.ocung}</p>
-                    <p>- Hệ điều hành: {detail.moTaLaptop.hdh}</p>
-                    <p>- Pin: {detail.moTaLaptop.pin}</p> */}
+                    <p>- Màn hình: {detail.laptopDescription && detail.laptopDescription.detailmanhinh}</p>
+                    <p>- RAM: {detail.laptopDescription && detail.laptopDescription.detailram}</p>
+                    <p>- VGA: {detail.laptopDescription && detail.laptopDescription.detailvga}</p>
+                    <p>- Lưu trữ: {detail.laptopDescription && detail.laptopDescription.ocung}</p>
+                    <p>- Hệ điều hành: {detail.laptopDescription && detail.laptopDescription.hdh}</p>
+                    <p>- Pin: {detail.laptopDescription && detail.laptopDescription.pin}</p>
                   </div>
                 </div>
                 <div className="col-md-6 colors ttdetail">
@@ -198,61 +198,61 @@ export default function DetailProductsLaptop({match}) {
                     <tr>
                       <th className="row">Cấu hình chi tiết</th>
                     </tr>
-                    {/* <tr>
+                    <tr>
                       <th className="row">Thế hệ CPU</th>
-                      <td>{detail.moTaLaptop.detailcpu}</td>
+                      <td>{detail.laptopDescription && detail.laptopDescription.detailcpu}</td>
                     </tr>
                     <tr>
                       <th className="row">Chip đồ họa</th>
-                      <td>{detail.moTaLaptop.detailvga}</td>
-                    </tr> */}
-                    {/* <tr>
+                      <td>{detail.laptopDescription && detail.laptopDescription.detailvga}</td>
+                    </tr>
+                    <tr>
                       <th className="row">RAM</th>
-                      <td>{detail.moTaLaptop.detailram}</td>
+                      <td>{detail.laptopDescription && detail.laptopDescription.detailram}</td>
                     </tr>
                     <tr>
                       <th className="row">Màn hình</th>
-                      <td>{detail.moTaLaptop.detailmanhinh}</td>
+                      <td>{detail.laptopDescription && detail.laptopDescription.detailmanhinh}</td>
                     </tr>
                     <tr>
                       <th className="row">Công xuất hình</th>
-                      <td>{detail.moTaLaptop.congxuathinh}</td>
+                      <td>{detail.laptopDescription && detail.laptopDescription.congxuathinh}</td>
                     </tr>
                     <tr>
                       <th className="row">Lưu trữ</th>
-                      <td>{detail.moTaLaptop.ocung}</td>
+                      <td>{detail.laptopDescription && detail.laptopDescription.ocung}</td>
                     </tr>
                     <tr>
                       <th className="row">Kiểu lọt khe</th>
-                      <td>{detail.moTaLaptop.kieukhe}</td>
+                      <td>{detail.laptopDescription && detail.laptopDescription.kieukhe}</td>
                     </tr>
                     <tr>
                       <th className="row">Cổng kết nối</th>
-                      <td>{detail.moTaLaptop.congketnoi}</td>
+                      <td>{detail.laptopDescription && detail.laptopDescription.congketnoi}</td>
                     </tr>
                     <tr>
                       <th className="row">Hệ điều hành</th>
-                      <td>{detail.moTaLaptop.hdh}</td>
+                      <td>{detail.laptopDescription && detail.laptopDescription.hdh}</td>
                     </tr>
                     <tr>
                       <th className="row">Kích thước</th>
-                      <td>{detail.moTaLaptop.size}</td>
+                      <td>{detail.laptopDescription && detail.laptopDescription.size}</td>
                     </tr>
                     <tr>
                       <th className="row">Pin</th>
-                      <td>{detail.moTaLaptop.pin}</td>
+                      <td>{detail.laptopDescription && detail.laptopDescription.pin}</td>
                     </tr>
                     <tr>
                       <th className="row">Thông tin khác</th>
                     </tr>
                     <tr>
                       <th className="row">Kết nối không dây</th>
-                      <td>{detail.moTaLaptop.ketnoikhongday}</td>
+                      <td>{detail.laptopDescription && detail.laptopDescription.ketnoikhongday}</td>
                     </tr>
                     <tr>
                       <th className="row">Khối lượng</th>
-                      <td>{detail.moTaLaptop.khoiluong}</td>
-                    </tr> */}
+                      <td>{detail.laptopDescription && detail.laptopDescription.khoiluong}</td>
+                    </tr>
                   </tbody>
                 </table>
               </div>

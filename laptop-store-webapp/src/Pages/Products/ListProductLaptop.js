@@ -25,7 +25,7 @@ export default function ListProductLaptop({ pros }) {
       {pros.map((pro, index) => {
         console.log(pro);
         return (
-          <div className="col-md-4 col-sm-6 lstpro" key={index}>
+          <div className="col-md-4 col-sm-6 lstpro " key={index}>
             <div className="products">
               <div className="thumbnail">
                 <a className="af" onClick={() => handleViewDetails(pro)}>
