@@ -44,8 +44,8 @@ export default function Laptops() {
         </div>
         <div className="container">
           <div className="col-md-12 sof">
-            <div className="col-12 boloc">
-              <div className="line-bl"></div>
+            <div className="col-12 boloc section-heading">
+              <div className="line-bl "></div>
               <p>Bộ lọc</p>
             </div>
             <div className="col-12 ">
