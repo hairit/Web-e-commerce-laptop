@@ -4,11 +4,10 @@ import '../../CSS/Layout10.css'
 import CALLER from '../../API/CALL'
 import URL from '../../DATA/URL';
 import {useState ,useEffect} from 'react'
-import {NavLink} from 'react-router-dom';
+import {NavLink , useHistory} from 'react-router-dom';
 import Solver from '../../Classes/Solver';
 const solver = new Solver();
 const renderLaptopItem = (pro,index) =>{
-    // console.log(pro);
     return(
         <div className="col-10 c-10-2 laptop-item" key={index}>
             <NavLink to={`/sanpham/${pro.id}`} className="laptop-infor">
@@ -19,7 +18,7 @@ const renderLaptopItem = (pro,index) =>{
                     <div className="laptop-detail-item laptop-id">
                         Mã SP: {pro.id}
                     </div>
-                    <NavLink to="" className="laptop-detail-item laptop-name">
+                    <NavLink to={`/sanpham/${pro.id}`} className="laptop-detail-item laptop-name">
                         {pro.ten}
                     </NavLink>
                     <div className="laptop-detail-item laptop-price">
@@ -32,11 +31,11 @@ const renderLaptopItem = (pro,index) =>{
     )
 }
 export default function Laptop() {
+    const history = useHistory();
     const [pros, setPros] = useState([]);
     useEffect(() => {
         CALLER('GET','data/product/type=laptop/enable',null).then(res => setPros(res.data)).catch(err => alert("Errol!! when try to get laptop product"));
     }, [])
-
     return (
         <div className="laptop-panel">
             <div className="laptop-panel-header">
@@ -49,7 +48,7 @@ export default function Laptop() {
                     }
                 </div>
             </div>
-            <button className="btn-all-product" to="/"><p>Tất cả sản phẩm</p></button>
+                    <button className="btn-all-product" to="/" onClick={()=> {history.push(`/sanpham`)}}><p>Tất cả sản phẩm</p></button>
         </div>
     )
 }

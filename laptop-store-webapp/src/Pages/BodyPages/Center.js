@@ -35,7 +35,6 @@ export default function Center() {
     useEffect(() => {
         CALLER('GET','lappee/image',null).then(res => setImages(res.data)).catch(err => alert("Errol!! IMG loading failed"));
     }, [])
-    console.log(images);
     return(
         <div className="center">
             <div className="center-panel">
@@ -65,7 +64,7 @@ export default function Center() {
             </div>
             <div className="bottom-panel">
                 {
-                                images.map((image,index) => LoadingImageWithPosition(image,index,'bottom'))
+                            images.map((image,index) => LoadingImageWithPosition(image,index,'bottom'))
                 }
             </div>
         </div>
