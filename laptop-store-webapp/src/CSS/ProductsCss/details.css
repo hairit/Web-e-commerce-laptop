@@ -98,6 +98,7 @@
   color: #4a4a4a;
 }
 .ttdetail {
+  width: 60%;
   padding-top: 20px;
 }
 .colors {
@@ -173,7 +174,7 @@
   border: solid 1px rgb(221, 221, 221) !important;
   border-radius: 10px;
   padding: 15px 15px;
-  width: 115%;
+  width: 96%;
   margin-bottom: 20px;
 }
 .gift img {
@@ -188,23 +189,23 @@
   line-height: 28px;
 }
 .button-gr {
-  width: 115%;
+  width: 100%;
 }
 .btn-buy {
   height: 45px;
-  margin-right: 13px;
-  width: 48.5%;
+  margin-right: 10px;
+  width: 47%;
   background-color: #1230b0;
 }
 .btn-cart {
   border-color: #1230b0;
   height: 45px;
   color: rgb(0, 0, 235);
-  width: 48.5%;
+  width: 47%;
   background-color: white;
 }
 .bt-if {
-  margin: 700px 0 0 0;
+  margin: 700px 0 30px 0;
 }
 .info-detail {
   /* background-color: #16d945; */
@@ -225,10 +226,10 @@
   width: 50%;
   font-size: 14px;
 }
-.thongso-kt {
+.thongso-mt {
   margin: 20px 0 35px 0;
 }
-.thongso-kt p {
+.thongso-mt p {
   font-size: 21px;
   font-weight: 500;
 }
@@ -239,6 +240,54 @@
   background-color: #000000;
   margin-right: 5px;
 }
+.mt-pro {
+  padding: 15px 0 15px 0;
+}
+
+/* ------------------------------------------------------------------------------------------------- */
+
+.panel-spkhac {
+  background-color: white;
+  width: 100%;
+  display: block;
+  padding: 20px 0 0 0;
+}
+
+.row_10 {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -5px;
+  margin-right: -5px;
+}
+.imgkb {
+  transform: scale(80%);
+  transition: 0.5s;
+}
+.col_2 {
+  cursor: pointer;
+  box-sizing: border-box;
+  border: 1px solid #f7f7f7;
+  flex: 0 0 20%;
+}
+.ten-id-gia {
+  margin: 10px 15px;
+}
+.imgkb:hover {
+  transform: scale(95%);
+}
+.xemthem {
+  font-size: 25px;
+  font-weight: 500;
+  margin: 0 0 20px 20px;
+}
+.price-inf p {
+  text-align: center;
+  padding-right: 120px;
+  float: left;
+}
+.price-inf img {
+}
+/* ------------------------------------------------------------------------------------------------- */
 
 /* .single-product .right-content .quantity-text {
   margin-left: 10px;

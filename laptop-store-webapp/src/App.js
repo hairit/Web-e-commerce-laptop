@@ -16,10 +16,10 @@ function App() {
         <Header />
         <Route path="/" exact component={() => <Body />}></Route>
         <Route path="/sanpham" exact component={() => <Laptops />}></Route>
-        {/* <Route path="/laptop" component={() => {}}></Route> */}
+        <Route path="/laptop" component={() => <Laptops />}></Route>
         <Route
           path="/sanpham/:id"
-          component={(match) => <DetailProductsLaptop match={match}/>}
+          component={(match) => <DetailProductsLaptop match={match} />}
         ></Route>
         <Route path="/login" component={() => <Login />}></Route>
         <Route path="/lienhe" component={() => <Lienhe />}></Route>

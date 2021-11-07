@@ -1,0 +1,41 @@
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import Solver from "../../Classes/Solver";
+import freeshipping_4px from "../../Images/freeshipping_4px.png";
+
+export default function PhuKienMuaCung() {
+  const solver = new Solver();
+  const [sanpham, setSanpham] = useState([]);
+  useEffect(() => {
+    axios
+      .get("https://localhost:44343/data/product/type=keyboard/enable", null)
+      .then((res) => setSanpham(res.data))
+      .catch((err) => console.log(err));
+  }, []);
+  console.log(sanpham);
+  return (
+    <>
+      {sanpham.map((kb, index) => {
+        return (
+          <div className="col_2" key={index}>
+            <div className="imgname">
+              <img
+                className="imgkb"
+                src={`https://localhost:44343/Images/Products/${kb.nameimage}`}
+              />
+            </div>
+            <div className="ten-id-gia">
+              <a>
+                {kb.ten} {kb.id}
+              </a>
+            </div>
+            <div className="ten-id-gia">
+              <p>{solver.formatCurrency("vi-VN", "currency", "VND", kb.gia)}</p>
+              <img src={freeshipping_4px} />
+            </div>
+          </div>
+        );
+      })}
+    </>
+  );
+}
