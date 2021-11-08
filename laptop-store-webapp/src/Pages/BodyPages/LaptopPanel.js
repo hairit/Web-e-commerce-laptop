@@ -48,7 +48,7 @@ export default function Laptop() {
                     }
                 </div>
             </div>
-                    <button className="btn-all-product" to="/" onClick={()=> {history.push(`/sanpham`)}}><p>Tất cả sản phẩm</p></button>
+            <button className="btn-all-product" to="/" onClick={()=> {history.push(`/sanpham`)}}><p>Tất cả sản phẩm</p></button>
         </div>
     )
 }

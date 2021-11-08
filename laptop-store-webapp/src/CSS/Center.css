@@ -131,3 +131,9 @@
     display: flex;
     flex-wrap: wrap;
 }
+#gift{
+    color:  red;
+}
+#medal-icon{
+    color: #f7c319;
+}
