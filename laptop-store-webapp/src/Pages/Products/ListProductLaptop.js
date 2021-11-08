@@ -30,6 +30,7 @@ export default function ListProductLaptop({ pros }) {
               <div className="thumbnail">
                 <a className="af" onClick={() => handleViewDetails(pro)}>
                   <img
+                    className="img-pro"
                     src={`https://localhost:44343/Images/Products/${pro.nameimage}`}
                     alt="Product Name"
                   />

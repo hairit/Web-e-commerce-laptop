@@ -181,9 +181,15 @@ img {
   width: 100%;
   margin: 0;
   padding: 0;
-  /* height: 230px;*/
   border: none;
   text-align: center;
+}
+.img-pro {
+  transform: scale(90%);
+  transition: 0.5s;
+}
+.img-pro:hover {
+  transform: scale(100%);
 }
 .leftp {
   padding-left: 0;
@@ -195,7 +201,7 @@ img {
   width: 24.25%;
 }
 .prolst {
-  display:flex;
+  display: flex;
   flex-wrap: wrap;
   padding-left: 0;
   width: 100.5%;
@@ -978,8 +984,7 @@ option {
     font-size: 12px;
   }
 }
-@media screen and  (max-width: 1497.60px) {
-  .lstlaptop{
+@media screen and (max-width: 1497.6px) {
+  .lstlaptop {
   }
-  
 }
