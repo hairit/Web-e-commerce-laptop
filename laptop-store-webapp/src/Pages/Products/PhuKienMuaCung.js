@@ -18,13 +18,13 @@ export default function PhuKienMuaCung() {
       {sanpham.map((kb, index) => {
         return (
           <div className="col_2" key={index}>
-            <div className="imgname">
+            <div className="imgname inf-price">
               <img
                 className="imgkb"
                 src={`https://localhost:44343/Images/Products/${kb.nameimage}`}
               />
             </div>
-            <div className="ten-id-gia">
+            <div className="ten-id-gia inf-price">
               <a>
                 {kb.ten} {kb.id}
               </a>

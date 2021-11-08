@@ -10,6 +10,8 @@ import replace_24px from "../../Images/replace_24px.png";
 import settings_24px from "../../Images/settings_24px.png";
 import monitor_24px from "../../Images/monitor_24px.png";
 import PhuKienMuaCung from "./PhuKienMuaCung";
+import prev_60px from "../../Images/prev_60px.png";
+import next_60px from "../../Images/next_60px.png";
 // function renderGoiypro() {
 //   useEffect(() => {
 //     axios
@@ -348,6 +350,12 @@ export default function DetailProductsLaptop({ match }) {
             <div className="xemthem">Phụ kiện thường mua cùng</div>
             <div className="row_10">
               <PhuKienMuaCung />
+              <span className="btn-prev btnnp">
+                <img src={prev_60px} />
+              </span>
+              <span className="btn-next btnnp">
+                <img src={next_60px} />
+              </span>
             </div>
           </div>
         </div>

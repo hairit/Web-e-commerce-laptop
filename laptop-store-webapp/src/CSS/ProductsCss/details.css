@@ -247,6 +247,7 @@
 /* ------------------------------------------------------------------------------------------------- */
 
 .panel-spkhac {
+  height: auto;
   background-color: white;
   width: 100%;
   display: block;
@@ -254,8 +255,10 @@
 }
 
 .row_10 {
+  height: 341px;
+  overflow: hidden;
+  position: relative;
   display: flex;
-  flex-wrap: wrap;
   margin-left: -5px;
   margin-right: -5px;
 }
@@ -270,7 +273,18 @@
   flex: 0 0 20%;
 }
 .ten-id-gia {
-  margin: 10px 15px;
+  font-size: 13px;
+  font-weight: 400;
+  margin: 0 15px;
+}
+.ten-id-gia p {
+  height: 25px;
+  line-height: 25px;
+  margin-right: 118px;
+  color: rgb(4, 4, 218);
+  float: left;
+}
+.ten-id-gia img {
 }
 .imgkb:hover {
   transform: scale(95%);
@@ -287,6 +301,23 @@
 }
 .price-inf img {
 }
+.btn-slide {
+  /* position: absolute; */
+}
+.btnnp {
+  cursor: pointer;
+  width: 25px;
+  margin-top: 131px;
+  position: absolute;
+}
+.btn-prev {
+  left: 0;
+}
+
+.btn-next {
+  right: 0;
+}
+
 /* ------------------------------------------------------------------------------------------------- */
 
 /* .single-product .right-content .quantity-text {
