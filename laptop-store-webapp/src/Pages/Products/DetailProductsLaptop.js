@@ -382,7 +382,7 @@ export default function DetailProductsLaptop({ match }) {
             </div>
           </div>
           <div className="panel-spkhac">
-            <div className="xemthem">Phụ kiện thường mua cùng</div>
+            <div className="xemthem">Sản phẩm khác</div>
             <div className="row_10">
               <PhuKienMuaCung />
               <span className="btn-prev btnnp">
