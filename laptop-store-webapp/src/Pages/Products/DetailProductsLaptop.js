@@ -172,7 +172,7 @@ export default function DetailProductsLaptop({ match }) {
                 <div className="fm">
                   <img src={freeshippingcs_24px} />
                   <div className="detailright-t">
-                    Miễn phí giao hàng cho đơn hàng từ 800K
+                    Miễn phí giao hàng cho đơn hàng từ 900K
                   </div>
                 </div>
                 <div className="fm">
@@ -184,7 +184,7 @@ export default function DetailProductsLaptop({ match }) {
                 <div className="fm">
                   <img src={replace_24px} />
                   <div className="detailright-t">
-                    Đổi trả trong vòng 10 ngày
+                    Đổi trả trong vòng 14 ngày
                   </div>
                 </div>
               </div>
@@ -193,12 +193,14 @@ export default function DetailProductsLaptop({ match }) {
                 <div className="fm">
                   <img src={settings_24px} />
                   <div className="detailright-t">
-                    Sửa chữa đồng giá 150.000đ.
+                    Sửa chữa đồng giá 200.000đ.
                   </div>
                 </div>
                 <div className="fm">
                   <img src={monitor_24px} />
-                  <div className="detailright-t">Vệ sinh máy tính, laptop.</div>
+                  <div className="detailright-t">
+                    Vệ sinh máy tính, laptop...
+                  </div>
                 </div>
                 <div className="fm">
                   <img src={shield_24px} />
