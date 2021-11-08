@@ -38,6 +38,10 @@ namespace Laptop_store_e_comerce.Controllers
             if (type == "screen") pro = await database.Products.Include(pro => pro.ScreenDetail)
                                                                  .Where(pro => pro.Id == id)
                                                                  .FirstOrDefaultAsync();
+            if (type == "pc") pro = await database.Products.Include(pro => pro.Pcdetail)
+                                                           .Where(pro => pro.Idloai == type)
+                                                           .Where(pro => pro.Id == id)
+                                                           .FirstOrDefaultAsync();
             if (pro == null) return NotFound();
             else return pro;
         }
@@ -162,7 +166,7 @@ namespace Laptop_store_e_comerce.Controllers
         }
         private bool existType(string type)
         {
-            return database.LoaiSanPhams.Any(h => h.Id == type);
+            return database.TypeProducts.Any(h => h.Id == type);
         }
     }
 }

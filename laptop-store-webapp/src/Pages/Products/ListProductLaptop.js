@@ -20,16 +20,17 @@ export default function ListProductLaptop({ pros }) {
   function handleViewDetails(detail) {
     history.push(`/sanpham/${detail.id}`);
   }
+  console.log(`pros`, pros);
   return (
     <div className="row prolst">
       {pros.map((pro, index) => {
-        console.log(pro);
         return (
           <div className="col-md-4 col-sm-6 lstpro " key={index}>
             <div className="products">
               <div className="thumbnail">
                 <a className="af" onClick={() => handleViewDetails(pro)}>
                   <img
+                    className="img-pro"
                     src={`https://localhost:44343/Images/Products/${pro.nameimage}`}
                     alt="Product Name"
                   />

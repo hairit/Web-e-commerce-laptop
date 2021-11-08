@@ -1,0 +1,43 @@
+.panel-pc {
+  width: 80%;
+  margin: 30px auto;
+}
+.pc-container {
+}
+.pc-item {
+  padding: 0 15px;
+}
+.pc-infor {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+  border: 0.1px solid rgb(234 224 224);
+}
+.pc-image-img {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+}
+.pc-id {
+  font-size: 13px;
+  padding: 5px 20px;
+  text-align: left;
+}
+.pc-name {
+  margin-top: 20px;
+  font-size: 13px;
+  padding: 5px 20px;
+  text-align: left;
+  color: rgb(70, 69, 69);
+}
+.pc-price {
+  display: flex;
+  flex-direction: row;
+  padding: 5px 20px;
+}
+.pc-price-value {
+  font-size: 16px;
+  color: rgb(216, 10, 10);
+  font-weight: 500;
+}

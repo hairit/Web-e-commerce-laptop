@@ -1,79 +1,77 @@
-.screen-panel{
-    width: 80%;
-    margin: 0 auto;
-    height: auto;
-    padding-left: 5px;
-    padding-right: 5px;
-    padding-bottom: 5px;
-    margin-top: 30px;
-    background-color:#3f4fc3;
-    border-radius: 10px;
+.screen-panel {
+  width: 80%;
+  margin: 0 auto;
+  height: auto;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-bottom: 5px;
+  margin-top: 30px;
+  background-color: #3f4fc3;
+  border-radius: 10px;
 }
-.screen-panel-header{
-    background-color: #3f4fc3;
-    border-radius: 10px;
-    height: auto;
-    justify-content: space-between;
-    display: flex;
-    align-items: center;
-    padding: 17px 23px;
+.screen-panel-header {
+  background-color: #3f4fc3;
+  border-radius: 10px;
+  height: auto;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+  padding: 17px 23px;
 }
-.screen-panel-header-logo{
-    color : #FFFFFF;
-    font-size: 23px;
-    font-weight: 500;
+.screen-panel-header-logo {
+  color: #ffffff;
+  font-size: 23px;
+  font-weight: 500;
 }
-.btn-all-screen{
-    font-size: 16px;
-    color: #FFFFFF;
-    cursor: pointer;
+.btn-all-screen {
+  font-size: 16px;
+  color: #ffffff;
+  cursor: pointer;
 }
-.screen-infor{
-    height: auto;
+.screen-infor {
+  height: auto;
 }
-.screen-item{
-    margin: 5px 5px;
-    background-color: #FFFFFF;
-    border-radius: 5px;
-    padding-bottom: 5px;
+.screen-item {
+  margin: 5px 5px;
+  background-color: #ffffff;
+  border-radius: 5px;
+  padding-bottom: 5px;
 }
-.screen-image-img{
-    transform: scale(86%);
-    transition: 0.2s;
-    border-radius: 5px;
+.screen-image-img {
+  transform: scale(86%);
+  transition: 0.2s;
+  border-radius: 5px;
 }
-.screen-image-img:hover{
-    transform: scale(100%);
+.screen-image-img:hover {
+  transform: scale(100%);
 }
-.screen-detail{
-    background-color: #FFFFFF;
-    display: flex;
-    flex-direction: column;
+.screen-detail {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
 }
-.screen-detail-item{
-    padding: 5px 20px;
+.screen-detail-item {
+  padding: 5px 20px;
 }
-.screen-id{
-    font-size: 13px;
-    font-weight: 500;
+.screen-id {
+  font-size: 13px;
 }
-.screen-name{
-    font-size: 13px;
-    font-weight: 500;
-    height: 30px;
-    overflow: hidden;
+.screen-name {
+  font-size: 13px;
+  height: 30px;
+  overflow: hidden;
 }
-.screen-name:hover{
-    color: #3f4fc3;
+.screen-name:hover {
+  color: #3f4fc3;
 }
-.screen-price{
-    margin-top: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.screen-price {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.screen-price-value{
-    font-size: 18px;
-    color: #3f4fc3;
-    font-weight: 500;
+.screen-price-value {
+  font-size: 16px;
+  color: #3f4fc3;
+  font-weight: 500;
 }
