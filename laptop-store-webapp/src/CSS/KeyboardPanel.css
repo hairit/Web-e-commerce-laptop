@@ -1,42 +1,42 @@
-.keyboard-panel{
-    width:80%;
-    margin: 0 auto;
-    height: auto;
-    background-color: #FFFFFF;
-    border-radius: 10px;
-    margin-top: 30px;
-    text-align: center;
-    padding-bottom: 37px;
+.keyboard-panel {
+  width: 80%;
+  margin: 0 auto;
+  height: auto;
+  background-color: #ffffff;
+  border-radius: 10px;
+  margin-top: 30px;
+  text-align: center;
+  padding-bottom: 37px;
 }
-.keyboard-row{
-    border-top: 0.001px rgb(226, 225, 225) solid;
-    border-left: 0.001px rgb(226, 225, 225) solid;
+.keyboard-row {
+  border-top: 0.001px rgb(226, 225, 225) solid;
+  border-left: 0.001px rgb(226, 225, 225) solid;
 }
-.keyboard-panel-header{
-    position: relative;
-    width: 100%;
-    display: flex;
+.keyboard-panel-header {
+  position: relative;
+  width: 100%;
+  display: flex;
 }
-.keyboard-panel-header::before{
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    height: 5px;
-    top:-5px;
-    background-color: #3f4fc3;
+.keyboard-panel-header::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 5px;
+  top: -5px;
+  background-color: #3f4fc3;
 }
-.keyboard-panel-header-logo{
-    background-color:#3f4fc3;
-    width: max-content;
-    height: 30px;
-    padding: 0 20px;
-    color : #FFFFFF;
-    font-weight : 500;
-    font-size: 20px;
-    position: relative;
-    display: flex;
-    align-items: center;
+.keyboard-panel-header-logo {
+  background-color: #3f4fc3;
+  width: max-content;
+  height: 30px;
+  padding: 0 20px;
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 20px;
+  position: relative;
+  display: flex;
+  align-items: center;
 }
 /* .keyboard-panel-header-logo::before{
     position: absolute;
@@ -50,73 +50,73 @@
     border-top: 30px solid #3f4fc3;
     background-color: #3f4fc3;
 } */
-.keyboard-panel-header-logo::after{
-    position: absolute;
-    content:'';
-    top: 0;
-    right : -20px;
-    box-sizing: border-box;
-    width: 20px;
-    bottom: 0;
-    border-right: 20px solid #FFFFFF;
-    border-top: 30px solid #3f4fc3;
-    background-color: #3f4fc3;
+.keyboard-panel-header-logo::after {
+  position: absolute;
+  content: "";
+  top: 0;
+  right: -20px;
+  box-sizing: border-box;
+  width: 20px;
+  bottom: 0;
+  border-right: 20px solid #ffffff;
+  border-top: 30px solid #3f4fc3;
+  background-color: #3f4fc3;
 }
-.keyboard-item{
-    width: auto;
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
-    padding-bottom: 30px;
-    border-right: 0.001px rgb(226, 225, 225) solid;
-    border-bottom: 0.001px rgb(226, 225, 225) solid;
+.keyboard-item {
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  padding-bottom: 30px;
+  border-right: 0.001px rgb(226, 225, 225) solid;
+  border-bottom: 0.001px rgb(226, 225, 225) solid;
 }
-.keyboard-item:hover{
-    box-shadow:  0 0 10px 5px rgb(226, 225, 225);
+.keyboard-item:hover {
+  box-shadow: 0 0 10px 5px rgb(226, 225, 225);
 }
-.keyboard-item:hover .keyboard-image-img{
-    margin-top: 0;
-    transition: 0.3s;
+.keyboard-item:hover .keyboard-image-img {
+  margin-top: 0;
+  transition: 0.3s;
 }
-.keyboard-image{
-    width: 100%;
-    height: 258px;
+.keyboard-image {
+  width: 100%;
+  height: 258px;
 }
-.keyboard-image-img{
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-    transform: scale(85%);
-    margin-top: 20px;
-    margin-top: 20px;
+.keyboard-image-img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  transform: scale(85%);
+  margin-top: 20px;
+  margin-top: 20px;
 }
-.keyboard-detail-item{
-    padding: 2px 30px;
-    display: flex;
-    justify-content: space-between;
-    color : black;
+.keyboard-detail-item {
+  padding: 2px 30px;
+  display: flex;
+  justify-content: space-between;
+  color: black;
 }
-.keyboard-id{
-    font-size: 13px;
+.keyboard-id {
+  font-size: 13px;
 }
-.keyboard-name{
-    /* font-size: 13px; */
-    line-height: 1.40;
-    height: 37px;
-    overflow: hidden;
-    text-align: left;
+.keyboard-name {
+  font-size: 13px;
+  line-height: 1.44;
+  height: 37px;
+  overflow: hidden;
+  text-align: left;
 }
-.keyboard-name:hover{
-    color: #3f4fc3;
+.keyboard-name:hover {
+  color: #3f4fc3;
 }
-.keyboard-price{
-    margin-top: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.keyboard-price {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.keyboard-price-value{
-    color: #3f4fc3;
-    font-size: 16px;
-    font-weight: 600;
+.keyboard-price-value {
+  color: #3f4fc3;
+  font-size: 16px;
+  font-weight: 600;
 }

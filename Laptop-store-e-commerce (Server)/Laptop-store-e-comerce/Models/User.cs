@@ -21,7 +21,6 @@ namespace Laptop_store_e_comerce.Models
         public string Pass { get; set; }
         public string Sdt { get; set; }
         public string Diachi { get; set; }
-        public string Gioitinh { get; set; }
         public string Position { get; set; }
         public string Nameimage { get; set; }
 
