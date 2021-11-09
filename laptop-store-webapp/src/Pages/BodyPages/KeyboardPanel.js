@@ -49,7 +49,7 @@ export default function KeyboardPanel() {
                     }
                 </div>
             </div>
-            <button className="btn-all-product" to="/"><p>Tất cả sản phẩm </p></button>
+            <button className="btn-all-product" to="/keyboard"><p>Tất cả sản phẩm </p></button>
         </div>
     )
 }
