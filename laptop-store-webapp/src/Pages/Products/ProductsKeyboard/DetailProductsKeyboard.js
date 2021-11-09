@@ -165,7 +165,7 @@ export default function DetailProductsKeyboard({ match }) {
                 <img src={freeshipping_4px} />
                 <div className="shipfree">Sản phẩm được giao hàng miễn phí</div>
               </div> */}
-              <div className="chinhsachbh">
+              <div className="chinhsachbh cskb">
                 <p className="font-cs">Chính sách bán hàng</p>
                 {/* <div className="fm">
                   <img src={freeshippingcs_24px} />

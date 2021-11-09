@@ -82,8 +82,7 @@ img {
   outline: none;
 }
 .button:hover {
-  border: 1px solid #fe5252;
-  color: #fe5252;
+  border: 1px solid #0021dd;
 }
 .add-cart {
   padding: 9px 30px;
@@ -163,7 +162,7 @@ img {
   -webkit-box-shadow: 0 0 5px 1px #d3d3d3;
   box-shadow: 0 0 5px 1px #d3d3d3;
 }
-.offer {
+/* .offer {
   position: absolute;
   right: 15px;
   top: 15px;
@@ -174,7 +173,7 @@ img {
   background: #f7544a;
   -webkit-border-radius: 10px;
   border-radius: 10px;
-}
+} */
 .thumbnail {
   float: left;
   position: relative;
@@ -216,10 +215,10 @@ img {
   text-align: center;
   font-size: 16px;
   font-weight: 400;
-  color: #2f2f2f;
-  color: #333333;
 }
-
+.productname p:hover {
+  color: rgb(4, 4, 199);
+}
 .products .price {
   float: left;
   width: 100%;
@@ -239,9 +238,9 @@ img {
 .products .button {
   margin: 0 3px 5px 3px;
 }
-.products .button .fa {
-  color: #f7544a;
-}
+/* .products .button .fa {
+  color: #000000;
+} */
 
 .products .button .fa img {
   width: 70%;
@@ -253,7 +252,7 @@ img {
 }
 
 .products .button:hover {
-  background: blue;
+  background: rgb(12, 12, 197);
   color: #fff;
 }
 .products .button:hover .fa {
@@ -283,12 +282,12 @@ img {
   margin-top: 15px;
   min-height: 150px;
 }
-.products-listItem .products:hover {
+/* .products-listItem .products:hover {
   background: #fff;
   border-color: #f7544a;
   -webkit-box-shadow: 0 0 5px 1px #d3d3d3;
   box-shadow: 0 0 5px 1px #d3d3d3;
-}
+} */
 .products-listItem .thumbnail {
   border: medium none;
   float: left;
@@ -330,7 +329,7 @@ img {
   width: 100%;
   margin-bottom: 10px;
 }
-.brand-logo {
+/* .brand-logo {
   float: left;
   border: 1px solid #dcdcdc;
   -webkit-border-radius: 10px;
@@ -338,7 +337,7 @@ img {
   width: 100%;
   padding: 10px;
   text-align: center;
-}
+} */
 
 #braldLogo .brand_item li {
   display: inline-block;
@@ -356,7 +355,7 @@ img {
   padding-left: 0;
   width: 100%;
 }
-
+/* 
 .leftbar {
   border-top: solid 1px rgb(233, 233, 233);
   border-bottom-left-radius: 1rem;
@@ -364,15 +363,14 @@ img {
   margin-bottom: 13px;
   position: relative;
   background: white;
-  /* margin: 15px 0; */
   padding: 15px;
   overflow: hidden;
   clear: both;
-}
-.leftbar .title {
+} */
+/* .leftbar .title {
   font-size: 16px;
   text-transform: uppercase;
-}
+} */
 /*!~~~~~~~~~~~~ PRODUCT TAGS ~~~~~~~~~~~~~*/
 
 .product-tag ul {
