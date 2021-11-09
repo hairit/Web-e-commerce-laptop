@@ -42,6 +42,10 @@ namespace Laptop_store_e_comerce.Controllers
                                                            .Where(pro => pro.Idloai == type)
                                                            .Where(pro => pro.Id == id)
                                                            .FirstOrDefaultAsync();
+            if (type == "mouse") pro = await database.Products.Include(pro => pro.MouseDetail)
+                                                              .Where(pro => pro.Idloai == type)
+                                                              .Where(pro => pro.Id == id)
+                                                              .FirstOrDefaultAsync();
             if (pro == null) return NotFound();
             else return pro;
         }
