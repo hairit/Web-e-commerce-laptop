@@ -1,16 +1,15 @@
 import React from "react";
 import axios from "axios";
 
-import "../../CSS/ProductsCss/bootstrap.css";
-import "../../CSS/ProductsCss/style.css";
+import "../../../CSS/ProductsCss/bootstrap.css";
+import "../../../CSS/ProductsCss/style.css";
 import { useEffect, useState } from "react";
-import ListProductLaptop from "./ListProductLaptop";
-import fblike from "../../Images/fblike.png";
-export default function Laptops() {
+import ListProductKeyboard from "./ListProductScreen";
+export default function Screen() {
   const [pros, setPros] = useState([]);
   useEffect(() => {
     axios
-      .get("https://localhost:44343/data/Product/type=laptop", null)
+      .get("https://localhost:44343/data/Product/type=screen", null)
       .then((res) => setPros(res.data))
       .catch((err) => console.log(err));
   }, []);
@@ -54,92 +53,40 @@ export default function Laptops() {
                   <div className="title-sort">Thương hiệu</div>
                   <div className="btn-right">
                     <button type="button" className="btn-sort">
-                      Asus
+                      LG
                     </button>
                     <button type="button" className="btn-sort">
-                      Dell
+                      DELL
                     </button>
                     <button type="button" className="btn-sort">
-                      HP
+                      ACER
                     </button>
                     <button type="button" className="btn-sort">
-                      Acer
-                    </button>
-                  </div>
-                </div>
-                <div className="loc">
-                  <div className="title-sort">CPU</div>
-                  <div className="btn-right">
-                    <button type="button" className="btn-sort">
-                      Corei3
+                      LCD
                     </button>
                     <button type="button" className="btn-sort">
-                      Corei5
-                    </button>
-                    <button type="button" className="btn-sort">
-                      Corei7
-                    </button>
-                    <button type="button" className="btn-sort">
-                      Corei9
+                      ASUS
                     </button>
                   </div>
                 </div>
 
                 <div className="loc">
-                  <div className="title-sort">Ram</div>
+                  <div className="title-sort">Năm sản xuất</div>
                   <div className="btn-right">
                     <button type="button" className="btn-sort">
-                      4GB
+                      2019
                     </button>
                     <button type="button" className="btn-sort">
-                      8GB
+                      2020
                     </button>
                     <button type="button" className="btn-sort">
-                      16GB
-                    </button>
-                  </div>
-                </div>
-
-                <div className="loc">
-                  <div className="title-sort">VAG</div>
-                  <div className="btn-right">
-                    <button type="button" className="btn-sort">
-                      NVIDIA
-                    </button>
-                  </div>
-                </div>
-
-                <div className="loc">
-                  <div className="title-sort">Màn hình</div>
-                  <div className="btn-right">
-                    <button type="button" className="btn-sort">
-                      13.3 inch
-                    </button>
-                    <button type="button" className="btn-sort">
-                      14 inch
-                    </button>
-                    <button type="button" className="btn-sort">
-                      15 inch
-                    </button>
-                    <button type="button" className="btn-sort">
-                      15.6 inch
+                      2021
                     </button>
                   </div>
                 </div>
               </div>
             </div>
             <div className="col-md-3 sorfprice">
-              {/* <div className="category leftbar ">
-                <h3 className="title">Danh mục sản phẩm</h3>
-                <ul>
-                  <li>
-                    <a href="#">Laptop</a>
-                  </li>
-                  <li>
-                    <a href="#">Bàn phím</a>
-                  </li>
-                </ul>
-              </div> */}
               <div className="price-filter leftbar">
                 <h3 className="title">Giá</h3>
                 <form className="pricing">
@@ -160,7 +107,7 @@ export default function Laptops() {
           <div className="row">
             <div className="col-md-9 prolst">
               <div className="products-grid lstlaptop">
-                <ListProductLaptop pros={pros} />
+                <ListProductKeyboard pros={pros} />
               </div>
               <div className="toolbar">
                 <div className="pager">
@@ -186,28 +133,19 @@ export default function Laptops() {
             </h3>
             <ul>
               <li>
-                <a href="#">Laptop Asus</a>
+                <a href="#">Màn hình</a>
               </li>
               <li>
-                <a href="#">Laptop Dell</a>
+                <a href="#">Màn hình đẹp</a>
               </li>
               <li>
-                <a href="#">Laptop sinh viên</a>
+                <a href="#">Màn hình HD</a>
               </li>
               <li>
-                <a href="#">Laptop giá rẻ</a>
+                <a href="#">Màn hình LCD</a>
               </li>
               <li>
-                <a href="#">Laptop Gaming</a>
-              </li>
-              <li>
-                <a href="#">Bàn phím cơ</a>
-              </li>
-              <li>
-                <a href="#">Bàn phím Gaming</a>
-              </li>
-              <li>
-                <a href="#">Bàn phím giá rẻ</a>
+                <a href="#">Màn hình giá rẻ</a>
               </li>
             </ul>
           </div>

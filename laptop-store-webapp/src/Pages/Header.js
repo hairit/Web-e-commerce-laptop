@@ -70,10 +70,7 @@ export default function Header() {
               Đăng ký
             </p>
           </NavLink>
-          <NavLink
-            className="header-center-right-menu-item"
-            /*to="/giohang"*/ to="/keyboard"
-          >
+          <NavLink className="header-center-right-menu-item" to="/giohang">
             <AiOutlineShoppingCart className="header-center-right-menu-item-icon" />
             <p>Giỏ hàng</p>
           </NavLink>

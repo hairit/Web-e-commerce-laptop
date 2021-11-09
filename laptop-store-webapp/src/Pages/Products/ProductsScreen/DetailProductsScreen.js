@@ -1,21 +1,23 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import details from "../../CSS/ProductsCss/details.css";
-import Solver from "../../Classes/Solver";
-import freeshipping_4px from "../../Images/freeshipping_4px.png";
-import freeshippingcs_24px from "../../Images/freeshippingcs_24px.png";
-import shield_24px from "../../Images/shield_24px.png";
-import replace_24px from "../../Images/replace_24px.png";
-import settings_24px from "../../Images/settings_24px.png";
-import monitor_24px from "../../Images/monitor_24px.png";
-import PhuKienMuaCung from "./PhuKienMuaCung";
-import prev_60px from "../../Images/prev_60px.png";
-import next_60px from "../../Images/next_60px.png";
-import promotion_32px from "../../Images/promotion_32px.png";
-import insurance_24px from "../../Images/insurance_24px.png";
-import whatsapp_32px from "../../Images/whatsapp_32px.png";
-import edit_property_32px from "../../Images/edit_property_32px.png";
-import settings_32px from "../../Images/settings_32px.png";
+import details from "../../../CSS/ProductsCss/details.css";
+import Solver from "../../../Classes/Solver";
+import { withRouter } from "react-router";
+import SanPhamKhac from "./SanPhamKhac";
+
+import freeshipping_4px from "../../../Images/freeshipping_4px.png";
+import freeshippingcs_24px from "../../../Images/freeshippingcs_24px.png";
+import shield_24px from "../../../Images/shield_24px.png";
+import replace_24px from "../../../Images/replace_24px.png";
+import settings_24px from "../../../Images/settings_24px.png";
+import monitor_24px from "../../../Images/monitor_24px.png";
+import prev_60px from "../../../Images/prev_60px.png";
+import next_60px from "../../../Images/next_60px.png";
+import promotion_32px from "../../../Images/promotion_32px.png";
+import insurance_24px from "../../../Images/insurance_24px.png";
+import whatsapp_32px from "../../../Images/whatsapp_32px.png";
+import edit_property_32px from "../../../Images/edit_property_32px.png";
+import settings_32px from "../../../Images/settings_32px.png";
 
 // function renderGoiypro() {
 //   useEffect(() => {
@@ -29,22 +31,22 @@ import settings_32px from "../../Images/settings_32px.png";
 //   }, []);
 // };
 
-export default function DetailProductsKeyboard({ match }) {
+export default function DetailProductsScreen({ match }) {
   const solver = new Solver();
   const [detail, setDetail] = useState({});
   useEffect(() => {
     axios
       .get(
-        `https://localhost:44343/data/product/type=keyboard/${match.match.params.id}`
+        `https://localhost:44343/data/product/type=laptop/${match.match.params.id}`
       )
       .then((res) => {
-        // console.log(res);
+        console.log(res);
         setDetail(res.data);
       })
       .catch((err) => console.log(err + "Khong goi san pham"));
   }, []);
 
-  console.log("ôjoojo", detail.keyboardDetail);
+  console.log(detail.laptopDescription && detail.laptopDescription.detailcpu);
   return (
     <div className="single-product">
       <div className="container">
@@ -90,40 +92,46 @@ export default function DetailProductsKeyboard({ match }) {
                 </div>
                 <div className="col detail-pro">
                   <p>
-                    - Đèn: {detail.keyboardDetail && detail.keyboardDetail.den}
-                  </p>
-
-                  <p>
-                    - Mô tả đèn:{" "}
-                    {detail.keyboardDetail && detail.keyboardDetail.motaden}
+                    - CPU:{" "}
+                    {detail.laptopDescription &&
+                      detail.laptopDescription.detailcpu}
                   </p>
                   <p>
-                    - Kiểu switch:{" "}
-                    {detail.keyboardDetail && detail.keyboardDetail.typeswitch}
+                    - Màn hình:{" "}
+                    {detail.laptopDescription &&
+                      detail.laptopDescription.detailmanhinh}
                   </p>
                   <p>
-                    - Switch:{" "}
-                    {detail.keyboardDetail && detail.keyboardDetail.motaswitch}
+                    - RAM:{" "}
+                    {detail.laptopDescription &&
+                      detail.laptopDescription.detailram}
                   </p>
                   <p>
-                    - Layout:{" "}
-                    {detail.keyboardDetail && detail.keyboardDetail.layout}
+                    - VGA:{" "}
+                    {detail.laptopDescription &&
+                      detail.laptopDescription.detailvga}
                   </p>
                   <p>
-                    - Kết nối:{" "}
-                    {detail.keyboardDetail && detail.keyboardDetail.ketnoi}
+                    - Lưu trữ:{" "}
+                    {detail.laptopDescription && detail.laptopDescription.ocung}
                   </p>
-
                   <p>
-                    - Size:{" "}
-                    {detail.keyboardDetail && detail.keyboardDetail.size}
+                    - Hệ điều hành:{" "}
+                    {detail.laptopDescription && detail.laptopDescription.hdh}
+                  </p>
+                  <p>
+                    - Pin:{" "}
+                    {detail.laptopDescription && detail.laptopDescription.pin}
                   </p>
                 </div>
               </div>
               <div className="col-md-6 colors ttdetail">
                 <div className="right-content ">
                   <h4>
-                    {detail.ten} {detail.id}
+                    {detail.ten} {detail.id} ({" "}
+                    {detail.laptopDescription &&
+                      detail.laptopDescription.detailram}{" "}
+                    )
                   </h4>
                   <div className="tt">
                     <div className="thuonghieuL">
@@ -182,11 +190,25 @@ export default function DetailProductsKeyboard({ match }) {
                 </div>
                 <div className="fm">
                   <img src={replace_24px} />
-                  <div className="detailright-t">Đổi trả trong vòng 7 ngày</div>
+                  <div className="detailright-t">
+                    Đổi trả trong vòng 14 ngày
+                  </div>
                 </div>
               </div>
               <div className="chinhsachbh">
                 <p className="font-cs">Dịch vụ khác</p>
+                <div className="fm">
+                  <img src={settings_24px} />
+                  <div className="detailright-t">
+                    Sửa chữa đồng giá 200.000đ.
+                  </div>
+                </div>
+                <div className="fm">
+                  <img src={monitor_24px} />
+                  <div className="detailright-t">
+                    Vệ sinh máy tính, laptop...
+                  </div>
+                </div>
                 <div className="fm">
                   <img src={shield_24px} />
                   <div className="detailright-t">Bảo hành tại nhà.</div>
@@ -363,7 +385,7 @@ export default function DetailProductsKeyboard({ match }) {
           <div className="panel-spkhac">
             <div className="xemthem">Sản phẩm khác</div>
             <div className="row_10">
-              <PhuKienMuaCung />
+              <SanPhamKhac />
               <span className="btn-prev btnnp">
                 <img src={prev_60px} />
               </span>

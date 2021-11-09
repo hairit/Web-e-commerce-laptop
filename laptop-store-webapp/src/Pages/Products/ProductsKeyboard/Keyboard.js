@@ -1,8 +1,8 @@
 import React from "react";
 import axios from "axios";
 
-import "../../CSS/ProductsCss/bootstrap.css";
-import "../../CSS/ProductsCss/style.css";
+import "../../../CSS/ProductsCss/bootstrap.css";
+import "../../../CSS/ProductsCss/style.css";
 import { useEffect, useState } from "react";
 import ListProductKeyboard from "./ListProductKeyboard";
 export default function Keyboard() {
