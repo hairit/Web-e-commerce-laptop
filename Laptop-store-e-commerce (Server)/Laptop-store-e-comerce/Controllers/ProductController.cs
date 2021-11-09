@@ -46,6 +46,10 @@ namespace Laptop_store_e_comerce.Controllers
                                                               .Where(pro => pro.Idloai == type)
                                                               .Where(pro => pro.Id == id)
                                                               .FirstOrDefaultAsync();
+            //if (type == "headphone") pro = await database.Products.Include(pro => pro.HeadphoneDetail)
+                                                                    //.Where(pro => pro.Idloai == type)
+                                                                    //.Where(pro => pro.Id == id)
+                                                                    //.FirstOrDefaultAsync();
             if (pro == null) return NotFound();
             else return pro;
         }
@@ -135,7 +139,15 @@ namespace Laptop_store_e_comerce.Controllers
             try{
                 database.Products.Add(pro);
                 database.SaveChangesAsync();
-                return CreatedAtAction("getProductByID", new { type = pro.Idloai ,id = pro.Id  }, pro);
+                //return  CreatedAtAction("getProductByID", new { type = pro.Idloai ,id = pro.Id  }, pro);
+                return await getProductByID(pro.Idloai, pro.Id);
+
+                //Product newProduct = null;
+                //newProduct = await database.Products.Include(newProduct => newProduct.HeadphoneDetail)
+                                                            //.Where(newProduct => newProduct.Idloai == pro.Idloai)
+                                                            //.Where(newProduct => newProduct.Id == pro.Id).FirstOrDefaultAsync();
+                //if (newProduct != null) return newProduct;
+                //else return BadRequest();
             }
             catch(DbUpdateConcurrencyException) {
                     Console.WriteLine("Errol when add product");
@@ -172,5 +184,11 @@ namespace Laptop_store_e_comerce.Controllers
         {
             return database.TypeProducts.Any(h => h.Id == type);
         }
+        [HttpGet("test/entity")]
+        public async Task<ActionResult<Product>> testEntity()
+        {
+            return await database.Products.Where(pro => pro.Id == "ABC").FirstOrDefaultAsync();
+        }
     }
+    
 }

@@ -61,7 +61,7 @@ export default function Laptop() {
         className="btn-all-product"
         to="/"
         onClick={() => {
-          history.push(`/sanpham`);
+          history.push(`/laptop`);
         }}
       >
         <p>Tất cả sản phẩm</p>

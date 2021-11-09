@@ -44,7 +44,7 @@ export default function ScreenPanel() {
                 <div className="screen-panel-header-logo">
                     Màn hình máy tính
                 </div>
-                <div className="btn-all-screen" onClick={() => history.push('/')}>Xem tất cả{" >>"}</div>
+                <div className="btn-all-screen" onClick={() => history.push('/screen')}>Xem tất cả{" >>"}</div>
             </div>
             <div className="container10Col screen-container">
                 <div className="row-10-no-margin screen-row">
