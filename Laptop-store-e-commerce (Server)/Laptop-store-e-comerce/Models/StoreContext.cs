@@ -28,6 +28,7 @@ namespace Laptop_store_e_comerce.Models
         public virtual DbSet<KeyboardDetail> KeyboardDetails { get; set; }
         public virtual DbSet<LaptopDescription> LaptopDescriptions { get; set; }
         public virtual DbSet<LaptopDetail> LaptopDetails { get; set; }
+        public virtual DbSet<MouseDetail> MouseDetails { get; set; }
         public virtual DbSet<Pcdetail> Pcdetails { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<ScreenDetail> ScreenDetails { get; set; }
@@ -343,6 +344,67 @@ namespace Laptop_store_e_comerce.Models
                     .HasForeignKey<LaptopDetail>(d => d.IdProduct)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__LaptopDet__idPro__5BE2A6F2");
+            });
+
+            modelBuilder.Entity<MouseDetail>(entity =>
+            {
+                entity.HasKey(e => e.IdProduct)
+                    .HasName("PK__MouseDet__5EEC79D1EDD4F72B");
+
+                entity.ToTable("MouseDetail");
+
+                entity.Property(e => e.IdProduct)
+                    .HasColumnName("idProduct")
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Dangcambien)
+                    .HasColumnName("dangcambien")
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.Dophangiai)
+                    .HasColumnName("dophangiai")
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.Ketnoi)
+                    .HasColumnName("ketnoi")
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.Khoiluong)
+                    .HasColumnName("khoiluong")
+                    .HasMaxLength(40);
+
+                entity.Property(e => e.Kichthuoc)
+                    .HasColumnName("kichthuoc")
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.Kieuketnoi)
+                    .HasColumnName("kieuketnoi")
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.Led)
+                    .HasColumnName("led")
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.Loaichuot)
+                    .HasColumnName("loaichuot")
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.Sonutbam).HasColumnName("sonutbam");
+
+                entity.Property(e => e.Tencambien)
+                    .HasColumnName("tencambien")
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.Thoigianphanhoi)
+                    .HasColumnName("thoigianphanhoi")
+                    .HasMaxLength(50);
+
+                entity.HasOne(d => d.IdProductNavigation)
+                    .WithOne(p => p.MouseDetail)
+                    .HasForeignKey<MouseDetail>(d => d.IdProduct)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__MouseDeta__sonut__05D8E0BE");
             });
 
             modelBuilder.Entity<Pcdetail>(entity =>

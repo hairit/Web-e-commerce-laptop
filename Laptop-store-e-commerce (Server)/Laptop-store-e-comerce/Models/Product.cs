@@ -30,6 +30,7 @@ namespace Laptop_store_e_comerce.Models
         public virtual KeyboardDetail KeyboardDetail { get; set; }
         public virtual LaptopDescription LaptopDescription { get; set; }
         public virtual LaptopDetail LaptopDetail { get; set; }
+        public virtual MouseDetail MouseDetail { get; set; }
         public virtual Pcdetail Pcdetail { get; set; }
         public virtual ScreenDetail ScreenDetail { get; set; }
         public virtual ICollection<ChitietDonHang> ChitietDonHangs { get; set; }
