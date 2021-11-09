@@ -12,6 +12,12 @@ import monitor_24px from "../../Images/monitor_24px.png";
 import PhuKienMuaCung from "./PhuKienMuaCung";
 import prev_60px from "../../Images/prev_60px.png";
 import next_60px from "../../Images/next_60px.png";
+import promotion_32px from "../../Images/promotion_32px.png";
+import insurance_24px from "../../Images/insurance_24px.png";
+import whatsapp_32px from "../../Images/whatsapp_32px.png";
+import edit_property_32px from "../../Images/edit_property_32px.png";
+import settings_32px from "../../Images/settings_32px.png";
+
 // function renderGoiypro() {
 //   useEffect(() => {
 //     axios
@@ -206,25 +212,52 @@ export default function DetailProductsLaptop({ match }) {
                   <img src={shield_24px} />
                   <div className="detailright-t">Bảo hành tại nhà.</div>
                 </div>
+                <div className="fm">
+                  <img src={insurance_24px} />
+                  <div className="detailright-t">
+                    Bảo hành 12 tháng chính hãng {detail.thuonghieu}
+                  </div>
+                </div>
                 <a href="#">Xem chi tiết</a>
+              </div>
+              <div class="promotion">
+                <p>
+                  <img src={promotion_32px} />
+                  Khuyến mãi, ưu đãi
+                </p>
+                <div class="promotion-tt">
+                  <span>
+                    <a>Giảm 15%</a> khi mua thêm phụ kiện (trừ phụ kiện Apple)
+                  </span>
+                  <span>
+                    <br />
+                    <br />
+                    Mua phần mềm Microsoft Office 365 Personal chỉ{" "}
+                    <a>990.000đ</a> (Giá mua lẻ 1.290.000đ)
+                  </span>
+                </div>
               </div>
             </div>
           </div>
           <div className="row bt-if colors">
             <div className="col-sm-8 info-detail thongso-mt">
-              <div className="line-if"></div>
+              <div className="line-if">
+                <img src={edit_property_32px} />
+              </div>
               <p>Mô tả sản phẩm</p>
               <div className="mt-pro">
-                <p></p>
-                <img
+                <span>Đang cập nhật</span>
+                {/* <img
                   src={`https://localhost:44343/Images/Products/${detail.nameimage}`}
-                />
+                /> */}
               </div>
             </div>
 
             <div className="col-sm-4 tb-ifdetail">
               <div className=" thongso-mt">
-                <div className="line-if "></div>
+                <div className="line-if ">
+                  <img src={settings_32px} />
+                </div>
                 <p>Thông số kỹ thuật</p>
               </div>
               <table class="table table-striped tb-if">
@@ -349,7 +382,7 @@ export default function DetailProductsLaptop({ match }) {
             </div>
           </div>
           <div className="panel-spkhac">
-            <div className="xemthem">Phụ kiện thường mua cùng</div>
+            <div className="xemthem">Sản phẩm khác</div>
             <div className="row_10">
               <PhuKienMuaCung />
               <span className="btn-prev btnnp">
@@ -358,6 +391,74 @@ export default function DetailProductsLaptop({ match }) {
               <span className="btn-next btnnp">
                 <img src={next_60px} />
               </span>
+            </div>
+          </div>
+          <div className="info-bottom row">
+            <div className="col-md-6 supports">
+              <div className="info-title">
+                <img src={whatsapp_32px} />
+                <p>Hỗ trợ</p>
+              </div>
+              <div className="support-list">
+                <ul>
+                  <li>
+                    <div className="left">
+                      <p>Gọi tư vấn máy - phụ kiện</p>
+                      <span>(08:30 – 21:30)</span>
+                    </div>
+                    <div className="right">
+                      <strong>1800.6018</strong>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div className="support-list">
+                <ul>
+                  <li>
+                    <div className="left">
+                      <p>Khiếu nại - Góp ý</p>
+                      <span>(08:30 – 21:30)</span>
+                    </div>
+                    <div className="right">
+                      <strong>1800.6018</strong>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div className="support-list">
+                <ul>
+                  <li>
+                    <div className="left">
+                      <p>Bảo hành - Hỗ trợ kỹ thuật</p>
+                      <span>(09:00 – 21:00)</span>
+                    </div>
+                    <div className="right">
+                      <strong>1800.6018</strong>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div className="support-list">
+                <ul>
+                  <li>
+                    <div className="left">
+                      <p>Gọi mua hàng từ xa</p>
+                      <span>(09:00 – 21:00)</span>
+                    </div>
+                    <div className="right">
+                      <strong>1800.6018</strong>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div className="col-md-6 addressm">
+              <iframe
+                className="bando"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.669726937899!2d106.6800696146224!3d10.759917092332737!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f1b7c3ed289%3A0xa06651894598e488!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBTw6BpIEfDsm4!5e0!3m2!1svi!2s!4v1636380798827!5m2!1svi!2s"
+                allowfullscreen=""
+                loading="lazy"
+              ></iframe>
             </div>
           </div>
         </div>

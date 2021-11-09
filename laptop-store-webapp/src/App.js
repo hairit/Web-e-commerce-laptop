@@ -2,6 +2,7 @@ import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Header from "./Pages/Header.js";
 import Laptops from "./Pages/Products/Laptops";
+import Keyboard from "./Pages/Products/Keyboard";
 import Login from "./Pages/Login";
 import Body from "./Pages/Body.js";
 import Lienhe from "./Pages/Lienhe";
@@ -17,6 +18,7 @@ function App() {
         <Route path="/" exact component={() => <Body />}></Route>
         <Route path="/sanpham" exact component={() => <Laptops />}></Route>
         <Route path="/laptop" component={() => <Laptops />}></Route>
+        <Route path="/keyboard" component={() => <Keyboard />}></Route>
         <Route
           path="/sanpham/:id"
           component={(match) => <DetailProductsLaptop match={match} />}

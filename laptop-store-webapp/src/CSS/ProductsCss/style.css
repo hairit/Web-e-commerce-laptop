@@ -358,7 +358,7 @@ img {
 }
 
 .leftbar {
-  border-top: solid 1px;
+  border-top: solid 1px rgb(233, 233, 233);
   border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
   margin-bottom: 13px;
