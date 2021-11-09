@@ -154,12 +154,20 @@
 .fm {
   margin-bottom: 20px;
 }
+.fms {
+  height: auto;
+  margin-bottom: 20px;
+}
+
 .detailright-t {
   font-size: 15px;
   font-weight: 400;
-  margin: 0 0 0 34px;
+  margin: 0 0 10px 34px;
   height: 25px;
   line-height: 25px;
+}
+.bh12t {
+  height: auto;
 }
 .font-cs {
   margin-bottom: 20px;
@@ -185,12 +193,13 @@
   width: 100%;
 }
 .promotion p {
+  text-align: center;
   color: rgb(206, 1, 1);
   margin: -17px 0 0 15px;
   font-size: 15px;
   font-weight: 400;
   background-color: white;
-  width: 170px;
+  width: 210px;
 }
 .promotion-tt a {
   color: red;

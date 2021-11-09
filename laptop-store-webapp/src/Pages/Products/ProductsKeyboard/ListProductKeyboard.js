@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import heart32px from "../../Images/heart32px.png";
+import heart32px from "../../../Images/heart32px.png";
 
 import { useHistory } from "react-router-dom";
 import { withRouter } from "react-router";
@@ -10,7 +10,7 @@ import {
   Route,
   NavLink,
 } from "react-router-dom";
-import Solver from "../../Classes/Solver";
+import Solver from "../../../Classes/Solver";
 
 export default function ListProductKeyboard({ pros }) {
   const history = useHistory();

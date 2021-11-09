@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-import heart32px from "../../Images/heart32px.png";
-import new60px from "../../Images/new60px.png";
+import heart32px from "../../../Images/heart32px.png";
 import { useState } from "react";
-import CALLER from "../../API/CALL";
 import { useHistory } from "react-router-dom";
 import { withRouter } from "react-router";
 
@@ -12,7 +10,7 @@ import {
   Route,
   NavLink,
 } from "react-router-dom";
-import Solver from "../../Classes/Solver";
+import Solver from "../../../Classes/Solver";
 
 export default function ListProductLaptop({ pros }) {
   const history = useHistory();

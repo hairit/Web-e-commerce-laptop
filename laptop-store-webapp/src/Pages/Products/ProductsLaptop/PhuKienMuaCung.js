@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Solver from "../../Classes/Solver";
-import freeshipping_4px from "../../Images/freeshipping_4px.png";
+import details from "../../../CSS/ProductsCss/details.css";
+import Solver from "../../../Classes/Solver";
+import freeshipping_4px from "../../../Images/freeshipping_4px.png";
 
 export default function PhuKienMuaCung() {
   const solver = new Solver();

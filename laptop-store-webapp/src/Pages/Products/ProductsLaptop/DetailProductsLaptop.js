@@ -1,22 +1,23 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import details from "../../CSS/ProductsCss/details.css";
-import Solver from "../../Classes/Solver";
+import details from "../../../CSS/ProductsCss/details.css";
+import Solver from "../../../Classes/Solver";
 import { withRouter } from "react-router";
-import freeshipping_4px from "../../Images/freeshipping_4px.png";
-import freeshippingcs_24px from "../../Images/freeshippingcs_24px.png";
-import shield_24px from "../../Images/shield_24px.png";
-import replace_24px from "../../Images/replace_24px.png";
-import settings_24px from "../../Images/settings_24px.png";
-import monitor_24px from "../../Images/monitor_24px.png";
 import PhuKienMuaCung from "./PhuKienMuaCung";
-import prev_60px from "../../Images/prev_60px.png";
-import next_60px from "../../Images/next_60px.png";
-import promotion_32px from "../../Images/promotion_32px.png";
-import insurance_24px from "../../Images/insurance_24px.png";
-import whatsapp_32px from "../../Images/whatsapp_32px.png";
-import edit_property_32px from "../../Images/edit_property_32px.png";
-import settings_32px from "../../Images/settings_32px.png";
+
+import freeshipping_4px from "../../../Images/freeshipping_4px.png";
+import freeshippingcs_24px from "../../../Images/freeshippingcs_24px.png";
+import shield_24px from "../../../Images/shield_24px.png";
+import replace_24px from "../../../Images/replace_24px.png";
+import settings_24px from "../../../Images/settings_24px.png";
+import monitor_24px from "../../../Images/monitor_24px.png";
+import prev_60px from "../../../Images/prev_60px.png";
+import next_60px from "../../../Images/next_60px.png";
+import promotion_32px from "../../../Images/promotion_32px.png";
+import insurance_24px from "../../../Images/insurance_24px.png";
+import whatsapp_32px from "../../../Images/whatsapp_32px.png";
+import edit_property_32px from "../../../Images/edit_property_32px.png";
+import settings_32px from "../../../Images/settings_32px.png";
 
 // function renderGoiypro() {
 //   useEffect(() => {
