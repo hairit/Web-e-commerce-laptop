@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import heart32px from "../../Images/heart32px.png";
-import new60px from "../../Images/new60px.png";
-import { useState } from "react";
-import CALLER from "../../API/CALL";
+
 import { useHistory } from "react-router-dom";
 import { withRouter } from "react-router";
 
@@ -14,11 +12,11 @@ import {
 } from "react-router-dom";
 import Solver from "../../Classes/Solver";
 
-export default function ListProductLaptop({ pros }) {
+export default function ListProductKeyboard({ pros }) {
   const history = useHistory();
   const solver = new Solver();
   function handleViewDetails(detail) {
-    history.push(`/laptop/${detail.id}`);
+    history.push(`/keyboard/${detail.id}`);
   }
   console.log(`pros`, pros);
   return (
@@ -59,4 +57,4 @@ export default function ListProductLaptop({ pros }) {
     </div>
   );
 }
-withRouter(ListProductLaptop);
+withRouter(ListProductKeyboard);
