@@ -10,6 +10,7 @@ import Tintuc from "./Pages/Tintuc";
 import Showroom from "./Pages/Showroom";
 import Footer from "./Pages/Footer";
 import DetailProductsLaptop from "./Pages/Products/DetailProductsLaptop";
+import DetailProductsKeyboard from "./Pages/Products/DetailProductsKeyboard";
 function App() {
   return (
     <Router>
@@ -17,11 +18,15 @@ function App() {
         <Header />
         <Route path="/" exact component={() => <Body />}></Route>
         <Route path="/sanpham" exact component={() => <Laptops />}></Route>
-        <Route path="/laptop" component={() => <Laptops />}></Route>
-        <Route path="/keyboard" component={() => <Keyboard />}></Route>
+        <Route path="/laptop" exact component={() => <Laptops />}></Route>
+        <Route path="/keyboard" exact component={() => <Keyboard />}></Route>
         <Route
-          path="/sanpham/:id"
+          path="/laptop/:id"
           component={(match) => <DetailProductsLaptop match={match} />}
+        ></Route>
+        <Route
+          path="/keyboard/:id"
+          component={(match) => <DetailProductsKeyboard match={match} />}
         ></Route>
         <Route path="/login" component={() => <Login />}></Route>
         <Route path="/lienhe" component={() => <Lienhe />}></Route>

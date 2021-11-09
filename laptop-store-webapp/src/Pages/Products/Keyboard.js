@@ -4,8 +4,7 @@ import axios from "axios";
 import "../../CSS/ProductsCss/bootstrap.css";
 import "../../CSS/ProductsCss/style.css";
 import { useEffect, useState } from "react";
-import ListProductLaptop from "./ListProductLaptop";
-import fblike from "../../Images/fblike.png";
+import ListProductKeyboard from "./ListProductKeyboard";
 export default function Keyboard() {
   const [pros, setPros] = useState([]);
   useEffect(() => {
@@ -113,7 +112,7 @@ export default function Keyboard() {
           <div className="row">
             <div className="col-md-9 prolst">
               <div className="products-grid lstlaptop">
-                <ListProductLaptop pros={pros} />
+                <ListProductKeyboard pros={pros} />
               </div>
               <div className="toolbar">
                 <div className="pager">
