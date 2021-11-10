@@ -113,6 +113,15 @@ namespace Laptop_store_e_comerce.Controllers
                 return BadRequest();
             }
             database.Entry(pro).State = EntityState.Modified;
+            if(pro.Idloai == "laptop")
+            {
+                database.Entry(pro.LaptopDetail).State = EntityState.Modified;
+                database.Entry(pro.LaptopDescription).State = EntityState.Modified;
+            }
+            if (pro.Idloai == "pc") database.Entry(pro.Pcdetail).State = EntityState.Modified;
+            if (pro.Idloai == "screen") database.Entry(pro.ScreenDetail).State = EntityState.Modified;
+            if (pro.Idloai == "mouse") database.Entry(pro.MouseDetail).State = EntityState.Modified;
+            if (pro.Idloai == "keyboard") database.Entry(pro.KeyboardDetail).State = EntityState.Modified;
             try
             {
                 await database.SaveChangesAsync();
@@ -136,23 +145,17 @@ namespace Laptop_store_e_comerce.Controllers
             
             if (existID(pro.Id)) return Conflict();
             if (!existType(pro.Idloai)) return BadRequest();
-            try{
-                database.Products.Add(pro);
-                database.SaveChangesAsync();
-                //return  CreatedAtAction("getProductByID", new { type = pro.Idloai ,id = pro.Id  }, pro);
-                return await getProductByID(pro.Idloai, pro.Id);
-
-                //Product newProduct = null;
-                //newProduct = await database.Products.Include(newProduct => newProduct.HeadphoneDetail)
-                                                            //.Where(newProduct => newProduct.Idloai == pro.Idloai)
-                                                            //.Where(newProduct => newProduct.Id == pro.Id).FirstOrDefaultAsync();
-                //if (newProduct != null) return newProduct;
-                //else return BadRequest();
+            database.Products.Add(pro);
+            try
+            {
+                await database.SaveChangesAsync();
             }
-            catch(DbUpdateConcurrencyException) {
-                    Console.WriteLine("Errol when add product");
-                    return BadRequest();
+            catch (DbUpdateConcurrencyException)
+            {
+                Console.WriteLine("Errol when add product");
+                return BadRequest();
             }
+            return  CreatedAtAction("getProductByID", new { type = pro.Idloai ,id = pro.Id  }, pro);
         }
         [HttpDelete("{id}")]
         public async Task<ActionResult<Product>> DeleteSanPham(string id)
@@ -162,7 +165,7 @@ namespace Laptop_store_e_comerce.Controllers
             {
                 return NotFound();
             }
-            if(pro.Idloai == "laptop")
+            /*if(pro.Idloai == "laptop")
             {
                 database.LaptopDetails.Remove(await database.LaptopDetails.FindAsync(id));
                 database.LaptopDescriptions.Remove(await database.LaptopDescriptions.FindAsync(id));
@@ -170,7 +173,7 @@ namespace Laptop_store_e_comerce.Controllers
             if(pro.Idloai == "keyboard")
             {
                 database.KeyboardDetails.Remove(await database.KeyboardDetails.FindAsync(id));
-            }
+            }*/
             database.Products.Remove(pro);
             await database.SaveChangesAsync();
 
