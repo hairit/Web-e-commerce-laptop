@@ -37,7 +37,7 @@ export default function DetailProductsScreen({ match }) {
   useEffect(() => {
     axios
       .get(
-        `https://localhost:44343/data/product/type=laptop/${match.match.params.id}`
+        `https://localhost:44343/data/product/type=screen/${match.match.params.id}`
       )
       .then((res) => {
         console.log(res);
@@ -46,7 +46,6 @@ export default function DetailProductsScreen({ match }) {
       .catch((err) => console.log(err + "Khong goi san pham"));
   }, []);
 
-  console.log(detail.laptopDescription && detail.laptopDescription.detailcpu);
   return (
     <div className="single-product">
       <div className="container">
@@ -92,36 +91,34 @@ export default function DetailProductsScreen({ match }) {
                 </div>
                 <div className="col detail-pro">
                   <p>
-                    - CPU:{" "}
-                    {detail.laptopDescription &&
-                      detail.laptopDescription.detailcpu}
+                    - Kiểu màn hình:{" "}
+                    {detail.screenDetail && detail.screenDetail.kieumanhinh}
                   </p>
                   <p>
-                    - Màn hình:{" "}
-                    {detail.laptopDescription &&
-                      detail.laptopDescription.detailmanhinh}
+                    - Kích thước:{" "}
+                    {detail.screenDetail && detail.screenDetail.kichthuoc}
                   </p>
                   <p>
-                    - RAM:{" "}
-                    {detail.laptopDescription &&
-                      detail.laptopDescription.detailram}
+                    - Độ phân giải:{" "}
+                    {detail.screenDetail && detail.screenDetail.dophangiai}{" "}
+                    {detail.screenDetail && detail.screenDetail.dophangiaipixel}
                   </p>
                   <p>
-                    - VGA:{" "}
-                    {detail.laptopDescription &&
-                      detail.laptopDescription.detailvga}
+                    - Tấm nền:{" "}
+                    {detail.screenDetail && detail.screenDetail.tamnen}
+                  </p>
+
+                  <p>
+                    - Tần số: {detail.screenDetail && detail.screenDetail.tanso}{" "}
+                    Hz
                   </p>
                   <p>
-                    - Lưu trữ:{" "}
-                    {detail.laptopDescription && detail.laptopDescription.ocung}
+                    - Màu hiển thị:{" "}
+                    {detail.screenDetail && detail.screenDetail.mauhienthi}
                   </p>
                   <p>
-                    - Hệ điều hành:{" "}
-                    {detail.laptopDescription && detail.laptopDescription.hdh}
-                  </p>
-                  <p>
-                    - Pin:{" "}
-                    {detail.laptopDescription && detail.laptopDescription.pin}
+                    - Công nghệ màn hình:{" "}
+                    {detail.screenDetail && detail.screenDetail.bemat}
                   </p>
                 </div>
               </div>
@@ -197,18 +194,7 @@ export default function DetailProductsScreen({ match }) {
               </div>
               <div className="chinhsachbh">
                 <p className="font-cs">Dịch vụ khác</p>
-                <div className="fm">
-                  <img src={settings_24px} />
-                  <div className="detailright-t">
-                    Sửa chữa đồng giá 200.000đ.
-                  </div>
-                </div>
-                <div className="fm">
-                  <img src={monitor_24px} />
-                  <div className="detailright-t">
-                    Vệ sinh máy tính, laptop...
-                  </div>
-                </div>
+
                 <div className="fm">
                   <img src={shield_24px} />
                   <div className="detailright-t">Bảo hành tại nhà.</div>
@@ -224,7 +210,7 @@ export default function DetailProductsScreen({ match }) {
               <div class="promotion">
                 <p>
                   <img src={promotion_32px} />
-                  Khuyến mãi, ưu đãi
+                  Khuyến mãi, ưu đãi khác
                 </p>
                 <div class="promotion-tt">
                   <span>
@@ -269,7 +255,7 @@ export default function DetailProductsScreen({ match }) {
                   </tr>
                   <tr>
                     <th className="row">Bảo hành</th>
-                    <td>{detail.baohanh}&nbsp;năm</td>
+                    <td>{detail.baohanh}&nbsp;tháng</td>
                   </tr>
                   <tr>
                     <th className="row">Thông tin chung</th>
@@ -287,95 +273,82 @@ export default function DetailProductsScreen({ match }) {
                     <th className="row">Cấu hình chi tiết</th>
                   </tr>
                   <tr>
-                    <th className="row">Thế hệ CPU</th>
+                    <th className="row">Kiểu màng hình</th>
                     <td>
-                      {detail.laptopDescription &&
-                        detail.laptopDescription.detailcpu}
-                    </td>
-                  </tr>
-                  <tr>
-                    <th className="row">Chip đồ họa</th>
-                    <td>
-                      {detail.laptopDescription &&
-                        detail.laptopDescription.detailvga}
-                    </td>
-                  </tr>
-                  <tr>
-                    <th className="row">RAM</th>
-                    <td>
-                      {detail.laptopDescription &&
-                        detail.laptopDescription.detailram}
-                    </td>
-                  </tr>
-                  <tr>
-                    <th className="row">Màn hình</th>
-                    <td>
-                      {detail.laptopDescription &&
-                        detail.laptopDescription.detailmanhinh}
-                    </td>
-                  </tr>
-                  <tr>
-                    <th className="row">Công xuất hình</th>
-                    <td>
-                      {detail.laptopDescription &&
-                        detail.laptopDescription.congxuathinh}
-                    </td>
-                  </tr>
-                  <tr>
-                    <th className="row">Lưu trữ</th>
-                    <td>
-                      {detail.laptopDescription &&
-                        detail.laptopDescription.ocung}
-                    </td>
-                  </tr>
-                  <tr>
-                    <th className="row">Kiểu lọt khe</th>
-                    <td>
-                      {detail.laptopDescription &&
-                        detail.laptopDescription.kieukhe}
-                    </td>
-                  </tr>
-                  <tr>
-                    <th className="row">Cổng kết nối</th>
-                    <td>
-                      {detail.laptopDescription &&
-                        detail.laptopDescription.congketnoi}
-                    </td>
-                  </tr>
-                  <tr>
-                    <th className="row">Hệ điều hành</th>
-                    <td>
-                      {detail.laptopDescription && detail.laptopDescription.hdh}
+                      {detail.screenDetail && detail.screenDetail.kieumanhinh}
                     </td>
                   </tr>
                   <tr>
                     <th className="row">Kích thước</th>
                     <td>
-                      {detail.laptopDescription &&
-                        detail.laptopDescription.size}
+                      {detail.screenDetail && detail.screenDetail.kichthuoc}
                     </td>
                   </tr>
                   <tr>
-                    <th className="row">Pin</th>
+                    <th className="row">Tỷ lệ</th>
+                    <td>{detail.screenDetail && detail.screenDetail.tile}</td>
+                  </tr>
+                  <tr>
+                    <th className="row">Độ phân giải</th>
                     <td>
-                      {detail.laptopDescription && detail.laptopDescription.pin}
+                      {detail.screenDetail && detail.screenDetail.dophangiai}{" "}
+                      {detail.screenDetail &&
+                        detail.screenDetail.dophangiaipixel}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th className="row">Tấm nền</th>
+                    <td>{detail.screenDetail && detail.screenDetail.tamnen}</td>
+                  </tr>
+                  <tr>
+                    <th className="row">Tần số</th>
+                    <td>{detail.screenDetail && detail.screenDetail.tanso}</td>
+                  </tr>
+                  <tr>
+                    <th className="row">Màu hiển thị</th>
+                    <td>
+                      {detail.screenDetail && detail.screenDetail.mauhienthi}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th className="row">Thời gian phản hồi</th>
+                    <td>
+                      {detail.screenDetail &&
+                        detail.screenDetail.thoigianphanhoi}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th className="row">Độ sáng</th>
+                    <td>{detail.screenDetail && detail.screenDetail.dosang}</td>
+                  </tr>
+                  <tr>
+                    <th className="row">Góc nhìn</th>
+                    <td>
+                      {detail.screenDetail && detail.screenDetail.gocnhin}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th className="row">Công nghệ màn hình</th>
+                    <td>{detail.screenDetail && detail.screenDetail.bemat}</td>
+                  </tr>
+                  <tr>
+                    <th className="row">Công xuất</th>
+                    <td>
+                      {detail.screenDetail && detail.screenDetail.congxuat}
                     </td>
                   </tr>
                   <tr>
                     <th className="row">Thông tin khác</th>
+                    <td></td>
                   </tr>
                   <tr>
-                    <th className="row">Kết nối không dây</th>
-                    <td>
-                      {detail.laptopDescription &&
-                        detail.laptopDescription.ketnoikhongday}
-                    </td>
+                    <th className="row">HDR</th>
+                    <td>{detail.screenDetail && detail.screenDetail.hdr}</td>
                   </tr>
                   <tr>
                     <th className="row">Khối lượng</th>
                     <td>
-                      {detail.laptopDescription &&
-                        detail.laptopDescription.khoiluong}
+                      {detail.screenDetail && detail.screenDetail.khoiluong}
                     </td>
                   </tr>
                 </tbody>

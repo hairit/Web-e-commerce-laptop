@@ -30,7 +30,7 @@ export default function SanPhamKhac() {
                 {kb.ten} {kb.id}
               </a>
             </div>
-            <div className="ten-id-gia">
+            <div className="ten-id-gia kb">
               <p>{solver.formatCurrency("vi-VN", "currency", "VND", kb.gia)}</p>
               <img src={freeshipping_4px} />
             </div>
