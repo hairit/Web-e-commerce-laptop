@@ -105,13 +105,9 @@ namespace Laptop_store_e_comerce.Controllers
             }
             catch (Exception e) { Console.WriteLine(e.ToString()); return BadRequest(); }
         }
-        [HttpPut("{id}")]
+        [HttpPut]
         public async Task<IActionResult> PutProduct(string id, Product pro)
         {
-            if (id != pro.Id)
-            {
-                return BadRequest();
-            }
             database.Entry(pro).State = EntityState.Modified;
             if(pro.Idloai == "laptop")
             {
@@ -137,7 +133,7 @@ namespace Laptop_store_e_comerce.Controllers
                     throw;
                 }
             }
-            return NoContent();
+            return CreatedAtAction("getProductByID", new { type = pro.Idloai, id = pro.Id }, pro);
         }
         [HttpPost()]
         public async Task<ActionResult<Product>> PostProduct(Product pro)
@@ -145,17 +141,16 @@ namespace Laptop_store_e_comerce.Controllers
             
             if (existID(pro.Id)) return Conflict();
             if (!existType(pro.Idloai)) return BadRequest();
-            database.Products.Add(pro);
             try
             {
+                database.Products.Add(pro);
                 await database.SaveChangesAsync();
+                return CreatedAtAction("getProductByID", new { type = pro.Idloai, id = pro.Id }, pro);
             }
-            catch (DbUpdateConcurrencyException)
+            catch (DbUpdateException)            
             {
-                Console.WriteLine("Errol when add product");
                 return BadRequest();
             }
-            return  CreatedAtAction("getProductByID", new { type = pro.Idloai ,id = pro.Id  }, pro);
         }
         [HttpDelete("{id}")]
         public async Task<ActionResult<Product>> DeleteSanPham(string id)

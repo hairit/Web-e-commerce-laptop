@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-// Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
-// If you have enabled NRTs for your project, then un-comment the following line:
-// #nullable disable
+#nullable disable
 
 namespace Laptop_store_e_comerce.Models
 {
@@ -11,18 +9,18 @@ namespace Laptop_store_e_comerce.Models
     {
         public DonHang()
         {
-            ChitietDonHangs = new HashSet<ChitietDonHang>();
+            DonHangDetails = new HashSet<DonHangDetail>();
         }
 
-        public int Id { get; set; }
-        public int? Iduser { get; set; }
-        public int? Tongtien { get; set; }
-        public DateTime? Ngaydat { get; set; }
+        public string Id { get; set; }
+        public int Iduser { get; set; }
+        public int Tongtien { get; set; }
+        public DateTime Ngaydat { get; set; }
         public DateTime? Ngayhuydon { get; set; }
         public string Phuongthucthanhtoan { get; set; }
         public string Tinhtrang { get; set; }
 
         public virtual User IduserNavigation { get; set; }
-        public virtual ICollection<ChitietDonHang> ChitietDonHangs { get; set; }
+        public virtual ICollection<DonHangDetail> DonHangDetails { get; set; }
     }
 }

@@ -24,7 +24,7 @@ namespace Laptop_store_e_comerce.Controllers
             return await database.Users.ToListAsync();
         }
         [HttpGet("{id}")]
-        public async Task<ActionResult<User>> GetUser(int id)
+        public async Task<ActionResult<User>> GetUserByID(int id)
         {
             var user = await database.Users.FindAsync(id);
 
@@ -37,8 +37,11 @@ namespace Laptop_store_e_comerce.Controllers
         [HttpGet("name={value}")]
         public async Task<ActionResult<List<User>>> getUserByName(string value)
         {
-            try{
-                List<User> users = await database.Users.Where(user => user.Nameuser.Contains(value)).ToListAsync();
+            try
+            {
+                List<User> users = await database.Users
+                    .Where(user => user.Firstname.Contains(value) || user.Lastname.Contains(value)).ToListAsync();
+
                 if (users.Count != 0) return users;
                 else return NotFound();
             }catch(Exception e) { Console.WriteLine(e.ToString()); return BadRequest(); }
@@ -65,41 +68,38 @@ namespace Laptop_store_e_comerce.Controllers
                 else return NotFound();
             }catch(Exception e) { Console.WriteLine(e.ToString()); return BadRequest(); }
         }
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutUser(int id, User user)
+        [HttpPut]
+        public async Task<IActionResult> PutUser(User user)
         {
-            if (id != user.Id)
-            {
-                return BadRequest();
-            }
             database.Entry(user).State = EntityState.Modified;
             try
             {
                 await database.SaveChangesAsync();
             }
-            catch (DbUpdateConcurrencyException)
+            catch (DbUpdateException)
             {
-                if (!UserExists(id))
+                if (!UserExists(user.Id))
                 {
                     return NotFound();
                 }
                 else
                 {
-                    throw;
+                    return BadRequest();
                 }
             }
-            return NoContent();
+            return CreatedAtAction("GetUserByID", new { id = user.Id }, user);
         }
         [HttpPost]
         public async Task<ActionResult<User>> PostUser(User user)
         {
-            if (existEmail(user.Email)) return Conflict();
-            try{
-                database.Users.Add(user);
+            if(existEmail(user.Email)) return Conflict();
+            database.Users.Add(user);
+            try
+            {
                 await database.SaveChangesAsync();
-                return CreatedAtAction("GetUser", new { id = user.Id }, user);
             }
-            catch(Exception e) { Console.WriteLine(e.ToString()); return BadRequest(); }
+            catch(DbUpdateException e) { Console.WriteLine(e.ToString()); return BadRequest(); }
+            return CreatedAtAction("GetUserByID", new { id = user.Id }, user);
         }
         [HttpDelete("{id}")]
         public async Task<ActionResult<User>> DeleteUser(int id)
