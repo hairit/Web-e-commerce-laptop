@@ -11,11 +11,11 @@ export default function Login() {
                 <div classname="user-box ">
                     <form>
                         <div className="username login">
-                            <i class="login-lable email"></i> 
+                            <i class="login-lable email">Email</i> 
                             <input type="email" placeholder="Email"></input>
                         </div>
                         <div className="password login">
-                            <i class="login-lable pass"></i>
+                            <i class="login-lable pass">Pass</i>
                             <input type="password" placeholder="Password"></input>
                         </div>
                         <div className="button-login">
