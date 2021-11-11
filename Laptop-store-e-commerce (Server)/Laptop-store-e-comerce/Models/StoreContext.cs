@@ -2,7 +2,9 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-#nullable disable
+// Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
+// If you have enabled NRTs for your project, then un-comment the following line:
+// #nullable disable
 
 namespace Laptop_store_e_comerce.Models
 {
@@ -21,7 +23,7 @@ namespace Laptop_store_e_comerce.Models
         public virtual DbSet<DonHang> DonHangs { get; set; }
         public virtual DbSet<DonHangDetail> DonHangDetails { get; set; }
         public virtual DbSet<GioHang> GioHangs { get; set; }
-        public virtual DbSet<GiohangDetail> GiohangDetails { get; set; }
+        public virtual DbSet<GioHangDetail> GioHangDetails { get; set; }
         public virtual DbSet<Image> Images { get; set; }
         public virtual DbSet<KeyboardDetail> KeyboardDetails { get; set; }
         public virtual DbSet<LaptopDescription> LaptopDescriptions { get; set; }
@@ -43,20 +45,18 @@ namespace Laptop_store_e_comerce.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
-
             modelBuilder.Entity<Color>(entity =>
             {
                 entity.ToTable("Color");
 
                 entity.Property(e => e.Id)
+                    .HasColumnName("id")
                     .HasMaxLength(20)
-                    .IsUnicode(false)
-                    .HasColumnName("id");
+                    .IsUnicode(false);
 
                 entity.Property(e => e.Name)
-                    .HasMaxLength(50)
-                    .HasColumnName("name");
+                    .HasColumnName("name")
+                    .HasMaxLength(50);
             });
 
             modelBuilder.Entity<DonHang>(entity =>
@@ -64,30 +64,30 @@ namespace Laptop_store_e_comerce.Models
                 entity.ToTable("DonHang");
 
                 entity.Property(e => e.Id)
+                    .HasColumnName("id")
                     .HasMaxLength(50)
-                    .IsUnicode(false)
-                    .HasColumnName("id");
+                    .IsUnicode(false);
 
                 entity.Property(e => e.Iduser).HasColumnName("iduser");
 
                 entity.Property(e => e.Ngaydat)
-                    .HasColumnType("date")
-                    .HasColumnName("ngaydat");
+                    .HasColumnName("ngaydat")
+                    .HasColumnType("date");
 
                 entity.Property(e => e.Ngayhuydon)
-                    .HasColumnType("date")
-                    .HasColumnName("ngayhuydon");
+                    .HasColumnName("ngayhuydon")
+                    .HasColumnType("date");
 
                 entity.Property(e => e.Phuongthucthanhtoan)
                     .IsRequired()
-                    .HasMaxLength(30)
                     .HasColumnName("phuongthucthanhtoan")
+                    .HasMaxLength(30)
                     .HasDefaultValueSql("(N'Thanh toán khi nhận hàng')");
 
                 entity.Property(e => e.Tinhtrang)
                     .IsRequired()
-                    .HasMaxLength(30)
                     .HasColumnName("tinhtrang")
+                    .HasMaxLength(30)
                     .HasDefaultValueSql("(N'Chờ xác nhận')");
 
                 entity.Property(e => e.Tongtien).HasColumnName("tongtien");
@@ -96,29 +96,25 @@ namespace Laptop_store_e_comerce.Models
                     .WithMany(p => p.DonHangs)
                     .HasForeignKey(d => d.Iduser)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__DonHang__iduser__47DBAE45");
+                    .HasConstraintName("FK__DonHang__iduser__5629CD9C");
             });
 
             modelBuilder.Entity<DonHangDetail>(entity =>
             {
+                entity.HasKey(e => new { e.IdDonHang, e.IdProduct })
+                    .HasName("PK__DonHangD__D030B94A4EEE02C0");
+
                 entity.ToTable("DonHangDetail");
 
-                entity.Property(e => e.Id)
-                    .HasMaxLength(50)
-                    .IsUnicode(false)
-                    .HasColumnName("id");
-
                 entity.Property(e => e.IdDonHang)
-                    .IsRequired()
+                    .HasColumnName("idDonHang")
                     .HasMaxLength(50)
-                    .IsUnicode(false)
-                    .HasColumnName("idDonHang");
+                    .IsUnicode(false);
 
                 entity.Property(e => e.IdProduct)
-                    .IsRequired()
+                    .HasColumnName("idProduct")
                     .HasMaxLength(50)
-                    .IsUnicode(false)
-                    .HasColumnName("idProduct");
+                    .IsUnicode(false);
 
                 entity.Property(e => e.Soluong).HasColumnName("soluong");
 
@@ -128,13 +124,13 @@ namespace Laptop_store_e_comerce.Models
                     .WithMany(p => p.DonHangDetails)
                     .HasForeignKey(d => d.IdDonHang)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__DonHangDe__idDon__440B1D61");
+                    .HasConstraintName("FK__DonHangDe__idDon__571DF1D5");
 
                 entity.HasOne(d => d.IdProductNavigation)
                     .WithMany(p => p.DonHangDetails)
                     .HasForeignKey(d => d.IdProduct)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__DonHangDe__idPro__44FF419A");
+                    .HasConstraintName("FK__DonHangDe__idPro__5812160E");
             });
 
             modelBuilder.Entity<GioHang>(entity =>
@@ -142,9 +138,9 @@ namespace Laptop_store_e_comerce.Models
                 entity.ToTable("GioHang");
 
                 entity.Property(e => e.Id)
+                    .HasColumnName("id")
                     .HasMaxLength(50)
-                    .IsUnicode(false)
-                    .HasColumnName("id");
+                    .IsUnicode(false);
 
                 entity.Property(e => e.Iduser).HasColumnName("iduser");
 
@@ -152,45 +148,45 @@ namespace Laptop_store_e_comerce.Models
                     .WithMany(p => p.GioHangs)
                     .HasForeignKey(d => d.Iduser)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__GioHang__iduser__48CFD27E");
+                    .HasConstraintName("FK__GioHang__iduser__59063A47");
             });
 
-            modelBuilder.Entity<GiohangDetail>(entity =>
+            modelBuilder.Entity<GioHangDetail>(entity =>
             {
-                entity.ToTable("GiohangDetail");
+                entity.ToTable("GioHangDetail");
 
                 entity.Property(e => e.Id)
+                    .HasColumnName("id")
                     .HasMaxLength(50)
-                    .IsUnicode(false)
-                    .HasColumnName("id");
+                    .IsUnicode(false);
 
                 entity.Property(e => e.IdGioHang)
                     .IsRequired()
+                    .HasColumnName("idGioHang")
                     .HasMaxLength(50)
-                    .IsUnicode(false)
-                    .HasColumnName("idGioHang");
+                    .IsUnicode(false);
 
                 entity.Property(e => e.IdProduct)
                     .IsRequired()
+                    .HasColumnName("idProduct")
                     .HasMaxLength(50)
-                    .IsUnicode(false)
-                    .HasColumnName("idProduct");
+                    .IsUnicode(false);
 
                 entity.Property(e => e.Soluong).HasColumnName("soluong");
 
                 entity.Property(e => e.Tongtien).HasColumnName("tongtien");
 
                 entity.HasOne(d => d.IdGioHangNavigation)
-                    .WithMany(p => p.GiohangDetails)
+                    .WithMany(p => p.GioHangDetails)
                     .HasForeignKey(d => d.IdGioHang)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__GiohangDe__idGio__45F365D3");
+                    .HasConstraintName("FK__GioHangDe__idGio__59FA5E80");
 
                 entity.HasOne(d => d.IdProductNavigation)
-                    .WithMany(p => p.GiohangDetails)
+                    .WithMany(p => p.GioHangDetails)
                     .HasForeignKey(d => d.IdProduct)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__GiohangDe__idPro__46E78A0C");
+                    .HasConstraintName("FK__GioHangDe__idPro__5AEE82B9");
             });
 
             modelBuilder.Entity<Image>(entity =>
@@ -201,304 +197,304 @@ namespace Laptop_store_e_comerce.Models
 
                 entity.Property(e => e.NameImage)
                     .IsRequired()
-                    .HasMaxLength(100)
-                    .HasColumnName("nameImage");
+                    .HasColumnName("nameImage")
+                    .HasMaxLength(100);
 
                 entity.Property(e => e.Path)
+                    .HasColumnName("path")
                     .HasMaxLength(100)
-                    .IsUnicode(false)
-                    .HasColumnName("path");
+                    .IsUnicode(false);
 
                 entity.Property(e => e.Position)
-                    .HasMaxLength(20)
-                    .HasColumnName("position");
+                    .HasColumnName("position")
+                    .HasMaxLength(20);
 
                 entity.Property(e => e.TypeImage)
-                    .HasMaxLength(20)
-                    .HasColumnName("typeImage");
+                    .HasColumnName("typeImage")
+                    .HasMaxLength(20);
             });
 
             modelBuilder.Entity<KeyboardDetail>(entity =>
             {
                 entity.HasKey(e => e.IdProduct)
-                    .HasName("PK__Keyboard__5EEC79D1519DABA1");
+                    .HasName("PK__Keyboard__5EEC79D124045687");
 
                 entity.ToTable("KeyboardDetail");
 
                 entity.Property(e => e.IdProduct)
+                    .HasColumnName("idProduct")
                     .HasMaxLength(50)
-                    .IsUnicode(false)
-                    .HasColumnName("idProduct");
+                    .IsUnicode(false);
 
                 entity.Property(e => e.Brandswitch)
-                    .HasMaxLength(50)
-                    .HasColumnName("brandswitch");
+                    .HasColumnName("brandswitch")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.Den)
-                    .HasMaxLength(50)
-                    .HasColumnName("den");
+                    .HasColumnName("den")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.Ketnoi)
-                    .HasMaxLength(50)
-                    .HasColumnName("ketnoi");
+                    .HasColumnName("ketnoi")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.Layout).HasColumnName("layout");
 
                 entity.Property(e => e.Loai)
-                    .HasMaxLength(50)
-                    .HasColumnName("loai");
+                    .HasColumnName("loai")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.Motaden)
-                    .HasMaxLength(100)
-                    .HasColumnName("motaden");
+                    .HasColumnName("motaden")
+                    .HasMaxLength(100);
 
                 entity.Property(e => e.Motaswitch)
-                    .HasMaxLength(100)
-                    .HasColumnName("motaswitch");
+                    .HasColumnName("motaswitch")
+                    .HasMaxLength(100);
 
                 entity.Property(e => e.Size)
-                    .HasMaxLength(50)
-                    .HasColumnName("size");
+                    .HasColumnName("size")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.Typeswitch)
-                    .HasMaxLength(20)
-                    .HasColumnName("typeswitch");
+                    .HasColumnName("typeswitch")
+                    .HasMaxLength(20);
 
                 entity.HasOne(d => d.IdProductNavigation)
                     .WithOne(p => p.KeyboardDetail)
                     .HasForeignKey<KeyboardDetail>(d => d.IdProduct)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__KeyboardD__idPro__49C3F6B7");
+                    .HasConstraintName("FK__KeyboardD__idPro__5BE2A6F2");
             });
 
             modelBuilder.Entity<LaptopDescription>(entity =>
             {
                 entity.HasKey(e => e.IdProduct)
-                    .HasName("PK__LaptopDe__5EEC79D18062FB5B");
+                    .HasName("PK__LaptopDe__5EEC79D1FEA0665F");
 
                 entity.ToTable("LaptopDescription");
 
                 entity.Property(e => e.IdProduct)
+                    .HasColumnName("idProduct")
                     .HasMaxLength(50)
-                    .IsUnicode(false)
-                    .HasColumnName("idProduct");
+                    .IsUnicode(false);
 
                 entity.Property(e => e.Congketnoi)
-                    .HasMaxLength(100)
-                    .HasColumnName("congketnoi");
+                    .HasColumnName("congketnoi")
+                    .HasMaxLength(100);
 
                 entity.Property(e => e.Congxuathinh)
-                    .HasMaxLength(100)
-                    .HasColumnName("congxuathinh");
+                    .HasColumnName("congxuathinh")
+                    .HasMaxLength(100);
 
                 entity.Property(e => e.Detailcpu)
-                    .HasMaxLength(100)
-                    .HasColumnName("detailcpu");
+                    .HasColumnName("detailcpu")
+                    .HasMaxLength(100);
 
                 entity.Property(e => e.Detailmanhinh)
-                    .HasMaxLength(100)
-                    .HasColumnName("detailmanhinh");
+                    .HasColumnName("detailmanhinh")
+                    .HasMaxLength(100);
 
                 entity.Property(e => e.Detailram)
-                    .HasMaxLength(100)
-                    .HasColumnName("detailram");
+                    .HasColumnName("detailram")
+                    .HasMaxLength(100);
 
                 entity.Property(e => e.Detailvga)
-                    .HasMaxLength(100)
-                    .HasColumnName("detailvga");
+                    .HasColumnName("detailvga")
+                    .HasMaxLength(100);
 
                 entity.Property(e => e.Hdh)
-                    .HasMaxLength(100)
-                    .HasColumnName("hdh");
+                    .HasColumnName("hdh")
+                    .HasMaxLength(100);
 
                 entity.Property(e => e.Ketnoikhongday)
-                    .HasMaxLength(100)
-                    .HasColumnName("ketnoikhongday");
+                    .HasColumnName("ketnoikhongday")
+                    .HasMaxLength(100);
 
                 entity.Property(e => e.Khoiluong)
-                    .HasMaxLength(100)
-                    .HasColumnName("khoiluong");
+                    .HasColumnName("khoiluong")
+                    .HasMaxLength(100);
 
                 entity.Property(e => e.Kieukhe)
-                    .HasMaxLength(100)
-                    .HasColumnName("kieukhe");
+                    .HasColumnName("kieukhe")
+                    .HasMaxLength(100);
 
                 entity.Property(e => e.Ocung)
-                    .HasMaxLength(100)
-                    .HasColumnName("ocung");
+                    .HasColumnName("ocung")
+                    .HasMaxLength(100);
 
                 entity.Property(e => e.Pin)
-                    .HasMaxLength(100)
-                    .HasColumnName("pin");
+                    .HasColumnName("pin")
+                    .HasMaxLength(100);
 
                 entity.Property(e => e.Size)
-                    .HasMaxLength(100)
-                    .HasColumnName("size");
+                    .HasColumnName("size")
+                    .HasMaxLength(100);
 
                 entity.HasOne(d => d.IdProductNavigation)
                     .WithOne(p => p.LaptopDescription)
                     .HasForeignKey<LaptopDescription>(d => d.IdProduct)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__LaptopDes__idPro__4AB81AF0");
+                    .HasConstraintName("FK__LaptopDes__idPro__5CD6CB2B");
             });
 
             modelBuilder.Entity<LaptopDetail>(entity =>
             {
                 entity.HasKey(e => e.IdProduct)
-                    .HasName("PK__LaptopDe__5EEC79D120E53DE8");
+                    .HasName("PK__LaptopDe__5EEC79D169E9FD20");
 
                 entity.ToTable("LaptopDetail");
 
                 entity.Property(e => e.IdProduct)
+                    .HasColumnName("idProduct")
                     .HasMaxLength(50)
-                    .IsUnicode(false)
-                    .HasColumnName("idProduct");
+                    .IsUnicode(false);
 
                 entity.Property(e => e.Cpu)
-                    .HasMaxLength(20)
-                    .HasColumnName("cpu");
+                    .HasColumnName("cpu")
+                    .HasMaxLength(20);
 
                 entity.Property(e => e.Manhinh)
-                    .HasMaxLength(10)
-                    .HasColumnName("manhinh");
+                    .HasColumnName("manhinh")
+                    .HasMaxLength(10);
 
                 entity.Property(e => e.Ram)
-                    .HasMaxLength(20)
-                    .HasColumnName("ram");
+                    .HasColumnName("ram")
+                    .HasMaxLength(20);
 
                 entity.Property(e => e.Vga)
-                    .HasMaxLength(20)
-                    .HasColumnName("vga");
+                    .HasColumnName("vga")
+                    .HasMaxLength(20);
 
                 entity.HasOne(d => d.IdProductNavigation)
                     .WithOne(p => p.LaptopDetail)
                     .HasForeignKey<LaptopDetail>(d => d.IdProduct)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__LaptopDet__idPro__4BAC3F29");
+                    .HasConstraintName("FK__LaptopDet__idPro__5DCAEF64");
             });
 
             modelBuilder.Entity<MouseDetail>(entity =>
             {
                 entity.HasKey(e => e.IdProduct)
-                    .HasName("PK__MouseDet__5EEC79D1AFB2894B");
+                    .HasName("PK__MouseDet__5EEC79D121E9E7A2");
 
                 entity.ToTable("MouseDetail");
 
                 entity.Property(e => e.IdProduct)
+                    .HasColumnName("idProduct")
                     .HasMaxLength(50)
-                    .IsUnicode(false)
-                    .HasColumnName("idProduct");
+                    .IsUnicode(false);
 
                 entity.Property(e => e.Dangcambien)
-                    .HasMaxLength(50)
-                    .HasColumnName("dangcambien");
+                    .HasColumnName("dangcambien")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.Dophangiai)
-                    .HasMaxLength(50)
-                    .HasColumnName("dophangiai");
+                    .HasColumnName("dophangiai")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.Ketnoi)
-                    .HasMaxLength(50)
-                    .HasColumnName("ketnoi");
+                    .HasColumnName("ketnoi")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.Khoiluong)
-                    .HasMaxLength(40)
-                    .HasColumnName("khoiluong");
+                    .HasColumnName("khoiluong")
+                    .HasMaxLength(40);
 
                 entity.Property(e => e.Kichthuoc)
-                    .HasMaxLength(50)
-                    .HasColumnName("kichthuoc");
+                    .HasColumnName("kichthuoc")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.Kieuketnoi)
-                    .HasMaxLength(50)
-                    .HasColumnName("kieuketnoi");
+                    .HasColumnName("kieuketnoi")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.Led)
-                    .HasMaxLength(50)
-                    .HasColumnName("led");
+                    .HasColumnName("led")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.Loaichuot)
-                    .HasMaxLength(50)
-                    .HasColumnName("loaichuot");
+                    .HasColumnName("loaichuot")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.Sonutbam).HasColumnName("sonutbam");
 
                 entity.Property(e => e.Tencambien)
-                    .HasMaxLength(50)
-                    .HasColumnName("tencambien");
+                    .HasColumnName("tencambien")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.Thoigianphanhoi)
-                    .HasMaxLength(50)
-                    .HasColumnName("thoigianphanhoi");
+                    .HasColumnName("thoigianphanhoi")
+                    .HasMaxLength(50);
 
                 entity.HasOne(d => d.IdProductNavigation)
                     .WithOne(p => p.MouseDetail)
                     .HasForeignKey<MouseDetail>(d => d.IdProduct)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__MouseDeta__idPro__4CA06362");
+                    .HasConstraintName("FK__MouseDeta__idPro__5EBF139D");
             });
 
             modelBuilder.Entity<Pcdetail>(entity =>
             {
                 entity.HasKey(e => e.IdProduct)
-                    .HasName("PK__PCDetail__5EEC79D183C93B62");
+                    .HasName("PK__PCDetail__5EEC79D1E1B148AD");
 
                 entity.ToTable("PCDetail");
 
                 entity.Property(e => e.IdProduct)
+                    .HasColumnName("idProduct")
                     .HasMaxLength(50)
-                    .IsUnicode(false)
-                    .HasColumnName("idProduct");
+                    .IsUnicode(false);
 
                 entity.Property(e => e.Casepc)
-                    .HasMaxLength(100)
-                    .HasColumnName("casepc");
+                    .HasColumnName("casepc")
+                    .HasMaxLength(100);
 
                 entity.Property(e => e.Cpu)
-                    .HasMaxLength(50)
-                    .HasColumnName("cpu");
+                    .HasColumnName("cpu")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.Cputype)
-                    .HasMaxLength(50)
-                    .HasColumnName("cputype");
+                    .HasColumnName("cputype")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.Detailcpu)
-                    .HasMaxLength(100)
-                    .HasColumnName("detailcpu");
+                    .HasColumnName("detailcpu")
+                    .HasMaxLength(100);
 
                 entity.Property(e => e.Detailram)
-                    .HasMaxLength(100)
-                    .HasColumnName("detailram");
+                    .HasColumnName("detailram")
+                    .HasMaxLength(100);
 
                 entity.Property(e => e.Mainboard)
-                    .HasMaxLength(50)
-                    .HasColumnName("mainboard");
+                    .HasColumnName("mainboard")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.Psu)
-                    .HasMaxLength(50)
-                    .HasColumnName("psu");
+                    .HasColumnName("psu")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.Ram)
-                    .HasMaxLength(30)
-                    .HasColumnName("ram");
+                    .HasColumnName("ram")
+                    .HasMaxLength(30);
 
                 entity.Property(e => e.Typepc)
-                    .HasMaxLength(50)
-                    .HasColumnName("typepc");
+                    .HasColumnName("typepc")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.Vganame)
-                    .HasMaxLength(50)
-                    .HasColumnName("vganame");
+                    .HasColumnName("vganame")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.Vgatype)
-                    .HasMaxLength(30)
-                    .HasColumnName("vgatype");
+                    .HasColumnName("vgatype")
+                    .HasMaxLength(30);
 
                 entity.HasOne(d => d.IdProductNavigation)
                     .WithOne(p => p.Pcdetail)
                     .HasForeignKey<Pcdetail>(d => d.IdProduct)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__PCDetail__idProd__4D94879B");
+                    .HasConstraintName("FK__PCDetail__idProd__5FB337D6");
             });
 
             modelBuilder.Entity<Product>(entity =>
@@ -506,9 +502,9 @@ namespace Laptop_store_e_comerce.Models
                 entity.ToTable("Product");
 
                 entity.Property(e => e.Id)
+                    .HasColumnName("id")
                     .HasMaxLength(50)
-                    .IsUnicode(false)
-                    .HasColumnName("id");
+                    .IsUnicode(false);
 
                 entity.Property(e => e.Baohanh).HasColumnName("baohanh");
 
@@ -519,108 +515,108 @@ namespace Laptop_store_e_comerce.Models
                     .HasDefaultValueSql("((1))");
 
                 entity.Property(e => e.Idloai)
+                    .HasColumnName("idloai")
                     .HasMaxLength(50)
-                    .IsUnicode(false)
-                    .HasColumnName("idloai");
+                    .IsUnicode(false);
 
                 entity.Property(e => e.Mau)
-                    .HasMaxLength(20)
-                    .HasColumnName("mau");
+                    .HasColumnName("mau")
+                    .HasMaxLength(20);
 
                 entity.Property(e => e.Nameimage)
-                    .HasMaxLength(100)
-                    .HasColumnName("nameimage");
+                    .HasColumnName("nameimage")
+                    .HasMaxLength(100);
 
                 entity.Property(e => e.Namsx).HasColumnName("namsx");
 
                 entity.Property(e => e.Ten)
                     .IsRequired()
-                    .HasMaxLength(100)
-                    .HasColumnName("ten");
+                    .HasColumnName("ten")
+                    .HasMaxLength(100);
 
                 entity.Property(e => e.Thuonghieu)
-                    .HasMaxLength(20)
-                    .HasColumnName("thuonghieu");
+                    .HasColumnName("thuonghieu")
+                    .HasMaxLength(20);
 
                 entity.HasOne(d => d.IdloaiNavigation)
                     .WithMany(p => p.Products)
                     .HasForeignKey(d => d.Idloai)
-                    .HasConstraintName("FK__Product__idloai__4E88ABD4");
+                    .HasConstraintName("FK__Product__idloai__60A75C0F");
             });
 
             modelBuilder.Entity<ScreenDetail>(entity =>
             {
                 entity.HasKey(e => e.IdProduct)
-                    .HasName("PK__ScreenDe__5EEC79D14146AEAF");
+                    .HasName("PK__ScreenDe__5EEC79D1EDE8FBFE");
 
                 entity.ToTable("ScreenDetail");
 
                 entity.Property(e => e.IdProduct)
+                    .HasColumnName("idProduct")
                     .HasMaxLength(50)
-                    .IsUnicode(false)
-                    .HasColumnName("idProduct");
+                    .IsUnicode(false);
 
                 entity.Property(e => e.Bemat)
-                    .HasMaxLength(50)
-                    .HasColumnName("bemat");
+                    .HasColumnName("bemat")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.Congxuat)
-                    .HasMaxLength(40)
-                    .HasColumnName("congxuat");
+                    .HasColumnName("congxuat")
+                    .HasMaxLength(40);
 
                 entity.Property(e => e.Dophangiai)
-                    .HasMaxLength(30)
-                    .HasColumnName("dophangiai");
+                    .HasColumnName("dophangiai")
+                    .HasMaxLength(30);
 
                 entity.Property(e => e.Dophangiaipixel)
-                    .HasMaxLength(30)
-                    .HasColumnName("dophangiaipixel");
+                    .HasColumnName("dophangiaipixel")
+                    .HasMaxLength(30);
 
                 entity.Property(e => e.Dosang)
-                    .HasMaxLength(30)
-                    .HasColumnName("dosang");
+                    .HasColumnName("dosang")
+                    .HasMaxLength(30);
 
                 entity.Property(e => e.Gocnhin)
-                    .HasMaxLength(30)
-                    .HasColumnName("gocnhin");
+                    .HasColumnName("gocnhin")
+                    .HasMaxLength(30);
 
                 entity.Property(e => e.Hdr)
-                    .HasMaxLength(40)
-                    .HasColumnName("hdr");
+                    .HasColumnName("hdr")
+                    .HasMaxLength(40);
 
                 entity.Property(e => e.Khoiluong)
-                    .HasMaxLength(10)
-                    .HasColumnName("khoiluong");
+                    .HasColumnName("khoiluong")
+                    .HasMaxLength(10);
 
                 entity.Property(e => e.Kichthuoc).HasColumnName("kichthuoc");
 
                 entity.Property(e => e.Kieumanhinh)
-                    .HasMaxLength(50)
-                    .HasColumnName("kieumanhinh");
+                    .HasColumnName("kieumanhinh")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.Mauhienthi)
-                    .HasMaxLength(30)
-                    .HasColumnName("mauhienthi");
+                    .HasColumnName("mauhienthi")
+                    .HasMaxLength(30);
 
                 entity.Property(e => e.Tamnen)
-                    .HasMaxLength(30)
-                    .HasColumnName("tamnen");
+                    .HasColumnName("tamnen")
+                    .HasMaxLength(30);
 
                 entity.Property(e => e.Tanso).HasColumnName("tanso");
 
                 entity.Property(e => e.Thoigianphanhoi)
-                    .HasMaxLength(20)
-                    .HasColumnName("thoigianphanhoi");
+                    .HasColumnName("thoigianphanhoi")
+                    .HasMaxLength(20);
 
                 entity.Property(e => e.Tile)
-                    .HasMaxLength(10)
-                    .HasColumnName("tile");
+                    .HasColumnName("tile")
+                    .HasMaxLength(10);
 
                 entity.HasOne(d => d.IdProductNavigation)
                     .WithOne(p => p.ScreenDetail)
                     .HasForeignKey<ScreenDetail>(d => d.IdProduct)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__ScreenDet__idPro__4F7CD00D");
+                    .HasConstraintName("FK__ScreenDet__idPro__619B8048");
             });
 
             modelBuilder.Entity<TypeProduct>(entity =>
@@ -628,14 +624,14 @@ namespace Laptop_store_e_comerce.Models
                 entity.ToTable("TypeProduct");
 
                 entity.Property(e => e.Id)
+                    .HasColumnName("id")
                     .HasMaxLength(50)
-                    .IsUnicode(false)
-                    .HasColumnName("id");
+                    .IsUnicode(false);
 
                 entity.Property(e => e.Ten)
                     .IsRequired()
-                    .HasMaxLength(40)
-                    .HasColumnName("ten");
+                    .HasColumnName("ten")
+                    .HasMaxLength(40);
             });
 
             modelBuilder.Entity<User>(entity =>
@@ -643,43 +639,43 @@ namespace Laptop_store_e_comerce.Models
                 entity.Property(e => e.Id).HasColumnName("id");
 
                 entity.Property(e => e.Diachi)
-                    .HasMaxLength(100)
-                    .HasColumnName("diachi");
+                    .HasColumnName("diachi")
+                    .HasMaxLength(100);
 
                 entity.Property(e => e.Email)
                     .IsRequired()
-                    .HasMaxLength(50)
-                    .HasColumnName("email");
+                    .HasColumnName("email")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.Firstname)
                     .IsRequired()
-                    .HasMaxLength(100)
-                    .HasColumnName("firstname");
+                    .HasColumnName("firstname")
+                    .HasMaxLength(100);
 
                 entity.Property(e => e.Lastname)
                     .IsRequired()
-                    .HasMaxLength(100)
-                    .HasColumnName("lastname");
+                    .HasColumnName("lastname")
+                    .HasMaxLength(100);
 
                 entity.Property(e => e.Mode)
                     .IsRequired()
-                    .HasMaxLength(20)
                     .HasColumnName("mode")
+                    .HasMaxLength(20)
                     .HasDefaultValueSql("('CUSTOMER')");
 
                 entity.Property(e => e.Nameimage)
-                    .HasMaxLength(200)
-                    .HasColumnName("nameimage");
+                    .HasColumnName("nameimage")
+                    .HasMaxLength(200);
 
                 entity.Property(e => e.Pass)
                     .IsRequired()
+                    .HasColumnName("pass")
                     .HasMaxLength(50)
-                    .IsUnicode(false)
-                    .HasColumnName("pass");
+                    .IsUnicode(false);
 
                 entity.Property(e => e.Sdt)
-                    .HasMaxLength(11)
-                    .HasColumnName("sdt");
+                    .HasColumnName("sdt")
+                    .HasMaxLength(11);
             });
 
             OnModelCreatingPartial(modelBuilder);

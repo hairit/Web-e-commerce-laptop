@@ -27,7 +27,6 @@ namespace Laptop_store_e_comerce.Controllers
         public async Task<ActionResult<User>> GetUserByID(int id)
         {
             var user = await database.Users.FindAsync(id);
-
             if (user == null)
             {
                 return NotFound();

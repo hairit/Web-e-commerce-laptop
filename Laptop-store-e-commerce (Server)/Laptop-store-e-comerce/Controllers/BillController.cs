@@ -27,46 +27,48 @@ namespace Laptop_store_e_comerce.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<DonHang>> GetDonHang(string id)
         {
-            var donHang = await _context.DonHangs.FindAsync(id);
+            var bill = await _context.DonHangs.Include(bill => bill.DonHangDetails).FirstOrDefaultAsync(bill => bill.Id == id);
 
-            if (donHang == null)
+            if (bill == null)
             {
                 return NotFound();
             }
-            return donHang;
+            return bill;
         }
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutDonHang(string id, DonHang donHang)
+        [HttpPut]
+        public async Task<ActionResult<DonHang>> PutDonHang(DonHang donHang)
         {
-            if (id != donHang.Id)
-            {
-                return BadRequest();
-            }
-            _context.Entry(donHang).State = EntityState.Modified;
             try
             {
+                //_context.Entry(donHang).State = EntityState.Modified;
+                ICollection<DonHangDetail> list = await _context.DonHangDetails.Where(a => a.IdDonHang == donHang.Id).ToListAsync();
+                _context.DonHangDetails.RemoveRange(list);
+                await _context.SaveChangesAsync();
+                _context.DonHangs.Remove(await _context.DonHangs.FindAsync(donHang.Id));
+                await _context.SaveChangesAsync();
+                _context.DonHangs.Add(donHang);
                 await _context.SaveChangesAsync();
             }
-            catch (DbUpdateConcurrencyException)
+            catch (DbUpdateException)
             {
-                if (!DonHangExists(id))
+                if (!DonHangExists(donHang.Id))
                 {
                     return NotFound();
                 }
                 else
                 {
-                    throw;
+                    return BadRequest();
                 }
             }
-            return NoContent();
+            return CreatedAtAction("GetDonHang", new { id = donHang.Id }, donHang);
         }
         [HttpPost]
         public async Task<ActionResult<DonHang>> PostDonHang(DonHang donHang)
         {
             if (DonHangExists(donHang.Id)) return Conflict();
-            _context.DonHangs.Add(donHang);
             try
             {
+                _context.DonHangs.Add(donHang);
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateException)
