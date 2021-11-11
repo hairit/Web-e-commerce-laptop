@@ -7,17 +7,15 @@ using System.Collections.Generic;
 
 namespace Laptop_store_e_comerce.Models
 {
-    public partial class GioHang
+    public partial class GioHangDetail
     {
-        public GioHang()
-        {
-            GioHangDetails = new HashSet<GioHangDetail>();
-        }
-
         public string Id { get; set; }
-        public int Iduser { get; set; }
+        public string IdGioHang { get; set; }
+        public string IdProduct { get; set; }
+        public int Soluong { get; set; }
+        public int Tongtien { get; set; }
 
-        public virtual User IduserNavigation { get; set; }
-        public virtual ICollection<GioHangDetail> GioHangDetails { get; set; }
+        public virtual GioHang IdGioHangNavigation { get; set; }
+        public virtual Product IdProductNavigation { get; set; }
     }
 }
