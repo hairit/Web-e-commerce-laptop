@@ -1,0 +1,40 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.centerp {
+  background-color: white;
+}
+.centerp {
+  width: 100%;
+  height: 30rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.product-none {
+  padding: 0 50px 0 50px;
+  width: 44%;
+  height: auto;
+  margin: 0 auto;
+}
+.product-none p {
+  margin-top: 5px;
+  color: red;
+  height: 20px;
+  line-height: 20px;
+  font-size: 20px;
+  font-weight: 400;
+}
+.product-none img {
+  width: 7%;
+  float: left;
+}
+.btn-backhome {
+  margin-top: 20px;
+}
+.btn-home:hover {
+  box-shadow: 1px 1px 5px 5px rgb(212, 212, 212);
+  transition: all 0.3s ease-in-out;
+}

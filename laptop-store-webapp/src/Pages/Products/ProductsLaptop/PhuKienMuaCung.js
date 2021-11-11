@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import slide from "../../../Scrip/slide";
+
 import details from "../../../CSS/ProductsCss/details.css";
 import Solver from "../../../Classes/Solver";
 import freeshipping_4px from "../../../Images/freeshipping_4px.png";
@@ -18,7 +20,7 @@ export default function PhuKienMuaCung() {
     <>
       {sanpham.map((kb, index) => {
         return (
-          <div className="col_2" key={index}>
+          <div className="col_2 slide-item" key={index}>
             <div className="imgname inf-price">
               <img
                 className="imgkb"

@@ -357,7 +357,7 @@ export default function DetailProductsScreen({ match }) {
           </div>
           <div className="panel-spkhac">
             <div className="xemthem">Sản phẩm khác</div>
-            <div className="row_10">
+            <div className="row_10 prokb">
               <SanPhamKhac />
               <span className="btn-prev btnnp">
                 <img src={prev_60px} />

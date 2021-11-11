@@ -13,6 +13,7 @@ import DetailProductsLaptop from "./Pages/Products/ProductsLaptop/DetailProducts
 import DetailProductsKeyboard from "./Pages/Products/ProductsKeyboard/DetailProductsKeyboard";
 import DetailProductsScreen from "./Pages/Products/ProductsScreen/DetailProductsScreen";
 import Screen from "./Pages/Products/ProductsScreen/Screen";
+import GioHang from "./Pages/GioHang";
 function App() {
   return (
     <Router>
@@ -35,6 +36,7 @@ function App() {
           path="/screen/:id"
           component={(match) => <DetailProductsScreen match={match} />}
         ></Route>
+        <Route path="/giohang" component={() => <GioHang />}></Route>
         <Route path="/login" component={() => <Login />}></Route>
         <Route path="/lienhe" component={() => <Lienhe />}></Route>
         <Route path="/tincongnghe" component={() => <Tintuc />}></Route>
