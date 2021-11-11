@@ -1,0 +1,49 @@
+.layout-page-login
+{
+    margin: auto;
+    width: 300px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    color: black;
+}
+.header-login::before
+{
+    display: table;
+    content: " ";
+}
+.header-login::after
+{
+    display: table;
+    content: " ";
+}
+.title-login
+{
+    font-size: xx-large;
+    font-weight: bolder;
+}
+.login
+{
+    text-align: left;
+    display: inline-table;
+    margin-bottom: 20px;
+    width: 100%;
+    position: relative;
+}
+#login-lable
+{
+    font-size: medium;
+    font-weight: bolder;
+    display:inline-block;
+    font-size: inherit;
+    text-rendering: auto;
+    transform: translate(0,0);
+    box-sizing: border-box;
+}
+.email::before
+{
+    content: "\f0e0";
+}
+.pass::before
+{
+    content: "\f023";
+}
