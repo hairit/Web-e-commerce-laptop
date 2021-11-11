@@ -66,8 +66,6 @@ export default function Header() {
             <HiOutlineUserCircle className="header-center-right-menu-item-icon" />
             <p className="login-text">
               Đăng nhập
-              <br />
-              Đăng ký
             </p>
           </NavLink>
           <NavLink className="header-center-right-menu-item" to="/giohang">

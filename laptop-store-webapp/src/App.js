@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Header from "./Pages/Header.js";
 import Laptops from "./Pages/Products/ProductsLaptop/Laptops";
 import Keyboard from "./Pages/Products/ProductsKeyboard/Keyboard";
-import Login from "./Pages/Login";
+import Login from "./Pages/Login/Login";
 import Body from "./Pages/Body.js";
 import Lienhe from "./Pages/Lienhe";
 import Tintuc from "./Pages/Tintuc";
@@ -37,7 +37,7 @@ function App() {
           component={(match) => <DetailProductsScreen match={match} />}
         ></Route>
         <Route path="/giohang" component={() => <GioHang />}></Route>
-        <Route path="/login" component={() => <Login />}></Route>
+        <Route path="/login" exact component={() => <Login />}></Route>
         <Route path="/lienhe" component={() => <Lienhe />}></Route>
         <Route path="/tincongnghe" component={() => <Tintuc />}></Route>
         <Route path="/showroom" component={() => <Showroom />}></Route>
