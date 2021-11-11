@@ -969,3 +969,4 @@ D:\Data\Môn\Web-e-commerce-laptop\Laptop-store-e-commerce (Server)\Laptop-store
 D:\Data\Môn\Web-e-commerce-laptop\Laptop-store-e-commerce (Server)\Laptop-store-e-comerce\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
 D:\Data\Môn\Web-e-commerce-laptop\Laptop-store-e-commerce (Server)\Laptop-store-e-comerce\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 D:\Data\Môn\Web-e-commerce-laptop\Laptop-store-e-commerce (Server)\Laptop-store-e-comerce\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
+D:\Do an web\Web-e-commerce-laptop\Laptop-store-e-commerce (Server)\Laptop-store-e-comerce\obj\Debug\netcoreapp3.1\Laptop-store-e-comerce.csproj.CopyComplete

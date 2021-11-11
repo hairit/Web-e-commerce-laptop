@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import slide from "../../../Scrip/slide";
+import { NavLink } from 'react-router-dom';
 
 import details from "../../../CSS/ProductsCss/details.css";
 import Solver from "../../../Classes/Solver";
@@ -21,17 +22,20 @@ export default function PhuKienMuaCung() {
       {sanpham.map((kb, index) => {
         return (
           <div className="col_2 slide-item" key={index}>
+            <NavLink to={`/keyboard/${kb.id}`}>
             <div className="imgname inf-price">
               <img
                 className="imgkb"
                 src={`https://localhost:44343/Images/Products/${kb.nameimage}`}
               />
             </div>
+            </NavLink>
             <div className="ten-id-gia inf-price">
               <a>
                 {kb.ten} {kb.id}
               </a>
             </div>
+            
             <div className="ten-id-gia">
               <p>{solver.formatCurrency("vi-VN", "currency", "VND", kb.gia)}</p>
               <img src={freeshipping_4px} />

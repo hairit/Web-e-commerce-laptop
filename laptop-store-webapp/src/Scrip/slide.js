@@ -20,8 +20,8 @@ window.onload = function () {
 
   function changeSlide(direction) {
     if (direction === 1) {
-      if (index >= 6) {
-        index = 6;
+      if (index >= 5) {
+        index = 5;
         btnNext.style = "visibility: hidden;";
         return;
       }
