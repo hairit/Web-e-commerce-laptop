@@ -4,7 +4,6 @@ import details from "../../../CSS/ProductsCss/details.css";
 import Solver from "../../../Classes/Solver";
 import { withRouter } from "react-router";
 import PhuKienMuaCung from "./PhuKienMuaCung";
-import slide from "../../../Scrip/slide";
 import freeshipping_4px from "../../../Images/freeshipping_4px.png";
 import freeshippingcs_24px from "../../../Images/freeshippingcs_24px.png";
 import shield_24px from "../../../Images/shield_24px.png";
@@ -19,17 +18,6 @@ import whatsapp_32px from "../../../Images/whatsapp_32px.png";
 import edit_property_32px from "../../../Images/edit_property_32px.png";
 import settings_32px from "../../../Images/settings_32px.png";
 
-// function renderGoiypro() {
-//   useEffect(() => {
-//     axios
-//       .get("https://localhost:44343/data/Product/type=laptop", null)
-//       .then((res) => {
-//         console.log(res);
-//         setDetail(res.data);
-//       })
-//       .catch((err) => console.log(err + "Khong goi san pham"));
-//   }, []);
-// };
 
 export default function DetailProductsLaptop({ match }) {
   const solver = new Solver();
@@ -53,45 +41,6 @@ export default function DetailProductsLaptop({ match }) {
   //   }
   // }
 
-  let positionX = 0;
-  let index = 0;
-  // btnNext &&
-  //   btnNext.addEventListener("click", function () {
-  //     changeSlide(1);
-  //   });
-  // btnPrev &&
-  //   btnPrev.addEventListener("click", function () {
-  //     changeSlide(-1);
-  //   });
-  
-  // async function changeSlide(direction) {
-  //   var slidePro = document.getElementById("pro-s");
-  //   const btnNext = document.getElementById(".btn-next");
-  //   if (direction === 1) {
-  //     if (index >= 6) {
-  //       index = 6;
-  //       // btnNext.style = "visibility: hidden;";
-  //       return;
-  //     }
-  //     positionX = positionX - 242;
-  //     document.getElementById("pro-s").style.transform = `translateX(${positionX}px)`;
-  //     // slidePro.style.transform = `translateX(${positionX}px)`;
-  //     console.log(index);
-  //     index++;
-  //   } else if (direction === -1) {
-  //     // btnNext.style = "visibility: none;";
-
-  //     if (index <= 0) {
-  //       index = 0;
-  //       return;
-  //     }
-  //     positionX = positionX + 242;
-  //     document.getElementById("pro-s").style.transform = `translateX(${positionX}px)`;
-  //     // slidePro.style.transform = `translateX(${positionX}px)`;
-  //     console.log(index);
-  //     index--;
-  //   }
-  // }
   return (
     <div className="single-product">
       <div className="container">

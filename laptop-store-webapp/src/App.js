@@ -3,6 +3,9 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Header from "./Pages/Header.js";
 import Laptops from "./Pages/Products/ProductsLaptop/Laptops";
 import Keyboard from "./Pages/Products/ProductsKeyboard/Keyboard";
+import slide from "./Scrip/slide";
+
+
 import Login from "./Pages/Login/Login";
 import Body from "./Pages/Body.js";
 import Lienhe from "./Pages/Lienhe";
@@ -14,7 +17,9 @@ import DetailProductsKeyboard from "./Pages/Products/ProductsKeyboard/DetailProd
 import DetailProductsScreen from "./Pages/Products/ProductsScreen/DetailProductsScreen";
 import Screen from "./Pages/Products/ProductsScreen/Screen";
 import GioHang from "./Pages/GioHang";
+import RoutesCartItems from "./Pages/Routes/RoutesCartItems";
 function App() {
+ 
   return (
     <Router>
       <div className="App">
@@ -36,7 +41,7 @@ function App() {
           path="/screen/:id"
           component={(match) => <DetailProductsScreen match={match} />}
         ></Route>
-        <Route path="/giohang" component={() => <GioHang />}></Route>
+        <RoutesCartItems />
         <Route path="/login" exact component={() => <Login />}></Route>
         <Route path="/lienhe" component={() => <Lienhe />}></Route>
         <Route path="/tincongnghe" component={() => <Tintuc />}></Route>

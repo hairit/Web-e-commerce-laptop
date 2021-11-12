@@ -1,6 +1,5 @@
-* {
-  margin: 0;
-  padding: 0;
+.width {
+  width: 85%;
 }
 .centerp {
   background-color: white;
@@ -37,4 +36,79 @@
 .btn-home:hover {
   box-shadow: 1px 1px 5px 5px rgb(212, 212, 212);
   transition: all 0.3s ease-in-out;
+}
+.page {
+  width: 100% !important;
+  height: auto !important;
+  background-color: #edeef2;
+}
+.title-cart {
+  margin: 30px 0 20px 0;
+  width: 100%;
+  height: auto;
+}
+.title-cart strong {
+  font-size: 25px;
+}
+
+.carts {
+  width: 100%;
+  border-radius: 5px;
+  background-color: white;
+  margin: 0 0 20px 0;
+  display: flex;
+}
+.info-chitiet {
+  display: flex;
+  flex-flow: row wrap;
+}
+.info-cart {
+  padding: 20px 15px;
+  width: 67%;
+}
+.info-image {
+  display: block;
+  flex: 0 0 66.66%;
+  max-width: 66.66%;
+}
+.img-name {
+  display: flex;
+  gap: 12px;
+}
+.img-name a {
+  flex: 0 0 15%;
+}
+.imag {
+  cursor: pointer;
+  width: 100%;
+}
+.id-item {
+  margin-top: 5px;
+}
+.name a {
+  font-size: 13px;
+  font-weight: 380;
+  color: black;
+  margin-bottom: 15px;
+}
+.name a:hover {
+  color: #1435c3;
+}
+.payment {
+  width: 33%;
+  padding: 20px 15px;
+}
+.thanhtoan {
+  padding-bottom: 10px;
+  font-size: 21px;
+}
+.tamtinh-thanhtien {
+  font-size: 15px;
+  padding-bottom: 10px;
+}
+.btn-pay {
+  background-color: #1435c3;
+  color: white;
+  width: 100%;
+  font-size: 18px;
 }
