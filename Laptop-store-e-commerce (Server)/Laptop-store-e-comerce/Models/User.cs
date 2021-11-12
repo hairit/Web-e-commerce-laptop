@@ -11,8 +11,8 @@ namespace Laptop_store_e_comerce.Models
     {
         public User()
         {
-            DonHangs = new HashSet<DonHang>();
-            GioHangs = new HashSet<GioHang>();
+            Bills = new HashSet<Bill>();
+            Cards = new HashSet<Card>();
         }
 
         public int Id { get; set; }
@@ -25,7 +25,7 @@ namespace Laptop_store_e_comerce.Models
         public string Mode { get; set; }
         public string Nameimage { get; set; }
 
-        public virtual ICollection<DonHang> DonHangs { get; set; }
-        public virtual ICollection<GioHang> GioHangs { get; set; }
+        public virtual ICollection<Bill> Bills { get; set; }
+        public virtual ICollection<Card> Cards { get; set; }
     }
 }

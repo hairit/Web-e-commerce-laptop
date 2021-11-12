@@ -7,17 +7,22 @@ using System.Collections.Generic;
 
 namespace Laptop_store_e_comerce.Models
 {
-    public partial class GioHang
+    public partial class Bill
     {
-        public GioHang()
+        public Bill()
         {
-            GioHangDetails = new HashSet<GioHangDetail>();
+            BillDetails = new HashSet<BillDetail>();
         }
 
         public string Id { get; set; }
         public int Iduser { get; set; }
+        public int Tongtien { get; set; }
+        public DateTime Ngaydat { get; set; }
+        public DateTime? Ngayhuydon { get; set; }
+        public string Phuongthucthanhtoan { get; set; }
+        public string Tinhtrang { get; set; }
 
         public virtual User IduserNavigation { get; set; }
-        public virtual ICollection<GioHangDetail> GioHangDetails { get; set; }
+        public virtual ICollection<BillDetail> BillDetails { get; set; }
     }
 }

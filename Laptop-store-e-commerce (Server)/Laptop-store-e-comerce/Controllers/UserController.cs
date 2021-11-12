@@ -48,8 +48,8 @@ namespace Laptop_store_e_comerce.Controllers
         [HttpGet("login/{email}/{pass}")]
         public async Task<ActionResult<User>> Login(string email ,string pass)
         {
-            var user = await database.Users.Include(a => a.DonHangs)
-                                           .Include(a => a.GioHangs)
+            var user = await database.Users.Include(user => user.Bills).ThenInclude(bill => bill.BillDetails)
+                                           .Include(user => user.Cards).ThenInclude(card => card.CardDetails)
                                            .FirstOrDefaultAsync(a => a.Email == email);
             if (user != null)
             {

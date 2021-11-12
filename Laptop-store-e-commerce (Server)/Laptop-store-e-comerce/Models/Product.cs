@@ -11,8 +11,8 @@ namespace Laptop_store_e_comerce.Models
     {
         public Product()
         {
-            DonHangDetails = new HashSet<DonHangDetail>();
-            GioHangDetails = new HashSet<GioHangDetail>();
+            BillDetails = new HashSet<BillDetail>();
+            CardDetails = new HashSet<CardDetail>();
         }
 
         public string Id { get; set; }
@@ -33,7 +33,7 @@ namespace Laptop_store_e_comerce.Models
         public virtual MouseDetail MouseDetail { get; set; }
         public virtual Pcdetail Pcdetail { get; set; }
         public virtual ScreenDetail ScreenDetail { get; set; }
-        public virtual ICollection<DonHangDetail> DonHangDetails { get; set; }
-        public virtual ICollection<GioHangDetail> GioHangDetails { get; set; }
+        public virtual ICollection<BillDetail> BillDetails { get; set; }
+        public virtual ICollection<CardDetail> CardDetails { get; set; }
     }
 }

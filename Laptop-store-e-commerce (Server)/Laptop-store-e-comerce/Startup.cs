@@ -51,7 +51,6 @@ namespace Laptop_store_e_comerce
                 app.UseDeveloperExceptionPage();
             }
             app.UseHttpsRedirection();
-
             app.UseRouting();
             app.UseCors(MyAllowSpecificOrigins);
             app.UseAuthorization();
