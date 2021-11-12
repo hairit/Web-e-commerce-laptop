@@ -2,14 +2,14 @@ import React from 'react'
 import '../../CSS/KeyboardPanel.css'
 import CALLER from '../../API/CALL';
 import {useState , useEffect} from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink,useHistory } from 'react-router-dom';
 import URL from '../../DATA/URL';
 import Solver from '../../Classes/Solver';
 const solver = new Solver();
 const renderKeyboardItem = (pro,index) => {
     return (
         <div className="col-10-no-padding c-10-2 keyboard-item" key={index}>
-            <NavLink className="keyboard-infor" to={`/`}>
+            <NavLink className="keyboard-infor" to={`/keyboard/${pro.id}`}>
                 <div className="keyboard-image">
                     <img className="keyboard-image-img" src={URL+`/Images/Products/${pro.nameimage}`} alt={pro.nameimage} />
                 </div>
@@ -17,7 +17,7 @@ const renderKeyboardItem = (pro,index) => {
                     <div className="keyboard-detail-item keyboard-id">
                     Mã SP: {pro.id}
                     </div>
-                    <NavLink to="" className="keyboard-detail-item keyboard-name">
+                    <NavLink to={`/keyboard/${pro.id}`} className="keyboard-detail-item keyboard-name">
                         {pro.ten}
                     </NavLink>
                     <div className="keyboard-detail-item keyboard-price">
@@ -30,6 +30,8 @@ const renderKeyboardItem = (pro,index) => {
     )
 }
 export default function KeyboardPanel() {
+    const history = useHistory();
+
     const [pros, setPros] = useState([]);
     useEffect(() => {
         CALLER('GET','data/product/type=keyboard/enable',null)
@@ -49,7 +51,8 @@ export default function KeyboardPanel() {
                     }
                 </div>
             </div>
-            <button className="btn-all-product" to="/keyboard"><p>Tất cả sản phẩm </p></button>
+            <button className="btn-all-product" to="/keyboard" onClick={() => {history.push(`/keyboard`);}}>
+            <p>Tất cả sản phẩm </p></button>
         </div>
     )
 }

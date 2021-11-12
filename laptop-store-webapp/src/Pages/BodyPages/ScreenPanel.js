@@ -2,6 +2,8 @@ import React from 'react'
 import {useState , useEffect} from 'react'
 import CALLER from '../../API/CALL';
 import '../../CSS/Layout10.css';
+import { NavLink } from 'react-router-dom';
+
 import '../../CSS/ScreenPanel.css'
 import Solver from '../../Classes/Solver';
 import { useHistory } from 'react-router';
@@ -9,7 +11,7 @@ const renderScreenItem= (pro, index) => {
     const solver =new Solver();
     return (
         <div className="col-10-no-padding c-10-2 screen-infor" key={index}>
-            <div className="screen-item">
+            <NavLink className="screen-item" to={`/screen/${pro.id}`}>
                 <div className="screen-image">
                     <img  className="screen-image-img" src={`https://localhost:44343/Images/Products/${pro.nameimage}`} alt={pro.nameimage} /> 
                 </div>
@@ -25,7 +27,7 @@ const renderScreenItem= (pro, index) => {
                         <p className="screen-price-value">{solver.formatCurrency("vi-VN",'currency','VND',pro.gia)}</p>
                     </div>
                 </div>
-            </div>
+            </NavLink>
         </div>
     )
 }

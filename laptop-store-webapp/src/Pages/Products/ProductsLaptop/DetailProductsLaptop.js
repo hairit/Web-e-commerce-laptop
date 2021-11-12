@@ -4,15 +4,15 @@ import details from "../../../CSS/ProductsCss/details.css";
 import Solver from "../../../Classes/Solver";
 import { withRouter } from "react-router";
 import PhuKienMuaCung from "./PhuKienMuaCung";
-
+import slide from "../../../Scrip/slide";
 import freeshipping_4px from "../../../Images/freeshipping_4px.png";
 import freeshippingcs_24px from "../../../Images/freeshippingcs_24px.png";
 import shield_24px from "../../../Images/shield_24px.png";
 import replace_24px from "../../../Images/replace_24px.png";
 import settings_24px from "../../../Images/settings_24px.png";
 import monitor_24px from "../../../Images/monitor_24px.png";
-import prev_60px from "../../../Images/prev_60px.png";
-import next_60px from "../../../Images/next_60px.png";
+import prev_50px from "../../../Images/prev_50px.png";
+import next_50px from "../../../Images/next_50px.png";
 import promotion_32px from "../../../Images/promotion_32px.png";
 import insurance_24px from "../../../Images/insurance_24px.png";
 import whatsapp_32px from "../../../Images/whatsapp_32px.png";
@@ -45,8 +45,53 @@ export default function DetailProductsLaptop({ match }) {
       })
       .catch((err) => console.log(err + "Khong goi san pham"));
   }, []);
+  // function changeSlide(direction) {
+  //   if (direction === 1) {
+  //     console.log("next slide");
+  //   } else if (direction === -1) {
+  //     console.log("prev slide");
+  //   }
+  // }
 
-  console.log(detail.laptopDescription && detail.laptopDescription.detailcpu);
+  let positionX = 0;
+  let index = 0;
+  // btnNext &&
+  //   btnNext.addEventListener("click", function () {
+  //     changeSlide(1);
+  //   });
+  // btnPrev &&
+  //   btnPrev.addEventListener("click", function () {
+  //     changeSlide(-1);
+  //   });
+  
+  // async function changeSlide(direction) {
+  //   var slidePro = document.getElementById("pro-s");
+  //   const btnNext = document.getElementById(".btn-next");
+  //   if (direction === 1) {
+  //     if (index >= 6) {
+  //       index = 6;
+  //       // btnNext.style = "visibility: hidden;";
+  //       return;
+  //     }
+  //     positionX = positionX - 242;
+  //     document.getElementById("pro-s").style.transform = `translateX(${positionX}px)`;
+  //     // slidePro.style.transform = `translateX(${positionX}px)`;
+  //     console.log(index);
+  //     index++;
+  //   } else if (direction === -1) {
+  //     // btnNext.style = "visibility: none;";
+
+  //     if (index <= 0) {
+  //       index = 0;
+  //       return;
+  //     }
+  //     positionX = positionX + 242;
+  //     document.getElementById("pro-s").style.transform = `translateX(${positionX}px)`;
+  //     // slidePro.style.transform = `translateX(${positionX}px)`;
+  //     console.log(index);
+  //     index--;
+  //   }
+  // }
   return (
     <div className="single-product">
       <div className="container">
@@ -384,14 +429,26 @@ export default function DetailProductsLaptop({ match }) {
           </div>
           <div className="panel-spkhac">
             <div className="xemthem">Sản phẩm khác</div>
+            <div className="prev-next">
+              <span
+                className="btn-prev btnnp"
+                id="btn-prevs"
+                // onClick={changeSlide(-1)}
+              >
+                <img src={prev_50px} />
+              </span>
+              <span
+                className="btn-next btnnp"
+                id="btn-nexts"
+                // onClick={changeSlide(1)}
+              >
+                <img src={next_50px} />
+              </span>
+            </div>
             <div className="row_10">
-              <PhuKienMuaCung />
-              <span className="btn-prev btnnp">
-                <img src={prev_60px} />
-              </span>
-              <span className="btn-next btnnp">
-                <img src={next_60px} />
-              </span>
+              <div className="slide-pro" id="pro-s">
+                <PhuKienMuaCung />
+              </div>
             </div>
           </div>
           <div className="info-bottom row">
