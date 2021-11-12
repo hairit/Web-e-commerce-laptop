@@ -20,14 +20,14 @@ namespace Laptop_store_e_comerce.Controllers
             _context = context;
         }
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<DonHang>>> GetDonHangs()
+        public async Task<ActionResult<IEnumerable<Bill>>> GetDonHangs()
         {
-            return await _context.DonHangs.ToListAsync();
+            return await _context.Bills.ToListAsync();
         }
         [HttpGet("{id}")]
-        public async Task<ActionResult<DonHang>> GetDonHang(string id)
+        public async Task<ActionResult<Bill>> GetDonHang(string id)
         {
-            var bill = await _context.DonHangs.Include(bill => bill.DonHangDetails).FirstOrDefaultAsync(bill => bill.Id == id);
+            var bill = await _context.Bills.Include(bill => bill.BillDetails).FirstOrDefaultAsync(bill => bill.Id == id);
 
             if (bill == null)
             {
@@ -35,64 +35,62 @@ namespace Laptop_store_e_comerce.Controllers
             }
             return bill;
         }
-        [HttpPut]
-        public async Task<ActionResult<DonHang>> PutDonHang(DonHang donHang)
+        [HttpGet("user={id}")]
+        public async Task<ActionResult<List<Bill>>> getBillsByUserID(int id)
         {
+            if (!_context.Users.Any(user => user.Id == id)) return BadRequest();
+            List<Bill> bills = await _context.Bills.Include(bill => bill.BillDetails).Where(bill => bill.Iduser == id).ToListAsync();
+            if (bills.Count == 0) return NotFound();
+            else return bills;
+        }
+        [HttpPut]
+        public async Task<ActionResult<Bill>> PutDonHang(Bill donHang)
+        {
+            if (!DonHangExists(donHang.Id)) return NotFound();
+            var oldBill = await _context.Bills.Include(bill => bill.BillDetails).FirstOrDefaultAsync(bill => bill.Id == donHang.Id);
+            _context.BillDetails.RemoveRange(oldBill.BillDetails);
+            _context.Bills.Remove(oldBill);
             try
             {
-                //_context.Entry(donHang).State = EntityState.Modified;
-                ICollection<DonHangDetail> list = await _context.DonHangDetails.Where(a => a.IdDonHang == donHang.Id).ToListAsync();
-                _context.DonHangDetails.RemoveRange(list);
-                await _context.SaveChangesAsync();
-                _context.DonHangs.Remove(await _context.DonHangs.FindAsync(donHang.Id));
-                await _context.SaveChangesAsync();
-                _context.DonHangs.Add(donHang);
+                _context.Bills.Add(donHang);
                 await _context.SaveChangesAsync();
             }
-            catch (DbUpdateException)
-            {
-                if (!DonHangExists(donHang.Id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    return BadRequest();
-                }
+            catch (Exception) {
+                return BadRequest();
             }
             return CreatedAtAction("GetDonHang", new { id = donHang.Id }, donHang);
         }
         [HttpPost]
-        public async Task<ActionResult<DonHang>> PostDonHang(DonHang donHang)
+        public async Task<ActionResult<Bill>> PostDonHang(Bill donHang)
         {
             if (DonHangExists(donHang.Id)) return Conflict();
             try
             {
-                _context.DonHangs.Add(donHang);
+                _context.Bills.Add(donHang);
                 await _context.SaveChangesAsync();
             }
-            catch (DbUpdateException)
+            catch (Exception)
             {
                 return BadRequest();
             }
             return CreatedAtAction("GetDonHang", new { id = donHang.Id }, donHang);
         }
         [HttpDelete("{id}")]
-        public async Task<ActionResult<DonHang>> DeleteDonHang(string id)
+        public async Task<ActionResult<Bill>> DeleteDonHang(string id)
         {
-            var donHang = await _context.DonHangs.FindAsync(id);
+            var donHang = await _context.Bills.FindAsync(id);
             if (donHang == null)
             {
                 return NotFound();
             }
-            _context.DonHangs.Remove(donHang);
+            _context.Bills.Remove(donHang);
             await _context.SaveChangesAsync();
 
             return donHang;
         }
         private bool DonHangExists(string id)
         {
-            return _context.DonHangs.Any(e => e.Id == id);
+            return _context.Bills.Any(e => e.Id == id);
         }
     }
 }

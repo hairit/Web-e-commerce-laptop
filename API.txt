@@ -15,20 +15,33 @@ API Lappee :
 				-Lấy Laptop theo VGA			https://localhost:44343/data/laptop/vga={value}
 				-Lấy Laptop theo GB				https://localhost:44343/data/laptop/gb={value}
 +User:
-	-Login							https://localhost:44343/data/user/login/{email}/{pass}
-	-Lấy tất cả User				https://localhost:44343/data/user/
-	-Lấy User theo tên				https://localhost:44343/data/user/name={value}
-	-Lấy User theo email			https://localhost:44343/data/user/email={value}
-	-Lấy User theo id				https://localhost:44343/data/user/{id}
-	-Thêm User						https://localhost:44343/data/user/	data:user
-	-Sửa User						https://localhost:44343/data/user/{id}	data:user
-	-Xóa User						https://localhost:44343/data/user/{id}
+	-Login								https://localhost:44343/data/user/login/{email}/{pass}
+	-Lấy tất cả User						https://localhost:44343/data/user/
+	-Lấy User theo tên						https://localhost:44343/data/user/name={value}
+	-Lấy User theo email						https://localhost:44343/data/user/email={value}
+	-Lấy User theo id						https://localhost:44343/data/user/{id}
+	-Thêm User							https://localhost:44343/data/user/	data:user
+	-Sửa User							https://localhost:44343/data/user/{id}	data:user
+	-Xóa User							https://localhost:44343/data/user/{id}
 Loại Sản phẩm:
 	-Lấy tất cả loại sản phẩm:		https://localhost:44343/data/typeproduct
 	-Lấy loại sản phẩm theo id:		https://localhost:44343/data/typeproduct/{id}
 	-Thêm loại sản phẩm:			https://localhost:44343/data/typeproduct/ 	data:loaisanpham
 	-Sửa loại sản phẩm :			https://localhost:44343/data/typeproduct/{id}	data:loaisanpham
 	-Xóa loại sản phẩm :			https://localhost:44343/data/typeproduct/{id}
++Đơn hàng :
 
-		
-	
+	-Lấy tất cả đơn hàng :  		https://localhost:44343/data/bill
+	-Lấy đơn hàng theo mã			https://localhost:44343/data/bill/{id}
+	-Lấy đơn hàng theo khách hàng 		https://localhost:44343/data/bill/user={id}
+	-Thêm đơn hàng				https://localhost:44343/data/bill (POST)
+	-Sửa đơn hàng				https://localhost:44343/data/bill (PUT)
+	-Xóa đơn hàng				https://localhost:44343/data/bill/{id} (DELETE)
+
++Giỏ hàng
+	-Lấy tất cả các giỏ hàng		https://localhost:44343/data/card
+	-Lấy giỏ hàng theo mã			https://localhost:44343/data/card/{id}
+	-Lấy giỏ hàng theo khách hàng		https://localhost:44343/data/card/user={id}
+	-Thêm giỏ hàng 				https://localhost:44343/data/card/ (POST)
+	-Sửa giỏ hàng				https://localhost:44343/data/card/ (PUT)
+	-Xóa giỏ hàng				https://localhost:44343/data/card/{id} (DELETE)
