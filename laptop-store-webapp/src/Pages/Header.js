@@ -9,7 +9,8 @@ import { CgSearch } from "react-icons/cg";
 import { HiOutlineUserCircle } from "react-icons/hi";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { CgProductHunt } from "react-icons/cg";
-import { withCookies, Cookies } from 'react-cookie';
+import {  Cookies } from 'react-cookie';
+
 //import { instanceOf } from 'prop-types';
 import {
   BrowserRouter as Router,
@@ -20,13 +21,18 @@ import {
 export default function Header() 
 {
   const [id, setid] = useState({});
-  let getCookie = (key) => {
-    return Cookies.get(key)
-  }
+  const [name, setname] = useState({});
+  const cookies = new Cookies();
   function getid() {
-    //setid(getCookie('ID'));
-    console.log("Test log");
+    setid(cookies.get("ID"));
+    console.log("ID"+id);
   }
+  function getName()
+  {
+    setname(cookies.get("Name"));
+    console.log("Name"+name);
+  }
+
   return (
     <div className="header">
       <div className="header-top header-item">
@@ -54,9 +60,9 @@ export default function Header()
             <p className="lappee-name">Lappee</p>
           </NavLink>
           <div className="panel-search-product">
-            <select className="header-center-left-dropdown" onLoad={() => getid()}>
+            <select className="header-center-left-dropdown" onLoad={() => getName()}>
               <option value className="header-center-left-dropdown-option" >
-                Xin chào
+                {"Xin chào"+name}
               </option>
               <option value className="header-center-left-dropdown-option">
                 Chế độ nhân viên

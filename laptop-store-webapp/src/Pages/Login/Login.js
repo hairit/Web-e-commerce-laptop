@@ -17,9 +17,10 @@ export default function Login() {
         const [detail, setDetail] = useState(0);
         const [cookie, setCookie] = useCookies(['user']);
         let history = useHistory();
-        function setCookies(id)
+        function setCookies(id,name)
         {
             setCookie('ID',id);
+            setCookie('Name',name);
         }
         function handleClick()
         {
@@ -29,9 +30,8 @@ export default function Login() {
             )
             .then((res) => {
               console.log(res);
-              setDetail(res.data);
               console.log(res.data.id);
-              setCookies(res.data.id);
+              setCookies(res.data.id,res.data.lastname);
               history.goBack();
             })
             .catch((err) => {console.log(err + "Khong goi duoc user");
