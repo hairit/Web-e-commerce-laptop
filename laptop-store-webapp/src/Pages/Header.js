@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import "../CSS/Header.css";
 import Logo from "../Images/Chicken-logo.png";
 import { MdLocationOn } from "react-icons/md";
@@ -9,7 +9,8 @@ import { CgSearch } from "react-icons/cg";
 import { HiOutlineUserCircle } from "react-icons/hi";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { CgProductHunt } from "react-icons/cg";
-import {  Cookies } from 'react-cookie';
+import { Cookies } from 'react-cookie';
+import axios from "axios";
 
 //import { instanceOf } from 'prop-types';
 import {
@@ -18,21 +19,28 @@ import {
   Route,
   NavLink,
 } from "react-router-dom";
-export default function Header() 
-{
-  const [id, setid] = useState({});
-  const [name, setname] = useState({});
-  const cookies = new Cookies();
-  function getid() {
-    setid(cookies.get("ID"));
-    console.log("ID"+id);
-  }
-  function getName()
-  {
-    setname(cookies.get("Name"));
-    console.log("Name"+name);
-  }
+export default function Header() {
+  const id = useRef();
+  const [user, setUser] = useState({});
+  useEffect(() => {
+    const cookies = new Cookies();
+    id.current = cookies.get('ID');
+    var txt = `https://localhost:44343/data/user/${id.current}`
+    axios
+      .get(`https://localhost:44343/data/user/${id.current}`)
+      .then(res => {
+        console.log("txt" + txt);
+        setUser(res.data);
+      })
+      .catch(err => {
+        console.log("txt" + txt);
+        console.log("Lỗi API get id")
+      }
 
+      );
+  }, [])
+
+  console.log("ID" + id);
   return (
     <div className="header">
       <div className="header-top header-item">
@@ -60,9 +68,9 @@ export default function Header()
             <p className="lappee-name">Lappee</p>
           </NavLink>
           <div className="panel-search-product">
-            <select className="header-center-left-dropdown" onLoad={() => getName()}>
+            <select className="header-center-left-dropdown" >
               <option value className="header-center-left-dropdown-option" >
-                {"Xin chào"+name}
+                {"Xin chào " + user.lastname}
               </option>
               <option value className="header-center-left-dropdown-option">
                 Chế độ nhân viên
