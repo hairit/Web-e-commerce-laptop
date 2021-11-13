@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import "../CSS/Header.css";
+import URL from "../DATA/URL";
 import Logo from "../Images/Chicken-logo.png";
 import { MdLocationOn } from "react-icons/md";
 import { BsYoutube } from "react-icons/bs";
@@ -19,28 +20,20 @@ import {
   Route,
   NavLink,
 } from "react-router-dom";
-export default function Header() {
-  const id = useRef();
-  const [user, setUser] = useState({});
-  useEffect(() => {
-    const cookies = new Cookies();
-    id.current = cookies.get('ID');
-    var txt = `https://localhost:44343/data/user/${id.current}`
-    axios
-      .get(`https://localhost:44343/data/user/${id.current}`)
-      .then(res => {
-        console.log("txt" + txt);
-        setUser(res.data);
-      })
-      .catch(err => {
-        console.log("txt" + txt);
-        console.log("Lỗi API get id")
-      }
 
-      );
-  }, [])
+const nullUser = () => {
+  return (
+    <div>
+        <HiOutlineUserCircle className="header-center-right-menu-item-icon" />
+        <p className="login-text">
+          Đăng nhập
+        </p>
+    </div>
+  )
+}
 
-  console.log("ID" + id);
+export default function Header({user}) {
+  
   return (
     <div className="header">
       <div className="header-top header-item">
@@ -68,14 +61,6 @@ export default function Header() {
             <p className="lappee-name">Lappee</p>
           </NavLink>
           <div className="panel-search-product">
-            <select className="header-center-left-dropdown" >
-              <option value className="header-center-left-dropdown-option" >
-                {"Xin chào " + user.lastname}
-              </option>
-              <option value className="header-center-left-dropdown-option">
-                Chế độ nhân viên
-              </option>
-            </select>
             <input
               className="input-search-product"
               placeholder="Nhập sản phẩm bạn muốn tìm !"
@@ -87,12 +72,21 @@ export default function Header() {
           </div>
         </div>
         <div className="header-center-right">
-          <NavLink className="header-center-right-menu-item" to="/login">
-            <HiOutlineUserCircle className="header-center-right-menu-item-icon" />
-            <p className="login-text">
-              Đăng nhập
-            </p>
-          </NavLink>
+            {user === null ?
+                <NavLink className="header-center-right-menu-item" to="/login"> 
+                  <HiOutlineUserCircle className="header-center-right-menu-item-icon" />
+                <p className="login-text">
+                  Đăng nhập
+                </p>
+                </NavLink>
+                :
+                <NavLink className="header-center-right-menu-item" to="/login"> 
+                      <img  src={URL+`/Images/Products/nullavatar.png`} className="avatar" alt="avatar"/>
+                      <p className="login-text">
+                        {user.firstname+""+user.lastname}
+                      </p>     
+                </NavLink>
+            }
           <NavLink className="header-center-right-menu-item" to="/giohang">
             <AiOutlineShoppingCart className="header-center-right-menu-item-icon" />
             <p>Giỏ hàng</p>

@@ -32,7 +32,7 @@
   font-size: 20px;
   margin-right: 5px;
 }
-.home{
+.home {
   align-items: center;
   display: flex;
   text-decoration: none;
@@ -81,6 +81,9 @@
   border: none !important;
   width: 300px;
   font-size: 14px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  padding-left: 10px;
 }
 .button-search-product {
   border: none;
@@ -118,4 +121,9 @@
 }
 .login-text {
   text-align: left;
+}
+.avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
 }

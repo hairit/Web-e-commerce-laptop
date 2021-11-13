@@ -8,31 +8,16 @@ import { BsArrowLeftRight } from 'react-icons/bs';
 import axios from 'axios';
 import { useCookies } from 'react-cookie';
 
+export default function Login({login}) {
 
-
-export default function Login() {
-
-    const [username, setusername] = useState("lth.contact@gmail.com");
-    const [password, setpassword] = useState("thanhhoa2022");
-    const [cookie, setCookie] = useCookies(['user']);
+    const [username, setusername] = useState("");
+    const [password, setpassword] = useState("");
     let history = useHistory();
-    function setCookies(id) {
-        setCookie('ID', id);
-    }
     function handleClick(e) {
         e.preventDefault();
-        axios
-            .get(
-                `https://localhost:44343/data/user/login/` + username + `/` + password
-            )
-            .then((res) => {
-                console.log(res);
-                setCookies(res.data.id);
-                history.goBack();
-            })
-            .catch((err) => {
-                alert("Đăng nhập thất bại");
-            });
+        login(username,password);
+        history.goBack();
+        
     }
     function getusername(event) {
         setusername(event.target.value)
@@ -40,7 +25,6 @@ export default function Login() {
     function getpass(event) {
         setpassword(event.target.value)
     }
-    {
         return (
             <div className="layout-page-login">
                 <div className="customer-login">
@@ -72,7 +56,6 @@ export default function Login() {
                 </div>
             </div>
         )
-    }
 }
 
 
