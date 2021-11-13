@@ -1,10 +1,8 @@
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Header from "./Pages/Header.js";
-import Laptops from "./Pages/Products/ProductsLaptop/Laptops";
 import Keyboard from "./Pages/Products/ProductsKeyboard/Keyboard";
 import slide from "./Scrip/slide";
-
 
 import Login from "./Pages/Login/Login";
 import Register from "./Pages/Login/Register";
@@ -20,14 +18,13 @@ import Screen from "./Pages/Products/ProductsScreen/Screen";
 import GioHang from "./Pages/GioHang";
 import RoutesCartItems from "./Pages/Routes/RoutesCartItems";
 function App() {
- 
   return (
     <Router>
       <div className="App">
         <Header />
         <Route path="/" exact component={() => <Body />}></Route>
         {/* <Route path="/sanpham" exact component={() => <Laptops />}></Route> */}
-        <Route path="/laptop" exact component={() => <Laptops />}></Route>
+
         <Route path="/keyboard" exact component={() => <Keyboard />}></Route>
         <Route path="/screen" exact component={() => <Screen />}></Route>
         <Route
@@ -44,7 +41,9 @@ function App() {
         ></Route>
         <RoutesCartItems />
         <Route path="/login" exact component={() => <Login />}></Route>
-        <Route path="/login/register" exact component={()=> <Register />}> </Route>
+        <Route path="/login/register" exact component={() => <Register />}>
+          {" "}
+        </Route>
         <Route path="/lienhe" component={() => <Lienhe />}></Route>
         <Route path="/tincongnghe" component={() => <Tintuc />}></Route>
         <Route path="/showroom" component={() => <Showroom />}></Route>

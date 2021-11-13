@@ -12,15 +12,13 @@ import {
 } from "react-router-dom";
 import Solver from "../../../Classes/Solver";
 
-export default function ListProductLaptop({ pros }) {
+export default function ListProductLaptop({ pros, handleaddCart }) {
   const history = useHistory();
   const solver = new Solver();
   function handleViewDetails(detail) {
     history.push(`/laptop/${detail.id}`);
   }
-  function handleaddCart(detail){
-    history.push(`/giohang/${detail.id}`);
-  }
+
   console.log(`pros`, pros);
   return (
     <div className="row prolst">
@@ -44,7 +42,10 @@ export default function ListProductLaptop({ pros }) {
                 {solver.formatCurrency("vi-VN", "currency", "VND", pro.gia)}
               </h4>
               <div className="button_group">
-                <button className="button add-cart" type="button" onClick={() => handleaddCart(pro)}>
+                <button
+                  className="button add-cart"
+                  onClick={() => handleaddCart(pro)}
+                >
                   Thêm vào giỏ hàng
                 </button>
                 <button className="button wishlist" type="button">
