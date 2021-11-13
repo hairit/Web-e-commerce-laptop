@@ -13,12 +13,10 @@ namespace Laptop_store_e_comerce.Models
         public StoreContext()
         {
         }
-
         public StoreContext(DbContextOptions<StoreContext> options)
             : base(options)
         {
         }
-
         public virtual DbSet<Bill> Bills { get; set; }
         public virtual DbSet<BillDetail> BillDetails { get; set; }
         public virtual DbSet<Card> Cards { get; set; }
@@ -139,7 +137,6 @@ namespace Laptop_store_e_comerce.Models
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__Card__iduser__5812160E");
             });
-
             modelBuilder.Entity<CardDetail>(entity =>
             {
                 entity.HasKey(e => new { e.IdCard, e.IdProduct })
