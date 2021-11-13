@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "../CSS/Header.css";
 import Logo from "../Images/Chicken-logo.png";
 import { MdLocationOn } from "react-icons/md";
@@ -9,13 +9,24 @@ import { CgSearch } from "react-icons/cg";
 import { HiOutlineUserCircle } from "react-icons/hi";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { CgProductHunt } from "react-icons/cg";
+import { withCookies, Cookies } from 'react-cookie';
+//import { instanceOf } from 'prop-types';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   NavLink,
 } from "react-router-dom";
-export default function Header() {
+export default function Header() 
+{
+  const [id, setid] = useState({});
+  let getCookie = (key) => {
+    return Cookies.get(key)
+  }
+  function getid() {
+    //setid(getCookie('ID'));
+    console.log("Test log");
+  }
   return (
     <div className="header">
       <div className="header-top header-item">
@@ -43,9 +54,9 @@ export default function Header() {
             <p className="lappee-name">Lappee</p>
           </NavLink>
           <div className="panel-search-product">
-            <select className="header-center-left-dropdown">
-              <option value className="header-center-left-dropdown-option">
-                Xin chào
+            <select className="header-center-left-dropdown" onLoad={() => getid()}>
+              <option value className="header-center-left-dropdown-option" >
+                Xin chào
               </option>
               <option value className="header-center-left-dropdown-option">
                 Chế độ nhân viên

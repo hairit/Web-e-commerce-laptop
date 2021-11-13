@@ -1,12 +1,12 @@
-import React, { useEffect, useState, setState }from 'react'
+import React, { useState}from 'react'
+import { useHistory } from 'react-router';
 import '../../CSS/Login.css'
-import CALLER from "../../API/CALL";
-import URL from "../../DATA/URL";
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import { NavLink } from 'react-router-dom';
 import { MdEvent } from 'react-icons/md';
 import { BsArrowLeftRight } from 'react-icons/bs';
 import axios from 'axios';
+import {useCookies} from 'react-cookie';
 
 
 
@@ -15,8 +15,12 @@ export default function Login() {
         const [username, setusername] = useState("lth.contact@gmail.com");
         const [password, setpassword] = useState("thanhhoa2022");
         const [detail, setDetail] = useState(0);
-
-
+        const [cookie, setCookie] = useCookies(['user']);
+        let history = useHistory();
+        function setCookies(id)
+        {
+            setCookie('ID',id);
+        }
         function handleClick()
         {
             axios
@@ -25,9 +29,10 @@ export default function Login() {
             )
             .then((res) => {
               console.log(res);
-              setDetail(res.status);
-              console.log(detail);
-              alert("Đăng nhập thành công");
+              setDetail(res.data);
+              console.log(res.data.id);
+              setCookies(res.data.id);
+              history.goBack();
             })
             .catch((err) => {console.log(err + "Khong goi duoc user");
                               console.log(err + "Hỏng ròi")
@@ -72,7 +77,6 @@ export default function Login() {
                             hoặc
                             <NavLink to="/a.html">{' Đăng ký'}</NavLink>
                         </div>
-                        
                     </form>
                 </div>
             </div>
