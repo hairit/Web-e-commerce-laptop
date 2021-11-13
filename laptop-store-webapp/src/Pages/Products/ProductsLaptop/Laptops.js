@@ -5,7 +5,7 @@ import "../../../CSS/ProductsCss/bootstrap.css";
 import "../../../CSS/ProductsCss/style.css";
 import { useEffect, useState } from "react";
 import ListProductLaptop from "./ListProductLaptop";
-export default function Laptops() {
+export default function Laptops({ handleaddCart }) {
   const [pros, setPros] = useState([]);
   useEffect(() => {
     axios
@@ -159,7 +159,7 @@ export default function Laptops() {
           <div className="row">
             <div className="col-md-9 prolst">
               <div className="products-grid lstlaptop">
-                <ListProductLaptop pros={pros} />
+                <ListProductLaptop handleaddCart={handleaddCart} pros={pros} />
               </div>
               <div className="toolbar">
                 <div className="pager">
