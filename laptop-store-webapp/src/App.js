@@ -3,7 +3,11 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Header from "./Pages/Header.js";
 import Laptops from "./Pages/Products/ProductsLaptop/Laptops";
 import Keyboard from "./Pages/Products/ProductsKeyboard/Keyboard";
+import slide from "./Scrip/slide";
+
+
 import Login from "./Pages/Login/Login";
+import Register from "./Pages/Login/Register";
 import Body from "./Pages/Body.js";
 import Lienhe from "./Pages/Lienhe";
 import Tintuc from "./Pages/Tintuc";
@@ -14,8 +18,13 @@ import DetailProductsKeyboard from "./Pages/Products/ProductsKeyboard/DetailProd
 import DetailProductsScreen from "./Pages/Products/ProductsScreen/DetailProductsScreen";
 import Screen from "./Pages/Products/ProductsScreen/Screen";
 import GioHang from "./Pages/GioHang";
+<<<<<<< HEAD
 import Login2 from "./Pages/Login/Login2";
+=======
+import RoutesCartItems from "./Pages/Routes/RoutesCartItems";
+>>>>>>> 5dc032929b99f485e4eda2c4cf31ea476669c29b
 function App() {
+ 
   return (
     <Router>
       <div className="App">
@@ -37,8 +46,14 @@ function App() {
           path="/screen/:id"
           component={(match) => <DetailProductsScreen match={match} />}
         ></Route>
+<<<<<<< HEAD
         <Route path="/giohang" component={() => <GioHang />}></Route>
         <Route path="/login" exact component={() => <Login2 />}></Route>
+=======
+        <RoutesCartItems />
+        <Route path="/login" exact component={() => <Login />}></Route>
+        <Route path="/login/register" exact component={()=> <Register />}> </Route>
+>>>>>>> 5dc032929b99f485e4eda2c4cf31ea476669c29b
         <Route path="/lienhe" component={() => <Lienhe />}></Route>
         <Route path="/tincongnghe" component={() => <Tintuc />}></Route>
         <Route path="/showroom" component={() => <Showroom />}></Route>

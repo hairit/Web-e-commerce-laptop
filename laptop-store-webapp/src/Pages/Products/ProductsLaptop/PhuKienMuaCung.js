@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import slide from "../../../Scrip/slide";
 import { NavLink } from 'react-router-dom';
 
 import details from "../../../CSS/ProductsCss/details.css";

@@ -18,6 +18,9 @@ export default function ListProductLaptop({ pros }) {
   function handleViewDetails(detail) {
     history.push(`/laptop/${detail.id}`);
   }
+  function handleaddCart(detail){
+    history.push(`/giohang/${detail.id}`);
+  }
   console.log(`pros`, pros);
   return (
     <div className="row prolst">
@@ -41,7 +44,7 @@ export default function ListProductLaptop({ pros }) {
                 {solver.formatCurrency("vi-VN", "currency", "VND", pro.gia)}
               </h4>
               <div className="button_group">
-                <button className="button add-cart" type="button">
+                <button className="button add-cart" type="button" onClick={() => handleaddCart(pro)}>
                   Thêm vào giỏ hàng
                 </button>
                 <button className="button wishlist" type="button">
