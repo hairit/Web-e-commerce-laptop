@@ -35,7 +35,7 @@ export default function KeyboardPanel() {
     const [pros, setPros] = useState([]);
     useEffect(() => {
         CALLER('GET','data/product/type=keyboard/enable',null)
-            .then(res => setPros(res.data)).catch(err => alert("Errol when try to get keyboard"));
+            .then(res => setPros(res.data)).catch(err => console.log("Errol when try to get keyboard"));
     }, [])
     return (
         <div className="keyboard-panel">

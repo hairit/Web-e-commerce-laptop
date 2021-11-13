@@ -33,9 +33,9 @@
 }
 .screen-item {
   margin: 5px 5px;
-  background-color: #ffffff;
   border-radius: 5px;
   padding-bottom: 5px;
+  background-color: #ffffff;
 }
 .screen-image-img {
   transform: scale(86%);

@@ -7,11 +7,12 @@ import { NavLink } from 'react-router-dom';
 import '../../CSS/ScreenPanel.css'
 import Solver from '../../Classes/Solver';
 import { useHistory } from 'react-router';
-const renderScreenItem= (pro, index) => {
+const RenderScreenItem= (pro, index) => {
     const solver =new Solver();
+    const history = useHistory();
     return (
         <div className="col-10-no-padding c-10-2 screen-infor" key={index}>
-            <NavLink className="screen-item" to={`/screen/${pro.id}`}>
+            <div className="screen-item" onClick={()=>history.push(`screen/${pro.id}`)} to={`screen/${pro.id}`}>
                 <div className="screen-image">
                     <img  className="screen-image-img" src={`https://localhost:44343/Images/Products/${pro.nameimage}`} alt={pro.nameimage} /> 
                 </div>
@@ -27,7 +28,7 @@ const renderScreenItem= (pro, index) => {
                         <p className="screen-price-value">{solver.formatCurrency("vi-VN",'currency','VND',pro.gia)}</p>
                     </div>
                 </div>
-            </NavLink>
+            </div>
         </div>
     )
 }
@@ -39,7 +40,6 @@ export default function ScreenPanel() {
         .then(res => setPros(res.data))
         .catch(err => console.log("Errol when try to get screen product"+err))
     }, [])
-    console.log(pros);
     return (
         <div className="screen-panel">
             <div className="screen-panel-header">
@@ -51,7 +51,7 @@ export default function ScreenPanel() {
             <div className="container10Col screen-container">
                 <div className="row-10-no-margin screen-row">
                     {
-                        pros.map((pro,index) => renderScreenItem(pro,index))
+                        pros.map((pro,index) => RenderScreenItem(pro,index,history))
                     }
                 </div>
             </div>
