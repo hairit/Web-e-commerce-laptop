@@ -7,6 +7,7 @@ import slide from "./Scrip/slide";
 
 
 import Login from "./Pages/Login/Login";
+import Register from "./Pages/Login/Register";
 import Body from "./Pages/Body.js";
 import Lienhe from "./Pages/Lienhe";
 import Tintuc from "./Pages/Tintuc";
@@ -43,6 +44,7 @@ function App() {
         ></Route>
         <RoutesCartItems />
         <Route path="/login" exact component={() => <Login />}></Route>
+        <Route path="/login/register" exact component={()=> <Register />}> </Route>
         <Route path="/lienhe" component={() => <Lienhe />}></Route>
         <Route path="/tincongnghe" component={() => <Tintuc />}></Route>
         <Route path="/showroom" component={() => <Showroom />}></Route>
