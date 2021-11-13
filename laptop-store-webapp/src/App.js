@@ -1,10 +1,8 @@
 import "./CSS/App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Header from "./Pages/Header.js";
-import Laptops from "./Pages/Products/ProductsLaptop/Laptops";
 import Keyboard from "./Pages/Products/ProductsKeyboard/Keyboard";
 import slide from "./Scrip/slide";
-
 
 import Login from "./Pages/Login/Login";
 import Register from "./Pages/Login/Register";
@@ -24,14 +22,13 @@ import Login2 from "./Pages/Login/Login2";
 import RoutesCartItems from "./Pages/Routes/RoutesCartItems";
 >>>>>>> 5dc032929b99f485e4eda2c4cf31ea476669c29b
 function App() {
- 
   return (
     <Router>
       <div className="App">
         <Header />
         <Route path="/" exact component={() => <Body />}></Route>
         {/* <Route path="/sanpham" exact component={() => <Laptops />}></Route> */}
-        <Route path="/laptop" exact component={() => <Laptops />}></Route>
+
         <Route path="/keyboard" exact component={() => <Keyboard />}></Route>
         <Route path="/screen" exact component={() => <Screen />}></Route>
         <Route
@@ -52,8 +49,14 @@ function App() {
 =======
         <RoutesCartItems />
         <Route path="/login" exact component={() => <Login />}></Route>
+<<<<<<< HEAD
+        <Route path="/login/register" exact component={() => <Register />}>
+          {" "}
+        </Route>
+=======
         <Route path="/login/register" exact component={()=> <Register />}> </Route>
 >>>>>>> 5dc032929b99f485e4eda2c4cf31ea476669c29b
+>>>>>>> 8519aebe5d6a368b63bf908d7424d905611663cb
         <Route path="/lienhe" component={() => <Lienhe />}></Route>
         <Route path="/tincongnghe" component={() => <Tintuc />}></Route>
         <Route path="/showroom" component={() => <Showroom />}></Route>
