@@ -1,4 +1,4 @@
-import "./App.css";
+import "./CSS/App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Header from "./Pages/Header.js";
 import Laptops from "./Pages/Products/ProductsLaptop/Laptops";
@@ -14,6 +14,7 @@ import DetailProductsKeyboard from "./Pages/Products/ProductsKeyboard/DetailProd
 import DetailProductsScreen from "./Pages/Products/ProductsScreen/DetailProductsScreen";
 import Screen from "./Pages/Products/ProductsScreen/Screen";
 import GioHang from "./Pages/GioHang";
+import Login2 from "./Pages/Login/Login2";
 function App() {
   return (
     <Router>
@@ -37,7 +38,7 @@ function App() {
           component={(match) => <DetailProductsScreen match={match} />}
         ></Route>
         <Route path="/giohang" component={() => <GioHang />}></Route>
-        <Route path="/login" exact component={() => <Login />}></Route>
+        <Route path="/login" exact component={() => <Login2 />}></Route>
         <Route path="/lienhe" component={() => <Lienhe />}></Route>
         <Route path="/tincongnghe" component={() => <Tintuc />}></Route>
         <Route path="/showroom" component={() => <Showroom />}></Route>

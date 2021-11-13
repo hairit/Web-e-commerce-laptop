@@ -43,7 +43,7 @@ export default function Laptop() {
   useEffect(() => {
     CALLER("GET", "data/product/type=laptop/enable", null)
       .then((res) => setPros(res.data))
-      .catch((err) => alert("Errol!! when try to get laptop product"));
+      .catch((err) => console.log("Errol!! when try to get laptop product"));
   }, []);
   return (
     <div className="laptop-panel">

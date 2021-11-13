@@ -33,7 +33,7 @@ const LoadingProductOptions = (item , index) =>{
 export default function Center() {
     const [images, setImages] = useState([])
     useEffect(() => {
-        CALLER('GET','lappee/image',null).then(res => setImages(res.data)).catch(err => alert("Errol!! IMG loading failed"));
+        CALLER('GET','lappee/image',null).then(res => setImages(res.data)).catch(err => console.log("Errol when try to get Image API"));
     }, [])
     return(
         <div className="center">
