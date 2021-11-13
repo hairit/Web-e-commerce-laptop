@@ -54,14 +54,15 @@ namespace Laptop_store_e_comerce.Models
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
+                entity.Property(e => e.Diachinhan)
+                    .IsRequired()
+                    .HasColumnName("diachinhan")
+                    .HasMaxLength(1);
+
                 entity.Property(e => e.Iduser).HasColumnName("iduser");
 
                 entity.Property(e => e.Ngaydat)
                     .HasColumnName("ngaydat")
-                    .HasColumnType("date");
-
-                entity.Property(e => e.Ngayhuydon)
-                    .HasColumnName("ngayhuydon")
                     .HasColumnType("date");
 
                 entity.Property(e => e.Phuongthucthanhtoan)
@@ -82,13 +83,13 @@ namespace Laptop_store_e_comerce.Models
                     .WithMany(p => p.Bills)
                     .HasForeignKey(d => d.Iduser)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Bill__iduser__5629CD9C");
+                    .HasConstraintName("FK__Bill__iduser__5535A963");
             });
 
             modelBuilder.Entity<BillDetail>(entity =>
             {
                 entity.HasKey(e => new { e.IdBill, e.IdProduct })
-                    .HasName("PK__BillDeta__E317F405CB027AEA");
+                    .HasName("PK__BillDeta__E317F405550F68AD");
 
                 entity.ToTable("BillDetail");
 
@@ -110,13 +111,13 @@ namespace Laptop_store_e_comerce.Models
                     .WithMany(p => p.BillDetails)
                     .HasForeignKey(d => d.IdBill)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__BillDetai__idBil__571DF1D5");
+                    .HasConstraintName("FK__BillDetai__idBil__5629CD9C");
 
                 entity.HasOne(d => d.IdProductNavigation)
                     .WithMany(p => p.BillDetails)
                     .HasForeignKey(d => d.IdProduct)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__BillDetai__idPro__5812160E");
+                    .HasConstraintName("FK__BillDetai__idPro__571DF1D5");
             });
 
             modelBuilder.Entity<Card>(entity =>
@@ -136,13 +137,13 @@ namespace Laptop_store_e_comerce.Models
                     .WithMany(p => p.Cards)
                     .HasForeignKey(d => d.Iduser)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Card__iduser__59063A47");
+                    .HasConstraintName("FK__Card__iduser__5812160E");
             });
 
             modelBuilder.Entity<CardDetail>(entity =>
             {
                 entity.HasKey(e => new { e.IdCard, e.IdProduct })
-                    .HasName("PK__CardDeta__8E4D2F6AED3535CE");
+                    .HasName("PK__CardDeta__8E4D2F6A14D74DA9");
 
                 entity.ToTable("CardDetail");
 
@@ -164,13 +165,13 @@ namespace Laptop_store_e_comerce.Models
                     .WithMany(p => p.CardDetails)
                     .HasForeignKey(d => d.IdCard)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__CardDetai__idCar__59FA5E80");
+                    .HasConstraintName("FK__CardDetai__idCar__59063A47");
 
                 entity.HasOne(d => d.IdProductNavigation)
                     .WithMany(p => p.CardDetails)
                     .HasForeignKey(d => d.IdProduct)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__CardDetai__idPro__5AEE82B9");
+                    .HasConstraintName("FK__CardDetai__idPro__59FA5E80");
             });
 
             modelBuilder.Entity<Color>(entity =>
@@ -215,7 +216,7 @@ namespace Laptop_store_e_comerce.Models
             modelBuilder.Entity<KeyboardDetail>(entity =>
             {
                 entity.HasKey(e => e.IdProduct)
-                    .HasName("PK__Keyboard__5EEC79D12ED02147");
+                    .HasName("PK__Keyboard__5EEC79D16B14D6ED");
 
                 entity.ToTable("KeyboardDetail");
 
@@ -262,13 +263,13 @@ namespace Laptop_store_e_comerce.Models
                     .WithOne(p => p.KeyboardDetail)
                     .HasForeignKey<KeyboardDetail>(d => d.IdProduct)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__KeyboardD__idPro__5BE2A6F2");
+                    .HasConstraintName("FK__KeyboardD__idPro__5AEE82B9");
             });
 
             modelBuilder.Entity<LaptopDescription>(entity =>
             {
                 entity.HasKey(e => e.IdProduct)
-                    .HasName("PK__LaptopDe__5EEC79D1EC4B2455");
+                    .HasName("PK__LaptopDe__5EEC79D13DAA5F2F");
 
                 entity.ToTable("LaptopDescription");
 
@@ -333,13 +334,13 @@ namespace Laptop_store_e_comerce.Models
                     .WithOne(p => p.LaptopDescription)
                     .HasForeignKey<LaptopDescription>(d => d.IdProduct)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__LaptopDes__idPro__5CD6CB2B");
+                    .HasConstraintName("FK__LaptopDes__idPro__5BE2A6F2");
             });
 
             modelBuilder.Entity<LaptopDetail>(entity =>
             {
                 entity.HasKey(e => e.IdProduct)
-                    .HasName("PK__LaptopDe__5EEC79D1FCB97D74");
+                    .HasName("PK__LaptopDe__5EEC79D1BB97B098");
 
                 entity.ToTable("LaptopDetail");
 
@@ -368,13 +369,13 @@ namespace Laptop_store_e_comerce.Models
                     .WithOne(p => p.LaptopDetail)
                     .HasForeignKey<LaptopDetail>(d => d.IdProduct)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__LaptopDet__idPro__5DCAEF64");
+                    .HasConstraintName("FK__LaptopDet__idPro__5CD6CB2B");
             });
 
             modelBuilder.Entity<MouseDetail>(entity =>
             {
                 entity.HasKey(e => e.IdProduct)
-                    .HasName("PK__MouseDet__5EEC79D112150FD3");
+                    .HasName("PK__MouseDet__5EEC79D1922AF87F");
 
                 entity.ToTable("MouseDetail");
 
@@ -429,13 +430,13 @@ namespace Laptop_store_e_comerce.Models
                     .WithOne(p => p.MouseDetail)
                     .HasForeignKey<MouseDetail>(d => d.IdProduct)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__MouseDeta__idPro__5EBF139D");
+                    .HasConstraintName("FK__MouseDeta__idPro__5DCAEF64");
             });
 
             modelBuilder.Entity<Pcdetail>(entity =>
             {
                 entity.HasKey(e => e.IdProduct)
-                    .HasName("PK__PCDetail__5EEC79D1B9772301");
+                    .HasName("PK__PCDetail__5EEC79D1973F6402");
 
                 entity.ToTable("PCDetail");
 
@@ -492,7 +493,7 @@ namespace Laptop_store_e_comerce.Models
                     .WithOne(p => p.Pcdetail)
                     .HasForeignKey<Pcdetail>(d => d.IdProduct)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__PCDetail__idProd__5FB337D6");
+                    .HasConstraintName("FK__PCDetail__idProd__5EBF139D");
             });
 
             modelBuilder.Entity<Product>(entity =>
@@ -539,13 +540,13 @@ namespace Laptop_store_e_comerce.Models
                 entity.HasOne(d => d.IdloaiNavigation)
                     .WithMany(p => p.Products)
                     .HasForeignKey(d => d.Idloai)
-                    .HasConstraintName("FK__Product__idloai__60A75C0F");
+                    .HasConstraintName("FK__Product__idloai__5FB337D6");
             });
 
             modelBuilder.Entity<ScreenDetail>(entity =>
             {
                 entity.HasKey(e => e.IdProduct)
-                    .HasName("PK__ScreenDe__5EEC79D1CA94F092");
+                    .HasName("PK__ScreenDe__5EEC79D16C6303FE");
 
                 entity.ToTable("ScreenDetail");
 
@@ -614,7 +615,7 @@ namespace Laptop_store_e_comerce.Models
                     .WithOne(p => p.ScreenDetail)
                     .HasForeignKey<ScreenDetail>(d => d.IdProduct)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__ScreenDet__idPro__619B8048");
+                    .HasConstraintName("FK__ScreenDet__idPro__60A75C0F");
             });
 
             modelBuilder.Entity<TypeProduct>(entity =>
