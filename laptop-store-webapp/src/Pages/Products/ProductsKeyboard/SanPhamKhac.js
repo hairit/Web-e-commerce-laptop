@@ -14,7 +14,7 @@ export default function SanPhamKhac() {
       .then((res) => setSanpham(res.data))
       .catch((err) => console.log(err));
   }, []);
-  console.log(sanpham);
+
   return (
     <>
       {sanpham.map((kb, index) => {

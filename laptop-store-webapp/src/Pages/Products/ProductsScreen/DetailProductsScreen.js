@@ -41,7 +41,6 @@ export default function DetailProductsScreen({ match }) {
         `https://localhost:44343/data/product/type=screen/${match.match.params.id}`
       )
       .then((res) => {
-        console.log(res);
         setDetail(res.data);
       })
       .catch((err) => console.log(err + "Khong goi san pham"));
