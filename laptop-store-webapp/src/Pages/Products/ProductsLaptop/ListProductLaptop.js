@@ -42,7 +42,12 @@ export default function ListProductLaptop({ pros }) {
                 {solver.formatCurrency("vi-VN", "currency", "VND", pro.gia)}
               </h4>
               <div className="button_group">
-                <button className="button add-cart">Thêm vào giỏ hàng</button>
+                <button
+                  className="button add-cart"
+                  // onClick={() => handleAddCard()}
+                >
+                  Thêm vào giỏ hàng
+                </button>
                 <button className="button wishlist" type="button">
                   <i className="fa">
                     <img src={heart32px} />

@@ -9,8 +9,9 @@ import replace_24px from "../../../Images/replace_24px.png";
 import settings_24px from "../../../Images/settings_24px.png";
 import monitor_24px from "../../../Images/monitor_24px.png";
 import SanPhamKhac from "../ProductsKeyboard/SanPhamKhac";
-import prev_60px from "../../../Images/prev_60px.png";
-import next_60px from "../../../Images/next_60px.png";
+
+import prev_50px from "../../../Images/prev_50px.png";
+import next_50px from "../../../Images/next_50px.png";
 import promotion_32px from "../../../Images/promotion_32px.png";
 import insurance_24px from "../../../Images/insurance_24px.png";
 import whatsapp_32px from "../../../Images/whatsapp_32px.png";
@@ -44,6 +45,49 @@ export default function DetailProductsKeyboard({ match }) {
       .catch((err) => console.log(err + "Khong goi san pham"));
   }, []);
 
+  const btnPrev = document.querySelector(".btn-prev");
+  const btnNext = document.querySelector(".btn-next");
+  const slidePro = document.querySelector(".slide-pro");
+  const slideItems = document.querySelector(".slide-item");
+  const slideItemsW = document.querySelector(".col_2");
+  // const slideItemWidth = slideItemsW.offsetWidth;
+  // const slideProLength = slidePro.length;
+  // console.log("mnmnmn", slideProLength);
+  let positionX = 0;
+  let index = 0;
+  btnNext &&
+    btnNext.addEventListener("click", function () {
+      changeSlide(1);
+    });
+  btnPrev &&
+    btnPrev.addEventListener("click", function () {
+      changeSlide(-1);
+    });
+
+  function changeSlide(direction) {
+    if (direction === 1) {
+      if (index >= 9) {
+        index = 9;
+        btnNext.style = "visibility: hidden;";
+        return;
+      }
+      positionX = positionX - 242;
+      slidePro.style = `transform: translateX(${positionX}px)`;
+      console.log(index);
+      index++;
+    } else if (direction === -1) {
+      btnNext.style = "visibility: none;";
+
+      if (index <= 0) {
+        index = 0;
+        return;
+      }
+      positionX = positionX + 242;
+      slidePro.style = `transform: translateX(${positionX}px)`;
+      console.log(index);
+      index--;
+    }
+  }
   return (
     <div className="single-product">
       <div className="container">
@@ -320,14 +364,26 @@ export default function DetailProductsKeyboard({ match }) {
           </div>
           <div className="panel-spkhac">
             <div className="xemthem">Sản phẩm khác</div>
-            <div className="row_10 prokb">
-              <SanPhamKhac />
-              <span className="btn-prev btnnp">
-                <img src={prev_60px} />
+            <div className="prev-next">
+              <span
+                className="btn-prev btnnp"
+                id="btn-prevs"
+                // onClick={changeSlide(-1)}
+              >
+                <img src={prev_50px} />
               </span>
-              <span className="btn-next btnnp">
-                <img src={next_60px} />
+              <span
+                className="btn-next btnnp"
+                id="btn-nexts"
+                // onClick={changeSlide(1)}
+              >
+                <img src={next_50px} />
               </span>
+            </div>
+            <div className="row_10">
+              <div className="slide-pro" id="pro-s">
+                <SanPhamKhac />
+              </div>
             </div>
           </div>
           <div className="info-bottom row">
