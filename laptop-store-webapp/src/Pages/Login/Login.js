@@ -4,35 +4,29 @@ import '../../CSS/Login.css'
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import { NavLink } from 'react-router-dom';
 import { MdEvent } from 'react-icons/md';
-import { BsArrowLeftRight } from 'react-icons/bs';
+import { BsArrowLeftRight, BsCheck } from 'react-icons/bs';
 import axios from 'axios';
-import { useCookies } from 'react-cookie';
 
 
+export default function Login({login,userCookie}) {
 
-export default function Login() {
-
-    const [username, setusername] = useState("lth.contact@gmail.com");
-    const [password, setpassword] = useState("thanhhoa2022");
-    const [cookie, setCookie] = useCookies(['user']);
+    const [username, setusername] = useState("");
+    const [password, setpassword] = useState("");
     let history = useHistory();
-    function setCookies(id) {
-        setCookie('ID', id);
-    }
     function handleClick(e) {
         e.preventDefault();
-        axios
-            .get(
-                `https://localhost:44343/data/user/login/` + username + `/` + password
-            )
-            .then((res) => {
-                console.log(res);
-                setCookies(res.data.id);
-                history.goBack();
-            })
-            .catch((err) => {
-                alert("Đăng nhập thất bại");
-            });
+        if(!username.includes('@') || !password.length >= 6) return;
+        else {
+            axios.get(`https://localhost:44343/data/user/login/${username}/${password}`)
+                           .then(res => {
+                                if(res.status === 404) alert("Tài khoản hoặc mật khẩu không đúng");
+                                else {
+                                    login(res.data);
+                                    history.goBack();
+                                }
+                           })
+                           .catch(err => console.log("Login errol request"));
+        }             
     }
     function getusername(event) {
         setusername(event.target.value)
@@ -40,7 +34,6 @@ export default function Login() {
     function getpass(event) {
         setpassword(event.target.value)
     }
-    {
         return (
             <div className="layout-page-login">
                 <div className="customer-login">
@@ -72,7 +65,6 @@ export default function Login() {
                 </div>
             </div>
         )
-    }
 }
 
 

@@ -32,7 +32,7 @@
   font-size: 20px;
   margin-right: 5px;
 }
-.home{
+.home {
   align-items: center;
   display: flex;
   text-decoration: none;
@@ -81,6 +81,9 @@
   border: none !important;
   width: 300px;
   font-size: 14px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  padding-left: 10px;
 }
 .button-search-product {
   border: none;
@@ -102,6 +105,7 @@
   flex-direction: row-reverse;
 }
 .header-center-right-menu-item {
+  position: relative;
   display: flex;
   align-items: center;
   padding: 0 15px;
@@ -118,4 +122,31 @@
 }
 .login-text {
   text-align: left;
+}
+.avatar {
+  width: 27px;
+  height: 27px;
+  border-radius: 50%;
+  margin-right: 9px;
+}
+#drop-user {
+  margin-left: 4px;
+}
+.quanlity-data-user {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  background-color: red;
+  align-items: center;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  color: #ffffff;
+  font-size: 10px;
+  top: -3px;
+  left: 32px;
+}
+.quanlity-data-user-disable {
+  position: absolute;
+  opacity: 0;
 }

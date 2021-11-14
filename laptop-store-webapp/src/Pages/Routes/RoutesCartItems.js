@@ -35,7 +35,7 @@ export default function RoutesCartItems() {
   return (
     <Switch>
       <Route path="/laptop" exact component={() => <Laptops />}></Route>
-      <Route path="/giohang" component={() => <GioHang />}></Route>
+      <Route path="/card" component={() => <GioHang />}></Route>
     </Switch>
   );
 }
