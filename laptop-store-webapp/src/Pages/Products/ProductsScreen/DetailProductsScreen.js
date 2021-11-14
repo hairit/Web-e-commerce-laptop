@@ -4,7 +4,8 @@ import details from "../../../CSS/ProductsCss/details.css";
 import Solver from "../../../Classes/Solver";
 import { withRouter } from "react-router";
 import SanPhamKhac from "./SanPhamKhac";
-
+import prev_50px from "../../../Images/prev_50px.png";
+import next_50px from "../../../Images/next_50px.png";
 import freeshipping_4px from "../../../Images/freeshipping_4px.png";
 import freeshippingcs_24px from "../../../Images/freeshippingcs_24px.png";
 import shield_24px from "../../../Images/shield_24px.png";
@@ -46,6 +47,45 @@ export default function DetailProductsScreen({ match }) {
       .catch((err) => console.log(err + "Khong goi san pham"));
   }, []);
 
+  const btnPrev = document.querySelector(".btn-prev");
+  const btnNext = document.querySelector(".btn-next");
+  const slidePro = document.querySelector(".slide-pro");
+
+  let positionX = 0;
+  let index = 0;
+  btnNext &&
+    btnNext.addEventListener("click", function () {
+      changeSlide(1);
+    });
+  btnPrev &&
+    btnPrev.addEventListener("click", function () {
+      changeSlide(-1);
+    });
+
+  function changeSlide(direction) {
+    if (direction === 1) {
+      if (index >= 9) {
+        index = 9;
+        btnNext.style = "visibility: hidden;";
+        return;
+      }
+      positionX = positionX - 242;
+      slidePro.style = `transform: translateX(${positionX}px)`;
+      console.log(index);
+      index++;
+    } else if (direction === -1) {
+      btnNext.style = "visibility: none;";
+
+      if (index <= 0) {
+        index = 0;
+        return;
+      }
+      positionX = positionX + 242;
+      slidePro.style = `transform: translateX(${positionX}px)`;
+      console.log(index);
+      index--;
+    }
+  }
   return (
     <div className="single-product">
       <div className="container">
@@ -357,14 +397,26 @@ export default function DetailProductsScreen({ match }) {
           </div>
           <div className="panel-spkhac">
             <div className="xemthem">Sản phẩm khác</div>
-            <div className="row_10 prokb">
-              <SanPhamKhac />
-              <span className="btn-prev btnnp">
-                <img src={prev_60px} />
+            <div className="prev-next">
+              <span
+                className="btn-prev btnnp"
+                id="btn-prevs"
+                // onClick={changeSlide(-1)}
+              >
+                <img src={prev_50px} />
               </span>
-              <span className="btn-next btnnp">
-                <img src={next_60px} />
+              <span
+                className="btn-next btnnp"
+                id="btn-nexts"
+                // onClick={changeSlide(1)}
+              >
+                <img src={next_50px} />
               </span>
+            </div>
+            <div className="row_10 ">
+              <div className="slide-pro" id="pro-s">
+                <SanPhamKhac />
+              </div>
             </div>
           </div>
           <div className="info-bottom row">
@@ -429,7 +481,7 @@ export default function DetailProductsScreen({ match }) {
             <div className="col-md-6 addressm">
               <iframe
                 className="bando"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.669726937899!2d106.6800696146224!3d10.759917092332737!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f1b7c3ed289%3A0xa06651894598e488!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBTw6BpIEfDsm4!5e0!3m2!1svi!2s!4v1636380798827!5m2!1svi!2s"
+                src="https://www.google.com/maps/embed?pb=!1m12!1m8!1m3!1d3918.2315764536306!2d106.5962233!3d10.8699833!3m2!1i1024!2i768!4f13.1!2m1!1zMTUvMSDhuqRwIENow6FuaCAyLCB4w6MgVMOibiBYdcOibiwgSMOzYyBNw7RuLCBUaMOgbmggcGjhu5EgSOG7kyBDaMOtIE1pbmg!5e0!3m2!1svi!2s!4v1636881359200!5m2!1svi!2s"
                 allowfullscreen=""
                 loading="lazy"
               ></iframe>

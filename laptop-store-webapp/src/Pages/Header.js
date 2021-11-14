@@ -4,13 +4,17 @@ import URL from "../DATA/URL";
 import Logo from "../Images/Chicken-logo.png";
 import { MdLocationOn } from "react-icons/md";
 import { BsYoutube } from "react-icons/bs";
-import { AiFillPhone, AiOutlineShoppingCart ,AiOutlineCaretDown } from "react-icons/ai";
-import { RiComputerFill ,RiBillLine  } from "react-icons/ri";
+import {
+  AiFillPhone,
+  AiOutlineShoppingCart,
+  AiOutlineCaretDown,
+} from "react-icons/ai";
+import { RiComputerFill, RiBillLine } from "react-icons/ri";
 import { CgSearch } from "react-icons/cg";
 import { HiOutlineUserCircle } from "react-icons/hi";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { CgProductHunt } from "react-icons/cg";
-import { Cookies } from 'react-cookie';
+import { Cookies } from "react-cookie";
 import axios from "axios";
 
 //import { instanceOf } from 'prop-types';
@@ -24,16 +28,13 @@ import {
 const nullUser = () => {
   return (
     <div>
-        <HiOutlineUserCircle className="header-center-right-menu-item-icon" />
-        <p className="login-text">
-          Đăng nhập
-        </p>
+      <HiOutlineUserCircle className="header-center-right-menu-item-icon" />
+      <p className="login-text">Đăng nhập</p>
     </div>
-  )
-}
+  );
+};
 
-export default function Header({user}) {
-  
+export default function Header({ user }) {
   return (
     <div className="header">
       <div className="header-top header-item">
@@ -72,33 +73,63 @@ export default function Header({user}) {
           </div>
         </div>
         <div className="header-center-right">
-            {user === null ?
-                <NavLink className="header-center-right-menu-item" to="/login"> 
-                  <HiOutlineUserCircle className="header-center-right-menu-item-icon" />
-                <p className="login-text">
-                  Đăng nhập
-                </p>
-                </NavLink>
-                :
-                <div className="header-center-right-menu-item"> 
-                      {user.nameimage !== null ? <img  src={URL+`/Images/UserAvatar/${user.nameimage}`} className="avatar" alt="avatar"/>
-                      : <img  src={URL+`/Images/UserAvatar/NullAvatar.png`} className="avatar" alt="avatar"/> }
-                      <p className="login-text">
-                        {user.firstname+" "+user.lastname}
-                      </p>     
-                    <AiOutlineCaretDown id="drop-user"/>
-                </div>
-            }
-          {user === null ? <div></div> :
-              <NavLink className="header-center-right-menu-item" to="/bill">
+          {user === null ? (
+            <NavLink className="header-center-right-menu-item" to="/login">
+              <HiOutlineUserCircle className="header-center-right-menu-item-icon" />
+              <p className="login-text">Đăng nhập</p>
+            </NavLink>
+          ) : (
+            <div className="header-center-right-menu-item">
+              {user.nameimage !== null ? (
+                <img
+                  src={URL + `/Images/UserAvatar/${user.nameimage}`}
+                  className="avatar"
+                  alt="avatar"
+                />
+              ) : (
+                <img
+                  src={URL + `/Images/UserAvatar/NullAvatar.png`}
+                  className="avatar"
+                  alt="avatar"
+                />
+              )}
+              <p className="login-text">
+                {user.firstname + " " + user.lastname}
+              </p>
+              <AiOutlineCaretDown id="drop-user" />
+            </div>
+          )}
+          {user === null ? (
+            <div></div>
+          ) : (
+            <NavLink className="header-center-right-menu-item" to="/bill">
               <RiBillLine className="header-center-right-menu-item-icon" />
-              {user.bills.length === 0 ? <div></div> :<div className="quanlity-data-user">{user.bills.length}</div>}
+              {user.bills.length === 0 ? (
+                <div></div>
+              ) : (
+                <div className="quanlity-data-user">{user.bills.length}</div>
+              )}
               <p>Đơn hàng</p>
-                </NavLink>
-          }
-          <NavLink className="header-center-right-menu-item" to={ user === null ? "/" : "/card"}>
+            </NavLink>
+          )}
+          <NavLink
+            className="header-center-right-menu-item"
+            to={user === null ? "/" : "/card"}
+          >
             <AiOutlineShoppingCart className="header-center-right-menu-item-icon" />
-            {user === null ? <div></div> :<div className={user.cards.length===0 ? "quanlity-data-user-disable" : "quanlity-data-user"}>{user.cards.length}</div>}
+            {user === null ? (
+              <div></div>
+            ) : (
+              <div
+                className={
+                  user.cards.length === 0
+                    ? "quanlity-data-user-disable"
+                    : "quanlity-data-user"
+                }
+              >
+                {user.cards.length}
+              </div>
+            )}
             <p>Giỏ hàng</p>
           </NavLink>
           <div className="header-center-right-menu-item">

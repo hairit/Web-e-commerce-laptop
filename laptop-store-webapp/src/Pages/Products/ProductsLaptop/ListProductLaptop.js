@@ -12,7 +12,7 @@ import {
 } from "react-router-dom";
 import Solver from "../../../Classes/Solver";
 
-export default function ListProductLaptop({ pros, handleaddCart }) {
+export default function ListProductLaptop({ pros }) {
   const history = useHistory();
   const solver = new Solver();
   function handleViewDetails(detail) {
@@ -44,7 +44,7 @@ export default function ListProductLaptop({ pros, handleaddCart }) {
               <div className="button_group">
                 <button
                   className="button add-cart"
-                  onClick={() => handleaddCart(pro)}
+                  // onClick={() => handleAddCard()}
                 >
                   Thêm vào giỏ hàng
                 </button>

@@ -18,7 +18,6 @@ import whatsapp_32px from "../../../Images/whatsapp_32px.png";
 import edit_property_32px from "../../../Images/edit_property_32px.png";
 import settings_32px from "../../../Images/settings_32px.png";
 
-
 export default function DetailProductsLaptop({ match }) {
   const solver = new Solver();
   const [detail, setDetail] = useState({});
@@ -40,6 +39,51 @@ export default function DetailProductsLaptop({ match }) {
   //     console.log("prev slide");
   //   }
   // }
+
+  const btnPrev = document.querySelector(".btn-prev");
+  const btnNext = document.querySelector(".btn-next");
+  const rowSlide = document.querySelector(".row_10");
+  const slidePro = document.querySelector(".slide-pro");
+  const slideItems = document.querySelector(".slide-item");
+  const slideItemsW = document.querySelector(".col_2");
+  // const slideItemWidth = slideItemsW.offsetWidth;
+  // const slideProLength = slidePro.length;
+  // console.log("mnmnmn", slideProLength);
+  let positionX = 0;
+  let index = 0;
+  btnNext &&
+    btnNext.addEventListener("click", function () {
+      changeSlide(1);
+    });
+  btnPrev &&
+    btnPrev.addEventListener("click", function () {
+      changeSlide(-1);
+    });
+
+  function changeSlide(direction) {
+    if (direction === 1) {
+      if (index >= 5) {
+        index = 5;
+        btnNext.style = "visibility: hidden;";
+        return;
+      }
+      positionX = positionX - 242;
+      slidePro.style = `transform: translateX(${positionX}px)`;
+      console.log(index);
+      index++;
+    } else if (direction === -1) {
+      btnNext.style = "visibility: none;";
+
+      if (index <= 0) {
+        index = 0;
+        return;
+      }
+      positionX = positionX + 242;
+      slidePro.style = `transform: translateX(${positionX}px)`;
+      console.log(index);
+      index--;
+    }
+  }
 
   return (
     <div className="single-product">
@@ -462,7 +506,7 @@ export default function DetailProductsLaptop({ match }) {
             <div className="col-md-6 addressm">
               <iframe
                 className="bando"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.669726937899!2d106.6800696146224!3d10.759917092332737!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f1b7c3ed289%3A0xa06651894598e488!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBTw6BpIEfDsm4!5e0!3m2!1svi!2s!4v1636380798827!5m2!1svi!2s"
+                src="https://www.google.com/maps/embed?pb=!1m12!1m8!1m3!1d3918.2315764536306!2d106.5962233!3d10.8699833!3m2!1i1024!2i768!4f13.1!2m1!1zMTUvMSDhuqRwIENow6FuaCAyLCB4w6MgVMOibiBYdcOibiwgSMOzYyBNw7RuLCBUaMOgbmggcGjhu5EgSOG7kyBDaMOtIE1pbmg!5e0!3m2!1svi!2s!4v1636881359200!5m2!1svi!2s"
                 allowfullscreen=""
                 loading="lazy"
               ></iframe>
