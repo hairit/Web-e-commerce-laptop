@@ -1,9 +1,20 @@
+import axios from "axios";
 import React from "react";
 import { NavLink } from "react-router-dom";
 import GioHangCss from "../CSS/GioHangCss.css";
 import no_shopping_cart from "../Images/no_shopping_cart.png";
-
-export default function GioHang() {
+import {useEffect , useState } from 'react';
+export default function GioHang({idUser}) {
+  const [cardDetails, setCardDetails] = useState([])
+  useEffect(() => {
+    axios.get(`https://localhost:44343/data/carddetail/iduser=${idUser}`,null)
+    .then(res => {
+      if (res.status === 200) {
+         setCardDetails(res.data);
+      }
+    }).catch(err => console.log("Get card failed" + err));
+  }, [])
+  console.log(cardDetails);
   return (
     <div className="page">
       <div className="container width">
@@ -22,7 +33,6 @@ export default function GioHang() {
           </div>
         </div>
       )} */}
-
         <div>
           <div className="title-cart">
             <strong className="title-text">Giỏ hàng của bạn</strong>

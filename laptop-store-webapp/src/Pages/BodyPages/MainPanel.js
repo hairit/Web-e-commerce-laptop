@@ -60,16 +60,15 @@ export default function MainPanel() {
                             <div className="col-no-padding c-8 main-panel-image-center">
                                  <div className="main-image">
                                             <div className="button-slide previous-slide" onClick={() => changeSlide('previous',getCenterImages(images).length)}>
-                                                <BiChevronLeft className="button-slide-icon"/>
+                                                <BiChevronLeft className="button-slide-icon" />
                                             </div>
                                      {images.map((image,index)=> renderImage(image ,index, 'center'))}
                                             <div className="button-slide next-slide" onClick={() => changeSlide('next',getCenterImages(images).length)}>
-                                                <BiChevronRight className="button-slide-icon"/>
+                                                <BiChevronRight className="button-slide-icon" />
                                             </div>
                                  </div>
                             </div>
-                            <div className="col-no-padding c-4 main-panel-image-left">
-                                 
+                            <div className="col-no-padding c-4 main-panel-image-left">      
                             </div>
                         </div>
                     </div>

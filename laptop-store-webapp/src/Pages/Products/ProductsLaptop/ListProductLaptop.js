@@ -11,14 +11,24 @@ import {
   NavLink,
 } from "react-router-dom";
 import Solver from "../../../Classes/Solver";
+import axios from "axios";
 
-export default function ListProductLaptop({ pros }) {
+export default function ListProductLaptop({ pros , reLoad , idUser}) {
   const history = useHistory();
   const solver = new Solver();
   function handleViewDetails(detail) {
     history.push(`/laptop/${detail.id}`);
   }
-
+  function addCardHandleClick  (idProduct , price){
+    console.log(idProduct + "log" + price + idUser);
+    axios.get(`https://localhost:44343/data/carddetail/add/iduser=${idUser}/idproduct=${idProduct}/tongtien=${price}`,null)
+      .then(res => {
+        if(res.status === 201){
+           reLoad();
+        }
+        else alert("không thể thêm vào giỏ hàng");
+      }).catch(err => console.log("Add card failed"))
+  }
   return (
     <div className="row prolst">
       {pros.map((pro, index) => {
@@ -42,7 +52,7 @@ export default function ListProductLaptop({ pros }) {
               </h4>
               <div className="button_group">
                 <button
-                  className="button add-cart"
+                  className="button add-cart" onClick={() => addCardHandleClick(pro.id,pro.gia)}
                   // onClick={() => handleAddCard()}
                 >
                   Thêm vào giỏ hàng

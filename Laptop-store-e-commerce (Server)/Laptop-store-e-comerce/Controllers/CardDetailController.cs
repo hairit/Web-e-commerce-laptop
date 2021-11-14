@@ -35,7 +35,7 @@ namespace Laptop_store_e_comerce.Controllers
             }
             return cardDetail;
         }
-        [HttpGet("user={id}")]
+        [HttpGet("iduser={id}")]
         public async Task<ActionResult<List<CardDetail>>> getCardDetailsByUser(int id)
         {
             if (!_context.Users.Any(user => user.Id == id)) return BadRequest();
