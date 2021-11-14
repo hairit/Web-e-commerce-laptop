@@ -34,7 +34,6 @@ function App() {
     setUserCookie("id", user.id);
     setUser(user);
   };
-  console.log(123);
   console.log(user);
   return (
     <Router>
