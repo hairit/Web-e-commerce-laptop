@@ -56,7 +56,7 @@ function App() {
           path="/screen/:id"
           component={(match) => <DetailProductsScreen match={match} />}
         ></Route>
-        <Route path="/giohang" component={() => <GioHang />}></Route>
+        {/* <Route path="/card" component={() => <GioHang />}></Route> */}
         {/* <Route path="/login" exact component={() => <Login2 />}></Route> */}
 
         <RoutesCartItems />
