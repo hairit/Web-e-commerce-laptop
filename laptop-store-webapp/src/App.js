@@ -18,27 +18,23 @@ import Screen from "./Pages/Products/ProductsScreen/Screen";
 import GioHang from "./Pages/GioHang";
 import RoutesCartItems from "./Pages/Routes/RoutesCartItems";
 import axios from "axios";
-import Cookies from 'react-cookie';
-import { useCookies } from "react-cookie";
+import { useCookies } from 'react-cookie';
 function App() {
-  const [cookie,setCookie] = useCookies(['user']);
   const [user, setUser] = useState(null);
-  const Cookie = new Cookies();
+  const [userCookie , setUserCookie] = useCookies(['user']);
   useEffect(() => {
-      var a = Cookie.get('ID');
-      if (a !== null) {
-        axios.get(`https://localhost:44343/data/user/${a}`)
-          .then(res => setUser(res.data)).catch(err => console.log("Đăng nhập fail"))
-      }
+    if(userCookie.id !== null){
+       axios.get(`https://localhost:44343/data/user/${userCookie.id}`)
+                           .then(res => setUser(res.data))
+                           .catch(err => console.log("Đăng nhập fail"))
+    }
   }, [])
-  const login = (email , pass) =>{
-      console.log(email,pass);
-      axios.get(`https://localhost:44343/data/user/login/${email}/${pass}`)
-      .then(res => {
-        setCookie('ID',res.data.id);
-        setUser(res.data)
-      }).catch(err => console.log("Đăng nhập fail"))
+  const login = (user) =>{
+      setUserCookie('id',user.id);
+      setUser(user);
   }
+  console.log(123);
+  console.log(user);
   return (
     <Router>
       <div className="App">

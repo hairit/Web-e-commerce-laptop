@@ -4,20 +4,29 @@ import '../../CSS/Login.css'
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import { NavLink } from 'react-router-dom';
 import { MdEvent } from 'react-icons/md';
-import { BsArrowLeftRight } from 'react-icons/bs';
+import { BsArrowLeftRight, BsCheck } from 'react-icons/bs';
 import axios from 'axios';
-import { useCookies } from 'react-cookie';
 
-export default function Login({login}) {
+
+export default function Login({login,userCookie}) {
 
     const [username, setusername] = useState("");
     const [password, setpassword] = useState("");
     let history = useHistory();
     function handleClick(e) {
         e.preventDefault();
-        login(username,password);
-        history.goBack();
-        
+        if(!username.includes('@') || !password.length >= 6) return;
+        else {
+            axios.get(`https://localhost:44343/data/user/login/${username}/${password}`)
+                           .then(res => {
+                                if(res.status === 404) alert("Tài khoản hoặc mật khẩu không đúng");
+                                else {
+                                    login(res.data);
+                                    history.goBack();
+                                }
+                           })
+                           .catch(err => console.log("Login errol request"));
+        }             
     }
     function getusername(event) {
         setusername(event.target.value)

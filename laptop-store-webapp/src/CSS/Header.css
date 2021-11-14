@@ -105,6 +105,7 @@
   flex-direction: row-reverse;
 }
 .header-center-right-menu-item {
+  position: relative;
   display: flex;
   align-items: center;
   padding: 0 15px;
@@ -123,7 +124,29 @@
   text-align: left;
 }
 .avatar {
-  width: 30px;
-  height: 30px;
+  width: 27px;
+  height: 27px;
   border-radius: 50%;
+  margin-right: 9px;
+}
+#drop-user {
+  margin-left: 4px;
+}
+.quanlity-data-user {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  background-color: red;
+  align-items: center;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  color: #ffffff;
+  font-size: 10px;
+  top: -3px;
+  left: 32px;
+}
+.quanlity-data-user-disable {
+  position: absolute;
+  opacity: 0;
 }
