@@ -49,7 +49,7 @@ namespace Laptop_store_e_comerce.Controllers
         public async Task<ActionResult<User>> Login(string email ,string pass)
         {
             var user = await database.Users.Include(user => user.Bills).ThenInclude(bill => bill.BillDetails)
-                                           .Include(user => user.Cards).ThenInclude(card => card.CardDetails)
+                                           //.Include(user => user.Cards).ThenInclude(card => card.CardDetails)
                                            .FirstOrDefaultAsync(a => a.Email == email);
             if (user != null)
             {
