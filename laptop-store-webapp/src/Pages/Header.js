@@ -122,12 +122,12 @@ export default function Header({ user }) {
             ) : (
               <div
                 className={
-                  user.cards.length === 0
+                  user.cardDetails.length === 0
                     ? "quanlity-data-user-disable"
                     : "quanlity-data-user"
                 }
               >
-                {user.cards.length}
+                {user.cardDetails.length}
               </div>
             )}
             <p>Giỏ hàng</p>
