@@ -120,12 +120,7 @@ export default function Header({ user }) {
             {user === null ? (
               <div></div>
             ) : (
-              <div
-                className={
-                  user.cardDetails.length === 0
-                    ? "quanlity-data-user-disable"
-                    : "quanlity-data-user"
-                }
+              <div className={user.cardDetails.length === 0 ? "quanlity-data-user-disable": "quanlity-data-user"}
               >
                 {user.cardDetails.length}
               </div>
