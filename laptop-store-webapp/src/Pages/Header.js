@@ -9,7 +9,7 @@ import { CgSearch } from "react-icons/cg";
 import { HiOutlineUserCircle } from "react-icons/hi";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { CgProductHunt } from "react-icons/cg";
-import { Cookies } from 'react-cookie';
+import { Cookies } from "react-cookie";
 import axios from "axios";
 
 //import { instanceOf } from 'prop-types';
@@ -24,21 +24,19 @@ export default function Header() {
   const [user, setUser] = useState({});
   useEffect(() => {
     const cookies = new Cookies();
-    id.current = cookies.get('ID');
-    var txt = `https://localhost:44343/data/user/${id.current}`
+    id.current = cookies.get("ID");
+    var txt = `https://localhost:44343/data/user/${id.current}`;
     axios
       .get(`https://localhost:44343/data/user/${id.current}`)
-      .then(res => {
+      .then((res) => {
         console.log("txt" + txt);
         setUser(res.data);
       })
-      .catch(err => {
+      .catch((err) => {
         console.log("txt" + txt);
-        console.log("Lỗi API get id")
-      }
-
-      );
-  }, [])
+        console.log("Lỗi API get id");
+      });
+  }, []);
 
   console.log("ID" + id);
   return (
@@ -68,8 +66,8 @@ export default function Header() {
             <p className="lappee-name">Lappee</p>
           </NavLink>
           <div className="panel-search-product">
-            <select className="header-center-left-dropdown" >
-              <option value className="header-center-left-dropdown-option" >
+            <select className="header-center-left-dropdown">
+              <option value className="header-center-left-dropdown-option">
                 {"Xin chào " + user.lastname}
               </option>
               <option value className="header-center-left-dropdown-option">
@@ -89,9 +87,7 @@ export default function Header() {
         <div className="header-center-right">
           <NavLink className="header-center-right-menu-item" to="/login">
             <HiOutlineUserCircle className="header-center-right-menu-item-icon" />
-            <p className="login-text">
-              Đăng nhập
-            </p>
+            <p className="login-text">Đăng nhập</p>
           </NavLink>
           <NavLink className="header-center-right-menu-item" to="/giohang">
             <AiOutlineShoppingCart className="header-center-right-menu-item-icon" />
