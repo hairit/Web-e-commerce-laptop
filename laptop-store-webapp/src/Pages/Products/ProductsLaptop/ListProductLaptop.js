@@ -19,7 +19,6 @@ export default function ListProductLaptop({ pros }) {
     history.push(`/laptop/${detail.id}`);
   }
 
-  console.log(`pros`, pros);
   return (
     <div className="row prolst">
       {pros.map((pro, index) => {
