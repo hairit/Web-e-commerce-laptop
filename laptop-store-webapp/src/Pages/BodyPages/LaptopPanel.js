@@ -28,7 +28,7 @@ const renderLaptopItem = (pro, index) => {
           </NavLink>
           <div className="laptop-detail-item laptop-price">
             <div className="">Giảm 5%</div>
-            <div className="laptop-price-value">
+            <div className="laptop-price-value" >
               {solver.formatCurrency("vi-VN", "currency", "VND", pro.gia)}
             </div>
           </div>
@@ -62,6 +62,7 @@ export default function Laptop() {
         to="/"
         onClick={() => {
           history.push(`/laptop`);
+         
         }}
       >
         <p>Tất cả sản phẩm</p>

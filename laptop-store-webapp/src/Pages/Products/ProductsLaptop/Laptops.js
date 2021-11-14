@@ -5,7 +5,7 @@ import "../../../CSS/ProductsCss/bootstrap.css";
 import "../../../CSS/ProductsCss/style.css";
 import { useEffect, useState } from "react";
 import ListProductLaptop from "./ListProductLaptop";
-export default function Laptops() {
+export default function Laptops({reLoad , idUser}) {
   const [pros, setPros] = useState([]);
   useEffect(() => {
     axios
@@ -13,7 +13,6 @@ export default function Laptops() {
       .then((res) => setPros(res.data))
       .catch((err) => console.log(err));
   }, []);
-  console.log(pros);
   return (
     <div className="wrapper">
       <div className="container_fullwidth">
@@ -159,7 +158,7 @@ export default function Laptops() {
           <div className="row">
             <div className="col-md-9 prolst">
               <div className="products-grid lstlaptop">
-                <ListProductLaptop pros={pros} />
+                <ListProductLaptop pros={pros} reLoad={reLoad} idUser={idUser} />
               </div>
               <div className="toolbar">
                 <div className="pager">

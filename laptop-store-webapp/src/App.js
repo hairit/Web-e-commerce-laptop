@@ -19,21 +19,28 @@ import GioHang from "./Pages/GioHang";
 import RoutesCartItems from "./Pages/Routes/RoutesCartItems";
 import axios from "axios";
 import { useCookies } from "react-cookie";
+import Laptops from "./Pages/Products/ProductsLaptop/Laptops";
 function App() {
   const [user, setUser] = useState(null);
   const [userCookie, setUserCookie] = useCookies(["user"]);
+  const [reload, setReload] = useState(0);
   useEffect(() => {
     if (userCookie.id !== null) {
+      console.log("Reload");
       axios
-        .get(`https://localhost:44343/data/user/${userCookie.id}`)
-        .then((res) => setUser(res.data))
-        .catch((err) => console.log("Đăng nhập fail"));
+              .get(`https://localhost:44343/data/user/${userCookie.id}`)
+              .then((res) => setUser(res.data))
+              .catch((err) => console.log("Đăng nhập fail"));
     }
-  }, []);
+  }, [reload]);
   const login = (user) => {
     setUserCookie("id", user.id);
     setUser(user);
   };
+  const reLoad = () =>{
+    if(reload === 0) setReload(1);
+    else setReload(0);
+  }
   console.log(user);
   return (
     <Router>
@@ -56,24 +63,19 @@ function App() {
           path="/screen/:id"
           component={(match) => <DetailProductsScreen match={match} />}
         ></Route>
-        <Route path="/giohang" component={() => <GioHang />}></Route>
-        {/* <Route path="/login" exact component={() => <Login2 />}></Route> */}
-
-        <RoutesCartItems />
+        <Route path="/laptop" exact component={() => <Laptops reLoad={reLoad} idUser={user.id} />}></Route>
+        <Route path="/card" component={() => <GioHang cardDetails={user.cardDetails} idUser={user.id} />}></Route>
         <Route
           path="/login"
           exact
           component={() => <Login login={login} />}
         ></Route>
-
         <Route path="/login/register" exact component={() => <Register />}>
           {" "}
         </Route>
-
         <Route path="/login/register" exact component={() => <Register />}>
           {" "}
         </Route>
-
         <Route path="/lienhe" component={() => <Lienhe />}></Route>
         <Route path="/tincongnghe" component={() => <Tintuc />}></Route>
         <Route path="/showroom" component={() => <Showroom />}></Route>
