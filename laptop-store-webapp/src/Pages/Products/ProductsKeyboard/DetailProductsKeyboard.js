@@ -6,10 +6,14 @@ import freeshipping_4px from "../../../Images/freeshipping_4px.png";
 import freeshippingcs_24px from "../../../Images/freeshippingcs_24px.png";
 import shield_24px from "../../../Images/shield_24px.png";
 import replace_24px from "../../../Images/replace_24px.png";
+import checked_32px from "../../../Images/checked_32px.png";
 import settings_24px from "../../../Images/settings_24px.png";
 import monitor_24px from "../../../Images/monitor_24px.png";
 import SanPhamKhac from "../ProductsKeyboard/SanPhamKhac";
-
+import bnphmc from "../../../Images/bnphmc.png";
+import bnphmc1 from "../../../Images/bnphmc1.png";
+import bnphmc2 from "../../../Images/bnphmc2.png";
+import bnphmc3 from "../../../Images/bnphmc3.png";
 import prev_50px from "../../../Images/prev_50px.png";
 import next_50px from "../../../Images/next_50px.png";
 import promotion_32px from "../../../Images/promotion_32px.png";
@@ -17,6 +21,8 @@ import insurance_24px from "../../../Images/insurance_24px.png";
 import whatsapp_32px from "../../../Images/whatsapp_32px.png";
 import edit_property_32px from "../../../Images/edit_property_32px.png";
 import settings_32px from "../../../Images/settings_32px.png";
+import { NavLink } from "react-router-dom";
+import PostsKeyboard from "./PostsKeyboard";
 
 // function renderGoiypro() {
 //   useEffect(() => {
@@ -385,6 +391,7 @@ export default function DetailProductsKeyboard({ match }) {
                 <SanPhamKhac />
               </div>
             </div>
+            <PostsKeyboard />
           </div>
           <div className="info-bottom row">
             <div className="col-md-6 supports">

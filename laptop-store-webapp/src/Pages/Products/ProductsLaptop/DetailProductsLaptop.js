@@ -17,6 +17,7 @@ import insurance_24px from "../../../Images/insurance_24px.png";
 import whatsapp_32px from "../../../Images/whatsapp_32px.png";
 import edit_property_32px from "../../../Images/edit_property_32px.png";
 import settings_32px from "../../../Images/settings_32px.png";
+import PostsLaptop from "./PostsLaptop";
 
 export default function DetailProductsLaptop({ match }) {
   const solver = new Solver();
@@ -442,6 +443,7 @@ export default function DetailProductsLaptop({ match }) {
                 <PhuKienMuaCung />
               </div>
             </div>
+            <PostsLaptop />
           </div>
           <div className="info-bottom row">
             <div className="col-md-6 supports">
