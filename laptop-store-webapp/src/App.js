@@ -21,6 +21,9 @@ import RoutesCartItems from "./Pages/Routes/RoutesCartItems";
 import axios from "axios";
 import { useCookies } from "react-cookie";
 import Laptops from "./Pages/Products/ProductsLaptop/Laptops";
+// import DetailProductsMouse from "./Pages/ProductsMouse/DetailProductsMouse";
+import Mouse from "./Pages/ProductsMouse/Mouse";
+import DetailProductsMouse from "./Pages/ProductsMouse/DetailProductsMouse";
 function App() {
   const [user, setUser] = useState(null);
   const [userCookie, setUserCookie] = useCookies(["user"]);
@@ -58,11 +61,12 @@ function App() {
         <Header user={user} />
             <Route path="/" exact component={() => <Body />}></Route>
             <Route path="/keyboard" exact component={() => <Keyboard />}></Route>
-            <Route path="mouse" component={() => <div></div>} ></Route>
+            <Route path="/mouse" exact component={() =><Mouse />} ></Route>
             <Route path="/screen" exact component={() => <Screen />}></Route>
             <Route path="/laptop/:id" component={(match) => <DetailProductsLaptop match={match} />}></Route>
             <Route path="/keyboard/:id" component={(match) => <DetailProductsKeyboard match={match} />} ></Route>
             <Route path="/screen/:id" component={(match) => <DetailProductsScreen match={match} />}></Route>
+            <Route path="/mouse/:id" component={(match) => <DetailProductsMouse match={match} />}></Route>
             <Route path="/laptop" exact component={() => <Laptops addCardHandleClick={addCardHandleClick} />}></Route>
             <Route path="/card" component={() => <GioHang cardDetails={ user !== null ? user.cardDetails : null} />}></Route>
             <Route path="/login" exact component={() => <Login login={login} /> } ></Route>
