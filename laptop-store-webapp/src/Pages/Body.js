@@ -7,12 +7,12 @@ import PCPanel from './BodyPages/PCPanel'
 import ScreenPanel from './BodyPages/ScreenPanel'
 import MainPanel from './BodyPages/MainPanel'
 
-export default function Body({reLoad}) {
+export default function Body() {
     return (
         <div className="body">
             {/* <Center /> */}
             <MainPanel />
-            <LaptopPanel reLoad={reLoad}/>
+            <LaptopPanel />
             <PCPanel />
             <KeyboardPanel />
             <ScreenPanel />

@@ -11,7 +11,7 @@ import { NavLink } from 'react-router-dom'
 //     })
 // }
 const LoadingImageWithPosition = (image,index,position) =>{
-    if(image.position===position) {
+    if(image.position===position){
         if(position!=='bottom') return (<NavLink className={'image'+image.position} key={index} to={image.path}>
                                         <img className={'image'+image.position+'-item'}
                                         src={`https://localhost:44343/Images/Panels/${image.nameImage}`} 
