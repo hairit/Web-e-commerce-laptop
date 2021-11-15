@@ -68,7 +68,7 @@ export default function MainPanel() {
                                             </div>
                                  </div>
                             </div>
-                            <div className="col-no-padding c-4 main-panel-image-left">      
+                            <div className="col-no-padding c-4 main-panel-image-right">      
                             </div>
                         </div>
                     </div>

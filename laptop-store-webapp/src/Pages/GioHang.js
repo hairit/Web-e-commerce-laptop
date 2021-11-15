@@ -7,113 +7,117 @@ import { NavLink } from "react-router-dom";
 
 import no_shopping_cart from "../Images/no_shopping_cart.png";
 import { useEffect, useState } from "react";
-export default function GioHang({ user }) {
+export default function GioHang({ cardDetails }) {
   const solver = new Solver();
-  const [cardDetails, setCardDetails] = useState([]);
-  useEffect(() => {
-    if (user === null) {
-      axios
-        .get(`https://localhost:44343/data/carddetail/iduser=${user.id}`, null)
-        .then((res) => {
-          if (res.status === 200) {
-            setCardDetails(res.data);
-          }
-        })
-        .catch((err) => console.log("Get card failed" + err));
-    }
-  }, []);
-  console.log("abc", cardDetails);
-  console.log("abc", user.id);
-  return (
-    <div className="page">
-      {/* {CartItems.length === 0 && (
-        <div className="centerp">
-          <div className="product-none">
-            <img src={no_shopping_cart} />
-            <p> Có 0 sản phẩm trong giỏ hàng</p>
+  console.log(cardDetails);
+  //const [cardDetails, setCardDetails] = useState([]);
+  // useEffect(() => {
+  //   if (user === null) {
+  //     axios
+  //       .get(`https://localhost:44343/data/carddetail/iduser=${user.id}`, null)
+  //       .then((res) => {
+  //         if (res.status === 200) {
+  //           setCardDetails(res.data);
+  //         }
+  //       })
+  //       .catch((err) => console.log("Get card failed" + err));
+  //   }
+  // }, []);
+  if(cardDetails !== null){
+    if(cardDetails.length >= 0) return(
+      <div className="page">
+        {/* {CartItems.length === 0 && (
+          <div className="centerp">
+            <div className="product-none">
+              <img src={no_shopping_cart} />
+              <p> Có 0 sản phẩm trong giỏ hàng</p>
+            </div>
+            <div className="btn-backhome">
+              <NavLink className="btn-backhome" to="/">
+                <button type="button" className="btn btn-home">
+                  Quay về trang chủ
+                </button>
+              </NavLink>
+            </div>
           </div>
-          <div className="btn-backhome">
-            <NavLink className="btn-backhome" to="/">
-              <button type="button" className="btn btn-home">
-                Quay về trang chủ
-              </button>
-            </NavLink>
-          </div>
-        </div>
-      )} */}
+        )} */}
 
-      <div className="container width">
-        <div className="title-cart">
-          <strong className="title-text">Giỏ hàng của bạn</strong>
-        </div>
-        <div className="center-card">
-          <div className="carts">
-            {cardDetails.map((item, index) => {
-              return (
-                <div className="info-cart" key={index}>
-                  <div className="info-donhang">
-                    <div className="info-chitiet">
-                      <div className="info-image">
-                        <div className="img-name">
-                          <a>
-                            <div className="imag">
-                              <img
-                                src={`https://localhost:44343/Images/Products/${item.nameimage}`}
-                              />
+        <div className="container width">
+          <div className="title-cart">
+            <strong className="title-text">Giỏ hàng của bạn</strong>
+          </div>
+          <div className="center-card">
+            <div className="carts">
+              {cardDetails.map((item, index) => {
+                return (
+                  <div className="info-cart" key={index}>
+                    <div className="info-donhang">
+                      <div className="info-chitiet">
+                        <div className="info-image">
+                          <div className="img-name">
+                            <a>
+                              <div className="imag">
+                                <img
+                                  src={`https://localhost:44343/Images/Products/${item.nameimage}`}
+                                />
+                              </div>
+                            </a>
+                            <div className="name">
+                              <a href="#">{}</a>
+                              <div className="id-item">ID: {item.idProduct}</div>
                             </div>
-                          </a>
-                          <div className="name">
-                            <a href="#">{}</a>
-                            <div className="id-item">ID: {item.idProduct}</div>
                           </div>
                         </div>
-                      </div>
-                      <div className="info-editquantity">
-                        <button
-                          type="button"
-                          class="btn btn-outline-info btnedit"
-                        >
-                          -
-                        </button>
-                        <input
-                          type="text"
-                          class="form-control input-edit"
-                          placeholder={item.soluong}
-                        ></input>
-                        <button type="button" class="btn btn-outline-info">
-                          +
-                        </button>
-                      </div>
-                      <div className="info-price">
-                        <strong>
-                          {solver.formatCurrency(
-                            "vi-VN",
-                            "currency",
-                            "VND",
-                            item.tongtien
-                          )}
-                        </strong>
+                        <div className="info-editquantity">
+                          <button
+                            type="button"
+                            class="btn btn-outline-info btnedit"
+                          >
+                            -
+                          </button>
+                          <input
+                            type="text"
+                            class="form-control input-edit"
+                            placeholder={item.soluong}
+                          ></input>
+                          <button type="button" class="btn btn-outline-info">
+                            +
+                          </button>
+                        </div>
+                        <div className="info-price">
+                          <strong>
+                            {solver.formatCurrency(
+                              "vi-VN",
+                              "currency",
+                              "VND",
+                              item.tongtien
+                            )}
+                          </strong>
+                        </div>
                       </div>
                     </div>
                   </div>
+                );
+              })}
+            </div>
+            <div className="payment">
+              <div className="pay-info">
+                <div className="thanhtoan">
+                  <strong>Thanh toán</strong>
                 </div>
-              );
-            })}
-          </div>
-          <div className="payment">
-            <div className="pay-info">
-              <div className="thanhtoan">
-                <strong>Thanh toán</strong>
+                <div className="tamtinh-thanhtien">Tạm tính</div>
+                <div className="tamtinh-thanhtien">Thành tiền</div>
+                <button className="btn-pay btn btn-outline-primary">
+                  Tiếp tục thanh toán
+                </button>
               </div>
-              <div className="tamtinh-thanhtien">Tạm tính</div>
-              <div className="tamtinh-thanhtien">Thành tiền</div>
-              <button className="btn-pay btn btn-outline-primary">
-                Tiếp tục thanh toán
-              </button>
             </div>
           </div>
         </div>
+     
+     
       </div>
-    </div>
-  );
+    )
+    else return (<p>Gio hang trong</p>)
+  }
 }
