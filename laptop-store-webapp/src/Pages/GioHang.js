@@ -7,23 +7,22 @@ import { NavLink } from "react-router-dom";
 
 import no_shopping_cart from "../Images/no_shopping_cart.png";
 import { useEffect, useState } from "react";
-export default function GioHang({ cardDetails }) {
+export default function GioHang({ idUser }) {
   const solver = new Solver();
-  console.log(cardDetails);
-  //const [cardDetails, setCardDetails] = useState([]);
-  // useEffect(() => {
-  //   if (user === null) {
-  //     axios
-  //       .get(`https://localhost:44343/data/carddetail/iduser=${user.id}`, null)
-  //       .then((res) => {
-  //         if (res.status === 200) {
-  //           setCardDetails(res.data);
-  //         }
-  //       })
-  //       .catch((err) => console.log("Get card failed" + err));
-  //   }
-  // }, []);
-  if(cardDetails !== null){
+  const [cardDetails, setCardDetails] = useState([]);
+  useEffect(() => {
+    if (idUser !== null) {
+      axios
+        .get(`https://localhost:44343/data/carddetail/iduser=${idUser}`, null)
+        .then((res) => {
+          if (res.status === 200) {
+            setCardDetails(res.data);
+          }
+        })
+        .catch((err) => console.log("Get card failed" + err));
+    }
+  }, []);
+  console.log("ahihi",cardDetails);
     if(cardDetails.length >= 0) return(
       <div className="page">
         
@@ -44,27 +43,22 @@ export default function GioHang({ cardDetails }) {
                             <a>
                               <div className="imag">
                                 <img
-                                  src={`https://localhost:44343/Images/Products/${item.nameimage}`}
+                                  src={`https://localhost:44343/Images/Products/${item.idProductNavigation && item.idProductNavigation.nameimage}`}
                                 />
                               </div>
                             </a>
                             <div className="name">
-                              <a href="#">{}</a>
+                              <a href="#">{item.idProductNavigation && item.idProductNavigation.ten}</a>
                               <div className="id-item">ID: {item.idProduct}</div>
                             </div>
                           </div>
                         </div>
                         <div className="info-editquantity">
-                          <button
-                            type="button"
-                            class="btn btn-outline-info btnedit">
+                          <button type="button"class="btn-tru">
                             -
                           </button>
-                          <input
-                            type="text"
-                            class="form-control input-edit"
-                            placeholder={item.soluong}></input>
-                          <button type="button" class="btn btn-outline-info">
+                          <input type="text" class="finput-edit" placeholder={item.soluong}></input>
+                          <button type="button" class="btn-cong">
                             +
                           </button>
                         </div>
@@ -113,4 +107,4 @@ export default function GioHang({ cardDetails }) {
       </div>
     )
   }
-}
+
