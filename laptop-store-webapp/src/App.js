@@ -31,7 +31,6 @@ function App() {
   useEffect(() => {
     console.log(userCookie.id);
     if (userCookie.id !== undefined) {
-      console.log("Null");
       axios
               .get(`https://localhost:44343/data/user/${userCookie.id}`)
               .then((res) => setUser(res.data))
@@ -47,10 +46,10 @@ function App() {
     else setReload(0);
   }
   function addCardHandleClick  (idProduct , price ){
-    console.log(idProduct + "log" + price + user.id);
     axios.get(`https://localhost:44343/data/carddetail/add/iduser=${user.id}/idproduct=${idProduct}/tongtien=${price}`,null)
       .then(res => {
         if(res.status === 201){
+           console.log("Da them vao gio hang");
            reLoad();
         }
         else alert("không thể thêm vào giỏ hàng");
@@ -69,7 +68,7 @@ function App() {
             <Route path="/screen/:id" component={(match) => <DetailProductsScreen match={match} />}></Route>
             <Route path="/mouse/:id" component={(match) => <DetailProductsMouse match={match} />}></Route>
             <Route path="/laptop" exact component={() => <Laptops addCardHandleClick={addCardHandleClick} />}></Route>
-            <Route path="/card" component={() => <GioHang cardDetails={user.cardDetails} idUser={user} />}></Route>
+            <Route path="/card" component={() => <GioHang cardDetails={ user !== null ? user.cardDetails : null} />}></Route>
             <Route path="/login" exact component={() => <Login login={login} /> } ></Route>
             <Route path="/login/register" exact component={() => <Register />}></Route>
             <Route path="/lienhe" component={() => <Lienhe />}></Route>
