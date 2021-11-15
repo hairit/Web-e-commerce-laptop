@@ -27,7 +27,9 @@ namespace Laptop_store_e_comerce.Controllers
         [HttpGet("iduser={value1}/idproduct={value2}")]
         public async Task<ActionResult<CardDetail>> GetCardDetail(int value1 , string value2)
         {
-            var cardDetail = await _context.CardDetails.Where(detail => detail.IdUser == value1 && detail.IdProduct == value2).FirstOrDefaultAsync();      
+            var cardDetail = await _context.CardDetails.Include(detail => detail.IdProductNavigation).ThenInclude(pro => pro.IdloaiNavigation)
+                                                       .Where(detail => detail.IdUser == value1 && detail.IdProduct == value2)
+                                                       .FirstOrDefaultAsync();      
             
             if (cardDetail == null)
             {
@@ -39,7 +41,9 @@ namespace Laptop_store_e_comerce.Controllers
         public async Task<ActionResult<List<CardDetail>>> getCardDetailsByUser(int id)
         {
             if (!_context.Users.Any(user => user.Id == id)) return BadRequest();
-            List<CardDetail> listCardDetails= await _context.CardDetails.Where(cardDetail => cardDetail.IdUser == id)
+            List<CardDetail> listCardDetails= await _context.CardDetails.Include(detail => detail.IdProductNavigation)
+                                                                        .ThenInclude(detail => detail.IdloaiNavigation)
+                                                                        .Where(cardDetail => cardDetail.IdUser == id)
                                                          .ToListAsync();
             if (listCardDetails.Count == 0) return NotFound();
             else return listCardDetails;
