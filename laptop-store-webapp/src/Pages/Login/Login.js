@@ -12,6 +12,8 @@ export default function Login({login,userCookie}) {
     const [reqpass, setreqpass] = useState(false);
     const [reqsdt, setreqsdt] = useState(false);
     const [signup, setsignup] = useState(false);
+    const [user, setuser] = useState([]);
+    const [sdt, setsdt] = useState("");
     let history = useHistory();
     function handleClick(e) {
         e.preventDefault();
@@ -25,8 +27,37 @@ export default function Login({login,userCookie}) {
                                     history.goBack();
                                 }
                            })
-                           .catch(err => console.log("Login errol request"));
+                           .catch(err => console.log("Login:"+err));
         }             
+    }
+    function handleClickReqPass(e)
+    {
+        e.preventDefault();
+        if(!username.includes('@')) return;
+        else
+        {
+            axios.get(`https://localhost:44343/data/user/email=${username}`)
+                        .then(res=>{
+                            if(res.status === 404) alert("Email chưa từng được đăng ký!!!");
+                            else{
+                                setuser(res.data);
+                                enableReqSdt();
+                            }
+                        })
+                        .catch(err => {console.log("Login: "+err)});
+        }
+    }
+    function handleClickReqSdt(e)
+    {
+        if(sdt==user.sdt) 
+        {
+            alert("Trùng nè");
+            enableReqPass();
+        } else alert("Bug");
+    }
+    function getsdt(event)
+    {
+        setsdt(event.target.value);
     }
     function getusername(event) {
         setusername(event.target.value)
@@ -37,6 +68,7 @@ export default function Login({login,userCookie}) {
     function enableReqPass()
     {
         setreqpass(!reqpass);
+        setreqsdt(false);
     }
     function enableSignUp()
     {
@@ -88,26 +120,26 @@ export default function Login({login,userCookie}) {
                         <h1 className="title-login">Phục hồi mật khẩu</h1>
                     </span>
                     <div className="reqpass">
-                        <form className={reqsdt===false?"reqpass-form":"reqpass-form-hide"}>
+                        <div className={reqsdt===false?"reqpass-form":"reqpass-form-hide"}>
                             <div className="reqpass-email login-login">
                                 <span class="login-icon"> <i class="fa fa-envelope"></i> </span>
-                                <button type="email" placeholder="Email" class="login-input" name="username" onChange={(event) => getusername(event)}></button>
+                                <input type="email" placeholder="Email" class="login-input" name="username" onChange={(event) => getusername(event)}></input>
                             </div>
                             <div className="reqpass-act-button">
-                                <button class="button reqpass-button" type="submit" value="Gửi" onClick={() => enableReqPass}></button>
+                                <button class="button reqpass-button" onClick={(e) => handleClickReqPass(e)}>Xác nhận</button>
                                 <button class="button reqpass-cancel-button" onClick={()=>enableReqPass()}>Hủy</button>
                             </div>
-                        </form>
-                        <form className={reqsdt===true?"reqsdt-form":"reqsdt-form-hide"}>
+                        </div>
+                        <div className={reqsdt===true?"reqsdt-form":"reqsdt-form-hide"}>
                             <div className="reqpass-email login-login">
                                 <span class="login-icon"> <i class="fa fa-phone"></i> </span>
-                                <input type="tel" placeholder="Số điện thoại" class="login-input" name="sdt" onChange={(event) => getusername(event)}></input>
+                                <input type="tel" placeholder="Số điện thoại" class="login-input" name="sdt" onChange={(event) => getsdt(event)}></input>
                             </div>
                             <div className="reqpass-act-button">
-                                <input class="button reqpass-button" type="submit" value="Xác nhận" onClick={(e) => enableReqSdt()}></input>
-                                <button class="button reqpass-cancel-button" onClick={()=>enableReqPass()}>Hủy</button>
+                            <button class="button reqpass-button" onClick={() => handleClickReqSdt()}>Xác nhận</button>
+                                <button class="button reqpass-cancel-button" onClick={()=>enableReqSdt()}>Hủy</button>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
                 <div className={signup===true?"sign-up":"sign-up-hide"}>
@@ -128,6 +160,7 @@ export default function Login({login,userCookie}) {
                                 <span class="login-icon"> <i class="fa fa-lock"></i> </span>
                                 <input type="password" placeholder="Password"class="login-input" onChange={(event) => getpass(event)}></input>
                             </div>
+
                         </form>
                     </div>
                 </div>
