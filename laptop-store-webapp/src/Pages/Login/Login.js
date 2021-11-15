@@ -8,7 +8,7 @@ import { BsArrowLeftRight, BsCheck } from 'react-icons/bs';
 import axios from 'axios';
 
 
-export default function Login({login,userCookie}) {
+export default function Login({login}) {
 
     const [username, setusername] = useState("");
     const [password, setpassword] = useState("");
