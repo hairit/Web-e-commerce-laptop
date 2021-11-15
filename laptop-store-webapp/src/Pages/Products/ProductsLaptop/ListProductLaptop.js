@@ -42,9 +42,7 @@ export default function ListProductLaptop({pros,addCardHandleClick}) {
               </h4>
               <div className="button_group">
                 <button
-                  className="button add-cart" onClick={() => addCardHandleClick(pro.id,pro.gia)}
-
-                >
+                  className="button add-cart" onClick={() => addCardHandleClick(pro.id,pro.gia)}>
                   Thêm vào giỏ hàng
                 </button>
                 <button className="button wishlist" type="button">

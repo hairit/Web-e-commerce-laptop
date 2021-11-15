@@ -9,6 +9,7 @@ import Register from "./Pages/Login/Register";
 import Body from "./Pages/Body.js";
 import Lienhe from "./Pages/Lienhe";
 import Tintuc from "./Pages/Tintuc";
+import Login2 from "./Pages/Login/Login2";
 import Showroom from "./Pages/Showroom";
 import Footer from "./Pages/Footer";
 import DetailProductsLaptop from "./Pages/Products/ProductsLaptop/DetailProductsLaptop";
@@ -41,7 +42,6 @@ function App() {
     setUserCookie("id", user.id);
     setUser(user);
   };
-  console.log(user);
   const reLoad = () =>{
     if(reload === 0) setReload(1);
     else setReload(0);
@@ -70,8 +70,7 @@ function App() {
             <Route path="/mouse/:id" component={(match) => <DetailProductsMouse match={match} />}></Route>
             <Route path="/laptop" exact component={() => <Laptops addCardHandleClick={addCardHandleClick} />}></Route>
             <Route path="/card" component={() => <GioHang cardDetails={user.cardDetails} idUser={user} />}></Route>
-            <Route path="/login" exact component={() => <Login login={login} />}> </Route>
-            <Route path="/login/register" exact component={() => <Register />}></Route>
+            <Route path="/login" exact component={() => <Login login={login} /> } ></Route>
             <Route path="/login/register" exact component={() => <Register />}></Route>
             <Route path="/lienhe" component={() => <Lienhe />}></Route>
             <Route path="/tincongnghe" component={() => <Tintuc />}></Route>

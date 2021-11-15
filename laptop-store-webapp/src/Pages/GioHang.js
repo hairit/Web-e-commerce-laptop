@@ -18,12 +18,10 @@ export default function GioHang({ user }) {
           if (res.status === 200) {
             setCardDetails(res.data);
           }
-        })
-        .catch((err) => console.log("Get card failed" + err));
+        }).catch((err) => console.log("Get card failed" + err));
     }
   }, []);
   console.log("abc", cardDetails);
-  console.log("abc", user.id);
   return (
     <div className="page">
       {/* {CartItems.length === 0 && (
@@ -69,29 +67,17 @@ export default function GioHang({ user }) {
                         </div>
                       </div>
                       <div className="info-editquantity">
-                        <button
-                          type="button"
-                          class="btn btn-outline-info btnedit"
-                        >
+                        <button type="button" class="btn btn-outline-info btnedit" >
                           -
                         </button>
-                        <input
-                          type="text"
-                          class="form-control input-edit"
-                          placeholder={item.soluong}
-                        ></input>
+                        <input type="text" class="form-control input-edit"placeholder={item.soluong}></input>
                         <button type="button" class="btn btn-outline-info">
                           +
                         </button>
                       </div>
                       <div className="info-price">
                         <strong>
-                          {solver.formatCurrency(
-                            "vi-VN",
-                            "currency",
-                            "VND",
-                            item.tongtien
-                          )}
+                          {solver.formatCurrency( "vi-VN","currency","VND",item.tongtien)}
                         </strong>
                       </div>
                     </div>
