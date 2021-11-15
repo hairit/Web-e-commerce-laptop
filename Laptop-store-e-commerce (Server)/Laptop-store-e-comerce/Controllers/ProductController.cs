@@ -36,16 +36,17 @@ namespace Laptop_store_e_comerce.Controllers
                                                                .Where(pro => pro.Id == id)
                                                                .FirstOrDefaultAsync();
             if (type == "screen") pro = await database.Products.Include(pro => pro.ScreenDetail)
-                                                                 .Where(pro => pro.Id == id)
-                                                                 .FirstOrDefaultAsync();
+                                                               .Where(pro => pro.Id == id)
+                                                               .FirstOrDefaultAsync();
             if (type == "pc") pro = await database.Products.Include(pro => pro.Pcdetail)
-                                                           .Where(pro => pro.Idloai == type)
-                                                           .Where(pro => pro.Id == id)
-                                                           .FirstOrDefaultAsync();
+                                                               .Include(pro => pro.IdloaiNavigation)
+                                                               .Where(pro => pro.Idloai == type)
+                                                               .Where(pro => pro.Id == id)
+                                                               .FirstOrDefaultAsync();
             if (type == "mouse") pro = await database.Products.Include(pro => pro.MouseDetail)
-                                                              .Where(pro => pro.Idloai == type)
-                                                              .Where(pro => pro.Id == id)
-                                                              .FirstOrDefaultAsync();
+                                                                  .Where(pro => pro.Idloai == type)
+                                                                  .Where(pro => pro.Id == id)
+                                                                  .FirstOrDefaultAsync();
             //if (type == "headphone") pro = await database.Products.Include(pro => pro.HeadphoneDetail)
                                                                     //.Where(pro => pro.Idloai == type)
                                                                     //.Where(pro => pro.Id == id)
