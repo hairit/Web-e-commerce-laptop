@@ -64,9 +64,6 @@ export default function Login({login}) {
                     </div>
                 </div>
             </div>
+               
         )
 }
-
-
-
-
