@@ -50,21 +50,25 @@
 .title-cart strong {
   font-size: 25px;
 }
-
+.center-card {
+  margin-bottom: 20px;
+  background-color: white;
+  display: flex;
+}
 .carts {
-  width: 100%;
+  width: 70%;
   border-radius: 5px;
   background-color: white;
   margin: 0 0 20px 0;
   display: flex;
+  flex-flow: column;
 }
 .info-chitiet {
   display: flex;
-  flex-flow: row wrap;
 }
 .info-cart {
   padding: 20px 15px;
-  width: 67%;
+  width: 100%;
 }
 .info-image {
   display: block;
@@ -95,7 +99,8 @@
   color: #1435c3;
 }
 .payment {
-  width: 33%;
+  background-color: white;
+  width: 30%;
   padding: 20px 15px;
 }
 .thanhtoan {
@@ -111,4 +116,18 @@
   color: white;
   width: 100%;
   font-size: 18px;
+}
+.info-editquantity {
+  display: flex;
+}
+/* .btnedit {
+  border-radius: none !important;
+} */
+.input-edit {
+  width: 18%;
+  padding: 6px 5px;
+  border-radius: none !important;
+}
+.info-price strong {
+  color: #1435c3;
 }
