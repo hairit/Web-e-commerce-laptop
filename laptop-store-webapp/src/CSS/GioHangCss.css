@@ -83,11 +83,15 @@
   flex: 0 0 15%;
 }
 .imag {
+  border: 1px solid #ebebeb;
   cursor: pointer;
   width: 100%;
 }
 .id-item {
   margin-top: 5px;
+}
+.name{
+  width: 80%;
 }
 .name a {
   font-size: 13px;
@@ -118,11 +122,12 @@
   font-size: 18px;
 }
 .info-editquantity {
+  
+  height:36px;
   display: flex;
+
 }
-/* .btnedit {
-  border-radius: none !important;
-} */
+
 .input-edit {
   width: 18%;
   padding: 6px 5px;
@@ -130,4 +135,17 @@
 }
 .info-price strong {
   color: #1435c3;
+}
+.info-editquantity button {
+  width: 20%;
+  height:34px;
+  border: none;
+  background-color: #fcfafa !important;
+}
+.finput-edit{
+  background-color: #fcfafa;
+  text-align: center;
+  width:20%;
+  height:34px;
+  border: none;
 }
