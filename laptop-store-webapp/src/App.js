@@ -33,7 +33,6 @@ function App() {
               .then((res) => setUser(res.data))
               .catch((err) => console.log("Đăng nhập fail"));
     }
-    else setUser(null);
   }, [reload]);
   const login = (user) => {
     setUserCookie("id", user.id);
