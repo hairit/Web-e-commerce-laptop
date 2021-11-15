@@ -954,7 +954,6 @@ D:\DoAnWeb\Web-e-commerce-laptop\Laptop-store-e-commerce (Server)\Laptop-store-e
 D:\DoAnWeb\Web-e-commerce-laptop\Laptop-store-e-commerce (Server)\Laptop-store-e-comerce\obj\Debug\netcoreapp3.1\staticwebassets\Laptop-store-e-comerce.StaticWebAssets.xml
 D:\DoAnWeb\Web-e-commerce-laptop\Laptop-store-e-commerce (Server)\Laptop-store-e-comerce\obj\Debug\netcoreapp3.1\scopedcss\bundle\Laptop-store-e-comerce.styles.css
 D:\DoAnWeb\Web-e-commerce-laptop\Laptop-store-e-commerce (Server)\Laptop-store-e-comerce\obj\Debug\netcoreapp3.1\Laptop-store-e-comerce.RazorTargetAssemblyInfo.cache
-D:\DoAnWeb\Web-e-commerce-laptop\Laptop-store-e-commerce (Server)\Laptop-store-e-comerce\obj\Debug\netcoreapp3.1\Laptop-store-e-comerce.csproj.CopyComplete
 D:\DoAnWeb\Web-e-commerce-laptop\Laptop-store-e-commerce (Server)\Laptop-store-e-comerce\obj\Debug\netcoreapp3.1\Laptop-store-e-comerce.dll
 D:\DoAnWeb\Web-e-commerce-laptop\Laptop-store-e-commerce (Server)\Laptop-store-e-comerce\obj\Debug\netcoreapp3.1\Laptop-store-e-comerce.pdb
 D:\DoAnWeb\Web-e-commerce-laptop\Laptop-store-e-commerce (Server)\Laptop-store-e-comerce\obj\Debug\netcoreapp3.1\Laptop-store-e-comerce.genruntimeconfig.cache

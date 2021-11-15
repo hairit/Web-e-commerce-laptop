@@ -22,24 +22,10 @@ export default function GioHang({ idUser }) {
         .catch((err) => console.log("Get card failed" + err));
     }
   }, []);
-  console.log(cardDetails);
+  console.log("ahihi",cardDetails);
     if(cardDetails.length >= 0) return(
       <div className="page">
-        {/* {CartItems.length === 0 && (
-          <div className="centerp">
-            <div className="product-none">
-              <img src={no_shopping_cart} />
-              <p> Có 0 sản phẩm trong giỏ hàng</p>
-            </div>
-            <div className="btn-backhome">
-              <NavLink className="btn-backhome" to="/">
-                <button type="button" className="btn btn-home">
-                  Quay về trang chủ
-                </button>
-              </NavLink>
-            </div>
-          </div>
-        )} */}
+        
 
         <div className="container width">
           <div className="title-cart">
@@ -57,40 +43,28 @@ export default function GioHang({ idUser }) {
                             <a>
                               <div className="imag">
                                 <img
-                                  src={`https://localhost:44343/Images/Products/${item.nameimage}`}
+                                  src={`https://localhost:44343/Images/Products/${item.idProductNavigation && item.idProductNavigation.nameimage}`}
                                 />
                               </div>
                             </a>
                             <div className="name">
-                              <a href="#">{}</a>
+                              <a href="#">{item.idProductNavigation && item.idProductNavigation.ten}</a>
                               <div className="id-item">ID: {item.idProduct}</div>
                             </div>
                           </div>
                         </div>
                         <div className="info-editquantity">
-                          <button
-                            type="button"
-                            class="btn btn-outline-info btnedit"
-                          >
+                          <button type="button"class="btn-tru">
                             -
                           </button>
-                          <input
-                            type="text"
-                            class="form-control input-edit"
-                            placeholder={item.soluong}
-                          ></input>
-                          <button type="button" class="btn btn-outline-info">
+                          <input type="text" class="finput-edit" placeholder={item.soluong}></input>
+                          <button type="button" class="btn-cong">
                             +
                           </button>
                         </div>
                         <div className="info-price">
                           <strong>
-                            {solver.formatCurrency(
-                              "vi-VN",
-                              "currency",
-                              "VND",
-                              item.tongtien
-                            )}
+                            {solver.formatCurrency("vi-VN","currency","VND",item.tongtien)}
                           </strong>
                         </div>
                       </div>
@@ -117,5 +91,20 @@ export default function GioHang({ idUser }) {
      
       </div>
     )
-    else return (<p>Gio hang trong</p>)
-}
+    else return (
+      <div className="centerp">
+        <div className="product-none">
+          <img src={no_shopping_cart} />
+          <p> Có 0 sản phẩm trong giỏ hàng</p>
+        </div>
+        <div className="btn-backhome">
+          <NavLink className="btn-backhome" to="/">
+            <button type="button" className="btn btn-home">
+              Quay về trang chủ
+            </button>
+          </NavLink>
+        </div>
+      </div>
+    )
+  }
+
