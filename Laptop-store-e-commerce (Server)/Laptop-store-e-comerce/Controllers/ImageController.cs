@@ -9,7 +9,7 @@ using Laptop_store_e_comerce.Models;
 
 namespace Laptop_store_e_comerce.Controllers
 {
-    [Route("lappee/[controller]")]
+    [Route("data/[controller]")]
     [ApiController]
     public class ImageController : ControllerBase
     {
