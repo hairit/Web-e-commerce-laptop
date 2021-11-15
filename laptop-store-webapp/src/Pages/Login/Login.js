@@ -89,11 +89,11 @@ export default function Login({login,userCookie}) {
                         </form>
                     </div>
                 </div>
-                <div className={reqpass===true && reqsdt==false?"req-pass":"req-pass-hidden"}>
+                <div className={reqpass===true ?"req-pass":"req-pass-hidden"}>
                     <span className="header-login">
                         <h1 className="title-login">Phục hồi mật khẩu</h1>
                     </span>
-                    <div className="reqpass-box">
+                    <div className={reqsdt===false?"reqpass-form":"repass-form-hide"}>
                         <form className="reqpass-form">
                             <div className="reqpass-email login">
                                 <span class="login-icon"> <i class="fa fa-envelope"></i> </span>
@@ -102,35 +102,6 @@ export default function Login({login,userCookie}) {
                             <div className="reqpass-act-button">
                                 <input class="button reqpass-button" type="submit" value="Gửi" onClick={() => sendReqpass()}></input>
                                 <button class="button reqpass-cancel-button" onClick={()=>enableReqPass()}>Hủy</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                    <div className={reqsdt==true?"req-pass":"req-pass-hidden"}>
-                    <span className="header-login">
-                        <h1 className="title-login">Phục hồi mật khẩu</h1>
-                    </span>
-                    <div className="reqpass-box">
-                        <form className={reqsdt===false?"reqpass-form":"reqpass-form-hide"}>
-                            <div className="reqpass-email login">
-                                <span class="login-icon"> 
-                                    <i class="fa fa-envelope"></i> </span>
-                                    <input type="email" placeholder="Email" class="login-input" name="username" onChange={(event) => getusername(event)}></input>
-                            </div>
-                            <div className="reqpass-act-button">
-                                <input class="button reqpass-button" type="submit" value="Gửi" onClick={() => sendReqpass()}></input>
-                                <button class="button reqpass-cancel-button" onClick={()=>enableReqPass()}>Hủy</button>
-                            </div>
-                        </form>
-                        <form className={reqsdt===true?"reqsdt-form":"reqsdt-hide"}>
-                            <div className="reqpass-sdt login">
-                                <p>Vui lòng nhập số điện thoại của bạn để xác nhận:</p>
-                                <span className="login-icon"><i className="fa fa-phone"></i></span>
-                                <input type="tel" placeholder="Số điện thoại" className="login-input" name="sdt"></input>
-                            </div>
-                            <div className="reqpass-act-button">
-                                <input class="button reqpass-button" type="submit" value="Xác nhận" onClick={() => confSdt()}></input>
-                                <button class="button reqpass-cancel-button" onClick={()=>enableReqSdt()}>Hủy</button>
                             </div>
                         </form>
                     </div>
@@ -157,9 +128,6 @@ export default function Login({login,userCookie}) {
                     </div>
                 </div>
             </div>
+               
         )
 }
-
-
-
-
