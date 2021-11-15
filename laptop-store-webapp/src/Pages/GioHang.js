@@ -7,23 +7,22 @@ import { NavLink } from "react-router-dom";
 
 import no_shopping_cart from "../Images/no_shopping_cart.png";
 import { useEffect, useState } from "react";
-export default function GioHang({ cardDetails }) {
+export default function GioHang({ idUser }) {
   const solver = new Solver();
+  const [cardDetails, setCardDetails] = useState([]);
+  useEffect(() => {
+    if (idUser !== null) {
+      axios
+        .get(`https://localhost:44343/data/carddetail/iduser=${idUser}`, null)
+        .then((res) => {
+          if (res.status === 200) {
+            setCardDetails(res.data);
+          }
+        })
+        .catch((err) => console.log("Get card failed" + err));
+    }
+  }, []);
   console.log(cardDetails);
-  //const [cardDetails, setCardDetails] = useState([]);
-  // useEffect(() => {
-  //   if (user === null) {
-  //     axios
-  //       .get(`https://localhost:44343/data/carddetail/iduser=${user.id}`, null)
-  //       .then((res) => {
-  //         if (res.status === 200) {
-  //           setCardDetails(res.data);
-  //         }
-  //       })
-  //       .catch((err) => console.log("Get card failed" + err));
-  //   }
-  // }, []);
-  if(cardDetails !== null){
     if(cardDetails.length >= 0) return(
       <div className="page">
         {/* {CartItems.length === 0 && (
@@ -119,5 +118,4 @@ export default function GioHang({ cardDetails }) {
       </div>
     )
     else return (<p>Gio hang trong</p>)
-  }
 }

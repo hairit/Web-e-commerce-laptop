@@ -34,9 +34,10 @@ function App() {
       axios
               .get(`https://localhost:44343/data/user/${userCookie.id}`)
               .then((res) => setUser(res.data))
-              .catch((err) => console.log("Đăng nhập fail"));
+              .catch((err) => console.log("Đăng nhập fail"+err));
     }
   }, [reload]);
+  console.log(user);
   const login = (user) => {
     setUserCookie("id", user.id);
     setUser(user);
@@ -68,7 +69,7 @@ function App() {
             <Route path="/screen/:id" component={(match) => <DetailProductsScreen match={match} />}></Route>
             <Route path="/mouse/:id" component={(match) => <DetailProductsMouse match={match} />}></Route>
             <Route path="/laptop" exact component={() => <Laptops addCardHandleClick={addCardHandleClick} />}></Route>
-            <Route path="/card" component={() => <GioHang cardDetails={ user !== null ? user.cardDetails : null} />}></Route>
+            <Route path="/card" component={() => <GioHang idUser={ user !== null ? user.id : null } />}></Route>
             <Route path="/login" exact component={() => <Login login={login} /> } ></Route>
             <Route path="/login/register" exact component={() => <Register />}></Route>
             <Route path="/lienhe" component={() => <Lienhe />}></Route>
