@@ -3,6 +3,7 @@ import React from "react";
 import Solver from "../Classes/Solver";
 import bootstrap from "../CSS/ProductsCss/bootstrap.css";
 import GioHangCss from "../CSS/GioHangCss.css";
+import LogoFT from "../Images/LogoFT.png";
 import { NavLink } from "react-router-dom";
 
 import no_shopping_cart from "../Images/no_shopping_cart.png";
@@ -29,6 +30,10 @@ export default function GioHang({ idUser }) {
           <div className="title-cart">
             <strong className="title-text">Giỏ hàng của bạn</strong>
           </div>
+          {/* <div className="center-logo">
+          <input class="check-item" type="checkbox" value=""  />
+          <img src={LogoFT}/>
+          </div> */}
           <div className="center-card">
             <div className="carts">
               {cardDetails.map((item, index) => {
@@ -36,6 +41,7 @@ export default function GioHang({ idUser }) {
                   <div className="info-cart" key={index}>
                     <div className="info-donhang">
                       <div className="info-chitiet">
+                      <div className="info-check"><input class="check-item" type="checkbox" value=""  /></div>
                         <div className="info-image">
                           <div className="img-name">
                             <a>
@@ -52,7 +58,7 @@ export default function GioHang({ idUser }) {
                           </div>
                         </div>
                         <div className="info-editquantity">
-                          <div>
+                          <div className="btn-quantity">
                           <button type="button"class="btn-tru">
                             -
                           </button>
@@ -61,6 +67,7 @@ export default function GioHang({ idUser }) {
                             +
                           </button>
                           </div>
+                          <div className="delet"><button className="btn-del">Xóa</button></div>
                         </div>
                         <div className="info-price">
                           <strong>
@@ -74,6 +81,10 @@ export default function GioHang({ idUser }) {
               })}
             </div>
             <div className="payment">
+              <div className="payment-sum">
+                <strong>Tổng tiền</strong>
+                <p>123.000.000</p>
+              </div>
               <div className="pay-info">
                 <div className="thanhtoan">
                   <strong>Thanh toán</strong>
