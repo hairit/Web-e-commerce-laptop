@@ -4,15 +4,17 @@ import { NavLink } from "react-router-dom";
 import GioHangCss from "../CSS/GioHangCss.css";
 import no_shopping_cart from "../Images/no_shopping_cart.png";
 import {useEffect , useState } from 'react';
-export default function GioHang({idUser}) {
+export default function GioHang({user}) {
   const [cardDetails, setCardDetails] = useState([])
   useEffect(() => {
-    axios.get(`https://localhost:44343/data/carddetail/iduser=${idUser}`,null)
+    if(user===null){
+    axios.get(`https://localhost:44343/data/carddetail/iduser=${user.id}`,null)
     .then(res => {
-      if (res.status === 200) {
+      if (res.status === 200){
          setCardDetails(res.data);
       }
     }).catch(err => console.log("Get card failed" + err));
+  }
   }, [])
   console.log(cardDetails);
   return (

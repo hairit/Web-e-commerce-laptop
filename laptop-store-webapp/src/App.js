@@ -5,6 +5,7 @@ import Keyboard from "./Pages/Products/ProductsKeyboard/Keyboard";
 import slide from "./Scrip/slide";
 import { useState, useEffect } from "react";
 import Login from "./Pages/Login/Login";
+import Register from "./Pages/Login/Register";
 import Body from "./Pages/Body.js";
 import Lienhe from "./Pages/Lienhe";
 import Tintuc from "./Pages/Tintuc";
@@ -24,62 +25,53 @@ function App() {
   const [userCookie, setUserCookie] = useCookies(["user"]);
   const [reload, setReload] = useState(0);
   useEffect(() => {
-    if (userCookie !== null) {
+    console.log(userCookie.id);
+    if (userCookie.id !== undefined) {
+      console.log("Null");
       axios
-        .get(`https://localhost:44343/data/user/${userCookie.id}`)
-        .then((res) => setUser(res.data))
-        .catch((err) => console.log("Đăng nhập fail"));
+              .get(`https://localhost:44343/data/user/${userCookie.id}`)
+              .then((res) => setUser(res.data))
+              .catch((err) => console.log("Đăng nhập fail"));
     }
   }, [reload]);
   const login = (user) => {
     setUserCookie("id", user.id);
     setUser(user);
   };
-  const reLoad = () => {
-    if (reload === 0) setReload(1);
-    else setReload(0);
-  };
   console.log(user);
+  const reLoad = () =>{
+    if(reload === 0) setReload(1);
+    else setReload(0);
+  }
+  function addCardHandleClick  (idProduct , price ){
+    console.log(idProduct + "log" + price + user.id);
+    axios.get(`https://localhost:44343/data/carddetail/add/iduser=${user.id}/idproduct=${idProduct}/tongtien=${price}`,null)
+      .then(res => {
+        if(res.status === 201){
+           reLoad();
+        }
+        else alert("không thể thêm vào giỏ hàng");
+      }).catch(err => console.log("Add card failed"))
+  }
   return (
     <Router>
       <div className="App">
         <Header user={user} />
-        <Route path="/" exact component={() => <Body />}></Route>
-        {/* <Route path="/sanpham" exact component={() => <Laptops />}></Route> */}
-
-        <Route path="/keyboard" exact component={() => <Keyboard />}></Route>
-        <Route path="/screen" exact component={() => <Screen />}></Route>
-        <Route
-          path="/laptop/:id"
-          component={(match) => <DetailProductsLaptop match={match} />}
-        ></Route>
-        <Route
-          path="/keyboard/:id"
-          component={(match) => <DetailProductsKeyboard match={match} />}
-        ></Route>
-        <Route
-          path="/screen/:id"
-          component={(match) => <DetailProductsScreen match={match} />}
-        ></Route>
-        <Route
-          path="/laptop"
-          exact
-          component={() => <Laptops reLoad={reLoad} idUser={user.id} />}
-        ></Route>
-        <Route
-          path="/card"
-          component={() => (
-            <GioHang cardDetails={user.cardDetails} idUser={user.id} />
-          )}
-        ></Route>
-        <Route
-          path="/login"
-          exact
-          component={() => <Login login={login} />}
-        ></Route>
-        <Route path="/lienhe" component={() => <Lienhe />}></Route>
-        <Route path="/tincongnghe" component={() => <Tintuc />}></Route>
-        <Route path="/showroom" component={() => <Showroom />}></Route>
+            <Route path="/" exact component={() => <Body />}></Route>
+            <Route path="/keyboard" exact component={() => <Keyboard />}></Route>
+            <Route path="mouse" component={() => <div></div>} ></Route>
+            <Route path="/screen" exact component={() => <Screen />}></Route>
+            <Route path="/laptop/:id" component={(match) => <DetailProductsLaptop match={match} />}></Route>
+            <Route path="/keyboard/:id" component={(match) => <DetailProductsKeyboard match={match} />} ></Route>
+            <Route path="/screen/:id" component={(match) => <DetailProductsScreen match={match} />}></Route>
+            <Route path="/laptop" exact component={() => <Laptops addCardHandleClick={addCardHandleClick} />}></Route>
+            <Route path="/card" component={() => <GioHang cardDetails={user.cardDetails} idUser={user} />}></Route>
+            <Route path="/login" exact component={() => <Login login={login} />}> </Route>
+            <Route path="/login/register" exact component={() => <Register />}></Route>
+            <Route path="/login/register" exact component={() => <Register />}></Route>
+            <Route path="/lienhe" component={() => <Lienhe />}></Route>
+            <Route path="/tincongnghe" component={() => <Tintuc />}></Route>
+            <Route path="/showroom" component={() => <Showroom />}></Route>
         <Footer />
       </div>
     </Router>

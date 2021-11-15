@@ -6,15 +6,6 @@
 
     color: black;
 }
-.customer-login{
-    display:block;
-}
-.customer-login-hide{
-    display:none;
-}
-.header-login{
-    text-align: center;
-}
 .header-login::before
 {
     display: table;
@@ -76,54 +67,4 @@
 {
     font-size: 16px;
     margin-top: 10px;
-}
-.req-pass
-{
-    display:block;
-}
-.req-pass-hidden
-{
-    display: none;
-}
-.reqpass-email
-{
-    display: flex;
-}
-.reqpass-box
-{
-    text-align: left;
-    display: flex;
-    margin-bottom: 20px;
-    width: 100%;
-    position: relative;
-}
-.reqpass-form
-{
-    width: 100%;
-}
-.reqpass-act-button
-{
-    align-items: center;
-    float: inline-end;
-}
-.login-recovery::after
-{
-    display: table;
-    content: " ";
-}
-.reqsdt-form
-{
-    display:block;
-}
-.reqsdt-form-hide
-{
-    display:none;
-}
-.sign-up
-{
-    display: block;
-}
-.sign-up-hide
-{
-    display: none;
 }
