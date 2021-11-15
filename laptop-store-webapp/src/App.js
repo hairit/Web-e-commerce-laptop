@@ -5,7 +5,6 @@ import Keyboard from "./Pages/Products/ProductsKeyboard/Keyboard";
 import slide from "./Scrip/slide";
 import { useState, useEffect } from "react";
 import Login from "./Pages/Login/Login";
-import Register from "./Pages/Login/Register";
 import Body from "./Pages/Body.js";
 import Lienhe from "./Pages/Lienhe";
 import Tintuc from "./Pages/Tintuc";
@@ -25,8 +24,7 @@ function App() {
   const [userCookie, setUserCookie] = useCookies(["user"]);
   const [reload, setReload] = useState(0);
   useEffect(() => {
-    if (userCookie.id !== null) {
-      console.log("Reload");
+    if (userCookie !== null) {
       axios
         .get(`https://localhost:44343/data/user/${userCookie.id}`)
         .then((res) => setUser(res.data))
@@ -79,12 +77,6 @@ function App() {
           exact
           component={() => <Login login={login} />}
         ></Route>
-        <Route path="/login/register" exact component={() => <Register />}>
-          {" "}
-        </Route>
-        <Route path="/login/register" exact component={() => <Register />}>
-          {" "}
-        </Route>
         <Route path="/lienhe" component={() => <Lienhe />}></Route>
         <Route path="/tincongnghe" component={() => <Tintuc />}></Route>
         <Route path="/showroom" component={() => <Showroom />}></Route>
