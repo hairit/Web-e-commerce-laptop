@@ -13,9 +13,30 @@ const LoadingProductOptions = (item , index) =>{
             <p className="pro-list-item-text">{item.optionName}</p>
         </NavLink>)
 }
-const renderImage = (image,index,position) =>{
-    if(image.position === position) return(
+const renderCenterImage = (image,index) =>{
+    if(image.position === 'center') return (
         <img key={index} className="main-image-item" src={`https://localhost:44343/Images/Panels/${image.nameImage}`} alt={image.nameImage} />
+    )
+}
+const renderRightImage = (image,index) => {
+    if(image.position === 'right') return (
+        <div className="image-right-item" key={index}>
+                <img key={index} className="image-right-img" src={`https://localhost:44343/Images/Panels/${image.nameImage}`} alt={image.nameImage}/>
+        </div>   
+    )
+} 
+const renderBottom3Image = (image,index) => {
+    if(image.position === 'bottom(3)') return (
+        <div key= {index} className="col-no-padding c-4">
+            <img className="image-bottom-3-img" src={`https://localhost:44343/Images/Panels/${image.nameImage}`} alt={image.nameImage}/>
+        </div>
+    )
+}
+const renderBottom4Image = (image,index) => {
+    if(image.position === 'bottom(4)') return (
+        <div key={index}  className="col-no-padding c-3">
+            <img className="image-bottom-4-img" src={`https://localhost:44343/Images/Panels/${image.nameImage}`} alt={image.nameImage}/>
+        </div>
     )
 }
 const getCenterImages = (images) =>{
@@ -32,16 +53,16 @@ export default function MainPanel() {
     const [X, setX] = useState(0);
     const index = useRef(0);
     useEffect(() => {
-        CALLER('GET','lappee/image',null).then(res => setImages(res.data)).catch(err => console.log("Errol when try to get Image API"));
+        CALLER('GET','data/image',null).then(res => setImages(res.data)).catch(err => console.log("Errol when try to get Image API"));
     }, [])
     const changeSlide = (dir,countImage) =>{
         if(index.current === 0 && dir === 'previous') return;
         if(index.current === countImage - 1 && dir === 'next') return;
-        if(dir === 'left') {
+        if(dir === 'left'){
             index.current = index.current - 1;
             setX(X-100);
         }
-        else {
+        else{
             index.current = index.current + 1;
             setX(X+100);
         }
@@ -56,23 +77,29 @@ export default function MainPanel() {
                         </div>
                     </div>
                     <div className="col-no-padding c-10 main-panel-image container12Col">
-                        <div className="row-12-no-margin main-panel-image-row">
-                            <div className="col-no-padding c-8 main-panel-image-center">
+                        <div className="row-12-no-margin main-image-row">
+                            <div className="col-no-padding c-8 main-image-center main-image-item">
                                  <div className="main-image">
                                             <div className="button-slide previous-slide" onClick={() => changeSlide('previous',getCenterImages(images).length)}>
                                                 <BiChevronLeft className="button-slide-icon" />
                                             </div>
-                                     {images.map((image,index)=> renderImage(image ,index, 'center'))}
+                                                {images.map((image,index)=> renderCenterImage(image ,index))}
                                             <div className="button-slide next-slide" onClick={() => changeSlide('next',getCenterImages(images).length)}>
                                                 <BiChevronRight className="button-slide-icon" />
                                             </div>
                                  </div>
                             </div>
-                            <div className="col-no-padding c-4 main-panel-image-right">      
+                            <div className="col-no-padding c-4 main-image-right main-image-item">  
+                                    {images.map((image,index)=> renderRightImage(image ,index))}               
                             </div>
+                            {
+                                images.map((image,index)=> renderBottom3Image(image,index))
+                            }
                         </div>
                     </div>
+                    {images.map((image,index) => renderBottom4Image(image,index))}
                 </div>
+                
             </div>
         </div>
     )
