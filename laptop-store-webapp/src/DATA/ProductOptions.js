@@ -37,7 +37,7 @@ const PRODUCT_OPTIONS = [
   },
   {
     optionName: "Chuột",
-    path: "",
+    path: "/mouse",
     icon: () => {
       return <BsFillMouse2Fill className="pro-list-item-icon" />;
     },
