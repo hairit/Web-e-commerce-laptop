@@ -25,8 +25,6 @@ export default function GioHang({ idUser }) {
   console.log("ahihi",cardDetails);
     if(cardDetails.length >= 0) return(
       <div className="page">
-        
-
         <div className="container width">
           <div className="title-cart">
             <strong className="title-text">Giỏ hàng của bạn</strong>
@@ -54,6 +52,7 @@ export default function GioHang({ idUser }) {
                           </div>
                         </div>
                         <div className="info-editquantity">
+                          <div>
                           <button type="button"class="btn-tru">
                             -
                           </button>
@@ -61,6 +60,7 @@ export default function GioHang({ idUser }) {
                           <button type="button" class="btn-cong">
                             +
                           </button>
+                          </div>
                         </div>
                         <div className="info-price">
                           <strong>
@@ -87,8 +87,6 @@ export default function GioHang({ idUser }) {
             </div>
           </div>
         </div>
-     
-     
       </div>
     )
     else return (
