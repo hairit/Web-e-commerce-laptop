@@ -71,6 +71,7 @@
   width: 100%;
 }
 .info-image {
+  padding-left: 10px;
   display: block;
   flex: 0 0 66.66%;
   max-width: 66.66%;
@@ -81,6 +82,12 @@
 }
 .img-name a {
   flex: 0 0 15%;
+}
+.info-price{
+  padding-top: 5px;
+}
+.info-price strong{
+  font-size: 17px;
 }
 .imag {
   border: 1px solid #ebebeb;
@@ -94,7 +101,7 @@
   width: 80%;
 }
 .name a {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 380;
   color: black;
   margin-bottom: 15px;
@@ -122,30 +129,81 @@
   font-size: 18px;
 }
 .info-editquantity {
-  
+  padding-right: 20px;
   height:36px;
   display: flex;
-
+flex-flow: column;
 }
-
+.pay-info{
+  padding-top: 30px;
+}
 .input-edit {
   width: 18%;
   padding: 6px 5px;
   border-radius: none !important;
 }
-.info-price strong {
-  color: #1435c3;
-}
+
 .info-editquantity button {
-  width: 20%;
-  height:34px;
+  width: 32%;
+  height:32px;
   border: none;
-  background-color: #fcfafa !important;
+  background-color: #fcfcfc !important;
 }
 .finput-edit{
-  background-color: #fcfafa;
+  background-color: #fcfcfc;
   text-align: center;
-  width:20%;
+  width:36%;
   height:34px;
   border: none;
+}
+.center-logo{
+  background-color: white;
+  width: 100%;
+  padding: 10px 20px;
+  border-bottom: solid 1px #ebebeb;
+}
+.center-logo img{
+  padding-left: 10px;
+  width: 15%;
+}
+.check-item{
+  padding: 20px;
+  cursor: pointer;
+}
+input[type=checkbox] {
+  transform: scale(1.5);
+}
+.info-check{
+  margin-top:auto;
+  margin-bottom:auto;
+}
+.payment-sum{
+  text-align:center;
+  width:auto;
+  height:50px;
+}
+.payment-sum strong{
+  float:left;
+}
+.payment-sum p{
+  float: right;
+  font-weight: 700;
+  font-size:20px;
+  color:#37449F;
+  
+}
+.btn-quantity{
+  width:72%;
+  border: 1px solid #ebebeb;
+  border-radius: 4px;
+}
+.delet{
+  width: 41%;
+  padding-top: 10px;
+  margin: 0 auto;
+}
+.delet button{
+ width: auto;
+ color: blue;
+  background-color: white !important;
 }
