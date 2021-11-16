@@ -10,6 +10,7 @@ import no_shopping_cart from "../Images/no_shopping_cart.png";
 import { useEffect, useState } from "react";
 export default function GioHang({ idUser }) {
   const solver = new Solver();
+  const [tongtien, setTongtien] = useState(0);
   const [cardDetails, setCardDetails] = useState([]);
   useEffect(() => {
     if (idUser !== null) {
@@ -23,7 +24,23 @@ export default function GioHang({ idUser }) {
         .catch((err) => console.log("Get card failed" + err));
     }
   }, []);
-  console.log("ahihi",cardDetails);
+
+  function checktien (e,gia,quantity) {
+    if (e.target.checked) {
+      setTongtien(tongtien + gia*quantity);
+    } else {
+      setTongtien(tongtien - gia*quantity);
+      
+
+    }
+  }
+
+ function checksoluong(e,tien){
+  if(e.target.name == "btn-cong"){
+    setTongtien(tongtien+tien)
+  }
+ }
+
     if(cardDetails.length >= 0) return(
       <div className="page">
         <div className="container width">
@@ -41,7 +58,12 @@ export default function GioHang({ idUser }) {
                   <div className="info-cart" key={index}>
                     <div className="info-donhang">
                       <div className="info-chitiet">
-                      <div className="info-check"><input class="check-item" type="checkbox" value=""  /></div>
+                      <div className="info-check">
+                        <input class="check-item" type="checkbox"  name="hobby[]"  id="check-item" 
+                        onChange={(e)=> {
+                          setTimeout(checktien(e,item.tongtien,item.soluong), 3000)
+                        }}  value={item.id}/>
+                        </div>
                         <div className="info-image">
                           <div className="img-name">
                             <a>
@@ -59,11 +81,11 @@ export default function GioHang({ idUser }) {
                         </div>
                         <div className="info-editquantity">
                           <div className="btn-quantity">
-                          <button type="button"class="btn-tru">
+                          <button type="button"class="btn-tru" name="btn-giam" onClick={(e) => checksoluong(e,item.gia)}>
                             -
                           </button>
-                          <input type="text" class="finput-edit" placeholder={item.soluong}></input>
-                          <button type="button" class="btn-cong">
+                          <input type="text" class="finput-edit" defaultValue={item.soluong} disabled></input>
+                          <button type="button" name="btn-tang" class="btn-cong" onclick={(e) => checksoluong(e,item.gia)}>
                             +
                           </button>
                           </div>
@@ -83,7 +105,11 @@ export default function GioHang({ idUser }) {
             <div className="payment">
               <div className="payment-sum">
                 <strong>Tổng tiền</strong>
-                <p>123.000.000</p>
+                <p id="settongtien">{solver.formatCurrency(
+                      "vi-VN",
+                      "currency",
+                      "VND",
+                      tongtien)}</p>
               </div>
               <div className="pay-info">
                 <div className="thanhtoan">
@@ -91,7 +117,7 @@ export default function GioHang({ idUser }) {
                 </div>
                 <div className="tamtinh-thanhtien">Tạm tính</div>
                 <div className="tamtinh-thanhtien">Thành tiền</div>
-                <button className="btn-pay btn btn-outline-primary">
+                <button className="btn-pay btn btn-outline-primary"  >
                   Tiếp tục thanh toán
                 </button>
               </div>
