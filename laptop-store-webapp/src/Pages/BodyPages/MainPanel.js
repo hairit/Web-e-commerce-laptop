@@ -64,7 +64,7 @@ export default function MainPanel() {
         if(index.current === countImage - 1 && dir === 'next'){
             index.current = 0;
             setX(0);
-            return
+            return;
         }
         if(dir === 'previous')
         {
@@ -100,7 +100,7 @@ export default function MainPanel() {
                                                 <BiChevronLeft className="button-slide-icon" />
                                             </div>
                                             {console.log("X:"+X)}
-                                            <div className="center-image-slider" style={{width : `${countImage(images,'center')}00%`,transform : `translate(${X}%)`}}>
+                                            <div className="center-image-slider" style={{width : `${countImage(images,'center')}00%`,transform : `translate(${X}%)` ,transition : '1s'}}>
                                             {images.map((image,index)=> renderCenterImage(image ,index ,X))}
                                             </div>
                             </div>
@@ -114,7 +114,6 @@ export default function MainPanel() {
                     </div>
                     {images.map((image,index) => renderBottom4Image(image,index))}
                 </div>
-                
             </div>
         </div>
     )

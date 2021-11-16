@@ -25,7 +25,6 @@
 .center-image-slider{
   height: 100%;
   display: flex;
-  transition: 0.5s;
 }
 .center-image{
   position: relative;
