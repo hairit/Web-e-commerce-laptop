@@ -150,3 +150,12 @@
   position: absolute;
   opacity: 0;
 }
+.menu-status
+{
+  display:block;
+  position: fixed;
+}
+.menu-status-hide
+{
+  display:none;
+}
