@@ -13,9 +13,11 @@ const LoadingProductOptions = (item , index) =>{
             <p className="pro-list-item-text">{item.optionName}</p>
         </NavLink>)
 }
-const renderCenterImage = (image,index) =>{
+const renderCenterImage = (image,index,X) =>{
     if(image.position === 'center') return (
-        <img key={index} className="main-image-item" src={`https://localhost:44343/Images/Panels/${image.nameImage}`} alt={image.nameImage} />
+        <div className="center-image-item">
+            <img key={index} className="center-image-item-img" src={`https://localhost:44343/Images/Panels/${image.nameImage}`} alt={image.nameImage} />
+        </div>
     )
 }
 const renderRightImage = (image,index) => {
@@ -39,14 +41,12 @@ const renderBottom4Image = (image,index) => {
         </div>
     )
 }
-const getCenterImages = (images) =>{
-    //  count = 0 ;
-    // images.forEach(image => {
-    //     count += (image.position === 'center') ? 1 : 0 ; 
-    // });
-    // return count;
-    const centerImages = Array.from(images,image => image.position === 'center');
-    return centerImages;
+const countImage = (images,position) =>{
+    var count = 0 ;
+    images.map((image)=>{
+        if(image.position === position ) count = count +1;
+    })
+    return count;
 }
 export default function MainPanel() {
     const [images, setImages] = useState([]);
@@ -56,16 +56,30 @@ export default function MainPanel() {
         CALLER('GET','data/image',null).then(res => setImages(res.data)).catch(err => console.log("Errol when try to get Image API"));
     }, [])
     const changeSlide = (dir,countImage) =>{
-        if(index.current === 0 && dir === 'previous') return;
-        if(index.current === countImage - 1 && dir === 'next') return;
-        if(dir === 'left'){
+        if(index.current === 0 && dir === 'previous' ) {
+            index.current = countImage -1;
+            setX(-(100-translatePercent()));
+            return ;
+        }
+        if(index.current === countImage - 1 && dir === 'next'){
+            index.current = 0;
+            setX(0);
+            return
+        }
+        if(dir === 'previous')
+        {
             index.current = index.current - 1;
-            setX(X-100);
+            setX(X+translatePercent());
         }
         else{
             index.current = index.current + 1;
-            setX(X+100);
+            setX(X-translatePercent());
         }
+        console.log(dir + "data" + index.current);
+    }
+
+    const translatePercent = () =>{
+        return  (100/countImage(images,'center'));
     }
     return (
         <div className="main-page">
@@ -78,16 +92,17 @@ export default function MainPanel() {
                     </div>
                     <div className="col-no-padding c-10 main-panel-image container12Col">
                         <div className="row-12-no-margin main-image-row">
-                            <div className="col-no-padding c-8 main-image-center main-image-item">
-                                 <div className="main-image">
-                                            <div className="button-slide previous-slide" onClick={() => changeSlide('previous',getCenterImages(images).length)}>
-                                                <BiChevronLeft className="button-slide-icon" />
-                                            </div>
-                                                {images.map((image,index)=> renderCenterImage(image ,index))}
-                                            <div className="button-slide next-slide" onClick={() => changeSlide('next',getCenterImages(images).length)}>
+                            <div className="col-no-padding c-8 center-image main-image-item">
+                                            <div className="button-slide next-slide" onClick={() => changeSlide('next',countImage(images,'center'))}>
                                                 <BiChevronRight className="button-slide-icon" />
                                             </div>
-                                 </div>
+                                            <div className="button-slide previous-slide" onClick={() => changeSlide('previous',countImage(images,'center'))}>
+                                                <BiChevronLeft className="button-slide-icon" />
+                                            </div>
+                                            {console.log("X:"+X)}
+                                            <div className="center-image-slider" style={{width : `${countImage(images,'center')}00%`,transform : `translate(${X}%)`}}>
+                                            {images.map((image,index)=> renderCenterImage(image ,index ,X))}
+                                            </div>
                             </div>
                             <div className="col-no-padding c-4 main-image-right main-image-item">  
                                     {images.map((image,index)=> renderRightImage(image ,index))}               
