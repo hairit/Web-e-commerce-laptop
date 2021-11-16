@@ -73,43 +73,58 @@ namespace Laptop_store_e_comerce.Controllers
             }
             return NoContent();
         }
-        [HttpGet("add/iduser={value1}/idproduct={value2}/tongtien={value3}")]
-        public async Task<ActionResult<CardDetail>> PostCardDetail(int value1 , string value2 , int value3)
+        [HttpGet("action={action}/iduser={value1}/idproduct={value2}/tongtien={value3}")]
+        public async Task<ActionResult<CardDetail>> PostCardDetail(string action ,int value1 , string value2 , int value3)
         {
-            if (existCardDetail(value1, value2))
-            {
-                var newCard = await _context.CardDetails.Where(detail => detail.IdUser == value1 && detail.IdProduct == value2).FirstOrDefaultAsync();
-                if (newCard == null) return NotFound();
-                newCard.Soluong += 1;
-                //Product pro = await _context.Products.FindAsync(value2);
-                //newCard.Tongtien += pro.Gia;
-                newCard.Tongtien += value3;
-                _context.Entry(newCard).State = EntityState.Modified;
-                try
+                if(action == "add")
                 {
-                    await _context.SaveChangesAsync();
+                    if (existCardDetail(value1, value2)){
+                        var newCard = await _context.CardDetails.Where(detail => detail.IdUser == value1 && detail.IdProduct == value2).FirstOrDefaultAsync();
+                        if (newCard == null) return NotFound();
+                        newCard.Soluong += 1;
+                        //Product pro = await _context.Products.FindAsync(value2);
+                        //newCard.Tongtien += pro.Gia;
+                        newCard.Tongtien += value3;
+                        _context.Entry(newCard).State = EntityState.Modified;
+                        try
+                        {
+                            await _context.SaveChangesAsync();
+                        }
+                        catch (Exception) { return BadRequest(); }
+                        return CreatedAtAction("GetCardDetail", new { value1 = value1, value2 = value2 }, newCard);
+                    }
+                    else
+                    {
+                        //Product pro = await _context.Products.FindAsync(value2);
+                        CardDetail newCard = new CardDetail();
+                        newCard.IdUser = value1;
+                        newCard.IdProduct = value2;
+                        newCard.Tongtien = value3;
+                        newCard.Soluong = 1;
+                        //newCard.Tongtien = pro.Gia;
+                        _context.CardDetails.Add(newCard);
+                        try
+                        {
+                            await _context.SaveChangesAsync();
+                        }
+                        catch (Exception)
+                        { return BadRequest(); }
+                        return CreatedAtAction("GetCardDetail", new { value1 = value1, value2 = value2 }, newCard);
+                    }
                 }
-                catch (Exception) { return BadRequest(); }
-                return CreatedAtAction("GetCardDetail", new { value1 = value1, value2 = value2 },newCard);
-            }
-            else
-            {
-                //Product pro = await _context.Products.FindAsync(value2);
-                CardDetail newCard = new CardDetail();
-                newCard.IdUser = value1;
-                newCard.IdProduct = value2;
-                newCard.Tongtien = value3;
-                newCard.Soluong = 1;
-                //newCard.Tongtien = pro.Gia;
-                _context.CardDetails.Add(newCard);
-                try
+                else
                 {
-                    await _context.SaveChangesAsync();
-                }
-                catch (Exception)
-                       { return BadRequest(); }
-                return CreatedAtAction("GetCardDetail", new { value1 = value1 , value2 = value2 },newCard);
-            }
+                    var card = await _context.CardDetails.Where(detail => detail.IdUser == value1 && detail.IdProduct == value2).FirstOrDefaultAsync();
+                    if (card == null) return NotFound();
+                    card.Soluong -= 1;
+                    card.Tongtien -= value3;
+                    _context.Entry(card).State = EntityState.Modified;
+                    try
+                    {
+                        await _context.SaveChangesAsync();
+                    }catch(Exception) { return BadRequest(); }
+                    return CreatedAtAction("GetCardDetail", new { value1 = value1, value2 = value2 }, card);
+                } 
         }
         [HttpDelete("iduser={value1}/idproduct={value2}")]
         public async Task<ActionResult<CardDetail>> DeleteCardDetail(int value1 , string value2)
