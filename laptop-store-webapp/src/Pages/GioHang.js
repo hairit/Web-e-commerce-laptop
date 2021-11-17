@@ -37,8 +37,7 @@ export default function GioHang({ idUser, addCardHandleClick}) {
       setTongtien(tongtien - gia*quantity);
     }
   }
-
-
+  console.log(cardDetails);
 function deleteItem(iduser,idpro){
   
   if(window.confirm("Bạn muốn xoá sản phẩm này ra khỏi giỏ hàng?") ===true){
