@@ -88,6 +88,11 @@
 }
 .info-price strong{
   font-size: 17px;
+  padding-bottom: 0 !important;
+}
+.giagoc{
+  font-size:15px !important;
+  color: red;
 }
 .imag {
   border: 1px solid #ebebeb;

@@ -70,14 +70,22 @@ namespace Laptop_store_e_comerce.Controllers
         [HttpPut]
         public async Task<IActionResult> PutUser(User user)
         {
-            if (!UserExists(user.Id)) {return NotFound();}
             database.Entry(user).State = EntityState.Modified;
             try
             {
                 await database.SaveChangesAsync();
             }
             catch (DbUpdateException)
-            {return BadRequest();}
+            {
+                if (!UserExists(user.Id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    return BadRequest();
+                }
+            }
             return CreatedAtAction("GetUserByID", new { id = user.Id }, user);
         }
         [HttpPost]
@@ -89,7 +97,7 @@ namespace Laptop_store_e_comerce.Controllers
             {
                 await database.SaveChangesAsync();
             }
-            catch(Exception e) { Console.WriteLine(e.ToString()); return BadRequest(); }
+            catch(DbUpdateException e) { Console.WriteLine(e.ToString()); return BadRequest(); }
             return CreatedAtAction("GetUserByID", new { id = user.Id }, user);
         }
         [HttpDelete("{id}")]

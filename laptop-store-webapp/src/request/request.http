@@ -1,3 +1,1 @@
-
-
-delete https://localhost:44343/data/carddetail/iduser=9/idproduct=14-bf016TU
+get https://localhost:44343/data/laptop/brand=ASUS

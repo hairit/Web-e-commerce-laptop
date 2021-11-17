@@ -4,7 +4,7 @@ API Lappee :
 	-Lấy tất cả sản phẩm : 						https://localhost:44343/data/product
 	-Lấy sản phẩm theo tên: 					https://localhost:44343/data/product/name={name}
 	-Lấy sản phẩm theo loại:					https://localhost:44343/data/product/type={type}
-	-Lấy sản phẩm và chi tiết sản phẩm theo id:			https://localhost:44343/data/product/type={type}/{id}
+	-Lấy sản phẩm và chi tiết sản phẩm theo id:	https://localhost:44343/data/product/type={type}/{id}
 	-Lấy sản phẩm theo giá						https://localhost:44343/data/product/type={type}from={price1}to={price2}
 	-Lấy sản phẩm lớn hơn giá					https://localhost:44343/data/product/type={type}from={price1}to=999
 	+Laptop
@@ -13,7 +13,7 @@ API Lappee :
 				-Lấy Laptop theo cpu			https://localhost:44343/data/laptop/cpu={value}
 				-Lấy Laptop theo manhinh		https://localhost:44343/data/laptop/manhinh={value}
 				-Lấy Laptop theo VGA			https://localhost:44343/data/laptop/vga={value}
-				-Lấy Laptop theo GB			https://localhost:44343/data/laptop/gb={value}
+				-Lấy Laptop theo GB				https://localhost:44343/data/laptop/gb={value}
 +User:
 	-Login								https://localhost:44343/data/user/login/{email}/{pass}
 	-Lấy tất cả User						https://localhost:44343/data/user/
@@ -27,7 +27,7 @@ Loại Sản phẩm:
 	-Lấy tất cả loại sản phẩm:					https://localhost:44343/data/typeproduct
 	-Lấy loại sản phẩm theo id:					https://localhost:44343/data/typeproduct/{id}
 	-Thêm loại sản phẩm:						https://localhost:44343/data/typeproduct/ 	data:loaisanpham
-	-Sửa loại sản phẩm :						https://localhost:44343/data/typeproduct/{id}	data:loaisanpham
+	-Sửa loại sản phẩm :						https://localhost:44343/data/typeproduct/	data:loaisanpham
 	-Xóa loại sản phẩm :						https://localhost:44343/data/typeproduct/{id}
 +Đơn hàng :
 
@@ -39,6 +39,4 @@ Loại Sản phẩm:
 	-Xóa đơn hàng							https://localhost:44343/data/bill/{id} (DELETE)
 
 +Giỏ hàng
-	-Thêm 1 sản phẩm vào giỏ hàng 					https://localhost:44343/data/carddetail/action=add/iduser={value1}/idproduct={value2}/tongtien={value3}
-	-Xóa 1 sản phẩm giỏ hàng					https://localhost:44343/data/carddetail/action=delete/iduser={value1}/idproduct={value2}/tongtien={value3}
-	-Xóa sản phẩm khỏi giỏ hàng					https://localhost:44343/data/carddetail/iduser={value1}/idproduct={value2}
+	Thêm 1 sản phẩm vào giỏ hàng 					https://localhost:44343/data/carddetail/add/iduser={value1}/idproduct={value2}/tongtien={value3}

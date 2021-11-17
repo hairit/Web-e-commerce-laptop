@@ -16,7 +16,32 @@ export default function Login({login,userCookie}) {
     const [signup, setsignup] = useState(false);
     const [user, setuser] = useState([]);
     const [sdt, setsdt] = useState("");
+    const [firstname, setFirstname] = useState("");
+    const [lastname, setLastname] = useState("");
+    const [diachi, setDiachi] = useState("");
+    const [useredt = {
+        id: "",
+        lastname: "",
+        firstname: "",
+        email: "",
+        pass: "",
+        sdt: "",
+        diachi: "",
+        mode: "CUSTOMER",
+        nameimage: ""
+    },setuseredt] = useState([]);
+    const [usersignup = {
+        lastname: "",
+        firstname: "",
+        email: "",
+        pass: "",
+        sdt: "",
+        diachi: "",
+        mode: "CUSTOMER",
+        nameimage: ""
+    },setusersignup] = useState([]);
     let history = useHistory();
+    /*user = id, lastname, firtstname, email, sdt, pass, diachi, img*/
     function handleClick(e) {
         e.preventDefault();
         if(!username.includes('@') || !password.length >= 6) return;
@@ -26,10 +51,14 @@ export default function Login({login,userCookie}) {
                                 if(res.status === 404) alert("Tài khoản hoặc mật khẩu không đúng");
                                 else {
                                     login(res.data);
-                                    history.goBack();
+                                    history.push("/");
                                 }
                            })
-                           .catch(err => console.log("Login:"+err));
+                           .catch(err => 
+                            {
+                                console.log("Login:"+err);
+                                alert("Tài khoản hoặc mật khẩu không đúng!");
+                            });
         }             
     }
     function handleClickReqPass(e)
@@ -58,22 +87,72 @@ export default function Login({login,userCookie}) {
     }
     function handleClickReqPass2(e)
     {
+        console.log("useredt"+useredt);
         if(password==password2)
         {
+            setuseredt({
+                id: user.id,
+                firstname: user.firstname,
+                lastname: user.lastname,
+                email: user.email,
+                pass: password,
+                sdt: user.sdt,
+                diachi: user.diachi,
+                mode: "CUSTOMER",
+                nameimage: user.nameimage
+            });
+            console.log(useredt);
             console.log(user);
-            axios.post(`https://localhost:44343/data/user/${user.id}`,user)
+            axios.put(`https://localhost:44343/data/user/`,useredt)
                 .then(function (response) {
-                    console.log(response);
+                    console.log("Suscess"+response);
                     showLogin();
                   })
                 .catch(function (response) {
-                    console.log(response);
+                    console.log("Fail"+response);
                   });
         } else alert("Nhập lại mật khẩu");
+    }
+    function handleSignUp(e)
+    {
+        setusersignup(
+            {
+                diachi: diachi,
+                email: username,
+                firstname: firstname,
+                lastname: lastname,
+                mode: "CUSTOMER",
+                nameimage: "",
+                pass: password,
+                sdt: sdt
+            }
+        );
+        console.log(usersignup);
+        axios.post(`https://localhost:44343/data/user/`,usersignup)
+            .then(function(response)
+            {
+                console.log(response);
+            })
+            .catch(function(response)
+            {
+                console.log(response);
+            });
     }
     function getsdt(event)
     {
         setsdt(event.target.value);
+    }
+    function getFirstname(event)
+    {
+        setFirstname(event.target.value);
+    }
+    function getLastname(event)
+    {
+        setLastname(event.target.value);
+    }
+    function getDiachi(event)
+    {
+        setDiachi(event.target.value);
     }
     function getusername(event) {
         setusername(event.target.value)
@@ -186,11 +265,11 @@ export default function Login({login,userCookie}) {
                         <div>
                             <div className="firstname login-login">
                                
-                                <input type="text" placeholder="Họ" class="login-input" name="firstname" onChange={(event) => getusername(event)}></input>
+                                <input type="text" placeholder="Họ" class="login-input" name="firstname" onChange={(event) => getFirstname(event)}></input>
                             </div>
                             <div className="lastname login-login">
                                 
-                                <input type="text" placeholder="Tên" class="login-input" name="firstname" onChange={(event) => getusername(event)}></input>
+                                <input type="text" placeholder="Tên" class="login-input" name="firstname" onChange={(event) => getLastname(event)}></input>
                             </div>
                             <div className="username login-login">
                                 
@@ -202,13 +281,13 @@ export default function Login({login,userCookie}) {
                             </div>
                             <div className="sdt login-login">
                                 
-                                <input type="tel" placeholder="Số điện thoại"class="login-input" onChange={(event) => getpass(event)}></input>
+                                <input type="tel" placeholder="Số điện thoại"class="login-input" onChange={(event) => getsdt(event)}></input>
                             </div>
                             <div className="address login-login">
                                
-                                <input type="text" placeholder="Địa chỉ"class="login-input" onChange={(event) => getpass(event)}></input>
+                                <input type="text" placeholder="Địa chỉ"class="login-input" onChange={(event) => getDiachi(event)}></input>
                             </div>
-                            <button className="button sign-up-button" onClick={(e)=>showLogin(e)}>Đăng ký</button>
+                            <button className="button sign-up-button" onClick={(e)=>handleSignUp(e)}>Đăng ký</button>
                             <button className="button sign-up-button" onClick={(e)=>showLogin(e)}>Hủy</button>
                         </div>
                     </div>

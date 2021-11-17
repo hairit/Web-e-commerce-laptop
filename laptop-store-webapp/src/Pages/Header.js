@@ -91,7 +91,7 @@ export default function Header({ user }) {
               <p className="login-text">Đăng nhập</p>
             </NavLink>
           ) : (
-            <div className="header-center-right-menu-item"  onClick={()=>showMenu()}>
+            <div className="header-center-right-menu-item"  onClick={()=>cookie.remove("user")}>
               {user.nameimage !== null ? (
                 <img
                   src={URL + `/Images/UserAvatar/${user.nameimage}`}

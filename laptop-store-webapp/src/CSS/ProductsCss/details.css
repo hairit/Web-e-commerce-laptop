@@ -7,7 +7,7 @@
   background-color: #3a8bcd;
 }
 .section-heading h1 {
-  font-size: 25px;
+  font-size: 30px;
   font-weight: 700;
   color: #1e1e1e;
   margin-top: 15px;
@@ -513,9 +513,6 @@ strong {
 .nav-kb {
   color: blue;
 }
-/* .btn-pay{
-  visibility: hidden;
-} */
 
 /* ------------------------------------------------------------------------------------------------------*/
 
