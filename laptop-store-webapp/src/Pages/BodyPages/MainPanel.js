@@ -83,32 +83,32 @@ export default function MainPanel() {
         <div className="main-page">
             <div className="main-panel container12Col wide">
                 <div className="row-12-no-margin">
-                    <div className="col-no-padding c-2 main-panel-menu">
-                        <div className="main-panel-menu-list">
-                            {PRODUCT_OPTIONS.map((PRODUCT_OPTION,index) => LoadingProductOptions(PRODUCT_OPTION,index))}
-                        </div>
-                    </div>
-                    <div className="col-no-padding c-10 main-panel-image container12Col">
-                        <div className="row-12-no-margin main-image-row">
-                            <div className="col-no-padding c-8 center-image main-image-item">
-                                            <div className="button-slide next-slide" onClick={() => changeSlide('next',countImage(images,'center'))}>
-                                                <BiChevronRight className="button-slide-icon" />
-                                            </div>
-                                            <div className="button-slide previous-slide" onClick={() => changeSlide('previous',countImage(images,'center'))}>
-                                                <BiChevronLeft className="button-slide-icon" />
-                                            </div>
-                                            <div className="center-image-slider" style={{width : `${countImage(images,'center')}00%`,transform : `translate(${X}%)` ,transition : '1s'}}>
-                                            {images.map((image,index)=> renderCenterImage(image ,index ,X))}
-                                            </div>
+                        <div className="col-no-padding c-2 main-panel-menu">
+                            <div className="main-panel-menu-list">
+                                {PRODUCT_OPTIONS.map((PRODUCT_OPTION,index) => LoadingProductOptions(PRODUCT_OPTION,index))}
                             </div>
-                            <div className="col-no-padding c-4 main-image-right main-image-item">  
-                                    {images.map((image,index)=> renderRightImage(image ,index))}               
-                            </div>
-                            {
-                                images.map((image,index)=> renderBottom3Image(image,index))
-                            }
                         </div>
-                    </div>
+                        <div className="col-no-padding c-10 main-panel-image container12Col">
+                            <div className="row-12-no-margin main-image-row">
+                                <div className="col-no-padding c-8 center-image main-image-item">
+                                                <div className="button-slide next-slide" onClick={() => changeSlide('next',countImage(images,'center'))}>
+                                                    <BiChevronRight className="button-slide-icon" />
+                                                </div>
+                                                <div className="button-slide previous-slide" onClick={() => changeSlide('previous',countImage(images,'center'))}>
+                                                    <BiChevronLeft className="button-slide-icon" />
+                                                </div>
+                                                <div className="center-image-slider" style={
+                                                    {width : `${countImage(images,'center')}00%`,transform : `translate(${X}%)` ,transition : '0.5s'}
+                                                }>
+                                                {images.map((image,index)=> renderCenterImage(image ,index ,X))}
+                                                </div>
+                                </div>
+                                <div className="col-no-padding c-4 main-image-right main-image-item">  
+                                                {images.map((image,index)=> renderRightImage(image ,index))}               
+                                        </div>
+                                                {images.map((image,index)=> renderBottom3Image(image,index))}
+                                </div>
+                        </div>
                     {images.map((image,index) => renderBottom4Image(image,index))}
                 </div>
             </div>

@@ -40,6 +40,7 @@
 .screen-image-img {
   transform: scale(86%);
   transition: 0.2s;
+  user-select: none;
   border-radius: 5px;
 }
 .screen-image-img:hover {
@@ -49,6 +50,9 @@
   background-color: #ffffff;
   display: flex;
   flex-direction: column;
+}
+.screen-container{
+  overflow: hidden;
 }
 .screen-detail-item {
   padding: 5px 20px;
@@ -62,17 +66,51 @@
   line-height: 1.44;
   overflow: hidden;
 }
-.screen-name:hover {
+.screen-name:hover{
   color: #3f4fc3;
 }
-.screen-price {
-  margin-top: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.screen-price{
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
-.screen-price-value {
-  font-size: 16px;
-  color: #3f4fc3;
-  font-weight: 500;
+.screen-price-value{
+    font-size: 16px;
+    color: #3f4fc3;
+    font-weight: 500;
+}
+.swiper-screen-button{
+    position: absolute;
+    top : 50%;
+    width: 34px;
+    height: 64px;
+    background-color: #3f4fc3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    transform: translate(0,-50%);
+    opacity: 0.8;
+    z-index: 1;
+}
+.swiper-screen-button:hover{
+    opacity: 1;
+    box-shadow: 0 0 10px 5px rgb(226, 225, 225);
+}
+.screen-previous{
+    left: -10px;
+}
+.screen-next{
+    right : -10px;
+}
+.swiper-screen-button-icon{
+  color: #ffffff;
+  font-size: 15px;
+}
+.screen-panel-list{
+  position: relative;
+}
+.screen-swiper{
+ 
 }
