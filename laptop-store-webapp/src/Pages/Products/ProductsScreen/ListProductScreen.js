@@ -18,7 +18,10 @@ export default function ListProductScreen({ pros,addCardHandleClick }) {
   function handleViewDetails(detail) {
     history.push(`/screen/${detail.id}`);
   }
-  console.log(`pros`, pros);
+  function addProductInCart(id,gia){
+    addCardHandleClick(id,gia)
+    alert("Đã thêm sản phẩm vào giỏ hàng")
+  }
   return (
     <div className="row prolst">
       {pros.map((pro, index) => {
@@ -41,7 +44,7 @@ export default function ListProductScreen({ pros,addCardHandleClick }) {
                 {solver.formatCurrency("vi-VN", "currency", "VND", pro.gia)}
               </h4>
               <div className="button_group">
-                <button className="button add-cart" type="button" onClick={() => addCardHandleClick(pro.id,pro.gia)}>
+                <button className="button add-cart" type="button" onClick={() => addProductInCart(pro.id,pro.gia)}>
                   Thêm vào giỏ hàng
                 </button>
                 <button className="button wishlist" type="button">

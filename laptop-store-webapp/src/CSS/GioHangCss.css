@@ -1,12 +1,13 @@
 .width {
   width: 85%;
+  min-height: 443px;
 }
 .centerp {
   background-color: white;
 }
 .centerp {
   width: 100%;
-  height: 30rem;
+  height: 45rem;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -19,7 +20,7 @@
   margin: 0 auto;
 }
 .product-none p {
-  margin-top: 5px;
+  padding-top: 25px;
   color: red;
   height: 20px;
   line-height: 20px;
@@ -27,11 +28,14 @@
   font-weight: 400;
 }
 .product-none img {
-  width: 7%;
-  float: left;
+  width: 30%;
+ 
 }
 .btn-backhome {
-  margin-top: 20px;
+  padding-top: 50px;
+}
+.btn-home{
+  color: #1533b6;
 }
 .btn-home:hover {
   box-shadow: 1px 1px 5px 5px rgb(212, 212, 212);

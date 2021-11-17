@@ -1,27 +1,25 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import details from "../../CSS/ProductsCss/details.css";
-import Solver from "../../Classes/Solver";
-import freeshipping_4px from "../../Images/freeshipping_4px.png";
-import freeshippingcs_24px from "../../Images/freeshippingcs_24px.png";
-import shield_24px from "../../Images/shield_24px.png";
-import replace_24px from "../../Images/replace_24px.png";
-import SanPhamKhac from "../ProductsMouse/SanPhamKhac"
-import prev_50px from "../../Images/prev_50px.png";
-import next_50px from "../../Images/next_50px.png";
-import promotion_32px from "../../Images/promotion_32px.png";
-import insurance_24px from "../../Images/insurance_24px.png";
-import whatsapp_32px from "../../Images/whatsapp_32px.png";
-import edit_property_32px from "../../Images/edit_property_32px.png";
-import settings_32px from "../../Images/settings_32px.png";
+import details from "../../../CSS/ProductsCss/details.css";
+import Solver from "../../../Classes/Solver";
+import shield_24px from "../../../Images/shield_24px.png";
+import replace_24px from "../../../Images/replace_24px.png";
+import SanPhamKhac from "./SanPhamKhac"
+import prev_50px from "../../../Images/prev_50px.png";
+import next_50px from "../../../Images/next_50px.png";
+import promotion_32px from "../../../Images/promotion_32px.png";
+import insurance_24px from "../../../Images/insurance_24px.png";
+import whatsapp_32px from "../../../Images/whatsapp_32px.png";
+import edit_property_32px from "../../../Images/edit_property_32px.png";
+import settings_32px from "../../../Images/settings_32px.png";
 import { NavLink } from "react-router-dom"
-export default function DetailProductsMouse({ match, addCardHandleClick}) {
+export default function DetailProductsPC({ match, addCardHandleClick}) {
   const solver = new Solver();
   const [detail, setDetail] = useState({});
   useEffect(() => {
     axios
       .get(
-        `https://localhost:44343/data/product/type=mouse/${match.match.params.id}`
+        `https://localhost:44343/data/product/type=pc/${match.match.params.id}`
       )
       .then((res) => {
         setDetail(res.data);
@@ -32,9 +30,6 @@ export default function DetailProductsMouse({ match, addCardHandleClick}) {
   const btnPrev = document.querySelector(".btn-prev");
   const btnNext = document.querySelector(".btn-next");
   const slidePro = document.querySelector(".slide-pro");
-  const slideItems = document.querySelector(".slide-item");
-  const slideItemsW = document.querySelector(".col_2");
- 
   let positionX = 0;
   let index = 0;
   btnNext &&
@@ -114,23 +109,26 @@ export default function DetailProductsMouse({ match, addCardHandleClick}) {
                 </div>
                 <div className="col detail-pro">
                   <p>
-                    - Màu: {detail.mau}
+                    - Loại PC: {detail.pcdetail && detail.pcdetail.typepc}
                   </p>
 
                   <p>
-                    - Đèn led: {detail.mouseDetail && detail.mouseDetail.led}
+                    - Main board: {detail.pcdetail && detail.pcdetail.mainboard}
                   </p>
                   <p>
-                    - Kiểu kết nối:{" "}
-                    {detail.mouseDetail && detail.mouseDetail.kieuketnoi}
+                    - Loại CPU: {detail.pcdetail && detail.pcdetail.cputype}
                   </p>
                   <p>
-                    - Cổng kết nối:{" "}
-                    {detail.mouseDetail && detail.mouseDetail.ketnoi}
+                    - CPU: {detail.pcdetail && detail.pcdetail.cpu}
                   </p>
                   <p>
-                    - Cảm biến:{" "}
-                    {detail.mouseDetail && detail.mouseDetail.dangcambien}
+                    - Chi tiết CPU: {detail.pcdetail && detail.pcdetail.detailcpu}
+                  </p>
+                  <p>
+                    - Ram: {detail.pcdetail && detail.pcdetail.ram}
+                  </p>
+                  <p>
+                    - VGA: {detail.pcdetail && detail.pcdetail.vgatype}
                   </p>
                  
                 </div>
@@ -152,10 +150,10 @@ export default function DetailProductsMouse({ match, addCardHandleClick}) {
                   </div>
                   <div className="tt-sales">Quà tặng kèm khi mua hàng</div>
                   <div className="gift">
-                    <div className="">
+                    {/* <div className="">
                       <img src="https://lh3.googleusercontent.com/8TYtx-F0wLPEsufDd-N2y4txkDy3dxxjipjA6k5DjccQhwtdK_6Mx0YPuSUZF3bOEGG5-hP8-MFNReb4X0k=rw"></img>
                       <p>x1 Túi đựng laptop</p>
-                    </div>
+                    </div> */}
                   </div>
                   <div className="button-gr">
                     <NavLink to="/card">
@@ -250,82 +248,67 @@ export default function DetailProductsMouse({ match, addCardHandleClick}) {
                     <td>{detail.baohanh}&nbsp;tháng</td>
                   </tr>
                   <tr>
-                    <th className="row">Thông tin chung</th>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <th className="row">Loại chuột</th>
-                    <td>{ detail.mouseDetail && detail.mouseDetail.loaichuot}</td>
-                  </tr>
-                  <tr>
-                    <th className="row">Màu sắc</th>
-                    <td>{detail.mau}</td>
-                  </tr>
-                
-                  <tr>
                     <th className="row">Cấu hình chi tiết</th>
                     <td></td>
-
                   </tr>
                   <tr>
-                    <th className="row">Đèn led</th>
-                    <td>{ detail.mouseDetail && detail.mouseDetail.led}</td>
+                    <th className="row">Loại PC</th>
+                    <td>{detail.pcdetail && detail.pcdetail.typepc}</td>
                   </tr>
                   <tr>
-                    <th className="row">Kiểu kết nối</th>
+                    <th className="row">Main board</th>
+                    <td>{detail.pcdetail && detail.pcdetail.mainboard}</td>
+                  </tr>
+                  <tr>
+                    <th className="row">Loại CPU</th>
+                    <td>{detail.pcdetail && detail.pcdetail.cputype}</td>
+                  </tr>
+                  <tr>
+                    <th className="row">CPU</th>
                     <td>
-                      {detail.mouseDetail && detail.mouseDetail.kieuketnoi}
+                    {detail.pcdetail && detail.pcdetail.cpu}
                     </td>
                   </tr>
                   <tr>
-                    <th className="row">Cổng kết nối</th>
+                    <th className="row">Chi tiết CPU</th>
                     <td>
-                      {detail.mouseDetail && detail.mouseDetail.ketnoi}
+                    {detail.pcdetail && detail.pcdetail.detailcpu}
                     </td>
                   </tr>
                   <tr>
-                    <th className="row">Cảm biến</th>
+                    <th className="row">Ram</th>
                     <td>
-                      {detail.mouseDetail && detail.mouseDetail.dangcambien}
+                    {detail.pcdetail && detail.pcdetail.ram}
                     </td>
                   </tr>
                   <tr>
-                    <th className="row">Tên cảm biến</th>
+                    <th className="row">Chi tiết Ram</th>
                     <td>
-                      {detail.mouseDetail && detail.mouseDetail.tencambien}
+                    {detail.pcdetail && detail.pcdetail.detailram}
                     </td>
                   </tr>
                   <tr>
-                    <th className="row">Độ phân giải</th>
+                    <th className="row">VGA</th>
                     <td>
-                      {detail.mouseDetail &&
-                        detail.mouseDetail.dophangiai}
+                    {detail.pcdetail && detail.pcdetail.vgatype}
                     </td>
                   </tr>
                   <tr>
-                    <th className="row">Thời gian phản hồi</th>
+                    <th className="row">Loại VGA</th>
                     <td>
-                      {detail.mouseDetail &&
-                        detail.mouseDetail.thoigianphanhoi}
+                    {detail.pcdetail && detail.pcdetail.vganame}
                     </td>
                   </tr>
                   <tr>
-                    <th className="row">Số nút bấm</th>
+                    <th className="row">PSU</th>
                     <td>
-                      {detail.mouseDetail &&
-                        detail.mouseDetail.sonutbam}
+                    {detail.pcdetail && detail.pcdetail.psu}
                     </td>
                   </tr>
                   <tr>
-                    <th className="row">Kích thước</th>
+                    <th className="row">Case PC</th>
                     <td>
-                      {detail.mouseDetail && detail.mouseDetail.kichthuoc}
-                    </td>
-                  </tr>
-                  <tr>
-                    <th className="row">Khối lượng</th>
-                    <td>
-                      {detail.mouseDetail && detail.mouseDetail.khoiluong}
+                    {detail.pcdetail && detail.pcdetail.casepc}
                     </td>
                   </tr>
                 </tbody>

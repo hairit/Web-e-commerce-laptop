@@ -126,7 +126,7 @@ export default function Header({ user }) {
           )}
           <NavLink
             className="header-center-right-menu-item"
-            to={user === null ? "/" : "/card"}
+            to={user === null ? "/card" : "/card"}
           >
             <AiOutlineShoppingCart className="header-center-right-menu-item-icon" />
             {user === null ? (

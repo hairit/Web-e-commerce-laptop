@@ -2,13 +2,11 @@ import "./CSS/App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Header from "./Pages/Header.js";
 import Keyboard from "./Pages/Products/ProductsKeyboard/Keyboard";
-import slide from "./Scrip/slide";
 import { useState, useEffect } from "react";
 import Login from "./Pages/Login/Login";
 import Body from "./Pages/Body.js";
 import Lienhe from "./Pages/Lienhe";
 import Tintuc from "./Pages/Tintuc";
-import Login2 from "./Pages/Login/Login2";
 import Showroom from "./Pages/Showroom";
 import Footer from "./Pages/Footer";
 import DetailProductsLaptop from "./Pages/Products/ProductsLaptop/DetailProductsLaptop";
@@ -16,13 +14,13 @@ import DetailProductsKeyboard from "./Pages/Products/ProductsKeyboard/DetailProd
 import DetailProductsScreen from "./Pages/Products/ProductsScreen/DetailProductsScreen";
 import Screen from "./Pages/Products/ProductsScreen/Screen";
 import GioHang from "./Pages/GioHang";
-import RoutesCartItems from "./Pages/Routes/RoutesCartItems";
 import axios from "axios";
 import { useCookies } from "react-cookie";
 import Laptops from "./Pages/Products/ProductsLaptop/Laptops";
-// import DetailProductsMouse from "./Pages/ProductsMouse/DetailProductsMouse";
-import Mouse from "./Pages/ProductsMouse/Mouse";
-import DetailProductsMouse from "./Pages/ProductsMouse/DetailProductsMouse";
+import Mouse from "./Pages/Products/ProductsMouse/Mouse";
+import DetailProductsMouse from "./Pages/Products/ProductsMouse/DetailProductsMouse";
+import PC from "./Pages/Products/ProductsPC/PC";
+import DetailProductsPC from "./Pages/Products/ProductsPC/DetailProductsPC";
 function App() {
   const [user, setUser] = useState(null);
   const [userCookie, setUserCookie] = useCookies(["user"]);
@@ -89,10 +87,12 @@ function App() {
             <Route path="/keyboard" exact component={() => <Keyboard addCardHandleClick={addCardHandleClick} />}></Route>
             <Route path="/mouse" exact component={() =><Mouse addCardHandleClick={addCardHandleClick} />} ></Route>
             <Route path="/screen" exact component={() => <Screen addCardHandleClick={addCardHandleClick} />}></Route>
+            <Route path="/pc" exact component={() => <PC addCardHandleClick={addCardHandleClick} />}></Route>
             <Route path="/laptop/:id" component={(match) => <DetailProductsLaptop addCardHandleClick={addCardHandleClick} match={match} />}></Route>
             <Route path="/keyboard/:id" component={(match) => <DetailProductsKeyboard addCardHandleClick={addCardHandleClick}  match={match} />} ></Route>
             <Route path="/screen/:id" component={(match) => <DetailProductsScreen addCardHandleClick={addCardHandleClick} match={match} />}></Route>
             <Route path="/mouse/:id" component={(match) => <DetailProductsMouse addCardHandleClick={addCardHandleClick} match={match} />}></Route>
+            <Route path="/pc/:id" component={(match) => <DetailProductsPC addCardHandleClick={addCardHandleClick} match={match} />}></Route>
             <Route path="/card" component={() => <GioHang deleteQuantityCart={deleteQuantityCart} deleteItemCart={deleteItemCart} addCardHandleClick={addCardHandleClick} idUser={ user !== null ? user.id : null } />}></Route>
             <Route path="/login" exact component={(match) => <Login  login={login} match={match} /> } ></Route>
             <Route path="/lienhe" component={() => <Lienhe />}></Route>

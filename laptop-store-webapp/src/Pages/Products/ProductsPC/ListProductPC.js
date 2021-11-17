@@ -1,23 +1,17 @@
 import React, { Component } from "react";
 import heart32px from "../../../Images/heart32px.png";
-import { useState } from "react";
+
 import { useHistory } from "react-router-dom";
 import { withRouter } from "react-router";
 
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  NavLink,
-} from "react-router-dom";
-import Solver from "../../../Classes/Solver";
-import axios from "axios";
 
-export default function ListProductLaptop({pros,addCardHandleClick}) {
+import Solver from "../../../Classes/Solver";
+
+export default function ListProductPC({ pros,addCardHandleClick }) {
   const history = useHistory();
   const solver = new Solver();
   function handleViewDetails(detail) {
-    history.push(`/laptop/${detail.id}`);
+    history.push(`/pc/${detail.id}`);
   }
   function addProductInCart(id,gia){
     addCardHandleClick(id,gia)
@@ -45,8 +39,7 @@ export default function ListProductLaptop({pros,addCardHandleClick}) {
                 {solver.formatCurrency("vi-VN", "currency", "VND", pro.gia)}
               </h4>
               <div className="button_group">
-                <button
-                  className="button add-cart" onClick={() =>addProductInCart(pro.id,pro.gia)}>
+                <button className="button add-cart" type="button" onClick={() => addProductInCart(pro.id,pro.gia)}>
                   Thêm vào giỏ hàng
                 </button>
                 <button className="button wishlist" type="button">
@@ -62,4 +55,4 @@ export default function ListProductLaptop({pros,addCardHandleClick}) {
     </div>
   );
 }
-withRouter(ListProductLaptop);
+withRouter(ListProductPC);

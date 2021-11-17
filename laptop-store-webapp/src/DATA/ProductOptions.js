@@ -16,7 +16,7 @@ const PRODUCT_OPTIONS = [
   },
   {
     optionName: "PC(Máy tính bàn)",
-    path: "",
+    path: "/pc",
     icon: () => {
       return <RiComputerLine className="pro-list-item-icon" />;
     },

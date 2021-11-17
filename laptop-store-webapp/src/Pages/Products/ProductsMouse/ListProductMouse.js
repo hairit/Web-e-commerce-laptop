@@ -1,16 +1,11 @@
 import React, { Component } from "react";
-import heart32px from "../../Images/heart32px.png";
+import heart32px from "../../../Images/heart32px.png";
 
 import { useHistory } from "react-router-dom";
 import { withRouter } from "react-router";
 
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  NavLink,
-} from "react-router-dom";
-import Solver from "../../Classes/Solver";
+
+import Solver from "../../../Classes/Solver";
 
 export default function ListProductMouse({ pros,addCardHandleClick }) {
   const history = useHistory();
@@ -19,6 +14,10 @@ export default function ListProductMouse({ pros,addCardHandleClick }) {
     history.push(`/mouse/${detail.id}`);
   }
   console.log(`pros`, pros);
+  function addProductInCart(id,gia){
+    addCardHandleClick(id,gia)
+    alert("Đã thêm sản phẩm vào giỏ hàng")
+  }
   return (
     <div className="row prolst">
       {pros.map((pro, index) => {
@@ -41,7 +40,7 @@ export default function ListProductMouse({ pros,addCardHandleClick }) {
                 {solver.formatCurrency("vi-VN", "currency", "VND", pro.gia)}
               </h4>
               <div className="button_group">
-                <button className="button add-cart" type="button" onClick={() => addCardHandleClick(pro.id,pro.gia)}>
+                <button className="button add-cart" type="button" onClick={() => addProductInCart(pro.id,pro.gia)}>
                   Thêm vào giỏ hàng
                 </button>
                 <button className="button wishlist" type="button">

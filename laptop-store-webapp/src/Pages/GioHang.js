@@ -6,7 +6,7 @@ import GioHangCss from "../CSS/GioHangCss.css";
 import LogoFT from "../Images/LogoFT.png";
 import { NavLink } from "react-router-dom";
 
-import no_shopping_cart from "../Images/no_shopping_cart.png";
+import tk_shopping_img from "../Images/tk_shopping_img.png";
 import { useEffect, useState } from "react";
 export default function GioHang({ idUser, addCardHandleClick, deleteItemCart,deleteQuantityCart}) {
   const solver = new Solver();
@@ -133,8 +133,9 @@ console.log(cardDetails);
     )
     else return (
       <div className="centerp">
+        <div className="center-car">
         <div className="product-none">
-          <img src={no_shopping_cart} />
+          <img src={tk_shopping_img} />
           <p> Bạn chưa có sản phẩm trong giỏ hàng</p>
         </div>
         <div className="btn-backhome">
@@ -143,6 +144,7 @@ console.log(cardDetails);
               Tiếp tục mua sắm
             </button>
           </NavLink>
+        </div>
         </div>
       </div>
     )
