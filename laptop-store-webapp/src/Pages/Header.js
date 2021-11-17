@@ -24,17 +24,29 @@ import {
   Route,
   NavLink,
 } from "react-router-dom";
-
+const cookie = new Cookies();
 const nullUser = () => {
   return (
     <div>
       <HiOutlineUserCircle className="header-center-right-menu-item-icon" />
-      <p className="login-text">Đăng nhập</p>
+      <p className="login-text" >Đăng nhập</p>
     </div>
   );
 };
 
 export default function Header({ user }) {
+
+  const [menustatus, setmenustatus] = useState(false);
+  
+  function showMenu(){
+    setmenustatus(!menustatus);
+    return (
+      <div className={menustatus===true?"menu-status":"menu-status-hide"}>
+        <button className="button button-menu-logout" onClick={()=>cookie.remove("user")}>Đăng xuất</button>
+      </div>
+    );
+  }
+
   return (
     <div className="header">
       <div className="header-top header-item">
@@ -79,7 +91,7 @@ export default function Header({ user }) {
               <p className="login-text">Đăng nhập</p>
             </NavLink>
           ) : (
-            <div className="header-center-right-menu-item">
+            <div className="header-center-right-menu-item"  onClick={()=>showMenu()}>
               {user.nameimage !== null ? (
                 <img
                   src={URL + `/Images/UserAvatar/${user.nameimage}`}

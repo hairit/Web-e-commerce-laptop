@@ -46,7 +46,7 @@ function App() {
     else setReload(0);
   }
   function addCardHandleClick  (idProduct , price ){
-    axios.get(`https://localhost:44343/data/carddetail/add/iduser=${user.id}/idproduct=${idProduct}/tongtien=${price}`,null)
+    axios.get(`https://localhost:44343/data/carddetail/action=add/iduser=${user.id}/idproduct=${idProduct}/tongtien=${price}`,null)
       .then(res => {
         if(res.status === 201){
            console.log("Da them vao gio hang");
@@ -54,6 +54,7 @@ function App() {
         }
         else alert("không thể thêm vào giỏ hàng");
       }).catch(err => console.log("Add card failed"))
+      console.log("ghhghg",idProduct, price, user.id)
   }
   return (
     <Router>
@@ -68,7 +69,7 @@ function App() {
             <Route path="/screen/:id" component={(match) => <DetailProductsScreen match={match} />}></Route>
             <Route path="/mouse/:id" component={(match) => <DetailProductsMouse match={match} />}></Route>
             <Route path="/laptop" exact component={() => <Laptops addCardHandleClick={addCardHandleClick} />}></Route>
-            <Route path="/card" component={() => <GioHang idUser={ user !== null ? user.id : null } />}></Route>
+            <Route path="/card" component={() => <GioHang addCardHandleClick={addCardHandleClick} idUser={ user !== null ? user.id : null } />}></Route>
             <Route path="/login" exact component={() => <Login login={login} /> } ></Route>
             <Route path="/lienhe" component={() => <Lienhe />}></Route>
             <Route path="/tincongnghe" component={() => <Tintuc />}></Route>

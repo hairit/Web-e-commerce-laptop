@@ -88,6 +88,7 @@
 .req-pass
 {
     display:block;
+    margin-bottom: 30px;
 }
 .req-pass-hidden
 {
@@ -108,6 +109,7 @@
 .reqpass-form
 {
     width: 100%;
+    margin-bottom: 30px;
 }
 .reqpass-form-hide
 {
@@ -126,6 +128,7 @@
 .reqsdt-form
 {
     display:block;
+    margin-bottom: 30px;
 }
 .reqsdt-form-hide
 {
@@ -138,4 +141,34 @@
 .sign-up-hide
 {
     display: none;
+}
+.reqpass2
+{
+    margin-top: 20px;
+}
+.reqpass2-hide
+{
+    display:none;
+}
+.reqpass-pass2-button
+{
+    border-radius: 5rem;
+    width: 100%;
+    margin-bottom: 10px;
+}
+.login-input-pass2
+{
+    width: 100%;
+    outline:  none;
+    border: 0.1px solid #dfdfe0;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding-left: 8px;
+    height: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.sign-up-form
+{
+    margin-bottom: 10px;
 }
