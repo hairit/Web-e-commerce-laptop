@@ -68,7 +68,7 @@ function App() {
             <Route path="/screen/:id" component={(match) => <DetailProductsScreen match={match} />}></Route>
             <Route path="/mouse/:id" component={(match) => <DetailProductsMouse match={match} />}></Route>
             <Route path="/laptop" exact component={() => <Laptops addCardHandleClick={addCardHandleClick} />}></Route>
-            <Route path="/card" component={() => <GioHang idUser={ user !== null ? user.id : null } />}></Route>
+            <Route path="/card" component={() => <GioHang addCardHandleClick={addCardHandleClick} idUser={ user !== null ? user.id : null } />}></Route>
             <Route path="/login" exact component={(match) => <Login  login={login} match={match} /> } ></Route>
             <Route path="/lienhe" component={() => <Lienhe />}></Route>
             <Route path="/tincongnghe" component={() => <Tintuc />}></Route>

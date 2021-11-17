@@ -67,7 +67,7 @@
   display: flex;
 }
 .info-cart {
-  padding: 20px 15px;
+  padding: 20px 0 20px 10px;
   width: 100%;
 }
 .info-image {
@@ -78,16 +78,21 @@
 }
 .img-name {
   display: flex;
-  gap: 12px;
+  gap: 6px;
 }
 .img-name a {
   flex: 0 0 15%;
 }
 .info-price{
-  padding-top: 5px;
+  
 }
 .info-price strong{
   font-size: 17px;
+  padding-bottom: 0 !important;
+}
+.giagoc{
+  font-size:13px !important;
+  color: red;
 }
 .imag {
   border: 1px solid #ebebeb;
@@ -119,8 +124,30 @@
   font-size: 21px;
 }
 .tamtinh-thanhtien {
+  width: 100%;
+  float: left;
   font-size: 15px;
   padding-bottom: 10px;
+}
+.tamtinh-thanhtien p{
+  float: left;
+}
+.tamtinh{
+  color: red;
+  font-size: 17px;
+  font-weight: bold;
+  width: 73%;
+  text-align: right;
+}
+.thanhtien {
+  font-size:23px;
+  font-weight: bold;
+  color: #0000ee;
+  width: 73%;
+  text-align: right;
+}
+.txt-left{
+  width:27%;
 }
 .btn-pay {
   background-color: #1435c3;
@@ -129,7 +156,7 @@
   font-size: 18px;
 }
 .info-editquantity {
-  padding-right: 20px;
+  padding-right: 15px;
   height:36px;
   display: flex;
 flex-flow: column;
@@ -193,7 +220,7 @@ input[type=checkbox] {
   
 }
 .btn-quantity{
-  width:72%;
+  width:80%;
   border: 1px solid #ebebeb;
   border-radius: 4px;
 }
@@ -206,4 +233,7 @@ input[type=checkbox] {
  width: auto;
  color: blue;
   background-color: white !important;
+}
+.tongtien-price{
+  float: left;
 }
