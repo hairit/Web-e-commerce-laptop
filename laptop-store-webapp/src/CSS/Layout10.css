@@ -18,8 +18,8 @@
     flex-wrap: wrap;
 }
 .row-10--NoWrap{
+    display: flex;
     flex-wrap: nowrap;
-    overflow: hidden;
 }
 .col-10{
     box-sizing: border-box;

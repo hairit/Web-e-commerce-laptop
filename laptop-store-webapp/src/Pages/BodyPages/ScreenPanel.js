@@ -1,13 +1,15 @@
 import React from 'react'
-import {useState , useEffect} from 'react'
+import {useState , useEffect , useRef} from 'react'
 import CALLER from '../../API/CALL';
 import '../../CSS/Layout10.css';
 import { NavLink } from 'react-router-dom';
-
+import {BsFillCaretRightFill} from 'react-icons/bs'
+import {BsFillCaretLeftFill} from 'react-icons/bs'
 import '../../CSS/ScreenPanel.css'
 import Solver from '../../Classes/Solver';
 import { useHistory } from 'react-router';
 const RenderScreenItem= (pro, index) => {
+    
     const solver =new Solver();
     const history = useHistory();
     return (
@@ -32,14 +34,39 @@ const RenderScreenItem= (pro, index) => {
         </div>
     )
 }
+const getCountPage = (pros) => {
+    return pros.length/5 ;
+}
+
 export default function ScreenPanel() {
     const history = useHistory();
+    const [scaleX, setScaleX] = useState(0);
+    const index = useRef(0);
     const [pros, setPros] = useState([]);
+    console.log(pros);
     useEffect(() => {
        CALLER('GET','data/product/type=screen/enable',null)
         .then(res => setPros(res.data))
         .catch(err => console.log("Errol when try to get screen product"+err))
     }, [])
+    const handleSwipe = (direction,countSwipe) => {
+        if(index.current === 0 && direction ==='previous'){
+            return;
+        }
+        if(index.current === countSwipe  && direction ==='next'){
+            return;
+        }
+        if(direction === 'next'){
+            index.current = index.current + 1;
+            setScaleX(scaleX - 100);
+        }
+        else{
+            index.current =index.current - 1;
+            setScaleX(scaleX + 100);
+        }
+    }
+    console.log(scaleX);
+    console.log(index);
     return (
         <div className="screen-panel">
             <div className="screen-panel-header">
@@ -48,12 +75,21 @@ export default function ScreenPanel() {
                 </div>
                 <div className="btn-all-screen" onClick={() => history.push('/screen')}>Xem tất cả{" >>"}</div>
             </div>
+            <div className="screen-panel-list">
+                    <div className="swiper-screen-button screen-previous" onClick={()=>handleSwipe('previous',getCountPage(pros)-1)}>
+                        <BsFillCaretLeftFill className="swiper-screen-button-icon"/>
+                    </div>
+                    <div className="swiper-screen-button screen-next" onClick={()=>handleSwipe('next',getCountPage(pros)-1)}>
+                        <BsFillCaretRightFill className="swiper-screen-button-icon"/>
+                    </div>
             <div className="container10Col screen-container">
-                <div className="row-10-no-margin screen-row">
-                    {
-                        pros.map((pro,index) => RenderScreenItem(pro,index,history))
-                    }
+                    <div className="row-10--NoWrap screen-row" style={{transform : `translate(${scaleX}%)` ,transition : '0.5s'}} >
+                        {
+                            pros.map((pro,index) => RenderScreenItem(pro,index,history))
+                        }
+                    
                 </div>
+            </div>
             </div>
         </div>
     )
