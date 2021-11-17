@@ -5,7 +5,7 @@ import "../../CSS/ProductsCss/bootstrap.css";
 import "../../CSS/ProductsCss/style.css";
 import { useEffect, useState } from "react";
 import ListProductMouse from "./ListProductMouse";
-export default function Mouse() {
+export default function Mouse({addCardHandleClick}) {
   const [pros, setPros] = useState([]);
   useEffect(() => {
     axios
@@ -119,7 +119,7 @@ export default function Mouse() {
           <div className="row">
             <div className="col-md-9 prolst">
               <div className="products-grid lstlaptop">
-                <ListProductMouse pros={pros} />
+                <ListProductMouse addCardHandleClick={addCardHandleClick} pros={pros} />
               </div>
               <div className="toolbar">
                 <div className="pager">

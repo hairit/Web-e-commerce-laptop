@@ -36,6 +36,7 @@
   width: 100%;
 }
 .center-image-item-img{
+  user-select: none;
   position: absolute;
   top: 0;
   left: 0;
