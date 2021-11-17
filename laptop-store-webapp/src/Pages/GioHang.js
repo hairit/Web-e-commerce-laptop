@@ -27,7 +27,7 @@ export default function GioHang({ idUser, addCardHandleClick}) {
             
           }
         })
-        .catch((err) => console.log("Get card failed" + err));
+        .catch((err) => setCardDetails([]) );
     }
   }, [reload]);
   function checktien (e,gia,quantity) {
@@ -41,25 +41,29 @@ export default function GioHang({ idUser, addCardHandleClick}) {
 
 function deleteItem(iduser,idpro){
   
-  if(window.confirm("Are you sure you want to delete") ===true){
+  if(window.confirm("Bạn muốn xoá sản phẩm này ra khỏi giỏ hàng?") ===true){
     axios.delete(`https://localhost:44343/data/carddetail/iduser=${iduser}/idproduct=${idpro}`,null)
     .then(()=> {
       reLoad();
     })
-    .catch((err)=> console.log("Dell xoa duoc",err))
+    .catch((err)=> 
+    console.log("Dell xoa duoc",err))
   }
 }
 
-function deleteQuantity(iduser, idpro, thanhtien) {
-  axios.get(`https://localhost:44343/data/carddetail/action=delete/iduser=${iduser}/idproduct=${idpro}/tongtien=${thanhtien}`, null)
-  .then(()=> {
-    console.log("reload")
-    reLoad();
-    
-  })
-  .catch((err)=> console.log("Dell xoa duoc",err))
+function deleteQuantity(iduser, idpro, thanhtien,quantity) {
+  if(quantity <= 1){
+    deleteItem(iduser, idpro)
+  }
+  else{
+    axios.get(`https://localhost:44343/data/carddetail/action=delete/iduser=${iduser}/idproduct=${idpro}/tongtien=${thanhtien}`, null)
+    .then(()=> {
+      reLoad();
+    })
+    .catch((err)=> console.log("Dell xoa duoc",err))
+  } 
 }
-    if(cardDetails.length >= 0) return(
+    if(cardDetails.length > 0) return(
       <div className="page">
         <div className="container width">
           <div className="title-cart">
@@ -79,7 +83,7 @@ function deleteQuantity(iduser, idpro, thanhtien) {
                       <div className="info-check">
                         <input class="check-item" type="checkbox"  name="hobby[]"  id="check-item" 
                         onChange={(e)=> {
-                          setTimeout(checktien(e,item.idProductNavigation && item.idProductNavigation.gia,item.soluong), 3000)
+                          checktien(e,item.idProductNavigation && item.idProductNavigation.gia,item.soluong)
                         }}  value={item.id}/>
                         </div>
                         <div className="info-image">
@@ -99,15 +103,12 @@ function deleteQuantity(iduser, idpro, thanhtien) {
                         </div>
                         <div className="info-editquantity">
                           <div className="btn-quantity">
-                          <button type="button"class="btn-tru" name="btn-giam" onClick={() => deleteQuantity(idUser,item.idProduct,item.idProductNavigation && item.idProductNavigation.gia)}>
-                            -
+                          <button type="button"class="btn-tru" name="btn-giam" onClick={() => deleteQuantity(idUser,item.idProduct,item.idProductNavigation && item.idProductNavigation.gia,item.soluong)}>
+                             -
                           </button>
-                          <input type="text" class="finput-edit" defaultValue={item.soluong} disabled></input>
+                          <input type="text" class="finput-edit" placeholder={item.soluong} disabled />
                           <button type="button" name="btn-tang" className="btn-cong"
-                          onClick={() => addCardHandleClick(item.idProduct,item.tongtien)}>
-                             {/* onclick={(e) => checksoluong(e,item.gia)} */}
-                            +
-                          </button>
+                          onClick={() => addCardHandleClick(item.idProduct,item.tongtien)}> + </button>
                           </div>
                           <div className="delet">
                             <button type="button" className="btn-del" onClick={() => deleteItem(idUser,item.idProduct)}>Xóa</button>
@@ -150,20 +151,20 @@ function deleteQuantity(iduser, idpro, thanhtien) {
         </div>
       </div>
     )
-    // else return (
-    //   <div className="centerp">
-    //     <div className="product-none">
-    //       <img src={no_shopping_cart} />
-    //       <p> Có 0 sản phẩm trong giỏ hàng</p>
-    //     </div>
-    //     <div className="btn-backhome">
-    //       <NavLink className="btn-backhome" to="/">
-    //         <button type="button" className="btn btn-home">
-    //           Quay về trang chủ
-    //         </button>
-    //       </NavLink>
-    //     </div>
-    //   </div>
-    // )
+    else return (
+      <div className="centerp">
+        <div className="product-none">
+          <img src={no_shopping_cart} />
+          <p> Có 0 sản phẩm trong giỏ hàng</p>
+        </div>
+        <div className="btn-backhome">
+          <NavLink className="btn-backhome" to="/">
+            <button type="button" className="btn btn-home">
+              Quay về trang chủ
+            </button>
+          </NavLink>
+        </div>
+      </div>
+    )
   }
 
