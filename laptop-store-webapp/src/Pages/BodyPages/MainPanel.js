@@ -75,9 +75,7 @@ export default function MainPanel() {
             index.current = index.current + 1;
             setX(X-translatePercent());
         }
-        console.log(dir + "data" + index.current);
     }
-
     const translatePercent = () =>{
         return  (100/countImage(images,'center'));
     }
@@ -99,7 +97,6 @@ export default function MainPanel() {
                                             <div className="button-slide previous-slide" onClick={() => changeSlide('previous',countImage(images,'center'))}>
                                                 <BiChevronLeft className="button-slide-icon" />
                                             </div>
-                                            {console.log("X:"+X)}
                                             <div className="center-image-slider" style={{width : `${countImage(images,'center')}00%`,transform : `translate(${X}%)` ,transition : '1s'}}>
                                             {images.map((image,index)=> renderCenterImage(image ,index ,X))}
                                             </div>
