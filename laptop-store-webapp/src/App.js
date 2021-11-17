@@ -45,30 +45,55 @@ function App() {
     if(reload === 0) setReload(1);
     else setReload(0);
   }
-  function addCardHandleClick  (idProduct , price ){
-    axios.get(`https://localhost:44343/data/carddetail/add/iduser=${user.id}/idproduct=${idProduct}/tongtien=${price}`,null)
+  function addCardHandleClick(idProduct , price ){
+    axios.get(`https://localhost:44343/data/carddetail/action=add/iduser=${user.id}/idproduct=${idProduct}/tongtien=${price}`,null)
       .then(res => {
         if(res.status === 201){
-           console.log("Da them vao gio hang");
+           console.log("Da them vao gio hang",user.id,idProduct,price);
            reLoad();
         }
         else alert("không thể thêm vào giỏ hàng");
       }).catch(err => console.log("Add card failed"))
+  }
+
+  function deleteItemCart(iduser,idpro){
+  
+    if(window.confirm("Bạn muốn xoá sản phẩm này ra khỏi giỏ hàng?") ===true){
+      axios.delete(`https://localhost:44343/data/carddetail/iduser=${iduser}/idproduct=${idpro}`,null)
+      .then(()=> {
+        reLoad();
+      })
+      .catch((err)=> 
+      console.log("Dell xoa duoc",err))
+    }
+  }
+
+  function deleteQuantityCart(iduser, idpro, thanhtien,quantity) {
+    if(quantity <= 1){
+      deleteItemCart(iduser, idpro)
+    }
+    else{
+      axios.get(`https://localhost:44343/data/carddetail/action=delete/iduser=${iduser}/idproduct=${idpro}/tongtien=${thanhtien}`, null)
+      .then(()=> {
+        reLoad();
+      })
+      .catch((err)=> console.log("Dell xoa duoc",err))
+    } 
   }
   return (
     <Router>
       <div className="App">
         <Header user={user} />
             <Route path="/" exact component={() => <Body />}></Route>
-            <Route path="/keyboard" exact component={() => <Keyboard />}></Route>
-            <Route path="/mouse" exact component={() =><Mouse />} ></Route>
-            <Route path="/screen" exact component={() => <Screen />}></Route>
-            <Route path="/laptop/:id" component={(match) => <DetailProductsLaptop match={match} />}></Route>
-            <Route path="/keyboard/:id" component={(match) => <DetailProductsKeyboard match={match} />} ></Route>
-            <Route path="/screen/:id" component={(match) => <DetailProductsScreen match={match} />}></Route>
-            <Route path="/mouse/:id" component={(match) => <DetailProductsMouse match={match} />}></Route>
             <Route path="/laptop" exact component={() => <Laptops addCardHandleClick={addCardHandleClick} />}></Route>
-            <Route path="/card" component={() => <GioHang addCardHandleClick={addCardHandleClick} idUser={ user !== null ? user.id : null } />}></Route>
+            <Route path="/keyboard" exact component={() => <Keyboard addCardHandleClick={addCardHandleClick} />}></Route>
+            <Route path="/mouse" exact component={() =><Mouse addCardHandleClick={addCardHandleClick} />} ></Route>
+            <Route path="/screen" exact component={() => <Screen addCardHandleClick={addCardHandleClick} />}></Route>
+            <Route path="/laptop/:id" component={(match) => <DetailProductsLaptop addCardHandleClick={addCardHandleClick} match={match} />}></Route>
+            <Route path="/keyboard/:id" component={(match) => <DetailProductsKeyboard addCardHandleClick={addCardHandleClick}  match={match} />} ></Route>
+            <Route path="/screen/:id" component={(match) => <DetailProductsScreen addCardHandleClick={addCardHandleClick} match={match} />}></Route>
+            <Route path="/mouse/:id" component={(match) => <DetailProductsMouse addCardHandleClick={addCardHandleClick} match={match} />}></Route>
+            <Route path="/card" component={() => <GioHang deleteQuantityCart={deleteQuantityCart} deleteItemCart={deleteItemCart} addCardHandleClick={addCardHandleClick} idUser={ user !== null ? user.id : null } />}></Route>
             <Route path="/login" exact component={(match) => <Login  login={login} match={match} /> } ></Route>
             <Route path="/lienhe" component={() => <Lienhe />}></Route>
             <Route path="/tincongnghe" component={() => <Tintuc />}></Route>
