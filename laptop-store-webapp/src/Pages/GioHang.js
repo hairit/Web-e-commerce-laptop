@@ -77,7 +77,7 @@ function deleteQuantity(iduser, idpro, thanhtien) {
                       <div className="info-check">
                         <input class="check-item" type="checkbox"  name="hobby[]"  id="check-item" 
                         onChange={(e)=> {
-                          setTimeout(checktien(e,item.tongtien,item.soluong), 3000)
+                           checktien(e,item.idProductNavigation && item.idProductNavigation.gia,item.soluong);
                         }}  value={item.id}/>
                         </div>
                         <div className="info-image">
@@ -132,8 +132,8 @@ function deleteQuantity(iduser, idpro, thanhtien) {
                   <strong>Thanh toán</strong>
                 </div>
                 <div className="tamtinh-thanhtien ">
-                  <p className="txt-left">Tạm tính</p>
-                  <p className="tamtinh">{solver.formatCurrency("vi-VN","currency","VND",tongtien)}</p>
+                  <p className="txt-left">Giảm giá</p>
+                  <p className="tamtinh">{solver.formatCurrency("vi-VN","currency","VND",0)}</p>
                 </div>
                 <div className="tamtinh-thanhtien">
                   <p className="txt-left">Thành tiền</p>
