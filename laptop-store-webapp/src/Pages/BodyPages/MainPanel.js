@@ -75,12 +75,14 @@ export default function MainPanel() {
             index.current = index.current + 1;
             setX(X-translatePercent());
         }
-        console.log(dir + "data" + index.current);
+        //console.log(dir + "data" + index.current);
     }
 
     const translatePercent = () =>{
         return  (100/countImage(images,'center'));
     }
+    console.log(images);
+    console.log(countImage(images,'center'));
     return (
         <div className="main-page">
             <div className="main-panel container12Col wide">
@@ -100,7 +102,10 @@ export default function MainPanel() {
                                                 <BiChevronLeft className="button-slide-icon" />
                                             </div>
                                             {console.log("X:"+X)}
-                                            <div className="center-image-slider" style={{width : `${countImage(images,'center')}00%`,transform : `translate(${X}%)` ,transition : '1s'}}>
+                                            <div className="center-image-slider" style={ X !== 0
+                                                                                                 ? 
+                                                                                                {width : `${countImage(images,'center')}00%`,transform : `translate(${X}%)` ,transition : '1s'} 
+                                                                                                : {width : `${countImage(images,'center')}00%`,transition : '0.3s'}}>
                                             {images.map((image,index)=> renderCenterImage(image ,index ,X))}
                                             </div>
                             </div>
