@@ -119,8 +119,30 @@
   font-size: 21px;
 }
 .tamtinh-thanhtien {
+  width: 100%;
+  float: left;
   font-size: 15px;
   padding-bottom: 10px;
+}
+.tamtinh-thanhtien p{
+  float: left;
+}
+.tamtinh{
+  color: red;
+  font-size: 17px;
+  font-weight: bold;
+  width: 73%;
+  text-align: right;
+}
+.thanhtien {
+  font-size:23px;
+  font-weight: bold;
+  color: #0000ee;
+  width: 73%;
+  text-align: right;
+}
+.txt-left{
+  width:27%;
 }
 .btn-pay {
   background-color: #1435c3;
