@@ -37,8 +37,7 @@ export default function GioHang({ idUser, addCardHandleClick}) {
       setTongtien(tongtien - gia*quantity);
     }
   }
-
-
+  console.log(cardDetails);
 function deleteItem(iduser,idpro){
   
   if(window.confirm("Are you sure you want to delete") ===true){
@@ -55,7 +54,6 @@ function deleteQuantity(iduser, idpro, thanhtien) {
   .then(()=> {
     console.log("reload")
     reLoad();
-    
   })
   .catch((err)=> console.log("Dell xoa duoc",err))
 }
