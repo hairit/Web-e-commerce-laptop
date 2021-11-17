@@ -30,7 +30,6 @@ export default function GioHang({ idUser, addCardHandleClick}) {
         .catch((err) => console.log("Get card failed" + err));
     }
   }, [reload]);
-
   function checktien (e,gia,quantity) {
     if (e.target.checked) {
       setTongtien(tongtien + gia*quantity);
@@ -50,10 +49,13 @@ function deleteItem(iduser,idpro){
     .catch((err)=> console.log("Dell xoa duoc",err))
   }
 }
+
 function deleteQuantity(iduser, idpro, thanhtien) {
   axios.get(`https://localhost:44343/data/carddetail/action=delete/iduser=${iduser}/idproduct=${idpro}/tongtien=${thanhtien}`, null)
   .then(()=> {
+    console.log("reload")
     reLoad();
+    
   })
   .catch((err)=> console.log("Dell xoa duoc",err))
 }
@@ -86,7 +88,7 @@ function deleteQuantity(iduser, idpro, thanhtien) {
                               <div className="imag">
                                 <img
                                   src={`https://localhost:44343/Images/Products/${item.idProductNavigation && item.idProductNavigation.nameimage}`}
-                                />
+                                alt=""/>
                               </div>
                             </a>
                             <div className="name">
@@ -97,7 +99,7 @@ function deleteQuantity(iduser, idpro, thanhtien) {
                         </div>
                         <div className="info-editquantity">
                           <div className="btn-quantity">
-                          <button type="button"class="btn-tru" name="btn-giam" onClick={() => deleteQuantity(idUser,item.idProduct,item.tongtien)}>
+                          <button type="button"class="btn-tru" name="btn-giam" onClick={() => deleteQuantity(idUser,item.idProduct,item.idProductNavigation && item.idProductNavigation.gia)}>
                             -
                           </button>
                           <input type="text" class="finput-edit" defaultValue={item.soluong} disabled></input>
@@ -113,7 +115,7 @@ function deleteQuantity(iduser, idpro, thanhtien) {
                         </div>
                         <div className="info-price">
                           <strong>
-                            {solver.formatCurrency("vi-VN","currency","VND",item.tongtien)}
+                            {solver.formatCurrency("vi-VN","currency","VND",item.idProductNavigation && item.idProductNavigation.gia)}
                           </strong>
                         </div>
                       </div>
