@@ -51,7 +51,7 @@ export default function Login({login,userCookie}) {
                                 if(res.status === 404) alert("Tài khoản hoặc mật khẩu không đúng");
                                 else {
                                     login(res.data);
-                                    history.goBack();
+                                    history.push("/");
                                 }
                            })
                            .catch(err => 
