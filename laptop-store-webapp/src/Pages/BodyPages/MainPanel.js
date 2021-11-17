@@ -98,7 +98,7 @@ export default function MainPanel() {
                                                     <BiChevronLeft className="button-slide-icon" />
                                                 </div>
                                                 <div className="center-image-slider" style={
-                                                    {width : `${countImage(images,'center')}00%`,transform : `translate(${X}%)` ,transition : '0.5s'}
+                                                    {width : `${countImage(images,'center')}00%`,transform : `translate(${X}%)` ,transition : '0.3s'}
                                                 }>
                                                 {images.map((image,index)=> renderCenterImage(image ,index ,X))}
                                                 </div>

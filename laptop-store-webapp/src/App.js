@@ -1,5 +1,5 @@
 import "./CSS/App.css";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route ,useHistory } from "react-router-dom";
 import Header from "./Pages/Header.js";
 import Keyboard from "./Pages/Products/ProductsKeyboard/Keyboard";
 import { useState, useEffect } from "react";
@@ -21,7 +21,11 @@ import Mouse from "./Pages/Products/ProductsMouse/Mouse";
 import DetailProductsMouse from "./Pages/Products/ProductsMouse/DetailProductsMouse";
 import PC from "./Pages/Products/ProductsPC/PC";
 import DetailProductsPC from "./Pages/Products/ProductsPC/DetailProductsPC";
+import ScrollToTop from "./ScrollToTop";
+
+
 function App() {
+  const history = useHistory();
   const [user, setUser] = useState(null);
   const [userCookie, setUserCookie] = useCookies(["user"]);
   const [reload, setReload] = useState(0);
@@ -65,7 +69,6 @@ function App() {
       console.log("Dell xoa duoc",err))
     }
   }
-
   function deleteQuantityCart(iduser, idpro, thanhtien,quantity) {
     if(quantity <= 1){
       deleteItemCart(iduser, idpro)
@@ -80,6 +83,7 @@ function App() {
   }
   return (
     <Router>
+      <ScrollToTop />
       <div className="App">
         <Header user={user} />
             <Route path="/" exact component={() => <Body />}></Route>

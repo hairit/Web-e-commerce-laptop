@@ -3,7 +3,7 @@
   padding-top: 10px;
 }
 .main-panel {
-  width: 87%;
+  width: 80%;
   height: auto;
 }
 .main-panel-menu {
@@ -42,6 +42,8 @@
   left: 0;
   right: 0;
   bottom: 0;
+  height: 100%;
+  width: 100%;
 }
 .button-slide {
   z-index: 1;
@@ -78,6 +80,7 @@
   width: 100%;
   height: 50%;
   padding: -4px 0;
+  transition: 0.4s;
 }
 .main-image-right{
   display: flex;

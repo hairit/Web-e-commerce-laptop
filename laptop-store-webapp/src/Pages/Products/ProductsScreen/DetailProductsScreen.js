@@ -32,7 +32,15 @@ import { NavLink } from "react-router-dom"
 //   }, []);
 // };
 
-export default function DetailProductsScreen({ match, addCardHandleClick}) {
+export default function DetailProductsScreen({ match, addCardHandleClick ,history}) {
+  useEffect(() => {
+    const unlisten = history.listen(() => {
+      window.scrollTo(0, 0);
+    });
+    return () => {
+      unlisten();
+    }
+  }, []);
   const solver = new Solver();
   const [detail, setDetail] = useState({});
   useEffect(() => {
