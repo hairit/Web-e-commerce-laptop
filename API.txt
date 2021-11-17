@@ -27,7 +27,7 @@ Loại Sản phẩm:
 	-Lấy tất cả loại sản phẩm:					https://localhost:44343/data/typeproduct
 	-Lấy loại sản phẩm theo id:					https://localhost:44343/data/typeproduct/{id}
 	-Thêm loại sản phẩm:						https://localhost:44343/data/typeproduct/ 	data:loaisanpham
-	-Sửa loại sản phẩm :						https://localhost:44343/data/typeproduct/{id}	data:loaisanpham
+	-Sửa loại sản phẩm :						https://localhost:44343/data/typeproduct/	data:loaisanpham
 	-Xóa loại sản phẩm :						https://localhost:44343/data/typeproduct/{id}
 +Đơn hàng :
 
