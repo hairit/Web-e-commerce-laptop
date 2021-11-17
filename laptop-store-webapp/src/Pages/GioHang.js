@@ -23,8 +23,7 @@ export default function GioHang({ idUser, addCardHandleClick}) {
         .get(`https://localhost:44343/data/carddetail/iduser=${idUser}`, null)
         .then((res) => {
           if (res.status === 200) {
-            setCardDetails(res.data);
-            
+            setCardDetails(res.data);   
           }
         })
         .catch((err) => setCardDetails([]) );
@@ -62,6 +61,7 @@ function deleteQuantity(iduser, idpro, thanhtien,quantity) {
     .catch((err)=> console.log("Dell xoa duoc",err))
   } 
 }
+console.log(cardDetails);
     if(cardDetails.length > 0) return(
       <div className="page">
         <div className="container width">
@@ -102,12 +102,12 @@ function deleteQuantity(iduser, idpro, thanhtien,quantity) {
                         </div>
                         <div className="info-editquantity">
                           <div className="btn-quantity">
-                          <button type="button"class="btn-tru" name="btn-giam" onClick={() => deleteQuantity(idUser,item.idProduct,item.idProductNavigation && item.idProductNavigation.gia,item.soluong)}>
+                          <button type="button"class="btn-tru" name="btn-giam" onClick={() => deleteQuantity(idUser,item.idProduct,item.idProductNavigation.gia,item.soluong)}>
                              -
                           </button>
                           <input type="text" class="finput-edit" placeholder={item.soluong} disabled />
                           <button type="button" name="btn-tang" className="btn-cong"
-                          onClick={() => addCardHandleClick(item.idProduct,item.tongtien)}> + </button>
+                          onClick={() => addCardHandleClick(item.idProduct,item.idProductNavigation.gia )}> + </button>
                           </div>
                           <div className="delet">
                             <button type="button" className="btn-del" onClick={() => deleteItem(idUser,item.idProduct)}>Xóa</button>

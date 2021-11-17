@@ -46,7 +46,7 @@ function App() {
     else setReload(0);
   }
   function addCardHandleClick  (idProduct , price ){
-    axios.get(`https://localhost:44343/data/carddetail/add/iduser=${user.id}/idproduct=${idProduct}/tongtien=${price}`,null)
+    axios.get(`https://localhost:44343/data/carddetail/action=add/iduser=${user.id}/idproduct=${idProduct}/tongtien=${price}`,null)
       .then(res => {
         if(res.status === 201){
            console.log("Da them vao gio hang");
