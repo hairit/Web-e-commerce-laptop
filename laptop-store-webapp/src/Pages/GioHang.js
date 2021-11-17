@@ -114,7 +114,10 @@ function deleteQuantity(iduser, idpro, thanhtien,quantity) {
                           </div>
                         </div>
                         <div className="info-price">
-                          <strong>
+                          <strong className="tongtien-price">
+                            {solver.formatCurrency("vi-VN","currency","VND",item.tongtien)}
+                          </strong>
+                          <strong className="giagoc">
                             {solver.formatCurrency("vi-VN","currency","VND",item.idProductNavigation && item.idProductNavigation.gia)}
                           </strong>
                         </div>

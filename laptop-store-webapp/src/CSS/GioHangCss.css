@@ -73,7 +73,7 @@
 .info-image {
   padding-left: 10px;
   display: block;
-  flex: 0 0 58.66%;
+  flex: 0 0 66.66%;
   max-width: 66.66%;
 }
 .img-name {
@@ -84,7 +84,7 @@
   flex: 0 0 15%;
 }
 .info-price{
-  padding-top: 5px;
+  
 }
 .info-price strong{
   font-size: 17px;
@@ -151,6 +151,7 @@
   font-size: 18px;
 }
 .info-editquantity {
+  padding-right: 15px;
   height:36px;
   display: flex;
 flex-flow: column;
@@ -214,7 +215,7 @@ input[type=checkbox] {
   
 }
 .btn-quantity{
-  width:72%;
+  width:80%;
   border: 1px solid #ebebeb;
   border-radius: 4px;
 }
@@ -227,4 +228,7 @@ input[type=checkbox] {
  width: auto;
  color: blue;
   background-color: white !important;
+}
+.tongtien-price{
+  float: left;
 }
