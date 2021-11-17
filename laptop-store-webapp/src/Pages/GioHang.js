@@ -8,7 +8,7 @@ import { NavLink } from "react-router-dom";
 
 import no_shopping_cart from "../Images/no_shopping_cart.png";
 import { useEffect, useState } from "react";
-export default function GioHang({ idUser, addCardHandleClick}) {
+export default function GioHang({ idUser, addCardHandleClick, deleteItemCart,deleteQuantityCart}) {
   const solver = new Solver();
   const [tongtien, setTongtien] = useState(0);
   const [cardDetails, setCardDetails] = useState([]);
@@ -37,30 +37,8 @@ export default function GioHang({ idUser, addCardHandleClick}) {
     }
   }
   console.log(cardDetails);
-function deleteItem(iduser,idpro){
-  
-  if(window.confirm("Bạn muốn xoá sản phẩm này ra khỏi giỏ hàng?") ===true){
-    axios.delete(`https://localhost:44343/data/carddetail/iduser=${iduser}/idproduct=${idpro}`,null)
-    .then(()=> {
-      reLoad();
-    })
-    .catch((err)=> 
-    console.log("Dell xoa duoc",err))
-  }
-}
 
-function deleteQuantity(iduser, idpro, thanhtien,quantity) {
-  if(quantity <= 1){
-    deleteItem(iduser, idpro)
-  }
-  else{
-    axios.get(`https://localhost:44343/data/carddetail/action=delete/iduser=${iduser}/idproduct=${idpro}/tongtien=${thanhtien}`, null)
-    .then(()=> {
-      reLoad();
-    })
-    .catch((err)=> console.log("Dell xoa duoc",err))
-  } 
-}
+
 console.log(cardDetails);
     if(cardDetails.length > 0) return(
       <div className="page">
@@ -82,7 +60,7 @@ console.log(cardDetails);
                       <div className="info-check">
                         <input class="check-item" type="checkbox"  name="hobby[]"  id="check-item" 
                         onChange={(e)=> {
-                          checktien(e,item.idProductNavigation && item.idProductNavigation.gia,item.soluong)
+                          checktien(e, item.idProductNavigation.gia,item.soluong)
                         }}  value={item.id}/>
                         </div>
                         <div className="info-image">
@@ -90,19 +68,19 @@ console.log(cardDetails);
                             <a>
                               <div className="imag">
                                 <img
-                                  src={`https://localhost:44343/Images/Products/${item.idProductNavigation && item.idProductNavigation.nameimage}`}
+                                  src={`https://localhost:44343/Images/Products/${item.idProductNavigation.nameimage}`}
                                 alt=""/>
                               </div>
                             </a>
                             <div className="name">
-                              <a href="#">{item.idProductNavigation && item.idProductNavigation.ten}</a>
+                              <a href="#">{item.idProductNavigation.ten}</a>
                               <div className="id-item">ID: {item.idProduct}</div>
                             </div>
                           </div>
                         </div>
                         <div className="info-editquantity">
                           <div className="btn-quantity">
-                          <button type="button"class="btn-tru" name="btn-giam" onClick={() => deleteQuantity(idUser,item.idProduct,item.idProductNavigation.gia,item.soluong)}>
+                          <button type="button"class="btn-tru" name="btn-giam" onClick={() => deleteQuantityCart(idUser,item.idProduct,item.idProductNavigation.gia,item.soluong)}>
                              -
                           </button>
                           <input type="text" class="finput-edit" placeholder={item.soluong} disabled />
@@ -110,7 +88,7 @@ console.log(cardDetails);
                           onClick={() => addCardHandleClick(item.idProduct,item.idProductNavigation.gia )}> + </button>
                           </div>
                           <div className="delet">
-                            <button type="button" className="btn-del" onClick={() => deleteItem(idUser,item.idProduct)}>Xóa</button>
+                            <button type="button" className="btn-del" onClick={() => deleteItemCart(idUser,item.idProduct)}>Xóa</button>
                           </div>
                         </div>
                         <div className="info-price">
@@ -118,7 +96,7 @@ console.log(cardDetails);
                             {solver.formatCurrency("vi-VN","currency","VND",item.tongtien)}
                           </strong>
                           <strong className="giagoc">
-                            {solver.formatCurrency("vi-VN","currency","VND",item.idProductNavigation && item.idProductNavigation.gia)}
+                            {solver.formatCurrency("vi-VN","currency","VND", item.idProductNavigation.gia)}
                           </strong>
                         </div>
                       </div>
@@ -157,12 +135,12 @@ console.log(cardDetails);
       <div className="centerp">
         <div className="product-none">
           <img src={no_shopping_cart} />
-          <p> Có 0 sản phẩm trong giỏ hàng</p>
+          <p> Bạn chưa có sản phẩm trong giỏ hàng</p>
         </div>
         <div className="btn-backhome">
           <NavLink className="btn-backhome" to="/">
             <button type="button" className="btn btn-home">
-              Quay về trang chủ
+              Tiếp tục mua sắm
             </button>
           </NavLink>
         </div>

@@ -18,8 +18,8 @@ import whatsapp_32px from "../../../Images/whatsapp_32px.png";
 import edit_property_32px from "../../../Images/edit_property_32px.png";
 import settings_32px from "../../../Images/settings_32px.png";
 import PostsLaptop from "./PostsLaptop";
-
-export default function DetailProductsLaptop({ match }) {
+import { NavLink } from "react-router-dom";
+export default function DetailProductsLaptop({ match,addCardHandleClick }) {
   const solver = new Solver();
   const [detail, setDetail] = useState({});
   useEffect(() => {
@@ -193,13 +193,14 @@ export default function DetailProductsLaptop({ match }) {
                     </div>
                   </div>
                   <div className="button-gr">
-                    <button type="button" className="btn btn-primary btn-buy">
+                    <NavLink to="/card">
+                    <button type="button" className="btn btn-primary btn-buy" onClick={() =>addCardHandleClick(detail.id,detail.gia)}>
                       MUA NGAY
                     </button>
+                    </NavLink>
                     <button
                       type="button"
-                      className="btn btn-outline-primary btn-cart"
-                    >
+                      className="btn btn-outline-primary btn-cart" onClick={()=> addCardHandleClick(detail.id,detail.gia)}>
                       THÊM VÀO GIỎ HÀNG
                     </button>
                   </div>
