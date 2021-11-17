@@ -141,7 +141,7 @@ function deleteQuantity(iduser, idpro, thanhtien,quantity) {
                   <p className="txt-left">Thành tiền</p>
                   <p className="thanhtien">{solver.formatCurrency("vi-VN","currency","VND",tongtien)}</p>
                 </div>
-                <button className="btn-pay btn btn-outline-primary"  >
+                <button className="btn-pay btn btn-outline-primary" >
                   Tiếp tục thanh toán
                 </button>
               </div>
