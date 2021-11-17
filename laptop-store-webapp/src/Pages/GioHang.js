@@ -79,7 +79,7 @@ function deleteQuantity(iduser, idpro, thanhtien) {
                       <div className="info-check">
                         <input class="check-item" type="checkbox"  name="hobby[]"  id="check-item" 
                         onChange={(e)=> {
-                          setTimeout(checktien(e,item.tongtien,item.soluong), 3000)
+                          setTimeout(checktien(e,item.idProductNavigation && item.idProductNavigation.gia,item.soluong), 3000)
                         }}  value={item.id}/>
                         </div>
                         <div className="info-image">
