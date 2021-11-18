@@ -1,0 +1,85 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.order {
+  background-color: #edeef2;
+}
+.container-order {
+  height: 500px;
+  padding: 20px 15px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+  font-family: Roboto, "Helvetica Neue";
+}
+.center-order {
+  display: flex;
+}
+.info-orderUser {
+  width: 65%;
+  height: 450px;
+}
+.info-orderPro {
+  width: 35%;
+}
+.info-orderRight {
+  width: 100%;
+}
+.info-ordertitle {
+  background-color: white;
+  padding: 10px;
+}
+.info-ordertitle p {
+  font-size: 20px;
+  font-weight: 400;
+  color: blue;
+}
+.info-orderDataUser {
+  float: left;
+  width: 60%;
+  height: 200px;
+}
+.info-delivery {
+  float: right;
+  background-color: bisque;
+  width: 40%;
+  height: 200px;
+}
+.info-user {
+  background-color: white;
+  padding: 20px 10px;
+  display: flex;
+  flex-flow: column;
+}
+.info-nhanhang {
+  font-size: 17px;
+  font-weight: 500;
+  padding-bottom: 20px;
+}
+.info-receive,
+.info-addAdress {
+  padding: 10px 10px;
+  width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+  line-height: 1.5;
+  border: 1px solid rgb(1, 1, 235);
+  border-radius: 6px;
+}
+.info-addAdress {
+  padding: 20px 10px;
+  width: 100%;
+  height: 100px;
+}
+.info-nameUser {
+  font-size: 15px;
+  font-weight: 600;
+}
+.phone-adress {
+  font-size: 15px;
+  font-weight: 400;
+}
+.info-addAdress {
+  border: 1px solid rgb(231, 231, 231);
+}

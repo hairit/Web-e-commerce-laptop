@@ -22,6 +22,7 @@ import DetailProductsMouse from "./Pages/Products/ProductsMouse/DetailProductsMo
 import PC from "./Pages/Products/ProductsPC/PC";
 import DetailProductsPC from "./Pages/Products/ProductsPC/DetailProductsPC";
 import ScrollToTop from "./ScrollToTop";
+import ThanhToan from "./Pages/ThanhToan";
 
 
 function App() {
@@ -92,12 +93,13 @@ function App() {
             <Route path="/mouse" exact component={() =><Mouse addCardHandleClick={addCardHandleClick} />} ></Route>
             <Route path="/screen" exact component={() => <Screen addCardHandleClick={addCardHandleClick} />}></Route>
             <Route path="/pc" exact component={() => <PC addCardHandleClick={addCardHandleClick} />}></Route>
+            <Route path="/card/thanhtoan" exact component={() => <ThanhToan addCardHandleClick={addCardHandleClick} />}></Route>
             <Route path="/laptop/:id" component={(match) => <DetailProductsLaptop addCardHandleClick={addCardHandleClick} match={match} />}></Route>
             <Route path="/keyboard/:id" component={(match) => <DetailProductsKeyboard addCardHandleClick={addCardHandleClick}  match={match} />} ></Route>
             <Route path="/screen/:id" component={(match) => <DetailProductsScreen addCardHandleClick={addCardHandleClick} match={match} />}></Route>
             <Route path="/mouse/:id" component={(match) => <DetailProductsMouse addCardHandleClick={addCardHandleClick} match={match} />}></Route>
             <Route path="/pc/:id" component={(match) => <DetailProductsPC addCardHandleClick={addCardHandleClick} match={match} />}></Route>
-            <Route path="/card" component={() => <GioHang deleteQuantityCart={deleteQuantityCart} deleteItemCart={deleteItemCart} addCardHandleClick={addCardHandleClick} idUser={ user !== null ? user.id : null } />}></Route>
+            <Route path="/card" exact component={() => <GioHang deleteQuantityCart={deleteQuantityCart} deleteItemCart={deleteItemCart} addCardHandleClick={addCardHandleClick} idUser={ user !== null ? user.id : null } />}></Route>
             <Route path="/login" exact component={(match) => <Login  login={login} match={match} /> } ></Route>
             <Route path="/lienhe" component={() => <Lienhe />}></Route>
             <Route path="/tincongnghe" component={() => <Tintuc />}></Route>
