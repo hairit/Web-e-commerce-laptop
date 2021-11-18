@@ -1,1 +1,1 @@
-get https://localhost:44343/data/laptop/brand=ASUS
+post https://localhost:44343/data/bill
