@@ -5,7 +5,7 @@ import "../../../CSS/ProductsCss/bootstrap.css";
 import "../../../CSS/ProductsCss/style.css";
 import { useEffect, useState } from "react";
 import ListProductLaptop from "./ListProductLaptop";
-export default function Laptops({addProductToCart}) {
+export default function Laptops({match,addProductToCart}) {
   const [pros, setPros] = useState([]);
   useEffect(() => {
     axios
@@ -13,6 +13,7 @@ export default function Laptops({addProductToCart}) {
       .then((res) => setPros(res.data))
       .catch((err) => console.log(err));
   }, []);
+  console.log(match);
   return (
     <div className="wrapper">
       <div className="container_fullwidth">

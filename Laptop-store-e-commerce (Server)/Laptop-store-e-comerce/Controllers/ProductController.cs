@@ -86,14 +86,14 @@ namespace Laptop_store_e_comerce.Controllers
         {
             try
             {
-                return await database.Products.Include(pro => pro.LaptopDetail).Include(pro => pro.LaptopDescription)
+                return await database.Products
                                               .Where(pro => pro.Idloai == type)
                                               .Where(pro => pro.Hienthi == 1)
                                               .ToListAsync();
             }
             catch (Exception e) { Console.WriteLine(e.ToString()); return BadRequest(); }
         }
-        [HttpGet("type={type}from={price1}to={price2}")]
+        [HttpGet("type={type}/from={price1}to={price2}")]
         public async Task<ActionResult<List<Product>>> getProductByPrice(string type,int price1, int price2)
         {
             try
@@ -107,7 +107,7 @@ namespace Laptop_store_e_comerce.Controllers
             catch (Exception e) { Console.WriteLine(e.ToString()); return BadRequest(); }
         }
         [HttpPut]
-        public async Task<IActionResult> PutProduct(string id, Product pro)
+        public async Task<IActionResult> PutProduct(Product pro)
         {
             database.Entry(pro).State = EntityState.Modified;
             if(pro.Idloai == "laptop")
@@ -125,7 +125,7 @@ namespace Laptop_store_e_comerce.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!existID(id))
+                if (!existID(pro.Id))
                 {
                     return NotFound();
                 }

@@ -22,7 +22,7 @@ namespace Laptop_store_e_comerce.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Bill>>> GetDonHangs()
         {
-            return await _context.Bills.ToListAsync();
+            return await _context.Bills.Include(bill => bill.BillDetails).ToListAsync();
         }
         [HttpGet("{id}")]
         public async Task<ActionResult<Bill>> GetDonHang(string id)
@@ -35,7 +35,7 @@ namespace Laptop_store_e_comerce.Controllers
             }
             return bill;
         }
-        [HttpGet("user={id}")]
+        [HttpGet("iduser={id}")]
         public async Task<ActionResult<List<Bill>>> getBillsByUserID(int id)
         {
             if (!_context.Users.Any(user => user.Id == id)) return BadRequest();
@@ -71,22 +71,27 @@ namespace Laptop_store_e_comerce.Controllers
             }
             catch (Exception)
             {
-                return BadRequest();
+                throw;
             }
             return CreatedAtAction("GetDonHang", new { id = donHang.Id }, donHang);
         }
         [HttpDelete("{id}")]
         public async Task<ActionResult<Bill>> DeleteDonHang(string id)
         {
-            var donHang = await _context.Bills.FindAsync(id);
-            if (donHang == null)
+            var bill = await _context.Bills.FindAsync(id);
+            if (bill == null) return NotFound();
+            else
             {
-                return NotFound();
+                var listBillDetail = await _context.BillDetails.Where(billDetail => billDetail.IdBill == id).ToListAsync();
+                try
+                {
+                    _context.BillDetails.RemoveRange(listBillDetail);
+                    _context.Bills.Remove(bill);
+                    await _context.SaveChangesAsync();
+                }
+                catch(Exception) { return BadRequest(); }
             }
-            _context.Bills.Remove(donHang);
-            await _context.SaveChangesAsync();
-
-            return donHang;
+            return bill;
         }
         private bool DonHangExists(string id)
         {
