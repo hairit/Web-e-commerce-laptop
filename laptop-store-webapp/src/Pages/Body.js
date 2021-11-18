@@ -12,10 +12,10 @@ export default function Body({addProductToCart}) {
         <div className="body">
             {/* <Center /> */}
             <MainPanel />
-            <LaptopPanel addCardHandleClick={addProductToCart}/>
-            <PCPanel addCardHandleClick={addProductToCart} />
-            <KeyboardPanel addCardHandleClick={addProductToCart}/>
-            <ScreenPanel addCardHandleClick={addProductToCart}/>
+            <LaptopPanel addProductToCart={addProductToCart}/>
+            <PCPanel addProductToCart={addProductToCart} />
+            <KeyboardPanel addProductToCart={addProductToCart}/>
+            <ScreenPanel addProductToCart={addProductToCart}/>
         </div>
     )
 }

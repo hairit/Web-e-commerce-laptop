@@ -13,15 +13,21 @@
   width: 90%;
   font-family: Roboto, "Helvetica Neue";
 }
-.center-order {
+/* .center-order {
   display: flex;
-}
+} */
 .info-orderUser {
+  background-color: white;
+  float: left;
   width: 65%;
-  height: 450px;
+  height: 400px;
 }
 .info-orderPro {
-  width: 35%;
+  margin-left: 10px;
+  background-color: white;
+  float: right;
+  width: 34%;
+  padding: 10px 20px;
 }
 .info-orderRight {
   width: 100%;
@@ -31,9 +37,9 @@
   padding: 10px;
 }
 .info-ordertitle p {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 400;
-  color: blue;
+  color: rgb(5, 5, 219);
 }
 .info-orderDataUser {
   float: left;
@@ -41,21 +47,25 @@
   height: 200px;
 }
 .info-delivery {
+  display: flex;
+  flex-flow: column;
   float: right;
-  background-color: bisque;
   width: 40%;
-  height: 200px;
+  padding: 0px 20px;
 }
 .info-user {
   background-color: white;
-  padding: 20px 10px;
+  padding: 10px 10px;
   display: flex;
   flex-flow: column;
 }
-.info-nhanhang {
+.info-nhanhang,
+.info-giaohang,
+.note-tile,
+.info-hinhthucTT {
   font-size: 17px;
   font-weight: 500;
-  padding-bottom: 20px;
+  padding-bottom: 15px;
 }
 .info-receive,
 .info-addAdress {
@@ -68,18 +78,102 @@
   border-radius: 6px;
 }
 .info-addAdress {
+  border: 1px solid rgb(231, 231, 231);
   padding: 20px 10px;
   width: 100%;
   height: 100px;
+  cursor: pointer;
+}
+.info-addAdress img {
+  width: 8%;
+}
+.info-add {
+  text-align: center;
 }
 .info-nameUser {
   font-size: 15px;
   font-weight: 600;
 }
+.info-nameUser p {
+  float: left;
+}
+.info-nameUser img {
+  cursor: pointer;
+  margin-left: 10px;
+  width: 4%;
+}
 .phone-adress {
   font-size: 15px;
   font-weight: 400;
 }
-.info-addAdress {
-  border: 1px solid rgb(231, 231, 231);
+
+.info-PTgiaohang {
+  padding-bottom: 30px;
+}
+.form-check p,
+.TT-defaul,
+.TT-card {
+  font-size: 15px;
+}
+.info-note {
+  padding-bottom: 30px;
+}
+.check-giaohang {
+  margin-top: 0 !important;
+  float: left;
+  margin-right: 10px !important;
+}
+.info-PTthanhtoan {
+}
+.form-checkTT {
+  padding-bottom: 10px;
+}
+.check-TT {
+  margin-top: 0 !important;
+  float: left;
+}
+.TT-defaul,
+.TT-card {
+  padding-left: 25px;
+}
+.info-tile {
+  width: 100%;
+  height: auto;
+}
+.info-tile p {
+  font-size: 20px;
+  font-weight: 500;
+  float: left;
+}
+.info-tile a {
+  font-size: 15px;
+  padding-top: 8px;
+  float: right;
+  color: blue;
+}
+.info-pro {
+  display: flex;
+  flex-flow: column;
+}
+.info-detailPro {
+  display: flex;
+  flex-flow: row;
+}
+.img-pros {
+  width: 26%;
+}
+.img-pros img {
+  width: 100%;
+}
+.detail-pros {
+  width: 74%;
+}
+.pay-order {
+  margin-top: 15px !important;
+  float: right;
+  width: 34%;
+  background-color: white;
+}
+.pay-orders {
+  padding-top: 0 !important;
 }
