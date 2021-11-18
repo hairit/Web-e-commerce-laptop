@@ -50,10 +50,12 @@ export default function Login({login,userCookie}) {
         else {
             axios.get(`https://localhost:44343/data/user/login/${user.email}/${user.pass}`)
                            .then(res => {
+                                console.log(res.data);
+                                console.log(res.status);
                                 if(res.status === 404) alert("Tài khoản hoặc mật khẩu không đúng");
                                 else {
                                     login(res.data);
-                                    history.push("/");
+                                    history.goBack();
                                 }
                            })
                            .catch(err => 

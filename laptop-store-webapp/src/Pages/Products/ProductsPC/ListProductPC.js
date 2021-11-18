@@ -7,14 +7,14 @@ import { withRouter } from "react-router";
 
 import Solver from "../../../Classes/Solver";
 
-export default function ListProductPC({ pros,addCardHandleClick }) {
+export default function ListProductPC({ pros,addProductToCart }) {
   const history = useHistory();
   const solver = new Solver();
   function handleViewDetails(detail) {
     history.push(`/pc/${detail.id}`);
   }
   function addProductInCart(id,gia){
-    addCardHandleClick(id,gia)
+    addProductToCart(id,gia)
     alert("Đã thêm sản phẩm vào giỏ hàng")
   }
   return (

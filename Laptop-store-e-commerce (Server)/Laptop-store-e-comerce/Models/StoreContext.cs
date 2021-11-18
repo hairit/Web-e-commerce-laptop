@@ -485,6 +485,8 @@ namespace Laptop_store_e_comerce.Models
 
                 entity.Property(e => e.Gia).HasColumnName("gia");
 
+                entity.Property(e => e.Giacu).HasColumnName("giacu");
+
                 entity.Property(e => e.Hienthi)
                     .HasColumnName("hienthi")
                     .HasDefaultValueSql("((1))");
@@ -512,6 +514,14 @@ namespace Laptop_store_e_comerce.Models
                 entity.Property(e => e.Thuonghieu)
                     .HasColumnName("thuonghieu")
                     .HasMaxLength(20);
+
+                entity.Property(e => e.Tinhtrang)
+                    .HasColumnName("tinhtrang")
+                    .HasMaxLength(500);
+
+                entity.Property(e => e.Uudai)
+                    .HasColumnName("uudai")
+                    .HasMaxLength(500);
 
                 entity.HasOne(d => d.IdloaiNavigation)
                     .WithMany(p => p.Products)

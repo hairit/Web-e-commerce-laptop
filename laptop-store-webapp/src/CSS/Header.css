@@ -137,10 +137,11 @@
   display: flex;
   justify-content: center;
   background-color: red;
+  justify-content: center;
   align-items: center;
   border-radius: 50%;
-  width: 15px;
-  height: 15px;
+  width: 18px;
+  height: 18px;
   color: #ffffff;
   font-size: 10px;
   top: -3px;

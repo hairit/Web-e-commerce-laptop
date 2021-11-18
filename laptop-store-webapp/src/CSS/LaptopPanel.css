@@ -1,5 +1,6 @@
 .laptop-panel{
-    width:87%;
+    width:83%;
+    max-width: 1320px;
     margin: 0 auto;
     height: auto;
     background-color: #FFFFFF;
@@ -81,6 +82,19 @@
     display: flex;
     flex-direction: column;
     cursor: pointer;
+    height: 478px;
+    padding: 7px 7px;
+}
+.laptop-infor{
+    border-radius: 10px;
+    box-shadow: 0 0 5px 1px #42424446;
+    transition: 0.2s;
+    padding-bottom: 30px;
+    height: 100%;
+}
+.laptop-infor:hover{
+    transform: scale(102%);
+    box-shadow: 0 0 10px 1px #42424462;
 }
 .laptop-image{
     width: 100%;
@@ -90,9 +104,10 @@
     width: 100%;
     max-width: 100%;
     height: auto;
+    transform: scale(80%);
 }
 .laptop-detail-item{
-    padding: 2px 30px;
+    padding: 2px 15px;
     display: flex;
     justify-content: space-between;
     color : black;
@@ -101,14 +116,17 @@
     font-size: 13px;
 }
 .laptop-name{
-    font-size: 13px;
+    font-size: 1.4rem;
     line-height: 1.40;
+    font-family: Sans-serif !important;
+    color: #4b4b4d;
+    font-weight: 500;
     height: 37px;
     text-align: left;
     overflow: hidden;
 }
 .laptop-name:hover{
-    color: #3f4fc3;
+    color: #b41307;
 }
 .laptop-price{
     margin-top: 20px;
@@ -117,9 +135,52 @@
     align-items: center;
 }
 .laptop-price-value{
-    color: #3f4fc3;
+    color: #cf0f01;
     font-size: 14px;
     font-weight: 600;
+}
+.laptop-gift{
+    color: rgb(63, 60, 60);
+    margin: 10px 20px;
+    border-radius: 10px;
+    line-height: 1.40;
+    padding-left: 5px;
+    display: flex;
+    align-items: center;
+    height: 60px;
+    background-color: #F3F4F6;
+    text-align: left;
+}
+.laptop-btn-group{
+    width: 100%;
+    display: flex;
+    height: 79px;
+    justify-content: center;
+    align-items: center;
+}
+.laptop-btn{
+    border-radius:4px;
+    border : none ;
+    text-align: center;
+    padding: 7px 0;
+    width: 40%;
+    outline: none;
+}
+.laptop-buy{
+    background-color: #3f4fc3;
+    color : #FFFFFF;
+}
+.laptop-addCart{
+    margin-left: 10px;
+    background-color: #FFFFFF ;
+    border: #6c6c6f solid 0.1px;
+    box-sizing: border-box;
+    color :#6c6c6f
+}
+.laptop-addCart:hover{
+    background-color: #cf0f01;
+    color: #FFFFFF;
+    border: none;
 }
 .btn-group-bottom
 {

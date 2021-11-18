@@ -1,4 +1,9 @@
 .body {
   height: auto;
-  background-color: #edeef2;
+  background-color: #FFFFFF;
+}
+.old-price{
+  font-size: 12px;
+  text-decoration: line-through;
+  color: #979696;
 }

@@ -8,7 +8,7 @@ import { NavLink } from "react-router-dom";
 
 import tk_shopping_img from "../Images/tk_shopping_img.png";
 import { useEffect, useState } from "react";
-export default function GioHang({ idUser, addCardHandleClick, deleteItemCart,deleteQuantityCart}) {
+export default function GioHang({ idUser, addProductToCart, deleteCartItem ,deleteProductFromCart}) {
   const solver = new Solver();
   const [tongtien, setTongtien] = useState(0);
   const [cardDetails, setCardDetails] = useState([]);
@@ -36,10 +36,6 @@ export default function GioHang({ idUser, addCardHandleClick, deleteItemCart,del
       setTongtien(tongtien - gia*quantity);
     }
   }
-  console.log(cardDetails);
-
-
-console.log(cardDetails);
     if(cardDetails.length > 0) return(
       <div className="page">
         <div className="container width">
@@ -80,15 +76,15 @@ console.log(cardDetails);
                         </div>
                         <div className="info-editquantity">
                           <div className="btn-quantity">
-                          <button type="button"class="btn-tru" name="btn-giam" onClick={() => deleteQuantityCart(idUser,item.idProduct,item.idProductNavigation.gia,item.soluong)}>
+                          <button type="button"class="btn-tru" name="btn-giam" onClick={() => deleteProductFromCart(idUser,item.idProduct,item.idProductNavigation.gia,item.soluong)}>
                              -
                           </button>
                           <input type="text" class="finput-edit" placeholder={item.soluong} disabled />
                           <button type="button" name="btn-tang" className="btn-cong"
-                          onClick={() => addCardHandleClick(item.idProduct,item.idProductNavigation.gia )}> + </button>
+                          onClick={() => addProductToCart(item.idProduct,item.idProductNavigation.gia )}> + </button>
                           </div>
                           <div className="delet">
-                            <button type="button" className="btn-del" onClick={() => deleteItemCart(idUser,item.idProduct)}>Xóa</button>
+                            <button type="button" className="btn-del" onClick={() => deleteCartItem(idUser,item.idProduct)}>Xóa</button>
                           </div>
                         </div>
                         <div className="info-price">

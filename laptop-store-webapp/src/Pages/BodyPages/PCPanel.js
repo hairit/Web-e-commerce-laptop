@@ -35,9 +35,9 @@ export default function PCPanel() {
         .then(res => setPcs(res.data))
         .catch(err => console.log("Errol try to call pc (product) API"));
     }, [])
-    return (
+    return(
         <div className="panel-pc">
-            <div className="container10Col pc-container">
+            <div className="container10Col pc-container wide">
                 <div className="row-10 pc-row">
                     {pcs.map((pc,index) => renderComputerItem(pc,index))}
                 </div>

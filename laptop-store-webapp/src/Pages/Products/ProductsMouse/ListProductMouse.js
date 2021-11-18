@@ -7,7 +7,7 @@ import { withRouter } from "react-router";
 
 import Solver from "../../../Classes/Solver";
 
-export default function ListProductMouse({ pros,addCardHandleClick }) {
+export default function ListProductMouse({ pros,addProductToCart}) {
   const history = useHistory();
   const solver = new Solver();
   function handleViewDetails(detail) {
@@ -15,7 +15,7 @@ export default function ListProductMouse({ pros,addCardHandleClick }) {
   }
   console.log(`pros`, pros);
   function addProductInCart(id,gia){
-    addCardHandleClick(id,gia)
+    addProductToCart(id,gia)
     alert("Đã thêm sản phẩm vào giỏ hàng")
   }
   return (

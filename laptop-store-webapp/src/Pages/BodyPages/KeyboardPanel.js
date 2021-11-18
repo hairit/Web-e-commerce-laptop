@@ -14,9 +14,9 @@ const renderKeyboardItem = (pro,index) => {
                     <img className="keyboard-image-img" src={URL+`/Images/Products/${pro.nameimage}`} alt={pro.nameimage} />
                 </div>
                 <div className="keyboard-detail">
-                    <div className="keyboard-detail-item keyboard-id">
+                    {/* <div className="keyboard-detail-item keyboard-id">
                     Mã SP: {pro.id}
-                    </div>
+                    </div> */}
                     <NavLink to={`/keyboard/${pro.id}`} className="keyboard-detail-item keyboard-name">
                         {pro.ten}
                     </NavLink>
@@ -29,7 +29,7 @@ const renderKeyboardItem = (pro,index) => {
         </div>
     )
 }
-export default function KeyboardPanel() {
+export default function KeyboardPanel({addProductToCart}) {
     const history = useHistory();
 
     const [pros, setPros] = useState([]);
@@ -39,11 +39,11 @@ export default function KeyboardPanel() {
     }, [])
     return (
         <div className="keyboard-panel">
-            <div className="keyboard-panel-header">
+            {/* <div className="keyboard-panel-header">
                 <div className="keyboard-panel-header-logo">
                         <p>Bàn phím cơ</p>    
                 </div>
-            </div>
+            </div> */}
             <div className="container10Col keyboard-container">
                 <div className="row-10-no-margin keyboard-row">
                     {

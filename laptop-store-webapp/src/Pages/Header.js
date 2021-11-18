@@ -93,17 +93,17 @@ export default function Header({ user }) {
           ) : (
             <div className="header-center-right-menu-item"  onClick={()=>cookie.remove("user")}>
               {user.nameimage !== null ? (
-                <img
-                  src={URL + `/Images/UserAvatar/${user.nameimage}`}
-                  className="avatar"
-                  alt="avatar"
-                />
+                      <img
+                        src={URL + `/Images/UserAvatar/${user.nameimage}`}
+                        className="avatar"
+                        alt="avatar"
+                      />
               ) : (
-                <img
-                  src={URL + `/Images/UserAvatar/NullAvatar.png`}
-                  className="avatar"
-                  alt="avatar"
-                />
+                      <img
+                        src={URL + `/Images/UserAvatar/NullAvatar.png`}
+                        className="avatar"
+                        alt="avatar"
+                      />
               )}
               <p className="login-text">
                 {user.firstname + " " + user.lastname}
@@ -111,9 +111,7 @@ export default function Header({ user }) {
               <AiOutlineCaretDown id="drop-user" />
             </div>
           )}
-          {user === null ? (
-            <div></div>
-          ) : (
+          {user === null ? (<div></div>) : (
             <NavLink className="header-center-right-menu-item" to="/bill">
               <RiBillLine className="header-center-right-menu-item-icon" />
               {user.bills.length === 0 ? (
@@ -124,20 +122,14 @@ export default function Header({ user }) {
               <p>Đơn hàng</p>
             </NavLink>
           )}
-          <NavLink
-            className="header-center-right-menu-item"
-            to={user === null ? "/card" : "/card"}
-          >
-            <AiOutlineShoppingCart className="header-center-right-menu-item-icon" />
-            {user === null ? (
-              <div></div>
-            ) : (
-              <div className={user.cardDetails.length === 0 ? "quanlity-data-user-disable": "quanlity-data-user"}
-              >
-                {user.cardDetails.length}
-              </div>
-            )}
-            <p>Giỏ hàng</p>
+          <NavLink className="header-center-right-menu-item" to={user === null ? "/card" : "/card"} >
+                  <AiOutlineShoppingCart className="header-center-right-menu-item-icon" />
+                  {user === null ? ( <div></div>) : (
+                        <div className={user.cardDetails.length === 0 ? "quanlity-data-user-disable": "quanlity-data-user"}>
+                          <p>{user.cardDetails.length}</p>
+                        </div>
+                  )}
+                  <p>Giỏ hàng</p>
           </NavLink>
           <div className="header-center-right-menu-item" >
             <IoIosNotificationsOutline className="header-center-right-menu-item-icon" />

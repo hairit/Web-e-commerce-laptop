@@ -5,7 +5,7 @@ import "../../../CSS/ProductsCss/bootstrap.css";
 import "../../../CSS/ProductsCss/style.css";
 import { useEffect, useState } from "react";
 import ListProductKeyboard from "./ListProductScreen";
-export default function Screen({addCardHandleClick}) {
+export default function Screen({addProductToCart}) {
   const [pros, setPros] = useState([]);
   useEffect(() => {
     axios
@@ -107,7 +107,7 @@ export default function Screen({addCardHandleClick}) {
           <div className="row">
             <div className="col-md-9 prolst">
               <div className="products-grid lstlaptop">
-                <ListProductKeyboard addCardHandleClick={addCardHandleClick} pros={pros} />
+                <ListProductKeyboard addProductToCart={addProductToCart} pros={pros} />
               </div>
               <div className="toolbar">
                 <div className="pager">

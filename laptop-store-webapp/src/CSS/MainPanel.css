@@ -8,12 +8,15 @@
 }
 .main-panel-menu {
   height: auto;
-  background-color: #edeef2;
-  padding: 0 6px;
+  background-color: #ffffff;
+  padding: 0 10px;
 }
 .main-panel-menu-list {
   background-color: #ffffff;
+  box-shadow: -5px 4px 10px 0 rgb(226, 225, 225);
+  border-radius: 10px;
   height: 100%;
+  overflow: hidden;
 }
 .main-image-row {
   height: 100%;
@@ -92,7 +95,7 @@
   width: 100%;
 }
 .main-image-item{
-  height: 355px;
+  height: 357px;
 }
 
 

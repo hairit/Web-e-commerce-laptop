@@ -9,7 +9,6 @@ import '../../CSS/ScreenPanel.css'
 import Solver from '../../Classes/Solver';
 import { useHistory } from 'react-router';
 const RenderScreenItem= (pro, index) => {
-    
     const solver =new Solver();
     const history = useHistory();
     return (
@@ -37,13 +36,11 @@ const RenderScreenItem= (pro, index) => {
 const getCountPage = (pros) => {
     return pros.length/5 ;
 }
-
 export default function ScreenPanel() {
     const history = useHistory();
     const [scaleX, setScaleX] = useState(0);
     const index = useRef(0);
     const [pros, setPros] = useState([]);
-    console.log(pros);
     useEffect(() => {
        CALLER('GET','data/product/type=screen/enable',null)
         .then(res => setPros(res.data))
@@ -65,8 +62,6 @@ export default function ScreenPanel() {
             setScaleX(scaleX + 100);
         }
     }
-    console.log(scaleX);
-    console.log(index);
     return (
         <div className="screen-panel">
             <div className="screen-panel-header">
@@ -87,7 +82,6 @@ export default function ScreenPanel() {
                         {
                             pros.map((pro,index) => RenderScreenItem(pro,index,history))
                         }
-                    
                 </div>
             </div>
             </div>

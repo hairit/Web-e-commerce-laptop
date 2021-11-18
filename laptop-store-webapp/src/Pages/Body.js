@@ -7,15 +7,15 @@ import PCPanel from './BodyPages/PCPanel'
 import ScreenPanel from './BodyPages/ScreenPanel'
 import MainPanel from './BodyPages/MainPanel'
 
-export default function Body() {
+export default function Body({addProductToCart}) {
     return (
         <div className="body">
             {/* <Center /> */}
             <MainPanel />
-            <LaptopPanel />
-            <PCPanel />
-            <KeyboardPanel />
-            <ScreenPanel />
+            <LaptopPanel addCardHandleClick={addProductToCart}/>
+            <PCPanel addCardHandleClick={addProductToCart} />
+            <KeyboardPanel addCardHandleClick={addProductToCart}/>
+            <ScreenPanel addCardHandleClick={addProductToCart}/>
         </div>
     )
 }

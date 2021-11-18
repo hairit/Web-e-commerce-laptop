@@ -25,6 +25,9 @@ namespace Laptop_store_e_comerce.Models
         public int? Hienthi { get; set; }
         public string Nameimage { get; set; }
         public string Mau { get; set; }
+        public string Tinhtrang { get; set; }
+        public string Uudai { get; set; }
+        public int? Giacu { get; set; }
 
         public virtual TypeProduct IdloaiNavigation { get; set; }
         public virtual KeyboardDetail KeyboardDetail { get; set; }

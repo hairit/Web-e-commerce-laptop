@@ -12,14 +12,14 @@ import {
 } from "react-router-dom";
 import Solver from "../../../Classes/Solver";
 
-export default function ListProductKeyboard({ pros,addCardHandleClick }) {
+export default function ListProductKeyboard({ pros,addProductToCart }) {
   const history = useHistory();
   const solver = new Solver();
   function handleViewDetails(detail) {
     history.push(`/keyboard/${detail.id}`);
   }
   function addProductInCart(id,gia){
-    addCardHandleClick(id,gia)
+    addProductToCart(id,gia)
     alert("Đã thêm sản phẩm vào giỏ hàng")
   }
   return (

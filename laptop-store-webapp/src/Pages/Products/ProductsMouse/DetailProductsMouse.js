@@ -13,7 +13,7 @@ import whatsapp_32px from "../../../Images/whatsapp_32px.png";
 import edit_property_32px from "../../../Images/edit_property_32px.png";
 import settings_32px from "../../../Images/settings_32px.png";
 import { NavLink } from "react-router-dom"
-export default function DetailProductsMouse({ match, addCardHandleClick}) {
+export default function DetailProductsMouse({ match, addProductToCart}) {
   const solver = new Solver();
   const [detail, setDetail] = useState({});
   useEffect(() => {
@@ -157,11 +157,11 @@ export default function DetailProductsMouse({ match, addCardHandleClick}) {
                   </div>
                   <div className="button-gr">
                     <NavLink to="/card">
-                    <button type="button" className="btn btn-primary btn-buy" onClick={() =>addCardHandleClick(detail.id,detail.gia)}>
+                    <button type="button" className="btn btn-primary btn-buy" onClick={() =>addProductToCart(detail.id,detail.gia)}>
                       MUA NGAY
                     </button>
                     </NavLink>
-                    <button type="button" className="btn btn-outline-primary btn-cart" onClick={() =>addCardHandleClick(detail.id,detail.gia)}>
+                    <button type="button" className="btn btn-outline-primary btn-cart" onClick={() =>addProductToCart(detail.id,detail.gia)}>
                       THÊM VÀO GIỎ HÀNG
                     </button>
                   </div>

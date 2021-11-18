@@ -28,55 +28,71 @@ function App() {
   const history = useHistory();
   const [user, setUser] = useState(null);
   const [userCookie, setUserCookie] = useCookies(["user"]);
-  const [reload, setReload] = useState(0);
+  const [updateDataUser, setUpdateDataUser] = useState(0);
   useEffect(() => {
     console.log(userCookie.id);
     if (userCookie.id !== undefined) {
       axios
               .get(`https://localhost:44343/data/user/${userCookie.id}`)
-              .then((res) => setUser(res.data))
+              .then((res) => 
+              {
+                setUser(res.data);
+              })
               .catch((err) => console.log("Đăng nhập fail"+err));
     }
-  }, [reload]);
-  console.log(user);
+  }, []);
+  useEffect(() => {
+      if(user !== null) {
+        axios.get(`https://localhost:44343/data/user/${user.id}`)
+           .then((res) => setUser(res.data))
+           .catch((err) => console.log("Reload User"+err));
+      }
+  }, [updateDataUser])
+  const updateData = () =>{
+    if(updateDataUser === 0) setUpdateDataUser (1);
+    else setUpdateDataUser(0);
+  }
   const login = (user) => {
     setUserCookie("id", user.id);
     setUser(user);
   };
-  const reLoad = () =>{
-    if(reload === 0) setReload(1);
-    else setReload(0);
-  }
-  function addCardHandleClick(idProduct , price ){
+  console.log(user);
+  function addProductToCart(idProduct , price ){
+    if(user === null)
+    {
+      alert("Bạn cần đăng nhập để thêm sản phẩm vào giỏ hàng");
+    }
+    else{
     axios.get(`https://localhost:44343/data/carddetail/action=add/iduser=${user.id}/idproduct=${idProduct}/tongtien=${price}`,null)
       .then(res => {
         if(res.status === 201){
            console.log("Da them vao gio hang",user.id,idProduct,price);
-           reLoad();
+           updateData();
         }
         else alert("không thể thêm vào giỏ hàng");
-      }).catch(err => console.log("Add card failed"))
+      }).catch(err => console.log("Add card failed"));
+    }
   }
 
-  function deleteItemCart(iduser,idpro){
+  function deleteCartItem(iduser,idpro){
   
     if(window.confirm("Bạn muốn xoá sản phẩm này ra khỏi giỏ hàng?") ===true){
       axios.delete(`https://localhost:44343/data/carddetail/iduser=${iduser}/idproduct=${idpro}`,null)
       .then(()=> {
-        reLoad();
+        updateData();
       })
       .catch((err)=> 
       console.log("Dell xoa duoc",err))
     }
   }
-  function deleteQuantityCart(iduser, idpro, thanhtien,quantity) {
+  function deleteProductFromCart(iduser, idpro, thanhtien,quantity) {
     if(quantity <= 1){
-      deleteItemCart(iduser, idpro)
+      deleteCartItem(iduser, idpro)
     }
     else{
       axios.get(`https://localhost:44343/data/carddetail/action=delete/iduser=${iduser}/idproduct=${idpro}/tongtien=${thanhtien}`, null)
       .then(()=> {
-        reLoad();
+        updateData();
       })
       .catch((err)=> console.log("Dell xoa duoc",err))
     } 
@@ -86,22 +102,22 @@ function App() {
       <ScrollToTop />
       <div className="App">
         <Header user={user} />
-            <Route path="/" exact component={() => <Body />}></Route>
-            <Route path="/laptop" exact component={() => <Laptops addCardHandleClick={addCardHandleClick} />}></Route>
-            <Route path="/keyboard" exact component={() => <Keyboard addCardHandleClick={addCardHandleClick} />}></Route>
-            <Route path="/mouse" exact component={() =><Mouse addCardHandleClick={addCardHandleClick} />} ></Route>
-            <Route path="/screen" exact component={() => <Screen addCardHandleClick={addCardHandleClick} />}></Route>
-            <Route path="/pc" exact component={() => <PC addCardHandleClick={addCardHandleClick} />}></Route>
-            <Route path="/laptop/:id" component={(match) => <DetailProductsLaptop addCardHandleClick={addCardHandleClick} match={match} />}></Route>
-            <Route path="/keyboard/:id" component={(match) => <DetailProductsKeyboard addCardHandleClick={addCardHandleClick}  match={match} />} ></Route>
-            <Route path="/screen/:id" component={(match) => <DetailProductsScreen addCardHandleClick={addCardHandleClick} match={match} />}></Route>
-            <Route path="/mouse/:id" component={(match) => <DetailProductsMouse addCardHandleClick={addCardHandleClick} match={match} />}></Route>
-            <Route path="/pc/:id" component={(match) => <DetailProductsPC addCardHandleClick={addCardHandleClick} match={match} />}></Route>
-            <Route path="/card" component={() => <GioHang deleteQuantityCart={deleteQuantityCart} deleteItemCart={deleteItemCart} addCardHandleClick={addCardHandleClick} idUser={ user !== null ? user.id : null } />}></Route>
-            <Route path="/login" exact component={(match) => <Login  login={login} match={match} /> } ></Route>
-            <Route path="/lienhe" component={() => <Lienhe />}></Route>
-            <Route path="/tincongnghe" component={() => <Tintuc />}></Route>
-            <Route path="/showroom" component={() => <Showroom />}></Route>
+            <Route path="/"           exact component={() => <Body addProductToCart={addProductToCart}/>}></Route>
+            <Route path="/laptop"     exact component={() => <Laptops addProductToCart={addProductToCart} />}></Route>
+            <Route path="/keyboard"   exact component={() => <Keyboard addProductToCart={addProductToCart} />}></Route>
+            <Route path="/mouse"      exact component={() =><Mouse addProductToCart={addProductToCart} />} ></Route>
+            <Route path="/screen"     exact component={() => <Screen addProductToCart={addProductToCart} />}></Route>
+            <Route path="/pc"         exact component={() => <PC addProductToCart={addProductToCart} />}></Route>
+            <Route path="/laptop/:id"       component={(match) => <DetailProductsLaptop addProductToCart={addProductToCart} match={match} />}></Route>
+            <Route path="/keyboard/:id"     component={(match) => <DetailProductsKeyboard addProductToCart={addProductToCart}  match={match} />} ></Route>
+            <Route path="/screen/:id"       component={(match) => <DetailProductsScreen addProductToCart={addProductToCart} match={match} />}></Route>
+            <Route path="/mouse/:id"        component={(match) => <DetailProductsMouse addProductToCart={addProductToCart} match={match} />}></Route>
+            <Route path="/pc/:id"           component={(match) => <DetailProductsPC addProductToCart={addProductToCart} match={match} />}></Route>
+            <Route path="/card"             component={() => <GioHang deleteProductFromCart={deleteProductFromCart} deleteCartItem={deleteCartItem} addProductToCart={addProductToCart} idUser={ user !== null ? user.id : null } />}></Route>
+            <Route path="/login"      exact component={(match) => <Login  login={login} match={match} /> } ></Route>
+            <Route path="/lienhe"           component={() => <Lienhe />}></Route>
+            <Route path="/tincongnghe"      component={() => <Tintuc />}></Route>
+            <Route path="/showroom"         component={() => <Showroom />}></Route>
         <Footer />
       </div>
     </Router>
