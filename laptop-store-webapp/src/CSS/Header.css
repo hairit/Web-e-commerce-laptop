@@ -134,29 +134,23 @@
 }
 .quanlity-data-user {
   position: absolute;
-  display: flex;
-  justify-content: center;
   background-color: red;
-  justify-content: center;
-  align-items: center;
   border-radius: 50%;
-  width: 18px;
-  height: 18px;
+  padding: 5px 5px;
   color: #ffffff;
-  font-size: 10px;
-  top: -3px;
+  font-size: 11px;
+  font-weight: 500;
+  top: -10px;
   left: 32px;
 }
 .quanlity-data-user-disable {
   position: absolute;
   opacity: 0;
 }
-.menu-status
-{
-  display:block;
+.menu-status {
+  display: block;
   position: fixed;
 }
-.menu-status-hide
-{
-  display:none;
+.menu-status-hide {
+  display: none;
 }
