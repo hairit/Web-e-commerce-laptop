@@ -13,6 +13,9 @@ const PRODUCT_OPTIONS = [
     icon: () => {
       return <BsLaptop className="pro-list-item-icon" />;
     },
+    data : [
+       
+    ]
   },
   {
     optionName: "PC(Máy tính bàn)",

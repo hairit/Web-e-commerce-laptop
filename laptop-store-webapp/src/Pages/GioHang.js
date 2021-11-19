@@ -85,19 +85,11 @@ console.log(cardDetails)
                   <div className="info-cart" key={index}>
                     <div className="info-donhang">
                       <div className="info-chitiet">
-<<<<<<< HEAD
-                        <div className="info-check">
-                          <input class="check-item" type="checkbox"  name="hobby[]"  id="check-item" 
-                          onChange={(e)=> {
-                            checktien(e, item.idProductNavigation.gia,item.soluong)
-                          }}  value={item.id}/>
-=======
                       <div className="info-check">
                         <input class="check-item" type="checkbox"   name="hobby[]"  id="check-item" 
                         onChange={(e)=> {
                           checktien(e, item.idProductNavigation.gia,item.soluong,item.idProduct)
                         }}  value={item.idProduct}/>
->>>>>>> f24dc59d81f58c23747e1228ed79472dd57feaef
                         </div>
                         <div className="info-image">
                           <div className="img-name">
