@@ -9,7 +9,7 @@ import { NavLink } from "react-router-dom";
 import tk_shopping_img from "../Images/tk_shopping_img.png";
 import { useEffect, useState } from "react";
 import ThanhToan from "./ThanhToan";
-export default function GioHang({ idUser, addProductToCart, deleteCartItem ,deleteProductFromCart ,user}) {
+export default function GioHang({ idUser, addProductToCart, deleteCartItem ,deleteProductFromCart}) {
   console.log(idUser);
   const solver = new Solver();
   const [tongtien, setTongtien] = useState(0);

@@ -189,7 +189,132 @@ const PRODUCT_OPTIONS = [
     icon: () => {
       return <RiComputerLine className="pro-list-item-icon" />;
     },
-    attributes : null
+    attributes : [
+      {
+          name : "PC theo thương hiệu",
+          datas : [
+            {
+              name : "Dell",
+              path : "/"
+            },
+            {
+              name : "Asus",
+              path : "/"
+            },
+            {
+              name : "Acer",
+              path : "/"
+            },
+            {
+              name : "Dell",
+              path : "/"
+            },
+            {
+              name : "HP",
+              path : "Lenovo"
+            },
+            {
+              name : "Lenovo",
+              path : "/"
+            }
+          ]
+      },
+      {
+            name : "PC theo nhu cầu",
+            datas : [
+              {
+                  name : "PC văn phòng",
+                  path : "/"
+              },
+              {
+                  name : "PC sinh viên",
+                  path : "/"
+              },
+              {
+                  name : "PC đồ họa",
+                  path : "/"
+              },
+              {
+                  name : "PC gaming",
+                  path : "/"
+              },
+              {
+                  name : "PC giá rẻ",
+                  path : "/"
+              }
+            ]
+      },
+      {
+            name : "PC theo giá",
+            datas : [
+              {
+                  name : "Dưới 10 triệu",
+                  path : "/"
+              },
+              {
+                  name : "10-20 triệu",
+                  path : "/"
+              },
+              {
+                  name : "20-30 triệu",
+                  path : "/"
+              },
+              {
+                  name : "30-40 triệu",
+                  path : "/"
+              },
+              {
+                  name : "40-50 triệu",
+                  path : "/"
+              },
+              {
+                  name : "50-100 triệu",
+                  path : "/"
+              },
+              {
+                  name : "Trên 100 triệu",
+                  path : "/"
+              }
+            ]
+      },
+      {
+        name : "PC theo cấu hình cpu",
+        datas : [
+            {
+                name : "Intel Pentium",
+                path : "/"
+            },
+            {
+                name : "Intel Corei3",
+                path : "/cpu/corei3"
+            },
+            {
+                name : "Intel Corei5",
+                path : "/cpu/corei5"
+            },
+            {
+                name : "Intel Corei7",
+                path : "/cpu/corei7"
+            },
+            {
+                name : "Intel Corei9",
+                path : "/cpu/corei9"
+            },
+            {
+                name : "AMD Ryzen3",
+                path : "/cpu/ryzen3"
+            },
+            {
+                name : "AMD Ryzen5",
+                path : "/cpu/ryzen5"
+            },
+            {
+                name : "AMD Ryzen7",
+                path : "/cpu/ryzen7"
+            },
+            ]
+     },
+    ]
   },
   {
     optionName: "Màn hình",

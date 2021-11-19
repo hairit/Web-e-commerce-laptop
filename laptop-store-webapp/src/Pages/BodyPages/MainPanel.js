@@ -25,19 +25,22 @@ const LoadingSelectPanel = (item , index) =>{
                 </div>
                 <div className="select-panel-right col-no-padding c-3">
                     <img src="https://localhost:44343/Images/UserAvatar/quocdatavatar.png" className="select-panel-right-img" />
+                    <p className="dat-said">Nhìn lol gì !!</p>
                 </div>
             </div>
         </div>
     )
 }
 const LoadingProductOptions = (item , index) =>{
-    return (<NavLink className="pro-list-item" key={index} to={item.path}>
+    return (<div className="menu-list-item">
+        <NavLink className="pro-list-item" key={index} to={item.path}>
             {item.icon()}
             <p className="pro-list-item-text">{item.optionName}</p>
-            {
+        </NavLink>
+        {
                 item.attributes ? LoadingSelectPanel(item,index) : <div></div>
-            }
-        </NavLink>)
+        }
+    </div>)
 }
 const renderCenterImage = (image,index,X) =>{
     if(image.position === 'center') return (

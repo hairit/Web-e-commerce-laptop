@@ -43,7 +43,7 @@
   border: #3f4fc3 solid 0.1px;
   color: #3f4fc3;
 }
-/* .laptop-panel-header::before {
+.laptop-panel-header::before {
   content: "";
   position: absolute;
   left: 0;
@@ -51,8 +51,8 @@
   height: 5px;
   top: -5px;
   background-color: #3f4fc3;
-} */
-/* .laptop-panel-header-logo {
+} 
+ .laptop-panel-header-logo {
   background-color: #3f4fc3;
   width: max-content;
   height: 30px;
@@ -63,8 +63,8 @@
   position: relative;
   display: flex;
   align-items: center;
-} */
-/* .laptop-panel-header-logo::before{
+} 
+ .laptop-panel-header-logo::before{
     position: absolute;
     content:'';
     top: 0;
@@ -75,8 +75,8 @@
     border-left: 20px solid #FFFFFF;
     border-top: 30px solid #3f4fc3;
     background-color: #3f4fc3;
-} */
-/* .laptop-panel-header-logo::after {
+} 
+ .laptop-panel-header-logo::after {
   position: absolute;
   content: "";
   top: 0;
@@ -87,8 +87,8 @@
   border-right: 20px solid #ffffff;
   border-top: 30px solid #3f4fc3;
   background-color: #3f4fc3;
-} */
-/* .laptop-panel-header-item {
+} 
+.laptop-panel-header-item {
   width: 120px;
   display: flex;
   justify-content: center;
@@ -96,7 +96,7 @@
   padding: 10px 0;
   border-right: 5px solid #3f4fc3;
   border-top-right-radius: 100px;
-} */
+}
 .laptop-panel-header-item p {
   color: #424244;
   font-weight: 400;
