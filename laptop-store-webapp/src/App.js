@@ -71,7 +71,7 @@ function App() {
            updateData();
         }
         else alert("không thể thêm vào giỏ hàng");
-      }).catch(err => console.log("Add card failed"));
+      }).catch(err => console.log("Add cart failed"));
     }
   }
 
