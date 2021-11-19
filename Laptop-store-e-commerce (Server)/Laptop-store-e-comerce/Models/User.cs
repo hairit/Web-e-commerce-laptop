@@ -12,7 +12,7 @@ namespace Laptop_store_e_comerce.Models
         public User()
         {
             Bills = new HashSet<Bill>();
-            CardDetails = new HashSet<CardDetail>();
+            CartDetails = new HashSet<CartDetail>();
         }
 
         public int Id { get; set; }
@@ -26,6 +26,6 @@ namespace Laptop_store_e_comerce.Models
         public string Nameimage { get; set; }
 
         public virtual ICollection<Bill> Bills { get; set; }
-        public virtual ICollection<CardDetail> CardDetails { get; set; }
+        public virtual ICollection<CartDetail> CartDetails { get; set; }
     }
 }

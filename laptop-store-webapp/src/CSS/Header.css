@@ -48,10 +48,14 @@
   font-weight: 500;
 }
 .header-center {
+  position: sticky;
+  top: 0;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: #3f4fc3;
+  z-index: 10;
 }
 .header-center-left {
   display: flex;

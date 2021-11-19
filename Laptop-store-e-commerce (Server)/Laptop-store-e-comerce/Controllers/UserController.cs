@@ -26,7 +26,7 @@ namespace Laptop_store_e_comerce.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUserByID(int id)
         {
-            var user = await database.Users.Include(user => user.CardDetails).FirstOrDefaultAsync(user => user.Id == id);
+            var user = await database.Users.Include(user => user.CartDetails).FirstOrDefaultAsync(user => user.Id == id);
             if (user == null)
             {
                 return NotFound();
@@ -49,7 +49,7 @@ namespace Laptop_store_e_comerce.Controllers
         public async Task<ActionResult<User>> Login(string email ,string pass)
         {
             var user = await database.Users.Include(user => user.Bills).ThenInclude(bill => bill.BillDetails)
-                                           .Include(user => user.CardDetails)
+                                           .Include(user => user.CartDetails)
                                            .FirstOrDefaultAsync(a => a.Email == email);
             if (user != null)
             {
