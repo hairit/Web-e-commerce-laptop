@@ -7,10 +7,36 @@ import {BiChevronLeft ,BiChevronRight} from 'react-icons/bi';
 import {useState , useEffect , useRef } from 'react';
 import CALLER from '../../API/CALL';
 
+
+const LoadingSelectPanelCenter = (item,index) => {
+    return (
+        <div className="select-panel-col" key={index}>
+            <NavLink key={index} to="laptop" className="select-panel-col-item select-panel-col-title">{item.name}</NavLink>
+            {item.datas.map((data,index)=><NavLink to={data.path} className="select-panel-col-item" key={index}>{data.name}</NavLink>)}
+        </div>
+    )
+}
+const LoadingSelectPanel = (item , index) =>{
+    return (
+        <div className="select-panel container12Col" key={index}>
+            <div className="row-12-no-margin select-panel-row">
+                <div className="select-panel-center col-no-padding c-9">
+                    {item.attributes.map((attribute,index)=> LoadingSelectPanelCenter(attribute,index))}
+                </div>
+                <div className="select-panel-right col-no-padding c-3">
+                    <img src="https://localhost:44343/Images/UserAvatar/quocdatavatar.png" className="select-panel-right-img" />
+                </div>
+            </div>
+        </div>
+    )
+}
 const LoadingProductOptions = (item , index) =>{
     return (<NavLink className="pro-list-item" key={index} to={item.path}>
             {item.icon()}
             <p className="pro-list-item-text">{item.optionName}</p>
+            {
+                item.attributes ? LoadingSelectPanel(item,index) : <div></div>
+            }
         </NavLink>)
 }
 const renderCenterImage = (image,index,X) =>{
@@ -85,7 +111,9 @@ export default function MainPanel() {
                 <div className="row-12-no-margin">
                         <div className="col-no-padding c-2 main-panel-menu">
                             <div className="main-panel-menu-list">
-                                {PRODUCT_OPTIONS.map((PRODUCT_OPTION,index) => LoadingProductOptions(PRODUCT_OPTION,index))}
+                                {
+                                    PRODUCT_OPTIONS.map((PRODUCT_OPTION,index) => LoadingProductOptions(PRODUCT_OPTION,index))
+                                }
                             </div>
                         </div>
                         <div className="col-no-padding c-10 main-panel-image container12Col">

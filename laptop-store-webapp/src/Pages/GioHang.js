@@ -22,7 +22,7 @@ export default function GioHang({ idUser, addProductToCart, deleteCartItem ,dele
   const noneCartNotification = () => {
     if(cartDetails.length === 0){
       setLoading(true);
-      return (
+      return(
         <div className="centerp">
               <div className="center-car">
               <div className="product-none">
@@ -56,9 +56,7 @@ export default function GioHang({ idUser, addProductToCart, deleteCartItem ,dele
         .catch((err) => setCartDetails([]) );
     }
   }, [reload]);
-console.log(cardDetails)
   function handleOrder(){
-
   }
   function checktien (e,gia,quantity,idpro) {
     if (e.target.checked) {
