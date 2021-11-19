@@ -205,3 +205,11 @@
 .detail-price {
   font-weight: bold;
 }
+.ships{
+  float: right !important;
+    color: red;
+    font-size: 17px;
+    font-weight: bold;
+   
+    text-align: right;
+}

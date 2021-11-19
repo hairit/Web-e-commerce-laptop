@@ -1,5 +1,5 @@
 import axios from "axios";
-import React from "react";
+import React,{ useRef } from "react";
 import Solver from "../Classes/Solver";
 import bootstrap from "../CSS/ProductsCss/bootstrap.css";
 import GioHangCss from "../CSS/GioHangCss.css";
@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import ThanhToan from "./ThanhToan";
 export default function GioHang({ idUser, addProductToCart, deleteCartItem ,deleteProductFromCart}) {
   const solver = new Solver();
+  const buttonRef = useRef();
   const [tongtien, setTongtien] = useState(0);
   const [cartDetails, setCartDetails] = useState([]);
   const [loading , setLoading] = useState(true);
@@ -20,6 +21,11 @@ export default function GioHang({ idUser, addProductToCart, deleteCartItem ,dele
     if(reload === 0) setReload(1);
     else setReload(0);
   }
+
+function disableButton() {
+  buttonRef.current.visibility = true;
+}
+  
   const noneCartNotification = () => {
     if(cartDetails.length === 0){
       setLoading(true);
@@ -71,6 +77,7 @@ console.log(cartDetails)
       axios.get(`https://localhost:44343/data/cartdetail/select=unselected/iduser=${idUser}/idproduct=${idpro}`, null)
       .then(() => {
         setTongtien(tongtien - gia*quantity);
+        // {disableButton()}
         reLoad()
       })
       .catch((err) => console.error("Không thể unchecker",err));
@@ -160,8 +167,9 @@ console.log(cartDetails)
                     <p className="txt-left">Thành tiền</p>
                     <p className="thanhtien">{solver.formatCurrency("vi-VN","currency","VND",tongtien)}</p>
                   </div>
-                  <NavLink to="/checkout">
-                  <button className="btn-pay btn btn-outline-primary" >
+                  <div className="VAT">( Bao gồm VAT )</div>
+                  <NavLink to="/checkout" >
+                  <button className="btn-pay btn btn-outline-primary" ref={buttonRef}   >
                     Tiếp tục thanh toán
                   </button>
                   </NavLink>
