@@ -8,6 +8,7 @@ import { NavLink } from "react-router-dom";
 
 import tk_shopping_img from "../Images/tk_shopping_img.png";
 import { useEffect, useState } from "react";
+import ThanhToan from "./ThanhToan";
 export default function GioHang({ idUser, addProductToCart, deleteCartItem ,deleteProductFromCart}) {
   const solver = new Solver();
   const [tongtien, setTongtien] = useState(0);
@@ -55,9 +56,14 @@ export default function GioHang({ idUser, addProductToCart, deleteCartItem ,dele
         .catch((err) => setCartDetails([]) );
     }
   }, [reload]);
-  function checktien (e,gia,quantity) {
+console.log(cardDetails)
+  function handleOrder(){
+
+  }
+  function checktien (e,gia,quantity,idpro) {
     if (e.target.checked) {
       setTongtien(tongtien + gia*quantity);
+
     } else {
       setTongtien(tongtien - gia*quantity);
     }
@@ -79,11 +85,19 @@ export default function GioHang({ idUser, addProductToCart, deleteCartItem ,dele
                   <div className="info-cart" key={index}>
                     <div className="info-donhang">
                       <div className="info-chitiet">
+<<<<<<< HEAD
                         <div className="info-check">
                           <input class="check-item" type="checkbox"  name="hobby[]"  id="check-item" 
                           onChange={(e)=> {
                             checktien(e, item.idProductNavigation.gia,item.soluong)
                           }}  value={item.id}/>
+=======
+                      <div className="info-check">
+                        <input class="check-item" type="checkbox"   name="hobby[]"  id="check-item" 
+                        onChange={(e)=> {
+                          checktien(e, item.idProductNavigation.gia,item.soluong,item.idProduct)
+                        }}  value={item.idProduct}/>
+>>>>>>> f24dc59d81f58c23747e1228ed79472dd57feaef
                         </div>
                         <div className="info-image">
                           <div className="img-name">
@@ -97,6 +111,7 @@ export default function GioHang({ idUser, addProductToCart, deleteCartItem ,dele
                             <div className="name">
                               <a href="#">{item.idProductNavigation.ten}</a>
                               <div className="id-item">ID: {item.idProduct}</div>
+                              <div className="id-item">Loại: {item.idProductNavigation.idloaiNavigation.ten}</div>
                             </div>
                           </div>
                         </div>

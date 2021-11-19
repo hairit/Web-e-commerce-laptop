@@ -3,7 +3,47 @@ import GioHang from "../CSS/GioHangCss.css";
 import Order from "../CSS/Order.css";
 import edit from "../Images/edit.png";
 import plus from "../Images/plus.png";
+import { useEffect, useState } from "react";
+
 export default function ThanhToan() {
+  const [adress, setAddress] = useState(false);
+
+  function btnAddAdress() {
+    setAddress(true);
+  }
+  function btnSaveNewAdress() {
+    setAddress(false);
+  }
+  function showAddAdress() {
+    if (adress === false) {
+      return FormAddAdress();
+    } else {
+      return renderFormAddAdress();
+    }
+  }
+  function renderFormAddAdress() {
+    return (
+      <div className="formAddAdress">
+        <div className="form">
+          <button
+            className="btn btn-primary"
+            onClick={() => btnSaveNewAdress()}
+          />
+        </div>
+      </div>
+    );
+  }
+  function FormAddAdress() {
+    return (
+      <div className="info-addAdress" onClick={() => btnAddAdress()}>
+        <div className="info-add">
+          <img src={plus} />
+          <div className="info-txtadd">Thêm địa chỉ</div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="wrapper order">
       <div className="container-order">
@@ -29,12 +69,7 @@ export default function ThanhToan() {
                       Khánh Hòa
                     </div>
                   </div>
-                  <div className="info-addAdress" onClick="">
-                    <div className="info-add">
-                      <img src={plus} />
-                      <div className="info-txtadd">Thêm địa chỉ</div>
-                    </div>
-                  </div>
+                  {showAddAdress()}
                 </div>
               </div>
               <div className="info-delivery">
@@ -115,12 +150,10 @@ export default function ThanhToan() {
                 <strong>Thanh toán</strong>
               </div>
               <div className="tamtinh-thanhtien ">
-                <p className="txt-left">Giảm giá</p>
-                <p className="tamtinh"></p>
+                <p className="txt-left">Phí vận chuyển</p>
               </div>
               <div className="tamtinh-thanhtien">
                 <p className="txt-left">Thành tiền</p>
-                <p className="thanhtien"></p>
               </div>
               <button className="btn-pay btn btn-outline-primary">
                 Đặt hàng ngay

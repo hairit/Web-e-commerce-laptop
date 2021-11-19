@@ -128,17 +128,6 @@ export default function Laptops({match,addProductToCart}) {
               </div>
             </div>
             <div className="col-md-3 sorfprice">
-              {/* <div className="category leftbar ">
-                <h3 className="title">Danh mục sản phẩm</h3>
-                <ul>
-                  <li>
-                    <a href="#">Laptop</a>
-                  </li>
-                  <li>
-                    <a href="#">Bàn phím</a>
-                  </li>
-                </ul>
-              </div> */}
               <div className="price-filter leftbar">
                 <h3 className="title">Giá</h3>
                 <form className="pricing">
