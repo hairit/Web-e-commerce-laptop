@@ -194,7 +194,7 @@ export default function Login({login,userCookie}) {
         setreqpass(false);
         setsignup(false);
         setreqsdt(false);
-        setreqpass2(false)
+        setreqpass2(false);
     }
     function showReqPass()
     {

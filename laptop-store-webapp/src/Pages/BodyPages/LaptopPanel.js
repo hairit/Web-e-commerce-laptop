@@ -51,6 +51,9 @@ export default function Laptop({addProductToCart}) {
          <div className="laptop-panel-header-menu">
              <NavLink to={`/laptop/brand/DELL`} className="laptop-panel-header-menu-item"><p>DELL</p></NavLink>
              <NavLink to={`/laptop/brand/ASUS`} className="laptop-panel-header-menu-item"><p>ASUS</p></NavLink>
+             <NavLink to={`/laptop/brand/HP`} className="laptop-panel-header-menu-item"><p>ACER</p></NavLink>
+             <NavLink to={`/laptop/brand/ACER`} className="laptop-panel-header-menu-item"><p>HP</p></NavLink>
+             <NavLink to={`/laptop/brand/LENOVO`} className="laptop-panel-header-menu-item"><p>LENOVO</p></NavLink>
          </div>
       </div>
       <div className="container10Col wide">
