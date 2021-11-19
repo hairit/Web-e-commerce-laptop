@@ -71,7 +71,7 @@ function App() {
            updateData();
         }
         else alert("không thể thêm vào giỏ hàng");
-      }).catch(err => console.log("Add card failed"));
+      }).catch(err => console.log("Add cart failed"));
     }
   }
 
@@ -109,13 +109,13 @@ function App() {
             <Route path="/mouse"      exact component={() =><Mouse addProductToCart={addProductToCart} />} ></Route>
             <Route path="/screen"     exact component={() => <Screen addProductToCart={addProductToCart} />}></Route>
             <Route path="/pc"         exact component={() => <PC addProductToCart={addProductToCart} />}></Route>
-            <Route path="/card/thanhtoan"         exact component={() => <ThanhToan addProductToCart={addProductToCart} />}></Route>
+            <Route path="/checkout"         exact component={() => <ThanhToan user={user} idUser={ user !== null ? user.id : null } />}></Route>
             <Route path="/laptop/:id"       component={(match) => <DetailProductsLaptop addProductToCart={addProductToCart} match={match} />}></Route>
             <Route path="/keyboard/:id"     component={(match) => <DetailProductsKeyboard addProductToCart={addProductToCart}  match={match} />} ></Route>
             <Route path="/screen/:id"       component={(match) => <DetailProductsScreen addProductToCart={addProductToCart} match={match} />}></Route>
             <Route path="/mouse/:id"        component={(match) => <DetailProductsMouse addProductToCart={addProductToCart} match={match} />}></Route>
             <Route path="/pc/:id"           component={(match) => <DetailProductsPC addProductToCart={addProductToCart} match={match} />}></Route>
-            <Route path="/card"       exact     component={() => <GioHang deleteProductFromCart={deleteProductFromCart} deleteCartItem={deleteCartItem} addProductToCart={addProductToCart} idUser={ user !== null ? user.id : null } />}></Route>
+            <Route path="/card"       exact     component={() => <GioHang user={user} deleteProductFromCart={deleteProductFromCart} deleteCartItem={deleteCartItem} addProductToCart={addProductToCart} idUser={ user !== null ? user.id : null } />}></Route>
             <Route path="/login"      exact component={(match) => <Login  login={login} match={match} /> } ></Route>
             <Route path="/laptop/brand/:brand"  exact    exact component={(match) => <Laptops  match={match} /> } ></Route>
             <Route path="/lienhe"           component={() => <Lienhe />}></Route>

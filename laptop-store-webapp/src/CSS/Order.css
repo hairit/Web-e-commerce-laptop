@@ -6,7 +6,7 @@
   background-color: #edeef2;
 }
 .container-order {
-  height: 500px;
+  display: flex;
   padding: 20px 15px;
   margin-left: auto;
   margin-right: auto;
@@ -110,6 +110,9 @@
 .info-PTgiaohang {
   padding-bottom: 30px;
 }
+.txt-ship {
+  width: auto;
+}
 .form-check p,
 .TT-defaul,
 .TT-card {
@@ -146,11 +149,12 @@
   font-weight: 500;
   float: left;
 }
-.info-tile a {
+.info-editcart {
   font-size: 15px;
-  padding-top: 8px;
+  padding-top: 4px;
   float: right;
   color: blue;
+  cursor: pointer;
 }
 .info-pro {
   display: flex;
@@ -159,6 +163,7 @@
 .info-detailPro {
   display: flex;
   flex-flow: row;
+  padding-bottom: 10px;
 }
 .img-pros {
   width: 20%;
@@ -169,7 +174,9 @@
   width: 100%;
 }
 .detail-pros {
-  width: 74%;
+  line-height: 1.3;
+  padding-left: 10px;
+  width: 80%;
 }
 .pay-order {
   margin-top: 15px !important;
@@ -180,14 +187,21 @@
 .pay-orders {
   padding-top: 0 !important;
 }
-.formAddAdress{
+.formAddAdress {
   position: fixed !important;
-  inset:0px;
+  inset: 0px;
   z-index: 100;
   display: flex !important;
-  justify-content:center !important;
-  align-items:center !important;
+  justify-content: center !important;
+  align-items: center !important;
   width: 50%;
-  height:300px;
-  background-color:red;
+  height: 300px;
+  background-color: red;
+}
+.detail-name {
+  font-weight: 400;
+  font-size: 12px;
+}
+.detail-price {
+  font-weight: bold;
 }

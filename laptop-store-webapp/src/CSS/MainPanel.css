@@ -21,14 +21,14 @@
 }
 .select-panel {
   background-color: #ffffff;
-  width: 500%;
+  width: 100%;
   position: absolute;
   left: 117%;
   top: 0;
   height: 100%;
   z-index: 20;
   transition: 0.2s;
-  opacity: 1;
+  opacity: 0;
   box-shadow: -1px 0 10px 0 rgb(141, 139, 139);
 }
 .select-panel-row {
@@ -79,11 +79,11 @@
 .pro-list-item:hover {
   background-color: #3f4fc3;
 }
-/* .pro-list-item:hover .select-panel {
+.pro-list-item:hover .select-panel {
   opacity: 1;
   left: 100%;
   width: 500%;
-} */
+}
 .pro-list-item:hover .pro-list-item-icon {
   color: #ffffff;
 }
