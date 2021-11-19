@@ -10,13 +10,112 @@
   height: auto;
   background-color: #ffffff;
   padding: 0 10px;
+  position: relative;
 }
 .main-panel-menu-list {
   background-color: #ffffff;
   box-shadow: -5px 4px 10px 0 rgb(226, 225, 225);
-  border-radius: 10px;
   height: 100%;
-  overflow: hidden;
+}
+.select-panel {
+  background-color: #ffffff;
+  width: 100%;
+  position: absolute;
+  left: 117%;
+  top: 0;
+  height: 100%;
+  z-index: 20;
+  transition: 0.2s;
+  opacity: 0;
+  box-shadow: -1px 0 10px 0 rgb(141, 139, 139);
+}
+.select-panel-row {
+  height: 100%;
+}
+.select-panel-center {
+  padding: 14px 20px;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.select-panel-col {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  height: 260px;
+}
+.select-panel-col-title {
+  color: #3f4fc3 !important;
+  font-weight: 500;
+}
+.select-panel-col-item {
+  padding: 5px 30px;
+  font-size: 13px;
+  line-height: 1.33;
+  color: rgb(82, 80, 80);
+}
+.select-panel-right-img{
+  max-width: 100%;
+}
+.pro-list {
+  width: 15%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+}
+.pro-list-item {
+  text-decoration: none;
+  color: rgb(95, 93, 93);
+  text-align: left;
+  padding: 7px 15px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.pro-list-item:hover {
+  background-color: #3f4fc3;
+}
+/* .pro-list-item::after{
+  position: absolute;
+  content: '';
+  left: 100%;
+  top : 0 ;
+  width: 30px;
+  height: 100%;
+  border-right: 30px #ffffff solid;
+  opacity: 0;
+  border-top : 34px solid #3f4fc3;
+  background-color: #3f4fc3;
+  z-index: 30;
+} */
+.pro-list-item:hover::after{
+  opacity: 1;
+}
+.menu-list-item:hover .select-panel{
+  opacity: 1;
+  left: 100%;
+  width: 500%;
+}
+.pro-list-item:hover .pro-list-item-icon {
+  color: #ffffff;
+}
+.pro-list-item:hover .pro-list-item-text {
+  color: #ffffff;
+}
+.pro-list-item-icon {
+  color: rgb(121, 121, 121);
+  font-size: 20px;
+}
+.pro-list-item-text {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  padding-left: 12px;
 }
 .main-image-row {
   height: 100%;
@@ -25,20 +124,20 @@
   height: 100%;
   padding: 0 6px;
 }
-.center-image-slider{
+.center-image-slider {
   height: 100%;
   display: flex;
 }
-.center-image{
+.center-image {
   position: relative;
   max-width: 100%;
   overflow: hidden;
 }
-.center-image-item{
+.center-image-item {
   position: relative;
   width: 100%;
 }
-.center-image-item-img{
+.center-image-item-img {
   user-select: none;
   position: absolute;
   top: 0;
@@ -79,24 +178,26 @@
   width: 37px;
   height: 57px;
 }
-.image-right-item{
+.image-right-item {
   width: 100%;
   height: 50%;
   padding: -4px 0;
   transition: 0.4s;
 }
-.main-image-right{
+.main-image-right {
   display: flex;
   flex-direction: column;
   height: 100%;
 }
-.image-right-img{
-  height: 100%; 
+.image-right-img {
+  height: 100%;
   width: 100%;
 }
-.main-image-item{
+.main-image-item {
   height: 357px;
 }
-
-
-
+.dat-said{
+  color: red;
+  font-size: 20px;
+  margin-top: 30px;
+}

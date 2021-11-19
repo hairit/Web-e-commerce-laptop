@@ -9,7 +9,7 @@
 .center-panel{
     display: flex;
 }
-.pro-list{
+/* .pro-list{
     width: 15%;
     height: auto;
     display : flex;
@@ -44,7 +44,7 @@
     font-size: 14px ;
     font-weight: 500;
     padding-left: 12px;
-}
+} */
 .center-image{
     width: 85%;
     height: auto;
