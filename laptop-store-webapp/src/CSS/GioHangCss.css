@@ -107,6 +107,7 @@
   margin-top: 5px;
 }
 .name{
+  line-height:1.4;
   width: 80%;
 }
 .name a {

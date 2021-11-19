@@ -5,7 +5,7 @@ import "../../../CSS/ProductsCss/bootstrap.css";
 import "../../../CSS/ProductsCss/style.css";
 import { useEffect, useState } from "react";
 import ListProductLaptop from "./ListProductLaptop";
-export default function Laptops({addProductToCart}) {
+export default function Laptops({match,addProductToCart}) {
   const [pros, setPros] = useState([]);
   useEffect(() => {
     axios
@@ -13,6 +13,7 @@ export default function Laptops({addProductToCart}) {
       .then((res) => setPros(res.data))
       .catch((err) => console.log(err));
   }, []);
+  console.log(match);
   return (
     <div className="wrapper">
       <div className="container_fullwidth">
@@ -127,17 +128,6 @@ export default function Laptops({addProductToCart}) {
               </div>
             </div>
             <div className="col-md-3 sorfprice">
-              {/* <div className="category leftbar ">
-                <h3 className="title">Danh mục sản phẩm</h3>
-                <ul>
-                  <li>
-                    <a href="#">Laptop</a>
-                  </li>
-                  <li>
-                    <a href="#">Bàn phím</a>
-                  </li>
-                </ul>
-              </div> */}
               <div className="price-filter leftbar">
                 <h3 className="title">Giá</h3>
                 <form className="pricing">

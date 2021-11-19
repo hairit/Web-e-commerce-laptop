@@ -8,6 +8,7 @@ import { NavLink } from "react-router-dom";
 
 import tk_shopping_img from "../Images/tk_shopping_img.png";
 import { useEffect, useState } from "react";
+import ThanhToan from "./ThanhToan";
 export default function GioHang({ idUser, addProductToCart, deleteCartItem ,deleteProductFromCart}) {
   const solver = new Solver();
   const [tongtien, setTongtien] = useState(0);
@@ -29,9 +30,14 @@ export default function GioHang({ idUser, addProductToCart, deleteCartItem ,dele
         .catch((err) => setCardDetails([]) );
     }
   }, [reload]);
-  function checktien (e,gia,quantity) {
+console.log(cardDetails)
+  function handleOrder(){
+
+  }
+  function checktien (e,gia,quantity,idpro) {
     if (e.target.checked) {
       setTongtien(tongtien + gia*quantity);
+
     } else {
       setTongtien(tongtien - gia*quantity);
     }
@@ -54,10 +60,10 @@ export default function GioHang({ idUser, addProductToCart, deleteCartItem ,dele
                     <div className="info-donhang">
                       <div className="info-chitiet">
                       <div className="info-check">
-                        <input class="check-item" type="checkbox"  name="hobby[]"  id="check-item" 
+                        <input class="check-item" type="checkbox"   name="hobby[]"  id="check-item" 
                         onChange={(e)=> {
-                          checktien(e, item.idProductNavigation.gia,item.soluong)
-                        }}  value={item.id}/>
+                          checktien(e, item.idProductNavigation.gia,item.soluong,item.idProduct)
+                        }}  value={item.idProduct}/>
                         </div>
                         <div className="info-image">
                           <div className="img-name">
@@ -71,6 +77,7 @@ export default function GioHang({ idUser, addProductToCart, deleteCartItem ,dele
                             <div className="name">
                               <a href="#">{item.idProductNavigation.ten}</a>
                               <div className="id-item">ID: {item.idProduct}</div>
+                              <div className="id-item">Loại: {item.idProductNavigation.idloaiNavigation.ten}</div>
                             </div>
                           </div>
                         </div>

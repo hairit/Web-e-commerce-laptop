@@ -117,6 +117,7 @@ function App() {
             <Route path="/pc/:id"           component={(match) => <DetailProductsPC addProductToCart={addProductToCart} match={match} />}></Route>
             <Route path="/card"       exact     component={() => <GioHang deleteProductFromCart={deleteProductFromCart} deleteCartItem={deleteCartItem} addProductToCart={addProductToCart} idUser={ user !== null ? user.id : null } />}></Route>
             <Route path="/login"      exact component={(match) => <Login  login={login} match={match} /> } ></Route>
+            <Route path="/laptop/brand/:brand"  exact    exact component={(match) => <Laptops  match={match} /> } ></Route>
             <Route path="/lienhe"           component={() => <Lienhe />}></Route>
             <Route path="/tincongnghe"      component={() => <Tintuc />}></Route>
             <Route path="/showroom"         component={() => <Showroom />}></Route>

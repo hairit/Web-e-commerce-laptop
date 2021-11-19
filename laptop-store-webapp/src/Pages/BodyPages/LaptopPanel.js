@@ -14,7 +14,7 @@ const renderLaptopItem = (pro, index ,addProductToCart) => {
         <div className="laptop-image">
           <img className="laptop-image-img" src={URL + `/Images/Products/${pro.nameimage}`} alt={pro.nameimage} /></div>
         <div className="laptop-detail">
-          <NavLink  to={`/laptop/${pro.id}`}className="laptop-detail-item laptop-name">{pro.ten}</NavLink>
+          <NavLink  to={`/laptop/${pro.id}`} className="laptop-detail-item laptop-name">{pro.ten}</NavLink>
           <div className="laptop-detail-item laptop-price">
             <div className="laptop-price-value" >
               {solver.formatCurrency("vi-VN", "currency", "VND", pro.gia)}
@@ -46,20 +46,18 @@ export default function Laptop({addProductToCart}) {
           <p>Top các sản phẩm bán chạy</p>
         </div>
       </div> */}
+      <div className="laptop-panel-header">
+         <h3 className="laptop-panel-header-title">Laptop nổi bật nhất</h3>
+         <div className="laptop-panel-header-menu">
+             <NavLink to={`/laptop/brand/DELL`} className="laptop-panel-header-menu-item"><p>DELL</p></NavLink>
+             <NavLink to={`/laptop/brand/ASUS`} className="laptop-panel-header-menu-item"><p>ASUS</p></NavLink>
+         </div>
+      </div>
       <div className="container10Col wide">
         <div className="row-10-no-margin">
           {pros.map((pro, index) => renderLaptopItem(pro, index , addProductToCart))}
         </div>
       </div>
-      <button
-        className="btn-all-product"
-        to="/"
-        onClick={() => {
-          history.push(`/laptop`);
-        }}
-      >
-        <p>Tất cả sản phẩm</p>
-      </button>
     </div>
   );
 }

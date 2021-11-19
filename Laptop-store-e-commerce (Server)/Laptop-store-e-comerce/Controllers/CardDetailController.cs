@@ -30,7 +30,6 @@ namespace Laptop_store_e_comerce.Controllers
             var cardDetail = await _context.CardDetails.Include(detail => detail.IdProductNavigation).ThenInclude(pro => pro.IdloaiNavigation)
                                                        .Where(detail => detail.IdUser == value1 && detail.IdProduct == value2)
                                                        .FirstOrDefaultAsync();      
-            
             if (cardDetail == null)
             {
                 return NotFound();
@@ -137,10 +136,8 @@ namespace Laptop_store_e_comerce.Controllers
             {
                 return NotFound();
             }
-
             _context.CardDetails.Remove(cardDetail);
             await _context.SaveChangesAsync();
-
             return cardDetail;
         }
 
