@@ -31,9 +31,9 @@ export default function GioHang({ idUser, addProductToCart, deleteCartItem ,dele
     }
   }, [reload]);
 console.log(cardDetails)
-  function handleOrder(){
+  // function handleOrder(){
 
-  }
+  // }
   function checktien (e,gia,quantity,idpro) {
     if (e.target.checked) {
       setTongtien(tongtien + gia*quantity);
