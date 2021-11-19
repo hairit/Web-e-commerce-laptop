@@ -64,7 +64,7 @@ function App() {
       alert("Bạn cần đăng nhập để thêm sản phẩm vào giỏ hàng");
     }
     else{
-    axios.get(`https://localhost:44343/data/carddetail/action=add/iduser=${user.id}/idproduct=${idProduct}/tongtien=${price}`,null)
+    axios.get(`https://localhost:44343/data/cartdetail/action=add/iduser=${user.id}/idproduct=${idProduct}/tongtien=${price}`,null)
       .then(res => {
         if(res.status === 201){
            console.log("Da them vao gio hang",user.id,idProduct,price);
@@ -78,7 +78,7 @@ function App() {
   function deleteCartItem(iduser,idpro){
   
     if(window.confirm("Bạn muốn xoá sản phẩm này ra khỏi giỏ hàng?") ===true){
-      axios.delete(`https://localhost:44343/data/carddetail/iduser=${iduser}/idproduct=${idpro}`,null)
+      axios.delete(`https://localhost:44343/data/cartdetail/iduser=${iduser}/idproduct=${idpro}`,null)
       .then(()=> {
         updateData();
       })
@@ -91,7 +91,7 @@ function App() {
       deleteCartItem(iduser, idpro)
     }
     else{
-      axios.get(`https://localhost:44343/data/carddetail/action=delete/iduser=${iduser}/idproduct=${idpro}/tongtien=${thanhtien}`, null)
+      axios.get(`https://localhost:44343/data/cartdetail/action=delete/iduser=${iduser}/idproduct=${idpro}/tongtien=${thanhtien}`, null)
       .then(()=> {
         updateData();
       })
