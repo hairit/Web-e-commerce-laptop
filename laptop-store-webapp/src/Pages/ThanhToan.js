@@ -1,12 +1,39 @@
 import React from "react";
+import axios from "axios";
+import Solver from "../Classes/Solver";
+import { useHistory } from "react-router-dom";
+
 import GioHang from "../CSS/GioHangCss.css";
 import Order from "../CSS/Order.css";
 import edit from "../Images/edit.png";
 import plus from "../Images/plus.png";
 import { useEffect, useState } from "react";
 
-export default function ThanhToan() {
+export default function ThanhToan({ idUser, user }) {
+  const history = useHistory();
+  const solver = new Solver();
   const [adress, setAddress] = useState(false);
+  const [checkout, setCheckout] = useState([]);
+
+  function checkPrice(pro) {
+    return 
+  }
+  useEffect(() => {
+    if (idUser !== null) {
+      axios
+        .get(
+          `https://localhost:44343/data/cartdetail/iduser=${idUser}/selected`,
+          null
+        )
+        .then((res) => {
+          if (res.status === 200) {
+            setCheckout(res.data);
+          }
+        })
+        .catch((err) => console.log(err));
+    }
+  }, []);
+  console.log("kikiki",checkout);
 
   function btnAddAdress() {
     setAddress(true);
@@ -44,6 +71,9 @@ export default function ThanhToan() {
     );
   }
 
+  function editCart() {
+    history.goBack();
+  }
   return (
     <div className="wrapper order">
       <div className="container-order">
@@ -58,15 +88,13 @@ export default function ThanhToan() {
                   <div className="info-nhanhang">Thông tin nhận hàng</div>
                   <div className="info-receive">
                     <div className="info-nameUser">
-                      <p>Huỳnh Phạm Quốc Đạt</p>
+                      <p>{user.lastname} {" "} {user.firstname}</p>
                       <div className="logo-edit">
                         <img src={edit} />
                       </div>
                     </div>
-                    <div className="phone-adress">0392392071</div>
-                    <div className="phone-adress">
-                      Hòa do 1B, phường Cam Phúc Bắc, thành phố Cam Ranh, tỉnh
-                      Khánh Hòa
+                    <div className="phone-adress">{user.sdt}</div>
+                    <div className="phone-adress">{user.diachi}
                     </div>
                   </div>
                   {showAddAdress()}
@@ -130,30 +158,60 @@ export default function ThanhToan() {
             </div>
             <div className="info-orderNote"></div>
           </div>
+
           <div className="info-orderPro">
             <div className="info-pro">
               <div className="info-tile">
                 <p>Thông tin đơn hàng</p>
-                <a>Chỉnh sửa</a>
-              </div>
-              <div className="info-detailPro">
-                <div className="img-pros">
-                  <img src="https://lh3.googleusercontent.com/hQCPCxVkuNiQ8xYvY2X4KEapGeOolFyAmw1JrcQaJZ3I3mlPZgz7_lFzE5MVd7p-YieHHohrf_NeMVmUbIZi-Rd2zRYsTn3D=rw" />
+                <div className="info-editcart" onClick={() => editCart()}>
+                  Chỉnh sửa
                 </div>
-                <div className="detail-pros"></div>
               </div>
+              {checkout.map((pro, index) => {
+                return (
+                  <div className="info-detailPro" key={index}>
+                    <div className="img-pros">
+                      <img
+                        src={`https://localhost:44343/Images/Products/${pro.idProductNavigation.nameimage}`}
+                      />
+                    </div>
+                    <div className="detail-pros">
+                      <div className="detail-name">
+                        {pro.idProductNavigation.ten}
+                      </div>
+                      <div className="detail-quantity">
+                        Số lượng: {pro.soluong}
+                      </div>
+                      <div className="detail-price">
+                        Giá:{" "}
+                        {solver.formatCurrency(
+                          "vi-VN",
+                          "currency",
+                          "VND",
+                          pro.idProductNavigation.gia
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
+
           <div className="payment pay-order">
             <div className="pay-info pay-orders">
               <div className="thanhtoan">
                 <strong>Thanh toán</strong>
               </div>
               <div className="tamtinh-thanhtien ">
-                <p className="txt-left">Phí vận chuyển</p>
+                <p className="txt-ship">Phí vận chuyển</p>
+                <p className="tamtinh">{solver.formatCurrency("vi-VN","currency","VND",0)}</p>
+
               </div>
               <div className="tamtinh-thanhtien">
                 <p className="txt-left">Thành tiền</p>
+                <p className="thanhtien">{solver.formatCurrency("vi-VN","currency","VND",123456789)}</p>
+
               </div>
               <button className="btn-pay btn btn-outline-primary">
                 Đặt hàng ngay

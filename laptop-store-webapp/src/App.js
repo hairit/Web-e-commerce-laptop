@@ -109,7 +109,7 @@ function App() {
             <Route path="/mouse"      exact component={() =><Mouse addProductToCart={addProductToCart} />} ></Route>
             <Route path="/screen"     exact component={() => <Screen addProductToCart={addProductToCart} />}></Route>
             <Route path="/pc"         exact component={() => <PC addProductToCart={addProductToCart} />}></Route>
-            <Route path="/card/thanhtoan"         exact component={() => <ThanhToan addProductToCart={addProductToCart} />}></Route>
+            <Route path="/checkout"         exact component={() => <ThanhToan user={user}  idUser={ user !== null ? user.id : null } />}></Route>
             <Route path="/laptop/:id"       component={(match) => <DetailProductsLaptop addProductToCart={addProductToCart} match={match} />}></Route>
             <Route path="/keyboard/:id"     component={(match) => <DetailProductsKeyboard addProductToCart={addProductToCart}  match={match} />} ></Route>
             <Route path="/screen/:id"       component={(match) => <DetailProductsScreen addProductToCart={addProductToCart} match={match} />}></Route>

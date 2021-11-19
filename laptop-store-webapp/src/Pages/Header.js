@@ -131,7 +131,7 @@ export default function Header({ user }) {
                   )}
                   <p>Giỏ hàng</p>
           </NavLink>
-          <NavLink to="/card/thanhtoan">
+          <NavLink to="/">
           <div className="header-center-right-menu-item" >
             <IoIosNotificationsOutline className="header-center-right-menu-item-icon" />
             <p>Thông báo</p>

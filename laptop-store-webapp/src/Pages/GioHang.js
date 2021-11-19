@@ -15,6 +15,7 @@ export default function GioHang({ idUser, addProductToCart, deleteCartItem ,dele
   const [cartDetails, setCartDetails] = useState([]);
   const [loading , setLoading] = useState(true);
   const [reload, setReload] = useState(0);
+  const [checked, setChecked] = useState(true);
   const reLoad = () =>{
     if(reload === 0) setReload(1);
     else setReload(0);
@@ -57,14 +58,23 @@ export default function GioHang({ idUser, addProductToCart, deleteCartItem ,dele
     }
   }, [reload]);
   // function handleOrder(){
-
+console.log(cartDetails)
   // }
-  function checktien (e,gia,quantity,idpro) {
+  function checktien (e,gia,quantity,idpro,iduser) {
     if (e.target.checked) {
-      setTongtien(tongtien + gia*quantity);
-
+      axios.get(`https://localhost:44343/data/cartdetail/select=selected/iduser=${iduser}/idproduct=${idpro}`, null)
+      .then(() => {
+        setTongtien(tongtien + gia*quantity)
+        reLoad();
+      }).catch((err) => console.error("Không thể checker",err));
     } else {
-      setTongtien(tongtien - gia*quantity);
+      axios.get(`https://localhost:44343/data/cartdetail/select=unselected/iduser=${idUser}/idproduct=${idpro}`, null)
+      .then(() => {
+        setTongtien(tongtien - gia*quantity);
+        reLoad()
+      })
+      .catch((err) => console.error("Không thể unchecker",err));
+     
     }
   }
     if(loading !== false)return(
@@ -87,7 +97,7 @@ export default function GioHang({ idUser, addProductToCart, deleteCartItem ,dele
                       <div className="info-check">
                         <input class="check-item" type="checkbox"   name="hobby[]"  id="check-item" 
                         onChange={(e)=> {
-                          checktien(e, item.idProductNavigation.gia,item.soluong,item.idProduct)
+                          checktien(e, item.idProductNavigation.gia,item.soluong,item.idProduct,idUser)
                         }}  value={item.idProduct}/>
                         </div>
                         <div className="info-image">
@@ -150,9 +160,11 @@ export default function GioHang({ idUser, addProductToCart, deleteCartItem ,dele
                     <p className="txt-left">Thành tiền</p>
                     <p className="thanhtien">{solver.formatCurrency("vi-VN","currency","VND",tongtien)}</p>
                   </div>
+                  <NavLink to="/checkout">
                   <button className="btn-pay btn btn-outline-primary" >
                     Tiếp tục thanh toán
                   </button>
+                  </NavLink>
               </div>
             </div>
           </div>
