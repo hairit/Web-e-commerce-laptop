@@ -20,7 +20,7 @@
   background-color: white;
   float: left;
   width: 65%;
-  height: 400px;
+  min-height: 400px;
 }
 .info-orderPro {
   margin-left: 10px;
