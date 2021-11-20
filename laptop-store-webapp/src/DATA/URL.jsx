@@ -1,1 +1,1 @@
-export default URL = 'https://localhost:44343';;
+export default URL = 'https://localhost:44343';

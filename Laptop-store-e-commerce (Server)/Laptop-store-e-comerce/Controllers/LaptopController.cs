@@ -26,7 +26,7 @@ namespace Laptop_store_e_comerce.Controllers
             try
             {
                 List<Product> pros = await database.Products.Where(pro => pro.Idloai == "laptop")
-                                                            .Where(pro => pro.LaptopDetail.Manhinh == value)
+                                                            .Where(pro => pro.LaptopDetail.Manhinh.Contains(value))
                                                             .ToListAsync();
                 if (pros.Count == 0) return NotFound();
                 return pros;
@@ -39,7 +39,7 @@ namespace Laptop_store_e_comerce.Controllers
             try
             {
                 List<Product> pros = await database.Products.Where(pro => pro.Idloai == "laptop")
-                                                            .Where(pro => pro.LaptopDetail.Cpu == value)
+                                                            .Where(pro => pro.LaptopDetail.Cpu.Contains(value))
                                                             .ToListAsync();
                 if (pros.Count == 0) return NotFound();
                 return pros;
@@ -65,19 +65,19 @@ namespace Laptop_store_e_comerce.Controllers
             try
             {
                 List<Product> pros = await database.Products.Where(pro => pro.Idloai == "laptop")
-                                                            .Where(pro => pro.Thuonghieu == value).ToListAsync();
+                                                            .Where(pro => pro.Thuonghieu.Contains(value)).ToListAsync();
                 if (pros.Count == 0) return NotFound();
                 else return pros;
             }
             catch (Exception e) { Console.WriteLine(e.ToString()); return BadRequest(); }
         }
-        [HttpGet("gb={value}")]
+        [HttpGet("ram={value}")]
         public async Task<ActionResult<List<Product>>> getLaptopByGB(string value)
         {
             try
             {
                 List<Product> pros = await database.Products.Where(pro => pro.Idloai == "laptop")
-                                                            .Where(pro => pro.LaptopDetail.Ram == value)
+                                                            .Where(pro => pro.LaptopDetail.Ram.Contains(value))
                                                             .ToListAsync();
                 if (pros.Count != 0) return pros;
                 else return NotFound();
@@ -90,12 +90,21 @@ namespace Laptop_store_e_comerce.Controllers
             try
             {
                 List<Product> pros = await database.Products.Where(pro => pro.Idloai == "laptop")
-                                                             .Where(pro => pro.LaptopDetail.Vga == value)
+                                                             .Where(pro => pro.LaptopDetail.Vga.Contains(value))
                                                              .ToListAsync();
                 if (pros.Count != 0) return pros;
                 else return NotFound();
             }
             catch (Exception e) { Console.WriteLine(e.ToString()); return BadRequest(); }
+        }
+        [HttpGet("typelaptop={value}")]
+        public async Task<ActionResult<List<Product>>> getLaptopByType(string value)
+        {
+            var pros = await database.Products.Where(pro => pro.Idloai == "laptop")
+                                              .Where(pro => pro.LaptopDescription.Typelaptop.Contains(value))
+                                              .ToListAsync();
+            if (pros.Count == 0) return NotFound();
+            else return pros;
         }
     }
 }
