@@ -1,13 +1,18 @@
 import React from "react";
 import axios from "axios";
-
+import URL from '../../../DATA/URL'
 import "../../../CSS/ProductsCss/bootstrap.css";
 import "../../../CSS/ProductsCss/style.css";
 import { useEffect, useState } from "react";
 import ListProductLaptop from "./ListProductLaptop";
+import Solver from "../../../Classes/Solver";
+const solver = new Solver();
 export default function Laptops({match,addProductToCart}) {
   const [pros, setPros] = useState([]);
   useEffect(() => {
+    var API = solver.getAPIString(URL,match.match.attribute,match.match.value);
+    console.log(API);
+    console.log("match"+match);
     axios
       .get("https://localhost:44343/data/Product/type=laptop", null)
       .then((res) => setPros(res.data))

@@ -6,5 +6,11 @@ class Solver{
     getPercentPrice(newPrice,oldPrice){
         return (100*newPrice/oldPrice);
     }
+    getPercentNumber(number){
+        return  (100/number);
+    }
+    getAPIString(URL,Path){
+        return URL+Path;
+    }
 }
 export default Solver;

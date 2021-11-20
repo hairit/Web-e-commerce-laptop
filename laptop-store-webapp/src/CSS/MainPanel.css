@@ -9,24 +9,25 @@
 .main-panel-menu {
   height: auto;
   background-color: #ffffff;
-  padding: 0 10px;
+  padding: 0 7px;
   position: relative;
 }
-.main-panel-menu-list {
+.main-panel-menu-list{
   background-color: #ffffff;
   box-shadow: -5px 4px 10px 0 rgb(226, 225, 225);
   height: 100%;
 }
 .select-panel {
   background-color: #ffffff;
-  width: 100%;
+  width: 500%;
   position: absolute;
   left: 117%;
   top: 0;
   height: 100%;
   z-index: 20;
-  transition: 0.2s;
   opacity: 0;
+  visibility: hidden;
+  transition: 0.2s all;
   box-shadow: -1px 0 10px 0 rgb(141, 139, 139);
 }
 .select-panel-row {
@@ -91,11 +92,12 @@
   background-color: #3f4fc3;
   z-index: 30;
 } */
-.pro-list-item:hover::after{
+/* .pro-list-item:hover::after{
   opacity: 1;
-}
+} */
 .menu-list-item:hover .select-panel{
   opacity: 1;
+  visibility: visible;
   left: 100%;
   width: 500%;
 }

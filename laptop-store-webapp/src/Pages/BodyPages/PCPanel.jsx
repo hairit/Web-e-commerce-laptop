@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import CALLER from '../../API/CALL'
+import call from '../../API/API'
 import { useState , useEffect } from 'react';
 import URL from '../../DATA/URL';
 import Solver from '../../Classes/Solver';
@@ -31,7 +31,7 @@ const renderComputerItem = (pc ,index) => {
 export default function PCPanel() {
     const [pcs, setPcs] = useState([]);
     useEffect(() => {
-        CALLER('GET','data/product/type=pc/enable',null)
+        call('GET','data/product/type=pc/enable',null)
         .then(res => setPcs(res.data))
         .catch(err => console.log("Errol try to call pc (product) API"));
     }, [])

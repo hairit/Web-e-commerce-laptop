@@ -19,27 +19,27 @@ const PRODUCT_OPTIONS = [
           datas : [
               {
                  name : "DELL",
-                 path : "/brand/DELL",
+                 path : "laptop/brand/DELL",
               },
               {
                 name :  "ASUS",
-                path :  "/brand/DELL",
+                path :  "laptop/brand/DELL",
               },
               {
                 name :  "ACER",
-                path :  "/brand/DELL",
+                path :  "laptop/brand/DELL",
               },
               {
                 name :  "MSI",
-                path :  "/brand/MSI",
+                path :  "laptop/brand/MSI",
               },
               {
                 name :  "LG",
-                path :  "/brand/LG",
+                path :  "laptop/brand/LG",
               },
               {
                 name :  "Gigabyte",
-                path :  "/brand/gigabyte",
+                path :  "laptop/brand/gigabyte",
               },
           ]
        },
@@ -48,31 +48,31 @@ const PRODUCT_OPTIONS = [
           datas : [
               {
                   name : "Intel Corei3",
-                  path : "/cpu/corei3"
+                  path : "laptop/cpu/corei3"
               },
               {
                   name : "Intel Corei5",
-                  path : "/cpu/corei5"
+                  path : "laptop/cpu/corei5"
               },
               {
                   name : "Intel Corei7",
-                  path : "/cpu/corei7"
+                  path : "laptop/cpu/corei7"
               },
               {
                   name : "Intel Corei9",
-                  path : "/cpu/corei9"
+                  path : "laptop/cpu/corei9"
               },
               {
                   name : "AMD Ryzen3",
-                  path : "/cpu/ryzen3"
+                  path : "laptop/cpu/ryzen3"
               },
               {
                   name : "AMD Ryzen5",
-                  path : "/cpu/ryzen5"
+                  path : "laptop/cpu/ryzen5"
               },
               {
                   name : "AMD Ryzen7",
-                  path : "/cpu/ryzen7"
+                  path : "laptop/cpu/ryzen7"
               },
               ]
        },
@@ -81,19 +81,19 @@ const PRODUCT_OPTIONS = [
         datas : [
             {
               name : "4GB",
-              path : "/ram/4"
+              path : "laptop/ram/4"
             },
             {
               name : "8GB",
-              path : "/ram/8"
+              path : "laptop/ram/8"
             },
             {
               name : "16GB",
-              path : "/ram/16"
+              path : "laptop/ram/16"
             },
             {
               name : "32GB",
-              path : "/ram/32"
+              path : "laptop/ram/32"
             },
           ],
         },
@@ -102,11 +102,11 @@ const PRODUCT_OPTIONS = [
           datas : [
             {
               name : "NVIDIA",
-              path : "/vga/brand/name/nvidia"
+              path : "laptop/vga/brand/name/nvidia"
             },
             {
               name : "AMD",
-              path : "/vga/brand/name/amd"
+              path : "laptop/vga/brand/name/amd"
             },
             ]
         },
@@ -115,23 +115,23 @@ const PRODUCT_OPTIONS = [
           datas : [
             {
               name : "Laptop Văn Phòng",
-              path : "/style/1"
+              path : "laptop/style/1"
             },
             {
               name : "Laptop Gaming-Đồ Họa",
-              path : "/style/2"
+              path : "laptop/style/2"
             },
             {
               name : "Laptop Mỏng nhẹ",
-              path : "/style/3"
+              path : "laptop/3"
             },
             {
               name : "Laptop Mini",
-              path : "/style/4"
+              path : "laptop/4"
             },
             {
               name : "Laptop sinh viên",
-              path : "/style/5"
+              path : "laptop/5"
             }
           ]
         },
@@ -140,27 +140,27 @@ const PRODUCT_OPTIONS = [
           datas : [
             {
               name : "Dưới 10 triệu",
-              path : "/from=0to=10000000"
+              path : "type=laptop/from=0to=10000000"
             },
             {
               name : "10-15 triệu",
-              path : "/from=10000000to=15000000"
+              path : "type=laptop/from=10000000to=15000000"
             },
             {
               name : "15-20 triệu",
-              path : "/from=15000000to=20000000"
+              path : "type=laptop/from=15000000to=20000000"
             },
             {
               name : "20-30 triệu",
-              path : "/from=20000000to=30000000"
+              path : "type=laptop/from=20000000to=30000000"
             },
             {
               name : "30-50 triệu",
-              path : "/from=30000000to=50000000"
+              path : "type=laptop/from=30000000to=50000000"
             },
             {
               name : "Trên 50 triệu",
-              path : "/from=50000000to=999"
+              path : "type=laptop/from=50000000to=999"
             },
           ]
         },

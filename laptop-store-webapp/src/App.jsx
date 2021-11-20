@@ -1,10 +1,11 @@
 import "./CSS/App.css";
 import { BrowserRouter as Router, Switch, Route ,useHistory } from "react-router-dom";
-import Header from "./Pages/Header.js";
+import Header from "./Pages/Header.jsx";
 import Keyboard from "./Pages/Products/ProductsKeyboard/Keyboard";
 import { useState, useEffect } from "react";
 import Login from "./Pages/Login/Login";
-import Body from "./Pages/Body.js";
+import Login2 from "./Pages/Login/Login2";
+import Body from "./Pages/Body";
 import Lienhe from "./Pages/Lienhe";
 import Tintuc from "./Pages/Tintuc";
 import Showroom from "./Pages/Showroom";
@@ -103,24 +104,26 @@ function App() {
       <ScrollToTop />
       <div className="App">
         <Header user={user} />
-            <Route path="/"           exact component={() => <Body addProductToCart={addProductToCart}/>}></Route>
-            <Route path="/laptop"     exact component={() => <Laptops addProductToCart={addProductToCart} />}></Route>
-            <Route path="/keyboard"   exact component={() => <Keyboard addProductToCart={addProductToCart} />}></Route>
-            <Route path="/mouse"      exact component={() =><Mouse addProductToCart={addProductToCart} />} ></Route>
-            <Route path="/screen"     exact component={() => <Screen addProductToCart={addProductToCart} />}></Route>
-            <Route path="/pc"         exact component={() => <PC addProductToCart={addProductToCart} />}></Route>
-            <Route path="/checkout"         exact component={() => <ThanhToan user={user} idUser={ user !== null ? user.id : null } />}></Route>
-            <Route path="/laptop/:id"       component={(match) => <DetailProductsLaptop addProductToCart={addProductToCart} match={match} />}></Route>
-            <Route path="/keyboard/:id"     component={(match) => <DetailProductsKeyboard addProductToCart={addProductToCart}  match={match} />} ></Route>
-            <Route path="/screen/:id"       component={(match) => <DetailProductsScreen addProductToCart={addProductToCart} match={match} />}></Route>
-            <Route path="/mouse/:id"        component={(match) => <DetailProductsMouse addProductToCart={addProductToCart} match={match} />}></Route>
-            <Route path="/pc/:id"           component={(match) => <DetailProductsPC addProductToCart={addProductToCart} match={match} />}></Route>
-            <Route path="/card"       exact     component={() => <GioHang user={user} deleteProductFromCart={deleteProductFromCart} deleteCartItem={deleteCartItem} addProductToCart={addProductToCart} idUser={ user !== null ? user.id : null } />}></Route>
-            <Route path="/login"      exact component={(match) => <Login  login={login} match={match} /> } ></Route>
-            <Route path="/laptop/brand/:brand"  exact    exact component={(match) => <Laptops  match={match} /> } ></Route>
-            <Route path="/lienhe"           component={() => <Lienhe />}></Route>
-            <Route path="/tincongnghe"      component={() => <Tintuc />}></Route>
-            <Route path="/showroom"         component={() => <Showroom />}></Route>
+            <Route path="/"                           exact component={() => <Body addProductToCart={addProductToCart}/>}></Route>
+
+            <Route path="/laptop"                     exact component={() => <Laptops addProductToCart={addProductToCart} />}></Route>
+            <Route path="/laptop/:attribute/:value"   exact component={(match) => <Laptops  match={match} /> } ></Route>
+            
+            <Route path="/keyboard"                   exact component={() => <Keyboard addProductToCart={addProductToCart} />}></Route>
+            <Route path="/mouse"                      exact component={() =><Mouse addProductToCart={addProductToCart} />} ></Route>
+            <Route path="/screen"                     exact component={() => <Screen addProductToCart={addProductToCart} />}></Route>
+            <Route path="/pc"                         exact component={() => <PC addProductToCart={addProductToCart} />}></Route>
+            <Route path="/checkout"                   exact component={() => <ThanhToan user={user} idUser={ user !== null ? user.id : null } />}></Route>
+            <Route path="/laptop/:id"                 exact component={(match) => <DetailProductsLaptop addProductToCart={addProductToCart} match={match} />}></Route>
+            <Route path="/keyboard/:id"               exact component={(match) => <DetailProductsKeyboard addProductToCart={addProductToCart}  match={match} />} ></Route>
+            <Route path="/screen/:id"                 exact component={(match) => <DetailProductsScreen addProductToCart={addProductToCart} match={match} />}></Route>
+            <Route path="/mouse/:id"                  exact component={(match) => <DetailProductsMouse addProductToCart={addProductToCart} match={match} />}></Route>
+            <Route path="/pc/:id"                     exact component={(match) => <DetailProductsPC addProductToCart={addProductToCart} match={match} />}></Route>
+            <Route path="/card"                       exact component={() => <GioHang user={user} deleteProductFromCart={deleteProductFromCart} deleteCartItem={deleteCartItem} addProductToCart={addProductToCart} idUser={ user !== null ? user.id : null } />}></Route>
+            <Route path="/login"                      exact component={(match) => <Login  login={login} match={match} /> } ></Route>
+            <Route path="/lienhe"                           component={() => <Lienhe />}></Route>
+            <Route path="/tincongnghe"                      component={() => <Tintuc />}></Route>
+            <Route path="/showroom"                         component={() => <Showroom />}></Route>
         <Footer />
       </div>
     </Router>

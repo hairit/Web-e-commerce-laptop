@@ -1,6 +1,6 @@
 import React from 'react'
 import '../../CSS/Center.css'
-import CALLER from '../../API/CALL'
+import call from '../../API/API'
 import {useState ,useEffect} from 'react'
 import PRODUCT_OPTIONS from '../../DATA/ProductOptions'
 import { NavLink } from 'react-router-dom'
@@ -33,7 +33,7 @@ const LoadingProductOptions = (item , index) =>{
 export default function Center() {
     const [images, setImages] = useState([])
     useEffect(() => {
-        CALLER('GET','lappee/image',null).then(res => setImages(res.data)).catch(err => console.log("Errol when try to get Image API"));
+        call('GET','lappee/image',null).then(res => setImages(res.data)).catch(err => console.log("Errol when try to get Image API"));
     }, [])
     return(
         <div className="center">

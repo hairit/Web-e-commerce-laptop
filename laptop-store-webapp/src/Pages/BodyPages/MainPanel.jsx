@@ -5,9 +5,8 @@ import { NavLink } from 'react-router-dom';
 import PRODUCT_OPTIONS from '../../DATA/ProductOptions';
 import {BiChevronLeft ,BiChevronRight} from 'react-icons/bi';
 import {useState , useEffect , useRef } from 'react';
-import CALLER from '../../API/CALL';
-
-
+import call from '../../API/API';
+import Solver from '../../Classes/Solver';
 const LoadingSelectPanelCenter = (item,index) => {
     return (
         <div className="select-panel-col" key={index}>
@@ -78,16 +77,17 @@ const countImage = (images,position) =>{
     return count;
 }
 export default function MainPanel() {
+    const solver = new Solver();
     const [images, setImages] = useState([]);
     const [X, setX] = useState(0);
     const index = useRef(0);
     useEffect(() => {
-        CALLER('GET','data/image',null).then(res => setImages(res.data)).catch(err => console.log("Errol when try to get Image API"));
+        call('GET','data/image',null).then(res => setImages(res.data)).catch(err => console.log("Errol when try to get Image API"));
     }, [])
     const changeSlide = (dir,countImage) =>{
         if(index.current === 0 && dir === 'previous' ) {
             index.current = countImage -1;
-            setX(-(100-translatePercent()));
+            setX(-(100-solver.getPercentNumber(countImage)));
             return ;
         }
         if(index.current === countImage - 1 && dir === 'next'){
@@ -98,15 +98,12 @@ export default function MainPanel() {
         if(dir === 'previous')
         {
             index.current = index.current - 1;
-            setX(X+translatePercent());
+            setX(X+solver.getPercentNumber(countImage));
         }
         else{
             index.current = index.current + 1;
-            setX(X-translatePercent());
+            setX(X-solver.getPercentNumber(countImage));
         }
-    }
-    const translatePercent = () =>{
-        return  (100/countImage(images,'center'));
     }
     return (
         <div className="main-page">
