@@ -13,7 +13,7 @@ export default function Login({login,userCookie}) {
     const [reqsdt, setreqsdt] = useState(false);
     const [signup, setsignup] = useState(false);
     const [confirm, setconfirm] = useState("");
-    const [user, setuser] = useState([{        
+    const [user, setuser] = useState({        
                                             id: "",
                                             lastname: "",
                                             firstname: "",
@@ -23,8 +23,8 @@ export default function Login({login,userCookie}) {
                                             diachi: "",
                                             mode: "CUSTOMER",
                                             nameimage: ""
-                                        }]);
-    const [usertemp, setusertemp] = useState([{        
+                                        });
+    const [usertemp, setusertemp] = useState({        
                                             id: "",
                                             lastname: "",
                                             firstname: "",
@@ -34,7 +34,7 @@ export default function Login({login,userCookie}) {
                                             diachi: "",
                                             mode: "CUSTOMER",
                                             nameimage: ""
-                                        }]);
+                                        });
     let history = useHistory();
 
     /*user = id, lastname, firtstname, email, sdt, pass, diachi, img*/

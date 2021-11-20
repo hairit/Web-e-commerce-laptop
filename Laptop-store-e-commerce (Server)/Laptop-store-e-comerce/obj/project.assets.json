@@ -8596,11 +8596,25 @@
     ]
   },
   "packageFolders": {
+<<<<<<< HEAD
+    "C:\\Users\\thanh\\.nuget\\packages\\": {}
+=======
     "C:\\Users\\TuongHai\\.nuget\\packages\\": {}
+>>>>>>> c190f1194fff0bef89299ac43261be040ac1c9e8
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
+      "projectUniqueName": "D:\\Data\\Web-e-commerce-laptop\\Laptop-store-e-commerce (Server)\\Laptop-store-e-comerce\\Laptop-store-e-comerce.csproj",
+      "projectName": "Laptop-store-e-comerce",
+      "projectPath": "D:\\Data\\Web-e-commerce-laptop\\Laptop-store-e-commerce (Server)\\Laptop-store-e-comerce\\Laptop-store-e-comerce.csproj",
+      "packagesPath": "C:\\Users\\thanh\\.nuget\\packages\\",
+      "outputPath": "D:\\Data\\Web-e-commerce-laptop\\Laptop-store-e-commerce (Server)\\Laptop-store-e-comerce\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\thanh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
       "projectUniqueName": "D:\\Data\\Môn\\Web-e-commerce-laptop\\Laptop-store-e-commerce (Server)\\Laptop-store-e-comerce\\Laptop-store-e-comerce.csproj",
       "projectName": "Laptop-store-e-comerce",
       "projectPath": "D:\\Data\\Môn\\Web-e-commerce-laptop\\Laptop-store-e-commerce (Server)\\Laptop-store-e-comerce\\Laptop-store-e-comerce.csproj",
@@ -8609,6 +8623,7 @@
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\TuongHai\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> c190f1194fff0bef89299ac43261be040ac1c9e8
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
