@@ -10,12 +10,29 @@ import plus from "../Images/plus.png";
 import { useEffect, useState } from "react";
 
 export default function ThanhToan({ idUser, user }) {
-  console.log(user);
-  console.log(idUser);
   const history = useHistory();
   const solver = new Solver();
   const [adress, setAddress] = useState(false);
   const [checkout, setCheckout] = useState([]);
+  const [tongtien, setTongtien] = useState(0);
+  const [userOrder, setUserorder] = useState([]);
+
+
+  function totalPrice(carts) {
+    var tongtien = 0;
+    carts.forEach(cart => {
+      tongtien = tongtien + cart.tongtien;
+    });
+    return tongtien;
+  }
+  useEffect(() => {
+    
+      axios.get(`https://localhost:44343/data/user/${idUser}`)
+         .then((res) => setUserorder(res.data))
+         .catch((err) => console.log("Reload User"+err));
+    
+}, [])
+console.log("user order", userOrder)
   useEffect(() => {
     if (idUser !== null) {
       axios
@@ -31,6 +48,8 @@ export default function ThanhToan({ idUser, user }) {
         .catch((err) => console.log(err));
     }
   }, []);
+  console.log("kikiki");
+
   function btnAddAdress() {
     setAddress(true);
   }
@@ -84,13 +103,13 @@ export default function ThanhToan({ idUser, user }) {
                   <div className="info-nhanhang">Thông tin nhận hàng</div>
                   <div className="info-receive">
                     <div className="info-nameUser">
-                      <p>{user.lastname} {" "} {user.firstname}</p>
+                      <p>{userOrder.lastname} {" "} {userOrder.firstname}</p>
                       <div className="logo-edit">
                         <img src={edit} />
                       </div>
                     </div>
-                    <div className="phone-adress">{user.sdt}</div>
-                    <div className="phone-adress">{user.diachi}
+                    <div className="phone-adress">{userOrder.sdt}</div>
+                    <div className="phone-adress">{userOrder.diachi}
                     </div>
                   </div>
                   {showAddAdress()}
@@ -164,6 +183,7 @@ export default function ThanhToan({ idUser, user }) {
                 </div>
               </div>
               {checkout.map((pro, index) => {
+              
                 return (
                   <div className="info-detailPro" key={index}>
                     <div className="img-pros">
@@ -178,7 +198,7 @@ export default function ThanhToan({ idUser, user }) {
                       <div className="detail-quantity">
                         Số lượng: {pro.soluong}
                       </div>
-                      <div className="detail-price">
+                      <div className="detail-price" >
                         Giá:{" "}
                         {solver.formatCurrency(
                           "vi-VN",
@@ -201,14 +221,14 @@ export default function ThanhToan({ idUser, user }) {
               </div>
               <div className="tamtinh-thanhtien ">
                 <p className="txt-ship">Phí vận chuyển</p>
-                <p className="tamtinh">{solver.formatCurrency("vi-VN","currency","VND",0)}</p>
+                <p className=" ships">{solver.formatCurrency("vi-VN","currency","VND",0)}</p>
 
               </div>
               <div className="tamtinh-thanhtien">
                 <p className="txt-left">Thành tiền</p>
-                <p className="thanhtien">{solver.formatCurrency("vi-VN","currency","VND",123456789)}</p>
-
+                <p className="thanhtien">{solver.formatCurrency("vi-VN","currency","VND",totalPrice(checkout))}</p>
               </div>
+              <div className="VAT">( Bao gồm VAT )</div>
               <button className="btn-pay btn btn-outline-primary">
                 Đặt hàng ngay
               </button>

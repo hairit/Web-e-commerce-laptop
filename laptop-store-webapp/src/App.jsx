@@ -54,11 +54,13 @@ function App() {
     if(updateDataUser === 0) setUpdateDataUser (1);
     else setUpdateDataUser(0);
   }
+  
+
+
   const login = (user) => {
     setUserCookie("id", user.id);
     setUser(user);
   };
-  console.log(user);
   function addProductToCart(idProduct , price ){
     if(user === null)
     {

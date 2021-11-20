@@ -88,7 +88,7 @@
   flex: 0 0 15%;
 }
 .info-price{
-  
+  text-align: right;
 }
 .info-price strong{
   font-size: 17px;
@@ -132,6 +132,13 @@
   width: 100%;
   float: left;
   font-size: 15px;
+  
+}
+.VAT{
+  font-size: 15px;
+  width: 100%;
+  text-align: right;
+  padding-top: 3px;
   padding-bottom: 10px;
 }
 .tamtinh-thanhtien p{
@@ -145,14 +152,16 @@
   text-align: right;
 }
 .thanhtien {
+  float: right !important;
   font-size:23px;
   font-weight: bold;
   color: #0000ee;
-  width: 73%;
   text-align: right;
 }
 .txt-left{
-  width:27%;
+  width: 27%;
+  line-height: 28px;
+  height:28px;
 }
 .btn-pay {
   background-color: #1435c3;
@@ -167,6 +176,8 @@
 flex-flow: column;
 }
 .pay-info{
+  display: flex;
+  flex-flow: column;
   padding-top: 30px;
 }
 .input-edit {
@@ -203,7 +214,8 @@ flex-flow: column;
   cursor: pointer;
 }
 input[type=checkbox] {
-  transform: scale(1.5);
+  transform: scale(1.3);
+  margin: 0 !important;
 }
 .info-check{
   margin-top:auto;
@@ -240,5 +252,5 @@ input[type=checkbox] {
   background-color: white !important;
 }
 .tongtien-price{
-  float: left;
+  float: right;
 }

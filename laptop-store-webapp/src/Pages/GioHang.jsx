@@ -1,5 +1,5 @@
 import axios from "axios";
-import React from "react";
+import React,{ useRef } from "react";
 import Solver from "../Classes/Solver";
 import bootstrap from "../CSS/ProductsCss/bootstrap.css";
 import GioHangCss from "../CSS/GioHangCss.css";
@@ -10,8 +10,8 @@ import tk_shopping_img from "../Images/tk_shopping_img.png";
 import { useEffect, useState } from "react";
 import ThanhToan from "./ThanhToan";
 export default function GioHang({ idUser, addProductToCart, deleteCartItem ,deleteProductFromCart}) {
-  console.log(idUser);
   const solver = new Solver();
+  const buttonRef = useRef();
   const [tongtien, setTongtien] = useState(0);
   const [cartDetails, setCartDetails] = useState([]);
   const [loading , setLoading] = useState(true);
@@ -21,11 +21,37 @@ export default function GioHang({ idUser, addProductToCart, deleteCartItem ,dele
     if(reload === 0) setReload(1);
     else setReload(0);
   }
+
+function disableButton() {
+  buttonRef.current.visibility = true;
+}
+  
+  const noneCartNotification = () => {
+    if(cartDetails.length === 0){
+      setLoading(true);
+      return (
+        <div className="centerp">
+              <div className="center-car">
+              <div className="product-none">
+                <img src={tk_shopping_img} />
+                <p> Bạn chưa có sản phẩm trong giỏ hàng</p>
+              </div>
+              <div className="btn-backhome">
+                <NavLink className="btn-backhome" to="/">
+                  <button type="button" className="btn btn-home">
+                    Tiếp tục mua sắm
+                  </button>
+                </NavLink>
+              </div>
+              </div>
+            </div>
+      )
+    }
+  }
   useEffect(() => {
     if(cartDetails.count > 0) setLoading(false);
   }, [cartDetails])
   useEffect(() => {
-    console.log("reload");
     if (idUser !== null) {
       axios
         .get(`https://localhost:44343/data/cartdetail/iduser=${idUser}`, null)
@@ -37,6 +63,9 @@ export default function GioHang({ idUser, addProductToCart, deleteCartItem ,dele
         .catch((err) => setCartDetails([]) );
     }
   }, [reload]);
+  // function handleOrder(){
+console.log(cartDetails)
+  // }
   function checktien (e,gia,quantity,idpro,iduser) {
     if (e.target.checked) {
       axios.get(`https://localhost:44343/data/cartdetail/select=selected/iduser=${iduser}/idproduct=${idpro}`, null)
@@ -48,6 +77,7 @@ export default function GioHang({ idUser, addProductToCart, deleteCartItem ,dele
       axios.get(`https://localhost:44343/data/cartdetail/select=unselected/iduser=${idUser}/idproduct=${idpro}`, null)
       .then(() => {
         setTongtien(tongtien - gia*quantity);
+        // {disableButton()}
         reLoad()
       })
       .catch((err) => console.error("Không thể unchecker",err));
@@ -137,8 +167,9 @@ export default function GioHang({ idUser, addProductToCart, deleteCartItem ,dele
                     <p className="txt-left">Thành tiền</p>
                     <p className="thanhtien">{solver.formatCurrency("vi-VN","currency","VND",tongtien)}</p>
                   </div>
-                  <NavLink to="/checkout">
-                  <button className="btn-pay btn btn-outline-primary" >
+                  <div className="VAT">( Bao gồm VAT )</div>
+                  <NavLink to="/checkout" >
+                  <button className="btn-pay btn btn-outline-primary" ref={buttonRef}   >
                     Tiếp tục thanh toán
                   </button>
                   </NavLink>
@@ -165,5 +196,6 @@ export default function GioHang({ idUser, addProductToCart, deleteCartItem ,dele
               </div>
             </div>
     }
+    setTimeout(noneCartNotification , 1000);
   }
 
