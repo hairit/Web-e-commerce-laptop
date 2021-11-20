@@ -23,6 +23,7 @@ namespace Laptop_store_e_comerce.Models
         public string Size { get; set; }
         public string Khoiluong { get; set; }
         public string Pin { get; set; }
+        public string Typelaptop { get; set; }
 
         public virtual Product IdProductNavigation { get; set; }
     }

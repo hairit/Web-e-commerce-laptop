@@ -1,7 +1,7 @@
 import React from "react";
 import "../../CSS/LaptopPanel.css";
 import "../../CSS/Layout10.css";
-import CALLER from "../../API/CALL";
+import call from "../../API/API";
 import URL from "../../DATA/URL";
 import { useState, useEffect } from "react";
 import { NavLink, useHistory } from "react-router-dom";
@@ -32,10 +32,9 @@ const renderLaptopItem = (pro, index ,addProductToCart) => {
   );
 };
 export default function Laptop({addProductToCart}) {
-  const history = useHistory();
   const [pros, setPros] = useState([]);
   useEffect(() => {
-    CALLER("GET", "data/product/type=laptop/enable", null)
+    call("GET", "data/product/type=laptop/enable", null)
       .then((res) => setPros(res.data))
       .catch((err) => console.log("Errol!! when try to get laptop product" + err));
   }, []);

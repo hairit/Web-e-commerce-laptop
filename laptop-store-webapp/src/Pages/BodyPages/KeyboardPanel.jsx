@@ -1,6 +1,6 @@
 import React from 'react'
 import '../../CSS/KeyboardPanel.css'
-import CALLER from '../../API/CALL';
+import call from '../../API/API';
 import {useState , useEffect} from 'react';
 import { NavLink,useHistory } from 'react-router-dom';
 import URL from '../../DATA/URL';
@@ -34,7 +34,7 @@ export default function KeyboardPanel({addProductToCart}) {
 
     const [pros, setPros] = useState([]);
     useEffect(() => {
-        CALLER('GET','data/product/type=keyboard/enable',null)
+        call('GET','data/product/type=keyboard/enable',null)
             .then(res => setPros(res.data)).catch(err => console.log("Errol when try to get keyboard"));
     }, [])
     return (

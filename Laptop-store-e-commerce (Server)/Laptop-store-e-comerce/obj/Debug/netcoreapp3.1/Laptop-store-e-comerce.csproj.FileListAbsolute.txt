@@ -1384,4 +1384,3 @@ D:\Tài liệu\Web-e-commerce-laptop\Laptop-store-e-commerce (Server)\Laptop-sto
 D:\Tài liệu\Web-e-commerce-laptop\Laptop-store-e-commerce (Server)\Laptop-store-e-comerce\obj\Debug\netcoreapp3.1\Laptop-store-e-comerce.dll
 D:\Tài liệu\Web-e-commerce-laptop\Laptop-store-e-commerce (Server)\Laptop-store-e-comerce\obj\Debug\netcoreapp3.1\Laptop-store-e-comerce.pdb
 D:\Tài liệu\Web-e-commerce-laptop\Laptop-store-e-commerce (Server)\Laptop-store-e-comerce\obj\Debug\netcoreapp3.1\Laptop-store-e-comerce.genruntimeconfig.cache
-D:\Do an web\Web-e-commerce-laptop\Laptop-store-e-commerce (Server)\Laptop-store-e-comerce\obj\Debug\netcoreapp3.1\Laptop-store-e-comerce.csproj.CopyComplete

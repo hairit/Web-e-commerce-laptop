@@ -1,19 +1,34 @@
 import React from "react";
 import axios from "axios";
-
+import URL from '../../../DATA/URL'
 import "../../../CSS/ProductsCss/bootstrap.css";
 import "../../../CSS/ProductsCss/style.css";
 import { useEffect, useState } from "react";
 import ListProductLaptop from "./ListProductLaptop";
+import Solver from "../../../Classes/Solver";
+const solver = new Solver();
 export default function Laptops({match,addProductToCart}) {
   const [pros, setPros] = useState([]);
   useEffect(() => {
+    if(match !== undefined){
+      var API;
+      if(match.match.params.gia) API = `${URL}/data/product/type=laptop/from=${match.match.params.from}to=${match.match.params.to}`
+      else API =  `${URL}/data/laptop/${match.match.params.attribute}=${match.match.params.value}`
+    }
+    else API = "https://localhost:44343/data/Product/type=laptop";
+    console.log(API);
+    console.log(match);
     axios
-      .get("https://localhost:44343/data/Product/type=laptop", null)
+      .get(API, null)
       .then((res) => setPros(res.data))
       .catch((err) => console.log(err));
   }, []);
-  console.log(match);
+  // useEffect(() => {
+  //   axios
+  //     .get("https://localhost:44343/data/Product/type=laptop", null)
+  //     .then((res) => setPros(res.data))
+  //     .catch((err) => console.log(err));
+  // }, []);
   return (
     <div className="wrapper">
       <div className="container_fullwidth">
