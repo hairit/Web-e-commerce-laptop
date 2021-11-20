@@ -1,15 +1,24 @@
 import React from "react";
 import axios from "axios";
-
+import URL from "../../../DATA/URL";
 import "../../../CSS/ProductsCss/bootstrap.css";
 import "../../../CSS/ProductsCss/style.css";
 import { useEffect, useState } from "react";
 import ListProductPC from "./ListProductPC";
-export default function PC({addProductToCart}) {
+export default function PC({addProductToCart,match}) {
   const [pros, setPros] = useState([]);
   useEffect(() => {
+    var API;
+    if(match !== undefined){
+      if(match.match.params.attribute && match.match.params.value){
+            API = `${URL}/data/pc/${match.match.params.attribute}=${match.match.params.value}`;
+      }else if(match.match.params.gia){
+            API = `${URL}/data/product/type=pc/from=${match.match.params.from}to=${match.match.params.to}`;
+      }
+    }
+    else API = "https://localhost:44343/data/Product/type=pc";
     axios
-      .get("https://localhost:44343/data/Product/type=pc", null)
+      .get(API, null)
       .then((res) => setPros(res.data))
       .catch((err) => console.log(err));
   }, []);
