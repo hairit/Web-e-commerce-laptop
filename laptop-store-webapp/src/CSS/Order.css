@@ -23,11 +23,12 @@
   min-height: 400px;
 }
 .info-orderPro {
+  display: flex;
+  flex-flow: column;
   margin-left: 10px;
-  background-color: white;
+
   float: right;
   width: 34%;
-  padding: 10px 20px;
 }
 .info-orderRight {
   width: 100%;
@@ -157,6 +158,8 @@
   cursor: pointer;
 }
 .info-pro {
+  padding: 10px 20px;
+  background-color: white;
   display: flex;
   flex-flow: column;
 }
@@ -179,9 +182,11 @@
   width: 80%;
 }
 .pay-order {
+  padding: 10px 20px;
+
   margin-top: 15px !important;
   float: right;
-  width: 34%;
+  width: 100%;
   background-color: white;
 }
 .pay-orders {
@@ -205,11 +210,12 @@
 .detail-price {
   font-weight: bold;
 }
-.ships{
+.ships {
+  padding-bottom: 5px;
   float: right !important;
-    color: red;
-    font-size: 17px;
-    font-weight: bold;
-   
-    text-align: right;
+  color: red;
+  font-size: 17px;
+  font-weight: bold;
+
+  text-align: right;
 }

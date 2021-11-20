@@ -211,10 +211,9 @@ console.log("user order", userOrder)
                   </div>
                 );
               })}
+              
             </div>
-          </div>
-
-          <div className="payment pay-order">
+            <div className="pay-order">
             <div className="pay-info pay-orders">
               <div className="thanhtoan">
                 <strong>Thanh toán</strong>
@@ -234,6 +233,9 @@ console.log("user order", userOrder)
               </button>
             </div>
           </div>
+          </div>
+
+        
         </div>
       </div>
     </div>
