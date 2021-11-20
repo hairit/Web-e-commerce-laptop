@@ -60,6 +60,7 @@
 .header-center-left {
   display: flex;
   align-items: center;
+  margin-right: 100px;
 }
 .panel-search-product {
   position: relative;
@@ -151,10 +152,76 @@
   position: absolute;
   opacity: 0;
 }
-.menu-status {
-  display: block;
-  position: fixed;
+.user-menu
+{
+  position: absolute;
+  background-color: #ffffff;
+  border-radius: 5px;
+  padding: 5px 5px;
+  align-items: center;
+  margin-top: 40px;
+  background-color: #eeeee4;
+  box-shadow: #f8f8fc 2px;
+  width: 300px;
 }
-.menu-status-hide {
+.user-menu-hide
+{
   display: none;
+}
+.user-menu-avatar
+{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 100px;
+  width: 100px;
+  border-radius: 100%;
+  margin-bottom: 10px;
+}
+.user-menu-button
+{
+  border: none;
+  outline: none;
+  border-radius: 4px;
+  text-align: center;
+  width: 100%;
+  background-color: #3f4fc3;
+  padding: 10px 0;
+  font-weight: 500;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+.user-menu-button::after
+{
+  margin-bottom: 10px;
+}
+.user-menu-login-text
+{
+  text-align: center;
+  font-size: larger;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.user-menu-input
+{
+    width: 100%;
+    outline: none;
+    border: 0.1px solid #dfdfe0;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding-left: 8px;
+    height: 30px;
+    margin-bottom: 10px;
+}
+.user-menu-page
+{
+  display: block;
+}
+.user-menu-page-hide
+{
+  display: none;
+}
+.change-pass
+{
+  display: block;
 }
