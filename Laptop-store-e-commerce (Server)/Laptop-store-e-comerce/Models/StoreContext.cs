@@ -310,6 +310,10 @@ namespace Laptop_store_e_comerce.Models
                     .HasColumnName("size")
                     .HasMaxLength(100);
 
+                entity.Property(e => e.Typelaptop)
+                    .HasColumnName("typelaptop")
+                    .HasMaxLength(200);
+
                 entity.HasOne(d => d.IdProductNavigation)
                     .WithOne(p => p.LaptopDescription)
                     .HasForeignKey<LaptopDescription>(d => d.IdProduct)
