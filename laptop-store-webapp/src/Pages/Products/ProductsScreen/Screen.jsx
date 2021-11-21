@@ -1,15 +1,26 @@
 import React from "react";
 import axios from "axios";
-
+import URL from "../../../DATA/URL";
 import "../../../CSS/ProductsCss/bootstrap.css";
 import "../../../CSS/ProductsCss/style.css";
 import { useEffect, useState } from "react";
 import ListProductKeyboard from "./ListProductScreen";
-export default function Screen({addProductToCart}) {
+export default function Screen({match,addProductToCart}) {
   const [pros, setPros] = useState([]);
   useEffect(() => {
+    var API;
+    if(match !== undefined){
+      if(match.match.params.attribute) {
+            API = `${URL}/data/screen/${match.match.params.attribute}=${match.match.params.value}`
+      }else if(match.match.params.kichthuoc){
+            API = `${URL}data/screen/kichthuoc/from=${match.match.params.from}to=${match.match.pararms.to}`;
+      }else if(match.match.params.gia){
+            API = `${URL}data/product/from={${match.match.params.from}}to=${match.match.params.to}`;
+      }
+      else API = "https://localhost:44343/data/Product/type=screen";
+    }
     axios
-      .get("https://localhost:44343/data/Product/type=screen", null)
+      .get(API, null) //Default value "https://localhost:44343/data/Product/type=screen"
       .then((res) => setPros(res.data))
       .catch((err) => console.log(err));
   }, []);
