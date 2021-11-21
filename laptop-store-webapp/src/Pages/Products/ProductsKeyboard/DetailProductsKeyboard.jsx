@@ -9,7 +9,7 @@ import replace_24px from "../../../Images/replace_24px.png";
 import checked_32px from "../../../Images/checked_32px.png";
 import settings_24px from "../../../Images/settings_24px.png";
 import monitor_24px from "../../../Images/monitor_24px.png";
-import SanPhamKhac from "../ProductsKeyboard/SanPhamKhac";
+import SanPhamKhac from "./SanPhamKhac";
 import bnphmc from "../../../Images/bnphmc.png";
 import bnphmc1 from "../../../Images/bnphmc1.png";
 import bnphmc2 from "../../../Images/bnphmc2.png";

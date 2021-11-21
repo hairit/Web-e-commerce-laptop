@@ -88,7 +88,7 @@ namespace Laptop_store_e_comerce.Models
             modelBuilder.Entity<BillDetail>(entity =>
             {
                 entity.HasKey(e => new { e.IdBill, e.IdProduct })
-                    .HasName("PK__BillDeta__E317F4056766B000");
+                    .HasName("PK__BillDeta__E317F40564595F3A");
 
                 entity.ToTable("BillDetail");
 
@@ -122,7 +122,7 @@ namespace Laptop_store_e_comerce.Models
             modelBuilder.Entity<CartDetail>(entity =>
             {
                 entity.HasKey(e => new { e.IdUser, e.IdProduct })
-                    .HasName("PK__CartDeta__32F90E1FE645197C");
+                    .HasName("PK__CartDeta__32F90E1F47B77E77");
 
                 entity.ToTable("CartDetail");
 
@@ -196,7 +196,7 @@ namespace Laptop_store_e_comerce.Models
             modelBuilder.Entity<KeyboardDetail>(entity =>
             {
                 entity.HasKey(e => e.IdProduct)
-                    .HasName("PK__Keyboard__5EEC79D161EBE473");
+                    .HasName("PK__Keyboard__5EEC79D19330410D");
 
                 entity.ToTable("KeyboardDetail");
 
@@ -249,7 +249,7 @@ namespace Laptop_store_e_comerce.Models
             modelBuilder.Entity<LaptopDescription>(entity =>
             {
                 entity.HasKey(e => e.IdProduct)
-                    .HasName("PK__LaptopDe__5EEC79D13195952C");
+                    .HasName("PK__LaptopDe__5EEC79D11A4FB4F4");
 
                 entity.ToTable("LaptopDescription");
 
@@ -324,7 +324,7 @@ namespace Laptop_store_e_comerce.Models
             modelBuilder.Entity<LaptopDetail>(entity =>
             {
                 entity.HasKey(e => e.IdProduct)
-                    .HasName("PK__LaptopDe__5EEC79D11FDA86D7");
+                    .HasName("PK__LaptopDe__5EEC79D1061AE1D8");
 
                 entity.ToTable("LaptopDetail");
 
@@ -359,7 +359,7 @@ namespace Laptop_store_e_comerce.Models
             modelBuilder.Entity<MouseDetail>(entity =>
             {
                 entity.HasKey(e => e.IdProduct)
-                    .HasName("PK__MouseDet__5EEC79D131774444");
+                    .HasName("PK__MouseDet__5EEC79D116076FF5");
 
                 entity.ToTable("MouseDetail");
 
@@ -420,7 +420,7 @@ namespace Laptop_store_e_comerce.Models
             modelBuilder.Entity<Pcdetail>(entity =>
             {
                 entity.HasKey(e => e.IdProduct)
-                    .HasName("PK__PCDetail__5EEC79D1E6C8E6F0");
+                    .HasName("PK__PCDetail__5EEC79D10E8B602E");
 
                 entity.ToTable("PCDetail");
 
@@ -540,7 +540,7 @@ namespace Laptop_store_e_comerce.Models
             modelBuilder.Entity<ScreenDetail>(entity =>
             {
                 entity.HasKey(e => e.IdProduct)
-                    .HasName("PK__ScreenDe__5EEC79D1D98FFB00");
+                    .HasName("PK__ScreenDe__5EEC79D1C6A10745");
 
                 entity.ToTable("ScreenDetail");
 

@@ -9,12 +9,12 @@ import Solver from "../../Classes/Solver";
 const solver = new Solver();
 const renderLaptopItem = (pro, index ,addProductToCart) => {
   return (
-    <div className="col-10-no-padding c-10-2 laptop-item" key={index}>
+    <NavLink to={`/laptop/${pro.id}`} className="col-10-no-padding c-10-2 laptop-item" key={index}>
       <div  className="laptop-infor">
         <div className="laptop-image">
           <img className="laptop-image-img" src={URL + `/Images/Products/${pro.nameimage}`} alt={pro.nameimage} /></div>
         <div className="laptop-detail">
-          <NavLink  to={`/laptop/${pro.id}`} className="laptop-detail-item laptop-name">{pro.ten}</NavLink>
+          <div  className="laptop-detail-item laptop-name">{pro.ten}</div>
           <div className="laptop-detail-item laptop-price">
             <div className="laptop-price-value" >
               {solver.formatCurrency("vi-VN", "currency", "VND", pro.gia)}
@@ -28,7 +28,7 @@ const renderLaptopItem = (pro, index ,addProductToCart) => {
           <button className="laptop-btn laptop-addCart" onClick={()=>addProductToCart(pro.id,pro.gia)}>Thêm vào giỏ</button>
         </div>
       </div>
-    </div>
+    </NavLink>
   );
 };
 export default function Laptop({addProductToCart}) {

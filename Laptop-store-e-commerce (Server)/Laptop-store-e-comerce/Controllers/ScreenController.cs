@@ -13,109 +13,75 @@ namespace Laptop_store_e_comerce.Controllers
     [ApiController]
     public class ScreenController : ControllerBase
     {
-        private readonly StoreContext _context;
-
+        private readonly StoreContext database;
         public ScreenController(StoreContext context)
         {
-            _context = context;
+            database = context;
         }
-        // GET: api/Screen
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
+        [HttpGet("screen={value}")]
+        public async Task<ActionResult<List<Product>>> getScreenByBrand(string value)
         {
-            return await _context.Products.ToListAsync();
+            var pros = await database.Products.Where(pro => pro.Idloai == "screen" && pro.Thuonghieu == value)
+                                              .ToListAsync();
+            if (pros.Count == 0) return NotFound();
+            else return pros;
         }
-        // GET: api/Screen/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Product>> GetProduct(string id)
+        [HttpGet("kichthuoc={value}")]
+        public async Task<ActionResult<List<Product>>> getScreenBySizeString(string value)
         {
-            var product = await _context.Products.FindAsync(id);
-
-            if (product == null)
-            {
-                return NotFound();
-            }
-
-            return product;
+            var pros = await database.Products.Where(pro => pro.Idloai == "screen" && pro.ScreenDetail.Kichthuoc.ToString() == value)
+                                              .ToListAsync();
+            if (pros.Count == 0) return NotFound();
+            else return pros;
         }
-
-        // PUT: api/Screen/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutProduct(string id, Product product)
+        [HttpGet("kichthuoc=from={value1}to={value2}")]
+        public async Task<ActionResult<List<Product>>> getScreenBySizeInt(int value1 , int value2)
         {
-            if (id != product.Id)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(product).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ProductExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
+            var pros = await database.Products.Where(pro => pro.Idloai == "screen" && 
+                                                        value2 == 999 ?
+                                                        pro.ScreenDetail.Kichthuoc >= value1 && pro.ScreenDetail.Kichthuoc <= value2
+                                                        :
+                                                        pro.ScreenDetail.Kichthuoc >= value1
+                                                        )
+                                              .ToListAsync();
+            if (pros.Count == 0) return NotFound();
+            else return pros;
         }
-
-        // POST: api/Screen
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPost]
-        public async Task<ActionResult<Product>> PostProduct(Product product)
+        [HttpGet("dophangiai={value}")]
+        public async Task<ActionResult<List<Product>>> getScreenByDoPhanGiai(string value)
         {
-            _context.Products.Add(product);
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (ProductExists(product.Id))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return CreatedAtAction("GetProduct", new { id = product.Id }, product);
+            var pros = await database.Products.Where(pro => pro.Idloai == "screen" && pro.ScreenDetail.Dophangiai.Contains(value))
+                                              .ToListAsync();
+            if (pros.Count == 0) return NotFound();
+            else return pros;
         }
-
-        // DELETE: api/Screen/5
-        [HttpDelete("{id}")]
-        public async Task<ActionResult<Product>> DeleteProduct(string id)
+        [HttpGet("tamnen={value}")]
+        public async Task<ActionResult<List<Product>>> getScreenByTamNen(string value)
         {
-            var product = await _context.Products.FindAsync(id);
-            if (product == null)
-            {
-                return NotFound();
-            }
-
-            _context.Products.Remove(product);
-            await _context.SaveChangesAsync();
-
-            return product;
+            var pros = await database.Products.Where(pro => pro.Idloai == "screen" && pro.ScreenDetail.Tamnen.Contains(value))
+                                              .ToListAsync();
+            if (pros.Count == 0) return NotFound();
+            else return pros;
         }
-
+        [HttpGet("tanso={value}")]
+        public async Task<ActionResult<List<Product>>> getScreenByTanSo(int value)
+        {
+            var pros = await database.Products.Where(pro => pro.Idloai == "screen" && pro.ScreenDetail.Tanso == value)
+                                              .ToListAsync();
+            if (pros.Count == 0) return NotFound();
+            else return pros;
+        }
+        [HttpGet("kieumanhinh={value}")]
+        public async Task<ActionResult<List<Product>>> getScreenByType(string value)
+        {
+            var pros = await database.Products.Where(pro => pro.Idloai == "screen" && pro.ScreenDetail.Kieumanhinh.Contains(value))
+                                              .ToListAsync();
+            if (pros.Count == 0) return NotFound();
+            else return pros;
+        }
         private bool ProductExists(string id)
         {
-            return _context.Products.Any(e => e.Id == id);
+            return database.Products.Any(e => e.Id == id);
         }
     }
 }
