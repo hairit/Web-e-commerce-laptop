@@ -577,6 +577,39 @@ const PRODUCT_OPTIONS = [
               }
             ]
         }
+        ,{
+            name : "Màn hình theo giá" ,
+            datas : [
+                {
+                  name : "Dưới 1 triệu",
+                  path : "screen/gia/0/1000000"
+                },
+                {
+                  name : "1-3 triệu",
+                  path : "screen/gia/1000000/3000000"
+                },
+                {
+                  name : "3-5 triệu",
+                  path : "screen/gia/3000000/5000000"
+                },
+                {
+                  name : "5-10 triệu",
+                  path : "screen/gia/5000000/10000000"
+                },
+                {
+                  name : "10-20 triệu",
+                  path : "screen/gia/10000000/20000000"
+                },
+                {
+                  name : "20-40 triệu",
+                  path : "screen/gia/20000000/40000000"
+                },
+                {
+                  name : "Trên 40 triệu",
+                  path : "screen/gia/40000000"
+                }
+            ]
+        }
     ]
   },
   {
@@ -585,7 +618,167 @@ const PRODUCT_OPTIONS = [
     icon: () => {
       return <MdKeyboardAlt className="pro-list-item-icon" />;
     },
-    attributes : null
+    attributes : [
+      {
+        name : "Thương hiệu",
+        datas : [
+          {
+            name : "Dareu",
+            path : "keyboard/brand/dareu"
+          },
+          {
+            name : "Royal Kludge",
+            path : "keyboard/brand/rk"
+          },
+          {
+            name : "AKKO",
+            path : "keyboard/brand/akko"
+          },
+          {
+            name : "Logitech",
+            path : "keyboard/brand/logitech"
+          },
+          {
+            name : "HyperX",
+            path : "keyboard/brand/hyperx"
+          },
+          {
+            name : "Corsair",
+            path : "keyboard/brand/corsair"
+          },
+          {
+            name : "Cooler Master",
+            path : "keyboard/brand/coolermaster"
+          },
+          {
+            name : "Dell",
+            path : "keyboard/brand/dell"
+          },
+          {
+            name : "Rapoo",
+            path : "keyboard/brand/rapoo"
+          },
+          {
+            name : "Phillip",
+            path : "keyboard/brand/philip"
+          },
+          {
+            name : "Razer",
+            path : "keyboard/brand/razer"
+          }
+          ,
+          {
+            name : "Steel Series",
+            path : "keyboard/brand/steelseries"
+          }
+        ]
+      },
+      {
+          name :"Kiểu kết nối",
+          datas : [
+            {
+              name : "Bàn phím có dây",
+              path : "keyboard/ketnoi/Bàn phím có dây"
+            },
+            {
+              name : "Bàn phím Không dây",
+              path : "keyboard/ketnoi/Bàn phím không dây"
+            },
+            {
+              name : "Đa kết nối",
+              path : "keyboard/ketnoi/Đa kết nối"
+            }
+          ]
+      },
+      {
+          name : "Loại bàn phím",
+          datas : [
+            {
+              name : "Bàn phím cơ",
+              path : "keyboard/loai/Bàn phím cơ"
+            },
+            {
+              name : "Bàn phím thường",
+              path : "keyboard/loai/Bàn phím thường"
+            },
+            {
+              name : "Bàn phím Gaming",
+              path : "keyboard/loai/Bàn phím gaming"
+            },
+            {
+              name : "Bàn phím văn phòng",
+              path : "keyboard/loai/Bàn phím văn phòng"
+            }
+          ]
+      },
+      {
+          name  : "Kiểu đèn",
+          datas : [
+            {
+              name : "RGB",
+              path : "keyboard/led/RGB"
+            },
+            {
+              name : "Led đơn",
+              path  : "keyboard/led/led đơn"
+            }
+          ]
+      },
+      {
+          name :"Hãng switch",
+          datas : [
+            {
+              name : "DareU",
+              path : "keyboard/brandswitch/dareuu"
+            },
+            {
+              name : "Royal Kludge",
+              path : "keyboard/brandswitch/RK"
+            },
+            {
+              name : "Cherry MX",
+              path : "keyboard/brandswitch/cherry mx"
+            },
+            {
+              name : "Outume",
+              path : "keyboard/brandswitch/outume"
+            },
+            {
+              name : "Gateron",
+              path : "keyboard/brandswitch/gateron"
+            },
+            {
+              name : "Huano",
+              path : "keyboard/brandswitch/huano"
+            },
+            {
+              name : "Razer",
+              path : "keyboard/brandswitch/razer"
+            }
+          ]
+      },
+      {
+          name : "Layout phím",
+          datas : [
+            {
+              name : "108 phím (Cơ bản)",
+              path : "keyboard/layout/108"
+            },
+            {
+              name : "87 phím",
+              path : "keyboard/layout/87"
+            },
+            {
+              name : "61 phím",
+              path : "keyboard/layout/61"
+            },
+            {
+              name : "100 phím",
+              path : "keyboard/layout/100"
+            }
+          ]
+      }
+    ]
   },
   {
     optionName: "Chuột",

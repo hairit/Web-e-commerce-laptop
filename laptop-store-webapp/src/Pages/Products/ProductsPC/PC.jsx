@@ -10,9 +10,9 @@ export default function PC({addProductToCart,match}) {
   useEffect(() => {
     var API;
     if(match !== undefined){
-      if(match.match.params.attribute && match.match.params.value){
+      if(match.match.params.attribute !== "gia"){
             API = `${URL}/data/pc/${match.match.params.attribute}=${match.match.params.value}`;
-      }else if(match.match.params.gia){
+      }else if(match.match.params.attribute === "gia"){
             API = `${URL}/data/product/type=pc/from=${match.match.params.from}to=${match.match.params.to}`;
       }
     }

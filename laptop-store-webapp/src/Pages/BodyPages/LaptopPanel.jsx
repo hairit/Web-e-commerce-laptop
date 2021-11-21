@@ -33,26 +33,40 @@ const renderLaptopItem = (pro, index ,addProductToCart) => {
 };
 export default function Laptop({addProductToCart}) {
   const [pros, setPros] = useState([]);
+  const [laptopQuantity, setLaptopQuantity] = useState(0);
   useEffect(() => {
     call("GET", "data/product/type=laptop/enable", null)
       .then((res) => setPros(res.data))
-      .catch((err) => console.log("Errol!! when try to get laptop product" + err));
+      .catch((err) =>{
+             console.log("Errol!! when try to get laptop product" + err);
+             setPros([]);
+      });
+  }, []);
+  useEffect(() => {
+    call("GET", "data/product/type=laptop/", null)
+      .then((res) => setLaptopQuantity(res.data.length))
+      .catch((err) =>{
+             console.log("Errol!! when try to get laptop product" + err);
+             setLaptopQuantity(0);
+      });
   }, []);
   return (
     <div className="laptop-panel">
-      {/* <div className="laptop-panel-header">
-        <div className="laptop-panel-header-logo">
-          <p>Top các sản phẩm bán chạy</p>
-        </div>
-      </div> */}
       <div className="laptop-panel-header">
-         <h3 className="laptop-panel-header-title">Laptop nổi bật nhất</h3>
+         <p className="laptop-panel-header-title">Laptop nổi bật nhất</p>
          <div className="laptop-panel-header-menu">
+             <NavLink to={`/laptop`} className="laptop-panel-header-menu-item active"><p>Xem tất cả {laptopQuantity} sản phẩm</p></NavLink>
              <NavLink to={`/laptop/brand/DELL`} className="laptop-panel-header-menu-item"><p>DELL</p></NavLink>
              <NavLink to={`/laptop/brand/ASUS`} className="laptop-panel-header-menu-item"><p>ASUS</p></NavLink>
              <NavLink to={`/laptop/brand/HP`} className="laptop-panel-header-menu-item"><p>ACER</p></NavLink>
              <NavLink to={`/laptop/brand/ACER`} className="laptop-panel-header-menu-item"><p>HP</p></NavLink>
              <NavLink to={`/laptop/brand/LENOVO`} className="laptop-panel-header-menu-item"><p>LENOVO</p></NavLink>
+             <NavLink to={`/laptop/15-dh0169tx`} className="laptop-panel-header-menu-item"><p>Laptop HP OMEN</p></NavLink>
+             <NavLink to={`/laptop/GX531GM-ES004T`} className="laptop-panel-header-menu-item"><p>Laptop ASUS Zephyrus S</p></NavLink>
+             <NavLink to={`/laptop/SF314-55G-76FW`} className="laptop-panel-header-menu-item"><p>Laptop Acer Swift 3</p></NavLink>
+             <NavLink to={`/laptop/UX481FL-BM048T`} className="laptop-panel-header-menu-item"><p>Laptop ASUS ZenBook Duo</p></NavLink>
+             <NavLink to={`/laptop/GL504GM-ES312T`} className="laptop-panel-header-menu-item"><p>ASUS ROG Strix SCAR II</p></NavLink>
+             
          </div>
       </div>
       <div className="container10Col wide">
