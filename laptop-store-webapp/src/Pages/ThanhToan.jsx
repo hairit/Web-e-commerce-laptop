@@ -22,6 +22,7 @@ export default function ThanhToan({ idUser, user }) {
       "iduser" : 0,
       "tongtien" : 0,
       "ngaydat" : "",
+      "diachinhan" :"",
       "billDetails" : [
           {
               "idProduct" : "",
@@ -35,33 +36,43 @@ export default function ThanhToan({ idUser, user }) {
           }
       ]
   });
-function currentDate(){
-  // Moment.locale('en');
-    
+ 
+  const ID = function () {
+    return Math.random().toString(36).substr(2, 9);
+  };
+  console.log("Ramdom ID",ID()); 
+
+function currentDate(){    
     return Moment().format('yyy-MM-DD')
 }
-function SubmitOrder(){
-  axios.post("https://localhost:44343/data/bill", {
-     "id" : "",
-     "iduser" :0,
-     "tongtien" : 0,
-     "billDetails" : [
-       {
-         "idProduct" : "",
-         "soluong" : 0,
-         "tongtien" :0,
-       },
-       {
-         "idProduct" : "",
-         "soluong" : 0,
-         "tongtien" :0,
-       }
-     ]
-  })
+function SubmitOrder(bill, userOrder) {
+  
+    axios.post("https://localhost:44343/data/bill", {
+      
+        id : ID(),
+        iduser :userOrder.id,
+        tongtien : "",
+        ngaydat : currentDate(),
+        diachinhan:userOrder.diachi,
+        billDetails : 
+        [
+          {
+            idProduct : "",
+            soluong : "",
+            tongtien :"",
+          },
+          {
+            idProduct : "15-7501",
+            soluong : "",
+            tongtien :"",
+          }
+        ]
+   
+   
+  }).then((res)=> console.log("thanh cong"))
+  .catch((err)=> console.log("loi con me no roi"))
 }
-  // const crypto = require("crypto");
-  // const id = crypto.randomBytes(3*4).toString("base64");
-  // console.log(id); 
+ 
 console.log("ngay gio ne" ,currentDate())
 
 
@@ -79,7 +90,6 @@ console.log("ngay gio ne" ,currentDate())
          .catch((err) => console.log("Reload User"+err));
     
 }, [])
-console.log("user order", checkout)
   useEffect(() => {
     if (idUser !== null) {
       axios
@@ -95,7 +105,7 @@ console.log("user order", checkout)
         .catch((err) => console.log(err));
     }
   }, []);
-  console.log("kikiki");
+  console.log("user order", checkout)
 
   function btnAddAdress() {
     setAddress(true);
@@ -303,7 +313,7 @@ console.log("user order", checkout)
                 <p className="thanhtien">{solver.formatCurrency("vi-VN","currency","VND",totalPrice(checkout))}</p>
               </div>
               <div className="VAT">( Bao gồm VAT )</div>
-              <button className="btn-pay btn btn-outline-primary" onClick={() => SubmitOrder()}>
+              <button className="btn-pay btn btn-outline-primary" onClick={() => SubmitOrder(checkout,userOrder)}>
                 Đặt hàng ngay
               </button>
             </div>

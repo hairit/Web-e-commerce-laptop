@@ -16,6 +16,7 @@ import { HiOutlineUserCircle } from "react-icons/hi";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { CgProductHunt } from "react-icons/cg";
 import { useCookies} from "react-cookie";
+
 import axios from "axios";
 
 //import { instanceOf } from 'prop-types';
@@ -34,23 +35,18 @@ const nullUser = () => {
     </div>
   );
 };
-
-
-
-
-export default function Header({ user }) {
+export default function Header({ user , logout }) {
+  const history = useHistory();
   const [usermenu, setusermenu] = useState(false);
   const [cookies, setcookies, removeCookie] = useCookies(['user']);
   const [changepass, setchangepass] = useState(false);
   const [usertemp, setusertemp] = useState(null);
   const [passn, setpassn] = useState("");
   const [conf, setconf] = useState("");
-
+  const [changeinfo, setchangeinfo] = useState("");
 
   function changpass()
   {
-    console.log(String(passn).length);
-    console.log(conf);
     if (conf || passn)
     {
       if (String(passn).length>=6)
@@ -62,7 +58,7 @@ export default function Header({ user }) {
           .then(function (response) {
               console.log(response);
               alert("Thay đổi mật khẩu thành công!");
-              setchangepass(false);
+              showusermenu()
             })
           .catch(function (response) {
               console.log(response);
@@ -71,13 +67,45 @@ export default function Header({ user }) {
         } else alert("Xác nhận mật khẩu chưa trùng khớp!");
       } else alert("Mật khẩu phải lớn hơn 6 ký tự!");
     } else alert("Vui lòng nhập đủ tất cả các trường!")
-
   }
-
-  function  logout() {
-    removeCookie('id');
-    console.log("Log out");
-    window.location.reload();
+  function changinfo()
+  {
+    if(!usertemp.firstname || !usertemp.lastname || !usertemp.sdt || !usertemp.diachi)
+    {
+      alert("Vui lòng nhập đủ tất cả các trường!")
+    }
+    else 
+    {
+      axios.put(`https://localhost:44343/data/user/`,usertemp)
+      .then(function (response) {
+          console.log(response);
+          alert("Thay đổi thông tin thành công!");
+          showusermenu()
+          window.location.reload();
+        })
+      .catch(function (response) {
+          console.log(response);
+          alert("Thay đổi mật khẩu thất bại!");
+        });
+    }
+  }
+  function logoutHandle (){
+      logout();
+      history.push("/");
+  }
+  function btncancle()
+  {
+    setusermenu(true);
+    setchangepass(false);
+    setchangeinfo(false);
+    setusertemp(user);
+  }
+  function showusermenu()
+  {
+    setusermenu(!usermenu);
+    setchangepass(false);
+    setchangeinfo(false);
+    setusertemp(user);
   }
   return (
     <div className="header">
@@ -140,7 +168,7 @@ export default function Header({ user }) {
               <p className="login-text">
                 {user.firstname + " " + user.lastname}
               </p>
-              <AiOutlineCaretDown id="drop-user" onClick={()=>setusermenu(!usermenu)}/>
+              <AiOutlineCaretDown id="drop-user" onClick={()=>showusermenu()}/>
             </div> 
           )}
           {user!==null?
@@ -148,16 +176,57 @@ export default function Header({ user }) {
                   <img src={URL + `/Images/UserAvatar/${user.nameimage}`}
                   alt="avatar" className="user-menu-avatar"/>
                 <p className="user-menu-login-text">  {user.firstname + " " + user.lastname} </p>
-              <div className={changepass===false?"user-menu-page":"user-menu-page-hide"}>
+                <div className={changeinfo===true?"user-menu-info":"user-menu-hide"}>
+                  <p className="user-menu-label"> Thay đổi thông tin</p>
+                  <div className="user-info-item">
+                      <p className="user-info-label">Họ:</p>
+                      <input className="user-menu-input" defaultValue={user.firstname} type="text" onChange={(e)=>setusertemp({...usertemp,firstname:e.target.value})}></input>
+                    </div>
+                    <div className="user-info-item">
+                      <p className="user-info-label">Tên:</p>
+                      <input className="user-menu-input" defaultValue={user.lastname} type="text" onChange={(e)=>setusertemp({...usertemp,lastname:e.target.value})}></input>
+                    </div>
+                    <div className="user-info-item">
+                      <p className="user-info-label">SĐT:</p>
+                      <input className="user-menu-input" defaultValue={user.sdt} type="text" onChange={(e)=>setusertemp({...usertemp,sdt:e.target.value})}></input>
+                    </div>
+                    <div className="user-info-item">
+                      <p className="user-info-label">Địa chỉ:</p>
+                      <input className="user-menu-input" defaultValue={user.diachi} type="text" onChange={(e)=>setusertemp({...usertemp,diachi:e.target.value})}></input>
+                    </div>
+                    <button className="user-menu-button" onClick={()=>changinfo()}>Xác nhận đổi</button>
+                    <button className="user-menu-button" onClick={()=>btncancle()}>Hủy</button>
+                </div>
+              <div className={changepass===false && changeinfo==false?"user-menu-page":"user-menu-page-hide"}>
+                <div className="user-menu-info">
+                <p className="user-menu-label"> Thông tin tài khoản</p>
+                  <div className="user-info-item">
+                    <p className="user-info-label">Họ:</p>
+                    <input className="user-menu-input" defaultValue={user.firstname} type="text" readOnly></input>
+                  </div>
+                  <div className="user-info-item">
+                    <p className="user-info-label">Tên:</p>
+                    <input className="user-menu-input" defaultValue={user.lastname} type="text" readOnly></input>
+                  </div>
+                  <div className="user-info-item">
+                    <p className="user-info-label">SĐT:</p>
+                    <input className="user-menu-input" defaultValue={user.sdt} type="text" readOnly></input>
+                  </div>
+                  <div className="user-info-item">
+                    <p className="user-info-label">Địa chỉ:</p>
+                    <input className="user-menu-input" defaultValue={user.diachi} type="text" readOnly></input>
+                  </div>
+                </div>
+                <button className="user-menu-button" onClick={()=>setchangeinfo(true)}>Sửa thông tin</button>
                 <button className="user-menu-button" onClick={()=>setchangepass(true)}>Đổi mật khẩu</button>
-                <button className="user-menu-button" >Sửa thông tin</button>
-                <button className="user-menu-button" onClick={()=>logout()}>Đăng xuất</button>
+                <button className="user-menu-button" onClick={()=>logoutHandle()}>Đăng xuất</button>
               </div>
               <div className={changepass===true?"change-pass":"user-menu-hide"}>
+                <p className="user-menu-label"> Đổi mật khẩu</p>
                 <input className="user-menu-input" placeholder="Nhập mật khẩu mới" type="password" onChange={(e)=>setpassn(e.target.value)}/>
                 <input className="user-menu-input" placeholder="Xác nhận mật khẩu mới" type="password" onChange={(e)=>setconf(e.target.value)}/>
                 <button className="user-menu-button" onClick={()=>changpass()}>Xác nhận đổi</button>
-                <button className="user-menu-button" onClick={()=>setchangepass(false)}>Hủy</button>
+                <button className="user-menu-button" onClick={()=>btncancle()}>Hủy</button>
               </div>
             </div>:<div></div>
         }

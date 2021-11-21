@@ -24,12 +24,13 @@ import PC from "./Pages/Products/ProductsPC/PC";
 import DetailProductsPC from "./Pages/Products/ProductsPC/DetailProductsPC";
 import ScrollToTop from "./ScrollToTop";
 import ThanhToan from "./Pages/ThanhToan";
+import DonHang from "./Pages/DonHang";
 
 
 function App() {
   const history = useHistory();
   const [user, setUser] = useState(null);
-  const [userCookie, setUserCookie] = useCookies(["user"]);
+  const [userCookie, setUserCookie ,removeCookie] = useCookies(["user"]);
   const [updateDataUser, setUpdateDataUser] = useState(0);
   useEffect(() => {
     console.log(userCookie.id);
@@ -54,14 +55,15 @@ function App() {
     if(updateDataUser === 0) setUpdateDataUser (1);
     else setUpdateDataUser(0);
   }
-  
-
-
   const login = (user) => {
     setUserCookie("id", user.id);
     setUser(user);
   };
-  function addProductToCart(idProduct , price ){
+  const logout = () => {
+    removeCookie('id');
+    setUser(null);
+  }
+  const addProductToCart = (idProduct , price )=>{
     if(user === null)
     {
       alert("Bạn cần đăng nhập để thêm sản phẩm vào giỏ hàng");
@@ -77,9 +79,7 @@ function App() {
       }).catch(err => console.log("Add cart failed"));
     }
   }
-
-  function deleteCartItem(iduser,idpro){
-  
+  const deleteCartItem = (iduser,idpro)=>{
     if(window.confirm("Bạn muốn xoá sản phẩm này ra khỏi giỏ hàng?") ===true){
       axios.delete(`https://localhost:44343/data/cartdetail/iduser=${iduser}/idproduct=${idpro}`,null)
       .then(()=> {
@@ -89,7 +89,7 @@ function App() {
       console.log("Dell xoa duoc",err))
     }
   }
-  function deleteProductFromCart(iduser, idpro, thanhtien,quantity) {
+  const deleteProductFromCart=(iduser, idpro, thanhtien,quantity) => {
     if(quantity <= 1){
       deleteCartItem(iduser, idpro)
     }
@@ -105,16 +105,20 @@ function App() {
     <Router>
       <ScrollToTop />
       <div className="App">
-        <Header user={user} />
+        <Header user={user} logout={logout} />
             <Route path="/"                               exact component={() => <Body addProductToCart={addProductToCart}/>}></Route>
 
             <Route path="/laptop"                         exact component={() => <Laptops addProductToCart={addProductToCart} />}></Route>
             <Route path="/laptop/:attribute/:value"       exact component={(match) => <Laptops  match={match} /> } ></Route>
-            <Route path="/laptop/:gia/:from/:to"   exact component={(match) => <Laptops  match={match} /> } ></Route>
+            <Route path="/laptop/:gia/:from/:to"          exact component={(match) => <Laptops  match={match} /> } ></Route>
             
             <Route path="/keyboard"                       exact component={() => <Keyboard addProductToCart={addProductToCart} />}></Route>
             <Route path="/mouse"                          exact component={() =><Mouse addProductToCart={addProductToCart} />} ></Route>
+            
             <Route path="/screen"                         exact component={() => <Screen addProductToCart={addProductToCart} />}></Route>
+            <Route path="/screen/:attribute/value"        exact component={() => <Screen addProductToCart={addProductToCart} />}></Route>
+            <Route path="/screen/:gia/:from/:to"          exact component={() => <Screen addProductToCart={addProductToCart} />}></Route>
+
 
             <Route path="/pc"                             exact component={() =>         <PC addProductToCart={addProductToCart} />}></Route>
             <Route path="/pc/:attribute/:value"           exact component={(match) =>    <PC addProductToCart={addProductToCart} match={match}  />}></Route>
@@ -130,10 +134,11 @@ function App() {
             
             
             <Route path="/card"                           exact component={() => <GioHang user={user} deleteProductFromCart={deleteProductFromCart} deleteCartItem={deleteCartItem} addProductToCart={addProductToCart} idUser={ user !== null ? user.id : null } />}></Route>
+            <Route path="/bill"                           exact component={() => <DonHang  />}></Route>
             <Route path="/login"                          exact component={(match) => <Login  login={login} match={match} /> } ></Route>
-            <Route path="/lienhe"                           component={() => <Lienhe />}></Route>
-            <Route path="/tincongnghe"                      component={() => <Tintuc />}></Route>
-            <Route path="/showroom"                         component={() => <Showroom />}></Route>
+            <Route path="/lienhe"                         component={() => <Lienhe />}></Route>
+            <Route path="/tincongnghe"                    component={() => <Tintuc />}></Route>
+            <Route path="/showroom"                       component={() => <Showroom />}></Route>
         <Footer />
       </div>
     </Router>
