@@ -9,7 +9,7 @@ using Laptop_store_e_comerce.Models;
 
 namespace Laptop_store_e_comerce.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("data/[controller]")]
     [ApiController]
     public class ScreenController : ControllerBase
     {
@@ -18,10 +18,10 @@ namespace Laptop_store_e_comerce.Controllers
         {
             database = context;
         }
-        [HttpGet("screen={value}")]
+        [HttpGet("brand={value}")]
         public async Task<ActionResult<List<Product>>> getScreenByBrand(string value)
         {
-            var pros = await database.Products.Where(pro => pro.Idloai == "screen" && pro.Thuonghieu == value)
+            var pros = await database.Products.Where(pro => pro.Idloai == "screen" && pro.Thuonghieu.Contains(value))
                                               .ToListAsync();
             if (pros.Count == 0) return NotFound();
             else return pros;
@@ -34,7 +34,7 @@ namespace Laptop_store_e_comerce.Controllers
             if (pros.Count == 0) return NotFound();
             else return pros;
         }
-        [HttpGet("kichthuoc=from={value1}to={value2}")]
+        [HttpGet("kichthuoc/from={value1}to={value2}")]
         public async Task<ActionResult<List<Product>>> getScreenBySizeInt(int value1 , int value2)
         {
             var pros = await database.Products.Where(pro => pro.Idloai == "screen" && 
