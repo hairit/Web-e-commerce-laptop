@@ -8,6 +8,7 @@ import Order from "../CSS/Order.css";
 import edit from "../Images/edit.png";
 import plus from "../Images/plus.png";
 import { useEffect, useState } from "react";
+import Moment from 'moment'
 
 export default function ThanhToan({ idUser, user }) {
   const history = useHistory();
@@ -34,10 +35,35 @@ export default function ThanhToan({ idUser, user }) {
           }
       ]
   });
-
+function currentDate(){
+  // Moment.locale('en');
+    
+    return Moment().format('yyy-MM-DD')
+}
+function SubmitOrder(){
+  axios.post("https://localhost:44343/data/bill", {
+     "id" : "",
+     "iduser" :0,
+     "tongtien" : 0,
+     "billDetails" : [
+       {
+         "idProduct" : "",
+         "soluong" : 0,
+         "tongtien" :0,
+       },
+       {
+         "idProduct" : "",
+         "soluong" : 0,
+         "tongtien" :0,
+       }
+     ]
+  })
+}
   // const crypto = require("crypto");
   // const id = crypto.randomBytes(3*4).toString("base64");
   // console.log(id); 
+console.log("ngay gio ne" ,currentDate())
+
 
   function totalPrice(carts) {
     var tongtien = 0;
@@ -137,6 +163,7 @@ console.log("user order", checkout)
   function editCart() {
     history.goBack();
   }
+ 
   return (
     <div className="wrapper order">
       <div className="container-order">
@@ -276,7 +303,7 @@ console.log("user order", checkout)
                 <p className="thanhtien">{solver.formatCurrency("vi-VN","currency","VND",totalPrice(checkout))}</p>
               </div>
               <div className="VAT">( Bao gồm VAT )</div>
-              <button className="btn-pay btn btn-outline-primary">
+              <button className="btn-pay btn btn-outline-primary" onClick={() => SubmitOrder()}>
                 Đặt hàng ngay
               </button>
             </div>

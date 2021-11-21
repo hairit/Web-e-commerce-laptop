@@ -207,53 +207,49 @@ const PRODUCT_OPTIONS = [
           datas : [
             {
               name : "Dell",
-              path : "/"
+              path : "pc/brand/Dell"
             },
             {
               name : "Asus",
-              path : "/"
+              path : "pc/brand/Asus"
             },
             {
               name : "Acer",
-              path : "/"
-            },
-            {
-              name : "Dell",
-              path : "/"
+              path : "pc/brand/Acer"
             },
             {
               name : "HP",
-              path : "Lenovo"
+              path : "pc/brand/hp"
             },
             {
               name : "Lenovo",
-              path : "/"
+              path : "pc/brand/lenovo"
             }
           ]
       },
       {
-            name : "PC theo nhu cầu",
-            datas : [
-              {
-                  name : "PC văn phòng",
-                  path : "/"
-              },
-              {
-                  name : "PC sinh viên",
-                  path : "/"
-              },
-              {
-                  name : "PC đồ họa",
-                  path : "/"
-              },
-              {
-                  name : "PC gaming",
-                  path : "/"
-              },
-              {
-                  name : "PC giá rẻ",
-                  path : "/"
-              }
+              name : "PC theo nhu cầu",
+              datas : [
+                {
+                    name : "PC văn phòng",
+                    path : "pc/typepc/PC văn phòng"
+                },
+                {
+                    name : "PC sinh viên",
+                    path : "pc/typepc/PC sinh viên"
+                },
+                {
+                    name : "PC đồ họa",
+                    path : "pc/typepc/PC đồ họa"
+                },
+                {
+                    name : "PC gaming",
+                    path : "pc/typepc/PC gaming"
+                },
+                {
+                    name : "PC giá rẻ",
+                    path : "pc/typepc/PC giá rẻ"
+                }
             ]
       },
       {
@@ -261,31 +257,31 @@ const PRODUCT_OPTIONS = [
             datas : [
               {
                   name : "Dưới 10 triệu",
-                  path : "/"
+                  path : "pc/gia/0/10000000"
               },
               {
                   name : "10-20 triệu",
-                  path : "/"
+                  path : "pc/gia/10000000/20000000"
               },
               {
                   name : "20-30 triệu",
-                  path : "/"
+                  path : "pc/gia/10000000/20000000"
               },
               {
                   name : "30-40 triệu",
-                  path : "/"
+                  path : "pc/gia/30000000/40000000"
               },
               {
                   name : "40-50 triệu",
-                  path : "/"
+                  path : "pc/gia/30000000/40000000"
               },
               {
                   name : "50-100 triệu",
-                  path : "/"
+                  path : "pc/gia/50000000/100000000"
               },
               {
                   name : "Trên 100 triệu",
-                  path : "/"
+                  path : "pc/gia/100000000/999"
               }
             ]
       },
@@ -294,47 +290,294 @@ const PRODUCT_OPTIONS = [
         datas : [
             {
                 name : "Intel Pentium",
-                path : "/"
+                path : "pc/cpu/Intel Pentium"
             },
             {
                 name : "Intel Corei3",
-                path : "/cpu/corei3"
+                path : "pc/cpu/corei3"
             },
             {
                 name : "Intel Corei5",
-                path : "/cpu/corei5"
+                path : "pc/cpu/corei5"
             },
             {
                 name : "Intel Corei7",
-                path : "/cpu/corei7"
+                path : "pc/cpu/corei7"
             },
             {
                 name : "Intel Corei9",
-                path : "/cpu/corei9"
+                path : "pc/cpu/corei9"
             },
             {
                 name : "AMD Ryzen3",
-                path : "/cpu/ryzen3"
+                path : "pc/cpu/ryzen3"
             },
             {
                 name : "AMD Ryzen5",
-                path : "/cpu/ryzen5"
+                path : "pc/cpu/ryzen5"
             },
             {
                 name : "AMD Ryzen7",
-                path : "/cpu/ryzen7"
+                path : "pc/cpu/ryzen7"
             },
             ]
      },
+     {
+       name : "Mainboard",
+       datas : [
+            {
+                name : "ASUS",
+                path : "pc/mainboard/asus",
+            },
+            {
+                name : "MSI",
+                path : "pc/mainboard/msi"
+            },
+            {
+                name : "Intel",
+                path : "pc/mainboard/intel"
+            },
+            {
+                name : "AMD",
+                path : "pc/mainboard/amd"
+            },
+            {
+                name : "GIGABYTE",
+                path : "pc/mainboard/gigabyte"
+            }
+       ]
+     },
+     {
+        name : "Thương hiệu cpu",
+        datas : [
+          {
+              name : "Intel",
+              path : "pc/cputype/Intel"
+          },
+          {
+              name : "AMD",
+              path : "pc/cputype/AMD"
+          }, 
+        ]
+     },
+     {
+        name : "RAM",
+        datas : [
+            {
+              name : "4GB",
+              path : "pc/ram/4GB"
+            },
+            {
+              name : "8GB",
+              path : "pc/ram/8GB"
+            },
+            {
+              name : "16GB",
+              path : "pc/ram/16GB"
+            },
+            {
+              name : "32GB",
+              path : "pc/ram/32GB"
+            },
+            {
+              name : "64GB",
+              path : "pc/ram/64GB"
+            }
+        ]
+     },
+     {
+        name : "Thương hiệu VGA",
+        datas : [
+            {
+                name : "NVIDIA",
+                path : "pc/vgatype/nvidia"
+            },
+            {
+                name : "AMD",
+                path : "pc/vgatype/amd"
+            },
+            {
+                name : "ASUS",
+                path : "pc/vgatype/asus"
+            },
+            {
+                name : "SamSung",
+                path : "pc/vgatype/samsung"
+            }
+        ]
+     }
     ]
   },
   {
     optionName: "Màn hình",
     path: "/screen",
     icon: () => {
-      return <RiComputerFill className="pro-list-item-icon" />;
+        return <RiComputerFill className="pro-list-item-icon" />;
     },
-    attributes : null
+    attributes : [
+        {
+          name : "Thương hiệu",
+          datas : [
+              {
+                  name : "LG",
+                  path : "screen/brand/lg"
+              },
+              {
+                  name : "DELL",
+                  path : "screen/brand/dell"
+              },
+              {
+                  name : "Acer",
+                  path : "screen/brand/acer"
+              },
+              {
+                  name : "Asus",
+                  path : "screen/brand/asus"
+              },
+              {
+                  name : "LCD",
+                  path : "screen/brand/lcd"
+              }
+          ]
+        },
+        {
+          name : "Kích thước",
+          datas : [
+              {
+                  name : "Dưới 18 inch",
+                  path : "screen/kichthuoc/0/18"
+              },
+              {
+                  name : "19-22 inch",
+                  path : "screen/kichthuoc/19/22"
+              },
+              {
+                  name : "22-24 inch",
+                  path : "screen/kichthuoc/22/24"
+              },
+              {
+                  name : "24-27 inch",
+                  path : "screen/kichthuoc/24/27"
+              },
+              {
+                  name : "Trên 27 inch",
+                  path : "screen/kichthuoc/27/999"
+              },
+          ]
+        },
+        {
+             name : "Độ phân giải",
+             datas : [
+              {
+                  name : "HD 720p",
+                  path : "screen/dophangiai/HD"
+              },
+              {
+                  name : "Full HD 1080p",
+                  path : "screen/dophangiai/FHD"
+              },
+              {
+                  name : "1440p",
+                  path : "screen/dophangiai/QHD"
+              },
+              {
+                  name : "UltraHD 4K",
+                  path : "screen/dophangiai/UltraHD"
+              },
+            ]
+        },
+        {
+            name : "Tấm nền",
+            datas : [
+              {
+                  name : "TN",
+                  path : "screen/tamnen/TN"
+              },
+              {
+                  name : "IPS",
+                  path : "screen/tamnen/IPS"
+              },
+              {
+                  name : "VA",
+                  path : "screen/tamnen/VA"
+              },
+              {
+                  name : "PLS",
+                  path : "screen/tamnen/PLS"
+              },
+              {
+                  name : "OLED",
+                  path : "screen/tamnen/OLED"
+              }
+            ]
+        },
+        {
+            name : "Tần số quét",
+            datas : [
+              {
+                name : "60Hz",
+                path : "screen/tanso/60"
+              },
+              {
+                name : "75Hz",
+                path : "screen/tanso/75"
+              },
+              {
+                name : "100Hz",
+                path : "screen/tanso/100"
+              },
+              {
+                name : "120Hz",
+                path : "screen/tanso/120"
+              },
+              {
+                name : "144Hz",
+                path : "screen/tanso/140"
+              },
+              {
+                name : "165Hz",
+                path : "screen/tanso/165"
+              },
+              {
+                name : "200Hz",
+                path : "screen/tanso/200"
+              },
+              {
+                name : "240Hz",
+                path : "screen/tanso/240"
+              },
+              {
+                name : "280Hz",
+                path : "screen/tanso/280"
+              }
+            ]
+        },
+        {
+            name : "Theo nhu cầu",
+            datas : [
+              {
+                name : "Màn hình đồ họa",
+                path : "screen/kieumanhinh/Màn hình đồ họa"
+              },
+              {
+                name : "Màn hình thiết kế",
+                path :  "screen/kieumanhinh/Màn hình thiết kế"
+              },
+              {
+                name : "Màn hình cong",
+                path : "screen/kieumanhinh/Màn hình cong"
+              },
+              {
+                name : "Màn hình văn phòng",
+                path : "screen/kieumanhinh/Màn hình văn phòng"
+              },
+              {
+                name : "Màn hình Gaming",
+                path : "screen/kieumanhinh/Màn hình gaming"
+              }
+            ]
+        }
+    ]
   },
   {
     optionName: "Bàn phím",

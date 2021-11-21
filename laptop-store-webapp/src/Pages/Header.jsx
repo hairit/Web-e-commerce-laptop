@@ -4,6 +4,7 @@ import URL from "../DATA/URL";
 import Logo from "../Images/Chicken-logo.png";
 import { MdLocationOn } from "react-icons/md";
 import { BsYoutube } from "react-icons/bs";
+import { useHistory } from "react-router-dom";
 import {
   AiFillPhone,
   AiOutlineShoppingCart,
@@ -14,7 +15,7 @@ import { CgSearch } from "react-icons/cg";
 import { HiOutlineUserCircle } from "react-icons/hi";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { CgProductHunt } from "react-icons/cg";
-import { Cookies } from "react-cookie";
+import { useCookies} from "react-cookie";
 import axios from "axios";
 
 //import { instanceOf } from 'prop-types';
@@ -24,7 +25,7 @@ import {
   Route,
   NavLink,
 } from "react-router-dom";
-const cookie = new Cookies();
+
 const nullUser = () => {
   return (
     <div>
@@ -34,19 +35,50 @@ const nullUser = () => {
   );
 };
 
-export default function Header({ user }) {
 
-  const [menustatus, setmenustatus] = useState(false);
-  
-  function showMenu(){
-    setmenustatus(!menustatus);
-    return (
-      <div className={menustatus===true?"menu-status":"menu-status-hide"}>
-        <button className="button button-menu-logout" onClick={()=>cookie.remove("user")}>Đăng xuất</button>
-      </div>
-    );
+
+
+export default function Header({ user }) {
+  const [usermenu, setusermenu] = useState(false);
+  const [cookies, setcookies, removeCookie] = useCookies(['user']);
+  const [changepass, setchangepass] = useState(false);
+  const [usertemp, setusertemp] = useState(null);
+  const [passn, setpassn] = useState("");
+  const [conf, setconf] = useState("");
+
+
+  function changpass()
+  {
+    console.log(String(passn).length);
+    console.log(conf);
+    if (conf || passn)
+    {
+      if (String(passn).length>=6)
+      {
+        if(passn===conf)
+        {
+          user.pass = passn;
+          axios.put(`https://localhost:44343/data/user/`,user)
+          .then(function (response) {
+              console.log(response);
+              alert("Thay đổi mật khẩu thành công!");
+              setchangepass(false);
+            })
+          .catch(function (response) {
+              console.log(response);
+              alert("Thay đổi mật khẩu thất bại!");
+            });
+        } else alert("Xác nhận mật khẩu chưa trùng khớp!");
+      } else alert("Mật khẩu phải lớn hơn 6 ký tự!");
+    } else alert("Vui lòng nhập đủ tất cả các trường!")
+
   }
 
+  function  logout() {
+    removeCookie('id');
+    console.log("Log out");
+    window.location.reload();
+  }
   return (
     <div className="header">
       <div className="header-top header-item">
@@ -91,7 +123,7 @@ export default function Header({ user }) {
               <p className="login-text">Đăng nhập</p>
             </NavLink>
           ) : (
-            <div className="header-center-right-menu-item"  onClick={()=>cookie.remove("user")}>
+            <div className="header-center-right-menu-item" >
               {user.nameimage !== null ? (
                       <img
                         src={URL + `/Images/UserAvatar/${user.nameimage}`}
@@ -108,9 +140,28 @@ export default function Header({ user }) {
               <p className="login-text">
                 {user.firstname + " " + user.lastname}
               </p>
-              <AiOutlineCaretDown id="drop-user" />
-            </div>
+              <AiOutlineCaretDown id="drop-user" onClick={()=>setusermenu(!usermenu)}/>
+            </div> 
           )}
+          {user!==null?
+            <div className={usermenu===true ?"user-menu":"user-menu-hide"} >
+                  <img src={URL + `/Images/UserAvatar/${user.nameimage}`}
+                  alt="avatar" className="user-menu-avatar"/>
+                <p className="user-menu-login-text">  {user.firstname + " " + user.lastname} </p>
+              <div className={changepass===false?"user-menu-page":"user-menu-page-hide"}>
+                <button className="user-menu-button" onClick={()=>setchangepass(true)}>Đổi mật khẩu</button>
+                <button className="user-menu-button" >Sửa thông tin</button>
+                <button className="user-menu-button" onClick={()=>logout()}>Đăng xuất</button>
+              </div>
+              <div className={changepass===true?"change-pass":"user-menu-hide"}>
+                <input className="user-menu-input" placeholder="Nhập mật khẩu mới" type="password" onChange={(e)=>setpassn(e.target.value)}/>
+                <input className="user-menu-input" placeholder="Xác nhận mật khẩu mới" type="password" onChange={(e)=>setconf(e.target.value)}/>
+                <button className="user-menu-button" onClick={()=>changpass()}>Xác nhận đổi</button>
+                <button className="user-menu-button" onClick={()=>setchangepass(false)}>Hủy</button>
+              </div>
+            </div>:<div></div>
+        }
+          
           {user === null ? (<div></div>) : (
             <NavLink className="header-center-right-menu-item" to="/bill">
               <RiBillLine className="header-center-right-menu-item-icon" />

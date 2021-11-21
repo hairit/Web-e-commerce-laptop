@@ -118,7 +118,7 @@ useEffect(() => {
                     <div className="info-donhang">
                       <div className="info-chitiet">
                       <div className="info-check">
-                        <input class="check-item" type="checkbox"   name="hobby"  id="check-item" defaultChecked={item.selected===1 ? checked : ""}
+                        <input class="check-item" type="checkbox"   name="hobby"  id="check-item" defaultChecked={item.selected === 1 ? checked : ""}
                         onChange={(e)=> { checktien(e, item.idProductNavigation.gia,item.soluong,item.idProduct,idUser, item.selected); 
                         }}   />
                       

@@ -12,12 +12,14 @@ export default function Laptops({match,addProductToCart}) {
   useEffect(() => {
     if(match !== undefined){
       var API;
-      if(match.match.params.gia) API = `${URL}/data/product/type=laptop/from=${match.match.params.from}to=${match.match.params.to}`
-      else API =  `${URL}/data/laptop/${match.match.params.attribute}=${match.match.params.value}`
+      if(match.match.params.gia) {
+        API = `${URL}/data/product/type=laptop/from=${match.match.params.from}to=${match.match.params.to}`;
+      }
+      else if(match.match.params.attribute) {
+        API =  `${URL}/data/laptop/${match.match.params.attribute}=${match.match.params.value}`;
+      }
     }
     else API = "https://localhost:44343/data/Product/type=laptop";
-    console.log(API);
-    console.log(match);
     axios
       .get(API, null)
       .then((res) => setPros(res.data))
