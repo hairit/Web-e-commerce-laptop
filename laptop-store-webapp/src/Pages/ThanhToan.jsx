@@ -12,11 +12,32 @@ import { useEffect, useState } from "react";
 export default function ThanhToan({ idUser, user }) {
   const history = useHistory();
   const solver = new Solver();
-  const [adress, setAddress] = useState(false);
+  const [address, setAddress] = useState(false);
   const [checkout, setCheckout] = useState([]);
-  const [tongtien, setTongtien] = useState(0);
   const [userOrder, setUserorder] = useState([]);
+  const [order, setOrder] = useState({
+    
+      "id" : "",
+      "iduser" : 0,
+      "tongtien" : 0,
+      "ngaydat" : "",
+      "billDetails" : [
+          {
+              "idProduct" : "",
+              "soluong" : 0,
+              "tongtien" : 0
+          } ,
+          {
+              "idProduct" : "",
+              "soluong" : 0,
+              "tongtien" : 0
+          }
+      ]
+  });
 
+  // const crypto = require("crypto");
+  // const id = crypto.randomBytes(3*4).toString("base64");
+  // console.log(id); 
 
   function totalPrice(carts) {
     var tongtien = 0;
@@ -32,7 +53,7 @@ export default function ThanhToan({ idUser, user }) {
          .catch((err) => console.log("Reload User"+err));
     
 }, [])
-console.log("user order", userOrder)
+console.log("user order", checkout)
   useEffect(() => {
     if (idUser !== null) {
       axios
@@ -57,7 +78,7 @@ console.log("user order", userOrder)
     setAddress(false);
   }
   function showAddAdress() {
-    if (adress === false) {
+    if (address === false) {
       return FormAddAdress();
     } else {
       return renderFormAddAdress();
@@ -66,12 +87,39 @@ console.log("user order", userOrder)
   function renderFormAddAdress() {
     return (
       <div className="formAddAdress">
-        <div className="form">
-          <button
-            className="btn btn-primary"
-            onClick={() => btnSaveNewAdress()}
-          />
+        <div className="formEdit">
+          <div className="info-editAdress">
+            <form className="form-edit">
+              <div className="form-center">
+                <div className="title-formEdit">Thông tin người nhận hàng</div>
+                <div className="form-editName">
+                  <div className="text-title">Họ tên</div>
+                  <div className="form-input"><input className="form-control btn-formEdit" type="text" placeholder="Nhập họ tên của bạn"/></div>
+                </div>
+                <div className="form-email">
+                  <div className="form-phone">
+                    <div className="text-title">Số điện thoại</div>
+                    <input className="form-control btn-formEdit" placeholder="Nhập số điện thoại"/>
+                  </div>
+                  <div className="form-editemail">
+                    <div className="text-title">Email</div>
+                    <input className="form-control btn-formEdit" placeholder="Nhập email của bạn" />
+
+                  </div>
+                </div>
+                <div className="form-diachi">
+                  <div className="title-diachi text-title">Địa chỉ</div>
+                  <input className="form-control btn-formEdit" placeholder="Nhập địa chỉ của bạn" />
+                </div>
+              </div>
+              <div className="btn-form">
+                <button className="btn btn-primary" onClick={() => btnSaveNewAdress()} >Lưu thông tin</button>
+                <button className="btn btn-primary" onClick={() => btnSaveNewAdress()} >Thoát</button>
+                </div>
+            </form>
+          </div>
         </div>
+        
       </div>
     );
   }
@@ -134,7 +182,7 @@ console.log("user order", userOrder)
                   <div className="note-tile">Ghi chú cho đơn hàng</div>
                   <input
                     type="text"
-                    class="form-control"
+                    className="form-control"
                     placeholder="Nhập thông tin ghi chú cho đơn hàng"
                     aria-label="Username"
                     aria-describedby="basic-addon1"
