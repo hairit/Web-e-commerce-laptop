@@ -38,7 +38,7 @@ namespace Laptop_store_e_comerce.Controllers
         public async Task<ActionResult<List<Product>>> getScreenBySizeInt(int value1 , int value2)
         {
             var pros = await database.Products.Where(pro => pro.Idloai == "screen" && 
-                                                        value2 == 999 ?
+                                                        value2 != 999 ?
                                                         pro.ScreenDetail.Kichthuoc >= value1 && pro.ScreenDetail.Kichthuoc <= value2
                                                         :
                                                         pro.ScreenDetail.Kichthuoc >= value1

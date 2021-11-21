@@ -10,21 +10,19 @@ export default function Screen({match,addProductToCart}) {
   useEffect(() => {
     var API;
     if(match !== undefined){
-      if(match.match.params.attribute) {
+      if(match.match.params.attribute !== "kichthuoc" && match.match.params.attribute !== "gia") {
             API = `${URL}/data/screen/${match.match.params.attribute}=${match.match.params.value}`
-      }else if(match.match.params.kichthuoc){
-            API = `${URL}data/screen/kichthuoc/from=${match.match.params.from}to=${match.match.pararms.to}`;
-      }else if(match.match.params.gia){
-            API = `${URL}data/product/from={${match.match.params.from}}to=${match.match.params.to}`;
+      }else if(match.match.params.attribute === "kichthuoc"){
+            API = `${URL}/data/screen/kichthuoc/from=${match.match.params.from}to=${match.match.params.to}`;
+      }else if(match.match.params.attribute === "gia"){
+            API = `${URL}/data/product/type=screen/from=${match.match.params.from}to=${match.match.params.to}`;
       }
-      else API = "https://localhost:44343/data/Product/type=screen";
-    }
+    }else API = "https://localhost:44343/data/Product/type=screen"; 
     axios
       .get(API, null) //Default value "https://localhost:44343/data/Product/type=screen"
       .then((res) => setPros(res.data))
       .catch((err) => console.log(err));
   }, []);
-  console.log(pros);
   return (
     <div className="wrapper">
       <div className="container_fullwidth">

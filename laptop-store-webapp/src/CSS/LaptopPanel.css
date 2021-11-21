@@ -14,29 +14,29 @@
   display: flex;
   padding-left: 7px;
   justify-content: space-between;
-  align-items: center;
 }
 .laptop-panel-header-title {
-  margin-top: 15px;
-  margin-bottom: 15px;
   font-size: 25px !important;
+  height: max-content;
+  margin-top: 7px;
 }
 .laptop-panel-header-menu {
   display: flex;
   flex-direction: row-reverse;
-  justify-content: center;
   align-items: center;
+  max-width: 70%;
+  flex-wrap: wrap;
 }
 .laptop-panel-header-menu-item {
   border-radius: 23px;
   border: #d5d5da solid 0.1px;
   display: flex;
-  justify-content: center;
   align-items: center;
-  width: 85px;
+  padding: 6px 30px;
   color: #4b4b4d;
   height: 30px;
   margin-right: 7px;
+  margin-top: 7px;
   box-sizing: border-box;
 }
 .laptop-panel-header-menu-item:hover {

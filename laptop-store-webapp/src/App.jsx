@@ -28,12 +28,10 @@ import DonHang from "./Pages/DonHang";
 
 
 function App() {
-  const history = useHistory();
   const [user, setUser] = useState(null);
   const [userCookie, setUserCookie ,removeCookie] = useCookies(["user"]);
   const [updateDataUser, setUpdateDataUser] = useState(0);
   useEffect(() => {
-    console.log(userCookie.id);
     if (userCookie.id !== undefined) {
       axios
               .get(`https://localhost:44343/data/user/${userCookie.id}`)
@@ -110,19 +108,19 @@ function App() {
 
             <Route path="/laptop"                         exact component={() => <Laptops addProductToCart={addProductToCart} />}></Route>
             <Route path="/laptop/:attribute/:value"       exact component={(match) => <Laptops  match={match} /> } ></Route>
-            <Route path="/laptop/:gia/:from/:to"          exact component={(match) => <Laptops  match={match} /> } ></Route>
+            <Route path="/laptop/:attribute/:from/:to"    exact component={(match) => <Laptops  match={match} /> } ></Route>
             
             <Route path="/keyboard"                       exact component={() => <Keyboard addProductToCart={addProductToCart} />}></Route>
             <Route path="/mouse"                          exact component={() =><Mouse addProductToCart={addProductToCart} />} ></Route>
             
             <Route path="/screen"                         exact component={() => <Screen addProductToCart={addProductToCart} />}></Route>
-            <Route path="/screen/:attribute/value"        exact component={() => <Screen addProductToCart={addProductToCart} />}></Route>
-            <Route path="/screen/:gia/:from/:to"          exact component={() => <Screen addProductToCart={addProductToCart} />}></Route>
+            <Route path="/screen/:attribute/:value"       exact component={(match) => <Screen match={match} addProductToCart={addProductToCart} />}></Route>
+            <Route path="/screen/:attribute/:from/:to"    exact component={(match) => <Screen match={match} addProductToCart={addProductToCart} />}></Route>
 
 
             <Route path="/pc"                             exact component={() =>         <PC addProductToCart={addProductToCart} />}></Route>
             <Route path="/pc/:attribute/:value"           exact component={(match) =>    <PC addProductToCart={addProductToCart} match={match}  />}></Route>
-            <Route path="/pc/:gia/:from/:to"              exact component={(match) =>    <PC addProductToCart={addProductToCart} match={match}  />}></Route>
+            <Route path="/pc/:attribute/:from/:to"        exact component={(match) =>    <PC addProductToCart={addProductToCart} match={match}  />}></Route>
             <Route path="/pc/:id"                         exact component={(match) => <DetailProductsPC addProductToCart={addProductToCart} match={match} />}></Route>
 
 
