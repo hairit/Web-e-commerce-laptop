@@ -29,7 +29,7 @@ import ThanhToan from "./Pages/ThanhToan";
 function App() {
   const history = useHistory();
   const [user, setUser] = useState(null);
-  const [userCookie, setUserCookie] = useCookies(["user"]);
+  const [userCookie, setUserCookie ,removeCookie] = useCookies(["user"]);
   const [updateDataUser, setUpdateDataUser] = useState(0);
   useEffect(() => {
     console.log(userCookie.id);
@@ -58,6 +58,10 @@ function App() {
     setUserCookie("id", user.id);
     setUser(user);
   };
+  const logout = () => {
+    removeCookie('id');
+    setUser(null);
+  }
   const addProductToCart = (idProduct , price )=>{
     if(user === null)
     {
@@ -100,7 +104,7 @@ function App() {
     <Router>
       <ScrollToTop />
       <div className="App">
-        <Header user={user} />
+        <Header user={user} logout={logout} />
             <Route path="/"                               exact component={() => <Body addProductToCart={addProductToCart}/>}></Route>
 
             <Route path="/laptop"                         exact component={() => <Laptops addProductToCart={addProductToCart} />}></Route>
