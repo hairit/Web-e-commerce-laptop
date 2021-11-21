@@ -198,7 +198,7 @@
 .user-menu-login-text
 {
   text-align: center;
-  font-size: larger;
+  font-size: 16px;
   font-weight: bold;
   margin-bottom: 10px;
 }
@@ -212,6 +212,7 @@
     padding-left: 8px;
     height: 30px;
     margin-bottom: 10px;
+    font-size: 14px;
 }
 .user-menu-page
 {
@@ -224,4 +225,27 @@
 .change-pass
 {
   display: block;
+}
+.user-menu-info
+{
+  display:grid;
+}
+.user-info-item
+{
+  display: table;
+}
+.user-info-item
+{
+  display:inline;
+}
+.user-info-label
+{
+  float:left;
+  font-size: 16px;
+}
+.user-menu-label
+{
+  text-align: center;
+  font-size: 16px;
+  margin-bottom: 10px;
 }
