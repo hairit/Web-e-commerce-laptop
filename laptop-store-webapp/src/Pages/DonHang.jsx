@@ -65,7 +65,7 @@ function BillDetail(bill){
                                     <tr className="info-bill">
                                         <th className="row ">{bill.id}</th> 
                                         <td className="bill-product-list"></td>
-                                        {/* {bill.billDetails.map((data,index) => <td>{data.idProduct}</td> )} */}
+                                        {bill.billDetails.map((data,index) => <td>{data.idProduct}</td> )}
                                         <td>2</td>
                                         <td>80990000</td>
                                         <td></td>

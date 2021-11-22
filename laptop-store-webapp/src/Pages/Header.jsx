@@ -1,7 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import "../CSS/Header.css";
 import URL from "../DATA/URL";
-import Logo from "../Images/Chicken-logo.png";
 import { MdLocationOn } from "react-icons/md";
 import { BsYoutube } from "react-icons/bs";
 import { useHistory } from "react-router-dom";
@@ -13,8 +12,13 @@ import {
 import { RiComputerFill, RiBillLine } from "react-icons/ri";
 import { CgSearch } from "react-icons/cg";
 import { HiOutlineUserCircle } from "react-icons/hi";
+import {BiMenuAltLeft} from "react-icons/bi"
 import { IoIosNotificationsOutline } from "react-icons/io";
-import { CgProductHunt } from "react-icons/cg";
+import ship from '../Images/ship.png'
+import daxem from '../Images/daxem.png'
+import chinhhang from '../Images/chinhhang.png'
+import flash from '../Images/flash.png'
+import tuvan from '../Images/tuvan.png'
 import { useCookies} from "react-cookie";
 
 import axios from "axios";
@@ -35,7 +39,8 @@ const nullUser = () => {
     </div>
   );
 };
-export default function Header({ user , logout }) {
+export default function Header({ user , logout}) {
+  const [statusHeader, setStatusHeader] = useState(false);
   const history = useHistory();
   const [usermenu, setusermenu] = useState(false);
   const [cookies, setcookies, removeCookie] = useCookies(['user']);
@@ -44,7 +49,9 @@ export default function Header({ user , logout }) {
   const [passn, setpassn] = useState("");
   const [conf, setconf] = useState("");
   const [changeinfo, setchangeinfo] = useState("");
-
+  useEffect(() => {
+    window.addEventListener('scroll',changeStatusHeader);
+  }, [])
   function changpass()
   {
     if (conf || passn)
@@ -67,6 +74,11 @@ export default function Header({ user , logout }) {
         } else alert("Xác nhận mật khẩu chưa trùng khớp!");
       } else alert("Mật khẩu phải lớn hơn 6 ký tự!");
     } else alert("Vui lòng nhập đủ tất cả các trường!")
+  }
+  const changeStatusHeader = () => {
+    if(window.scrollY >= 41) setStatusHeader(true);
+    else setStatusHeader(false);
+    console.log(window.scrollY);
   }
   function changinfo()
   {
@@ -109,7 +121,7 @@ export default function Header({ user , logout }) {
   }
   return (
     <div className="header">
-      <div className="header-top header-item">
+      <div className={statusHeader === false ? "header-top" : "header-top-hide"}>
         <NavLink className="header-top-item" to="/tincongnghe">
           <RiComputerFill className="header-top-item-icon" />
           <p className="header-top-item-content">Tin công nghệ</p>
@@ -127,11 +139,10 @@ export default function Header({ user , logout }) {
           <p className="header-top-item-content">Hệ thống showroom</p>
         </NavLink>
       </div>
-      <div className="header-center header-item">
+      <div className={statusHeader === false ? "header-center header-item" : "header-center-scroll"}>
         <div className="header-center-left">
           <NavLink to="/" className="home">
-            <img src={Logo} alt="" className="logo" />
-            <p className="lappee-name">Lappee</p>
+            <p className="logo">4.am</p>
           </NavLink>
           <div className="panel-search-product">
             <input
@@ -259,7 +270,18 @@ export default function Header({ user , logout }) {
           </NavLink>
         </div>
       </div>
-      <div className="header-bottom"> </div>{" "}
+      <div className={statusHeader === false ? "header-bottom" : "header-bottom-hide"}>
+        <div className="container12Col wide">
+            <div className="row-12-no-margin">
+              <div className="col c-2 header-bottom-item header-bottom-item-menu"><BiMenuAltLeft className="header-bottom-item-img"/> Danh mục sản phẩm</div>
+              <div className="col c-2 header-bottom-item"><img className="header-bottom-item-img" src={daxem}/>Sản phẩm bạn đã xem</div>
+              <div className="col c-2 header-bottom-item"><img className="header-bottom-item-img" src={tuvan}/>Hướng dẫn mua hàng</div>
+              <div className="col c-2 header-bottom-item"><img className="header-bottom-item-img" src={ship}/>Chính sách vận chuyển</div>
+              <div className="col c-2 header-bottom-item"><img className="header-bottom-item-img" src={tuvan}/>Tư vấn bán hàng</div>
+              <div className="col c-2 header-bottom-item"><img className="header-bottom-item-img" src={chinhhang}/>Chính sách bảo hành</div>
+            </div>
+            </div>
+      </div>
     </div>
   );
 }
