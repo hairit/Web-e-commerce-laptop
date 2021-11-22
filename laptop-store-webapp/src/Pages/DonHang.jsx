@@ -12,18 +12,6 @@ export default function DonHang({idUser}) {
         .catch((err) =>console.error("Del mua ma doi co bill",err))
     },[])
     console.log("dadada",bills);
-
-function BillDetail(bill){
-    bill.map((billdt,index) => {
-        return (
-        <td key={index}>
-                <td>{billdt.idProduct}
-                </td>
-                <td>
-                </td>
-        </td>
-        )
-    } )}
     return (
         <div className="wrapper billInfo">
             <div className="container-bill">
@@ -33,61 +21,34 @@ function BillDetail(bill){
                         <p>Quản lý đơn hàng</p>
                     </div>
                         <div className="centerTitle-bill">
-                        {/* <div className="idorder">
-                            <div className="title-donhang">Mã sản phẩm</div>
-                        </div>
-                        <div className="productOrder">
-                            <div className="title-donhang">Sản phẩm</div>
-                        </div>
-                        <div className="Totalprice">
-                            <div className="title-donhang">Tổng tiền</div>
-                        </div>
-                        <div className="note">
-                            <div className="title-donhang">Ghi chú</div>
-                        </div>
-                        <div className="status">
-                            <div className="title-donhang">Trạng thái</div>
-                        </div> */}
+                      
                         <table className="table table-hover">
                             <thead>
                                 <tr>
-                                    <th className="col row-idOrder">Mã đơn hàng</th>
-                                    <th className="col row-pro">Sản phẩm</th>
-                                    <th className="col row-sltt">Số lượng</th>
-                                    <th className="col row-sltt">Tổng tiền</th>
-                                    <th className="col row-note">Ghi chú</th>
-                                    <th className="col row-bill">Trạng thái</th>
+                                    <th className="col cols row-idOrder">Mã đơn hàng</th>
+                                    <th className="col cols row-pro">Sản phẩm</th>
+                                    <th className="col cols row-sltt">Tổng tiền</th>
+                                    <th className="col cols row-sltt">Ngày đặt</th>
+                                    <th className="col cols row-address">Địa chỉ</th>
+                                    <th className="col cols row-bill">Trạng thái</th>
                                 </tr>
                             </thead>
                             {bills.map((bill,index) =>{
                                 return (
                                     <tbody key={index}>
                                     <tr className="info-bill">
-                                        <th className="row ">{bill.id}</th> 
-                                        <td className="bill-product-list"></td>
-                                        {bill.billDetails.map((data,index) => <td>{data.idProduct}</td> )}
-                                        <td>2</td>
-                                        <td>80990000</td>
-                                        <td></td>
+                                        <td className="row ">{bill.id}</td> 
+                                        {bill.billDetails.map((data,index) => 
+                                        <td className="info-proDetail">
+                                            <td>{data.idProduct}</td>
+                                            <td>{data.tongtien}</td>
+                                        </td>
+                                        )}
+                                        <td>{bill.tongtien}</td>
+                                        <td>{bill.ngaydat.split("T",1)}</td>
+                                        <td>{bill.diachinhan}</td>
                                         <td>{bill.tinhtrang}</td>
                                     </tr>
-                                    {/* <tr className="info-bill">
-                                        <th className="row">2</th>
-                                        <td>Tai nghe</td>
-                                        <td>1</td>
-                                        <td>126000</td>
-                                        <td></td>
-                                        <td>Đang xử lý</td>
-                                    </tr>
-                                    <tr className="info-bill">
-                                        <th className="row">3</th>
-                                        <td>Điện thoại</td>
-                                        <td>3</td>
-                                        <td>123050000</td>
-                                        <td></td>
-                                        <td>Đang xử lý</td>
-                                    </tr> */}
-                                    
                                 </tbody>
                                 )
                             })}

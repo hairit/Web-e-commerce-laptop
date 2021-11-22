@@ -63,6 +63,9 @@ function App() {
     removeCookie('id');
     setUser(null);
   }
+  var ID = function () {
+    return Math.random().toString(36).substr(2, 9);
+  };
   const createBillDetails=(cartDetails) =>{
     var BillDetails = [];
     cartDetails.forEach(element => {
@@ -78,7 +81,7 @@ function App() {
   }
   const createBill = (cartDetails,totalPrice) => {
     setBill({
-      id : "BILLTEST2",
+      id : ID(),
       iduser : user.id,
       tongtien : totalPrice,
       ngaydat : new Date().toISOString().slice(0, 10),
@@ -94,7 +97,7 @@ function App() {
             console.log(res.data);
             updateData();
             alert("Đặt hàng thành công");
-            history.push('/');
+            history.push('/bill');
           //}
         })
         .catch((err) => {

@@ -17,7 +17,6 @@
 .header-top {
   width: 100%;
   padding: 0 10%;
-  flex-direction: row-reverse;
   background-color: #4252BD;
   display: flex;
   flex-direction: row-reverse;
@@ -25,6 +24,7 @@
 }
 .header-top-hide{
   opacity: 0;
+  height: 0;
 }
 .header-top-item {
   display: flex;
@@ -219,6 +219,7 @@
   align-items: center;
   background-color: #eeeee4;
   box-shadow: #f8f8fc 2px;
+  color: #000000;
   width: 300px;
   transition: 0.5s;
   height: auto;
@@ -278,6 +279,7 @@
     height: 30px;
     margin-bottom: 10px;
     font-size: 14px;
+    margin-bottom: 10px;
 }
 .user-menu-page
 {
@@ -303,10 +305,17 @@
 {
   display:inline;
 }
+.user-info-lable-item
+{
+  text-align: center;
+  font-weight: bold;
+  color: #3f51b5;
+}
 .user-info-label
 {
   float:left;
   font-size: 16px;
+  color: #000000;
 }
 .user-menu-label
 {
