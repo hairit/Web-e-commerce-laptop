@@ -620,60 +620,6 @@ const PRODUCT_OPTIONS = [
     },
     attributes : [
       {
-        name : "Thương hiệu",
-        datas : [
-          {
-            name : "Dareu",
-            path : "keyboard/brand/dareu"
-          },
-          {
-            name : "Royal Kludge",
-            path : "keyboard/brand/rk"
-          },
-          {
-            name : "AKKO",
-            path : "keyboard/brand/akko"
-          },
-          {
-            name : "Logitech",
-            path : "keyboard/brand/logitech"
-          },
-          {
-            name : "HyperX",
-            path : "keyboard/brand/hyperx"
-          },
-          {
-            name : "Corsair",
-            path : "keyboard/brand/corsair"
-          },
-          {
-            name : "Cooler Master",
-            path : "keyboard/brand/coolermaster"
-          },
-          {
-            name : "Dell",
-            path : "keyboard/brand/dell"
-          },
-          {
-            name : "Rapoo",
-            path : "keyboard/brand/rapoo"
-          },
-          {
-            name : "Phillip",
-            path : "keyboard/brand/philip"
-          },
-          {
-            name : "Razer",
-            path : "keyboard/brand/razer"
-          }
-          ,
-          {
-            name : "Steel Series",
-            path : "keyboard/brand/steelseries"
-          }
-        ]
-      },
-      {
           name :"Kiểu kết nối",
           datas : [
             {
@@ -777,7 +723,61 @@ const PRODUCT_OPTIONS = [
               path : "keyboard/layout/100"
             }
           ]
-      }
+      },
+      {
+        name : "Thương hiệu",
+        datas : [
+          {
+            name : "Dareu",
+            path : "keyboard/brand/dareu"
+          },
+          {
+            name : "Royal Kludge",
+            path : "keyboard/brand/rk"
+          },
+          {
+            name : "AKKO",
+            path : "keyboard/brand/akko"
+          },
+          {
+            name : "Logitech",
+            path : "keyboard/brand/logitech"
+          },
+          {
+            name : "HyperX",
+            path : "keyboard/brand/hyperx"
+          },
+          {
+            name : "Corsair",
+            path : "keyboard/brand/corsair"
+          },
+          {
+            name : "Cooler Master",
+            path : "keyboard/brand/coolermaster"
+          },
+          {
+            name : "Dell",
+            path : "keyboard/brand/dell"
+          },
+          {
+            name : "Rapoo",
+            path : "keyboard/brand/rapoo"
+          },
+          {
+            name : "Phillip",
+            path : "keyboard/brand/philip"
+          },
+          {
+            name : "Razer",
+            path : "keyboard/brand/razer"
+          }
+          ,
+          {
+            name : "Steel Series",
+            path : "keyboard/brand/steelseries"
+          }
+        ]
+      },
     ]
   },
   {
