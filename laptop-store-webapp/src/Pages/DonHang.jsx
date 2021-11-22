@@ -12,7 +12,6 @@ export default function DonHang({idUser}) {
         .catch((err) =>console.error("Del mua ma doi co bill",err))
     },[])
     console.log("dadada",bills);
-
     return (
         <div className="wrapper billInfo">
             <div className="container-bill">

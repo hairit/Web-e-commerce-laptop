@@ -50,7 +50,7 @@ function App() {
            .then((res) => setUser(res.data))
            .catch((err) => console.log("Reload User"+err));
       }
-  }, [updateDataUser])
+  }, [updateDataUser]);
   const updateData = () =>{
     if(updateDataUser === 0) setUpdateDataUser (1);
     else setUpdateDataUser(0);
@@ -72,8 +72,8 @@ function App() {
         if(element.selected === 1) {
           BillDetails.push({
             idProduct : element.idProduct,
-            soluong : element.soluong,
-            tongtien : element.tongtien
+            soluong :   element.soluong,
+            tongtien :  element.tongtien
         });
         }
     });
@@ -166,13 +166,11 @@ function App() {
             <Route path="/pc/:attribute/:from/:to"        exact component={(match) =>    <PC addProductToCart={addProductToCart} match={match}  />}></Route>
             <Route path="/pc/:id"                         exact component={(match) =>    <DetailProductsPC addProductToCart={addProductToCart} match={match} />}></Route>
 
-
             <Route path="/checkout"                       exact component={() =>      <ThanhToan user={user} idUser={ user !== null ? user.id : null } updateData={updateData} order={order}/>}></Route>
             <Route path="/laptop/:id"                     exact component={(match) => <DetailProductsLaptop addProductToCart={addProductToCart} match={match} />}></Route>
             <Route path="/keyboard/:id"                   exact component={(match) => <DetailProductsKeyboard addProductToCart={addProductToCart}  match={match} />} ></Route>
             <Route path="/screen/:id"                     exact component={(match) => <DetailProductsScreen addProductToCart={addProductToCart} match={match} />}></Route>
             <Route path="/mouse/:id"                      exact component={(match) => <DetailProductsMouse addProductToCart={addProductToCart} match={match} />}></Route>
-            
             
             <Route path="/card"                           exact component={() => <GioHang user={user} 
                                                           deleteProductFromCart={deleteProductFromCart} 
