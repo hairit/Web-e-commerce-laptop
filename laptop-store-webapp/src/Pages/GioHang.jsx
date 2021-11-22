@@ -95,13 +95,9 @@ useEffect(() => {
       .catch((err) => console.error("Không thể unchecker",err));
     }
   }
-  console.log("g", cartDetails)
-
   if(cartDetails.selected === 1){
     document.getElementById("check-item").checked = true;
-  
 }
-
     if(loading !== false)return(
       <div className="page">
         <div className="container width">

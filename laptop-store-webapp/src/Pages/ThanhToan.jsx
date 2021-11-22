@@ -23,17 +23,13 @@ export default function ThanhToan({idUser,order,updateData}) {
 }, [])
   useEffect(() => {
     if (idUser !== null) {
-      axios
-        .get(
-          `https://localhost:44343/data/cartdetail/iduser=${idUser}/selected`,
-          null
-        )
-        .then((res) => {
-          if (res.status === 200) {
-            setCheckout(res.data);
-          }
-        })
-        .catch((err) => console.log(err));
+      axios.get(`https://localhost:44343/data/cartdetail/iduser=${idUser}/selected`,null)
+          .then((res) => {
+            if (res.status === 200) {
+              setCheckout(res.data);
+            }
+          })
+          .catch((err) => console.log(err));
     }
   }, []);
   function totalPrice(carts) {
@@ -76,7 +72,6 @@ export default function ThanhToan({idUser,order,updateData}) {
                   <div className="form-editemail">
                     <div className="text-title">Email</div>
                     <input className="form-control btn-formEdit" placeholder="Nhập email của bạn" />
-
                   </div>
                 </div>
                 <div className="form-diachi">
@@ -105,11 +100,9 @@ export default function ThanhToan({idUser,order,updateData}) {
       </div>
     );
   }
-
   function editCart() {
     history.goBack();
   }
- 
   return (
     <div className="wrapper order">
       <div className="container-order">

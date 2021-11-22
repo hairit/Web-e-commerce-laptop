@@ -27,7 +27,10 @@ namespace Laptop_store_e_comerce.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Bill>> GetDonHang(string id)
         {
-            var bill = await _context.Bills.Include(bill => bill.BillDetails).FirstOrDefaultAsync(bill => bill.Id == id);
+            var bill = await _context.Bills.Include(bill => bill.BillDetails)
+                                           .ThenInclude(pro => pro.IdProductNavigation)
+                                           .ThenInclude(pro => pro.IdloaiNavigation)
+                                           .FirstOrDefaultAsync(bill => bill.Id == id);
 
             if (bill == null)
             {
