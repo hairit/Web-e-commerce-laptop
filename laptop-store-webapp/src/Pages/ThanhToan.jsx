@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import Solver from "../Classes/Solver";
-import { useHistory } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 
 import GioHang from "../CSS/GioHangCss.css";
 import Order from "../CSS/Order.css";
@@ -100,6 +100,27 @@ export default function ThanhToan({idUser,order,updateData}) {
       </div>
     );
   }
+  function Address(){
+    if(userOrder.diachi && userOrder.sdt !== null){
+      return (
+        <div className="info-receive">
+            <div className="info-nameUser">
+              <p>{userOrder.lastname} {" "} {userOrder.firstname}</p>
+              <div className="logo-edit">
+                <img src={edit} />
+              </div>
+            </div>
+            <div className="phone-adress">{userOrder.sdt}</div>
+            <div className="phone-adress">{userOrder.diachi}
+            </div>
+        </div>
+      )
+    }else{
+      return (
+      <div className="addSdtAddress">Vui lòng thêm địa chỉ và số điện thoại</div>
+      )
+    }
+  }
   function editCart() {
     history.goBack();
   }
@@ -116,7 +137,7 @@ export default function ThanhToan({idUser,order,updateData}) {
                 <div className="info-user">
                   <div className="info-nhanhang">Thông tin nhận hàng</div>
                   
-                  {/* {Address()} */}
+                  {Address()}
                   {showAddAdress()}
                 </div>
               </div>

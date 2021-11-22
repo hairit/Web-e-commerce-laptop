@@ -94,7 +94,7 @@ function App() {
             console.log(res.data);
             updateData();
             alert("Đặt hàng thành công");
-            history.push('/');
+            history.push('/bill');
           //}
         })
         .catch((err) => {
