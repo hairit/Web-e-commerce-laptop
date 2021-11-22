@@ -7,7 +7,7 @@ import GioHang from "../CSS/GioHangCss.css";
 import Order from "../CSS/Order.css";
 import edit from "../Images/edit.png";
 import plus from "../Images/plus.png";
-import { useEffect, useState } from "react";
+import { useEffect, useState,useRef } from "react";
 
 export default function ThanhToan({idUser,order,updateData}) {
   const history = useHistory();
@@ -15,10 +15,23 @@ export default function ThanhToan({idUser,order,updateData}) {
   const [address, setAddress] = useState(false);
   const [checkout, setCheckout] = useState([]);
   const [userOrder, setUserorder] = useState([]);
-  const [bill, setBill] = useState({id : '',iduser : '',tongtien : 0,ngaydat : '',diachinhan :'',billDetails : []})
+  const [btndis, setBtndis] = useState(false);
+  const [edituser, setEdituser] = useState({
+    id: "",
+    firstname: ``,
+    lastname: ``,
+    email: ``,
+    pass: ``,
+    sdt: ``,
+    diachi: ``,
+    mode: ``,
+    nameimage: ``,
+    bills: [ ],
+    cartDetails: [ ]})
   useEffect(() => {
       axios.get(`https://localhost:44343/data/user/${idUser}`)
-         .then((res) => setUserorder(res.data))
+         .then((res) => 
+         setUserorder(res.data))
          .catch((err) => console.log("Reload User"+err));
 }, [])
   useEffect(() => {
@@ -32,6 +45,7 @@ export default function ThanhToan({idUser,order,updateData}) {
           .catch((err) => console.log(err));
     }
   }, []);
+  console.log('kkkkkkkkkkkkk', address)
   function totalPrice(carts) {
     var tongtien = 0;
     carts.forEach(cart => {
@@ -59,7 +73,7 @@ export default function ThanhToan({idUser,order,updateData}) {
           <div className="info-editAdress">
             <form className="form-edit">
               <div className="form-center">
-                <div className="title-formEdit">Thông tin người nhận hàng</div>
+                <div className="title-formEdit">Thêm thông tin người nhận hàng</div>
                 <div className="form-editName">
                   <div className="text-title">Họ tên</div>
                   <div className="form-input"><input className="form-control btn-formEdit" type="text" placeholder="Nhập họ tên của bạn"/></div>
@@ -82,6 +96,34 @@ export default function ThanhToan({idUser,order,updateData}) {
               <div className="btn-form">
                 <button className="btn btn-primary" onClick={() => btnSaveNewAdress()} >Lưu thông tin</button>
                 <button className="btn btn-primary" onClick={() => btnSaveNewAdress()} >Thoát</button>
+                </div>
+            </form>
+          </div>
+        </div>
+        
+      </div>
+    );
+  }
+  function renderFormAddAdressAndPhone() {
+    return (
+      <div className="formAddAdress">
+        <div className="formEdit">
+          <div className="info-editAdress">
+            <form className="form-edit">
+              <div className="form-center">
+                <div className="form-email">
+                  <div className="form-phone">
+                    <div className="text-title">Số điện thoại</div>
+                    <input className="form-control btn-formEdit" placeholder="Nhập số điện thoại"/>
+                  </div>
+                </div>
+                <div className="form-diachi">
+                  <div className="title-diachi text-title">Địa chỉ</div>
+                  <input className="form-control btn-formEdit" placeholder="Nhập địa chỉ của bạn" />
+                </div>
+              </div>
+              <div className="btn-form">
+                <button className="btn btn-primary" type="submit" onClick={() => btnSaveNewAdress()} >Lưu thông tin</button>
                 </div>
             </form>
           </div>
@@ -124,6 +166,27 @@ export default function ThanhToan({idUser,order,updateData}) {
   function editCart() {
     history.goBack();
   }
+
+  function AddressAndPhone(){
+    if(userOrder.diachi && userOrder.sdt !== null){
+      // setBtndis(true)
+      return showAddAdress();
+    }else{
+      return  renderFormAddAdressAndPhone();
+    }
+  }
+  // const disableButton = () => {
+  //   if(userOrder.diachi && userOrder.sdt !== null){
+  //     setBtndis(false);
+  //   }
+  //   else{
+  //     setBtndis(true);
+  //   }
+  //  }
+ function btnOrder(){
+
+ }
+ 
   return (
     <div className="wrapper order">
       <div className="container-order">
@@ -138,7 +201,7 @@ export default function ThanhToan({idUser,order,updateData}) {
                   <div className="info-nhanhang">Thông tin nhận hàng</div>
                   
                   {Address()}
-                  {showAddAdress()}
+                 {AddressAndPhone()}
                 </div>
               </div>
               <div className="info-delivery">
@@ -254,7 +317,7 @@ export default function ThanhToan({idUser,order,updateData}) {
                 <p className="thanhtien">{solver.formatCurrency("vi-VN","currency","VND",totalPrice(checkout))}</p>
               </div>
               <div className="VAT">( Bao gồm VAT )</div>
-              <button className="btn-pay btn btn-outline-primary" onClick={()=>order()}>
+              <button type="button"className="btn-pay btn btn-outline-primary" onClick={()=>order()}  disabled={btndis} >
                 Đặt hàng ngay
               </button>
             </div>

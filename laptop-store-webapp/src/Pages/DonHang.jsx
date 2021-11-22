@@ -26,12 +26,12 @@ export default function DonHang({idUser}) {
                         <table className="table table-hover">
                             <thead>
                                 <tr>
-                                    <th className="col row-idOrder">Mã đơn hàng</th>
-                                    <th className="col row-pro">Sản phẩm</th>
-                                    <th className="col row-sltt">Tổng tiền</th>
-                                    <th className="col row-sltt">Ngày đặt</th>
-                                    <th className="col row-address">Địa chỉ</th>
-                                    <th className="col row-bill">Trạng thái</th>
+                                    <th className="col cols row-idOrder">Mã đơn hàng</th>
+                                    <th className="col cols row-pro">Sản phẩm</th>
+                                    <th className="col cols row-sltt">Tổng tiền</th>
+                                    <th className="col cols row-sltt">Ngày đặt</th>
+                                    <th className="col cols row-address">Địa chỉ</th>
+                                    <th className="col cols row-bill">Trạng thái</th>
                                 </tr>
                             </thead>
                             {bills.map((bill,index) =>{
