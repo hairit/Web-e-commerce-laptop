@@ -2,25 +2,62 @@
   margin: 0;
   padding: 0;
 }
-.bill {
+.billInfo {
   padding: 20px;
   background-color: #edeef2;
+}
+.Bill{
+  display: flex;
+  flex-flow: column;
 }
 .container-bill {
   background-color: white;
   padding: 20px 20px;
   min-height: 400px;
-  display: flex;
-  flex-flow: column;
   padding: 20px 15px;
   margin-left: auto;
   margin-right: auto;
-  width: 90%;
+  width: 80%;
   font-family: Roboto, "Helvetica Neue";
 }
-.row-bill {
+.centerTitle-bill {
+  padding-top: 20px;
+  display: flex;
+  flex-flow: row;
+  width: 100%;
+  gap: 10px;
+}
+.center-bill p {
   font-size: 15px;
-  width: 20%;
+}
+.title-donhang {
+  font-size: 15px;
+  font-weight: 500;
+  padding-bottom: 10px;
+}
+.idorder {
+  width: 15%;
+}
+.productOrder {
+  width: 30%;
+}
+.Totalprice {
+  width: 10%;
+}
+.note {
+  width: 25%;
+}
+.row-idOrder {
+  width: 10%;
+}
+.row-pro {
+  width: 25%;
+}
+.col {
+  font-size: 15px;
+}
+.row-sltt {
+  width: 10%;
 }
 .title-bill {
   padding-bottom: 20px;
@@ -35,6 +72,6 @@
   font-weight: 500;
   line-height: 31px;
 }
-.info-bill {
+/* .info-bill {
   font-size: 15px;
-}
+} */
