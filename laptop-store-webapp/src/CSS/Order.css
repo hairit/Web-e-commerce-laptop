@@ -20,7 +20,7 @@
   background-color: white;
   float: left;
   width: 65%;
-  min-height: 400px;
+  min-height: 470px;
 }
 .info-orderPro {
   display: flex;
@@ -193,12 +193,8 @@
   padding-top: 0 !important;
 }
 .formAddAdress {
-  position: fixed !important;
-  inset: 0px;
-  z-index: 100;
+  
   display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
   width: 100%;
 }
 .detail-name {
@@ -233,14 +229,7 @@
   flex-flow: row;
 }
 .formEdit {
-  background-color: rgb(237 238 242);
-  display: flex;
-  flex-direction: column;
-  width: 700px;
-  max-height: 90%;
-  z-index: 90;
-  position: relative;
-  overflow: auto;
+  width: 100%;
 }
 .form-phone,
 .form-editemail {
