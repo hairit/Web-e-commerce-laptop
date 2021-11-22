@@ -109,7 +109,26 @@ export default function ThanhToan({idUser,order,updateData}) {
   function editCart() {
     history.goBack();
   }
- 
+ function Address(){
+   if(userOrder.diachi && userOrder.sdt !== null){
+     return  (
+        <div className="info-receive">
+          <div className="info-nameUser">
+            <p>{userOrder.lastname} {" "} {userOrder.firstname}</p>
+            <div className="logo-edit">
+              <img src={edit} />
+            </div>
+          </div>
+            <div className="phone-adress">{userOrder.sdt}</div>
+            <div className="phone-adress">{userOrder.diachi}
+          </div>
+        </div>
+     )
+   }
+   else{
+     <div></div>
+   }
+ }
   return (
     <div className="wrapper order">
       <div className="container-order">
@@ -122,17 +141,8 @@ export default function ThanhToan({idUser,order,updateData}) {
               <div className="info-orderDataUser">
                 <div className="info-user">
                   <div className="info-nhanhang">Thông tin nhận hàng</div>
-                  <div className="info-receive">
-                    <div className="info-nameUser">
-                      <p>{userOrder.lastname} {" "} {userOrder.firstname}</p>
-                      <div className="logo-edit">
-                        <img src={edit} />
-                      </div>
-                    </div>
-                    <div className="phone-adress">{userOrder.sdt}</div>
-                    <div className="phone-adress">{userOrder.diachi}
-                    </div>
-                  </div>
+                  
+                  {Address()}
                   {showAddAdress()}
                 </div>
               </div>

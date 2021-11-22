@@ -2,9 +2,13 @@
   margin: 0;
   padding: 0;
 }
-.bill {
+.billInfo {
   padding: 20px;
   background-color: #edeef2;
+}
+.Bill{
+  display: flex;
+  flex-flow: column;
 }
 .container-bill {
   background-color: white;
@@ -16,7 +20,7 @@
   width: 80%;
   font-family: Roboto, "Helvetica Neue";
 }
-.center-bill {
+.centerTitle-bill {
   padding-top: 20px;
   display: flex;
   flex-flow: row;
@@ -43,7 +47,7 @@
 .note {
   width: 25%;
 }
-/* .row-idOrder {
+.row-idOrder {
   width: 10%;
 }
 .row-pro {
@@ -57,7 +61,7 @@
 }
 .title-bill {
   padding-bottom: 20px;
-} */
+}
 .title-bill img {
   float: left;
   width: 3%;
