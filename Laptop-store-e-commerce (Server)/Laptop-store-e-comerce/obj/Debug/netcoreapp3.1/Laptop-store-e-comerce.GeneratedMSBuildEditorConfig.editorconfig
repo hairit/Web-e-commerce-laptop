@@ -1,7 +1,3 @@
 is_global = true
 build_property.RootNamespace = Laptop_store_e_comerce
-<<<<<<< HEAD
-build_property.ProjectDir = d:\Data\Web-e-commerce-laptop\Laptop-store-e-commerce (Server)\Laptop-store-e-comerce\
-=======
-build_property.ProjectDir = D:\Do an web\Web-e-commerce-laptop\Laptop-store-e-commerce (Server)\Laptop-store-e-comerce\
->>>>>>> 109486aaaa7d6dddea1eb9d8a65ea3ceef17a707
+build_property.ProjectDir = D:\Data\Web-e-commerce-laptop\Laptop-store-e-commerce (Server)\Laptop-store-e-comerce\
