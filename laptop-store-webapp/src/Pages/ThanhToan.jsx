@@ -15,7 +15,7 @@ export default function ThanhToan({idUser,order,updateData}) {
   const [address, setAddress] = useState(false);
   const [checkout, setCheckout] = useState([]);
   const [userOrder, setUserorder] = useState([]);
-  const [btndis, setBtndis] = useState(false);
+  // const [btndis, setBtndis] = useState(false);
   const [edituser, setEdituser] = useState({
     id: "",
     firstname: ``,
@@ -184,9 +184,21 @@ export default function ThanhToan({idUser,order,updateData}) {
   //   }
   //  }
  function btnOrder(){
-
+  if(userOrder.diachi && userOrder.sdt !== null){
+      return (
+          <button type="button"className="btn-pay btn btn-outline-primary" onClick={()=>order()}  >
+            Đặt hàng ngay
+          </button>
+      )
+  }else{
+    return (
+          <button type="button"className="btn-pay btn btn-outline-primary" onClick={()=>order()}  disabled >
+            Đặt hàng ngay
+          </button>
+      )
+  }
  }
- 
+
   return (
     <div className="wrapper order">
       <div className="container-order">
@@ -317,9 +329,7 @@ export default function ThanhToan({idUser,order,updateData}) {
                 <p className="thanhtien">{solver.formatCurrency("vi-VN","currency","VND",totalPrice(checkout))}</p>
               </div>
               <div className="VAT">( Bao gồm VAT )</div>
-              <button type="button"className="btn-pay btn btn-outline-primary" onClick={()=>order()}  disabled={btndis} >
-                Đặt hàng ngay
-              </button>
+              {btnOrder()}
             </div>
           </div>
           </div>
