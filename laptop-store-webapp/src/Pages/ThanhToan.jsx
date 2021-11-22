@@ -12,16 +12,14 @@ import { useEffect, useState } from "react";
 export default function ThanhToan({idUser,order,updateData}) {
   const history = useHistory();
   const solver = new Solver();
-  const [adress, setAddress] = useState(false);
+  const [address, setAddress] = useState(false);
   const [checkout, setCheckout] = useState([]);
-  const [tongtien, setTongtien] = useState(0);
   const [userOrder, setUserorder] = useState([]);
   const [bill, setBill] = useState({id : '',iduser : '',tongtien : 0,ngaydat : '',diachinhan :'',billDetails : []})
   useEffect(() => {
       axios.get(`https://localhost:44343/data/user/${idUser}`)
          .then((res) => setUserorder(res.data))
          .catch((err) => console.log("Reload User"+err));
-    
 }, [])
   useEffect(() => {
     if (idUser !== null) {
@@ -45,40 +43,6 @@ export default function ThanhToan({idUser,order,updateData}) {
     });
     return tongtien;
   }
-  const createBillDetails=(cartDetails) =>{
-    var BillDetails = [];
-    cartDetails.forEach(element => {
-        BillDetails.push({
-            idProduct : element.idProduct,
-            soluong : element.soluong,
-            tongtien : element.tongtien
-        });
-    });
-    return BillDetails;
-  }
-  function  order() {
-    setBill({
-      id : "BILLTEST2",
-      iduser : userOrder.id,
-      tongtien : totalPrice(checkout),
-      ngaydat : new Date().toISOString().slice(0, 10),
-      diachinhan : "20/1H",
-      billDetails : createBillDetails(checkout)
-    })
-    console.log(bill);
-    axios.post('https://localhost:44343/data/bill/',bill)
-        .then(res => {
-          //if(res.status === 201){
-            console.log(res.data);
-            updateData();
-            console.log("Đăt");
-          //}
-            console.log(res.status);
-        })
-        .catch((err) => {
-             alert("Đặt hàng thất bại");
-        })
-  }
   function btnAddAdress() {
     setAddress(true);
   }
@@ -86,7 +50,7 @@ export default function ThanhToan({idUser,order,updateData}) {
     setAddress(false);
   }
   function showAddAdress() {
-    if (adress === false) {
+    if (address === false) {
       return FormAddAdress();
     } else {
       return renderFormAddAdress();
@@ -95,12 +59,39 @@ export default function ThanhToan({idUser,order,updateData}) {
   function renderFormAddAdress() {
     return (
       <div className="formAddAdress">
-        <div className="form">
-          <button
-            className="btn btn-primary"
-            onClick={() => btnSaveNewAdress()}
-          />
+        <div className="formEdit">
+          <div className="info-editAdress">
+            <form className="form-edit">
+              <div className="form-center">
+                <div className="title-formEdit">Thông tin người nhận hàng</div>
+                <div className="form-editName">
+                  <div className="text-title">Họ tên</div>
+                  <div className="form-input"><input className="form-control btn-formEdit" type="text" placeholder="Nhập họ tên của bạn"/></div>
+                </div>
+                <div className="form-email">
+                  <div className="form-phone">
+                    <div className="text-title">Số điện thoại</div>
+                    <input className="form-control btn-formEdit" placeholder="Nhập số điện thoại"/>
+                  </div>
+                  <div className="form-editemail">
+                    <div className="text-title">Email</div>
+                    <input className="form-control btn-formEdit" placeholder="Nhập email của bạn" />
+
+                  </div>
+                </div>
+                <div className="form-diachi">
+                  <div className="title-diachi text-title">Địa chỉ</div>
+                  <input className="form-control btn-formEdit" placeholder="Nhập địa chỉ của bạn" />
+                </div>
+              </div>
+              <div className="btn-form">
+                <button className="btn btn-primary" onClick={() => btnSaveNewAdress()} >Lưu thông tin</button>
+                <button className="btn btn-primary" onClick={() => btnSaveNewAdress()} >Thoát</button>
+                </div>
+            </form>
+          </div>
         </div>
+        
       </div>
     );
   }
@@ -118,6 +109,7 @@ export default function ThanhToan({idUser,order,updateData}) {
   function editCart() {
     history.goBack();
   }
+ 
   return (
     <div className="wrapper order">
       <div className="container-order">
@@ -163,7 +155,7 @@ export default function ThanhToan({idUser,order,updateData}) {
                   <div className="note-tile">Ghi chú cho đơn hàng</div>
                   <input
                     type="text"
-                    class="form-control"
+                    className="form-control"
                     placeholder="Nhập thông tin ghi chú cho đơn hàng"
                     aria-label="Username"
                     aria-describedby="basic-addon1"
@@ -240,10 +232,9 @@ export default function ThanhToan({idUser,order,updateData}) {
                   </div>
                 );
               })}
+              
             </div>
-          </div>
-
-          <div className="payment pay-order">
+            <div className="pay-order">
             <div className="pay-info pay-orders">
               <div className="thanhtoan">
                 <strong>Thanh toán</strong>
@@ -262,6 +253,7 @@ export default function ThanhToan({idUser,order,updateData}) {
                 Đặt hàng ngay
               </button>
             </div>
+          </div>
           </div>
         </div>
       </div>

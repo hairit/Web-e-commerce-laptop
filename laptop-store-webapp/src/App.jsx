@@ -24,10 +24,11 @@ import PC from "./Pages/Products/ProductsPC/PC";
 import DetailProductsPC from "./Pages/Products/ProductsPC/DetailProductsPC";
 import ScrollToTop from "./ScrollToTop";
 import ThanhToan from "./Pages/ThanhToan";
+import DonHang from "./Pages/DonHang";
 import call from "./API/API";
 
-
 function App() {
+  const history = useHistory();
   const [user, setUser] = useState(null);
   const [userCookie, setUserCookie ,removeCookie] = useCookies(["user"]);
   const [updateDataUser, setUpdateDataUser] = useState(0);
@@ -90,7 +91,8 @@ function App() {
           //if(res.status === 201){
             console.log(res.data);
             updateData();
-            console.log("Đặt hàng thành công");
+            alert("Đặt hàng thành công");
+            history.push('/');
           //}
         })
         .catch((err) => {
