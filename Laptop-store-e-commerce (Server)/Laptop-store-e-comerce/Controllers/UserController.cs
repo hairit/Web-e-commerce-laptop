@@ -111,7 +111,6 @@ namespace Laptop_store_e_comerce.Controllers
 
             database.Users.Remove(user);
             await database.SaveChangesAsync();
-
             return user;
         }
         private bool UserExists(int id)
