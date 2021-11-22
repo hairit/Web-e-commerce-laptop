@@ -12,7 +12,7 @@
   border-top: 0.001px rgb(226, 225, 225) solid;
   border-left: 0.001px rgb(226, 225, 225) solid;
 }
-.keyboard-panel-header {
+.keyboard-panel-header{
   position: relative;
   width: 100%;
   display: flex;

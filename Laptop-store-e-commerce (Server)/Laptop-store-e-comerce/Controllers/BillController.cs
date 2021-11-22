@@ -27,11 +27,52 @@ namespace Laptop_store_e_comerce.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Bill>> GetDonHang(string id)
         {
-            var bill = await _context.Bills.Include(bill => bill.BillDetails).FirstOrDefaultAsync(bill => bill.Id == id);
-
+            var bill = await _context.Bills.Include(bill => bill.BillDetails)
+                                           .ThenInclude(pro => pro.IdProductNavigation)
+                                           .ThenInclude(pro => pro.IdloaiNavigation)
+                                           .FirstOrDefaultAsync(bill => bill.Id == id);
             if (bill == null)
             {
                 return NotFound();
+            }
+            return bill;
+        }
+        [HttpGet("action={action}/{id}")]
+        public async Task<ActionResult<Bill>> ActionBill(string action,string id)
+        {
+            var bill = await _context.Bills.Include(bill => bill.BillDetails).FirstOrDefaultAsync(bill => bill.Id == id);
+            if (bill == null) return NotFound();
+            if(action == "accept")
+            {
+                  bill.Tinhtrang = "Đã xác nhận";
+                  try
+                  {
+                        _context.Entry(bill).State = EntityState.Modified;
+                        await _context.SaveChangesAsync();
+                        return NoContent();
+                  }catch (Exception) { return BadRequest(); }
+            }
+            if (action == "cancel")
+            {
+                List<CartDetail> carts = new List<CartDetail>();
+                bill.BillDetails.ToList().ForEach(item =>
+                {
+                    CartDetail cart = new CartDetail();
+                    cart.IdUser = bill.Iduser;
+                    cart.Tongtien = item.Tongtien;
+                    cart.IdProduct = item.IdProduct;
+                    cart.Soluong = item.Soluong;
+                    cart.Selected = 1;
+                    carts.Add(cart);
+                });
+                try
+                {
+                    _context.CartDetails.AddRange(carts);
+                    _context.BillDetails.RemoveRange(bill.BillDetails);
+                    _context.Bills.Remove(bill);
+                    await _context.SaveChangesAsync();
+                    return NoContent();
+                } catch (Exception) { return BadRequest(); }
             }
             return bill;
         }
@@ -39,7 +80,10 @@ namespace Laptop_store_e_comerce.Controllers
         public async Task<ActionResult<List<Bill>>> getBillsByUserID(int id)
         {
             if (!_context.Users.Any(user => user.Id == id)) return BadRequest();
-            List<Bill> bills = await _context.Bills.Include(bill => bill.BillDetails).Where(bill => bill.Iduser == id).ToListAsync();
+            List<Bill> bills = await _context.Bills.Include(bill => bill.BillDetails)
+                                                   .ThenInclude(bill => bill.IdProductNavigation)
+                                                   .ThenInclude(bill => bill.IdloaiNavigation)
+                                                   .Where(bill => bill.Iduser == id).ToListAsync();
             if (bills.Count == 0) return NotFound();
             else return bills;
         }
@@ -67,6 +111,8 @@ namespace Laptop_store_e_comerce.Controllers
             try
             {
                 _context.Bills.Add(donHang);
+                var cartOrders = await _context.CartDetails.Where(detail => detail.IdUser == donHang.Iduser && detail.Selected == 1).ToListAsync();
+                _context.CartDetails.RemoveRange(cartOrders);
                 await _context.SaveChangesAsync();
             }
             catch (Exception)

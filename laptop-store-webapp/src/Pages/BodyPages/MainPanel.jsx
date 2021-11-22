@@ -16,7 +16,7 @@ const LoadingSelectPanelCenter = (item,index) => {
     )
 }
 const LoadingSelectPanel = (item , index) =>{
-    return (
+    return(
         <div className="select-panel container12Col" key={index}>
             <div className="row-12-no-margin select-panel-row">
                 <div className="select-panel-center col-no-padding c-9">

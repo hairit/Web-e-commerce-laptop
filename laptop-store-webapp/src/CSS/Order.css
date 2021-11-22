@@ -23,11 +23,12 @@
   min-height: 400px;
 }
 .info-orderPro {
+  display: flex;
+  flex-flow: column;
   margin-left: 10px;
-  background-color: white;
+
   float: right;
   width: 34%;
-  padding: 10px 20px;
 }
 .info-orderRight {
   width: 100%;
@@ -157,6 +158,8 @@
   cursor: pointer;
 }
 .info-pro {
+  padding: 10px 20px;
+  background-color: white;
   display: flex;
   flex-flow: column;
 }
@@ -179,9 +182,11 @@
   width: 80%;
 }
 .pay-order {
+  padding: 10px 20px;
+
   margin-top: 15px !important;
   float: right;
-  width: 34%;
+  width: 100%;
   background-color: white;
 }
 .pay-orders {
@@ -194,9 +199,7 @@
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
-  width: 50%;
-  height: 300px;
-  background-color: red;
+  width: 100%;
 }
 .detail-name {
   font-weight: 400;
@@ -205,11 +208,60 @@
 .detail-price {
   font-weight: bold;
 }
-.ships{
+.ships {
+  padding-bottom: 5px;
   float: right !important;
-    color: red;
-    font-size: 17px;
-    font-weight: bold;
-   
-    text-align: right;
+  color: red;
+  font-size: 17px;
+  font-weight: bold;
+
+  text-align: right;
+}
+.btn-formEdit {
+  height: 40px;
+}
+.title-formEdit {
+  padding: 10px 10px;
+  font-size: 20px;
+  font-weight: bold;
+}
+.form-edit {
+  padding: 0 10px 10px 10px;
+}
+.form-email {
+  display: flex;
+  flex-flow: row;
+}
+.formEdit {
+  background-color: rgb(237 238 242);
+  display: flex;
+  flex-direction: column;
+  width: 700px;
+  max-height: 90%;
+  z-index: 90;
+  position: relative;
+  overflow: auto;
+}
+.form-phone,
+.form-editemail {
+  width: 50%;
+}
+.text-title {
+  font-size: 15px;
+  font-weight: 400;
+  padding-bottom: 5px;
+}
+.form-editName,
+.form-email,
+.form-diachi {
+  padding-bottom: 10px;
+}
+.form-editemail {
+  margin-left: 5px;
+}
+.addSdtAddress{
+color: red;
+font-size: 17px;
+font-weight: bold;
+padding-bottom: 10px;  
 }

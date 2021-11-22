@@ -9,10 +9,10 @@ import { NavLink } from "react-router-dom";
 import tk_shopping_img from "../Images/tk_shopping_img.png";
 import { useEffect, useState } from "react";
 import ThanhToan from "./ThanhToan";
-export default function GioHang({ idUser, addProductToCart, deleteCartItem ,deleteProductFromCart}) {
+export default function GioHang({ idUser, addProductToCart, deleteCartItem ,deleteProductFromCart , createBill}) {
   const solver = new Solver();
   const buttonRef = useRef();
-  const [tongtien, setTongtien] = useState(0);
+  // const [tongtien, setTongtien] = useState(0);
   const [cartDetails, setCartDetails] = useState([]);
   const [loading , setLoading] = useState(true);
   const [reload, setReload] = useState(0);
@@ -22,10 +22,23 @@ export default function GioHang({ idUser, addProductToCart, deleteCartItem ,dele
     else setReload(0);
   }
 
-function disableButton() {
-  buttonRef.current.visibility = true;
-}
-  
+// function disableButton() {
+//   buttonRef.current.visibility = true;
+// }
+useEffect(() => {
+  if (idUser !== null) {
+    axios
+      .get(`https://localhost:44343/data/cartdetail/iduser=${idUser}`, null)
+      .then((res) => {
+        if (res.status === 200) {
+          setCartDetails(res.data);   
+        }
+      })
+      .catch((err) => setCartDetails([]) );
+  }
+}, [reload]);
+
+
   const noneCartNotification = () => {
     if(cartDetails.length === 0){
       setLoading(true);
@@ -51,49 +64,46 @@ function disableButton() {
   useEffect(() => {
     if(cartDetails.count > 0) setLoading(false);
   }, [cartDetails])
-  useEffect(() => {
-    if (idUser !== null) {
-      axios
-        .get(`https://localhost:44343/data/cartdetail/iduser=${idUser}`, null)
-        .then((res) => {
-          if (res.status === 200) {
-            setCartDetails(res.data);   
-          }
-        })
-        .catch((err) => setCartDetails([]) );
-    }
-  }, [reload]);
-  // function handleOrder(){
-console.log(cartDetails)
-  // }
-  function checktien (e,gia,quantity,idpro,iduser) {
-    if (e.target.checked) {
+  
+ 
+  function thanhtien(prod){
+    var tongtienSelect = 0;
+    prod.forEach(prod => {
+      if(prod.selected === 1){
+      tongtienSelect = prod.tongtien + tongtienSelect
+      }
+    });
+    return tongtienSelect;
+  
+  }
+
+  function checktien (e,gia,quantity,idpro,iduser,select) {
+    if ( e.target.checked ) {
       axios.get(`https://localhost:44343/data/cartdetail/select=selected/iduser=${iduser}/idproduct=${idpro}`, null)
       .then(() => {
-        setTongtien(tongtien + gia*quantity)
+        // setTongtien(tongtien + gia*quantity)
         reLoad();
       }).catch((err) => console.error("Không thể checker",err));
     } else {
       axios.get(`https://localhost:44343/data/cartdetail/select=unselected/iduser=${idUser}/idproduct=${idpro}`, null)
       .then(() => {
-        setTongtien(tongtien - gia*quantity);
+        // setTongtien(tongtien- gia*quantity);
+        // setTongtien(tongtien)
         // {disableButton()}
         reLoad()
       })
       .catch((err) => console.error("Không thể unchecker",err));
-     
     }
   }
+  if(cartDetails.selected === 1){
+    document.getElementById("check-item").checked = true;
+}
     if(loading !== false)return(
       <div className="page">
         <div className="container width">
           <div className="title-cart">
             <strong className="title-text">Giỏ hàng của bạn</strong>
           </div>
-          {/* <div className="center-logo">
-          <input class="check-item" type="checkbox" value=""  />
-          <img src={LogoFT}/>
-          </div> */}
           <div className="center-card">
             <div className="carts">
               {cartDetails.map((item, index) => {
@@ -102,10 +112,10 @@ console.log(cartDetails)
                     <div className="info-donhang">
                       <div className="info-chitiet">
                       <div className="info-check">
-                        <input class="check-item" type="checkbox"   name="hobby[]"  id="check-item" 
-                        onChange={(e)=> {
-                          checktien(e, item.idProductNavigation.gia,item.soluong,item.idProduct,idUser)
-                        }}  value={item.idProduct}/>
+                        <input class="check-item" type="checkbox"   name="hobby"  id="check-item" defaultChecked={item.selected === 1 ? checked : ""}
+                        onChange={(e)=> { checktien(e, item.idProductNavigation.gia,item.soluong,item.idProduct,idUser, item.selected); 
+                        }}   />
+                      
                         </div>
                         <div className="info-image">
                           <div className="img-name">
@@ -118,8 +128,8 @@ console.log(cartDetails)
                             </a>
                             <div className="name">
                               <a href="#">{item.idProductNavigation.ten}</a>
-                              <div className="id-item">ID: {item.idProduct}</div>
-                              <div className="id-item">Loại: {item.idProductNavigation.idloaiNavigation.ten}</div>
+                              <div className="">ID: {item.idProduct}</div>
+                              <div className="">Loại: {item.idProductNavigation.idloaiNavigation.ten}</div>
                             </div>
                           </div>
                         </div>
@@ -153,7 +163,7 @@ console.log(cartDetails)
             <div className="payment">
                 <div className="payment-sum">
                   <strong>Tổng tiền</strong>
-                  <p id="settongtien">{solver.formatCurrency("vi-VN","currency","VND",tongtien)}</p>
+                  <p id="settongtien">{solver.formatCurrency("vi-VN","currency","VND",thanhtien(cartDetails))}</p>
                 </div>
                 <div className="pay-info">
                   <div className="thanhtoan">
@@ -165,10 +175,10 @@ console.log(cartDetails)
                   </div>
                   <div className="tamtinh-thanhtien">
                     <p className="txt-left">Thành tiền</p>
-                    <p className="thanhtien">{solver.formatCurrency("vi-VN","currency","VND",tongtien)}</p>
+                    <p className="thanhtien">{solver.formatCurrency("vi-VN","currency","VND",thanhtien(cartDetails))}</p>
                   </div>
                   <div className="VAT">( Bao gồm VAT )</div>
-                  <NavLink to="/checkout" >
+                  <NavLink to="/checkout" onClick={()=>createBill(cartDetails,thanhtien(cartDetails))} >
                   <button className="btn-pay btn btn-outline-primary" ref={buttonRef}   >
                     Tiếp tục thanh toán
                   </button>

@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import Solver from "../Classes/Solver";
-import { useHistory } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 
 import GioHang from "../CSS/GioHangCss.css";
 import Order from "../CSS/Order.css";
@@ -9,15 +9,29 @@ import edit from "../Images/edit.png";
 import plus from "../Images/plus.png";
 import { useEffect, useState } from "react";
 
-export default function ThanhToan({ idUser, user }) {
+export default function ThanhToan({idUser,order,updateData}) {
   const history = useHistory();
   const solver = new Solver();
-  const [adress, setAddress] = useState(false);
+  const [address, setAddress] = useState(false);
   const [checkout, setCheckout] = useState([]);
-  const [tongtien, setTongtien] = useState(0);
   const [userOrder, setUserorder] = useState([]);
-
-
+  const [bill, setBill] = useState({id : '',iduser : '',tongtien : 0,ngaydat : '',diachinhan :'',billDetails : []})
+  useEffect(() => {
+      axios.get(`https://localhost:44343/data/user/${idUser}`)
+         .then((res) => setUserorder(res.data))
+         .catch((err) => console.log("Reload User"+err));
+}, [])
+  useEffect(() => {
+    if (idUser !== null) {
+      axios.get(`https://localhost:44343/data/cartdetail/iduser=${idUser}/selected`,null)
+          .then((res) => {
+            if (res.status === 200) {
+              setCheckout(res.data);
+            }
+          })
+          .catch((err) => console.log(err));
+    }
+  }, []);
   function totalPrice(carts) {
     var tongtien = 0;
     carts.forEach(cart => {
@@ -25,31 +39,6 @@ export default function ThanhToan({ idUser, user }) {
     });
     return tongtien;
   }
-  useEffect(() => {
-    
-      axios.get(`https://localhost:44343/data/user/${idUser}`)
-         .then((res) => setUserorder(res.data))
-         .catch((err) => console.log("Reload User"+err));
-    
-}, [])
-console.log("user order", userOrder)
-  useEffect(() => {
-    if (idUser !== null) {
-      axios
-        .get(
-          `https://localhost:44343/data/cartdetail/iduser=${idUser}/selected`,
-          null
-        )
-        .then((res) => {
-          if (res.status === 200) {
-            setCheckout(res.data);
-          }
-        })
-        .catch((err) => console.log(err));
-    }
-  }, []);
-  console.log("kikiki");
-
   function btnAddAdress() {
     setAddress(true);
   }
@@ -57,7 +46,7 @@ console.log("user order", userOrder)
     setAddress(false);
   }
   function showAddAdress() {
-    if (adress === false) {
+    if (address === false) {
       return FormAddAdress();
     } else {
       return renderFormAddAdress();
@@ -66,12 +55,38 @@ console.log("user order", userOrder)
   function renderFormAddAdress() {
     return (
       <div className="formAddAdress">
-        <div className="form">
-          <button
-            className="btn btn-primary"
-            onClick={() => btnSaveNewAdress()}
-          />
+        <div className="formEdit">
+          <div className="info-editAdress">
+            <form className="form-edit">
+              <div className="form-center">
+                <div className="title-formEdit">Thông tin người nhận hàng</div>
+                <div className="form-editName">
+                  <div className="text-title">Họ tên</div>
+                  <div className="form-input"><input className="form-control btn-formEdit" type="text" placeholder="Nhập họ tên của bạn"/></div>
+                </div>
+                <div className="form-email">
+                  <div className="form-phone">
+                    <div className="text-title">Số điện thoại</div>
+                    <input className="form-control btn-formEdit" placeholder="Nhập số điện thoại"/>
+                  </div>
+                  <div className="form-editemail">
+                    <div className="text-title">Email</div>
+                    <input className="form-control btn-formEdit" placeholder="Nhập email của bạn" />
+                  </div>
+                </div>
+                <div className="form-diachi">
+                  <div className="title-diachi text-title">Địa chỉ</div>
+                  <input className="form-control btn-formEdit" placeholder="Nhập địa chỉ của bạn" />
+                </div>
+              </div>
+              <div className="btn-form">
+                <button className="btn btn-primary" onClick={() => btnSaveNewAdress()} >Lưu thông tin</button>
+                <button className="btn btn-primary" onClick={() => btnSaveNewAdress()} >Thoát</button>
+                </div>
+            </form>
+          </div>
         </div>
+        
       </div>
     );
   }
@@ -85,7 +100,27 @@ console.log("user order", userOrder)
       </div>
     );
   }
-
+  function Address(){
+    if(userOrder.diachi && userOrder.sdt !== null){
+      return (
+        <div className="info-receive">
+            <div className="info-nameUser">
+              <p>{userOrder.lastname} {" "} {userOrder.firstname}</p>
+              <div className="logo-edit">
+                <img src={edit} />
+              </div>
+            </div>
+            <div className="phone-adress">{userOrder.sdt}</div>
+            <div className="phone-adress">{userOrder.diachi}
+            </div>
+        </div>
+      )
+    }else{
+      return (
+      <div className="addSdtAddress">Vui lòng thêm địa chỉ và số điện thoại</div>
+      )
+    }
+  }
   function editCart() {
     history.goBack();
   }
@@ -101,17 +136,8 @@ console.log("user order", userOrder)
               <div className="info-orderDataUser">
                 <div className="info-user">
                   <div className="info-nhanhang">Thông tin nhận hàng</div>
-                  <div className="info-receive">
-                    <div className="info-nameUser">
-                      <p>{userOrder.lastname} {" "} {userOrder.firstname}</p>
-                      <div className="logo-edit">
-                        <img src={edit} />
-                      </div>
-                    </div>
-                    <div className="phone-adress">{userOrder.sdt}</div>
-                    <div className="phone-adress">{userOrder.diachi}
-                    </div>
-                  </div>
+                  
+                  {Address()}
                   {showAddAdress()}
                 </div>
               </div>
@@ -134,7 +160,7 @@ console.log("user order", userOrder)
                   <div className="note-tile">Ghi chú cho đơn hàng</div>
                   <input
                     type="text"
-                    class="form-control"
+                    className="form-control"
                     placeholder="Nhập thông tin ghi chú cho đơn hàng"
                     aria-label="Username"
                     aria-describedby="basic-addon1"
@@ -211,10 +237,9 @@ console.log("user order", userOrder)
                   </div>
                 );
               })}
+              
             </div>
-          </div>
-
-          <div className="payment pay-order">
+            <div className="pay-order">
             <div className="pay-info pay-orders">
               <div className="thanhtoan">
                 <strong>Thanh toán</strong>
@@ -229,10 +254,11 @@ console.log("user order", userOrder)
                 <p className="thanhtien">{solver.formatCurrency("vi-VN","currency","VND",totalPrice(checkout))}</p>
               </div>
               <div className="VAT">( Bao gồm VAT )</div>
-              <button className="btn-pay btn btn-outline-primary">
+              <button className="btn-pay btn btn-outline-primary" onClick={()=>order()}>
                 Đặt hàng ngay
               </button>
             </div>
+          </div>
           </div>
         </div>
       </div>
