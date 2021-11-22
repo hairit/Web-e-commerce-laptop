@@ -9,30 +9,20 @@ import edit from "../Images/edit.png";
 import plus from "../Images/plus.png";
 import { useEffect, useState } from "react";
 
-export default function ThanhToan({ idUser, user }) {
+export default function ThanhToan({idUser,order,updateData}) {
   const history = useHistory();
   const solver = new Solver();
   const [adress, setAddress] = useState(false);
   const [checkout, setCheckout] = useState([]);
   const [tongtien, setTongtien] = useState(0);
   const [userOrder, setUserorder] = useState([]);
-
-
-  function totalPrice(carts) {
-    var tongtien = 0;
-    carts.forEach(cart => {
-      tongtien = tongtien + cart.tongtien;
-    });
-    return tongtien;
-  }
+  const [bill, setBill] = useState({id : '',iduser : '',tongtien : 0,ngaydat : '',diachinhan :'',billDetails : []})
   useEffect(() => {
-    
       axios.get(`https://localhost:44343/data/user/${idUser}`)
          .then((res) => setUserorder(res.data))
          .catch((err) => console.log("Reload User"+err));
     
 }, [])
-console.log("user order", userOrder)
   useEffect(() => {
     if (idUser !== null) {
       axios
@@ -48,8 +38,47 @@ console.log("user order", userOrder)
         .catch((err) => console.log(err));
     }
   }, []);
-  console.log("kikiki");
-
+  function totalPrice(carts) {
+    var tongtien = 0;
+    carts.forEach(cart => {
+      tongtien = tongtien + cart.tongtien;
+    });
+    return tongtien;
+  }
+  const createBillDetails=(cartDetails) =>{
+    var BillDetails = [];
+    cartDetails.forEach(element => {
+        BillDetails.push({
+            idProduct : element.idProduct,
+            soluong : element.soluong,
+            tongtien : element.tongtien
+        });
+    });
+    return BillDetails;
+  }
+  function  order() {
+    setBill({
+      id : "BILLTEST2",
+      iduser : userOrder.id,
+      tongtien : totalPrice(checkout),
+      ngaydat : new Date().toISOString().slice(0, 10),
+      diachinhan : "20/1H",
+      billDetails : createBillDetails(checkout)
+    })
+    console.log(bill);
+    axios.post('https://localhost:44343/data/bill/',bill)
+        .then(res => {
+          //if(res.status === 201){
+            console.log(res.data);
+            updateData();
+            console.log("Đăt");
+          //}
+            console.log(res.status);
+        })
+        .catch((err) => {
+             alert("Đặt hàng thất bại");
+        })
+  }
   function btnAddAdress() {
     setAddress(true);
   }
@@ -229,7 +258,7 @@ console.log("user order", userOrder)
                 <p className="thanhtien">{solver.formatCurrency("vi-VN","currency","VND",totalPrice(checkout))}</p>
               </div>
               <div className="VAT">( Bao gồm VAT )</div>
-              <button className="btn-pay btn btn-outline-primary">
+              <button className="btn-pay btn btn-outline-primary" onClick={()=>order()}>
                 Đặt hàng ngay
               </button>
             </div>

@@ -9,7 +9,7 @@ import { NavLink } from "react-router-dom";
 import tk_shopping_img from "../Images/tk_shopping_img.png";
 import { useEffect, useState } from "react";
 import ThanhToan from "./ThanhToan";
-export default function GioHang({ idUser, addProductToCart, deleteCartItem ,deleteProductFromCart}) {
+export default function GioHang({ idUser, addProductToCart, deleteCartItem ,deleteProductFromCart , createBill}) {
   const solver = new Solver();
   const buttonRef = useRef();
   const [tongtien, setTongtien] = useState(0);
@@ -81,9 +81,9 @@ console.log(cartDetails)
         reLoad()
       })
       .catch((err) => console.error("Không thể unchecker",err));
-     
     }
   }
+  console.log(tongtien);
     if(loading !== false)return(
       <div className="page">
         <div className="container width">
@@ -102,7 +102,7 @@ console.log(cartDetails)
                     <div className="info-donhang">
                       <div className="info-chitiet">
                       <div className="info-check">
-                        <input class="check-item" type="checkbox"   name="hobby[]"  id="check-item" 
+                        <input class="check-item" type="checkbox"   name="hobby[]"  id="check-item" defaultChecked={item.selected === 1 ? checked : ''}
                         onChange={(e)=> {
                           checktien(e, item.idProductNavigation.gia,item.soluong,item.idProduct,idUser)
                         }}  value={item.idProduct}/>
@@ -168,7 +168,7 @@ console.log(cartDetails)
                     <p className="thanhtien">{solver.formatCurrency("vi-VN","currency","VND",tongtien)}</p>
                   </div>
                   <div className="VAT">( Bao gồm VAT )</div>
-                  <NavLink to="/checkout" >
+                  <NavLink to="/checkout" onClick={()=>createBill(cartDetails,tongtien)} >
                   <button className="btn-pay btn btn-outline-primary" ref={buttonRef}   >
                     Tiếp tục thanh toán
                   </button>

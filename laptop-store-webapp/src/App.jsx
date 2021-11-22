@@ -24,12 +24,14 @@ import PC from "./Pages/Products/ProductsPC/PC";
 import DetailProductsPC from "./Pages/Products/ProductsPC/DetailProductsPC";
 import ScrollToTop from "./ScrollToTop";
 import ThanhToan from "./Pages/ThanhToan";
+import call from "./API/API";
 
 
 function App() {
   const [user, setUser] = useState(null);
   const [userCookie, setUserCookie ,removeCookie] = useCookies(["user"]);
   const [updateDataUser, setUpdateDataUser] = useState(0);
+  const [bill, setBill] = useState({id : '',iduser : '',tongtien : 0,ngaydat : '',diachinhan :'',billDetails : []})
   useEffect(() => {
     if (userCookie.id !== undefined) {
       axios
@@ -43,7 +45,7 @@ function App() {
   }, []);
   useEffect(() => {
       if(user !== null) {
-        axios.get(`https://localhost:44343/data/user/${user.id}`)
+        call('GET',`data/user/${user.id}`,null)
            .then((res) => setUser(res.data))
            .catch((err) => console.log("Reload User"+err));
       }
@@ -59,6 +61,41 @@ function App() {
   const logout = () => {
     removeCookie('id');
     setUser(null);
+  }
+  const createBillDetails=(cartDetails) =>{
+    var BillDetails = [];
+    cartDetails.forEach(element => {
+        BillDetails.push({
+            idProduct : element.idProduct,
+            soluong : element.soluong,
+            tongtien : element.tongtien
+        });
+    });
+    return BillDetails;
+  }
+  const createBill = (cartDetails,totalPrice) => {
+    setBill({
+      id : "BILLTEST2",
+      iduser : user.id,
+      tongtien : totalPrice,
+      ngaydat : new Date().toISOString().slice(0, 10),
+      diachinhan : "20/1H",
+      billDetails : createBillDetails(cartDetails)
+    })
+  }
+  console.log(bill);
+  const order =() =>{
+    axios.post('https://localhost:44343/data/bill/',bill)
+        .then(res => {
+          //if(res.status === 201){
+            console.log(res.data);
+            updateData();
+            console.log("Đặt hàng thành công");
+          //}
+        })
+        .catch((err) => {
+             alert("Đặt hàng thất bại");
+        })
   }
   const addProductToCart = (idProduct , price )=>{
     if(user === null)
@@ -120,17 +157,24 @@ function App() {
             <Route path="/pc"                             exact component={() =>         <PC addProductToCart={addProductToCart} />}></Route>
             <Route path="/pc/:attribute/:value"           exact component={(match) =>    <PC addProductToCart={addProductToCart} match={match}  />}></Route>
             <Route path="/pc/:attribute/:from/:to"        exact component={(match) =>    <PC addProductToCart={addProductToCart} match={match}  />}></Route>
-            <Route path="/pc/:id"                         exact component={(match) => <DetailProductsPC addProductToCart={addProductToCart} match={match} />}></Route>
+            <Route path="/pc/:id"                         exact component={(match) =>    <DetailProductsPC addProductToCart={addProductToCart} match={match} />}></Route>
 
 
-            <Route path="/checkout"                       exact component={() => <ThanhToan user={user} idUser={ user !== null ? user.id : null } />}></Route>
+            <Route path="/checkout"                       exact component={() =>      <ThanhToan user={user} idUser={ user !== null ? user.id : null } updateData={updateData} order={order}/>}></Route>
             <Route path="/laptop/:id"                     exact component={(match) => <DetailProductsLaptop addProductToCart={addProductToCart} match={match} />}></Route>
             <Route path="/keyboard/:id"                   exact component={(match) => <DetailProductsKeyboard addProductToCart={addProductToCart}  match={match} />} ></Route>
             <Route path="/screen/:id"                     exact component={(match) => <DetailProductsScreen addProductToCart={addProductToCart} match={match} />}></Route>
             <Route path="/mouse/:id"                      exact component={(match) => <DetailProductsMouse addProductToCart={addProductToCart} match={match} />}></Route>
             
             
-            <Route path="/card"                           exact component={() => <GioHang user={user} deleteProductFromCart={deleteProductFromCart} deleteCartItem={deleteCartItem} addProductToCart={addProductToCart} idUser={ user !== null ? user.id : null } />}></Route>
+            <Route path="/card"                           exact component={() => <GioHang user={user} 
+                                                          deleteProductFromCart={deleteProductFromCart} 
+                                                          deleteCartItem={deleteCartItem} 
+                                                          addProductToCart={addProductToCart} 
+                                                          idUser={ user !== null ? user.id : null } 
+                                                          createBill={createBill} 
+                                                          />}></Route>
+
             <Route path="/login"                          exact component={(match) => <Login  login={login} match={match} /> } ></Route>
             <Route path="/lienhe"                         component={() => <Lienhe />}></Route>
             <Route path="/tincongnghe"                    component={() => <Tintuc />}></Route>
