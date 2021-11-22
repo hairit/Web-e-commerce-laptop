@@ -786,7 +786,126 @@ const PRODUCT_OPTIONS = [
     icon: () => {
       return <BsFillMouse2Fill className="pro-list-item-icon" />;
     },
-    attributes : null
+    attributes : [
+      {
+        name : "Chuột theo thương hiệu",
+        datas : [
+            {
+              name : "ASUS",
+              path : "mouse/brand/asus"
+            },
+            {
+              name : "Dell",
+              path : "mouse/brand/dell"
+            },
+            {
+              name : "Logitech",
+              path : "mouse/brand/logitech"
+            },
+            {
+              name : "Corsair",
+              path : "mouse/brand/corsair"
+            },
+            {
+              name : "Razer",
+              path : "mouse/brand/razer"
+            },
+            {
+              name : "Steel Series",
+              path : "mouse/brand/steelseries"
+            },
+            {
+              name : "Kingtonx HyperX",
+              path : "mouse/brand/kington"
+            }
+        ]
+      },
+      {
+        name : "Kiểu kết nối",
+        datas : [
+            {
+              name : "Chuột có dây",
+              path : "mouse/kieuketnoi/Chuột có dây"
+            },
+            {
+              name : "Chuột không dây",
+              path : "mouse/kieuketnoi/Chuột không dây"
+            },
+        ]
+      },
+      {
+        name : "Kiểu đèn",
+        datas : [
+            {
+              name : "RGB",
+              path : "mouse/led/RGB"
+            },
+            {
+              name : "Led đơn",
+              path : "mouse/led/len đơn"
+            },
+            {
+              name : "Xanh Lá",
+              path : "mouse/led/xanh lá"
+            }
+        ]
+      },
+      {
+        name : "Kết nối",
+        datas : [
+            {
+              name : "USB 2.0",
+              path : "mouse/ketnoi/USB 2.0"
+            },
+            {
+              name : "2.4GHz Wireless",
+              path : "mouse/ketnoi/2.4GHz Wireless"
+            }
+        ]
+      },
+      {
+        name : "Theo nhu cầu",
+        datas : [
+            {
+              name : "Chuột gaming",
+              path : "mouse/loaichuot/Chuột gaming"
+            },
+            {
+              name : "Chuột văn phòng",
+              path : "mouse/loaichuot/Chuột văn phòng"
+            },
+            {
+              name : "Chuột giá rẻ",
+              path : "mouse/loaichuot/Chuột giá rẻ"
+            }
+        ]
+      },
+      {
+        name  :  "Giá",
+        datas : [
+            {
+              name : "Dưới 500.000đ",
+              path : "mouse/gia/0/500000"
+            },
+            {
+              name : "500.000đ - 1tr",
+              path : "mouse/gia/500000/1000000"
+            },
+            {
+              name : "1-5 tr",
+              path : "mouse/gia/1000000/5000000"
+            },
+            {
+              name : "5-10 tr",
+              path : "mouse/gia/5000000/10000000"
+            },
+            {
+              name : "Trên 10 triệu",
+              path : "mouse/gia/10000000/999"
+            },
+        ]
+      }
+    ]
   },
   {
     optionName: "Tai nghe",
