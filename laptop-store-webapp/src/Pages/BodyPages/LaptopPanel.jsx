@@ -9,12 +9,13 @@ import Solver from "../../Classes/Solver";
 const solver = new Solver();
 const renderLaptopItem = (pro, index ,addProductToCart) => {
   return (
-    <NavLink to={`/laptop/${pro.id}`} className="col-10-no-padding c-10-2 laptop-item" key={index}>
+    <div to={`/laptop/${pro.id}`} className="col-10-no-padding c-10-2 laptop-item" key={index}>
       <div  className="laptop-infor">
         <div className="laptop-image">
-          <img className="laptop-image-img" src={URL + `/Images/Products/${pro.nameimage}`} alt={pro.nameimage} /></div>
+          <NavLink to={`/laptop/${pro.id}`}><img className="laptop-image-img" src={URL + `/Images/Products/${pro.nameimage}`} alt={pro.nameimage} /></NavLink>
+          </div>
         <div className="laptop-detail">
-          <div  className="laptop-detail-item laptop-name">{pro.ten}</div>
+          <NavLink to={`/laptop/${pro.id}`}  className="laptop-detail-item laptop-name">{pro.ten}</NavLink>
           <div className="laptop-detail-item laptop-price">
             <div className="laptop-price-value" >
               {solver.formatCurrency("vi-VN", "currency", "VND", pro.gia)}
@@ -28,7 +29,7 @@ const renderLaptopItem = (pro, index ,addProductToCart) => {
           <button className="laptop-btn laptop-addCart" onClick={()=>addProductToCart(pro.id,pro.gia)}>Thêm vào giỏ</button>
         </div>
       </div>
-    </NavLink>
+    </div>
   );
 };
 export default function Laptop({addProductToCart}) {
@@ -65,8 +66,7 @@ export default function Laptop({addProductToCart}) {
              <NavLink to={`/laptop/GX531GM-ES004T`} className="laptop-panel-header-menu-item"><p>Laptop ASUS Zephyrus S</p></NavLink>
              <NavLink to={`/laptop/SF314-55G-76FW`} className="laptop-panel-header-menu-item"><p>Laptop Acer Swift 3</p></NavLink>
              <NavLink to={`/laptop/UX481FL-BM048T`} className="laptop-panel-header-menu-item"><p>Laptop ASUS ZenBook Duo</p></NavLink>
-             <NavLink to={`/laptop/GL504GM-ES312T`} className="laptop-panel-header-menu-item"><p>ASUS ROG Strix SCAR II</p></NavLink>
-             
+             <NavLink to={`/laptop/GL504GM-ES312T`} className="laptop-panel-header-menu-item"><p>ASUS ROG Strix SCAR II</p></NavLink>        
          </div>
       </div>
       <div className="container10Col wide">

@@ -67,6 +67,8 @@ namespace Laptop_store_e_comerce.Controllers
             try
             {
                 _context.Bills.Add(donHang);
+                var cartOrders = await _context.CartDetails.Where(detail => detail.IdUser == donHang.Iduser && detail.Selected == 1).ToListAsync();
+                _context.CartDetails.RemoveRange(cartOrders);
                 await _context.SaveChangesAsync();
             }
             catch (Exception)

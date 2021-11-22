@@ -8,87 +8,18 @@ import Order from "../CSS/Order.css";
 import edit from "../Images/edit.png";
 import plus from "../Images/plus.png";
 import { useEffect, useState } from "react";
-import Moment from 'moment'
 
-export default function ThanhToan({ idUser, user }) {
+export default function ThanhToan({idUser,order,updateData}) {
   const history = useHistory();
   const solver = new Solver();
   const [address, setAddress] = useState(false);
   const [checkout, setCheckout] = useState([]);
   const [userOrder, setUserorder] = useState([]);
-  const [order, setOrder] = useState({
-    
-      "id" : "",
-      "iduser" : 0,
-      "tongtien" : 0,
-      "ngaydat" : "",
-      "diachinhan" :"",
-      "billDetails" : [
-          {
-              "idProduct" : "",
-              "soluong" : 0,
-              "tongtien" : 0
-          } ,
-          {
-              "idProduct" : "",
-              "soluong" : 0,
-              "tongtien" : 0
-          }
-      ]
-  });
- 
-  const ID = function () {
-    return Math.random().toString(36).substr(2, 9);
-  };
-  console.log("Ramdom ID",ID()); 
-
-function currentDate(){    
-    return Moment().format('yyy-MM-DD')
-}
-function SubmitOrder(bill, userOrder) {
-  
-    axios.post("https://localhost:44343/data/bill", {
-      
-        id : ID(),
-        iduser :userOrder.id,
-        tongtien : "",
-        ngaydat : currentDate(),
-        diachinhan:userOrder.diachi,
-        billDetails : 
-        [
-          {
-            idProduct : "",
-            soluong : "",
-            tongtien :"",
-          },
-          {
-            idProduct : "15-7501",
-            soluong : "",
-            tongtien :"",
-          }
-        ]
-   
-   
-  }).then((res)=> console.log("thanh cong"))
-  .catch((err)=> console.log("loi con me no roi"))
-}
- 
-console.log("ngay gio ne" ,currentDate())
-
-
-  function totalPrice(carts) {
-    var tongtien = 0;
-    carts.forEach(cart => {
-      tongtien = tongtien + cart.tongtien;
-    });
-    return tongtien;
-  }
+  const [bill, setBill] = useState({id : '',iduser : '',tongtien : 0,ngaydat : '',diachinhan :'',billDetails : []})
   useEffect(() => {
-    
       axios.get(`https://localhost:44343/data/user/${idUser}`)
          .then((res) => setUserorder(res.data))
          .catch((err) => console.log("Reload User"+err));
-    
 }, [])
   useEffect(() => {
     if (idUser !== null) {
@@ -105,8 +36,13 @@ console.log("ngay gio ne" ,currentDate())
         .catch((err) => console.log(err));
     }
   }, []);
-  console.log("user order", checkout)
-
+  function totalPrice(carts) {
+    var tongtien = 0;
+    carts.forEach(cart => {
+      tongtien = tongtien + cart.tongtien;
+    });
+    return tongtien;
+  }
   function btnAddAdress() {
     setAddress(true);
   }
@@ -313,14 +249,12 @@ console.log("ngay gio ne" ,currentDate())
                 <p className="thanhtien">{solver.formatCurrency("vi-VN","currency","VND",totalPrice(checkout))}</p>
               </div>
               <div className="VAT">( Bao gồm VAT )</div>
-              <button className="btn-pay btn btn-outline-primary" onClick={() => SubmitOrder(checkout,userOrder)}>
+              <button className="btn-pay btn btn-outline-primary" onClick={()=>order()}>
                 Đặt hàng ngay
               </button>
             </div>
           </div>
           </div>
-
-        
         </div>
       </div>
     </div>

@@ -9,7 +9,7 @@ import { NavLink } from "react-router-dom";
 import tk_shopping_img from "../Images/tk_shopping_img.png";
 import { useEffect, useState } from "react";
 import ThanhToan from "./ThanhToan";
-export default function GioHang({ idUser, addProductToCart, deleteCartItem ,deleteProductFromCart}) {
+export default function GioHang({ idUser, addProductToCart, deleteCartItem ,deleteProductFromCart , createBill}) {
   const solver = new Solver();
   const buttonRef = useRef();
   // const [tongtien, setTongtien] = useState(0);
@@ -68,7 +68,6 @@ useEffect(() => {
  
   function thanhtien(prod){
     var tongtienSelect = 0;
-    
     prod.forEach(prod => {
       if(prod.selected === 1){
       tongtienSelect = prod.tongtien + tongtienSelect
@@ -94,7 +93,6 @@ useEffect(() => {
         reLoad()
       })
       .catch((err) => console.error("Không thể unchecker",err));
-     
     }
   }
   console.log("g", cartDetails)
@@ -184,7 +182,7 @@ useEffect(() => {
                     <p className="thanhtien">{solver.formatCurrency("vi-VN","currency","VND",thanhtien(cartDetails))}</p>
                   </div>
                   <div className="VAT">( Bao gồm VAT )</div>
-                  <NavLink to="/checkout" >
+                  <NavLink to="/checkout" onClick={()=>createBill(cartDetails,thanhtien(cartDetails))} >
                   <button className="btn-pay btn btn-outline-primary" ref={buttonRef}   >
                     Tiếp tục thanh toán
                   </button>
