@@ -90,14 +90,14 @@ function App() {
     })
   }
   console.log(user);
-  const order =() =>{
+  const order =(userinfo) =>{
     axios.post('https://localhost:44343/data/bill/',bill)
         .then(res => {
           //if(res.status === 201){
             console.log(res.data);
             updateData();
             alert("Đặt hàng thành công");
-            history.push('/bill');
+            // history.push('/bill');
           //}
         })
         .catch((err) => {
