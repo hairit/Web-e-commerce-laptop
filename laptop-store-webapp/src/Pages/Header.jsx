@@ -34,7 +34,7 @@ const nullUser = () => {
     </div>
   );
 };
-export default function Header({ user , logout}) {
+export default function Header({ user , logout, clickblur }) {
   const [statusHeader, setStatusHeader] = useState(false);
   const history = useHistory();
   const [usermenu, setusermenu] = useState(false);
@@ -50,6 +50,7 @@ export default function Header({ user , logout}) {
     else setStatusHeader(false);
   }
   const usermenuclick = () =>{
+    clickblur(usermenu);
     return (
       <div className={usermenu===true ?"user-menu":"user-menu-hide"} >
         <img src={URL + `/Images/UserAvatar/${user.nameimage}`}
