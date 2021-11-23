@@ -85,11 +85,11 @@ function App() {
       iduser : user.id,
       tongtien : totalPrice,
       ngaydat : new Date().toISOString().slice(0, 10),
-      diachinhan : "20/1H",
+      diachinhan : user.diachi,
       billDetails : createBillDetails(cartDetails)
     })
   }
-  console.log(bill);
+  console.log(user);
   const order =() =>{
     axios.post('https://localhost:44343/data/bill/',bill)
         .then(res => {

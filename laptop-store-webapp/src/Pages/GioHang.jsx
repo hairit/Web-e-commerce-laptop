@@ -123,7 +123,8 @@ useEffect(() => {
 //   if(cartDetails.selected === 1){
 //     document.getElementById("check-item").checked = true;
 // }
-    if(loading !== false)return(
+    if(cartDetails.length > 0 ){
+    return(
       <div className="page">
         <div className="container width">
           <div className="title-cart">
@@ -209,8 +210,9 @@ useEffect(() => {
           </div>
         </div>
       </div>
-    )
+    )}
     else{ 
+      return(
             <div className="centerp">
               <div className="center-car">
               <div className="product-none">
@@ -226,7 +228,8 @@ useEffect(() => {
               </div>
               </div>
             </div>
+      )
     }
-    setTimeout(noneCartNotification , 1000);
+    // setTimeout(noneCartNotification , 1000);
+  
   }
-

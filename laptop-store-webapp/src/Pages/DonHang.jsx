@@ -3,9 +3,12 @@ import Bill from "../CSS/Bill.css"
 import bill from "../Images/bill.png"
 import { useEffect, useState } from "react";
 import axios from 'axios';
+import Solver from "../Classes/Solver";
 
 export default function DonHang({idUser}) {
+    const solver = new Solver();
     const [bills, setBills] = useState([])
+  
     useEffect(() => {
         axios.get(`https://localhost:44343/data/bill/iduser=${idUser}`,null)
         .then((res) => setBills(res.data))
@@ -27,8 +30,8 @@ export default function DonHang({idUser}) {
                                 <tr>
                                     <th className="col cols row-idOrder">Mã đơn hàng</th>
                                     <th className="col cols row-pro">Sản phẩm</th>
-                                    <th className="col cols row-sltt">Tổng tiền</th>
-                                    <th className="col cols row-sltt">Ngày đặt</th>
+                                    <th className="col cols row-sltt">Tổng tiền bill</th>
+                                    <th className="col cols row-date">Ngày đặt</th>
                                     <th className="col cols row-address">Địa chỉ</th>
                                     <th className="col cols row-bill">Trạng thái</th>
                                 </tr>
@@ -37,17 +40,18 @@ export default function DonHang({idUser}) {
                                 return (
                                     <tbody key={index}>
                                     <tr className="info-bill">
-                                        <td className="row ">{bill.id}</td> 
+                                        <td className="id-bill">{bill.id}</td> 
                                         {bill.billDetails.map((data,index) => 
-                                        <td className="info-proDetail">
-                                            <td>{data.idProduct}</td>
-                                            <td>{data.tongtien}</td>
+                                        <td className="info-proDetail" key={index}>
+                                            <td className="info-productInBill">{data.idProductNavigation.ten}</td>
+                                            <td className="info-productInBill">Số lượng: {data.soluong}</td>
+                                            <td className="info-productInBill bill-thanhtien">Thành tiền: {solver.formatCurrency("vi-VN","currency","VND",data.tongtien)}</td>
                                         </td>
                                         )}
-                                        <td>{bill.tongtien}</td>
-                                        <td>{bill.ngaydat.split("T",1)}</td>
-                                        <td>{bill.diachinhan}</td>
-                                        <td>{bill.tinhtrang}</td>
+                                        <td className="info-productInBill bill-price" >{solver.formatCurrency("vi-VN","currency","VND",bill.tongtien)}</td>
+                                        <td className="info-productInBill">{bill.ngaydat.split("T",1)}</td>
+                                        <td className="info-productInBill">{bill.diachinhan}</td>
+                                        <td className="info-productInBill">{bill.tinhtrang}</td>
                                     </tr>
                                 </tbody>
                                 )

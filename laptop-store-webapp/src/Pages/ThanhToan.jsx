@@ -15,25 +15,33 @@ export default function ThanhToan({idUser,order,updateData}) {
   const [address, setAddress] = useState(false);
   const [checkout, setCheckout] = useState([]);
   const [userOrder, setUserorder] = useState([]);
+  const [reload, setReload] = useState(0);
+
+    const reLoad = () =>{
+        if(reload === 0) setReload(1);
+        else setReload(0);
+      }
   // const [btndis, setBtndis] = useState(false);
-  const [edituser, setEdituser] = useState({
-    id: "",
-    firstname: ``,
-    lastname: ``,
-    email: ``,
-    pass: ``,
-    sdt: ``,
-    diachi: ``,
-    mode: ``,
-    nameimage: ``,
+  const [addphoneaddress, setAddphoneaddress] = useState({
+    id: idUser,
+    firstname: "",
+    lastname: "",
+    email: "",
+    pass: "",
+    sdt: "",
+    diachi: "",
+    mode: "",
+    nameimage: "",
     bills: [ ],
-    cartDetails: [ ]})
+    cartDetails: [ ]
+  })
+
   useEffect(() => {
       axios.get(`https://localhost:44343/data/user/${idUser}`)
          .then((res) => 
          setUserorder(res.data))
          .catch((err) => console.log("Reload User"+err));
-}, [])
+}, [reload])
   useEffect(() => {
     if (idUser !== null) {
       axios.get(`https://localhost:44343/data/cartdetail/iduser=${idUser}/selected`,null)
@@ -44,8 +52,8 @@ export default function ThanhToan({idUser,order,updateData}) {
           })
           .catch((err) => console.log(err));
     }
-  }, []);
-  console.log('kkkkkkkkkkkkk', address)
+  }, [reload]);
+  // console.log('kkkkkkkkkkkkk', address)
   function totalPrice(carts) {
     var tongtien = 0;
     carts.forEach(cart => {
@@ -104,27 +112,55 @@ export default function ThanhToan({idUser,order,updateData}) {
       </div>
     );
   }
+  function savePhoneAddress(e) {
+    const address = addphoneaddress.diachi + '';
+    e.preventDefault();
+    axios.put("https://localhost:44343/data/user/", {
+      id: idUser,
+      firstname: userOrder.firstname + '',
+      lastname: userOrder.lastname + '',
+      email: userOrder.email + '',
+      pass: userOrder.pass + '',
+      sdt: addphoneaddress.sdt,
+      diachi: address,
+      mode: userOrder.mode + '',
+      nameimage: userOrder.nameimage + '',
+      bills: [ ],
+      cartDetails: [ ]
+    }).then(res => {
+      reLoad()
+      console.log(res.data);
+    }).catch(err => {
+      console.log("Lỗi con mẹ nó rồi", err)
+    })
+  }
+  function handleChane(e){
+      const newdata = {...addphoneaddress}
+      newdata[e.target.id] = e.target.value
+      setAddphoneaddress(newdata)
+      console.log(newdata)
+  }
   function renderFormAddAdressAndPhone() {
     return (
       <div className="formAddAdress">
         <div className="formEdit">
           <div className="info-editAdress">
-            <form className="form-edit">
+            <form className="form-edit" onSubmit={(e) => savePhoneAddress(e) }>
               <div className="form-center">
                 <div className="form-email">
                   <div className="form-phone">
                     <div className="text-title">Số điện thoại</div>
-                    <input className="form-control btn-formEdit" placeholder="Nhập số điện thoại"/>
+                    <input type="text" className="form-control btn-formEdit" onChange={(e) => handleChane(e)} id="sdt" value={addphoneaddress.sdt} placeholder="Nhập số điện thoại"/>
                   </div>
                 </div>
                 <div className="form-diachi">
                   <div className="title-diachi text-title">Địa chỉ</div>
-                  <input className="form-control btn-formEdit" placeholder="Nhập địa chỉ của bạn" />
+                  <input className="form-control btn-formEdit" type="text" onChange={(e) => handleChane(e)} id="diachi" value={addphoneaddress.diachi} placeholder="Nhập địa chỉ của bạn" />
                 </div>
               </div>
               <div className="btn-form">
-                <button className="btn btn-primary" type="submit" onClick={() => btnSaveNewAdress()} >Lưu thông tin</button>
-                </div>
+                <button className="btn btn-primary"  onClick={() => btnSaveNewAdress()} >Lưu thông tin</button>
+              </div>
             </form>
           </div>
         </div>
