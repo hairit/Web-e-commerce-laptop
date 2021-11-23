@@ -29,6 +29,7 @@ import call from "./API/API";
 
 function App() {
   const history = useHistory();
+  const [blur, setblur] = useState(false);
   const [user, setUser] = useState(null);
   const [userCookie, setUserCookie ,removeCookie] = useCookies(["user"]);
   const [updateDataUser, setUpdateDataUser] = useState(0);
@@ -62,6 +63,10 @@ function App() {
   const logout = () => {
     removeCookie('id');
     setUser(null);
+  }
+  
+  const clickblur = (isblur) => {
+    setblur(isblur);
   }
   var ID = function () {
     return Math.random().toString(36).substr(2, 9);
@@ -142,12 +147,14 @@ function App() {
       .catch((err)=> console.log("Dell xoa duoc",err))
     } 
   }
+
+
   return (
     <Router>
       <ScrollToTop />
       <div className="App">
-        <Header user={user} logout={logout} />
-            <Route path="/"                               exact component={() => <Body addProductToCart={addProductToCart}/>}></Route>
+        <Header user={user} logout={logout} clickblur={clickblur}/>
+            <Route path="/"                               exact component={() => <Body blur={blur} addProductToCart={addProductToCart} />}></Route>
 
             <Route path="/laptop"                         exact component={() => <Laptops addProductToCart={addProductToCart} />}></Route>
             <Route path="/laptop/:attribute/:value"       exact component={(match) => <Laptops  match={match} /> } ></Route>

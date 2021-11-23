@@ -1522,3 +1522,4 @@ D:\Data\Web-e-commerce-laptop\Laptop-store-e-commerce (Server)\Laptop-store-e-co
 D:\Data\Web-e-commerce-laptop\Laptop-store-e-commerce (Server)\Laptop-store-e-comerce\obj\Debug\netcoreapp3.1\Laptop-store-e-comerce.dll
 D:\Data\Web-e-commerce-laptop\Laptop-store-e-commerce (Server)\Laptop-store-e-comerce\obj\Debug\netcoreapp3.1\Laptop-store-e-comerce.pdb
 D:\Data\Web-e-commerce-laptop\Laptop-store-e-commerce (Server)\Laptop-store-e-comerce\obj\Debug\netcoreapp3.1\Laptop-store-e-comerce.genruntimeconfig.cache
+D:\Laptop\Web-e-commerce-laptop\Laptop-store-e-commerce (Server)\Laptop-store-e-comerce\obj\Debug\netcoreapp3.1\Laptop-store-e-comerce.csproj.CopyComplete

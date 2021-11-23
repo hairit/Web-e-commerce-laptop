@@ -2,6 +2,11 @@
   height: auto;
   background-color: #FFFFFF;
 }
+.body-hide{
+  height: auto;
+  background-color: #FFFFFF;
+  filter: blur(3px)
+}
 .old-price{
   font-size: 12px;
   text-decoration: line-through;
