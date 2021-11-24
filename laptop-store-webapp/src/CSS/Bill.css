@@ -6,14 +6,14 @@
   padding: 20px;
   background-color: #edeef2;
 }
-.Bill{
+.Bill {
   display: flex;
   flex-flow: column;
 }
 .container-bill {
   background-color: white;
   padding: 20px 20px;
-  min-height: 400px;
+  min-height: 45rem;
   padding: 20px 15px;
   margin-left: auto;
   margin-right: auto;
@@ -35,7 +35,13 @@
   font-weight: 500;
   padding-bottom: 10px;
 }
-
+.table-bill {
+  background-color: #e6ffe6;
+}
+.title-bills {
+  color: white;
+  background-color: #3c8dbc;
+}
 .row-idOrder {
   width: 10%;
 }
@@ -48,9 +54,9 @@
 .row-sltt {
   width: 12%;
 }
-.title-bill {
+/* .title-bill {
   padding-bottom: 20px;
-}
+} */
 .title-bill img {
   float: left;
   width: 3%;
@@ -64,29 +70,29 @@
 /* .info-bill {
   font-size: 15px;
 } */
-.thongtinsanpham{
+.thongtinsanpham {
   float: left;
 }
-.row-address{
+.row-address {
   width: 30%;
 }
-.info-proDetail{
+.info-proDetail {
   display: flex;
   flex-flow: column;
 }
-.id-bill{
+.id-bill {
   font-size: 13px;
   font-weight: bold;
   color: rgb(6, 6, 189);
 }
-.info-productInBill{
+.info-productInBill {
   font-size: 14px;
   font-weight: 400;
 }
-.bill-thanhtien{
+.bill-thanhtien {
   font-weight: 500;
 }
-.bill-price{
+.bill-price {
   font-weight: 500;
   color: rgb(207, 7, 7);
 }

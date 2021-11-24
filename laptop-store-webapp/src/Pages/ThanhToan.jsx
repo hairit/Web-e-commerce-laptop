@@ -64,7 +64,7 @@ export default function ThanhToan({idUser,order,updateData}) {
     const newdata = {...userinfo}
     newdata[e.target.id] = e.target.value
     setUserinfo(newdata)
-    console.log("llllll", newdata)
+    // console.log("llllll", newdata)
 
 }
 console.log("dâdadada", userOrder)
@@ -88,12 +88,11 @@ console.log("dâdadada", userOrder)
       reLoad()
       console.log(res.data);
     }).catch(err => {
-      console.log("Lỗi con mẹ nó rồi", err)
+      console.log("Lỗi không sửa được", err)
     })
   }
  
   function savePhoneAddress(e) {
-    // const address = addphoneaddress.diachi + '';
     e.preventDefault();
     axios.put("https://localhost:44343/data/user/", {
       id: idUser,
@@ -111,7 +110,7 @@ console.log("dâdadada", userOrder)
       reLoad()
       // console.log(res.data);
     }).catch(err => {
-      console.log("Lỗi con mẹ nó rồi", err)
+      console.log("Lỗi không thêm được", err)
     })
   }
 
@@ -210,8 +209,12 @@ console.log("dâdadada", userOrder)
               <div className="form-center">
                 <div className="title-formEdit">Thêm thông tin người nhận hàng</div>
                 <div className="form-editName">
-                  <div className="text-title">Họ tên</div>
-                  <div className="form-input"><input className="form-control btn-formEdit" type="text" placeholder="Nhập họ tên của bạn"/></div>
+                  <div className="text-title">Họ</div>
+                  <div className="form-input"><input className="form-control btn-formEdit" type="text" placeholder="Nhập họ của bạn"/></div>
+                </div>
+                <div className="form-editName">
+                  <div className="text-title">Tên</div>
+                  <div className="form-input"><input className="form-control btn-formEdit" type="text" placeholder="Nhập tên của bạn"/></div>
                 </div>
                 <div className="form-email">
                   <div className="form-phone">

@@ -1,6 +1,6 @@
 .width {
   width: 85%;
-  min-height: 443px;
+  min-height: 45rem;
 }
 .centerp {
   background-color: white;
@@ -29,12 +29,11 @@
 }
 .product-none img {
   width: 30%;
- 
 }
 .btn-backhome {
   padding-top: 50px;
 }
-.btn-home{
+.btn-home {
   color: #1533b6;
 }
 .btn-home:hover {
@@ -87,15 +86,15 @@
 .img-name a {
   flex: 0 0 15%;
 }
-.info-price{
+.info-price {
   text-align: right;
 }
-.info-price strong{
+.info-price strong {
   font-size: 17px;
   padding-bottom: 0 !important;
 }
-.giagoc{
-  font-size:13px !important;
+.giagoc {
+  font-size: 13px !important;
   color: red;
 }
 .imag {
@@ -106,8 +105,8 @@
 .id-item {
   margin-top: 5px;
 }
-.name{
-  line-height:1.4;
+.name {
+  line-height: 1.4;
   width: 80%;
 }
 .name a {
@@ -132,19 +131,18 @@
   width: 100%;
   float: left;
   font-size: 15px;
-  
 }
-.VAT{
+.VAT {
   font-size: 15px;
   width: 100%;
   text-align: right;
   padding-top: 3px;
   padding-bottom: 10px;
 }
-.tamtinh-thanhtien p{
+.tamtinh-thanhtien p {
   float: left;
 }
-.tamtinh{
+.tamtinh {
   color: red;
   font-size: 17px;
   font-weight: bold;
@@ -153,15 +151,15 @@
 }
 .thanhtien {
   float: right !important;
-  font-size:23px;
+  font-size: 23px;
   font-weight: bold;
   color: #0000ee;
   text-align: right;
 }
-.txt-left{
+.txt-left {
   width: 27%;
   line-height: 28px;
-  height:28px;
+  height: 28px;
 }
 .btn-pay {
   background-color: #1435c3;
@@ -171,11 +169,11 @@
 }
 .info-editquantity {
   padding-right: 15px;
-  height:36px;
+  height: 36px;
   display: flex;
-flex-flow: column;
+  flex-flow: column;
 }
-.pay-info{
+.pay-info {
   display: flex;
   flex-flow: column;
   padding-top: 30px;
@@ -188,69 +186,68 @@ flex-flow: column;
 
 .info-editquantity button {
   width: 32%;
-  height:32px;
+  height: 32px;
   border: none;
   background-color: #fcfcfc !important;
 }
-.finput-edit{
+.finput-edit {
   background-color: #fcfcfc;
   text-align: center;
-  width:36%;
-  height:34px;
+  width: 36%;
+  height: 34px;
   border: none;
 }
-.center-logo{
+.center-logo {
   background-color: white;
   width: 100%;
   padding: 10px 20px;
   border-bottom: solid 1px #ebebeb;
 }
-.center-logo img{
+.center-logo img {
   padding-left: 10px;
   width: 15%;
 }
-.check-item{
+.check-item {
   padding: 20px;
   cursor: pointer;
 }
-input[type=checkbox] {
+input[type="checkbox"] {
   transform: scale(1.3);
   margin: 0 !important;
 }
-.info-check{
-  margin-top:auto;
-  margin-bottom:auto;
+.info-check {
+  margin-top: auto;
+  margin-bottom: auto;
 }
-.payment-sum{
-  text-align:center;
-  width:auto;
-  height:50px;
+.payment-sum {
+  text-align: center;
+  width: auto;
+  height: 50px;
 }
-.payment-sum strong{
-  float:left;
+.payment-sum strong {
+  float: left;
 }
-.payment-sum p{
+.payment-sum p {
   float: right;
   font-weight: 700;
-  font-size:20px;
-  color:#37449F;
-  
+  font-size: 20px;
+  color: #37449f;
 }
-.btn-quantity{
-  width:80%;
+.btn-quantity {
+  width: 80%;
   border: 1px solid #ebebeb;
   border-radius: 4px;
 }
-.delet{
+.delet {
   width: 41%;
   padding-top: 10px;
   margin: 0 auto;
 }
-.delet button{
- width: auto;
- color: blue;
+.delet button {
+  width: auto;
+  color: blue;
   background-color: white !important;
 }
-.tongtien-price{
+.tongtien-price {
   float: right;
 }

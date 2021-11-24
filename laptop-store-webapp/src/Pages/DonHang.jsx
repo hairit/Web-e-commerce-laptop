@@ -25,9 +25,9 @@ export default function DonHang({idUser}) {
                     </div>
                         <div className="centerTitle-bill">
                       
-                        <table className="table table-hover">
+                        <table className="table table-hover table-bill">
                             <thead>
-                                <tr>
+                                <tr className="title-bills">
                                     <th className="col cols row-idOrder">Mã đơn hàng</th>
                                     <th className="col cols row-pro">Sản phẩm</th>
                                     <th className="col cols row-sltt">Tổng tiền bill</th>

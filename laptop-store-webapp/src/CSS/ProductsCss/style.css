@@ -516,7 +516,7 @@ form.newsletter input[type="submit"]:hover {
   position: relative;
   overflow: hidden;
   background: #e0e0e0;
-  border-top: 1px solid #303030;
+  border-top: 1px solid #c0c0c0;
 }
 .copyright-info p {
   padding-top: 10px;

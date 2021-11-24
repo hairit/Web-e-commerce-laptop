@@ -94,8 +94,8 @@ function App() {
       billDetails : createBillDetails(cartDetails)
     })
   }
-  console.log(user);
-  const order =(userinfo) =>{
+  // console.log(user);
+  const order =() =>{
     axios.post('https://localhost:44343/data/bill/',bill)
         .then(res => {
           //if(res.status === 201){
