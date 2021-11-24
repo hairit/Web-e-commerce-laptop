@@ -1,6 +1,10 @@
 import React from 'react'
 import '../CSS/Footer.css'
 import LogoFT from "../Images/LogoFT.png";
+import facebook from "../Images/facebook.png";
+import twitter from "../Images/twitter.png";
+import linkedin from "../Images/linkedin.png";
+import youtube from "../Images/youtube.png";
 export default function Footer() {
     return (
         <div className="footer">
@@ -42,18 +46,24 @@ export default function Footer() {
               </div>
               <div className="col-md-3 p">
                 <h4 className="title">
-                  Đánh giá
-                  <strong> về chúng tôi</strong>
+                  <strong> Về chúng tôi</strong>
                 </h4>
-                <p>*****</p>
-                <form className="newsletter">
-                  <input type="text" name placeholder="Type your email...." />
-                  <input
-                    type="submit"
-                    defaultValue="SignUp"
-                    className="button"
-                  />
-                </form>
+                <div className="col-md-6 icon-aboutUs">
+                <ul className="social-icon">
+                  <li>
+                    <a href="https://www.facebook.com/profile.php?id=100073251952343" target="_blank" className="linkedin"><img src={facebook} /></a>
+                  </li>
+                  <li>
+                    <a href="https://www.youtube.com/channel/UCfhHU5X0EeyFhEVCg6DrwEg"target="_blank" className="twitter"><img src={youtube} /></a>
+                  </li>
+                  <li>
+                    <a href="#" target="_blank" className="twitter"><img src={linkedin} /></a>
+                  </li>
+                  <li>
+                    <a href="#" target="_blank" className="facebook"><img src={twitter} /></a>
+                  </li>
+                </ul>
+              </div>
               </div>
             </div>
           </div>
@@ -67,22 +77,7 @@ export default function Footer() {
                   <a href="#"> Team SGU</a>. All rights reseved
                 </p>
               </div>
-              <div className="col-md-6">
-                <ul className="social-icon">
-                  <li>
-                    <a href="#" className="linkedin"></a>
-                  </li>
-                  <li>
-                    <a href="#" className="google-plus"></a>
-                  </li>
-                  <li>
-                    <a href="#" className="twitter"></a>
-                  </li>
-                  <li>
-                    <a href="#" className="facebook"></a>
-                  </li>
-                </ul>
-              </div>
+              
             </div>
           </div>
         </div>

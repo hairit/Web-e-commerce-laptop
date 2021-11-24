@@ -3,9 +3,14 @@ import axios from "axios";
 
 import "../../../CSS/ProductsCss/bootstrap.css";
 import "../../../CSS/ProductsCss/style.css";
+import AsusLogo1 from "../../../Images/AsusLogo1.png";
+import DellLogo1 from "../../../Images/DellLogo1.png";
+import HPLogo1 from "../../../Images/HPLogo1.png";
+import AcerLogo1 from "../../../Images/AcerLogo1.png";
+import DareuLogo1 from "../../../Images/DareuLogo1.png";
 import { useEffect, useState } from "react";
 import ListProductMouse from "./ListProductMouse";
-export default function Mouse({addProductToCart}) {
+export default function Mouse({ addProductToCart }) {
   const [pros, setPros] = useState([]);
   useEffect(() => {
     axios
@@ -45,22 +50,22 @@ export default function Mouse({addProductToCart}) {
                   <div className="title-sort">Thương hiệu</div>
                   <div className="btn-right">
                     <button type="button" className="btn-sort">
-                    RAZER
+                      RAZER
                     </button>
                     <button type="button" className="btn-sort">
-                    Logitech
+                      Logitech
                     </button>
                     <button type="button" className="btn-sort">
-                    CORSAIR
+                      CORSAIR
                     </button>
                     <button type="button" className="btn-sort">
-                    AKKO
+                      AKKO
                     </button>
                     <button type="button" className="btn-sort">
-                    ASUS
+                      ASUS
                     </button>
                     <button type="button" className="btn-sort">
-                    SteelSeries
+                      SteelSeries
                     </button>
                   </div>
                 </div>
@@ -119,7 +124,10 @@ export default function Mouse({addProductToCart}) {
           <div className="row">
             <div className="col-md-9 prolst">
               <div className="products-grid lstlaptop">
-                <ListProductMouse addProductToCart={addProductToCart} pros={pros} />
+                <ListProductMouse
+                  addProductToCart={addProductToCart}
+                  pros={pros}
+                />
               </div>
               <div className="toolbar">
                 <div className="pager">
@@ -171,20 +179,35 @@ export default function Mouse({addProductToCart}) {
                   <li>
                     <a href="#">
                       <div className="brand-logo">
-                        <img
-                          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSe0d-f1ETeDyPF5-87Z_LofW3mpIqc09BbUg&usqp=CAU"
-                          alt=""
-                        />
+                        <img src={AsusLogo1} alt="" />
                       </div>
                     </a>
                   </li>
                   <li>
                     <a href="#">
                       <div className="brand-logo">
-                        <img
-                          src="http://laptoptranganh.com/uploaded_files/danhmuc/53386540_Dell_Logo.png"
-                          alt=""
-                        />
+                        <img src={DellLogo1} alt="" />
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <div className="brand-logo">
+                        <img src={HPLogo1} alt="" />
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <div className="brand-logo">
+                        <img src={AcerLogo1} alt="" />
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <div className="brand-logo">
+                        <img src={DareuLogo1} alt="" />
                       </div>
                     </a>
                   </li>

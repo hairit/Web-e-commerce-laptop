@@ -213,7 +213,7 @@ img {
   float: left;
   width: 100%;
   text-align: center;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 400;
 }
 .productname p:hover {
@@ -340,8 +340,11 @@ img {
 } */
 
 #braldLogo .brand_item li {
+  padding: 7px;
+  border: 1px solid rgb(187, 187, 187);
+  border-radius: 15px;
   display: inline-block;
-  *display: inline;
+  display: inline;
   margin-right: 2%;
   width: 18.4%;
 }
@@ -440,8 +443,10 @@ img {
   margin-right: 5px;
 }
 .footer {
+  margin-top: 20px;
+  border-top: 3px solid blue;
   width: 100%;
-  background: #242424;
+  background: white;
 }
 .footer-info {
   position: relative;
@@ -456,10 +461,11 @@ img {
 .footer-info .title {
   margin-bottom: 25px;
   margin-top: 15px;
-  color: #fff;
   font-size: 18px;
 }
 .footer-info p {
+  color: black;
+  font-weight: 400;
   font-size: 13px;
 }
 .support ul {
@@ -474,7 +480,8 @@ img {
   margin-bottom: 5px;
 }
 .support li a {
-  color: #8f8f8f;
+  color: black;
+  font-weight: 400;
 }
 .support li a:hover {
   color: #f7544a;
@@ -508,13 +515,12 @@ form.newsletter input[type="submit"]:hover {
 .copyright-info {
   position: relative;
   overflow: hidden;
-  background: #181818;
-  padding: 15px 0;
+  background: #e0e0e0;
   border-top: 1px solid #303030;
 }
 .copyright-info p {
   padding-top: 10px;
-  color: #898989;
+  font-weight: 400;
   font-size: 13px;
 }
 .copyright-info a {
@@ -526,7 +532,7 @@ form.newsletter input[type="submit"]:hover {
 }
 .social-icon li {
   display: inline-block;
-  margin-left: 10px;
+  margin-right: 10px;
 }
 .social-icon li a {
   float: left;
@@ -535,23 +541,15 @@ form.newsletter input[type="submit"]:hover {
   font-size: 0;
   background-position: center top;
 }
-.social-icon li a:hover {
+/* .social-icon li a img:hover {
   background-position: center bottom;
-}
-.social-icon li a.linkedin {
-  background-image: url(src:Images/in.png);
-}
-.social-icon li a.google-plus {
-  background-image: url(src:Images/gplus.png);
-}
-.social-icon li a.twitter {
-  background-image: url(src:Images/twi.png);
-}
-.social-icon li a.facebook {
-  background-image: url(src:Images/f.png);
-}
+} */
 
 /* Category */
+.icon-aboutUs {
+  width: auto !important;
+  padding-left: 0 !important;
+}
 .category {
   position: relative;
 }

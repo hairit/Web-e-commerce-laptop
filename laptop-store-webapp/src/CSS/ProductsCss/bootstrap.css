@@ -1114,7 +1114,7 @@ pre code {
     float: left;
   }
   .col-md-12 {
-    width: 102.5%;
+    /* width: 102.5%; */
   }
   .col-md-11 {
     width: 91.66666666666666%;
