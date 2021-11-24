@@ -34,7 +34,6 @@ namespace Laptop_store_e_comerce.Controllers
                                                 .ToListAsync();
             if (pros.Count == 0) return NotFound();
             else return pros;
-            return pros;
         }
         [HttpGet("cpu={value}")]
         public async Task<ActionResult<List<Product>>> getPCByCPU(string value)

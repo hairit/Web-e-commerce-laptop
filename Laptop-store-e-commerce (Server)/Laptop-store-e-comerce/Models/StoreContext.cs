@@ -2,9 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-// Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
-// If you have enabled NRTs for your project, then un-comment the following line:
-// #nullable disable
+#nullable disable
 
 namespace Laptop_store_e_comerce.Models
 {
@@ -44,36 +42,33 @@ namespace Laptop_store_e_comerce.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
+
             modelBuilder.Entity<Bill>(entity =>
             {
                 entity.ToTable("Bill");
 
                 entity.Property(e => e.Id)
-                    .HasColumnName("id")
                     .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Diachinhan)
-                    .IsRequired()
-                    .HasColumnName("diachinhan")
-                    .HasMaxLength(500);
+                    .IsUnicode(false)
+                    .HasColumnName("id");
 
                 entity.Property(e => e.Iduser).HasColumnName("iduser");
 
                 entity.Property(e => e.Ngaydat)
-                    .HasColumnName("ngaydat")
-                    .HasColumnType("date");
+                    .HasColumnType("date")
+                    .HasColumnName("ngaydat");
 
                 entity.Property(e => e.Phuongthucthanhtoan)
                     .IsRequired()
-                    .HasColumnName("phuongthucthanhtoan")
                     .HasMaxLength(30)
+                    .HasColumnName("phuongthucthanhtoan")
                     .HasDefaultValueSql("(N'Thanh toán khi nhận hàng')");
 
                 entity.Property(e => e.Tinhtrang)
                     .IsRequired()
-                    .HasColumnName("tinhtrang")
                     .HasMaxLength(30)
+                    .HasColumnName("tinhtrang")
                     .HasDefaultValueSql("(N'Chờ xác nhận')");
 
                 entity.Property(e => e.Tongtien).HasColumnName("tongtien");
@@ -88,19 +83,19 @@ namespace Laptop_store_e_comerce.Models
             modelBuilder.Entity<BillDetail>(entity =>
             {
                 entity.HasKey(e => new { e.IdBill, e.IdProduct })
-                    .HasName("PK__BillDeta__E317F40564595F3A");
+                    .HasName("PK__BillDeta__E317F405DDFFA82D");
 
                 entity.ToTable("BillDetail");
 
                 entity.Property(e => e.IdBill)
-                    .HasColumnName("idBill")
                     .HasMaxLength(50)
-                    .IsUnicode(false);
+                    .IsUnicode(false)
+                    .HasColumnName("idBill");
 
                 entity.Property(e => e.IdProduct)
-                    .HasColumnName("idProduct")
                     .HasMaxLength(50)
-                    .IsUnicode(false);
+                    .IsUnicode(false)
+                    .HasColumnName("idProduct");
 
                 entity.Property(e => e.Soluong).HasColumnName("soluong");
 
@@ -122,16 +117,16 @@ namespace Laptop_store_e_comerce.Models
             modelBuilder.Entity<CartDetail>(entity =>
             {
                 entity.HasKey(e => new { e.IdUser, e.IdProduct })
-                    .HasName("PK__CartDeta__32F90E1F47B77E77");
+                    .HasName("PK__CartDeta__32F90E1F6F001EBF");
 
                 entity.ToTable("CartDetail");
 
                 entity.Property(e => e.IdUser).HasColumnName("idUser");
 
                 entity.Property(e => e.IdProduct)
-                    .HasColumnName("idProduct")
                     .HasMaxLength(50)
-                    .IsUnicode(false);
+                    .IsUnicode(false)
+                    .HasColumnName("idProduct");
 
                 entity.Property(e => e.Selected)
                     .HasColumnName("selected")
@@ -159,13 +154,13 @@ namespace Laptop_store_e_comerce.Models
                 entity.ToTable("Color");
 
                 entity.Property(e => e.Id)
-                    .HasColumnName("id")
                     .HasMaxLength(20)
-                    .IsUnicode(false);
+                    .IsUnicode(false)
+                    .HasColumnName("id");
 
                 entity.Property(e => e.Name)
-                    .HasColumnName("name")
-                    .HasMaxLength(50);
+                    .HasMaxLength(50)
+                    .HasColumnName("name");
             });
 
             modelBuilder.Entity<Image>(entity =>
@@ -176,68 +171,68 @@ namespace Laptop_store_e_comerce.Models
 
                 entity.Property(e => e.NameImage)
                     .IsRequired()
-                    .HasColumnName("nameImage")
-                    .HasMaxLength(100);
+                    .HasMaxLength(100)
+                    .HasColumnName("nameImage");
 
                 entity.Property(e => e.Path)
-                    .HasColumnName("path")
                     .HasMaxLength(100)
-                    .IsUnicode(false);
+                    .IsUnicode(false)
+                    .HasColumnName("path");
 
                 entity.Property(e => e.Position)
-                    .HasColumnName("position")
-                    .HasMaxLength(20);
+                    .HasMaxLength(20)
+                    .HasColumnName("position");
 
                 entity.Property(e => e.TypeImage)
-                    .HasColumnName("typeImage")
-                    .HasMaxLength(20);
+                    .HasMaxLength(20)
+                    .HasColumnName("typeImage");
             });
 
             modelBuilder.Entity<KeyboardDetail>(entity =>
             {
                 entity.HasKey(e => e.IdProduct)
-                    .HasName("PK__Keyboard__5EEC79D19330410D");
+                    .HasName("PK__Keyboard__5EEC79D1EA8FCA6C");
 
                 entity.ToTable("KeyboardDetail");
 
                 entity.Property(e => e.IdProduct)
-                    .HasColumnName("idProduct")
                     .HasMaxLength(50)
-                    .IsUnicode(false);
+                    .IsUnicode(false)
+                    .HasColumnName("idProduct");
 
                 entity.Property(e => e.Brandswitch)
-                    .HasColumnName("brandswitch")
-                    .HasMaxLength(50);
+                    .HasMaxLength(50)
+                    .HasColumnName("brandswitch");
 
                 entity.Property(e => e.Den)
-                    .HasColumnName("den")
-                    .HasMaxLength(50);
+                    .HasMaxLength(50)
+                    .HasColumnName("den");
 
                 entity.Property(e => e.Ketnoi)
-                    .HasColumnName("ketnoi")
-                    .HasMaxLength(50);
+                    .HasMaxLength(50)
+                    .HasColumnName("ketnoi");
 
                 entity.Property(e => e.Layout).HasColumnName("layout");
 
                 entity.Property(e => e.Loai)
-                    .HasColumnName("loai")
-                    .HasMaxLength(50);
+                    .HasMaxLength(50)
+                    .HasColumnName("loai");
 
                 entity.Property(e => e.Motaden)
-                    .HasColumnName("motaden")
-                    .HasMaxLength(100);
+                    .HasMaxLength(100)
+                    .HasColumnName("motaden");
 
                 entity.Property(e => e.Motaswitch)
-                    .HasColumnName("motaswitch")
-                    .HasMaxLength(100);
+                    .HasMaxLength(100)
+                    .HasColumnName("motaswitch");
 
                 entity.Property(e => e.Size)
-                    .HasColumnName("size")
-                    .HasMaxLength(50);
+                    .HasMaxLength(50)
+                    .HasColumnName("size");
 
                 entity.Property(e => e.Typeswitch)
-                    .HasColumnName("typeswitch")
-                    .HasMaxLength(20);
+                    .HasMaxLength(20)
+                    .HasColumnName("typeswitch");
 
                 entity.HasOne(d => d.IdProductNavigation)
                     .WithOne(p => p.KeyboardDetail)
@@ -249,70 +244,70 @@ namespace Laptop_store_e_comerce.Models
             modelBuilder.Entity<LaptopDescription>(entity =>
             {
                 entity.HasKey(e => e.IdProduct)
-                    .HasName("PK__LaptopDe__5EEC79D11A4FB4F4");
+                    .HasName("PK__LaptopDe__5EEC79D15063599B");
 
                 entity.ToTable("LaptopDescription");
 
                 entity.Property(e => e.IdProduct)
-                    .HasColumnName("idProduct")
                     .HasMaxLength(50)
-                    .IsUnicode(false);
+                    .IsUnicode(false)
+                    .HasColumnName("idProduct");
 
                 entity.Property(e => e.Congketnoi)
-                    .HasColumnName("congketnoi")
-                    .HasMaxLength(100);
+                    .HasMaxLength(100)
+                    .HasColumnName("congketnoi");
 
                 entity.Property(e => e.Congxuathinh)
-                    .HasColumnName("congxuathinh")
-                    .HasMaxLength(100);
+                    .HasMaxLength(100)
+                    .HasColumnName("congxuathinh");
 
                 entity.Property(e => e.Detailcpu)
-                    .HasColumnName("detailcpu")
-                    .HasMaxLength(100);
+                    .HasMaxLength(100)
+                    .HasColumnName("detailcpu");
 
                 entity.Property(e => e.Detailmanhinh)
-                    .HasColumnName("detailmanhinh")
-                    .HasMaxLength(100);
+                    .HasMaxLength(100)
+                    .HasColumnName("detailmanhinh");
 
                 entity.Property(e => e.Detailram)
-                    .HasColumnName("detailram")
-                    .HasMaxLength(100);
+                    .HasMaxLength(100)
+                    .HasColumnName("detailram");
 
                 entity.Property(e => e.Detailvga)
-                    .HasColumnName("detailvga")
-                    .HasMaxLength(100);
+                    .HasMaxLength(100)
+                    .HasColumnName("detailvga");
 
                 entity.Property(e => e.Hdh)
-                    .HasColumnName("hdh")
-                    .HasMaxLength(100);
+                    .HasMaxLength(100)
+                    .HasColumnName("hdh");
 
                 entity.Property(e => e.Ketnoikhongday)
-                    .HasColumnName("ketnoikhongday")
-                    .HasMaxLength(100);
+                    .HasMaxLength(100)
+                    .HasColumnName("ketnoikhongday");
 
                 entity.Property(e => e.Khoiluong)
-                    .HasColumnName("khoiluong")
-                    .HasMaxLength(100);
+                    .HasMaxLength(100)
+                    .HasColumnName("khoiluong");
 
                 entity.Property(e => e.Kieukhe)
-                    .HasColumnName("kieukhe")
-                    .HasMaxLength(100);
+                    .HasMaxLength(100)
+                    .HasColumnName("kieukhe");
 
                 entity.Property(e => e.Ocung)
-                    .HasColumnName("ocung")
-                    .HasMaxLength(100);
+                    .HasMaxLength(100)
+                    .HasColumnName("ocung");
 
                 entity.Property(e => e.Pin)
-                    .HasColumnName("pin")
-                    .HasMaxLength(100);
+                    .HasMaxLength(100)
+                    .HasColumnName("pin");
 
                 entity.Property(e => e.Size)
-                    .HasColumnName("size")
-                    .HasMaxLength(100);
+                    .HasMaxLength(100)
+                    .HasColumnName("size");
 
                 entity.Property(e => e.Typelaptop)
-                    .HasColumnName("typelaptop")
-                    .HasMaxLength(200);
+                    .HasMaxLength(200)
+                    .HasColumnName("typelaptop");
 
                 entity.HasOne(d => d.IdProductNavigation)
                     .WithOne(p => p.LaptopDescription)
@@ -324,30 +319,30 @@ namespace Laptop_store_e_comerce.Models
             modelBuilder.Entity<LaptopDetail>(entity =>
             {
                 entity.HasKey(e => e.IdProduct)
-                    .HasName("PK__LaptopDe__5EEC79D1061AE1D8");
+                    .HasName("PK__LaptopDe__5EEC79D1F532E593");
 
                 entity.ToTable("LaptopDetail");
 
                 entity.Property(e => e.IdProduct)
-                    .HasColumnName("idProduct")
                     .HasMaxLength(50)
-                    .IsUnicode(false);
+                    .IsUnicode(false)
+                    .HasColumnName("idProduct");
 
                 entity.Property(e => e.Cpu)
-                    .HasColumnName("cpu")
-                    .HasMaxLength(20);
+                    .HasMaxLength(20)
+                    .HasColumnName("cpu");
 
                 entity.Property(e => e.Manhinh)
-                    .HasColumnName("manhinh")
-                    .HasMaxLength(10);
+                    .HasMaxLength(10)
+                    .HasColumnName("manhinh");
 
                 entity.Property(e => e.Ram)
-                    .HasColumnName("ram")
-                    .HasMaxLength(20);
+                    .HasMaxLength(20)
+                    .HasColumnName("ram");
 
                 entity.Property(e => e.Vga)
-                    .HasColumnName("vga")
-                    .HasMaxLength(20);
+                    .HasMaxLength(20)
+                    .HasColumnName("vga");
 
                 entity.HasOne(d => d.IdProductNavigation)
                     .WithOne(p => p.LaptopDetail)
@@ -359,56 +354,56 @@ namespace Laptop_store_e_comerce.Models
             modelBuilder.Entity<MouseDetail>(entity =>
             {
                 entity.HasKey(e => e.IdProduct)
-                    .HasName("PK__MouseDet__5EEC79D116076FF5");
+                    .HasName("PK__MouseDet__5EEC79D1555E4C40");
 
                 entity.ToTable("MouseDetail");
 
                 entity.Property(e => e.IdProduct)
-                    .HasColumnName("idProduct")
                     .HasMaxLength(50)
-                    .IsUnicode(false);
+                    .IsUnicode(false)
+                    .HasColumnName("idProduct");
 
                 entity.Property(e => e.Dangcambien)
-                    .HasColumnName("dangcambien")
-                    .HasMaxLength(50);
+                    .HasMaxLength(50)
+                    .HasColumnName("dangcambien");
 
                 entity.Property(e => e.Dophangiai)
-                    .HasColumnName("dophangiai")
-                    .HasMaxLength(50);
+                    .HasMaxLength(50)
+                    .HasColumnName("dophangiai");
 
                 entity.Property(e => e.Ketnoi)
-                    .HasColumnName("ketnoi")
-                    .HasMaxLength(50);
+                    .HasMaxLength(50)
+                    .HasColumnName("ketnoi");
 
                 entity.Property(e => e.Khoiluong)
-                    .HasColumnName("khoiluong")
-                    .HasMaxLength(40);
+                    .HasMaxLength(40)
+                    .HasColumnName("khoiluong");
 
                 entity.Property(e => e.Kichthuoc)
-                    .HasColumnName("kichthuoc")
-                    .HasMaxLength(50);
+                    .HasMaxLength(50)
+                    .HasColumnName("kichthuoc");
 
                 entity.Property(e => e.Kieuketnoi)
-                    .HasColumnName("kieuketnoi")
-                    .HasMaxLength(50);
+                    .HasMaxLength(50)
+                    .HasColumnName("kieuketnoi");
 
                 entity.Property(e => e.Led)
-                    .HasColumnName("led")
-                    .HasMaxLength(50);
+                    .HasMaxLength(50)
+                    .HasColumnName("led");
 
                 entity.Property(e => e.Loaichuot)
-                    .HasColumnName("loaichuot")
-                    .HasMaxLength(50);
+                    .HasMaxLength(50)
+                    .HasColumnName("loaichuot");
 
                 entity.Property(e => e.Sonutbam).HasColumnName("sonutbam");
 
                 entity.Property(e => e.Tencambien)
-                    .HasColumnName("tencambien")
-                    .HasMaxLength(50);
+                    .HasMaxLength(50)
+                    .HasColumnName("tencambien");
 
                 entity.Property(e => e.Thoigianphanhoi)
-                    .HasColumnName("thoigianphanhoi")
-                    .HasMaxLength(50);
+                    .HasMaxLength(50)
+                    .HasColumnName("thoigianphanhoi");
 
                 entity.HasOne(d => d.IdProductNavigation)
                     .WithOne(p => p.MouseDetail)
@@ -420,58 +415,58 @@ namespace Laptop_store_e_comerce.Models
             modelBuilder.Entity<Pcdetail>(entity =>
             {
                 entity.HasKey(e => e.IdProduct)
-                    .HasName("PK__PCDetail__5EEC79D10E8B602E");
+                    .HasName("PK__PCDetail__5EEC79D1DE3F0E41");
 
                 entity.ToTable("PCDetail");
 
                 entity.Property(e => e.IdProduct)
-                    .HasColumnName("idProduct")
                     .HasMaxLength(50)
-                    .IsUnicode(false);
+                    .IsUnicode(false)
+                    .HasColumnName("idProduct");
 
                 entity.Property(e => e.Casepc)
-                    .HasColumnName("casepc")
-                    .HasMaxLength(100);
+                    .HasMaxLength(100)
+                    .HasColumnName("casepc");
 
                 entity.Property(e => e.Cpu)
-                    .HasColumnName("cpu")
-                    .HasMaxLength(50);
+                    .HasMaxLength(50)
+                    .HasColumnName("cpu");
 
                 entity.Property(e => e.Cputype)
-                    .HasColumnName("cputype")
-                    .HasMaxLength(50);
+                    .HasMaxLength(50)
+                    .HasColumnName("cputype");
 
                 entity.Property(e => e.Detailcpu)
-                    .HasColumnName("detailcpu")
-                    .HasMaxLength(100);
+                    .HasMaxLength(100)
+                    .HasColumnName("detailcpu");
 
                 entity.Property(e => e.Detailram)
-                    .HasColumnName("detailram")
-                    .HasMaxLength(100);
+                    .HasMaxLength(100)
+                    .HasColumnName("detailram");
 
                 entity.Property(e => e.Mainboard)
-                    .HasColumnName("mainboard")
-                    .HasMaxLength(50);
+                    .HasMaxLength(50)
+                    .HasColumnName("mainboard");
 
                 entity.Property(e => e.Psu)
-                    .HasColumnName("psu")
-                    .HasMaxLength(50);
+                    .HasMaxLength(50)
+                    .HasColumnName("psu");
 
                 entity.Property(e => e.Ram)
-                    .HasColumnName("ram")
-                    .HasMaxLength(30);
+                    .HasMaxLength(30)
+                    .HasColumnName("ram");
 
                 entity.Property(e => e.Typepc)
-                    .HasColumnName("typepc")
-                    .HasMaxLength(50);
+                    .HasMaxLength(50)
+                    .HasColumnName("typepc");
 
                 entity.Property(e => e.Vganame)
-                    .HasColumnName("vganame")
-                    .HasMaxLength(50);
+                    .HasMaxLength(50)
+                    .HasColumnName("vganame");
 
                 entity.Property(e => e.Vgatype)
-                    .HasColumnName("vgatype")
-                    .HasMaxLength(30);
+                    .HasMaxLength(30)
+                    .HasColumnName("vgatype");
 
                 entity.HasOne(d => d.IdProductNavigation)
                     .WithOne(p => p.Pcdetail)
@@ -485,9 +480,9 @@ namespace Laptop_store_e_comerce.Models
                 entity.ToTable("Product");
 
                 entity.Property(e => e.Id)
-                    .HasColumnName("id")
                     .HasMaxLength(50)
-                    .IsUnicode(false);
+                    .IsUnicode(false)
+                    .HasColumnName("id");
 
                 entity.Property(e => e.Baohanh).HasColumnName("baohanh");
 
@@ -500,36 +495,36 @@ namespace Laptop_store_e_comerce.Models
                     .HasDefaultValueSql("((1))");
 
                 entity.Property(e => e.Idloai)
-                    .HasColumnName("idloai")
                     .HasMaxLength(50)
-                    .IsUnicode(false);
+                    .IsUnicode(false)
+                    .HasColumnName("idloai");
 
                 entity.Property(e => e.Mau)
-                    .HasColumnName("mau")
-                    .HasMaxLength(20);
+                    .HasMaxLength(20)
+                    .HasColumnName("mau");
 
                 entity.Property(e => e.Nameimage)
-                    .HasColumnName("nameimage")
-                    .HasMaxLength(100);
+                    .HasMaxLength(100)
+                    .HasColumnName("nameimage");
 
                 entity.Property(e => e.Namsx).HasColumnName("namsx");
 
                 entity.Property(e => e.Ten)
                     .IsRequired()
-                    .HasColumnName("ten")
-                    .HasMaxLength(100);
+                    .HasMaxLength(100)
+                    .HasColumnName("ten");
 
                 entity.Property(e => e.Thuonghieu)
-                    .HasColumnName("thuonghieu")
-                    .HasMaxLength(20);
+                    .HasMaxLength(20)
+                    .HasColumnName("thuonghieu");
 
                 entity.Property(e => e.Tinhtrang)
-                    .HasColumnName("tinhtrang")
-                    .HasMaxLength(500);
+                    .HasMaxLength(500)
+                    .HasColumnName("tinhtrang");
 
                 entity.Property(e => e.Uudai)
-                    .HasColumnName("uudai")
-                    .HasMaxLength(500);
+                    .HasMaxLength(500)
+                    .HasColumnName("uudai");
 
                 entity.HasOne(d => d.IdloaiNavigation)
                     .WithMany(p => p.Products)
@@ -540,70 +535,70 @@ namespace Laptop_store_e_comerce.Models
             modelBuilder.Entity<ScreenDetail>(entity =>
             {
                 entity.HasKey(e => e.IdProduct)
-                    .HasName("PK__ScreenDe__5EEC79D1C6A10745");
+                    .HasName("PK__ScreenDe__5EEC79D1C1AC8640");
 
                 entity.ToTable("ScreenDetail");
 
                 entity.Property(e => e.IdProduct)
-                    .HasColumnName("idProduct")
                     .HasMaxLength(50)
-                    .IsUnicode(false);
+                    .IsUnicode(false)
+                    .HasColumnName("idProduct");
 
                 entity.Property(e => e.Bemat)
-                    .HasColumnName("bemat")
-                    .HasMaxLength(50);
+                    .HasMaxLength(50)
+                    .HasColumnName("bemat");
 
                 entity.Property(e => e.Congxuat)
-                    .HasColumnName("congxuat")
-                    .HasMaxLength(40);
+                    .HasMaxLength(40)
+                    .HasColumnName("congxuat");
 
                 entity.Property(e => e.Dophangiai)
-                    .HasColumnName("dophangiai")
-                    .HasMaxLength(30);
+                    .HasMaxLength(30)
+                    .HasColumnName("dophangiai");
 
                 entity.Property(e => e.Dophangiaipixel)
-                    .HasColumnName("dophangiaipixel")
-                    .HasMaxLength(30);
+                    .HasMaxLength(30)
+                    .HasColumnName("dophangiaipixel");
 
                 entity.Property(e => e.Dosang)
-                    .HasColumnName("dosang")
-                    .HasMaxLength(30);
+                    .HasMaxLength(30)
+                    .HasColumnName("dosang");
 
                 entity.Property(e => e.Gocnhin)
-                    .HasColumnName("gocnhin")
-                    .HasMaxLength(30);
+                    .HasMaxLength(30)
+                    .HasColumnName("gocnhin");
 
                 entity.Property(e => e.Hdr)
-                    .HasColumnName("hdr")
-                    .HasMaxLength(40);
+                    .HasMaxLength(40)
+                    .HasColumnName("hdr");
 
                 entity.Property(e => e.Khoiluong)
-                    .HasColumnName("khoiluong")
-                    .HasMaxLength(10);
+                    .HasMaxLength(10)
+                    .HasColumnName("khoiluong");
 
                 entity.Property(e => e.Kichthuoc).HasColumnName("kichthuoc");
 
                 entity.Property(e => e.Kieumanhinh)
-                    .HasColumnName("kieumanhinh")
-                    .HasMaxLength(50);
+                    .HasMaxLength(50)
+                    .HasColumnName("kieumanhinh");
 
                 entity.Property(e => e.Mauhienthi)
-                    .HasColumnName("mauhienthi")
-                    .HasMaxLength(30);
+                    .HasMaxLength(30)
+                    .HasColumnName("mauhienthi");
 
                 entity.Property(e => e.Tamnen)
-                    .HasColumnName("tamnen")
-                    .HasMaxLength(30);
+                    .HasMaxLength(30)
+                    .HasColumnName("tamnen");
 
                 entity.Property(e => e.Tanso).HasColumnName("tanso");
 
                 entity.Property(e => e.Thoigianphanhoi)
-                    .HasColumnName("thoigianphanhoi")
-                    .HasMaxLength(20);
+                    .HasMaxLength(20)
+                    .HasColumnName("thoigianphanhoi");
 
                 entity.Property(e => e.Tile)
-                    .HasColumnName("tile")
-                    .HasMaxLength(10);
+                    .HasMaxLength(10)
+                    .HasColumnName("tile");
 
                 entity.HasOne(d => d.IdProductNavigation)
                     .WithOne(p => p.ScreenDetail)
@@ -617,14 +612,14 @@ namespace Laptop_store_e_comerce.Models
                 entity.ToTable("TypeProduct");
 
                 entity.Property(e => e.Id)
-                    .HasColumnName("id")
                     .HasMaxLength(50)
-                    .IsUnicode(false);
+                    .IsUnicode(false)
+                    .HasColumnName("id");
 
                 entity.Property(e => e.Ten)
                     .IsRequired()
-                    .HasColumnName("ten")
-                    .HasMaxLength(40);
+                    .HasMaxLength(40)
+                    .HasColumnName("ten");
             });
 
             modelBuilder.Entity<User>(entity =>
@@ -632,43 +627,43 @@ namespace Laptop_store_e_comerce.Models
                 entity.Property(e => e.Id).HasColumnName("id");
 
                 entity.Property(e => e.Diachi)
-                    .HasColumnName("diachi")
-                    .HasMaxLength(100);
+                    .HasMaxLength(100)
+                    .HasColumnName("diachi");
 
                 entity.Property(e => e.Email)
                     .IsRequired()
-                    .HasColumnName("email")
-                    .HasMaxLength(50);
+                    .HasMaxLength(50)
+                    .HasColumnName("email");
 
                 entity.Property(e => e.Firstname)
                     .IsRequired()
-                    .HasColumnName("firstname")
-                    .HasMaxLength(100);
+                    .HasMaxLength(100)
+                    .HasColumnName("firstname");
 
                 entity.Property(e => e.Lastname)
                     .IsRequired()
-                    .HasColumnName("lastname")
-                    .HasMaxLength(100);
+                    .HasMaxLength(100)
+                    .HasColumnName("lastname");
 
                 entity.Property(e => e.Mode)
                     .IsRequired()
-                    .HasColumnName("mode")
                     .HasMaxLength(20)
+                    .HasColumnName("mode")
                     .HasDefaultValueSql("('CUSTOMER')");
 
                 entity.Property(e => e.Nameimage)
-                    .HasColumnName("nameimage")
-                    .HasMaxLength(200);
+                    .HasMaxLength(200)
+                    .HasColumnName("nameimage");
 
                 entity.Property(e => e.Pass)
                     .IsRequired()
-                    .HasColumnName("pass")
                     .HasMaxLength(50)
-                    .IsUnicode(false);
+                    .IsUnicode(false)
+                    .HasColumnName("pass");
 
                 entity.Property(e => e.Sdt)
-                    .HasColumnName("sdt")
-                    .HasMaxLength(11);
+                    .HasMaxLength(11)
+                    .HasColumnName("sdt");
             });
 
             OnModelCreatingPartial(modelBuilder);

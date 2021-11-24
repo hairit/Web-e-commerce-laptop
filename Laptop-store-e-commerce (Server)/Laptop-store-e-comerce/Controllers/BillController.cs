@@ -83,7 +83,6 @@ namespace Laptop_store_e_comerce.Controllers
             List<Bill> bills = await _context.Bills.Include(bill => bill.IduserNavigation)
                                                    .Include(bill => bill.BillDetails)
                                                    .ThenInclude(bill => bill.IdProductNavigation)
-                                                   .ThenInclude(bill => bill.IdloaiNavigation)
                                                    .Where(bill => bill.Iduser == id).ToListAsync();
             if (bills.Count == 0) return NotFound();
             else return bills;
