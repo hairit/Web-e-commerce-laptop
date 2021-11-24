@@ -29,6 +29,7 @@ import call from "./API/API";
 
 function App() {
   const history = useHistory();
+  const [blur, setblur] = useState(false);
   const [user, setUser] = useState(null);
   const [userCookie, setUserCookie ,removeCookie] = useCookies(["user"]);
   const [updateDataUser, setUpdateDataUser] = useState(0);
@@ -66,6 +67,10 @@ function App() {
     removeCookie('id');
     setUser(null);
   }
+  
+  const clickblur = (isblur) => {
+    setblur(isblur);
+  }
   var ID = function () {
     return Math.random().toString(36).substr(2, 9);
   };
@@ -88,19 +93,18 @@ function App() {
       iduser : user.id,
       tongtien : totalPrice,
       ngaydat : new Date().toISOString().slice(0, 10),
-      diachinhan : "20/1H",
+      diachinhan : user.diachi,
       billDetails : createBillDetails(cartDetails)
     })
   }
-  console.log(bill);
-  const order =() =>{
+  console.log(user);
+  const order =(userinfo) =>{
     axios.post('https://localhost:44343/data/bill/',bill)
         .then(res => {
           //if(res.status === 201){
             console.log(res.data);
             history.push('/');
-            updateData();
-            alert("Đặt hàng thành công");
+            //alert("Đặt hàng thành công");
           //}
         })
         .catch((err) => {
@@ -149,8 +153,8 @@ function App() {
     <Router>
       <ScrollToTop />
       <div className="App">
-        <Header user={user} logout={logout} />
-            <Route path="/"                               exact component={() => <Body addProductToCart={addProductToCart}/>}></Route>
+        <Header user={user} logout={logout} clickblur={clickblur}/>
+            <Route path="/"                               exact component={() => <Body blur={blur} addProductToCart={addProductToCart} />}></Route>
 
             <Route path="/laptop"                         exact component={() => <Laptops addProductToCart={addProductToCart} />}></Route>
             <Route path="/laptop/:attribute/:value"       exact component={(match) => <Laptops  match={match} /> } ></Route>

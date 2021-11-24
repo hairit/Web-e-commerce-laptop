@@ -3,6 +3,11 @@ import axios from "axios";
 
 import "../../../CSS/ProductsCss/bootstrap.css";
 import "../../../CSS/ProductsCss/style.css";
+import AsusLogo1 from "../../../Images/AsusLogo1.png"
+import DellLogo1 from "../../../Images/DellLogo1.png"
+import HPLogo1 from "../../../Images/HPLogo1.png"
+import AcerLogo1 from "../../../Images/AcerLogo1.png"
+import DareuLogo1 from "../../../Images/DareuLogo1.png"
 import { useEffect, useState } from "react";
 import ListProductKeyboard from "./ListProductKeyboard";
 export default function Keyboard({addProductToCart}) {
@@ -164,7 +169,7 @@ export default function Keyboard({addProductToCart}) {
                     <a href="#">
                       <div className="brand-logo">
                         <img
-                          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSe0d-f1ETeDyPF5-87Z_LofW3mpIqc09BbUg&usqp=CAU"
+                          src={AsusLogo1}
                           alt=""
                         />
                       </div>
@@ -174,7 +179,37 @@ export default function Keyboard({addProductToCart}) {
                     <a href="#">
                       <div className="brand-logo">
                         <img
-                          src="http://laptoptranganh.com/uploaded_files/danhmuc/53386540_Dell_Logo.png"
+                          src={DellLogo1}
+                          alt=""
+                        />
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <div className="brand-logo">
+                        <img
+                          src={HPLogo1}
+                          alt=""
+                        />
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <div className="brand-logo">
+                        <img
+                          src={AcerLogo1}
+                          alt=""
+                        />
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <div className="brand-logo">
+                        <img
+                          src={DareuLogo1}
                           alt=""
                         />
                       </div>

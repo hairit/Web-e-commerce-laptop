@@ -4,7 +4,7 @@
   height: auto;
   padding-bottom: 5px;
   margin-top: 30px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border-radius: 5px;
 }
 .screen-panel-header {
@@ -16,15 +16,13 @@
   padding-left: 7px;
 }
 .screen-panel-header-logo {
-  color:  rgb(80, 79, 79);
+  color: rgb(80, 79, 79);
   font-size: 25px;
 }
 .btn-all-screen {
   font-size: 16px;
   color: #ffffff;
   cursor: pointer;
-}
-.screen-row{
 }
 .screen-infor {
   height: auto;
@@ -50,7 +48,7 @@
   display: flex;
   flex-direction: column;
 }
-.screen-container{
+.screen-container {
   overflow: hidden;
 }
 .screen-detail-item {
@@ -66,73 +64,72 @@
   overflow: hidden;
   cursor: pointer;
 }
-.screen-price{
-    margin-top: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.screen-price {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.screen-price-value{
-    font-size: 16px;
-    color: #cf0f01;
-    font-weight: 500;
+.screen-price-value {
+  font-size: 16px;
+  color: #cf0f01;
+  font-weight: 500;
 }
-.swiper-screen-button{
-    position: absolute;
-    top : 50%;
-    width: 34px;
-    height: 64px;
-    background-color: #faf6f6;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 5px;
-    transform: translate(0,-50%);
-    opacity: 0.9;
-    z-index: 1;
+.swiper-screen-button {
+  position: absolute;
+  top: 50%;
+  width: 34px;
+  height: 64px;
+  background-color: #faf6f6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  transform: translate(0, -50%);
+  opacity: 0.9;
+  z-index: 1;
 }
-.swiper-screen-button:hover{
-    opacity: 1;
-    box-shadow: 0 0 5px 3px rgb(226, 225, 225);
+.swiper-screen-button:hover {
+  opacity: 1;
+  box-shadow: 0 0 5px 3px rgb(226, 225, 225);
 }
-.screen-previous{
-    left: -10px;
+.screen-previous {
+  left: -10px;
 }
-.screen-next{
-    right : -10px;
+.screen-next {
+  right: -10px;
 }
-.swiper-screen-button-icon{
+.swiper-screen-button-icon {
   color: black;
   font-size: 15px;
 }
-.screen-panel-list{
+.screen-panel-list {
   position: relative;
 }
-.screen-button-group{
+.screen-button-group {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 79px;
 }
-.screen-button{
+.screen-button {
   width: 100px;
   text-align: center;
   padding: 7px 0;
   border: none;
   border-radius: 3px;
 }
-.screen-button-buy{
+.screen-button-buy {
   background-color: #cf0f01;
-  color: #FFFFFF;
+  color: #ffffff;
   margin-right: 7px;
 }
-.screen-button-add{
-  background-color: #FFFFFF;
+.screen-button-add {
+  background-color: #ffffff;
   border: 0.1px solid #cf0f01;
   color: #cf0f01;
 }
-.scren-attributes{
+.scren-attributes {
   display: flex;
   height: 70px;
-
 }

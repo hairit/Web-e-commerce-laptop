@@ -9,74 +9,23 @@
   padding-bottom: 37px;
 }
 .keyboard-row {
-  border-top: 0.001px rgb(226, 225, 225) solid;
-  border-left: 0.001px rgb(226, 225, 225) solid;
 }
-.keyboard-panel-header{
+.keyboard-panel-header {
   position: relative;
   width: 100%;
   display: flex;
 }
-.keyboard-panel-header::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 5px;
-  top: -5px;
-  background-color: #3f4fc3;
-}
 .keyboard-panel-header-logo {
-  background-color: #3f4fc3;
-  width: max-content;
-  height: 30px;
-  padding: 0 20px;
-  color: #ffffff;
-  font-weight: 500;
-  font-size: 20px;
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-/* .keyboard-panel-header-logo::before{
-    position: absolute;
-    content:'';
-    top: 0;
-    left: -20px;
-    box-sizing: border-box;
-    width: 20px;
-    bottom: 0;
-    border-left: 20px solid #FFFFFF;
-    border-top: 30px solid #3f4fc3;
-    background-color: #3f4fc3;
-} */
-.keyboard-panel-header-logo::after {
-  position: absolute;
-  content: "";
-  top: 0;
-  right: -20px;
-  box-sizing: border-box;
-  width: 20px;
-  bottom: 0;
-  border-right: 20px solid #ffffff;
-  border-top: 30px solid #3f4fc3;
-  background-color: #3f4fc3;
+  font-size: 24px;
 }
 .keyboard-item {
   width: auto;
-  display: flex;
-  flex-direction: column;
   cursor: pointer;
-  padding-bottom: 30px;
-  border-right: 0.001px rgb(226, 225, 225) solid;
-  border-bottom: 0.001px rgb(226, 225, 225) solid;
+  padding: 7px 7px;
 }
-.keyboard-item:hover {
-  box-shadow: 0 0 10px 5px rgb(226, 225, 225);
-}
-.keyboard-item:hover .keyboard-image-img {
-  margin-top: 0;
-  transition: 0.3s;
+.keyboard-infor {
+  box-shadow: 0 0 5px 1px #42424446;
+  border-radius: 10px;
 }
 .keyboard-image {
   width: 100%;

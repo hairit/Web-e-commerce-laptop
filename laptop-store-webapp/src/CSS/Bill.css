@@ -40,13 +40,13 @@
   width: 10%;
 }
 .row-pro {
-  width: 25%;
+  width: 30%;
 }
 .cols {
-  font-size: 15px;
+  font-size: 17px;
 }
 .row-sltt {
-  width: 10%;
+  width: 12%;
 }
 .title-bill {
   padding-bottom: 20px;
@@ -68,9 +68,25 @@
   float: left;
 }
 .row-address{
-  width: 35%;
+  width: 30%;
 }
 .info-proDetail{
   display: flex;
   flex-flow: column;
+}
+.id-bill{
+  font-size: 13px;
+  font-weight: bold;
+  color: rgb(6, 6, 189);
+}
+.info-productInBill{
+  font-size: 14px;
+  font-weight: 400;
+}
+.bill-thanhtien{
+  font-weight: 500;
+}
+.bill-price{
+  font-weight: 500;
+  color: rgb(207, 7, 7);
 }

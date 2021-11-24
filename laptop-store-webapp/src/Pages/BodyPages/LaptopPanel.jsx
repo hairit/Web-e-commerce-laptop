@@ -50,8 +50,6 @@ export default function Laptop({addProductToCart}) {
              setPros([]);
       });
   }, []);
-  console.log(screens);
-  console.log(pros);
   useEffect(() => {
     call("GET", "data/product/type=laptop/", null)
       .then((res) => setLaptopQuantity(res.data.length))

@@ -7,33 +7,38 @@ import GioHang from "../CSS/GioHangCss.css";
 import Order from "../CSS/Order.css";
 import edit from "../Images/edit.png";
 import plus from "../Images/plus.png";
-import { useEffect, useState,useRef } from "react";
+import { useEffect, useState} from "react";
 
 export default function ThanhToan({idUser,order,updateData}) {
   const history = useHistory();
   const solver = new Solver();
   const [address, setAddress] = useState(false);
+  const [editinfo, setEditinfo] = useState(false);
   const [checkout, setCheckout] = useState([]);
   const [userOrder, setUserorder] = useState([]);
-  const [btndis, setBtndis] = useState(false);
-  const [edituser, setEdituser] = useState({
-    id: "",
-    firstname: ``,
-    lastname: ``,
-    email: ``,
-    pass: ``,
-    sdt: ``,
-    diachi: ``,
-    mode: ``,
-    nameimage: ``,
-    bills: [ ],
-    cartDetails: [ ]})
-  useEffect(() => {
+  const [reload, setReload] = useState(0);
+  const [userinfo, setUserinfo] = useState({
+    id: idUser,
+    firstname: "",
+    lastname: "",
+    email: "",
+    sdt: "",
+    diachi: ""
+  })
+  const reLoad = () =>{
+        if(reload === 0) setReload(1);
+        else setReload(0);
+      }
+  // const [btndis, setBtndis] = useState(false);
+  
+
+  useEffect(() =>{
       axios.get(`https://localhost:44343/data/user/${idUser}`)
          .then((res) => 
          setUserorder(res.data))
          .catch((err) => console.log("Reload User"+err));
-}, [])
+}, [reload])
+// console.log("aaa", userOrder)
   useEffect(() => {
     if (idUser !== null) {
       axios.get(`https://localhost:44343/data/cartdetail/iduser=${idUser}/selected`,null)
@@ -44,8 +49,8 @@ export default function ThanhToan({idUser,order,updateData}) {
           })
           .catch((err) => console.log(err));
     }
-  }, []);
-  console.log('kkkkkkkkkkkkk', address)
+  }, [reload]);
+  // console.log('kkkkkkkkkkkkk', address)
   function totalPrice(carts) {
     var tongtien = 0;
     carts.forEach(cart => {
@@ -53,6 +58,122 @@ export default function ThanhToan({idUser,order,updateData}) {
     });
     return tongtien;
   }
+  function handleChane(e){
+    const newdata = {...userinfo}
+    newdata[e.target.id] = e.target.value
+    setUserinfo(newdata)
+    console.log("llllll", newdata)
+}
+console.log("dâdadada", userOrder)
+ function saveInfoUser(e){
+    e.preventDefault();
+    
+    axios.put("https://localhost:44343/data/user/", {
+      id: idUser,
+      firstname: userinfo.firstname + '' || userOrder.firstname + '',
+      lastname: userinfo.lastname + '' || userOrder.lastname + '',
+      email: userinfo.email + '' || userOrder.email + '',
+      pass: userOrder.pass + '' ,
+      sdt: userinfo.sdt || userOrder.sdt,
+      diachi: userinfo.diachi + '' || userOrder.diachi + '',
+      mode: userOrder.mode + '',
+      nameimage: userOrder.nameimage + '',
+      bills: [ ],
+      cartDetails: [ ]
+    }).then(res => {
+      setEditinfo(false)
+      reLoad()
+      console.log(res.data);
+    }).catch(err => {
+      console.log("Lỗi con mẹ nó rồi", err)
+    })
+  }
+  function savePhoneAddress(e) {
+    // const address = addphoneaddress.diachi + '';
+    e.preventDefault();
+    axios.put("https://localhost:44343/data/user/", {
+      id: idUser,
+      firstname: userOrder.firstname + '',
+      lastname: userOrder.lastname + '',
+      email: userOrder.email + '',
+      pass: userOrder.pass + '',
+      sdt: userinfo.sdt,
+      diachi: userinfo.diachi + '',
+      mode: userOrder.mode + '',
+      nameimage: userOrder.nameimage + '',
+      bills: [ ],
+      cartDetails: [ ]
+    }).then(res => {
+      reLoad()
+      // console.log(res.data);
+    }).catch(err => {
+      console.log("Lỗi con mẹ nó rồi", err)
+    })
+  }
+
+  function btnEditInfo(){
+    setEditinfo(true)
+  }
+  function btnSaveEditInfo(){
+    setEditinfo(false)
+  }
+  function showEditInfo(){
+    if(editinfo === false){
+      return Address();
+    }else{
+      return renderFormEditInfo()
+    }
+  }
+ 
+  function renderFormEditInfo() {
+    return (
+      <div className="formAddAdress">
+        <div className="formEdit">
+          <div className="info-editAdress">
+             <form className="form-edit" onSubmit={(e) => saveInfoUser(e) } >
+              <div className="form-center">
+                <div className="title-formEdit">Sửa thông tin người nhận hàng</div>
+                <div className="form-editName">
+                  <div className="text-title">Họ</div>
+                  <div className="form-input">
+                    <input type="text" className="form-control btn-formEdit" onChange={(e) => handleChane(e)}  id="firstname" value={userinfo.firstname}  placeholder={userOrder.firstname} />
+                  </div>
+                </div>
+                <div className="form-editName">
+                  <div className="text-title">Tên</div>
+                  <div className="form-input">
+                  <input className="form-control btn-formEdit" onChange={(e) => handleChane(e)} value={userinfo.lastname} id="lastname" placeholder={userOrder.lastname} type="text"  />
+                  </div>
+                </div>
+                <div className="form-email">
+                  <div className="form-phone">
+                    <div className="text-title">Số điện thoại</div>
+                    <input className="form-control btn-formEdit" onChange={(e) => handleChane(e)} value={userinfo.sdt} id="sdt" placeholder={userOrder.sdt} type="text"  />
+                  </div>
+                  <div className="form-editemail">
+                    <div className="text-title">Email</div>
+                    <input className="form-control btn-formEdit" onChange={(e) => handleChane(e)} value={userinfo.email} id="email" placeholder={userOrder.email} type="text"   />
+                  </div>
+                </div>
+                <div className="form-diachi">
+                  <div className="title-diachi text-title">Địa chỉ</div>
+                  <input className="form-control btn-formEdit" onChange={(e) => handleChane(e)} value={userinfo.diachi} id="diachi" placeholder={userOrder.diachi} type="text"  />
+                </div>
+              </div>
+              <div className="btn-form">
+                <button className="btn btn-primary" >Lưu thông tin</button>
+                <button className="btn btn-primary" onClick={() => btnSaveEditInfo()} >Thoát</button>
+                </div>
+            </form>
+          </div>
+        </div>
+        
+      </div>
+    );
+  }
+
+// ===========================================================================================================
+
   function btnAddAdress() {
     setAddress(true);
   }
@@ -65,6 +186,16 @@ export default function ThanhToan({idUser,order,updateData}) {
     } else {
       return renderFormAddAdress();
     }
+  }
+  function FormAddAdress() {
+    return (
+      <div className="info-addAdress" onClick={() => btnAddAdress()}>
+        <div className="info-add">
+          <img src={plus} />
+          <div className="info-txtadd">Thêm địa chỉ</div>
+        </div>
+      </div>
+    );
   }
   function renderFormAddAdress() {
     return (
@@ -104,44 +235,10 @@ export default function ThanhToan({idUser,order,updateData}) {
       </div>
     );
   }
-  function renderFormAddAdressAndPhone() {
-    return (
-      <div className="formAddAdress">
-        <div className="formEdit">
-          <div className="info-editAdress">
-            <form className="form-edit">
-              <div className="form-center">
-                <div className="form-email">
-                  <div className="form-phone">
-                    <div className="text-title">Số điện thoại</div>
-                    <input className="form-control btn-formEdit" placeholder="Nhập số điện thoại"/>
-                  </div>
-                </div>
-                <div className="form-diachi">
-                  <div className="title-diachi text-title">Địa chỉ</div>
-                  <input className="form-control btn-formEdit" placeholder="Nhập địa chỉ của bạn" />
-                </div>
-              </div>
-              <div className="btn-form">
-                <button className="btn btn-primary" type="submit" onClick={() => btnSaveNewAdress()} >Lưu thông tin</button>
-                </div>
-            </form>
-          </div>
-        </div>
-        
-      </div>
-    );
-  }
-  function FormAddAdress() {
-    return (
-      <div className="info-addAdress" onClick={() => btnAddAdress()}>
-        <div className="info-add">
-          <img src={plus} />
-          <div className="info-txtadd">Thêm địa chỉ</div>
-        </div>
-      </div>
-    );
-  }
+ 
+// ===========================================================================================================
+
+  
   function Address(){
     if(userOrder.diachi && userOrder.sdt !== null){
       return (
@@ -149,7 +246,9 @@ export default function ThanhToan({idUser,order,updateData}) {
             <div className="info-nameUser">
               <p>{userOrder.lastname} {" "} {userOrder.firstname}</p>
               <div className="logo-edit">
+                <button className="btn-editUser" onClick={() => btnEditInfo()}>
                 <img src={edit} />
+                </button>
               </div>
             </div>
             <div className="phone-adress">{userOrder.sdt}</div>
@@ -163,6 +262,36 @@ export default function ThanhToan({idUser,order,updateData}) {
       )
     }
   }
+
+  function renderFormAddAdressAndPhone() {
+    return (
+      <div className="formAddAdress">
+        <div className="formEdit">
+          <div className="info-editAdress">
+            <form className="form-edit" onSubmit={(e) => savePhoneAddress(e) }>
+              <div className="form-center">
+                <div className="form-email">
+                  <div className="form-phone">
+                    <div className="text-title">Số điện thoại</div>
+                    <input type="text" className="form-control btn-formEdit" onChange={(e) => handleChane(e)} id="sdt" value={userinfo.sdt} placeholder="Nhập số điện thoại"/>
+                  </div>
+                </div>
+                <div className="form-diachi">
+                  <div className="title-diachi text-title">Địa chỉ</div>
+                  <input className="form-control btn-formEdit" type="text" onChange={(e) => handleChane(e)} id="diachi" value={userinfo.diachi} placeholder="Nhập địa chỉ của bạn" />
+                </div>
+              </div>
+              <div className="btn-form">
+                <button className="btn btn-primary"  onClick={() => btnSaveNewAdress()} >Lưu thông tin</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        
+      </div>
+    );
+  }
+ 
   function editCart() {
     history.goBack();
   }
@@ -175,18 +304,24 @@ export default function ThanhToan({idUser,order,updateData}) {
       return  renderFormAddAdressAndPhone();
     }
   }
-  // const disableButton = () => {
-  //   if(userOrder.diachi && userOrder.sdt !== null){
-  //     setBtndis(false);
-  //   }
-  //   else{
-  //     setBtndis(true);
-  //   }
-  //  }
- function btnOrder(){
-
- }
  
+
+ function btnOrder(){
+  if(userOrder.diachi && userOrder.sdt !== null){
+      return (
+          <button type="button"className="btn-pay btn btn-outline-primary" onClick={()=>order(userinfo)}  >
+            Đặt hàng ngay
+          </button>
+      )
+  }else{
+    return (
+          <button type="button"className="btn-pay btn btn-outline-primary" onClick={()=>order()}  disabled >
+            Đặt hàng ngay
+          </button>
+      )
+  }
+ }
+
   return (
     <div className="wrapper order">
       <div className="container-order">
@@ -199,8 +334,8 @@ export default function ThanhToan({idUser,order,updateData}) {
               <div className="info-orderDataUser">
                 <div className="info-user">
                   <div className="info-nhanhang">Thông tin nhận hàng</div>
-                  
-                  {Address()}
+                  {showEditInfo()}
+                  {/* {Address()} */}
                  {AddressAndPhone()}
                 </div>
               </div>
@@ -317,9 +452,7 @@ export default function ThanhToan({idUser,order,updateData}) {
                 <p className="thanhtien">{solver.formatCurrency("vi-VN","currency","VND",totalPrice(checkout))}</p>
               </div>
               <div className="VAT">( Bao gồm VAT )</div>
-              <button type="button"className="btn-pay btn btn-outline-primary" onClick={()=>order()}  disabled={btndis} >
-                Đặt hàng ngay
-              </button>
+              {btnOrder()}
             </div>
           </div>
           </div>

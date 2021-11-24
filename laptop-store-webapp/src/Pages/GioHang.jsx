@@ -11,7 +11,7 @@ import { useEffect, useState } from "react";
 import ThanhToan from "./ThanhToan";
 export default function GioHang({ idUser, addProductToCart, deleteCartItem ,deleteProductFromCart , createBill}) {
   const solver = new Solver();
-  const buttonRef = useRef();
+  // const buttonRef = useRef();
   // const [tongtien, setTongtien] = useState(0);
   const [cartDetails, setCartDetails] = useState([]);
   const [loading , setLoading] = useState(true);
@@ -70,23 +70,28 @@ useEffect(() => {
     var tongtienSelect = 0;
     prod.forEach(prod => {
       if(prod.selected === 1){
+        // btnPayment()
       tongtienSelect = prod.tongtien + tongtienSelect
+      
       }
     });
     return tongtienSelect;
-  
   }
+  console.log("aaaaaaaaaaaaa",cartDetails)
 
+  
   function checktien (e,gia,quantity,idpro,iduser,select) {
     if ( e.target.checked ) {
       axios.get(`https://localhost:44343/data/cartdetail/select=selected/iduser=${iduser}/idproduct=${idpro}`, null)
       .then(() => {
+        // setBtndis(true)
         // setTongtien(tongtien + gia*quantity)
         reLoad();
       }).catch((err) => console.error("Không thể checker",err));
     } else {
       axios.get(`https://localhost:44343/data/cartdetail/select=unselected/iduser=${idUser}/idproduct=${idpro}`, null)
       .then(() => {
+        
         // setTongtien(tongtien- gia*quantity);
         // setTongtien(tongtien)
         // {disableButton()}
@@ -95,10 +100,31 @@ useEffect(() => {
       .catch((err) => console.error("Không thể unchecker",err));
     }
   }
-  if(cartDetails.selected === 1){
-    document.getElementById("check-item").checked = true;
-}
-    if(loading !== false)return(
+
+  function btnThanhToan(){
+    var tongprice = thanhtien(cartDetails)
+    if(tongprice !== 0 ){
+      return (
+          <NavLink to="/checkout" onClick={()=>createBill(cartDetails,thanhtien(cartDetails))}  >
+            <button className="btn-pay btn btn-outline-primary"  >
+              Tiếp tục thanh toán
+            </button>
+          </NavLink>
+      )
+    }
+    else{
+      return(
+            <button className="btn-pay btn btn-outline-primary" disabled  >
+              Tiếp tục thanh toán
+            </button>
+      )
+    }
+  }
+//   if(cartDetails.selected === 1){
+//     document.getElementById("check-item").checked = true;
+// }
+    if(cartDetails.length > 0 ){
+    return(
       <div className="page">
         <div className="container width">
           <div className="title-cart">
@@ -113,8 +139,7 @@ useEffect(() => {
                       <div className="info-chitiet">
                       <div className="info-check">
                         <input class="check-item" type="checkbox"   name="hobby"  id="check-item" defaultChecked={item.selected === 1 ? checked : ""}
-                        onChange={(e)=> { checktien(e, item.idProductNavigation.gia,item.soluong,item.idProduct,idUser, item.selected); 
-                        }}   />
+                        onChange={(e)=> { checktien(e, item.idProductNavigation.gia,item.soluong,item.idProduct,idUser, item.selected); }}   />
                       
                         </div>
                         <div className="info-image">
@@ -178,18 +203,16 @@ useEffect(() => {
                     <p className="thanhtien">{solver.formatCurrency("vi-VN","currency","VND",thanhtien(cartDetails))}</p>
                   </div>
                   <div className="VAT">( Bao gồm VAT )</div>
-                  <NavLink to="/checkout" onClick={()=>createBill(cartDetails,thanhtien(cartDetails))} >
-                  <button className="btn-pay btn btn-outline-primary" ref={buttonRef}   >
-                    Tiếp tục thanh toán
-                  </button>
-                  </NavLink>
+                  {btnThanhToan()}
+
               </div>
             </div>
           </div>
         </div>
       </div>
-    )
+    )}
     else{ 
+      return(
             <div className="centerp">
               <div className="center-car">
               <div className="product-none">
@@ -205,7 +228,8 @@ useEffect(() => {
               </div>
               </div>
             </div>
+      )
     }
-    setTimeout(noneCartNotification , 1000);
+    // setTimeout(noneCartNotification , 1000);
+  
   }
-
