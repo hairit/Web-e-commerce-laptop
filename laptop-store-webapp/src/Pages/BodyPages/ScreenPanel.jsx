@@ -13,20 +13,24 @@ const RenderScreenItem= (pro, index) => {
     const history = useHistory();
     return (
         <div className="col-10-no-padding c-10-2 screen-infor" key={index}>
-            <div className="screen-item" onClick={()=>history.push(`screen/${pro.id}`)} to={`screen/${pro.id}`}>
-                <div className="screen-image">
+            <div className="screen-item" to={`screen/${pro.id}`}>
+                <div className="screen-image" onClick={()=>history.push(`screen/${pro.id}`)}>
                     <img  className="screen-image-img" src={`https://localhost:44343/Images/Products/${pro.nameimage}`} alt={pro.nameimage} /> 
                 </div>
                 <div className="screen-detail">
-                    <div className="screen-detail-item screen-id">
-                        <p>Mã SP : {pro.id}</p>
-                    </div>
-                    <div className="screen-detail-item screen-name">
+                    <div className="screen-detail-item screen-name" onClick={()=>history.push(`screen/${pro.id}`)}>
                         <p>{pro.ten}</p>
                     </div>
                     <div className="screen-detail-item screen-price">
-                        <p>Giảm 25%</p>
+                        <p className="old-price">{solver.formatCurrency("vi-VN",'currency','VND',pro.giacu)}</p>
                         <p className="screen-price-value">{solver.formatCurrency("vi-VN",'currency','VND',pro.gia)}</p>
+                    </div>
+                    <div className="screen-detail-item screen-attributes">
+                        
+                    </div>
+                    <div className="screen-detail-item screen-button-group">
+                        <button className="screen-button screen-button-buy">Mua ngay</button>
+                        <button className="screen-button screen-button-add">Thêm vào giỏ</button>
                     </div>
                 </div>
             </div>

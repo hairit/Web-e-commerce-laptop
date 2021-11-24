@@ -39,11 +39,11 @@ export default function KeyboardPanel({addProductToCart}) {
     }, [])
     return (
         <div className="keyboard-panel">
-            {/* <div className="keyboard-panel-header">
+            <div className="keyboard-panel-header">
                 <div className="keyboard-panel-header-logo">
                         <p>Bàn phím cơ</p>    
                 </div>
-            </div> */}
+            </div>
             <div className="container10Col keyboard-container">
                 <div className="row-10-no-margin keyboard-row">
                     {

@@ -31,8 +31,8 @@ const LoadingSelectPanel = (item , index) =>{
     )
 }
 const LoadingProductOptions = (item , index) =>{
-    return (<div className="menu-list-item">
-        <NavLink className="pro-list-item" key={index} to={item.path}>
+    return (<div className="menu-list-item" key={index}>
+        <NavLink className="pro-list-item" to={item.path}>
             {item.icon()}
             <p className="pro-list-item-text">{item.optionName}</p>
         </NavLink>

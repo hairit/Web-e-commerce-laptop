@@ -13,9 +13,9 @@ export default function Body({addProductToCart}) {
             {/* <Center /> */}
             <MainPanel />
             <LaptopPanel addProductToCart={addProductToCart}/>
+            <ScreenPanel addProductToCart={addProductToCart}/>
             <PCPanel addProductToCart={addProductToCart} />
             <KeyboardPanel addProductToCart={addProductToCart}/>
-            <ScreenPanel addProductToCart={addProductToCart}/>
         </div>
     )
 }
