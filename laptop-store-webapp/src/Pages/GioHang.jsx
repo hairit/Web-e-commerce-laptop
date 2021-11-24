@@ -5,6 +5,7 @@ import bootstrap from "../CSS/ProductsCss/bootstrap.css";
 import GioHangCss from "../CSS/GioHangCss.css";
 import LogoFT from "../Images/LogoFT.png";
 import { NavLink } from "react-router-dom";
+import home from "../Images/home.png"
 
 import tk_shopping_img from "../Images/tk_shopping_img.png";
 import { useEffect, useState } from "react";
@@ -127,6 +128,15 @@ useEffect(() => {
     return(
       <div className="page">
         <div className="container width">
+          <div className="home-icon">
+            <NavLink to="/" className="img-backhome">
+            <img className="icon-home"  src={home}/>
+            </NavLink>
+            <p> {">"} </p>
+            <div className="title-carticon">
+              <div className="title-txt">Giỏ hàng</div>
+            </div>
+          </div>
           <div className="title-cart">
             <strong className="title-text">Giỏ hàng của bạn</strong>
           </div>

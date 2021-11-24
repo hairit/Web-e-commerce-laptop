@@ -4,7 +4,7 @@
 }
 .billInfo {
   padding: 20px;
-  background-color: #edeef2;
+  background-color: #f8f8fc;
 }
 .Bill {
   display: flex;
@@ -36,11 +36,11 @@
   padding-bottom: 10px;
 }
 .table-bill {
-  background-color: #e6ffe6;
+  /* background-color: #e6ffe6; */
 }
 .title-bills {
   color: white;
-  background-color: #3c8dbc;
+  background-color: #4252bd;
 }
 .row-idOrder {
   width: 10%;
