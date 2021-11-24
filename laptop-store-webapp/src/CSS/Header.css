@@ -135,14 +135,13 @@
   width: 80%;
   margin: 0 auto;
   background-color: #596CE5;
-  transition: 0.5s;
+ transition: 0.5s;
 }
 .header-bottom-hide{
   opacity: 0;
   width: 80%;
   margin: 0 auto;
   background-color: #596CE5;
-  margin-left: 100px;
 }
 .header-bottom-item{
   padding: 2px 0;

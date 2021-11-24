@@ -9,10 +9,10 @@ const solver = new Solver();
 const renderKeyboardItem = (pro,index) => {
     return (
         <div className="col-10-no-padding c-10-2 keyboard-item" key={index}>
-            <NavLink className="keyboard-infor" to={`/keyboard/${pro.id}`}>
-                <div className="keyboard-image">
+            <div className="keyboard-infor">
+                <NavLink className="keyboard-image" to={`/keyboard/${pro.id}`}>
                     <img className="keyboard-image-img" src={URL+`/Images/Products/${pro.nameimage}`} alt={pro.nameimage} />
-                </div>
+                </NavLink>
                 <div className="keyboard-detail">
                     {/* <div className="keyboard-detail-item keyboard-id">
                     Mã SP: {pro.id}
@@ -25,7 +25,7 @@ const renderKeyboardItem = (pro,index) => {
                             <div className="laptop-price-value">{solver.formatCurrency("vi-VN",'currency','VND',pro.gia)}</div>
                     </div>
                 </div>
-            </NavLink>
+            </div>
         </div>
     )
 }
@@ -39,11 +39,11 @@ export default function KeyboardPanel({addProductToCart}) {
     }, [])
     return (
         <div className="keyboard-panel">
-            {/* <div className="keyboard-panel-header">
+            <div className="keyboard-panel-header">
                 <div className="keyboard-panel-header-logo">
                         <p>Bàn phím cơ</p>    
                 </div>
-            </div> */}
+            </div>
             <div className="container10Col keyboard-container">
                 <div className="row-10-no-margin keyboard-row">
                     {

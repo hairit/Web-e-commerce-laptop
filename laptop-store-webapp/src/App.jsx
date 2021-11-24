@@ -35,7 +35,9 @@ function App() {
   const [updateDataUser, setUpdateDataUser] = useState(0);
   const [bill, setBill] = useState({id : '',iduser : '',tongtien : 0,ngaydat : '',diachinhan :'',billDetails : []})
   useEffect(() => {
+    console.log("reload 1");
     if (userCookie.id !== undefined) {
+      console.log("reload in cookie");
       axios
               .get(`https://localhost:44343/data/user/${userCookie.id}`)
               .then((res) => 
@@ -46,6 +48,7 @@ function App() {
     }
   }, []);
   useEffect(() => {
+      console.log("Reload 2");
       if(user !== null) {
         call('GET',`data/user/${user.id}`,null)
            .then((res) => setUser(res.data))
@@ -100,9 +103,8 @@ function App() {
         .then(res => {
           //if(res.status === 201){
             console.log(res.data);
-            updateData();
-            alert("Đặt hàng thành công");
-            // history.push('/bill');
+            history.push('/');
+            //alert("Đặt hàng thành công");
           //}
         })
         .catch((err) => {
@@ -147,8 +149,6 @@ function App() {
       .catch((err)=> console.log("Dell xoa duoc",err))
     } 
   }
-
-
   return (
     <Router>
       <ScrollToTop />
@@ -188,10 +188,10 @@ function App() {
                                                           />}></Route>
 
             <Route path="/login"                          exact component={(match) => <Login  login={login} match={match} /> } ></Route>
-            <Route path="/bill"                         component={() => <DonHang idUser={ user !== null ? user.id : null } />}></Route>
-            <Route path="/lienhe"                         component={() => <Lienhe />}></Route>
-            <Route path="/tincongnghe"                    component={() => <Tintuc />}></Route>
-            <Route path="/showroom"                       component={() => <Showroom />}></Route>
+            <Route path="/bill"                                 component={() => <DonHang idUser={ user !== null ? user.id : null } />}></Route>
+            <Route path="/lienhe"                               component={() => <Lienhe />}></Route>
+            <Route path="/tincongnghe"                          component={() => <Tintuc />}></Route>
+            <Route path="/showroom"                             component={() => <Showroom />}></Route>
         <Footer />
       </div>
     </Router>

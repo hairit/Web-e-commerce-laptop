@@ -26,7 +26,7 @@ namespace Laptop_store_e_comerce.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUserByID(int id)
         {
-            var user = await database.Users.Include(user => user.CartDetails).FirstOrDefaultAsync(user => user.Id == id);
+            var user = await database.Users.Include(user => user.CartDetails).Include(user => user.Bills).FirstOrDefaultAsync(user => user.Id == id);
             if (user == null)
             {
                 return NotFound();

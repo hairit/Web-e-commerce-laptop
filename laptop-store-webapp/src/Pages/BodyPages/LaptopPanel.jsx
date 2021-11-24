@@ -35,7 +35,14 @@ const renderLaptopItem = (pro, index ,addProductToCart) => {
 export default function Laptop({addProductToCart}) {
   const [pros, setPros] = useState([]);
   const [laptopQuantity, setLaptopQuantity] = useState(0);
+  const [screens, setScreens] = useState([]);
+    useEffect(() => {
+       call('GET','data/product/type=screen/enable',null)
+        .then(res => setScreens(res.data))
+        .catch(err => console.log("Errol when try to get screen product"+err))
+    }, [])
   useEffect(() => {
+    console.log("reload laptop");
     call("GET", "data/product/type=laptop/enable", null)
       .then((res) => setPros(res.data))
       .catch((err) =>{

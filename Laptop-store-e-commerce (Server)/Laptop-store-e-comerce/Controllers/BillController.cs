@@ -80,7 +80,8 @@ namespace Laptop_store_e_comerce.Controllers
         public async Task<ActionResult<List<Bill>>> getBillsByUserID(int id)
         {
             if (!_context.Users.Any(user => user.Id == id)) return BadRequest();
-            List<Bill> bills = await _context.Bills.Include(bill => bill.BillDetails)
+            List<Bill> bills = await _context.Bills.Include(bill => bill.IduserNavigation)
+                                                   .Include(bill => bill.BillDetails)
                                                    .ThenInclude(bill => bill.IdProductNavigation)
                                                    .ThenInclude(bill => bill.IdloaiNavigation)
                                                    .Where(bill => bill.Iduser == id).ToListAsync();
@@ -91,7 +92,8 @@ namespace Laptop_store_e_comerce.Controllers
         public async Task<ActionResult<Bill>> PutDonHang(Bill donHang)
         {
             if (!DonHangExists(donHang.Id)) return NotFound();
-            var oldBill = await _context.Bills.Include(bill => bill.BillDetails).FirstOrDefaultAsync(bill => bill.Id == donHang.Id);
+            var oldBill = await _context.Bills.Include(bill => bill.BillDetails)
+                .FirstOrDefaultAsync(bill => bill.Id == donHang.Id);
             _context.BillDetails.RemoveRange(oldBill.BillDetails);
             _context.Bills.Remove(oldBill);
             try

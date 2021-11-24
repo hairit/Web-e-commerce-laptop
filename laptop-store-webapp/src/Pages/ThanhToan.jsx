@@ -32,7 +32,7 @@ export default function ThanhToan({idUser,order,updateData}) {
   // const [btndis, setBtndis] = useState(false);
   
 
-  useEffect(() => {
+  useEffect(() =>{
       axios.get(`https://localhost:44343/data/user/${idUser}`)
          .then((res) => 
          setUserorder(res.data))
@@ -58,8 +58,6 @@ export default function ThanhToan({idUser,order,updateData}) {
     });
     return tongtien;
   }
-
-
   function handleChane(e){
     const newdata = {...userinfo}
     newdata[e.target.id] = e.target.value
@@ -91,7 +89,6 @@ console.log("dâdadada", userOrder)
       console.log("Lỗi không sửa được", err)
     })
   }
- 
   function savePhoneAddress(e) {
     e.preventDefault();
     axios.put("https://localhost:44343/data/user/", {
