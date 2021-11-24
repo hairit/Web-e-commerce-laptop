@@ -29,9 +29,6 @@ export default function ThanhToan({idUser,order,updateData}) {
         if(reload === 0) setReload(1);
         else setReload(0);
       }
-  // const [btndis, setBtndis] = useState(false);
-  
-
   useEffect(() =>{
       axios.get(`https://localhost:44343/data/user/${idUser}`)
          .then((res) => 
@@ -62,13 +59,11 @@ export default function ThanhToan({idUser,order,updateData}) {
     const newdata = {...userinfo}
     newdata[e.target.id] = e.target.value
     setUserinfo(newdata)
-    // console.log("llllll", newdata)
-
+    console.log("llllll", newdata)
 }
 console.log("dâdadada", userOrder)
  function saveInfoUser(e){
     e.preventDefault();
-    
     axios.put("https://localhost:44343/data/user/", {
       id: idUser,
       firstname: userinfo.firstname + '' || userOrder.firstname + '',
@@ -86,10 +81,11 @@ console.log("dâdadada", userOrder)
       reLoad()
       console.log(res.data);
     }).catch(err => {
-      console.log("Lỗi không sửa được", err)
+      console.log("Lỗi con mẹ nó rồi", err)
     })
   }
   function savePhoneAddress(e) {
+    // const address = addphoneaddress.diachi + '';
     e.preventDefault();
     axios.put("https://localhost:44343/data/user/", {
       id: idUser,
@@ -107,7 +103,7 @@ console.log("dâdadada", userOrder)
       reLoad()
       // console.log(res.data);
     }).catch(err => {
-      console.log("Lỗi không thêm được", err)
+      console.log("Lỗi con mẹ nó rồi", err)
     })
   }
 
@@ -206,12 +202,8 @@ console.log("dâdadada", userOrder)
               <div className="form-center">
                 <div className="title-formEdit">Thêm thông tin người nhận hàng</div>
                 <div className="form-editName">
-                  <div className="text-title">Họ</div>
-                  <div className="form-input"><input className="form-control btn-formEdit" type="text" placeholder="Nhập họ của bạn"/></div>
-                </div>
-                <div className="form-editName">
-                  <div className="text-title">Tên</div>
-                  <div className="form-input"><input className="form-control btn-formEdit" type="text" placeholder="Nhập tên của bạn"/></div>
+                  <div className="text-title">Họ tên</div>
+                  <div className="form-input"><input className="form-control btn-formEdit" type="text" placeholder="Nhập họ tên của bạn"/></div>
                 </div>
                 <div className="form-email">
                   <div className="form-phone">
@@ -313,7 +305,10 @@ console.log("dâdadada", userOrder)
  function btnOrder(){
   if(userOrder.diachi && userOrder.sdt !== null){
       return (
-          <button type="button"className="btn-pay btn btn-outline-primary" onClick={()=>order(userinfo)}  >
+          <button type="button"className="btn-pay btn btn-outline-primary" onClick={()=>{
+              history.push("/");
+              order();
+          }}  >
             Đặt hàng ngay
           </button>
       )
@@ -325,7 +320,6 @@ console.log("dâdadada", userOrder)
       )
   }
  }
-
   return (
     <div className="wrapper order">
       <div className="container-order">

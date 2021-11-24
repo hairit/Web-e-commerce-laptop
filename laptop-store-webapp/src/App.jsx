@@ -103,8 +103,7 @@ function App() {
         .then(res => {
           //if(res.status === 201){
             console.log(res.data);
-            history.push('/');
-            //alert("Đặt hàng thành công");
+            updateData();
           //}
         })
         .catch((err) => {
