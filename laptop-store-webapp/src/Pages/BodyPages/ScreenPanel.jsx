@@ -8,9 +8,8 @@ import {BsFillCaretLeftFill} from 'react-icons/bs'
 import '../../CSS/ScreenPanel.css'
 import Solver from '../../Classes/Solver';
 import { useHistory } from 'react-router';
-const RenderScreenItem= (pro, index) => {
+const RenderScreenItem= (pro, index ,addProductToCart, history) => {
     const solver =new Solver();
-    const history = useHistory();
     return (
         <div className="col-10-no-padding c-10-2 screen-infor" key={index}>
             <div className="screen-item" to={`screen/${pro.id}`}>
@@ -29,8 +28,10 @@ const RenderScreenItem= (pro, index) => {
                         
                     </div>
                     <div className="screen-detail-item screen-button-group">
-                        <button className="screen-button screen-button-buy">Mua ngay</button>
-                        <button className="screen-button screen-button-add">Thêm vào giỏ</button>
+                        <button className="screen-button screen-button-buy" onClick={()=>{
+                                addProductToCart(pro.id,pro.gia);
+                        }}>Mua ngay</button>
+                        <button className="screen-button screen-button-add" onClick={()=>addProductToCart(pro.id,pro.gia)}>Thêm vào giỏ</button>
                     </div>
                 </div>
             </div>
@@ -40,15 +41,15 @@ const RenderScreenItem= (pro, index) => {
 const getCountPage = (pros) => {
     return pros.length/5 ;
 }
-export default function ScreenPanel() {
+export default function ScreenPanel({addProductToCart}) {
     const history = useHistory();
     const [scaleX, setScaleX] = useState(0);
     const index = useRef(0);
-    const [pros, setPros] = useState([]);
+    const [screens, setScreens] = useState([]);
     useEffect(() => {
        CALLER('GET','data/product/type=screen/enable',null)
-        .then(res => setPros(res.data))
-        .catch(err => console.log("Errol when try to get screen product"+err))
+        .then(res => setScreens(res.data))
+        .catch(err => setScreens([]))
     }, [])
     const handleSwipe = (direction,countSwipe) => {
         if(index.current === 0 && direction ==='previous'){
@@ -75,16 +76,16 @@ export default function ScreenPanel() {
                 <div className="btn-all-screen" onClick={() => history.push('/screen')}>Xem tất cả{" >>"}</div>
             </div>
             <div className="screen-panel-list">
-                    <div className="swiper-screen-button screen-previous" onClick={()=>handleSwipe('previous',getCountPage(pros)-1)}>
+                    <div className="swiper-screen-button screen-previous" onClick={()=>handleSwipe('previous',getCountPage(screens)-1)}>
                         <BsFillCaretLeftFill className="swiper-screen-button-icon"/>
                     </div>
-                    <div className="swiper-screen-button screen-next" onClick={()=>handleSwipe('next',getCountPage(pros)-1)}>
+                    <div className="swiper-screen-button screen-next" onClick={()=>handleSwipe('next',getCountPage(screens)-1)}>
                         <BsFillCaretRightFill className="swiper-screen-button-icon"/>
                     </div>
             <div className="container10Col screen-container">
                     <div className="row-10--NoWrap screen-row" style={{transform : `translate(${scaleX}%)` ,transition : '0.5s'}} >
                         {
-                            pros.map((pro,index) => RenderScreenItem(pro,index,history))
+                            screens.map((pro,index) => RenderScreenItem(pro,index,addProductToCart,history))
                         }
                 </div>
             </div>

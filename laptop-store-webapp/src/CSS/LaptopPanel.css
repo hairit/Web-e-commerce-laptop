@@ -51,8 +51,8 @@
   height: 5px;
   top: -5px;
   background-color: #3f4fc3;
-} 
- .laptop-panel-header-logo {
+}
+.laptop-panel-header-logo {
   background-color: #3f4fc3;
   width: max-content;
   height: 30px;
@@ -63,20 +63,20 @@
   position: relative;
   display: flex;
   align-items: center;
-} 
- .laptop-panel-header-logo::before{
-    position: absolute;
-    content:'';
-    top: 0;
-    left: -20px;
-    box-sizing: border-box;
-    width: 20px;
-    bottom: 0;
-    border-left: 20px solid #FFFFFF;
-    border-top: 30px solid #3f4fc3;
-    background-color: #3f4fc3;
-} 
- .laptop-panel-header-logo::after {
+}
+.laptop-panel-header-logo::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: -20px;
+  box-sizing: border-box;
+  width: 20px;
+  bottom: 0;
+  border-left: 20px solid #ffffff;
+  border-top: 30px solid #3f4fc3;
+  background-color: #3f4fc3;
+}
+.laptop-panel-header-logo::after {
   position: absolute;
   content: "";
   top: 0;
@@ -87,7 +87,7 @@
   border-right: 20px solid #ffffff;
   border-top: 30px solid #3f4fc3;
   background-color: #3f4fc3;
-} 
+}
 .laptop-panel-header-item {
   width: 120px;
   display: flex;

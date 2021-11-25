@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import Solver from "../../Classes/Solver";
 const solver = new Solver();
-const renderLaptopItem = (pro, index ,addProductToCart) => {
+const renderLaptopItem = (pro, index ,addProductToCart,history) => {
   return (
     <div to={`/laptop/${pro.id}`} className="col-10-no-padding c-10-2 laptop-item" key={index}>
       <div  className="laptop-infor">
@@ -25,7 +25,9 @@ const renderLaptopItem = (pro, index ,addProductToCart) => {
         </div>
         <div className="laptop-gift"><p>{pro.uudai}</p></div>
         <div className="laptop-btn-group">
-          <button className="laptop-btn laptop-buy">Mua ngay</button>
+          <button className="laptop-btn laptop-buy" onClick={()=>{
+                  addProductToCart(pro.id,pro.gia)
+          }}>Mua ngay</button>
           <button className="laptop-btn laptop-addCart" onClick={()=>addProductToCart(pro.id,pro.gia)}>Thêm vào giỏ</button>
         </div>
       </div>
@@ -33,14 +35,9 @@ const renderLaptopItem = (pro, index ,addProductToCart) => {
   );
 };
 export default function Laptop({addProductToCart}) {
+  const history = useHistory();
   const [pros, setPros] = useState([]);
   const [laptopQuantity, setLaptopQuantity] = useState(0);
-  const [screens, setScreens] = useState([]);
-    useEffect(() => {
-       call('GET','data/product/type=screen/enable',null)
-        .then(res => setScreens(res.data))
-        .catch(err => console.log("Errol when try to get screen product"+err))
-    }, [])
   useEffect(() => {
     console.log("reload laptop");
     call("GET", "data/product/type=laptop/enable", null)
@@ -78,7 +75,7 @@ export default function Laptop({addProductToCart}) {
       </div>
       <div className="container10Col wide">
         <div className="row-10-no-margin">
-          {pros.map((pro, index) => renderLaptopItem(pro, index , addProductToCart))}
+          {pros.map((pro, index) => renderLaptopItem(pro, index , addProductToCart,history))}
         </div>
       </div>
     </div>

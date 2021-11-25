@@ -1,0 +1,80 @@
+.mouse-panel {
+  width: 83%;
+  margin: 0 auto;
+}
+.mouse-panel-list-pro {
+  margin-top: 10px;
+}
+.mouse-item {
+  padding: 0 7px 14px 7px;
+  height: 470px;
+}
+.mouse-infor {
+  box-shadow: 0 0 5px 1px #42424446;
+  height: 100%;
+  border-radius: 10px;
+  transition: 0.2s;
+}
+.mouse-infor:hover {
+  box-shadow: 0 0 10px 1px #42424446;
+  transform: scale(102%);
+}
+.mouse-image {
+  width: 100%;
+  height: 250px;
+}
+.mouse-image-img {
+  transform: scale(80%);
+}
+.mouse-name {
+  padding: 7px 15px;
+  font-size: 1.4rem;
+  line-height: 1.4;
+  color: rgb(79, 79, 80);
+  height: 47px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.mouse-name:hover {
+  color: #cf0f01;
+}
+.mouse-price {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 15px;
+}
+.mouse-price-value {
+  color: #cf0f01;
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 7px;
+}
+.mouse-gift {
+  height: 45px;
+  border-radius: 5px;
+  margin: 0 10px;
+  padding-left: 5px;
+  display: flex;
+  align-items: center;
+  background-color: rgb(234, 235, 236);
+}
+.mouse-button-group {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 15px;
+}
+.mouse-button {
+  width: 47%;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.mouse-button-buy {
+  background-color: #cf0f01;
+  color: #ffffff;
+}
+.mouse-button-add {
+  border: #cf0f01 solid 0.1px;
+  color: #cf0f01;
+}

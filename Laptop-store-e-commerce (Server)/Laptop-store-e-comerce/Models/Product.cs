@@ -28,6 +28,7 @@ namespace Laptop_store_e_comerce.Models
         public int? Giacu { get; set; }
 
         public virtual TypeProduct IdloaiNavigation { get; set; }
+        public virtual HeadphoneDetail HeadphoneDetail { get; set; }
         public virtual KeyboardDetail KeyboardDetail { get; set; }
         public virtual LaptopDescription LaptopDescription { get; set; }
         public virtual LaptopDetail LaptopDetail { get; set; }

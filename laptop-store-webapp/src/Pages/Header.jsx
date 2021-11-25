@@ -264,7 +264,7 @@ export default function Header({ user , logout, clickblur }) {
               <p>Đơn hàng</p>
             </NavLink>
           )}
-          <NavLink className="header-center-right-menu-item" to={user === null ? "/card" : "/card"} >
+          <NavLink className="header-center-right-menu-item" to={user === null ? "/cart" : "/cart"} >
                   <AiOutlineShoppingCart className="header-center-right-menu-item-icon" />
                   {user === null ? ( <div></div>) : (
                         <div className={user.cartDetails.length === 0 ? "quanlity-data-user-disable": "quanlity-data-user"}>

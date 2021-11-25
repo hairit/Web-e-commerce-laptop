@@ -1,14 +1,90 @@
 .body {
   height: auto;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 }
-.body-hide{
+.body-hide {
   height: auto;
-  background-color: #FFFFFF;
-  filter: blur(3px)
+  background-color: #ffffff;
+  filter: blur(3px);
 }
-.old-price{
+.old-price {
   font-size: 12px;
   text-decoration: line-through;
   color: #979696;
+}
+.right-scroll-panel {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 25px;
+  transition: 0.5s;
+}
+.right-scroll-panel-hide {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  top: 50%;
+  transform: translateY(-50%);
+  right: -50px;
+  transition: 0.5s;
+}
+.right-scroll-panel-item {
+  cursor: pointer;
+  width: 45px;
+  height: 45px;
+  margin: 5px 0;
+  border-radius: 10px;
+}
+.scroll-to-top {
+  width: 45px;
+  height: 45px;
+  position: fixed;
+  right: 25px;
+  bottom: 40px;
+  transition: 0.5s;
+  cursor: pointer;
+}
+.scroll-to-top-hide {
+  width: 45px;
+  height: 45px;
+  position: fixed;
+  right: -45px;
+  bottom: 40px;
+  transition: 0.5s;
+}
+.event {
+  margin: 57px auto;
+  overflow: hidden;
+  width: 83%;
+  height: 136px;
+  border-radius: 10px;
+}
+.event-img {
+  transition: 0.5s;
+}
+.event-img:hover {
+  transform: scale(104%);
+  transition: 0.5s;
+}
+.event-laptop {
+  margin: 20px auto;
+  width: 83%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.event-laptop-item {
+  padding: 0 7px;
+  width: 50%;
+}
+.event-laptop-item-img {
+  transition: 0.2s;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.event-laptop-item-img:hover {
+  transform: scale(102%);
 }

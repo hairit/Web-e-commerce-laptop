@@ -51,6 +51,7 @@ namespace Laptop_store_e_comerce.Controllers
                                                                     //.Where(pro => pro.Idloai == type)
                                                                     //.Where(pro => pro.Id == id)
                                                                     //.FirstOrDefaultAsync();
+            //if(type == "headerphone") pro = await database.Products.Include(pro => pro.)
             if (pro == null) return NotFound();
             else return pro;
         }

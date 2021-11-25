@@ -6,7 +6,7 @@ import { NavLink,useHistory } from 'react-router-dom';
 import URL from '../../DATA/URL';
 import Solver from '../../Classes/Solver';
 const solver = new Solver();
-const renderKeyboardItem = (pro,index) => {
+const renderKeyboardItem = (pro,index,addProductToCart,history) => {
     return (
         <div className="col-10-no-padding c-10-2 keyboard-item" key={index}>
             <div className="keyboard-infor">
@@ -21,8 +21,15 @@ const renderKeyboardItem = (pro,index) => {
                         {pro.ten}
                     </NavLink>
                     <div className="keyboard-detail-item keyboard-price">
-                            <div className="">Giảm 5%</div>
-                            <div className="laptop-price-value">{solver.formatCurrency("vi-VN",'currency','VND',pro.gia)}</div>
+                            <p className="old-price">{solver.formatCurrency("vi-VN",'currency','VND',pro.giacu)}</p>
+                            <div className="keyboard-price-value">{solver.formatCurrency("vi-VN",'currency','VND',pro.gia)}</div>
+                    </div>
+                    <div className="keyboard-gift">{pro.uudai}</div>
+                    <div className="keyboard-button-group">
+                        <button className="keyboard-button keyboard-button-buy" onClick={()=>{
+                            addProductToCart(pro.id,pro.gia)
+                        }}>Mua ngay</button>
+                        <button className="keyboard-button keyboard-button-add" onClick={()=>addProductToCart(pro.id,pro.gia)}>Thêm vào giỏ</button>
                     </div>
                 </div>
             </div>
@@ -47,12 +54,10 @@ export default function KeyboardPanel({addProductToCart}) {
             <div className="container10Col keyboard-container">
                 <div className="row-10-no-margin keyboard-row">
                     {
-                        pros.map((pro,index) => renderKeyboardItem(pro,index))
+                        pros.map((pro,index) => renderKeyboardItem(pro,index,addProductToCart,history))
                     }
                 </div>
             </div>
-            <button className="btn-all-product" to="/keyboard" onClick={() => {history.push(`/keyboard`);}}>
-            <p>Tất cả sản phẩm </p></button>
         </div>
     )
 }
