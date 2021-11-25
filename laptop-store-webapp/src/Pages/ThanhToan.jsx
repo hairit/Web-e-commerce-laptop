@@ -2,7 +2,6 @@ import React from "react";
 import axios from "axios";
 import Solver from "../Classes/Solver";
 import { NavLink, useHistory } from "react-router-dom";
-
 import GioHang from "../CSS/GioHangCss.css";
 import Order from "../CSS/Order.css";
 import edit from "../Images/edit.png";
@@ -313,13 +312,12 @@ console.log("dâdadada", userOrder)
  function btnOrder(){
   if(userOrder.diachi && userOrder.sdt !== null){
       return (
-          <button type="button"className="btn-pay btn btn-outline-primary" onClick={()=>{
+          <button type="button"className="btn-pay btn btn-outline-primary" 
+          onClick={()=>{
+            setTimeout(()=>{
               history.push("/bill");
-              order();
-          }}  >
-            Đặt hàng ngay
-          </button>
-          
+            }, 1700)
+            order()}} >Đặt hàng ngay </button>
       )
   }else{
     return (
