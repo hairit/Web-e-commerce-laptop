@@ -14,7 +14,6 @@ namespace Laptop_store_e_comerce.Controllers
     public class MouseController : ControllerBase
     {
         private readonly StoreContext database;
-
         public MouseController(StoreContext context)
         {
             database = context;

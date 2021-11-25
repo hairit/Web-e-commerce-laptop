@@ -21,6 +21,7 @@ namespace Laptop_store_e_comerce.Models
         public virtual DbSet<BillDetail> BillDetails { get; set; }
         public virtual DbSet<CartDetail> CartDetails { get; set; }
         public virtual DbSet<Color> Colors { get; set; }
+        public virtual DbSet<HeadphoneDetail> HeadphoneDetails { get; set; }
         public virtual DbSet<Image> Images { get; set; }
         public virtual DbSet<KeyboardDetail> KeyboardDetails { get; set; }
         public virtual DbSet<LaptopDescription> LaptopDescriptions { get; set; }
@@ -161,6 +162,57 @@ namespace Laptop_store_e_comerce.Models
                 entity.Property(e => e.Name)
                     .HasMaxLength(50)
                     .HasColumnName("name");
+            });
+
+            modelBuilder.Entity<HeadphoneDetail>(entity =>
+            {
+                entity.HasKey(e => e.IdProduct)
+                    .HasName("PK__Headphon__5EEC79D16CBEC71B");
+
+                entity.ToTable("HeadphoneDetail");
+
+                entity.Property(e => e.IdProduct)
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
+                    .HasColumnName("idProduct");
+
+                entity.Property(e => e.Ketnoi)
+                    .HasMaxLength(50)
+                    .HasColumnName("ketnoi");
+
+                entity.Property(e => e.Khoiluong)
+                    .HasMaxLength(40)
+                    .HasColumnName("khoiluong");
+
+                entity.Property(e => e.Kichthuocdriver)
+                    .HasMaxLength(30)
+                    .HasColumnName("kichthuocdriver");
+
+                entity.Property(e => e.Kieuketnoi)
+                    .HasMaxLength(100)
+                    .HasColumnName("kieuketnoi");
+
+                entity.Property(e => e.Kieupin)
+                    .HasMaxLength(50)
+                    .HasColumnName("kieupin");
+
+                entity.Property(e => e.Kieutainghe)
+                    .HasMaxLength(50)
+                    .HasColumnName("kieutainghe");
+
+                entity.Property(e => e.Led)
+                    .HasMaxLength(30)
+                    .HasColumnName("led");
+
+                entity.Property(e => e.Microphone)
+                    .HasMaxLength(30)
+                    .HasColumnName("microphone");
+
+                entity.HasOne(d => d.IdProductNavigation)
+                    .WithOne(p => p.HeadphoneDetail)
+                    .HasForeignKey<HeadphoneDetail>(d => d.IdProduct)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__Headphone__khoil__6FE99F9F");
             });
 
             modelBuilder.Entity<Image>(entity =>

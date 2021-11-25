@@ -4,20 +4,22 @@
   height: auto;
   padding-bottom: 5px;
   margin-top: 30px;
-  background-color: #ffffff;
+  background-color: #bd1b0f;
   border-radius: 5px;
+  padding-left: 4px;
+  padding-right: 4px;
 }
 .screen-panel-header {
   border-radius: 10px;
-  height: auto;
+  height: 40px;
   justify-content: space-between;
   display: flex;
   align-items: center;
-  padding-left: 7px;
+  padding: 0 7px;
 }
 .screen-panel-header-logo {
-  color: rgb(80, 79, 79);
-  font-size: 25px;
+  color: #ffffff;
+  font-size: 20px;
 }
 .btn-all-screen {
   font-size: 16px;
@@ -26,13 +28,15 @@
 }
 .screen-infor {
   height: auto;
-  padding: 7px 7px;
+  padding: 5px 5px;
+  border-radius: 10px;
 }
 .screen-item {
+  border-radius: 10px;
   padding-bottom: 5px;
   background-color: #ffffff;
+  overflow: hidden;
   box-shadow: 0 0 5px 1px #42424446;
-  border-radius: 10px;
 }
 .screen-image-img {
   transform: scale(86%);
@@ -40,8 +44,9 @@
   user-select: none;
   border-radius: 5px;
 }
-.screen-image-img:hover {
+.screen-item:hover .screen-image-img {
   transform: scale(100%);
+  transition: 0.2s;
 }
 .screen-detail {
   background-color: #ffffff;
@@ -52,7 +57,7 @@
   overflow: hidden;
 }
 .screen-detail-item {
-  padding: 5px 20px;
+  padding: 5px 15px;
 }
 .screen-id {
   font-size: 13px;
@@ -60,9 +65,13 @@
 .screen-name {
   font-size: 1.4rem;
   height: 40px;
+  color: #4b4b4d;
   line-height: 1.4;
   overflow: hidden;
   cursor: pointer;
+}
+.screen-name:hover {
+  color: #cf0f01;
 }
 .screen-price {
   margin-top: 10px;
@@ -128,8 +137,4 @@
   background-color: #ffffff;
   border: 0.1px solid #cf0f01;
   color: #cf0f01;
-}
-.scren-attributes {
-  display: flex;
-  height: 70px;
 }

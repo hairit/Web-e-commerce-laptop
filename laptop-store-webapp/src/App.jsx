@@ -119,7 +119,7 @@ function App() {
     axios.get(`https://localhost:44343/data/cartdetail/action=add/iduser=${user.id}/idproduct=${idProduct}/tongtien=${price}`,null)
       .then(res => {
         if(res.status === 201){
-           console.log("Da them vao gio hang",user.id,idProduct,price);
+           console.log("Da them vao gio hang",user.id,idProduct,price); 
            updateData();
         }
         else alert("không thể thêm vào giỏ hàng");
@@ -156,8 +156,8 @@ function App() {
             <Route path="/"                               exact component={() => <Body blur={blur} addProductToCart={addProductToCart} />}></Route>
 
             <Route path="/laptop"                         exact component={() => <Laptops addProductToCart={addProductToCart} />}></Route>
-            <Route path="/laptop/:attribute/:value"       exact component={(match) => <Laptops  match={match} /> } ></Route>
-            <Route path="/laptop/:attribute/:from/:to"    exact component={(match) => <Laptops  match={match} /> } ></Route>
+            <Route path="/laptop/:attribute/:value"       exact component={(match) => <Laptops  match={match} addProductToCart={addProductToCart}/> } ></Route>
+            <Route path="/laptop/:attribute/:from/:to"    exact component={(match) => <Laptops  match={match} addProductToCart={addProductToCart}/> } ></Route>
             
             <Route path="/keyboard"                       exact component={() => <Keyboard addProductToCart={addProductToCart} />}></Route>
             <Route path="/mouse"                          exact component={() =><Mouse addProductToCart={addProductToCart} />} ></Route>
@@ -178,7 +178,7 @@ function App() {
             <Route path="/screen/:id"                     exact component={(match) => <DetailProductsScreen addProductToCart={addProductToCart} match={match} />}></Route>
             <Route path="/mouse/:id"                      exact component={(match) => <DetailProductsMouse addProductToCart={addProductToCart} match={match} />}></Route>
             
-            <Route path="/card"                           exact component={() => <GioHang user={user} 
+            <Route path="/cart"                           exact component={() => <GioHang user={user} 
                                                           deleteProductFromCart={deleteProductFromCart} 
                                                           deleteCartItem={deleteCartItem} 
                                                           addProductToCart={addProductToCart} 

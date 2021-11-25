@@ -306,7 +306,7 @@ console.log("dâdadada", userOrder)
   if(userOrder.diachi && userOrder.sdt !== null){
       return (
           <button type="button"className="btn-pay btn btn-outline-primary" onClick={()=>{
-              history.push("/");
+              history.push("/cart`");
               order();
           }}  >
             Đặt hàng ngay
