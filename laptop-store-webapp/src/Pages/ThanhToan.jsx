@@ -2,7 +2,6 @@ import React from "react";
 import axios from "axios";
 import Solver from "../Classes/Solver";
 import { NavLink, useHistory } from "react-router-dom";
-
 import GioHang from "../CSS/GioHangCss.css";
 import Order from "../CSS/Order.css";
 import edit from "../Images/edit.png";
@@ -109,6 +108,7 @@ console.log("dâdadada", userOrder)
 
   function btnEditInfo(){
     setEditinfo(true)
+    setAddress(false);
   }
   function btnSaveEditInfo(){
     setEditinfo(false)
@@ -172,6 +172,7 @@ console.log("dâdadada", userOrder)
 
   function btnAddAdress() {
     setAddress(true);
+    setEditinfo(false)
   }
   function btnSaveNewAdress() {
     setAddress(false);
@@ -202,8 +203,14 @@ console.log("dâdadada", userOrder)
               <div className="form-center">
                 <div className="title-formEdit">Thêm thông tin người nhận hàng</div>
                 <div className="form-editName">
-                  <div className="text-title">Họ tên</div>
-                  <div className="form-input"><input className="form-control btn-formEdit" type="text" placeholder="Nhập họ tên của bạn"/></div>
+                  <div className="text-title">Họ</div>
+                  <div className="form-input">
+                    <input className="form-control btn-formEdit" type="text" placeholder="Nhập họ của bạn"/></div>
+                </div>
+                <div className="form-editName">
+                  <div className="text-title">Tên</div>
+                  <div className="form-input">
+                    <input className="form-control btn-formEdit" type="text" placeholder="Nhập tên của bạn"/></div>
                 </div>
                 <div className="form-email">
                   <div className="form-phone">
@@ -305,12 +312,12 @@ console.log("dâdadada", userOrder)
  function btnOrder(){
   if(userOrder.diachi && userOrder.sdt !== null){
       return (
-          <button type="button"className="btn-pay btn btn-outline-primary" onClick={()=>{
-              history.push("/cart`");
-              order();
-          }}  >
-            Đặt hàng ngay
-          </button>
+          <button type="button"className="btn-pay btn btn-outline-primary" 
+          onClick={()=>{
+            setTimeout(()=>{
+              history.push("/bill");
+            }, 1700)
+            order()}} >Đặt hàng ngay </button>
       )
   }else{
     return (

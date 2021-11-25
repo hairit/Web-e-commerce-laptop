@@ -10,6 +10,7 @@ import Lienhe from "./Pages/Lienhe";
 import Tintuc from "./Pages/Tintuc";
 import Showroom from "./Pages/Showroom";
 import Footer from "./Pages/Footer";
+import Swal from "sweetalert2"; 
 import DetailProductsLaptop from "./Pages/Products/ProductsLaptop/DetailProductsLaptop";
 import DetailProductsKeyboard from "./Pages/Products/ProductsKeyboard/DetailProductsKeyboard";
 import DetailProductsScreen from "./Pages/Products/ProductsScreen/DetailProductsScreen";
@@ -74,6 +75,16 @@ function App() {
   var ID = function () {
     return Math.random().toString(36).substr(2, 9);
   };
+  function showLoadOrder(){
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Đặt hàng thành công !',
+      showConfirmButton: false,
+      timer: 1500
+    })
+  }
+  
   const createBillDetails=(cartDetails) =>{
     var BillDetails = [];
     cartDetails.forEach(element => {
@@ -93,7 +104,7 @@ function App() {
       iduser : user.id,
       tongtien : totalPrice,
       ngaydat : new Date().toISOString().slice(0, 10),
-      diachinhan : user.diachi,
+      // diachinhan : user.diachi,
       billDetails : createBillDetails(cartDetails)
     })
   }
@@ -104,6 +115,7 @@ function App() {
           //if(res.status === 201){
             console.log(res.data);
             updateData();
+            showLoadOrder()
           //}
         })
         .catch((err) => {
