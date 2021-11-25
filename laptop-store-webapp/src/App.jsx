@@ -84,7 +84,15 @@ function App() {
       timer: 1500
     })
   }
-  
+  function showLoadAddCart(){
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Đã thêm vào giỏ hàng !',
+      showConfirmButton: false,
+      timer: 1500
+    })
+  }
   const createBillDetails=(cartDetails) =>{
     var BillDetails = [];
     cartDetails.forEach(element => {
@@ -133,6 +141,7 @@ function App() {
         if(res.status === 201){
            console.log("Da them vao gio hang",user.id,idProduct,price);
            updateData();
+           showLoadAddCart()
         }
         else alert("không thể thêm vào giỏ hàng");
       }).catch(err => console.log("Add cart failed"));

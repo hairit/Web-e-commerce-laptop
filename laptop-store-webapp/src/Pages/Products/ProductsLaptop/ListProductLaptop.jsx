@@ -21,7 +21,7 @@ export default function ListProductLaptop({pros,addProductToCart}) {
   }
   function addProductInCart(id,gia){
     addProductToCart(id,gia)
-    alert("Đã thêm sản phẩm vào giỏ hàng")
+    // alert("Đã thêm sản phẩm vào giỏ hàng")
   }
   return (
     <div className="row prolst">

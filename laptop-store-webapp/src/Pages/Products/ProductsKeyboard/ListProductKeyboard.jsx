@@ -20,7 +20,6 @@ export default function ListProductKeyboard({ pros,addProductToCart }) {
   }
   function addProductInCart(id,gia){
     addProductToCart(id,gia)
-    alert("Đã thêm sản phẩm vào giỏ hàng")
   }
   return (
     <div className="row prolst">

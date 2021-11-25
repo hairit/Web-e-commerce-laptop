@@ -4,19 +4,17 @@ import heart32px from "../../../Images/heart32px.png";
 import { useHistory } from "react-router-dom";
 import { withRouter } from "react-router";
 
-
 import Solver from "../../../Classes/Solver";
 
-export default function ListProductMouse({ pros,addProductToCart}) {
+export default function ListProductMouse({ pros, addProductToCart }) {
   const history = useHistory();
   const solver = new Solver();
   function handleViewDetails(detail) {
     history.push(`/mouse/${detail.id}`);
   }
   console.log(`pros`, pros);
-  function addProductInCart(id,gia){
-    addProductToCart(id,gia)
-    alert("Đã thêm sản phẩm vào giỏ hàng")
+  function addProductInCart(id, gia) {
+    addProductToCart(id, gia);
   }
   return (
     <div className="row prolst">
@@ -40,7 +38,11 @@ export default function ListProductMouse({ pros,addProductToCart}) {
                 {solver.formatCurrency("vi-VN", "currency", "VND", pro.gia)}
               </h4>
               <div className="button_group">
-                <button className="button add-cart" type="button" onClick={() => addProductInCart(pro.id,pro.gia)}>
+                <button
+                  className="button add-cart"
+                  type="button"
+                  onClick={() => addProductInCart(pro.id, pro.gia)}
+                >
                   Thêm vào giỏ hàng
                 </button>
                 <button className="button wishlist" type="button">
