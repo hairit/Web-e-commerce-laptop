@@ -88,7 +88,7 @@ export default function DetailProductsScreen({ match, addProductToCart}) {
   return (
     <div className="single-product">
       <div className="container">
-        <div className="row">
+        <div className="row row-top">
           {/* {isEmptyObj === false && (
               <> */}
           <div className="ttchung">
@@ -176,12 +176,22 @@ export default function DetailProductsScreen({ match, addProductToCart}) {
                     </div>
                   </div>
                   <div className="tt-price">
+                    <p className="price-new">
                     {solver.formatCurrency(
                       "vi-VN",
                       "currency",
                       "VND",
                       detail.gia
-                    )}{" "}
+                    )}
+                    </p>
+                    <p className="price-old">
+                    {solver.formatCurrency(
+                      "vi-VN",
+                      "currency",
+                      "VND",
+                      detail.giacu
+                    )}
+                    </p>
                   </div>
                   <div className="tt-sales">Quà tặng kèm khi mua hàng</div>
                   <div className="gift">
@@ -191,7 +201,7 @@ export default function DetailProductsScreen({ match, addProductToCart}) {
                     </div>
                   </div>
                   <div className="button-gr">
-                    <NavLink to="/card">
+                    <NavLink to="/cart">
                     <button type="button" className="btn btn-primary btn-buy" onClick={() => addProductToCart(detail.id,detail.gia)}>
                       MUA NGAY
                     </button>

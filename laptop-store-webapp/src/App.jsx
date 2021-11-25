@@ -148,14 +148,35 @@ function App() {
     }
   }
   const deleteCartItem = (iduser,idpro)=>{
-    if(window.confirm("Bạn muốn xoá sản phẩm này ra khỏi giỏ hàng?") ===true){
-      axios.delete(`https://localhost:44343/data/cartdetail/iduser=${iduser}/idproduct=${idpro}`,null)
+    Swal.fire({
+      title: 'Bạn muốn xóa sản phẩm khỏi giỏ hàng ?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'CC chứ xóa, mua đi đmm'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios.delete(`https://localhost:44343/data/cartdetail/iduser=${iduser}/idproduct=${idpro}`,null)
       .then(()=> {
         updateData();
       })
       .catch((err)=> 
       console.log("Dell xoa duoc",err))
-    }
+        Swal.fire(
+          'Đã xóa',
+          'Mẹ m được lắm'
+        )
+      }
+    })
+    // if(window.confirm("Bạn muốn xoá sản phẩm này ra khỏi giỏ hàng?") ===true){
+    //   axios.delete(`https://localhost:44343/data/cartdetail/iduser=${iduser}/idproduct=${idpro}`,null)
+    //   .then(()=> {
+    //     updateData();
+    //   })
+    //   .catch((err)=> 
+    //   console.log("Dell xoa duoc",err))
+    // }
   }
   const deleteProductFromCart=(iduser, idpro, thanhtien,quantity) => {
     if(quantity <= 1){

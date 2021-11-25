@@ -147,6 +147,8 @@ img {
 
 /*products */
 .products {
+  display: flex;
+  flex-flow: column;
   border: 1px solid #e1e1e1;
   min-height: 400px;
   position: relative;
@@ -217,17 +219,23 @@ img {
   font-weight: 400;
 }
 .productname p:hover {
-  color: rgb(4, 4, 199);
+  color: rgb(0, 0, 221);
 }
 .products .price {
   float: left;
   width: 100%;
-  color: #ff1e2c;
+  color: #1435cf;
   text-align: center;
-  font-weight: 500;
-  margin-bottom: 15px;
+  font-weight: 600;
   font-size: 20px;
   line-height: 24px;
+}
+.gia-cu {
+  text-decoration: line-through;
+  color: rgb(185, 8, 8);
+  font-size: 14px;
+  text-align: center;
+  padding-bottom: 10px;
 }
 .products .button_group {
   float: left;

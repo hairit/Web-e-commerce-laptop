@@ -42,6 +42,9 @@ export default function ListProductScreen({ pros,addProductToCart }) {
               <h4 className="price">
                 {solver.formatCurrency("vi-VN", "currency", "VND", pro.gia)}
               </h4>
+              <p className=" gia-cu">
+                {solver.formatCurrency("vi-VN", "currency", "VND", pro.giacu)}
+              </p>
               <div className="button_group">
                 <button className="button add-cart" type="button" onClick={() => addProductInCart(pro.id,pro.gia)}>
                   Thêm vào giỏ hàng
