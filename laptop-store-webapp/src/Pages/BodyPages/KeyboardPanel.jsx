@@ -36,14 +36,14 @@ const renderKeyboardItem = (pro,index,addProductToCart,history) => {
         </div>
     )
 }
-export default function KeyboardPanel({addProductToCart}) {
+function KeyboardPanel({addProductToCart}) {
     const history = useHistory();
-
     const [pros, setPros] = useState([]);
     useEffect(() => {
         call('GET','data/product/type=keyboard/enable',null)
             .then(res => setPros(res.data)).catch(err => console.log("Errol when try to get keyboard"));
     }, [])
+    console.log("rerender keyboard");
     return (
         <div className="keyboard-panel">
             <div className="keyboard-panel-header">
@@ -61,3 +61,4 @@ export default function KeyboardPanel({addProductToCart}) {
         </div>
     )
 }
+export default React.memo(KeyboardPanel);

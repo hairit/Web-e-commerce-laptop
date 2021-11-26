@@ -480,6 +480,10 @@ namespace Laptop_store_e_comerce.Models
                     .HasMaxLength(100)
                     .HasColumnName("casepc");
 
+                entity.Property(e => e.Cool)
+                    .HasMaxLength(100)
+                    .HasColumnName("cool");
+
                 entity.Property(e => e.Cpu)
                     .HasMaxLength(50)
                     .HasColumnName("cpu");

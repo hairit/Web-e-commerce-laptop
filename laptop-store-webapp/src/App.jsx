@@ -38,7 +38,6 @@ function App() {
   useEffect(() => {
     console.log("reload 1");
     if (userCookie.id !== undefined) {
-      console.log("reload in cookie");
       axios
               .get(`https://localhost:44343/data/user/${userCookie.id}`)
               .then((res) => 
@@ -49,7 +48,6 @@ function App() {
     }
   }, []);
   useEffect(() => {
-      console.log("Reload 2");
       if(user !== null) {
         call('GET',`data/user/${user.id}`,null)
            .then((res) => setUser(res.data))
@@ -84,7 +82,6 @@ function App() {
       timer: 1500
     })
   }
-  
   const createBillDetails=(cartDetails) =>{
     var BillDetails = [];
     cartDetails.forEach(element => {
