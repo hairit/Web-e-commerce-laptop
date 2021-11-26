@@ -18,6 +18,7 @@ import emailicon from '../Images/email-icon.png'
 import phoneicon from '../Images/phone-icon.png'
 import addressicon from '../Images/address.png'
 import URL from '../DATA/URL'
+import HeadphonePanel from './BodyPages/HeadphonePanel'
 const styleBlur ={
     filter: "blur(3px)"
 }
@@ -50,9 +51,10 @@ export default function Body({addProductToCart, blur}) {
             </div>
             <ScreenPanel addProductToCart={addProductToCart}/>
             <div className="event"><img className="event-img" src={`${URL}/Images/Panels/event-22-12-2021.png`}/></div>
-            {/* <PCPanel addProductToCart={addProductToCart} /> */}
+            <PCPanel addProductToCart={addProductToCart} />
             <KeyboardPanel addProductToCart={addProductToCart}/>
             <MousePanel addProductToCart={addProductToCart}/>
+            <HeadphonePanel addProductToCart={addProductToCart}/>
         </div>
     )
 }

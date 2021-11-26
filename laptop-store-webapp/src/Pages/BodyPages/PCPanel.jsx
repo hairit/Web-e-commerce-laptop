@@ -11,18 +11,18 @@ const renderComputerItem = (pc ,index) => {
         <NavLink to="/" className="Col-10 c-10-2 pc-item" key={index}>
             <div className="pc-infor">
                 <div className="pc-image">
-                    <img className="pc-image-img" src={URL+`/Images/Products/${pc.nameimage}`} alt={pc.ten}/>
+                    <NavLink to={`pc/${pc.id}`}><img className="pc-image-img" src={URL+`/Images/Products/${pc.nameimage}`} alt={pc.ten}/></NavLink>
                 </div>
                     {/* <div className="pc-id">
                         {pc.id}
                     </div> */}
-                    <div className="pc-name">
+                    <NavLink to={`pc/${pc.id}`}><div className="pc-name">
                         {pc.ten}
-                    </div>
+                    </div></NavLink>
                     <div className="pc-price">
+                        <p className="old-price">{solver.formatCurrency("vi-VN","currency",'VND',pc.giacu)}</p>
                         <p className="pc-price-value">{solver.formatCurrency("vi-VN","currency",'VND',pc.gia)}</p>
                     </div>
-                
             </div>
         </NavLink>
     )
@@ -33,7 +33,7 @@ export default function PCPanel() {
     useEffect(() => {
         call('GET','data/product/type=pc/enable',null)
         .then(res => setPcs(res.data))
-        .catch(err => console.log("Errol try to call pc (product) API"));
+        .catch(() => console.log("Errol try to call pc (product) API"));
     }, [])
     return(
         <div className="panel-pc">

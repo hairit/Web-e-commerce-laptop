@@ -82,7 +82,7 @@ export default function ScreenPanel({addProductToCart}) {
                     <div className="swiper-screen-button screen-next" onClick={()=>handleSwipe('next',getCountPage(screens)-1)}>
                         <BsFillCaretRightFill className="swiper-screen-button-icon"/>
                     </div>
-            <div className="container10Col screen-container">
+            <div className="container10Col wide screen-container">
                     <div className="row-10--NoWrap screen-row" style={{transform : `translate(${scaleX}%)` ,transition : '0.5s'}} >
                         {
                             screens.map((pro,index) => RenderScreenItem(pro,index,addProductToCart,history))

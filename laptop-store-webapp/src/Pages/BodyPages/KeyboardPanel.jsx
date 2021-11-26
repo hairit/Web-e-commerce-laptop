@@ -36,9 +36,8 @@ const renderKeyboardItem = (pro,index,addProductToCart,history) => {
         </div>
     )
 }
-export default function KeyboardPanel({addProductToCart}) {
+function KeyboardPanel({addProductToCart}) {
     const history = useHistory();
-
     const [pros, setPros] = useState([]);
     useEffect(() => {
         call('GET','data/product/type=keyboard/enable',null)
@@ -51,7 +50,7 @@ export default function KeyboardPanel({addProductToCart}) {
                         <p>Bàn phím cơ</p>    
                 </div>
             </div>
-            <div className="container10Col keyboard-container">
+            <div className="container10Col wide keyboard-container wide">
                 <div className="row-10-no-margin keyboard-row">
                     {
                         pros.map((pro,index) => renderKeyboardItem(pro,index,addProductToCart,history))
@@ -61,3 +60,4 @@ export default function KeyboardPanel({addProductToCart}) {
         </div>
     )
 }
+export default React.memo(KeyboardPanel);

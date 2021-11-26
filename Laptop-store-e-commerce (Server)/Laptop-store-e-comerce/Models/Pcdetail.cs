@@ -19,6 +19,7 @@ namespace Laptop_store_e_comerce.Models
         public string Vganame { get; set; }
         public string Psu { get; set; }
         public string Casepc { get; set; }
+        public string Cool { get; set; }
 
         public virtual Product IdProductNavigation { get; set; }
     }
