@@ -27,10 +27,14 @@ import ScrollToTop from "./ScrollToTop";
 import ThanhToan from "./Pages/ThanhToan";
 import DonHang from "./Pages/DonHang";
 import call from "./API/API";
+import load from "./Images/load.gif"
+import GioHangCss from "./CSS/GioHangCss.css"
+
 
 function App() {
   const history = useHistory();
   const [blur, setblur] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [user, setUser] = useState(null);
   const [userCookie, setUserCookie ,removeCookie] = useCookies(["user"]);
   const [updateDataUser, setUpdateDataUser] = useState(0);
@@ -130,6 +134,33 @@ function App() {
              alert("Đặt hàng thất bại");
         })
   }
+  function loadQuantity(){
+    if (loading === true){
+    return (
+      <div className="loading">
+          <img src={load} />
+      </div>
+    )
+    } else {
+      <div></div>
+    }
+  }
+  const addQuantityProduct = (idProduct , price )=>{
+    setTimeout(()=>{
+      axios.get(`https://localhost:44343/data/cartdetail/action=add/iduser=${user.id}/idproduct=${idProduct}/tongtien=${price}`,null)
+      .then(res => {
+        if(res.status === 201){
+           console.log("Da them vao gio hang",user.id,idProduct,price); 
+           updateData();
+           setLoading(false);
+          //  showLoadAddCart()
+        }
+        else alert("không thể thêm vào giỏ hàng");
+      }).catch(err => console.log("Add cart failed"));
+    }, 700)
+    setLoading(true);
+    
+  }
   const addProductToCart = (idProduct , price )=>{
     if(user === null)
     {
@@ -183,16 +214,24 @@ function App() {
       deleteCartItem(iduser, idpro)
     }
     else{
-      axios.get(`https://localhost:44343/data/cartdetail/action=delete/iduser=${iduser}/idproduct=${idpro}/tongtien=${thanhtien}`, null)
+      setTimeout(() =>{
+        axios.get(`https://localhost:44343/data/cartdetail/action=delete/iduser=${iduser}/idproduct=${idpro}/tongtien=${thanhtien}`, null)
       .then(()=> {
         updateData();
+        setLoading(false);
       })
       .catch((err)=> console.log("Dell xoa duoc",err))
+      },700)
+      setLoading(true)
+      
     } 
   }
   return (
     <Router>
+      {loadQuantity()}
       <ScrollToTop />
+      
+      
       <div className="App">
         <Header user={user} logout={logout} clickblur={clickblur}/>
             <Route path="/"                               exact component={() => <Body blur={blur} addProductToCart={addProductToCart} />}></Route>
@@ -220,9 +259,11 @@ function App() {
             <Route path="/screen/:id"                     exact component={(match) => <DetailProductsScreen addProductToCart={addProductToCart} match={match} />}></Route>
             <Route path="/mouse/:id"                      exact component={(match) => <DetailProductsMouse addProductToCart={addProductToCart} match={match} />}></Route>
             
-            <Route path="/cart"                           exact component={() => <GioHang user={user} 
+            <Route path="/cart"                           exact component={() => <GioHang 
+                                                          user={user} 
                                                           deleteProductFromCart={deleteProductFromCart} 
                                                           deleteCartItem={deleteCartItem} 
+                                                          addQuantityProduct={addQuantityProduct}
                                                           addProductToCart={addProductToCart} 
                                                           idUser={ user !== null ? user.id : null } 
                                                           createBill={createBill} 
