@@ -68,7 +68,7 @@ export default function DetailProductsPC({ match, addProductToCart}) {
   return (
     <div className="single-product">
       <div className="container">
-        <div className="row">
+        <div className="row row-top">
         
           <div className="ttchung">
             <div className="col-md-15 colors tops">
@@ -145,18 +145,32 @@ export default function DetailProductsPC({ match, addProductToCart}) {
                     </div>
                   </div>
                   <div className="tt-price">
-                    {solver.formatCurrency("vi-VN","currency","VND",detail.gia
-                    )}{" "}
+                    <p className="price-new">
+                    {solver.formatCurrency(
+                      "vi-VN",
+                      "currency",
+                      "VND",
+                      detail.gia
+                    )}
+                    </p>
+                    <p className="price-old">
+                    {solver.formatCurrency(
+                      "vi-VN",
+                      "currency",
+                      "VND",
+                      detail.giacu
+                    )}
+                    </p>
                   </div>
-                  <div className="tt-sales">Quà tặng kèm khi mua hàng</div>
+                  {/* <div className="tt-sales">Quà tặng kèm khi mua hàng</div>
                   <div className="gift">
-                    {/* <div className="">
+                    <div className="">
                       <img src="https://lh3.googleusercontent.com/8TYtx-F0wLPEsufDd-N2y4txkDy3dxxjipjA6k5DjccQhwtdK_6Mx0YPuSUZF3bOEGG5-hP8-MFNReb4X0k=rw"></img>
                       <p>x1 Túi đựng laptop</p>
-                    </div> */}
-                  </div>
+                    </div>
+                  </div> */}
                   <div className="button-gr">
-                    <NavLink to="/card">
+                    <NavLink to="/cart">
                     <button type="button" className="btn btn-primary btn-buy" onClick={() =>addProductToCart(detail.id,detail.gia)}>
                       MUA NGAY
                     </button>

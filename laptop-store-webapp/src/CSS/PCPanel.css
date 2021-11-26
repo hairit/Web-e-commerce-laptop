@@ -1,11 +1,12 @@
 .panel-pc {
   width: 83%;
   margin: 30px auto;
+  max-width: 1300px;
 }
 .pc-item {
   padding: 7px 7px;
   border-bottom: 0.1px solid rgb(176, 176, 177);
-  height: 379px;
+  height: 410px;
 }
 .pc-infor {
   display: flex;
@@ -25,7 +26,7 @@
   text-align: left;
 }
 .pc-name {
-  margin-top: 20px;
+  margin-top: 15px;
   font-size: 1.4rem;
   line-height: 1.4;
   padding: 0 15px;
@@ -44,6 +45,7 @@
   padding: 5px 20px;
 }
 .pc-price-value {
+  margin-top: 7px;
   font-size: 16px;
   color: rgb(216, 10, 10);
   font-weight: 500;

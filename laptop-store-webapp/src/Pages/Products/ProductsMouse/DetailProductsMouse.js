@@ -4,16 +4,17 @@ import details from "../../../CSS/ProductsCss/details.css";
 import Solver from "../../../Classes/Solver";
 import shield_24px from "../../../Images/shield_24px.png";
 import replace_24px from "../../../Images/replace_24px.png";
-import SanPhamKhac from "./SanPhamKhac"
+import SanPhamKhac from "./SanPhamKhac";
 import prev_50px from "../../../Images/prev_50px.png";
 import next_50px from "../../../Images/next_50px.png";
+import lotchuot from "../../../Images/lotchuot.png";
 import promotion_32px from "../../../Images/promotion_32px.png";
 import insurance_24px from "../../../Images/insurance_24px.png";
 import whatsapp_32px from "../../../Images/whatsapp_32px.png";
 import edit_property_32px from "../../../Images/edit_property_32px.png";
 import settings_32px from "../../../Images/settings_32px.png";
-import { NavLink } from "react-router-dom"
-export default function DetailProductsMouse({ match, addProductToCart}) {
+import { NavLink } from "react-router-dom";
+export default function DetailProductsMouse({ match, addProductToCart }) {
   const solver = new Solver();
   const [detail, setDetail] = useState({});
   useEffect(() => {
@@ -32,7 +33,7 @@ export default function DetailProductsMouse({ match, addProductToCart}) {
   const slidePro = document.querySelector(".slide-pro");
   const slideItems = document.querySelector(".slide-item");
   const slideItemsW = document.querySelector(".col_2");
- 
+
   let positionX = 0;
   let index = 0;
   btnNext &&
@@ -71,8 +72,7 @@ export default function DetailProductsMouse({ match, addProductToCart}) {
   return (
     <div className="single-product">
       <div className="container">
-        <div className="row">
-        
+        <div className="row row-top">
           <div className="ttchung">
             <div className="col-md-15 colors tops">
               <div className="section-heading">
@@ -111,9 +111,7 @@ export default function DetailProductsMouse({ match, addProductToCart}) {
                   </ul>
                 </div>
                 <div className="col detail-pro">
-                  <p>
-                    - Màu: {detail.mau}
-                  </p>
+                  <p>- Màu: {detail.mau}</p>
 
                   <p>
                     - Đèn led: {detail.mouseDetail && detail.mouseDetail.led}
@@ -130,7 +128,6 @@ export default function DetailProductsMouse({ match, addProductToCart}) {
                     - Cảm biến:{" "}
                     {detail.mouseDetail && detail.mouseDetail.dangcambien}
                   </p>
-                 
                 </div>
               </div>
               <div className="col-md-6 colors ttdetail">
@@ -145,23 +142,45 @@ export default function DetailProductsMouse({ match, addProductToCart}) {
                     </div>
                   </div>
                   <div className="tt-price">
-                    {solver.formatCurrency("vi-VN","currency","VND",detail.gia
-                    )}{" "}
+                    <p className="price-new">
+                      {solver.formatCurrency(
+                        "vi-VN",
+                        "currency",
+                        "VND",
+                        detail.gia
+                      )}
+                    </p>
+                    <p className="price-old">
+                      {solver.formatCurrency(
+                        "vi-VN",
+                        "currency",
+                        "VND",
+                        detail.giacu
+                      )}
+                    </p>
                   </div>
                   <div className="tt-sales">Quà tặng kèm khi mua hàng</div>
                   <div className="gift">
                     <div className="">
-                      <img src="https://lh3.googleusercontent.com/8TYtx-F0wLPEsufDd-N2y4txkDy3dxxjipjA6k5DjccQhwtdK_6Mx0YPuSUZF3bOEGG5-hP8-MFNReb4X0k=rw"></img>
-                      <p>x1 Túi đựng laptop</p>
+                      <img src={lotchuot}></img>
+                      <p>x1 Miếng lót chuột</p>
                     </div>
                   </div>
                   <div className="button-gr">
-                    <NavLink to="/card">
-                    <button type="button" className="btn btn-primary btn-buy" onClick={() =>addProductToCart(detail.id,detail.gia)}>
-                      MUA NGAY
-                    </button>
+                    <NavLink to="/cart">
+                      <button
+                        type="button"
+                        className="btn btn-primary btn-buy"
+                        onClick={() => addProductToCart(detail.id, detail.gia)}
+                      >
+                        MUA NGAY
+                      </button>
                     </NavLink>
-                    <button type="button" className="btn btn-outline-primary btn-cart" onClick={() =>addProductToCart(detail.id,detail.gia)}>
+                    <button
+                      type="button"
+                      className="btn btn-outline-primary btn-cart"
+                      onClick={() => addProductToCart(detail.id, detail.gia)}
+                    >
                       THÊM VÀO GIỎ HÀNG
                     </button>
                   </div>
@@ -191,7 +210,8 @@ export default function DetailProductsMouse({ match, addProductToCart}) {
                 <div className="fms">
                   <img src={insurance_24px} />
                   <div className="detailright-t bh12t">
-                    Bảo hành {detail.baohanh} tháng chính hãng {detail.thuonghieu}
+                    Bảo hành {detail.baohanh} tháng chính hãng{" "}
+                    {detail.thuonghieu}
                   </div>
                 </div>
                 <a href="#">Xem chi tiết</a>
@@ -253,21 +273,22 @@ export default function DetailProductsMouse({ match, addProductToCart}) {
                   </tr>
                   <tr>
                     <th className="row">Loại chuột</th>
-                    <td>{ detail.mouseDetail && detail.mouseDetail.loaichuot}</td>
+                    <td>
+                      {detail.mouseDetail && detail.mouseDetail.loaichuot}
+                    </td>
                   </tr>
                   <tr>
                     <th className="row">Màu sắc</th>
                     <td>{detail.mau}</td>
                   </tr>
-                
+
                   <tr>
                     <th className="row">Cấu hình chi tiết</th>
                     <td></td>
-
                   </tr>
                   <tr>
                     <th className="row">Đèn led</th>
-                    <td>{ detail.mouseDetail && detail.mouseDetail.led}</td>
+                    <td>{detail.mouseDetail && detail.mouseDetail.led}</td>
                   </tr>
                   <tr>
                     <th className="row">Kiểu kết nối</th>
@@ -277,9 +298,7 @@ export default function DetailProductsMouse({ match, addProductToCart}) {
                   </tr>
                   <tr>
                     <th className="row">Cổng kết nối</th>
-                    <td>
-                      {detail.mouseDetail && detail.mouseDetail.ketnoi}
-                    </td>
+                    <td>{detail.mouseDetail && detail.mouseDetail.ketnoi}</td>
                   </tr>
                   <tr>
                     <th className="row">Cảm biến</th>
@@ -296,23 +315,18 @@ export default function DetailProductsMouse({ match, addProductToCart}) {
                   <tr>
                     <th className="row">Độ phân giải</th>
                     <td>
-                      {detail.mouseDetail &&
-                        detail.mouseDetail.dophangiai}
+                      {detail.mouseDetail && detail.mouseDetail.dophangiai}
                     </td>
                   </tr>
                   <tr>
                     <th className="row">Thời gian phản hồi</th>
                     <td>
-                      {detail.mouseDetail &&
-                        detail.mouseDetail.thoigianphanhoi}
+                      {detail.mouseDetail && detail.mouseDetail.thoigianphanhoi}
                     </td>
                   </tr>
                   <tr>
                     <th className="row">Số nút bấm</th>
-                    <td>
-                      {detail.mouseDetail &&
-                        detail.mouseDetail.sonutbam}
-                    </td>
+                    <td>{detail.mouseDetail && detail.mouseDetail.sonutbam}</td>
                   </tr>
                   <tr>
                     <th className="row">Kích thước</th>
@@ -333,10 +347,10 @@ export default function DetailProductsMouse({ match, addProductToCart}) {
           <div className="panel-spkhac">
             <div className="xemthem">Sản phẩm khác</div>
             <div className="prev-next">
-              <span className="btn-prev btnnp"id="btn-prevs" >
+              <span className="btn-prev btnnp" id="btn-prevs">
                 <img src={prev_50px} />
               </span>
-              <span className="btn-next btnnp"id="btn-nexts">
+              <span className="btn-next btnnp" id="btn-nexts">
                 <img src={next_50px} />
               </span>
             </div>

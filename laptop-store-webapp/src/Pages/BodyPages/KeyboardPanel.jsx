@@ -43,7 +43,6 @@ function KeyboardPanel({addProductToCart}) {
         call('GET','data/product/type=keyboard/enable',null)
             .then(res => setPros(res.data)).catch(err => console.log("Errol when try to get keyboard"));
     }, [])
-    console.log("rerender keyboard");
     return (
         <div className="keyboard-panel">
             <div className="keyboard-panel-header">
@@ -51,7 +50,7 @@ function KeyboardPanel({addProductToCart}) {
                         <p>Bàn phím cơ</p>    
                 </div>
             </div>
-            <div className="container10Col keyboard-container">
+            <div className="container10Col wide keyboard-container wide">
                 <div className="row-10-no-margin keyboard-row">
                     {
                         pros.map((pro,index) => renderKeyboardItem(pro,index,addProductToCart,history))

@@ -10,7 +10,7 @@ import home from "../Images/home.png"
 import tk_shopping_img from "../Images/tk_shopping_img.png";
 import { useEffect, useState } from "react";
 import ThanhToan from "./ThanhToan";
-export default function GioHang({ idUser, addProductToCart, deleteCartItem ,deleteProductFromCart , createBill}) {
+export default function GioHang({ idUser,addQuantityProduct, deleteCartItem ,deleteProductFromCart , createBill}) {
   const solver = new Solver();
   // const buttonRef = useRef();
   // const [tongtien, setTongtien] = useState(0);
@@ -121,13 +121,16 @@ useEffect(() => {
       )
     }
   }
+ 
 //   if(cartDetails.selected === 1){
 //     document.getElementById("check-item").checked = true;
 // }
     if(cartDetails.length > 0 ){
     return(
+      
       <div className="page">
         <div className="container width">
+        
           <div className="home-icon">
             <NavLink to="/" className="img-backhome">
             <img className="icon-home"  src={home}/>
@@ -175,7 +178,7 @@ useEffect(() => {
                           </button>
                           <input type="text" class="finput-edit" placeholder={item.soluong} disabled />
                           <button type="button" name="btn-tang" className="btn-cong"
-                          onClick={() => addProductToCart(item.idProduct,item.idProductNavigation.gia )}> + </button>
+                          onClick={() => addQuantityProduct(item.idProduct,item.idProductNavigation.gia )}> + </button>
                           </div>
                           <div className="delet">
                             <button type="button" className="btn-del" onClick={() => deleteCartItem(idUser,item.idProduct)}>Xóa</button>

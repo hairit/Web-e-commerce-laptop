@@ -84,11 +84,11 @@ export default function DetailProductsLaptop({ match,addProductToCart }) {
       index--;
     }
   }
-
+console.log("kokoo",detail)
   return (
     <div className="single-product">
       <div className="container">
-        <div className="row">
+        <div className="row row-top">
           {/* {isEmptyObj === false && (
               <> */}
           <div className="ttchung">
@@ -178,12 +178,22 @@ export default function DetailProductsLaptop({ match,addProductToCart }) {
                     </div>
                   </div>
                   <div className="tt-price">
+                    <p className="price-new">
                     {solver.formatCurrency(
                       "vi-VN",
                       "currency",
                       "VND",
                       detail.gia
-                    )}{" "}
+                    )}
+                    </p>
+                    <p className="price-old">
+                    {solver.formatCurrency(
+                      "vi-VN",
+                      "currency",
+                      "VND",
+                      detail.giacu
+                    )}
+                    </p>
                   </div>
                   <div className="tt-sales">Quà tặng kèm khi mua hàng</div>
                   <div className="gift">
@@ -193,7 +203,7 @@ export default function DetailProductsLaptop({ match,addProductToCart }) {
                     </div>
                   </div>
                   <div className="button-gr">
-                    <NavLink to="/card">
+                    <NavLink to="/cart">
                     <button type="button" className="btn btn-primary btn-buy" onClick={() =>addProductToCart(detail.id,detail.gia)}>
                       MUA NGAY
                     </button>
@@ -274,6 +284,11 @@ export default function DetailProductsLaptop({ match,addProductToCart }) {
                     <br />
                     Mua phần mềm Microsoft Office 365 Personal chỉ{" "}
                     <a>990.000đ</a> (Giá mua lẻ 1.290.000đ)
+                  </span>
+                  <span>
+                    <br />
+                    <br />
+                    {detail.uudai}
                   </span>
                 </div>
               </div>

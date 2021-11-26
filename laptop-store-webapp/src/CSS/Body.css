@@ -8,7 +8,7 @@
   filter: blur(3px);
 }
 .old-price {
-  font-size: 12px;
+  font-size: 15px;
   text-decoration: line-through;
   color: #979696;
 }
@@ -72,6 +72,7 @@
 }
 .event-laptop {
   margin: 20px auto;
+  max-width: 1320px;
   width: 83%;
   display: flex;
   flex-wrap: wrap;

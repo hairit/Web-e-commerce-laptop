@@ -27,10 +27,14 @@ import ScrollToTop from "./ScrollToTop";
 import ThanhToan from "./Pages/ThanhToan";
 import DonHang from "./Pages/DonHang";
 import call from "./API/API";
+import load from "./Images/load.gif"
+import GioHangCss from "./CSS/GioHangCss.css"
+
 
 function App() {
   const history = useHistory();
   const [blur, setblur] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [user, setUser] = useState(null);
   const [userCookie, setUserCookie ,removeCookie] = useCookies(["user"]);
   const [updateDataUser, setUpdateDataUser] = useState(0);
@@ -82,6 +86,15 @@ function App() {
       timer: 1500
     })
   }
+  function showLoadAddCart(){
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Đã thêm vào giỏ hàng !',
+      showConfirmButton: false,
+      timer: 1500
+    })
+  }
   const createBillDetails=(cartDetails) =>{
     var BillDetails = [];
     cartDetails.forEach(element => {
@@ -119,6 +132,33 @@ function App() {
              alert("Đặt hàng thất bại");
         })
   }
+  function loadQuantity(){
+    if (loading === true){
+    return (
+      <div className="loading">
+          <img src={load} />
+      </div>
+    )
+    } else {
+      <div></div>
+    }
+  }
+  const addQuantityProduct = (idProduct , price )=>{
+    setTimeout(()=>{
+      axios.get(`https://localhost:44343/data/cartdetail/action=add/iduser=${user.id}/idproduct=${idProduct}/tongtien=${price}`,null)
+      .then(res => {
+        if(res.status === 201){
+           console.log("Da them vao gio hang",user.id,idProduct,price); 
+           updateData();
+           setLoading(false);
+          //  showLoadAddCart()
+        }
+        else alert("không thể thêm vào giỏ hàng");
+      }).catch(err => console.log("Add cart failed"));
+    }, 700)
+    setLoading(true);
+    
+  }
   const addProductToCart = (idProduct , price )=>{
     if(user === null)
     {
@@ -130,36 +170,66 @@ function App() {
         if(res.status === 201){
            console.log("Da them vao gio hang",user.id,idProduct,price); 
            updateData();
+           showLoadAddCart()
         }
         else alert("không thể thêm vào giỏ hàng");
       }).catch(err => console.log("Add cart failed"));
     }
   }
   const deleteCartItem = (iduser,idpro)=>{
-    if(window.confirm("Bạn muốn xoá sản phẩm này ra khỏi giỏ hàng?") ===true){
-      axios.delete(`https://localhost:44343/data/cartdetail/iduser=${iduser}/idproduct=${idpro}`,null)
+    Swal.fire({
+      title: 'Bạn muốn xóa sản phẩm khỏi giỏ hàng ?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'CC chứ xóa, mua đi đmm'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios.delete(`https://localhost:44343/data/cartdetail/iduser=${iduser}/idproduct=${idpro}`,null)
       .then(()=> {
         updateData();
       })
       .catch((err)=> 
       console.log("Dell xoa duoc",err))
-    }
+        Swal.fire(
+          'Đã xóa',
+          'Mẹ m được lắm'
+        )
+      }
+    })
+    // if(window.confirm("Bạn muốn xoá sản phẩm này ra khỏi giỏ hàng?") ===true){
+    //   axios.delete(`https://localhost:44343/data/cartdetail/iduser=${iduser}/idproduct=${idpro}`,null)
+    //   .then(()=> {
+    //     updateData();
+    //   })
+    //   .catch((err)=> 
+    //   console.log("Dell xoa duoc",err))
+    // }
   }
   const deleteProductFromCart=(iduser, idpro, thanhtien,quantity) => {
     if(quantity <= 1){
       deleteCartItem(iduser, idpro)
     }
     else{
-      axios.get(`https://localhost:44343/data/cartdetail/action=delete/iduser=${iduser}/idproduct=${idpro}/tongtien=${thanhtien}`, null)
+      setTimeout(() =>{
+        axios.get(`https://localhost:44343/data/cartdetail/action=delete/iduser=${iduser}/idproduct=${idpro}/tongtien=${thanhtien}`, null)
       .then(()=> {
         updateData();
+        setLoading(false);
       })
       .catch((err)=> console.log("Dell xoa duoc",err))
+      },700)
+      setLoading(true)
+      
     } 
   }
   return (
     <Router>
+      {loadQuantity()}
       <ScrollToTop />
+      
+      
       <div className="App">
         <Header user={user} logout={logout} clickblur={clickblur}/>
             <Route path="/"                               exact component={() => <Body blur={blur} addProductToCart={addProductToCart} />}></Route>
@@ -187,9 +257,11 @@ function App() {
             <Route path="/screen/:id"                     exact component={(match) => <DetailProductsScreen addProductToCart={addProductToCart} match={match} />}></Route>
             <Route path="/mouse/:id"                      exact component={(match) => <DetailProductsMouse addProductToCart={addProductToCart} match={match} />}></Route>
             
-            <Route path="/cart"                           exact component={() => <GioHang user={user} 
+            <Route path="/cart"                           exact component={() => <GioHang 
+                                                          user={user} 
                                                           deleteProductFromCart={deleteProductFromCart} 
                                                           deleteCartItem={deleteCartItem} 
+                                                          addQuantityProduct={addQuantityProduct}
                                                           addProductToCart={addProductToCart} 
                                                           idUser={ user !== null ? user.id : null } 
                                                           createBill={createBill} 
