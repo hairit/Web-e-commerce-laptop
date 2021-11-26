@@ -145,22 +145,24 @@ function App() {
       <div></div>
     }
   }
+
+  
   const addQuantityProduct = (idProduct , price )=>{
     setTimeout(()=>{
-      axios.get(`https://localhost:44343/data/cartdetail/action=add/iduser=${user.id}/idproduct=${idProduct}/tongtien=${price}`,null)
+    setLoading(false);
+    }, 900)
+    axios.get(`https://localhost:44343/data/cartdetail/action=add/iduser=${user.id}/idproduct=${idProduct}/tongtien=${price}`,null)
       .then(res => {
         if(res.status === 201){
-           console.log("Da them vao gio hang",user.id,idProduct,price); 
-           updateData();
-           setLoading(false);
-          //  showLoadAddCart()
+          console.log("Da them vao gio hang",user.id,idProduct,price); 
+          updateData();
+          setLoading(true);
         }
         else alert("không thể thêm vào giỏ hàng");
       }).catch(err => console.log("Add cart failed"));
-    }, 700)
-    setLoading(true);
-    
   }
+
+
   const addProductToCart = (idProduct , price )=>{
     if(user === null)
     {
@@ -178,6 +180,8 @@ function App() {
       }).catch(err => console.log("Add cart failed"));
     }
   }
+
+
   const deleteCartItem = (iduser,idpro)=>{
     Swal.fire({
       title: 'Bạn muốn xóa sản phẩm khỏi giỏ hàng ?',
@@ -200,30 +204,23 @@ function App() {
         )
       }
     })
-    // if(window.confirm("Bạn muốn xoá sản phẩm này ra khỏi giỏ hàng?") ===true){
-    //   axios.delete(`https://localhost:44343/data/cartdetail/iduser=${iduser}/idproduct=${idpro}`,null)
-    //   .then(()=> {
-    //     updateData();
-    //   })
-    //   .catch((err)=> 
-    //   console.log("Dell xoa duoc",err))
-    // }
   }
+
+
   const deleteProductFromCart=(iduser, idpro, thanhtien,quantity) => {
     if(quantity <= 1){
       deleteCartItem(iduser, idpro)
     }
     else{
       setTimeout(() =>{
-        axios.get(`https://localhost:44343/data/cartdetail/action=delete/iduser=${iduser}/idproduct=${idpro}/tongtien=${thanhtien}`, null)
-      .then(()=> {
-        updateData();
-        setLoading(false);
-      })
-      .catch((err)=> console.log("Dell xoa duoc",err))
+      setLoading(false);
       },700)
-      setLoading(true)
-      
+      axios.get(`https://localhost:44343/data/cartdetail/action=delete/iduser=${iduser}/idproduct=${idpro}/tongtien=${thanhtien}`, null)
+      .then(()=> {
+      updateData();
+      setLoading(true);
+    })
+    .catch((err)=> console.log("Dell xoa duoc",err))
     } 
   }
   return (

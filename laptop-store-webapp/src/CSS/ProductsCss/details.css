@@ -527,7 +527,19 @@ strong {
 .nav-kb {
   color: blue;
 }
-
+.xemthemlaptop {
+  padding: 15px;
+  border: 1px solid gray;
+  background-color: #c2e0f4;
+  width: 70%;
+}
+.xemthem li span {
+  color: rgb(3, 3, 173);
+  font-weight: 400 !important;
+}
+.banner-laptop img {
+  width: 80%;
+}
 /* ------------------------------------------------------------------------------------------------------*/
 
 /* --------------------------------------- Css Laptop -------------------------------------------------*/

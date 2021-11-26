@@ -83,8 +83,9 @@ console.log("dâdadada", userOrder)
       console.log("Lỗi con mẹ nó rồi", err)
     })
   }
+
+
   function savePhoneAddress(e) {
-    // const address = addphoneaddress.diachi + '';
     e.preventDefault();
     axios.put("https://localhost:44343/data/user/", {
       id: idUser,

@@ -11,9 +11,12 @@ import DellLogo1 from "../../../Images/DellLogo1.png"
 import HPLogo1 from "../../../Images/HPLogo1.png"
 import AcerLogo1 from "../../../Images/AcerLogo1.png"
 import DareuLogo1 from "../../../Images/DareuLogo1.png"
+import { useHistory } from "react-router-dom";
 const solver = new Solver();
 export default function Laptops({match,addProductToCart}) {
+  const history = useHistory();
   const [pros, setPros] = useState([]);
+  const [sort, setSort] = useState();
   useEffect(() => {
     if(match !== undefined){
       var API;
@@ -36,6 +39,13 @@ export default function Laptops({match,addProductToCart}) {
   //     .then((res) => setPros(res.data))
   //     .catch((err) => console.log(err));
   // }, []);
+  // function sortBrand(e) {
+  //   const url = "/laptop/brand/"
+  //   if(e.target.value === "dell"){
+  //     setSort("DELL")
+  //     history.push( url + sort)
+  //   }
+  // }
   return (
     <div className="wrapper">
       <div className="container_fullwidth">
@@ -62,10 +72,10 @@ export default function Laptops({match,addProductToCart}) {
                 <div className="loc">
                   <div className="title-sort">Thương hiệu</div>
                   <div className="btn-right">
-                    <button type="button" className="btn-sort">
+                    <button type="button" className="btn-sort" >
                       Asus
                     </button>
-                    <button type="button" className="btn-sort">
+                    <button type="button" className="btn-sort" >
                       Dell
                     </button>
                     <button type="button" className="btn-sort">

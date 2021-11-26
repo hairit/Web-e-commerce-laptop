@@ -4,7 +4,11 @@ import bnphmc1 from "../../../Images/bnphmc1.png";
 import bnphmc2 from "../../../Images/bnphmc2.png";
 import bnphmc3 from "../../../Images/bnphmc3.png";
 import checked_32px from "../../../Images/checked_32px.png";
+import laptoppost from "../../../Images/laptoppost.png";
+import laptopLappe from "../../../Images/laptopLappe.png";
+import laptop from "../../../Images/laptop.png";
 import { NavLink } from "react-router-dom";
+import details from "../../../CSS/ProductsCss/details.css";
 
 export default function PostsLaptop() {
   return (
@@ -16,7 +20,7 @@ export default function PostsLaptop() {
           cần xem xét các yếu tố như sau khi mua laptop:
         </p>
         <span className="span-inf">
-          <strong>Sản phẩm chính hãng:</strong>
+          <strong>Sản phẩm chính hãng: </strong>
           Tốt nhất là bạn nên lựa chọn những laptop có thương hiệu nổi tiếng.
           Điều này phần nào đã chứng minh được chất lượng của laptop. Những
           thương hiệu được nhiều người ưa chuộng trong thời gian dài thì chắc
@@ -25,154 +29,99 @@ export default function PostsLaptop() {
           tiếng thì hàng chính hãng cũng là điều bạn nên đặc biệt quan tâm bởi
           vì hàng giả, hàng nhái hiện nay trên thị trường có rất nhiều.
         </span>
+        <br/>
+        <br/>
+        <span className="span-inf">
+          <strong>Cấu hình sản phẩm: </strong>
+          Đây là vấn đề mà bạn cần nghiên cứu trước, đặc biệt là đối với những 
+          người không có kiến thức chuyên môn trong lĩnh vực công nghệ. Nắm được 
+          một số đặc điểm cấu hình cơ bản của laptop không chỉ giúp bạn lựa chọn 
+          được laptop dễ dàng hơn mà bạn còn có thể biết được loại nào đáp ứng được 
+          các yêu cầu sử dụng của mình. Tùy vào mục đích để học tập, làm việc, chơi 
+          game hay giải trí đơn thuần mà sẽ có những dòng máy chuyên dụng mang đến cho 
+          bạn những trải nghiệm mượt mà hơn.
+        </span>
+        <br/>
+        <br/>
+        <span className="span-inf">
+          <strong>Giá cả hợp lý: </strong>
+          Tất nhiên giá cả luôn là vấn đề khiến nhiều người đắn đo suy nghĩ mỗi khi muốn 
+          mua một thứ gì đó và đối với laptop cũng vậy. Tìm được các cửa hàng có mức giá 
+          phù hợp thì sẽ giúp bạn tiết kiệm được chi phí hơn. Do đó, bạn có thể tham khảo 
+          tình hình giá cả chung trước rồi so sánh giá ở một vài nơi thì chắc chắn sẽ chọn 
+          được chỗ bán sản phẩm mà bạn muốn mua với mức giá tốt nhất.
+        </span>
+        <br/>
+        <br/>
+        <h2 className="h2-mota">NÊN MUA LAPTOP Ở ĐÂU ? </h2>
+        <p>
+        Trong cuộc sống hiện đại bây giờ, một chiếc laptop hay PC sẽ giúp ích cho chúng ta 
+        trong rất nhiều việc như học tập, giải trí, làm việc..Tuy nhiên trên thị trường 
+        lại có rất nhiều các thương hiệu laptop kèm theo rất nhiều kiểu dáng, cấu hình khiến 
+        bạn khó lựa chọn. Không chỉ vậy, ngay cả khi lựa chọn được mẫu ưng ý, việc mua laptop ở
+         đâu uy tín cũng là câu hỏi mà nhiều bạn đang tự đặt ra !
+        </p>
+        <div className="img-Posts">
+          <img src={laptop} />
+        </div>
+        <p>
+        TP Hồ Chí Minh là một trong những thành phố lớn nhất cả nước, đi kèm với đó là sự phát triển vô 
+        cùng mạnh mẽ. Sự phát triển đó kéo theo vô vàn các thương hiệu, cửa hàng, siêu thị điện 
+        máy phân phối laptop. Trong đó,{" "}
+        <NavLink to="/" className="nav-kb">
+             LAPPEE
+        </NavLink>{" "} 
+        là một trong những doanh nghiệp hàng đầu tại TP Hồ Chí Minh về phân phối bán lẻ các sản phẩm công 
+        nghệ, linh kiện máy tính, laptop. Tuy mới được thành lập nhưng với sự uy tín về chất lượng sản phẩm cũng như 
+        về dịch vụ khách hàng trong lĩnh vực bán lẻ công nghệ, {" "}
+        <NavLink to="/" className="nav-kb">
+             LAPPEE
+        </NavLink>{" "} đã tạo dựng được danh tiếng của mình trên thị trường và 
+        trong lòng khách hàng ! Đây cũng chính là địa chỉ mà bạn có thể chọn cho mình một chiếc laptop 
+        ưng ý với cấu hình tốt với chi phí phù hợp nhất ! 
+        </p>
+        <br/>
+        <br/>
+        <div className="xemthemlaptop">
+        <p>Xem thêm:</p>
         <ul className="posts-menu">
           <li>
             <img src={checked_32px} />
             <span>
-              Tiếng clicky vui tai khi gõ, cảm giác như đang chơi 1 bản piano
-              vậy
+            <NavLink to="/laptop/typelaptop/Laptop đồ họa">
+              Laptop Gaming - đồ họa đáng mua nhất hiện nay
+            </NavLink>
             </span>
           </li>
           <li>
             <img src={checked_32px} />
             <span>
-              Keycap đủ màu, tùy biến theo ý thich. Cẩn thận, ma túy nhựa đấy
-              =))
+            <NavLink to="/laptop/typelaptop/Laptop đồ họa">
+              Laptop chuyên dành cho Sinh viên
+            </NavLink>
             </span>
           </li>
           <li>
             <img src={checked_32px} />
-            <span>Thoải mái gỡ phím ra vệ sinh</span>
+            <span>
+            <NavLink to="/laptop/typelaptop/Laptop đồ họa">
+              Laptop dành cho dân văn phòng
+            </NavLink>
+            </span>
           </li>
           <li>
             <img src={checked_32px} />
-            <span>Độ bền cao, độ chính xác cao</span>
-          </li>
-          <li>
-            <img src={checked_32px} />
-            <span>Có nhiều loại, nhiều kích cỡ</span>
-          </li>
-          <li>
-            <img src={checked_32px} />
-            <span>Có LED đủ màu</span>
+            <span>
+            <NavLink to="/laptop/typelaptop/Laptop đồ họa">
+              Laptop mỏng nhẹ
+            </NavLink>
+            </span>
           </li>
         </ul>
-        <p>
-          Đảm bảo với bạn khi đã sử dụng phím cơ rồi bạn sẽ muốn ném ngay đi
-          chiếc bàn phím cũ của mình.
-        </p>
-        <h2 className="h2-mota">Cảm giác bấm cực đã</h2>
-        <p>
-          Đầu tiên và cũng là lý do dễ dàng nhận thấy nhất chính là cảm giác
-          bấm. Ở các bàn phím màng cao su tổng hợp Membrane thông thường, người
-          dùng phải tốn khá nhiều sức để bấm nút phím xuống toàn bộ hành trình
-          thì máy tính mới nhận, dẫn tới việc bạn đánh máy rất chậm. Nhưng ở các
-          bàn phím cơ, với thiết kế theo switch như ALPS, Cherry MX, Kailh,
-          Gateron, Razer và Topre, bạn hoàn toàn có thể trải nghiệm cảm giác
-          “múa phím” khi chỉ cần bấm đủ lực là đủ. Điều này giúp tăng tốc độ bấm
-          nhanh hơn gần gấp đôi so sánh với các bàn phím màng cao su.
-        </p>
-        <div className="img-Posts">
-          <img src={bnphmc1} />
         </div>
-        <p className="p-nghieng">Cảm giác bấm cực đã</p>
-        <p>
-          Với bàn phím cơ, switch (công tắc của mỗi phím) của Cherry là được ưa
-          chuộng nhất với 4 loại switch thông dụng là blue, brown, red và black.
-          Với Cherry MX Blue, bạn sẽ có được phản hồi phím dạng tactile clicky,
-          vừa có một khấc để báo hiệu đã nhận phím lại vừa có âm thanh click
-          giòn, vui tai. Đây là một trong những dòng switch rất được ưa chuộng
-          vì cho cảm giác khác biệt hoàn toàn với bàn phím cao su. Nhược điểm là
-          switch này cực kì ồn ào và khả năng cao bạn sẽ nhận được những cái
-          nhăn mặt từ những người xung quanh.
-        </p>
-        <h2 className="h2-mota">
-          Thoải mái gỡ phím, tùy biến theo phong cách riêng của bạn
-        </h2>
-        <p>
-          Đây là một trong những lý do cực kỳ quan trọng khiến cho rất nhiều bạn
-          trẻ mong muốn sở hữu một chiếc{" "}
-          <NavLink to="/keyboard" className="nav-kb">
-            bàn phím cơ
-          </NavLink>
-          . Các bàn phím cơ có các khung phím tương đương nhau, bạn chỉ cần thay
-          đổi các nút phím là sẽ có một chiếc bàn phím hoàn toàn mới và cực kỳ
-          độc, không đụng hàng. Điều đó sẽ giúp bạn không bao giờ cảm thấy nhàm
-          chán khi nhìn chiếc bàn phím của mình. Có rất nhiều cộng đồng trao đổi
-          mua bán keycap trên mạng xã hội, vì vậy hãy sắm cho mình vài bộ key
-          cap để thay đổi nhé !
-        </p>
-        <div className="img-Posts">
-          <img src={bnphmc2} />
+        <div className="img-Posts banner-laptop">
+          <img src={laptopLappe} />
         </div>
-        <p className="p-nghieng">
-          Bàn phím gaming dễ dàng tùy biến theo phong cách của riêng bạn
-        </p>
-        <h2 className="h2-mota">Độ bền cao</h2>
-        <p>
-          Với bàn phím cơ, switch (công tắc của mỗi phím) của Cherry là được ưa
-          chuộng nhất với 4 loại switch thông dụng là blue, brown, red và black.
-          Với Cherry MX Blue, bạn sẽ có được phản hồi phím dạng tactile clicky,
-          vừa có một khấc để báo hiệu đã nhận phím lại vừa có âm thanh click
-          giòn, vui tai. Đây là một trong những dòng switch rất được ưa chuộng
-          vì cho cảm giác khác biệt hoàn toàn với bàn phím cao su. Nhược điểm là
-          switch này cực kì ồn ào và khả năng cao bạn sẽ nhận được những cái
-          nhăn mặt từ những người xung quanh.
-        </p>
-        <br />
-        <p>
-          Trong khi đó, các bàn phím màng cao su thông thường chỉ chịu tải đc
-          tầm 3-5 triệu lần bấm là bắt đầu xuất hiện lỗi “double click” hay mất
-          sóng nút. Điều này gây khá nhiều bất cập cho người dùng, đặc biệt là
-          những người thường xuyên dùng bàn phím để đánh máy như nhà báo, nhà
-          văn hoặc nhân viên văn phòng.
-        </p>
-        <p>
-          Bạn đã bao giờ tự hỏi mình nếu bạn thực sự cần mọi phím trên bàn phím
-          hiện tại của bạn? Hãy nghĩ về nó, có thể bạn không thực sự sử dụng bàn
-          phím số hoặc chỉ ước rằng bàn phím của bạn nhỏ hơn. Điều tuyệt vời của
-          bàn phím cơ là chúng có nhiều kích cỡ và bố cục khác nhau. Chúng
-          thường được phân loại là phần trăm của bàn phím kích thước đầy đủ.
-        </p>
-        <h2 className="h2-mota">Đa dạng kích cỡ, tùy chọn</h2>
-        <p>
-          Bàn phím có LED cũng là một lý do khiến không ít người dấn thân vào
-          con đường chơi bàn phím cơ. Và thực tế, chính tôi cũng là một người
-          bắt đầu với bàn phím cơ vì lý do đó. Tuy nhiên, nếu bạn không phải là
-          một tín đồ yêu thích màu mè RGB thì bạn hoàn toàn có thể tắt chúng đi.
-          Hay nếu đơn giản hơn, lựa chọn bàn phím có LED nhẹ hay LED đơn sắc.
-          Thậm chí nếu thích, bạn có thể lựa chọn bàn phím không LED.
-        </p>
-        <div className="img-Posts">
-          <img src={bnphmc3} />
-        </div>
-        <p className="p-nghieng">Đèn LED đa dạng</p>
-        <p>
-          Trên đây là một số ưu điểm vượt trội, vậy bạn đã quyết định đầu tư cho
-          mình một bộ bàn phím cơ chưa? Nếu còn lăn tăn về giá cả thì cũng đừng
-          quá lo lắng, hiện{" "}
-          <NavLink to="/" className="nav-kb">
-            LAPPEE
-          </NavLink>{" "}
-          có rất nhiều loại phím cơ giá rẻ, chất lượng tương đối tốt và hoạt
-          động ổn định cho trải nghiệm ở mức khá mà lại vừa túi tiền.
-          <br />
-          <br />
-        </p>
-        <p>
-          Tham khảo các dòng bàn phím cơ :
-          <br />
-          <br />
-          <NavLink to="/keyboard" className="nav-kb">
-            Bàn phím cơ
-          </NavLink>{" "}
-          <br />
-          <br />
-          Hãy đến và trải nghiệm với chúng tôi nhé
-          <br />
-          <br />
-          <br />
-        </p>
       </div>
     </div>
   );

@@ -22,10 +22,10 @@ const LoadingSelectPanel = (item , index) =>{
                 <div className="select-panel-center col-no-padding c-9">
                     {item.attributes.map((attribute,index)=> LoadingSelectPanelCenter(attribute,index))}
                 </div>
-                <div className="select-panel-right col-no-padding c-3">
+                {/* <div className="select-panel-right col-no-padding c-3">
                     <img src="https://localhost:44343/Images/UserAvatar/quocdatavatar.png" className="select-panel-right-img" />
                     <p className="dat-said">Nhìn lol gì !!</p>
-                </div>
+                </div> */}
             </div>
         </div>
     )
