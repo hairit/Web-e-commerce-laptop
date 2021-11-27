@@ -6,7 +6,7 @@ import { NavLink,useHistory } from 'react-router-dom';
 import URL from '../../DATA/URL';
 import Solver from '../../Classes/Solver';
 const solver = new Solver();
-const renderKeyboardItem = (pro,index,addProductToCart,history) => {
+const renderKeyboardItem = (pro,index,addCart,history) => {
     return (
         <div className="col-10-no-padding c-10-2 keyboard-item" key={index}>
             <div className="keyboard-infor">
@@ -27,23 +27,23 @@ const renderKeyboardItem = (pro,index,addProductToCart,history) => {
                     <div className="keyboard-gift">{pro.uudai}</div>
                     <div className="keyboard-button-group">
                         <button className="keyboard-button keyboard-button-buy" onClick={()=>{
-                            addProductToCart(pro.id,pro.gia)
+                            addCart(pro.id,pro.gia)
                         }}>Mua ngay</button>
-                        <button className="keyboard-button keyboard-button-add" onClick={()=>addProductToCart(pro.id,pro.gia)}>Thêm vào giỏ</button>
+                        <button className="keyboard-button keyboard-button-add" onClick={()=>addCart(pro.id,pro.gia)}>Thêm vào giỏ</button>
                     </div>
                 </div>
             </div>
         </div>
     )
 }
-function KeyboardPanel({addProductToCart}) {
+export default function KeyboardPanel({addCart}) {
     const history = useHistory();
     const [pros, setPros] = useState([]);
     useEffect(() => {
         call('GET','data/product/type=keyboard/enable',null)
             .then(res => setPros(res.data)).catch(err => console.log("Errol when try to get keyboard"));
     }, [])
-    return (
+    return(
         <div className="keyboard-panel">
             <div className="keyboard-panel-header">
                 <div className="keyboard-panel-header-logo">
@@ -52,12 +52,9 @@ function KeyboardPanel({addProductToCart}) {
             </div>
             <div className="container10Col wide keyboard-container wide">
                 <div className="row-10-no-margin keyboard-row">
-                    {
-                        pros.map((pro,index) => renderKeyboardItem(pro,index,addProductToCart,history))
-                    }
+                    {pros.map((pro,index) => renderKeyboardItem(pro,index,addCart,history))}
                 </div>
             </div>
         </div>
     )
 }
-export default React.memo(KeyboardPanel);

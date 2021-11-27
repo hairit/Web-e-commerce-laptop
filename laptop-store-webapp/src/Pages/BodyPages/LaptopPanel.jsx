@@ -6,8 +6,9 @@ import URL from "../../DATA/URL";
 import { useState, useEffect } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import Solver from "../../Classes/Solver";
+import axios from "axios";
 const solver = new Solver();
-const renderLaptopItem = (pro, index ,addProductToCart,history) => {
+const renderLaptopItem = (pro, index ,addCart,history) => {
   return (
     <div to={`/laptop/${pro.id}`} className="col-10-no-padding c-10-2 laptop-item" key={index}>
       <div  className="laptop-infor">
@@ -26,15 +27,15 @@ const renderLaptopItem = (pro, index ,addProductToCart,history) => {
         <div className="laptop-gift"><p>{pro.uudai}</p></div>
         <div className="laptop-btn-group">
           <button className="laptop-btn laptop-buy" onClick={()=>{
-                  addProductToCart(pro.id,pro.gia)
+                  addCart(pro.id,pro.gia)
           }}>Mua ngay</button>
-          <button className="laptop-btn laptop-addCart" onClick={()=>addProductToCart(pro.id,pro.gia)}>Thêm vào giỏ</button>
+          <button className="laptop-btn laptop-addCart" onClick={()=>addCart(pro.id,pro.gia)}>Thêm vào giỏ</button>
         </div>
       </div>
     </div>
   );
 };
-export default function Laptop({addProductToCart}) {
+export default function Laptop({addCart}) {
   const history = useHistory();
   const [pros, setPros] = useState([]);
   const [laptopQuantity, setLaptopQuantity] = useState(0);
@@ -69,7 +70,7 @@ export default function Laptop({addProductToCart}) {
       </div>
       <div className="container10Col wide">
         <div className="row-10-no-margin">
-          {pros.map((pro, index) => renderLaptopItem(pro, index , addProductToCart,history))}
+          {pros.map((pro, index) => renderLaptopItem(pro,index,addCart,history))}
         </div>
       </div>
     </div>

@@ -22,10 +22,6 @@ export default function GioHang({ idUser,addQuantityProduct, deleteCartItem ,del
     if(reload === 0) setReload(1);
     else setReload(0);
   }
-
-// function disableButton() {
-//   buttonRef.current.visibility = true;
-// }
 useEffect(() => {
   if (idUser !== null) {
     axios
@@ -38,8 +34,6 @@ useEffect(() => {
       .catch((err) => setCartDetails([]) );
   }
 }, [reload]);
-
-
   const noneCartNotification = () => {
     if(cartDetails.length === 0){
       setLoading(true);
@@ -78,9 +72,6 @@ useEffect(() => {
     });
     return tongtienSelect;
   }
-  console.log("aaaaaaaaaaaaa",cartDetails)
-
-  
   function checktien (e,gia,quantity,idpro,iduser,select) {
     if ( e.target.checked ) {
       axios.get(`https://localhost:44343/data/cartdetail/select=selected/iduser=${iduser}/idproduct=${idpro}`, null)

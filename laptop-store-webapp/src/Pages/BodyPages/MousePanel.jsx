@@ -5,8 +5,7 @@ import '../../CSS/MousePanel.css'
 import call from '../../API/API';
 import Solver from '../../Classes/Solver';
 import URL from '../../DATA/URL';
-
-const renderMouseItem = (mouse,index,solver,history,addProductToCart)=> {
+const renderMouseItem = (mouse,index,solver,history,addCart)=> {
     return (
         <div className="col-10 c-10-2 mouse-item" key={index}>
             <div className="mouse-infor">
@@ -21,15 +20,15 @@ const renderMouseItem = (mouse,index,solver,history,addProductToCart)=> {
                 {mouse.uudai ?<div className="mouse-gift">{mouse.uudai}</div> : <div></div>}
                 <div className="mouse-button-group">
                     <div className="mouse-button mouse-button-buy" onClick={()=>{
-                            addProductToCart(mouse.id,mouse.gia);
+                            addCart(mouse.id,mouse.gia);
                     }}>Mua ngay</div>
-                    <div className="mouse-button mouse-button-add" onClick={()=>addProductToCart(mouse.id,mouse.gia)}>Thêm vào giỏ</div>
+                    <div className="mouse-button mouse-button-add" onClick={()=>addCart(mouse.id,mouse.gia)}>Thêm vào giỏ</div>
                 </div>
             </div>
         </div>
     )
  }
-export default function MousePanel({addProductToCart}) {
+export default function MousePanel({addCart}) {
     const history = useHistory();
     const [mouses  , setMouses] = useState([]);
     const solver = new Solver();
@@ -44,9 +43,7 @@ export default function MousePanel({addProductToCart}) {
             <div className="mouse-panel-header"></div>
             <div className="mouse-panel-list-pro container10Col">
                 <div className="row-10-no-margin">
-                    {
-                        mouses.map((mouse,index)=>renderMouseItem(mouse,index,solver,history,addProductToCart))
-                    }
+                    {mouses.map((mouse,index)=>renderMouseItem(mouse,index,solver,history,addCart))}
                 </div>
             </div>
         </div>
