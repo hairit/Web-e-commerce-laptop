@@ -150,7 +150,7 @@ function App() {
   
   const addQuantityProduct = (idProduct , price )=>{
     setTimeout(()=>{
-    setLoading(false);
+      setLoading(false);
     }, 900)
     axios.get(`https://localhost:44343/data/cartdetail/action=add/iduser=${user.id}/idproduct=${idProduct}/tongtien=${price}`,null)
       .then(res => {
@@ -161,11 +161,9 @@ function App() {
           setLoading(true);
         }
         else alert("không thể thêm vào giỏ hàng");
-<<<<<<< HEAD
       }).catch(() => console.log("Add cart failed"));
-    }, 700)
-    setLoading(true);
-  }
+      setLoading(true);
+    }
   const addProductToCart = useCallback(
     (user,idProduct,price)=>{
       if(user === null)
@@ -196,31 +194,7 @@ function App() {
           if(element.idProduct === idProduct) exist = true;
       });
       return exist;
-=======
-      }).catch(err => console.log("Add cart failed"));
   }
-
-
-  const addProductToCart = (idProduct , price )=>{
-    if(user === null)
-    {
-      alert("Bạn cần đăng nhập để thêm sản phẩm vào giỏ hàng");
-    }
-    else{
-    axios.get(`https://localhost:44343/data/cartdetail/action=add/iduser=${user.id}/idproduct=${idProduct}/tongtien=${price}`,null)
-      .then(res => {
-        if(res.status === 201){
-           console.log("Da them vao gio hang",user.id,idProduct,price); 
-             showLoadAddCart();
-             updateData();
-        }
-        else alert("không thể thêm vào giỏ hàng");
-      }).catch(err => console.log("Add cart failed"));
-    }
->>>>>>> dc00bc6beb73571b8130d604624a3824ca52127e
-  }
-
-
   const deleteCartItem = (iduser,idpro)=>{
     Swal.fire({
       title: 'Bạn muốn xóa sản phẩm khỏi giỏ hàng ?',
@@ -244,8 +218,6 @@ function App() {
       }
     })
   }
-
-
   const deleteProductFromCart=(iduser, idpro, thanhtien,quantity) => {
     if(quantity <= 1){
       deleteCartItem(iduser, idpro)
@@ -254,10 +226,6 @@ function App() {
       setTimeout(() =>{
       setLoading(false);
       },700)
-<<<<<<< HEAD
-      setLoading(true)
-    }
-=======
       axios.get(`https://localhost:44343/data/cartdetail/action=delete/iduser=${iduser}/idproduct=${idpro}/tongtien=${thanhtien}`, null)
       .then(()=> {
       updateData();
@@ -265,7 +233,6 @@ function App() {
     })
     .catch((err)=> console.log("Dell xoa duoc",err))
     } 
->>>>>>> dc00bc6beb73571b8130d604624a3824ca52127e
   }
   return (
     <Router>
