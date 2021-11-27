@@ -161,42 +161,6 @@ function App() {
           setLoading(true);
         }
         else alert("không thể thêm vào giỏ hàng");
-<<<<<<< HEAD
-      }).catch(() => console.log("Add cart failed"));
-    }, 700)
-    setLoading(true);
-  }
-  const addProductToCart = useCallback(
-    (user,idProduct,price)=>{
-      if(user === null)
-      {
-        alert("Bạn cần đăng nhập để thêm sản phẩm vào giỏ hàng");
-      }
-      else{
-      axios.get(`https://localhost:44343/data/cartdetail/action=add/iduser=${user.id}/idproduct=${idProduct}/tongtien=${price}`,null)
-        .then(res => {
-          if(res.status === 201){
-              if(!checkExistCartDetail(res.data.idProduct)){
-                  cartDetails.current.push(res.data);
-                  document.getElementById("quantity-cartdetails-user").textContent = cartDetails.current.length
-                  document.getElementById("quantity-cartdetails-user").style.display = 'block';
-              }
-              console.log(cartDetails.current.length);
-          }
-          else alert("không thể thêm vào giỏ hàng");
-        }).catch((err) => console.log("Add cart failed"+err));
-      }
-    },
-    [],
-  )
-  console.log(cartDetails.current);
-  const checkExistCartDetail = (idProduct) => {
-      var exist = false;
-      cartDetails.current.forEach(element => {
-          if(element.idProduct === idProduct) exist = true;
-      });
-      return exist;
-=======
       }).catch(err => console.log("Add cart failed"));
   }
 
@@ -217,7 +181,6 @@ function App() {
         else alert("không thể thêm vào giỏ hàng");
       }).catch(err => console.log("Add cart failed"));
     }
->>>>>>> dc00bc6beb73571b8130d604624a3824ca52127e
   }
 
 
@@ -254,10 +217,6 @@ function App() {
       setTimeout(() =>{
       setLoading(false);
       },700)
-<<<<<<< HEAD
-      setLoading(true)
-    }
-=======
       axios.get(`https://localhost:44343/data/cartdetail/action=delete/iduser=${iduser}/idproduct=${idpro}/tongtien=${thanhtien}`, null)
       .then(()=> {
       updateData();
@@ -265,7 +224,6 @@ function App() {
     })
     .catch((err)=> console.log("Dell xoa duoc",err))
     } 
->>>>>>> dc00bc6beb73571b8130d604624a3824ca52127e
   }
   return (
     <Router>
