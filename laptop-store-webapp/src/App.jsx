@@ -29,6 +29,8 @@ import DonHang from "./Pages/DonHang";
 import call from "./API/API";
 import load from "./Images/load.gif"
 import GioHangCss from "./CSS/GioHangCss.css"
+import Headphone from "./Pages/Products/ProductsHeadphone/Headphone";
+import DetailProductsHeadphone from "./Pages/Products/ProductsHeadphone/DetailProductsHeadphone";
 
 
 function App() {
@@ -171,8 +173,8 @@ function App() {
       .then(res => {
         if(res.status === 201){
            console.log("Da them vao gio hang",user.id,idProduct,price); 
-           updateData();
-           showLoadAddCart()
+             showLoadAddCart();
+             updateData();
         }
         else alert("không thể thêm vào giỏ hàng");
       }).catch(err => console.log("Add cart failed"));
@@ -187,7 +189,7 @@ function App() {
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'CC chứ xóa, mua đi đmm'
+      confirmButtonText: 'Okay'
     }).then((result) => {
       if (result.isConfirmed) {
         axios.delete(`https://localhost:44343/data/cartdetail/iduser=${iduser}/idproduct=${idpro}`,null)
@@ -197,8 +199,7 @@ function App() {
       .catch((err)=> 
       console.log("Dell xoa duoc",err))
         Swal.fire(
-          'Đã xóa',
-          'Mẹ m được lắm'
+          'Đã xóa'
         )
       }
     })
@@ -241,6 +242,10 @@ function App() {
             <Route path="/screen"                         exact component={() => <Screen addProductToCart={addProductToCart} />}></Route>
             <Route path="/screen/:attribute/:value"       exact component={(match) => <Screen match={match} addProductToCart={addProductToCart} />}></Route>
             <Route path="/screen/:attribute/:from/:to"    exact component={(match) => <Screen match={match} addProductToCart={addProductToCart} />}></Route>
+            
+            <Route path="/headphone"                         exact component={() => <Headphone addProductToCart={addProductToCart} />}></Route>
+            <Route path="/headphone/:attribute/:value"       exact component={(match) => <Headphone match={match} addProductToCart={addProductToCart} />}></Route>
+            <Route path="/headphone/:attribute/:from/:to"    exact component={(match) => <Headphone match={match} addProductToCart={addProductToCart} />}></Route>
 
 
             <Route path="/pc"                             exact component={() =>         <PC addProductToCart={addProductToCart} />}></Route>
@@ -252,6 +257,7 @@ function App() {
             <Route path="/laptop/:id"                     exact component={(match) => <DetailProductsLaptop addProductToCart={addProductToCart} match={match} />}></Route>
             <Route path="/keyboard/:id"                   exact component={(match) => <DetailProductsKeyboard addProductToCart={addProductToCart}  match={match} />} ></Route>
             <Route path="/screen/:id"                     exact component={(match) => <DetailProductsScreen addProductToCart={addProductToCart} match={match} />}></Route>
+            <Route path="/headphone/:id"                  exact component={(match) => <DetailProductsHeadphone addProductToCart={addProductToCart} match={match} />}></Route>
             <Route path="/mouse/:id"                      exact component={(match) => <DetailProductsMouse addProductToCart={addProductToCart} match={match} />}></Route>
             
             <Route path="/cart"                           exact component={() => <GioHang 

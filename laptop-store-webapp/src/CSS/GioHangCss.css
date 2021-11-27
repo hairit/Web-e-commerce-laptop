@@ -57,7 +57,13 @@
   margin-right: 8px;
 }
 .home-icon img {
-  width: 100%;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  position: absolute;
+  width: 62%;
 }
 .title-carticon {
   background-color: white;
@@ -72,12 +78,13 @@
   font-weight: 400;
 }
 .img-backhome {
+  position: relative;
   background-color: white;
   border: 1px solid rgb(212, 212, 212);
-  border-radius: 36px;
+  border-radius: 50%;
   margin-right: 8px;
   padding: 10px;
-  width: 3.4%;
+  width: 3.5%;
 }
 .title-cart {
   margin: 15px 0 15px 0;
