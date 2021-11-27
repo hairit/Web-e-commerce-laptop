@@ -150,7 +150,7 @@ function App() {
   
   const addQuantityProduct = (idProduct , price )=>{
     setTimeout(()=>{
-    setLoading(false);
+      setLoading(false);
     }, 900)
     axios.get(`https://localhost:44343/data/cartdetail/action=add/iduser=${user.id}/idproduct=${idProduct}/tongtien=${price}`,null)
       .then(res => {
@@ -161,29 +161,42 @@ function App() {
           setLoading(true);
         }
         else alert("không thể thêm vào giỏ hàng");
-      }).catch(err => console.log("Add cart failed"));
-  }
-
-
-  const addProductToCart = (idProduct , price )=>{
-    if(user === null)
-    {
-      alert("Bạn cần đăng nhập để thêm sản phẩm vào giỏ hàng");
+      }).catch(() => console.log("Add cart failed"));
+      setLoading(true);
     }
-    else{
-    axios.get(`https://localhost:44343/data/cartdetail/action=add/iduser=${user.id}/idproduct=${idProduct}/tongtien=${price}`,null)
-      .then(res => {
-        if(res.status === 201){
-           console.log("Da them vao gio hang",user.id,idProduct,price); 
-             showLoadAddCart();
-             updateData();
-        }
-        else alert("không thể thêm vào giỏ hàng");
-      }).catch(err => console.log("Add cart failed"));
-    }
+  const addProductToCart = useCallback(
+    (user,idProduct,price)=>{
+      if(user === null)
+      {
+        alert("Bạn cần đăng nhập để thêm sản phẩm vào giỏ hàng");
+      }
+      else{
+      axios.get(`https://localhost:44343/data/cartdetail/action=add/iduser=${user.id}/idproduct=${idProduct}/tongtien=${price}`,null)
+        .then(res => {
+          if(res.status === 201){
+              if(!checkExistCartDetail(res.data.idProduct)){
+                  cartDetails.current.push(res.data);
+                  document.getElementById("quantity-cartdetails-user").textContent = cartDetails.current.length
+                  document.getElementById("quantity-cartdetails-user").style.display = 'block';
+
+              }
+              showLoadAddCart()
+              console.log(cartDetails.current.length);
+          }
+          else alert("không thể thêm vào giỏ hàng");
+        }).catch((err) => console.log("Add cart failed"+err));
+      }
+    },
+    [],
+  )
+  console.log(cartDetails.current);
+  const checkExistCartDetail = (idProduct) => {
+      var exist = false;
+      cartDetails.current.forEach(element => {
+          if(element.idProduct === idProduct) exist = true;
+      });
+      return exist;
   }
-
-
   const deleteCartItem = (iduser,idpro)=>{
     Swal.fire({
       title: 'Bạn muốn xóa sản phẩm khỏi giỏ hàng ?',
@@ -207,8 +220,6 @@ function App() {
       }
     })
   }
-
-
   const deleteProductFromCart=(iduser, idpro, thanhtien,quantity) => {
     if(quantity <= 1){
       deleteCartItem(iduser, idpro)
