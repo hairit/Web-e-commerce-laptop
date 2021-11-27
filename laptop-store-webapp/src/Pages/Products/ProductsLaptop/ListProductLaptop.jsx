@@ -13,15 +13,11 @@ import {
 import Solver from "../../../Classes/Solver";
 import axios from "axios";
 
-export default function ListProductLaptop({pros,addProductToCart}) {
+export default function ListProductLaptop({pros,addProductInCart}) {
   const history = useHistory();
   const solver = new Solver();
   function handleViewDetails(detail) {
     history.push(`/laptop/${detail.id}`);
-  }
-  function addProductInCart(id,gia){
-    addProductToCart(id,gia)
-    // alert("Đã thêm sản phẩm vào giỏ hàng")
   }
   console.log('lololo',pros)
   return (

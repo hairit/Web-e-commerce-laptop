@@ -13,9 +13,10 @@ import AcerLogo1 from "../../../Images/AcerLogo1.png"
 import DareuLogo1 from "../../../Images/DareuLogo1.png"
 import { useHistory } from "react-router-dom";
 const solver = new Solver();
-export default function Laptops({match,addProductToCart}) {
+export default function Laptops({idUser,match,addProductToCart}) {
   const history = useHistory();
   const [pros, setPros] = useState([]);
+  const [user, setUser] = useState(null);
   const [sort, setSort] = useState();
   useEffect(() => {
     if(match !== undefined){
@@ -33,7 +34,9 @@ export default function Laptops({match,addProductToCart}) {
       .then((res) => setPros(res.data))
       .catch((err) => console.log(err));
   }, []);
-  
+  function addProductInCart(id,gia){
+    addProductToCart(idUser,id,gia);
+  }
   return (
     <div className="wrapper">
       <div className="container_fullwidth">
@@ -156,7 +159,7 @@ export default function Laptops({match,addProductToCart}) {
           <div className="row">
             <div className="col-md-9 prolst">
               <div className="products-grid lstlaptop">
-                <ListProductLaptop pros={pros}  addProductToCart={addProductToCart} />
+                <ListProductLaptop pros={pros}  addProductInCart={addProductInCart} />
               </div>
               <div className="toolbar">
                 <div className="pager">

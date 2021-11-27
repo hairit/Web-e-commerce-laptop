@@ -12,14 +12,11 @@ import {
 } from "react-router-dom";
 import Solver from "../../../Classes/Solver";
 
-export default function ListProductKeyboard({ pros,addProductToCart }) {
+export default function ListProductKeyboard({ pros,addProductInCart }) {
   const history = useHistory();
   const solver = new Solver();
   function handleViewDetails(detail) {
     history.push(`/keyboard/${detail.id}`);
-  }
-  function addProductInCart(id,gia){
-    addProductToCart(id,gia)
   }
   return (
     <div className="row prolst">

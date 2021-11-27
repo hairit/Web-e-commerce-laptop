@@ -7,14 +7,11 @@ import { withRouter } from "react-router";
 
 import Solver from "../../../Classes/Solver";
 
-export default function ListProductPC({ pros,addProductToCart }) {
+export default function ListProductPC({ pros,addProductInCart }) {
   const history = useHistory();
   const solver = new Solver();
   function handleViewDetails(detail) {
     history.push(`/pc/${detail.id}`);
-  }
-  function addProductInCart(id,gia){
-    addProductToCart(id,gia)
   }
   return (
     <div className="row prolst">

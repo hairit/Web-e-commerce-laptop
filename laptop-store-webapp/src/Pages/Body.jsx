@@ -29,19 +29,12 @@ const styleUnBlur ={
 function Body({idUser,addProductToCart,blur}) {
     const [user, setUser] = useState(null)
     const [display, setDisplay] = useState(false);
-    useEffect(() => {
-        window.addEventListener('scroll',changeStatusRightItem);
-        if(idUser !== null) {
-        axios.get(`https://localhost:44343/data/user/${idUser}`,null)
-            .then(res => setUser(res.data)).catch(()=>setUser(null))
-    }
-    }, [])
     const changeStatusRightItem = () => {
         if(window.scrollY >= 400) setDisplay(true);
         else setDisplay(false);
     }
     const addCart=(idProduct,priceProduct) =>{
-        addProductToCart(user,idProduct,priceProduct);
+        addProductToCart(idUser,idProduct,priceProduct);
     }
     return(
         <div className="body" style={blur===false?styleUnBlur:styleBlur}>

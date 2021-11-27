@@ -37,7 +37,7 @@ import PostsKeyboard from "./PostsKeyboard";
 //   }, []);
 // };
 
-export default function DetailProductsKeyboard({ match, addProductToCart }) {
+export default function DetailProductsKeyboard({idUser, match, addProductToCart }) {
   const solver = new Solver();
   const [detail, setDetail] = useState({});
   useEffect(() => {
@@ -208,13 +208,13 @@ export default function DetailProductsKeyboard({ match, addProductToCart }) {
                   </div>
                   <div className="button-gr">
                     <NavLink to="/cart">
-                    <button type="button" className="btn btn-primary btn-buy" onClick={() => addProductToCart(detail.id,detail.gia)}>
+                    <button type="button" className="btn btn-primary btn-buy" onClick={() => addProductToCart(idUser,detail.id,detail.gia)}>
                       MUA NGAY
                     </button>
                     </NavLink>
                     <button
                       type="button"
-                      className="btn btn-outline-primary btn-cart" onClick={() => addProductToCart(detail.id,detail.gia)}>
+                      className="btn btn-outline-primary btn-cart" onClick={() => addProductToCart(idUser,detail.id,detail.gia)}>
                       THÊM VÀO GIỎ HÀNG
                     </button>
                   </div>

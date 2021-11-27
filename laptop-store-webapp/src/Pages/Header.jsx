@@ -183,7 +183,7 @@ export default function Header({ user , logout, clickblur , updateData }){
   }
   return (
     <div className="header">
-      <div className={statusHeader === false ? "header-top" : "header-top-hide"}>
+      <div className="header-top">
         <NavLink className="header-top-item" to="/tincongnghe">
           <RiComputerFill className="header-top-item-icon" />
           <p className="header-top-item-content">Tin công nghệ</p>
@@ -201,6 +201,7 @@ export default function Header({ user , logout, clickblur , updateData }){
           <p className="header-top-item-content">Hệ thống showroom</p>
         </NavLink>
       </div>
+      <div className="header-center-container">
       <div className={statusHeader === false ? "header-center header-item" : "header-center-scroll"}>
         <div className="header-center-left">
           <NavLink to="/" className="home">
@@ -273,7 +274,8 @@ export default function Header({ user , logout, clickblur , updateData }){
           </NavLink>
         </div>
       </div>
-      <div className={statusHeader === false ? "header-bottom" : "header-bottom-hide"}>
+      </div>
+      <div className="header-bottom">
         <div className="container12Col wide">
             <div className="row-12-no-margin">
               <div className="col c-2 header-bottom-item header-bottom-item-menu"><BiMenuAltLeft className="header-bottom-item-img"/> Danh mục sản phẩm</div>

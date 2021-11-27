@@ -53,3 +53,109 @@
     border-radius: 50%;
     cursor:pointer;
 }
+.avatar
+{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+.user-menu {
+    position: absolute;
+    top: 40px;
+    right: 0;
+    background-color: #ffffff;
+    border-radius: 5px;
+    padding: 5px 5px;
+    align-items: center;
+    background-color: #eeeee4;
+    box-shadow: #f8f8fc 2px;
+    color: #000000;
+    width: 300px;
+    transition: 0.5s;
+    height: auto;
+    z-index: 5;
+  }
+  .user-menu-hide {
+    position: absolute;
+    height: 0;
+    width: 0;
+    overflow: hidden;
+    top: 40px;
+    right: 0;
+    transition: 0.5s;
+  }
+  .user-menu-avatar {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100px;
+    width: 100px;
+    border-radius: 100%;
+    margin-bottom: 10px;
+  }
+  .user-menu-button {
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    text-align: center;
+    width: 100%;
+    background-color: #3f4fc3;
+    padding: 10px 0;
+    font-weight: 500;
+    color: #ffffff;
+    margin-bottom: 10px;
+  }
+  .user-menu-button::after {
+    margin-bottom: 10px;
+  }
+  .user-menu-login-text {
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  .user-menu-input {
+    width: 100%;
+    outline: none;
+    border: 0.1px solid #dfdfe0;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding-left: 8px;
+    height: 30px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  .user-menu-page {
+    display: block;
+  }
+  .user-menu-page-hide {
+    display: none;
+  }
+  .change-pass {
+    display: block;
+  }
+  .user-menu-info {
+    display: grid;
+  }
+  .user-info-item {
+    display: table;
+  }
+  .user-info-item {
+    display: inline;
+  }
+  .user-info-lable-item {
+    text-align: center;
+    font-weight: bold;
+    color: #3f51b5;
+  }
+  .user-info-label {
+    float: left;
+    font-size: 16px;
+    color: #000000;
+  }
+  .user-menu-label {
+    text-align: center;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }

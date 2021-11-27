@@ -10,7 +10,7 @@ import AcerLogo1 from "../../../Images/AcerLogo1.png"
 import DareuLogo1 from "../../../Images/DareuLogo1.png"
 import { useEffect, useState } from "react";
 import ListProductKeyboard from "./ListProductScreen";
-export default function Screen({match,addProductToCart}) {
+export default function Screen({idUser,match,addProductToCart}) {
   const [pros, setPros] = useState([]);
   useEffect(() => {
     var API;
@@ -28,6 +28,10 @@ export default function Screen({match,addProductToCart}) {
       .then((res) => setPros(res.data))
       .catch((err) => console.log(err));
   }, []);
+
+  function addProductInCart(id,gia){
+    addProductToCart(idUser,id,gia)
+  }
   return (
     <div className="wrapper">
       <div className="container_fullwidth">
@@ -121,7 +125,7 @@ export default function Screen({match,addProductToCart}) {
           <div className="row">
             <div className="col-md-9 prolst">
               <div className="products-grid lstlaptop">
-                <ListProductKeyboard addProductToCart={addProductToCart} pros={pros} />
+                <ListProductKeyboard addProductInCart={addProductInCart} pros={pros} />
               </div>
               <div className="toolbar">
                 <div className="pager">
