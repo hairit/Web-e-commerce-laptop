@@ -1,63 +1,57 @@
 import React from "react";
 import axios from "axios";
-import URL from '../../../DATA/URL'
+import URL from "../../../DATA/URL";
 import "../../../CSS/ProductsCss/bootstrap.css";
 import "../../../CSS/ProductsCss/style.css";
-import { useEffect, useState } from "react";
-import ListProductLaptop from "./ListProductLaptop";
-import Solver from "../../../Classes/Solver";
 import AsusLogo1 from "../../../Images/AsusLogo1.png"
 import DellLogo1 from "../../../Images/DellLogo1.png"
 import HPLogo1 from "../../../Images/HPLogo1.png"
 import AcerLogo1 from "../../../Images/AcerLogo1.png"
 import DareuLogo1 from "../../../Images/DareuLogo1.png"
-import { useHistory } from "react-router-dom";
-const solver = new Solver();
-export default function Laptops({match,addProductToCart}) {
-  const history = useHistory();
+import { useEffect, useState } from "react";
+import ListProductHeadphone from "./ListProductHeadphone";
+export default function Headphone({match,addProductToCart}) {
   const [pros, setPros] = useState([]);
-  const [sort, setSort] = useState();
   useEffect(() => {
+    var API;
     if(match !== undefined){
-      var API;
-      if(match.match.params.attribute === "gia") {
-        API = `${URL}/data/product/type=laptop/from=${match.match.params.from}to=${match.match.params.to}`;
+      if(match.match.params.attribute !== "kichthuoc" && match.match.params.attribute !== "gia") {
+            API = `${URL}/data/headphone/${match.match.params.attribute}=${match.match.params.value}`
+      }else if(match.match.params.attribute === "kichthuoc"){
+            API = `${URL}/data/headphone/kichthuoc/from=${match.match.params.from}to=${match.match.params.to}`;
+      }else if(match.match.params.attribute === "gia"){
+            API = `${URL}/data/product/type=headphone/from=${match.match.params.from}to=${match.match.params.to}`;
       }
-      else if(match.match.params.attribute !== "gia") {
-        API =  `${URL}/data/laptop/${match.match.params.attribute}=${match.match.params.value}`;
-      }
-    }
-    else API = "https://localhost:44343/data/Product/type=laptop";
+    }else API = "https://localhost:44343/data/Product/type=headphone"; 
     axios
-      .get(API, null)
+      .get(API, null) //Default value "https://localhost:44343/data/Product/type=screen"
       .then((res) => setPros(res.data))
       .catch((err) => console.log(err));
   }, []);
-  // useEffect(() => {
-  //   axios
-  //     .get("https://localhost:44343/data/Product/type=laptop", null)
-  //     .then((res) => setPros(res.data))
-  //     .catch((err) => console.log(err));
-  // }, []);
-  // function sortBrand(e) {
-  //   const url = "/laptop/brand/"
-  //   if(e.target.value === "dell"){
-  //     setSort("DELL")
-  //     history.push( url + sort)
-  //   }
-  // }
   return (
     <div className="wrapper">
       <div className="container_fullwidth">
         <div className="col-md-12 leftp">
           <div className="banner">
             <div className="bannerslide" id="bannerslide">
-              <a href="#">
-                <img
-                  src="https://lh3.googleusercontent.com/fYdGt5_-5ZV4eLU5y3PavUiyFpIxgqIaS1L_d4paiFiT7a2rS3oOrgoHvbvozhOllxuWz_Xo2xVq8U0yng0-nXqyDwnNBMw1PA=w1920-rw"
-                  alt=""
-                />
-              </a>
+              <ul className="slides">
+                <li>
+                  <a href="#">
+                    <img
+                      src="https://lh3.googleusercontent.com/fYdGt5_-5ZV4eLU5y3PavUiyFpIxgqIaS1L_d4paiFiT7a2rS3oOrgoHvbvozhOllxuWz_Xo2xVq8U0yng0-nXqyDwnNBMw1PA=w1920-rw"
+                      alt=""
+                    />
+                  </a>
+                </li>
+                {/* <li>
+                    <a href="#">
+                      <img
+                        src="https://lh3.googleusercontent.com/2B5ELE4a1XSWf4ngIKoKYfcessffjFjP-uqdPuCVs62ZGku-TGAEeKIDuiQun3yK4W0t2BbMJIRJT2VG7J1jfcIPZqIm7sdlLA=rw-w1920"
+                        alt=""
+                      />
+                    </a>
+                  </li> */}
+              </ul>
             </div>
           </div>
         </div>
@@ -72,76 +66,60 @@ export default function Laptops({match,addProductToCart}) {
                 <div className="loc">
                   <div className="title-sort">Thương hiệu</div>
                   <div className="btn-right">
-                    <button type="button" className="btn-sort" >
-                      Asus
-                    </button>
-                    <button type="button" className="btn-sort" >
-                      Dell
+                    <button type="button" className="btn-sort">
+                    SOUNDMAX
                     </button>
                     <button type="button" className="btn-sort">
-                      HP
+                    Audio-technica
                     </button>
                     <button type="button" className="btn-sort">
-                      Acer
+                    Ovan
+                    </button>
+                    <button type="button" className="btn-sort">
+                    Logitech
+                    </button>
+                    <button type="button" className="btn-sort">
+                    Khác
                     </button>
                   </div>
                 </div>
                 <div className="loc">
-                  <div className="title-sort">CPU</div>
+                  <div className="title-sort">Màu</div>
                   <div className="btn-right">
-                    <button type="button" className="btn-sort">
-                      Corei3
+                  <button type="button" className="btn-sort">
+                    Xanh
                     </button>
                     <button type="button" className="btn-sort">
-                      Corei5
+                    Xanh dương
                     </button>
                     <button type="button" className="btn-sort">
-                      Corei7
+                    Xanh, đen
                     </button>
                     <button type="button" className="btn-sort">
-                      Corei9
+                    Vàng, đen
+                    </button>
+                    <button type="button" className="btn-sort">
+                    Đen
+                    </button>
+                    <button type="button" className="btn-sort">
+                    Trắng
+                    </button>
+                    <button type="button" className="btn-sort">
+                    Nâu
                     </button>
                   </div>
                 </div>
-
                 <div className="loc">
-                  <div className="title-sort">Ram</div>
+                  <div className="title-sort">Năm sản xuất</div>
                   <div className="btn-right">
                     <button type="button" className="btn-sort">
-                      4GB
+                      2019
                     </button>
                     <button type="button" className="btn-sort">
-                      8GB
+                      2020
                     </button>
                     <button type="button" className="btn-sort">
-                      16GB
-                    </button>
-                  </div>
-                </div>
-
-                <div className="loc">
-                  <div className="title-sort">VAG</div>
-                  <div className="btn-right">
-                    <button type="button" className="btn-sort">
-                      NVIDIA
-                    </button>
-                  </div>
-                </div>
-
-                <div className="loc">
-                  <div className="title-sort">Màn hình</div>
-                  <div className="btn-right">
-                    <button type="button" className="btn-sort">
-                      13.3 inch
-                    </button>
-                    <button type="button" className="btn-sort">
-                      14 inch
-                    </button>
-                    <button type="button" className="btn-sort">
-                      15 inch
-                    </button>
-                    <button type="button" className="btn-sort">
-                      15.6 inch
+                      2021
                     </button>
                   </div>
                 </div>
@@ -168,7 +146,7 @@ export default function Laptops({match,addProductToCart}) {
           <div className="row">
             <div className="col-md-9 prolst">
               <div className="products-grid lstlaptop">
-                <ListProductLaptop pros={pros}  addProductToCart={addProductToCart} />
+                <ListProductHeadphone addProductToCart={addProductToCart} pros={pros} />
               </div>
               <div className="toolbar">
                 <div className="pager">
@@ -194,28 +172,19 @@ export default function Laptops({match,addProductToCart}) {
             </h3>
             <ul>
               <li>
-                <a href="#">Laptop Asus</a>
+                <a href="#">Màn hình</a>
               </li>
               <li>
-                <a href="#">Laptop Dell</a>
+                <a href="#">Màn hình đẹp</a>
               </li>
               <li>
-                <a href="#">Laptop sinh viên</a>
+                <a href="#">Màn hình HD</a>
               </li>
               <li>
-                <a href="#">Laptop giá rẻ</a>
+                <a href="#">Màn hình LCD</a>
               </li>
               <li>
-                <a href="#">Laptop Gaming</a>
-              </li>
-              <li>
-                <a href="#">Bàn phím cơ</a>
-              </li>
-              <li>
-                <a href="#">Bàn phím Gaming</a>
-              </li>
-              <li>
-                <a href="#">Bàn phím giá rẻ</a>
+                <a href="#">Màn hình giá rẻ</a>
               </li>
             </ul>
           </div>

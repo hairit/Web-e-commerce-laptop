@@ -6,14 +6,13 @@ import GioHangCss from "../CSS/GioHangCss.css";
 import LogoFT from "../Images/LogoFT.png";
 import { NavLink } from "react-router-dom";
 import home from "../Images/home.png"
-
+import { useHistory } from "react-router-dom";
 import tk_shopping_img from "../Images/tk_shopping_img.png";
 import { useEffect, useState } from "react";
 import ThanhToan from "./ThanhToan";
 export default function GioHang({ idUser,addQuantityProduct, deleteCartItem ,deleteProductFromCart , createBill}) {
   const solver = new Solver();
-  // const buttonRef = useRef();
-  // const [tongtien, setTongtien] = useState(0);
+  const history = useHistory();
   const [cartDetails, setCartDetails] = useState([]);
   const [loading , setLoading] = useState(true);
   const [reload, setReload] = useState(0);
@@ -112,7 +111,19 @@ useEffect(() => {
       )
     }
   }
- 
+  function handleViewDetails(detail) {
+    if(detail.idProductNavigation.idloai === "laptop"){
+    history.push(`/laptop/${detail.idProduct}`);
+    } else if(detail.idProductNavigation.idloai === "keyboard"){
+        history.push(`/keyboard/${detail.idProduct}`);
+      }else if(detail.idProductNavigation.idloai === "screen"){
+          history.push(`/screen/${detail.idProduct}`);
+        }else if(detail.idProductNavigation.idloai === "mouse"){
+           history.push(`/mouse/${detail.idProduct}`);
+         }else{
+            history.push(`/pc/${detail.idProduct}`);
+          }
+  }
 //   if(cartDetails.selected === 1){
 //     document.getElementById("check-item").checked = true;
 // }
@@ -149,14 +160,14 @@ useEffect(() => {
                         <div className="info-image">
                           <div className="img-name">
                             <a>
-                              <div className="imag">
+                              <div className="imag" onClick={() => handleViewDetails(item)}>
                                 <img
                                   src={`https://localhost:44343/Images/Products/${item.idProductNavigation.nameimage}`}
-                                alt=""/>
+                                alt="img laptop"/>
                               </div>
                             </a>
-                            <div className="name">
-                              <a href="#">{item.idProductNavigation.ten}</a>
+                            <div className="name" onClick={() => handleViewDetails(item)}>
+                              <a>{item.idProductNavigation.ten}</a>
                               <div className="">ID: {item.idProduct}</div>
                               <div className="">Loại: {item.idProductNavigation.idloaiNavigation.ten}</div>
                             </div>

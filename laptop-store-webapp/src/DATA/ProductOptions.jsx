@@ -909,7 +909,7 @@ const PRODUCT_OPTIONS = [
   },
   {
     optionName: "Tai nghe",
-    path: "",
+    path: "/headphone",
     icon: () => {
       return <BsHeadphones className="pro-list-item-icon" />;
     },

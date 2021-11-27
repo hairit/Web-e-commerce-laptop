@@ -28,6 +28,8 @@ import DonHang from "./Pages/DonHang";
 import call from "./API/API";
 import load from "./Images/load.gif"
 import GioHangCss from "./CSS/GioHangCss.css"
+import Headphone from "./Pages/Products/ProductsHeadphone/Headphone";
+import DetailProductsHeadphone from "./Pages/Products/ProductsHeadphone/DetailProductsHeadphone";
 
 
 function App() {
@@ -144,18 +146,22 @@ function App() {
       <div></div>
     }
   }
+
+  
   const addQuantityProduct = (idProduct , price )=>{
     setTimeout(()=>{
-      axios.get(`https://localhost:44343/data/cartdetail/action=add/iduser=${user.id}/idproduct=${idProduct}/tongtien=${price}`,null)
+    setLoading(false);
+    }, 900)
+    axios.get(`https://localhost:44343/data/cartdetail/action=add/iduser=${user.id}/idproduct=${idProduct}/tongtien=${price}`,null)
       .then(res => {
         console.log(res);
         if(res.status === 201){
-           console.log("Da them vao gio hang",user.id,idProduct,price); 
-           updateData();
-           setLoading(false);
-          //  showLoadAddCart()
+          console.log("Da them vao gio hang",user.id,idProduct,price); 
+          updateData();
+          setLoading(true);
         }
         else alert("không thể thêm vào giỏ hàng");
+<<<<<<< HEAD
       }).catch(() => console.log("Add cart failed"));
     }, 700)
     setLoading(true);
@@ -190,7 +196,31 @@ function App() {
           if(element.idProduct === idProduct) exist = true;
       });
       return exist;
+=======
+      }).catch(err => console.log("Add cart failed"));
   }
+
+
+  const addProductToCart = (idProduct , price )=>{
+    if(user === null)
+    {
+      alert("Bạn cần đăng nhập để thêm sản phẩm vào giỏ hàng");
+    }
+    else{
+    axios.get(`https://localhost:44343/data/cartdetail/action=add/iduser=${user.id}/idproduct=${idProduct}/tongtien=${price}`,null)
+      .then(res => {
+        if(res.status === 201){
+           console.log("Da them vao gio hang",user.id,idProduct,price); 
+             showLoadAddCart();
+             updateData();
+        }
+        else alert("không thể thêm vào giỏ hàng");
+      }).catch(err => console.log("Add cart failed"));
+    }
+>>>>>>> dc00bc6beb73571b8130d604624a3824ca52127e
+  }
+
+
   const deleteCartItem = (iduser,idpro)=>{
     Swal.fire({
       title: 'Bạn muốn xóa sản phẩm khỏi giỏ hàng ?',
@@ -198,7 +228,7 @@ function App() {
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'CC chứ xóa, mua đi đmm'
+      confirmButtonText: 'Okay'
     }).then((result) => {
       if (result.isConfirmed) {
         axios.delete(`https://localhost:44343/data/cartdetail/iduser=${iduser}/idproduct=${idpro}`,null)
@@ -209,27 +239,33 @@ function App() {
       .catch((err)=> 
       console.log("Dell xoa duoc",err))
         Swal.fire(
-          'Đã xóa',
-          'Mẹ m được lắm'
+          'Đã xóa'
         )
       }
     })
   }
+
+
   const deleteProductFromCart=(iduser, idpro, thanhtien,quantity) => {
     if(quantity <= 1){
       deleteCartItem(iduser, idpro)
     }
     else{
       setTimeout(() =>{
-        axios.get(`https://localhost:44343/data/cartdetail/action=delete/iduser=${iduser}/idproduct=${idpro}/tongtien=${thanhtien}`, null)
-      .then(()=> {
-        updateData();
-        setLoading(false);
-      })
-      .catch((err)=> console.log("Dell xoa duoc",err))
+      setLoading(false);
       },700)
+<<<<<<< HEAD
       setLoading(true)
     }
+=======
+      axios.get(`https://localhost:44343/data/cartdetail/action=delete/iduser=${iduser}/idproduct=${idpro}/tongtien=${thanhtien}`, null)
+      .then(()=> {
+      updateData();
+      setLoading(true);
+    })
+    .catch((err)=> console.log("Dell xoa duoc",err))
+    } 
+>>>>>>> dc00bc6beb73571b8130d604624a3824ca52127e
   }
   return (
     <Router>
@@ -250,6 +286,10 @@ function App() {
             <Route path="/screen"                         exact component={() => <Screen addProductToCart={addProductToCart} />}></Route>
             <Route path="/screen/:attribute/:value"       exact component={(match) => <Screen match={match} addProductToCart={addProductToCart} />}></Route>
             <Route path="/screen/:attribute/:from/:to"    exact component={(match) => <Screen match={match} addProductToCart={addProductToCart} />}></Route>
+            
+            <Route path="/headphone"                         exact component={() => <Headphone addProductToCart={addProductToCart} />}></Route>
+            <Route path="/headphone/:attribute/:value"       exact component={(match) => <Headphone match={match} addProductToCart={addProductToCart} />}></Route>
+            <Route path="/headphone/:attribute/:from/:to"    exact component={(match) => <Headphone match={match} addProductToCart={addProductToCart} />}></Route>
 
 
             <Route path="/pc"                             exact component={() =>         <PC addProductToCart={addProductToCart} />}></Route>
@@ -261,6 +301,7 @@ function App() {
             <Route path="/laptop/:id"                     exact component={(match) => <DetailProductsLaptop addProductToCart={addProductToCart} match={match} />}></Route>
             <Route path="/keyboard/:id"                   exact component={(match) => <DetailProductsKeyboard addProductToCart={addProductToCart}  match={match} />} ></Route>
             <Route path="/screen/:id"                     exact component={(match) => <DetailProductsScreen addProductToCart={addProductToCart} match={match} />}></Route>
+            <Route path="/headphone/:id"                  exact component={(match) => <DetailProductsHeadphone addProductToCart={addProductToCart} match={match} />}></Route>
             <Route path="/mouse/:id"                      exact component={(match) => <DetailProductsMouse addProductToCart={addProductToCart} match={match} />}></Route>
 
             <Route path="/cart"                           exact component={() => <GioHang

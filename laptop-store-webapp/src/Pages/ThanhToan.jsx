@@ -82,6 +82,8 @@ export default function ThanhToan({idUser,order,updateData}) {
       console.log("Lỗi con mẹ nó rồi", err)
     })
   }
+
+
   function savePhoneAddress(e) {
     e.preventDefault();
     axios.put("https://localhost:44343/data/user/", {

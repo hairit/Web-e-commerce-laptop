@@ -259,7 +259,6 @@ D:\Do an web\Web-e-commerce-laptop\Laptop-store-e-commerce (Server)\Laptop-store
 D:\Do an web\Web-e-commerce-laptop\Laptop-store-e-commerce (Server)\Laptop-store-e-comerce\obj\Debug\net5.0\staticwebassets\Laptop-store-e-comerce.StaticWebAssets.xml
 D:\Do an web\Web-e-commerce-laptop\Laptop-store-e-commerce (Server)\Laptop-store-e-comerce\obj\Debug\net5.0\scopedcss\bundle\Laptop-store-e-comerce.styles.css
 D:\Do an web\Web-e-commerce-laptop\Laptop-store-e-commerce (Server)\Laptop-store-e-comerce\obj\Debug\net5.0\Laptop-store-e-comerce.RazorTargetAssemblyInfo.cache
-D:\Do an web\Web-e-commerce-laptop\Laptop-store-e-commerce (Server)\Laptop-store-e-comerce\obj\Debug\net5.0\Laptop-store-e-comerce.csproj.CopyComplete
 D:\Do an web\Web-e-commerce-laptop\Laptop-store-e-commerce (Server)\Laptop-store-e-comerce\obj\Debug\net5.0\Laptop-store-e-comerce.dll
 D:\Do an web\Web-e-commerce-laptop\Laptop-store-e-commerce (Server)\Laptop-store-e-comerce\obj\Debug\net5.0\ref\Laptop-store-e-comerce.dll
 D:\Do an web\Web-e-commerce-laptop\Laptop-store-e-commerce (Server)\Laptop-store-e-comerce\obj\Debug\net5.0\Laptop-store-e-comerce.pdb

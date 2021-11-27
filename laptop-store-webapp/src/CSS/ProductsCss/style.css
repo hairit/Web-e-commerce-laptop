@@ -178,6 +178,7 @@ img {
 } */
 .thumbnail {
   float: left;
+  min-height: 29.5rem;
   position: relative;
   width: 100%;
   margin: 0;
