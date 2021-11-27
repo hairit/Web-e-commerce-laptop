@@ -33,28 +33,7 @@ useEffect(() => {
       .catch((err) => setCartDetails([]) );
   }
 }, [reload]);
-  const noneCartNotification = () => {
-    if(cartDetails.length === 0){
-      setLoading(true);
-      return (
-        <div className="centerp">
-              <div className="center-car">
-              <div className="product-none">
-                <img src={tk_shopping_img} />
-                <p> Bạn chưa có sản phẩm trong giỏ hàng</p>
-              </div>
-              <div className="btn-backhome">
-                <NavLink className="btn-backhome" to="/">
-                  <button type="button" className="btn btn-home">
-                    Tiếp tục mua sắm
-                  </button>
-                </NavLink>
-              </div>
-              </div>
-            </div>
-      )
-    }
-  }
+  
   useEffect(() => {
     if(cartDetails.count > 0) setLoading(false);
   }, [cartDetails])

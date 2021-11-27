@@ -33,19 +33,7 @@ export default function Laptops({match,addProductToCart}) {
       .then((res) => setPros(res.data))
       .catch((err) => console.log(err));
   }, []);
-  // useEffect(() => {
-  //   axios
-  //     .get("https://localhost:44343/data/Product/type=laptop", null)
-  //     .then((res) => setPros(res.data))
-  //     .catch((err) => console.log(err));
-  // }, []);
-  // function sortBrand(e) {
-  //   const url = "/laptop/brand/"
-  //   if(e.target.value === "dell"){
-  //     setSort("DELL")
-  //     history.push( url + sort)
-  //   }
-  // }
+  
   return (
     <div className="wrapper">
       <div className="container_fullwidth">

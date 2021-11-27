@@ -165,7 +165,7 @@ function App() {
       setLoading(true);
     }
   const addProductToCart = useCallback(
-    (user,idProduct,price)=>{
+    (idProduct,price)=>{
       if(user === null)
       {
         alert("Bạn cần đăng nhập để thêm sản phẩm vào giỏ hàng");
