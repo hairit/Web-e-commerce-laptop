@@ -58,15 +58,12 @@ useEffect(() => {
   useEffect(() => {
     if(cartDetails.count > 0) setLoading(false);
   }, [cartDetails])
-  
- 
   function thanhtien(prod){
     var tongtienSelect = 0;
     prod.forEach(prod => {
       if(prod.selected === 1){
         // btnPayment()
       tongtienSelect = prod.tongtien + tongtienSelect
-      
       }
     });
     return tongtienSelect;
@@ -75,23 +72,16 @@ useEffect(() => {
     if ( e.target.checked ) {
       axios.get(`https://localhost:44343/data/cartdetail/select=selected/iduser=${iduser}/idproduct=${idpro}`, null)
       .then(() => {
-        // setBtndis(true)
-        // setTongtien(tongtien + gia*quantity)
         reLoad();
       }).catch((err) => console.error("Không thể checker",err));
     } else {
       axios.get(`https://localhost:44343/data/cartdetail/select=unselected/iduser=${idUser}/idproduct=${idpro}`, null)
       .then(() => {
-        
-        // setTongtien(tongtien- gia*quantity);
-        // setTongtien(tongtien)
-        // {disableButton()}
         reLoad()
       })
       .catch((err) => console.error("Không thể unchecker",err));
     }
   }
-
   function btnThanhToan(){
     var tongprice = thanhtien(cartDetails)
     if(tongprice !== 0 ){
