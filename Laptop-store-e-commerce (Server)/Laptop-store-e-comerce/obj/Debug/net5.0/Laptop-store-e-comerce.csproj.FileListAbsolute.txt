@@ -40,7 +40,6 @@ D:\Data\Môn\Web-e-commerce-laptop\Laptop-store-e-commerce (Server)\Laptop-store
 D:\Data\Môn\Web-e-commerce-laptop\Laptop-store-e-commerce (Server)\Laptop-store-e-comerce\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
 D:\Data\Môn\Web-e-commerce-laptop\Laptop-store-e-commerce (Server)\Laptop-store-e-comerce\bin\Debug\net5.0\Newtonsoft.Json.dll
 D:\Data\Môn\Web-e-commerce-laptop\Laptop-store-e-commerce (Server)\Laptop-store-e-comerce\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
-D:\Data\Môn\Web-e-commerce-laptop\Laptop-store-e-commerce (Server)\Laptop-store-e-comerce\bin\Debug\net5.0\NuGet.Frameworks.dll
 D:\Data\Môn\Web-e-commerce-laptop\Laptop-store-e-commerce (Server)\Laptop-store-e-comerce\bin\Debug\net5.0\System.Composition.AttributedModel.dll
 D:\Data\Môn\Web-e-commerce-laptop\Laptop-store-e-commerce (Server)\Laptop-store-e-comerce\bin\Debug\net5.0\System.Composition.Convention.dll
 D:\Data\Môn\Web-e-commerce-laptop\Laptop-store-e-commerce (Server)\Laptop-store-e-comerce\bin\Debug\net5.0\System.Composition.Hosting.dll
@@ -263,3 +262,6 @@ D:\Do an web\Web-e-commerce-laptop\Laptop-store-e-commerce (Server)\Laptop-store
 D:\Do an web\Web-e-commerce-laptop\Laptop-store-e-commerce (Server)\Laptop-store-e-comerce\obj\Debug\net5.0\ref\Laptop-store-e-comerce.dll
 D:\Do an web\Web-e-commerce-laptop\Laptop-store-e-commerce (Server)\Laptop-store-e-comerce\obj\Debug\net5.0\Laptop-store-e-comerce.pdb
 D:\Do an web\Web-e-commerce-laptop\Laptop-store-e-commerce (Server)\Laptop-store-e-comerce\obj\Debug\net5.0\Laptop-store-e-comerce.genruntimeconfig.cache
+D:\Data\Môn\Web-e-commerce-laptop\Laptop-store-e-commerce (Server)\Laptop-store-e-comerce\bin\Debug\net5.0\Microsoft.Bcl.AsyncInterfaces.dll
+D:\Data\Môn\Web-e-commerce-laptop\Laptop-store-e-commerce (Server)\Laptop-store-e-comerce\bin\Debug\net5.0\runtimes\win-arm\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
+D:\Data\Môn\Web-e-commerce-laptop\Laptop-store-e-commerce (Server)\Laptop-store-e-comerce\bin\Debug\net5.0\runtimes\win-arm64\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
