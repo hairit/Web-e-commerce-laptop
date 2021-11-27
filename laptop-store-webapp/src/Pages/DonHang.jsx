@@ -14,7 +14,6 @@ export default function DonHang({idUser}) {
         .then((res) => setBills(res.data))
         .catch((err) =>console.error("Del mua ma doi co bill",err))
     },[])
-    console.log("dadada",bills);
     return (
         <div className="wrapper billInfo">
             <div className="container-bill">
@@ -37,6 +36,7 @@ export default function DonHang({idUser}) {
                                 </tr>
                             </thead>
                             {bills.map((bill,index) =>{
+                                console.log(bill.diachi);
                                 return (
                                     <tbody key={index}>
                                     <tr className="info-bill">

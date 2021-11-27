@@ -6,7 +6,7 @@ import URL from '../../DATA/URL';
 import Solver from '../../Classes/Solver';
 import '../../CSS/PCPanel.css'
 const solver= new Solver();
-const renderComputerItem = (pc ,index) => {
+const renderComputerItem = (pc ,index , addCart) => {
     return (
         <NavLink to="/" className="Col-10 c-10-2 pc-item" key={index}>
             <div className="pc-infor">
@@ -28,7 +28,7 @@ const renderComputerItem = (pc ,index) => {
     )
 }
 
-export default function PCPanel() {
+export default function PCPanel({addCart}) {
     const [pcs, setPcs] = useState([]);
     useEffect(() => {
         call('GET','data/product/type=pc/enable',null)
@@ -39,7 +39,7 @@ export default function PCPanel() {
         <div className="panel-pc">
             <div className="container10Col pc-container wide">
                 <div className="row-10 pc-row">
-                    {pcs.map((pc,index) => renderComputerItem(pc,index))}
+                    {pcs.map((pc,index) => renderComputerItem(pc,index,addCart))}
                 </div>
             </div>
         </div>

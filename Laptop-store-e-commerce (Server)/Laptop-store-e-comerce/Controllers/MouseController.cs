@@ -53,6 +53,5 @@ namespace Laptop_store_e_comerce.Controllers
             if (pros.Count == 0) return NotFound();
             else return pros;
         }
-
     }
 }

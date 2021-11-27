@@ -60,7 +60,6 @@ export default function ThanhToan({idUser,order,updateData}) {
     setUserinfo(newdata)
     console.log("llllll", newdata)
 }
-console.log("dâdadada", userOrder)
  function saveInfoUser(e){
     e.preventDefault();
     axios.put("https://localhost:44343/data/user/", {

@@ -8,7 +8,7 @@ import {BsFillCaretLeftFill} from 'react-icons/bs'
 import '../../CSS/ScreenPanel.css'
 import Solver from '../../Classes/Solver';
 import { useHistory } from 'react-router';
-const RenderScreenItem= (pro, index ,addProductToCart, history) => {
+const RenderScreenItem= (pro, index ,addCart, history) => {
     const solver =new Solver();
     return (
         <div className="col-10-no-padding c-10-2 screen-infor" key={index}>
@@ -29,9 +29,9 @@ const RenderScreenItem= (pro, index ,addProductToCart, history) => {
                     </div>
                     <div className="screen-detail-item screen-button-group">
                         <button className="screen-button screen-button-buy" onClick={()=>{
-                                addProductToCart(pro.id,pro.gia);
+                                addCart(pro.id,pro.gia);
                         }}>Mua ngay</button>
-                        <button className="screen-button screen-button-add" onClick={()=>addProductToCart(pro.id,pro.gia)}>Thêm vào giỏ</button>
+                        <button className="screen-button screen-button-add" onClick={()=>addCart(pro.id,pro.gia)}>Thêm vào giỏ</button>
                     </div>
                 </div>
             </div>
@@ -41,7 +41,7 @@ const RenderScreenItem= (pro, index ,addProductToCart, history) => {
 const getCountPage = (pros) => {
     return pros.length/5 ;
 }
-export default function ScreenPanel({addProductToCart}) {
+export default function ScreenPanel({addCart}) {
     const history = useHistory();
     const [scaleX, setScaleX] = useState(0);
     const index = useRef(0);
@@ -85,7 +85,7 @@ export default function ScreenPanel({addProductToCart}) {
             <div className="container10Col wide screen-container">
                     <div className="row-10--NoWrap screen-row" style={{transform : `translate(${scaleX}%)` ,transition : '0.5s'}} >
                         {
-                            screens.map((pro,index) => RenderScreenItem(pro,index,addProductToCart,history))
+                            screens.map((pro,index) => RenderScreenItem(pro,index,addCart,history))
                         }
                 </div>
             </div>

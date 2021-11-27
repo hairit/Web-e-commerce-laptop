@@ -1,4 +1,5 @@
 import React from 'react'
+import axios from 'axios'
 import '../CSS/Body.css'
 import { useEffect,useState } from 'react'
 import KeyboardPanel from './BodyPages/KeyboardPanel'
@@ -25,36 +26,46 @@ const styleBlur ={
 const styleUnBlur ={
     filter: "none"
 }
-export default function Body({addProductToCart, blur}) {
+function Body({idUser,addProductToCart,blur}) {
+    const [user, setUser] = useState(null)
     const [display, setDisplay] = useState(false);
     useEffect(() => {
         window.addEventListener('scroll',changeStatusRightItem);
+        if(idUser !== null) {
+        axios.get(`https://localhost:44343/data/user/${idUser}`,null)
+            .then(res => setUser(res.data)).catch(()=>setUser(null))
+    }
     }, [])
     const changeStatusRightItem = () => {
         if(window.scrollY >= 400) setDisplay(true);
         else setDisplay(false);
     }
-    return (
+    const addCart=(idProduct,priceProduct) =>{
+        addProductToCart(user,idProduct,priceProduct);
+    }
+    return(
         <div className="body" style={blur===false?styleUnBlur:styleBlur}>
-            <div className={display === true ? "right-scroll-panel" : "right-scroll-panel-hide"}>
-                <img className="right-scroll-panel-item" src={facebookicon} />
-                <img className="right-scroll-panel-item" src={phoneicon} />
-                <img className="right-scroll-panel-item" src={emailicon} />
-                <img className="right-scroll-panel-item" src={addressicon} />
-            </div>
-            <img  className={display === true ? "scroll-to-top" : "scroll-to-top-hide"} src={up} onClick={()=>window.scrollTo(0, 0)} />
-            <MainPanel />
-            <LaptopPanel addProductToCart={addProductToCart}/>
-            <div className="event-laptop">
-                <div className="event-laptop-item"><img className="event-laptop-item-img" src={`${URL}/Images/Panels/event-laptop1.png`}/></div>
-                <div className="event-laptop-item"><img className="event-laptop-item-img" src={`${URL}/Images/Panels/event-laptop2.png`}/></div>
-            </div>
-            <ScreenPanel addProductToCart={addProductToCart}/>
-            <div className="event"><img className="event-img" src={`${URL}/Images/Panels/event-22-12-2021.png`}/></div>
-            <PCPanel addProductToCart={addProductToCart} />
-            <KeyboardPanel addProductToCart={addProductToCart}/>
-            <MousePanel addProductToCart={addProductToCart}/>
-            <HeadphonePanel addProductToCart={addProductToCart}/>
+                <div className={display === true ? "right-scroll-panel" : "right-scroll-panel-hide"}>
+                    <img className="right-scroll-panel-item" src={facebookicon} />
+                    <img className="right-scroll-panel-item" src={phoneicon} />
+                    <img className="right-scroll-panel-item" src={emailicon} />
+                    <img className="right-scroll-panel-item" src={addressicon} />
+                </div>
+                <img  className={display === true ? "scroll-to-top" : "scroll-to-top-hide"} src={up} onClick={()=>window.scrollTo(0, 0)} />
+                <MainPanel />
+                <LaptopPanel addCart={addCart}/>
+                <div className="event-laptop">
+                    <div className="event-laptop-item"><img className="event-laptop-item-img" src={`${URL}/Images/Panels/event-laptop1.png`}/></div>
+                    <div className="event-laptop-item"><img className="event-laptop-item-img" src={`${URL}/Images/Panels/event-laptop2.png`}/></div>
+                </div>
+                <ScreenPanel addCart={addCart}/>
+                <div className="event"><img className="event-img" src={`${URL}/Images/Panels/event-22-12-2021.png`}/></div>
+                <PCPanel addCart={addCart} />
+                <KeyboardPanel addCart={addCart}/>
+                <MousePanel addCart={addCart}/>
+                <HeadphonePanel addCart={addCart}/> 
         </div>
     )
 }
+export default React.memo(Body);
+

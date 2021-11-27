@@ -19,22 +19,21 @@ import daxem from '../Images/daxem.png'
 import chinhhang from '../Images/chinhhang.png'
 import tuvan from '../Images/tuvan.png'
 import axios from "axios";
-import {
+import{
   BrowserRouter as Router,
   Switch,
   Route,
   NavLink,
 } from "react-router-dom";
-
 const nullUser = () => {
-  return (
+  return(
     <div>
       <HiOutlineUserCircle className="header-center-right-menu-item-icon" />
       <p className="login-text" >Đăng nhập</p>
     </div>
   );
 };
-export default function Header({ user , logout, clickblur }) {
+export default function Header({ user , logout, clickblur , updateData }){
   const [statusHeader, setStatusHeader] = useState(false);
   const history = useHistory();
   const [usermenu, setusermenu] = useState(false);
@@ -49,6 +48,8 @@ export default function Header({ user , logout, clickblur }) {
     if(window.scrollY >= 42) setStatusHeader(true);
     else setStatusHeader(false);
   }
+  console.log(user);
+  console.log("reload header");
   const usermenuclick = () =>{
     clickblur(usermenu);
     return (
@@ -60,41 +61,38 @@ export default function Header({ user , logout, clickblur }) {
       </div>
     )}
   const bottomUserMenu = () => {
-
       if (info==="changepass") return (showchangepass(info))
       else if (info === "changeinfo") return (showchangeinfo(info))
           else return showinfo(info);
     }
-
   const showinfo = (info) => {
     return (
       <div className={info===null?"user-menu-page":"user-menu-page-hide"}>
-        <div className="user-menu-info">
-          <p className="user-menu-label"> Thông tin tài khoản</p>
-            <div className="user-info-item">
-              <p className="user-info-label">Họ:</p>
-              <input className="user-menu-input" defaultValue={user.firstname} type="text" readOnly></input>
+          <div className="user-menu-info">
+            <p className="user-menu-label"> Thông tin tài khoản</p>
+              <div className="user-info-item">
+                <p className="user-info-label">Họ:</p>
+                <input className="user-menu-input" defaultValue={user.firstname} type="text" readOnly></input>
+              </div>
+              <div className="user-info-item">
+                <p className="user-info-label">Tên:</p>
+                <input className="user-menu-input" defaultValue={user.lastname} type="text" readOnly></input>
+              </div>
+              <div className="user-info-item">
+                <p className="user-info-label">SĐT:</p>
+                <input className="user-menu-input" defaultValue={user.sdt} type="text" readOnly></input>
+              </div>
+              <div className="user-info-item">
+                <p className="user-info-label">Địa chỉ:</p>
+                <input className="user-menu-input" defaultValue={user.diachi} type="text" readOnly></input>
+              </div>
             </div>
-            <div className="user-info-item">
-              <p className="user-info-label">Tên:</p>
-              <input className="user-menu-input" defaultValue={user.lastname} type="text" readOnly></input>
-            </div>
-            <div className="user-info-item">
-              <p className="user-info-label">SĐT:</p>
-              <input className="user-menu-input" defaultValue={user.sdt} type="text" readOnly></input>
-            </div>
-            <div className="user-info-item">
-              <p className="user-info-label">Địa chỉ:</p>
-              <input className="user-menu-input" defaultValue={user.diachi} type="text" readOnly></input>
-            </div>
-          </div>
-        <button className="user-menu-button" onClick={()=>setinfo("changeinfo")}>Sửa thông tin</button>
-        <button className="user-menu-button" onClick={()=>setinfo("changepass")}>Đổi mật khẩu</button>
-        <button className="user-menu-button" onClick={()=>logoutHandle()}>Đăng xuất</button>
+          <button className="user-menu-button" onClick={()=>setinfo("changeinfo")}>Sửa thông tin</button>
+          <button className="user-menu-button" onClick={()=>setinfo("changepass")}>Đổi mật khẩu</button>
+          <button className="user-menu-button" onClick={()=>logoutHandle()}>Đăng xuất</button>
       </div>
       )
   }
-
   const showchangeinfo = (info) =>{
     return (
       <div className={info==="changeinfo"?"user-menu-info":"user-menu-hide"}>
@@ -117,10 +115,9 @@ export default function Header({ user , logout, clickblur }) {
                 </div>
                 <button className="user-menu-button" onClick={()=>changinfo()}>Xác nhận đổi</button>
                 <button className="user-menu-button" onClick={()=>setinfo(null)}>Hủy</button>
-            </div>
+      </div>
     )
   }
-
   const showchangepass = (info) =>{
     return (
       <div className={info==="changepass"?"change-pass":"user-menu-hide"}>
@@ -129,10 +126,9 @@ export default function Header({ user , logout, clickblur }) {
             <input className="user-menu-input" placeholder="Xác nhận mật khẩu mới" type="password" onChange={(e)=>setconf(e.target.value)}/>
             <button className="user-menu-button" onClick={()=>changpass()}>Xác nhận đổi</button>
             <button className="user-menu-button" onClick={()=>setinfo(null)}>Hủy</button>
-          </div>
+      </div>
     )
   }
-
   function changpass()
   {
     if (conf || passn)
@@ -159,9 +155,7 @@ export default function Header({ user , logout, clickblur }) {
   function changinfo()
   {
     if(!usertemp.firstname || !usertemp.lastname || !usertemp.sdt || !usertemp.diachi)
-    {
-      alert("Vui lòng nhập đủ tất cả các trường!")
-    }
+    {alert("Vui lòng nhập đủ tất cả các trường!")}
     else 
     {
       axios.put(`https://localhost:44343/data/user/`,usertemp)
@@ -237,7 +231,7 @@ export default function Header({ user , logout, clickblur }) {
                         className="avatar"
                         alt="avatar"
                       />
-              ) : (
+              ):(
                       <img
                         src={URL + `/Images/UserAvatar/NullAvatar.png`}
                         className="avatar"
@@ -251,23 +245,21 @@ export default function Header({ user , logout, clickblur }) {
               {usermenuclick()}
             </div> 
           )}
-          
-          
           {user === null ? (<div></div>) : (
             <NavLink className="header-center-right-menu-item" to="/bill">
               <RiBillLine className="header-center-right-menu-item-icon" />
               {user.bills.length === 0 ? (
                 <div></div>
               ) : (
-                <div className="quanlity-data-user">{user.bills.length}</div>
+                <div id="quantity-bill-user">{user.bills.length}</div>
               )}
               <p>Đơn hàng</p>
             </NavLink>
           )}
-          <NavLink className="header-center-right-menu-item" to={user === null ? "/cart" : "/cart"} >
+          <NavLink className="header-center-right-menu-item" to={user === null ? "/cart" : "/cart"} onClick={()=>updateData}>
                   <AiOutlineShoppingCart className="header-center-right-menu-item-icon" />
                   {user === null ? ( <div></div>) : (
-                        <div className={user.cartDetails.length === 0 ? "quanlity-data-user-disable": "quanlity-data-user"}>
+                        <div id="quantity-cartdetails-user" style={{ display : user.cartDetails.length === 0 ? 'none' : 'block' }}>
                           <p>{user.cartDetails.length}</p>
                         </div>
                   )}
