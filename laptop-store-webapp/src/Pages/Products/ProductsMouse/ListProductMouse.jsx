@@ -6,16 +6,13 @@ import { withRouter } from "react-router";
 
 import Solver from "../../../Classes/Solver";
 
-export default function ListProductMouse({ pros, addProductToCart }) {
+export default function ListProductMouse({ pros, addProductInCart }) {
   const history = useHistory();
   const solver = new Solver();
   function handleViewDetails(detail) {
     history.push(`/mouse/${detail.id}`);
   }
   console.log(`pros`, pros);
-  function addProductInCart(id, gia) {
-    addProductToCart(id, gia);
-  }
   return (
     <div className="row prolst">
       {pros.map((pro, index) => {

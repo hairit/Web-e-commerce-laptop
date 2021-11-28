@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import details from "../../../CSS/ProductsCss/details.css";
 import Solver from "../../../Classes/Solver";
+import GioHangCss from "../../../CSS/GioHangCss.css";
+import home from "../../../Images/home.png"
 import { withRouter } from "react-router";
 import PhuKienMuaCung from "./PhuKienMuaCung";
 import freeshipping_4px from "../../../Images/freeshipping_4px.png";
@@ -19,7 +21,7 @@ import edit_property_32px from "../../../Images/edit_property_32px.png";
 import settings_32px from "../../../Images/settings_32px.png";
 import PostsLaptop from "./PostsLaptop";
 import { NavLink } from "react-router-dom";
-export default function DetailProductsLaptop({ match,addProductToCart }) {
+export default function DetailProductsLaptop({idUser, match,addProductToCart }) {
   const solver = new Solver();
   const [detail, setDetail] = useState({});
   useEffect(() => {
@@ -92,10 +94,15 @@ console.log("kokoo",detail)
           {/* {isEmptyObj === false && (
               <> */}
           <div className="ttchung">
-            <div className="col-md-15 colors tops">
-              <div className="section-heading">
-                <div className="line-dec" />
-                <h1>{detail.ten}</h1>
+            <div className="col-md-15 tops">
+              <div className="home-icon">
+                <NavLink to="/" className="img-backhome">
+                  <img className="icon-home"  src={home}/>
+                  </NavLink>
+                  <p> {">"} </p>
+                  <div className="title-carticon">
+                    <div className="title-txt">{detail.ten} {" "} {detail.laptopDescription && detail.laptopDescription.hdh} </div>
+                  </div>
               </div>
             </div>
             <div className=" row imagesPro">
@@ -204,13 +211,13 @@ console.log("kokoo",detail)
                   </div>
                   <div className="button-gr">
                     <NavLink to="/cart">
-                    <button type="button" className="btn btn-primary btn-buy" onClick={() =>addProductToCart(detail.id,detail.gia)}>
+                    <button type="button" className="btn btn-primary btn-buy" onClick={() =>addProductToCart(idUser,detail.id,detail.gia)}>
                       MUA NGAY
                     </button>
                     </NavLink>
                     <button
                       type="button"
-                      className="btn btn-outline-primary btn-cart" onClick={()=> addProductToCart(detail.id,detail.gia)}>
+                      className="btn btn-outline-primary btn-cart" onClick={()=> addProductToCart(idUser,detail.id,detail.gia)}>
                       THÊM VÀO GIỎ HÀNG
                     </button>
                   </div>

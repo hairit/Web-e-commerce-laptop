@@ -4,6 +4,8 @@ import details from "../../../CSS/ProductsCss/details.css";
 import Solver from "../../../Classes/Solver";
 import { withRouter } from "react-router";
 import SanPhamKhac from "./SanPhamKhac";
+import GioHangCss from "../../../CSS/GioHangCss.css";
+import home from "../../../Images/home.png"
 import prev_50px from "../../../Images/prev_50px.png";
 import next_50px from "../../../Images/next_50px.png";
 import freeshipping_4px from "../../../Images/freeshipping_4px.png";
@@ -28,7 +30,7 @@ import { NavLink } from "react-router-dom"
 //   }, []);
 // };
 
-export default function DetailProductsHeadphone({ match, addProductToCart}) {
+export default function DetailProductsHeadphone({idUser, match, addProductToCart}) {
   const solver = new Solver();
   const [detail, setDetail] = useState({});
   useEffect(() => {
@@ -90,10 +92,15 @@ export default function DetailProductsHeadphone({ match, addProductToCart}) {
           {/* {isEmptyObj === false && (
               <> */}
           <div className="ttchung">
-            <div className="col-md-15 colors tops">
-              <div className="section-heading">
-                <div className="line-dec" />
-                <h1>{detail.ten}</h1>
+          <div className="col-md-15 tops">
+              <div className="home-icon">
+                <NavLink to="/" className="img-backhome">
+                  <img className="icon-home"  src={home}/>
+                  </NavLink>
+                  <p> {">"} </p>
+                  <div className="title-carticon">
+                    <div className="title-txt">{detail.ten}</div>
+                  </div>
               </div>
             </div>
             <div className=" row imagesPro">
@@ -177,22 +184,15 @@ export default function DetailProductsHeadphone({ match, addProductToCart}) {
                     )}
                     </p>
                   </div>
-                  {/* <div className="tt-sales">Quà tặng kèm khi mua hàng</div>
-                  <div className="gift">
-                    <div className="">
-                      <img src="https://lh3.googleusercontent.com/8TYtx-F0wLPEsufDd-N2y4txkDy3dxxjipjA6k5DjccQhwtdK_6Mx0YPuSUZF3bOEGG5-hP8-MFNReb4X0k=rw"></img>
-                      <p>x1 Túi đựng laptop</p>
-                    </div>
-                  </div> */}
                   <div className="button-gr">
                     <NavLink to="/cart">
-                    <button type="button" className="btn btn-primary btn-buy" onClick={() => addProductToCart(detail.id,detail.gia)}>
+                    <button type="button" className="btn btn-primary btn-buy" onClick={() => addProductToCart(idUser,detail.id,detail.gia)}>
                       MUA NGAY
                     </button>
                     </NavLink>
                     <button
                       type="button"
-                      className="btn btn-outline-primary btn-cart" onClick={() => addProductToCart(detail.id,detail.gia)}>
+                      className="btn btn-outline-primary btn-cart" onClick={() => addProductToCart(idUser,detail.id,detail.gia)}>
                       THÊM VÀO GIỎ HÀNG
                     </button>
                   </div>

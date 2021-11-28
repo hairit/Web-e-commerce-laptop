@@ -12,15 +12,13 @@ import {
 } from "react-router-dom";
 import Solver from "../../../Classes/Solver";
 
-export default function ListProductScreen({ pros,addProductToCart }) {
+export default function ListProductScreen({ pros,addProductInCart }) {
   const history = useHistory();
   const solver = new Solver();
   function handleViewDetails(detail) {
     history.push(`/screen/${detail.id}`);
   }
-  function addProductInCart(id,gia){
-    addProductToCart(id,gia)
-  }
+
   return (
     <div className="row prolst">
       {pros.map((pro, index) => {

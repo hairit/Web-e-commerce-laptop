@@ -10,7 +10,7 @@ import AcerLogo1 from "../../../Images/AcerLogo1.png"
 import DareuLogo1 from "../../../Images/DareuLogo1.png"
 import { useEffect, useState } from "react";
 import ListProductPC from "./ListProductPC";
-export default function PC({addProductToCart,match}) {
+export default function PC({idUser,addProductToCart,match}) {
   const [pros, setPros] = useState([]);
   useEffect(() => {
     var API;
@@ -28,6 +28,11 @@ export default function PC({addProductToCart,match}) {
       .catch((err) => console.log(err));
   }, []);
   console.log(pros);
+
+  function addProductInCart(id,gia){
+    addProductToCart(idUser,id,gia)
+  }
+
   return (
     <div className="wrapper">
       <div className="container_fullwidth">
@@ -107,7 +112,7 @@ export default function PC({addProductToCart,match}) {
           <div className="row">
             <div className="col-md-9 prolst">
               <div className="products-grid lstlaptop">
-                <ListProductPC addProductToCart={addProductToCart} pros={pros} />
+                <ListProductPC addProductInCart={addProductInCart} pros={pros} />
               </div>
               <div className="toolbar">
                 <div className="pager">

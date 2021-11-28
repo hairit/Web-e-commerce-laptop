@@ -10,7 +10,7 @@ import AcerLogo1 from "../../../Images/AcerLogo1.png";
 import DareuLogo1 from "../../../Images/DareuLogo1.png";
 import { useEffect, useState } from "react";
 import ListProductMouse from "./ListProductMouse";
-export default function Mouse({ addProductToCart }) {
+export default function Mouse({ idUser,addProductToCart }) {
   const [pros, setPros] = useState([]);
   useEffect(() => {
     axios
@@ -19,6 +19,9 @@ export default function Mouse({ addProductToCart }) {
       .catch((err) => console.log(err));
   }, []);
   console.log(pros);
+  function addProductInCart(id, gia) {
+    addProductToCart(idUser,id, gia);
+  }
   return (
     <div className="wrapper">
       <div className="container_fullwidth">
@@ -125,7 +128,7 @@ export default function Mouse({ addProductToCart }) {
             <div className="col-md-9 prolst">
               <div className="products-grid lstlaptop">
                 <ListProductMouse
-                  addProductToCart={addProductToCart}
+                  addProductInCart={addProductInCart}
                   pros={pros}
                 />
               </div>

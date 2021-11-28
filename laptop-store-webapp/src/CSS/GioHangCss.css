@@ -72,8 +72,8 @@
   border-radius: 36px;
 }
 .title-txt {
-  height: 43px;
-  line-height: 43px;
+  height: auto;
+  line-height: 39px;
   font-size: 15px;
   font-weight: 400;
 }
