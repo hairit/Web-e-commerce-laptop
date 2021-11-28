@@ -29,13 +29,13 @@ export default function PhuKienMuaCung() {
                 />
               </div>
             </NavLink>
-            <div className="ten-id-gia inf-price">
+            <div className="ten-id-gia">
               <a>
                 {kb.ten} {kb.id}
               </a>
             </div>
 
-            <div className="ten-id-gia">
+            <div className="inf-price">
               <p>{solver.formatCurrency("vi-VN", "currency", "VND", kb.gia)}</p>
               <img src={freeshipping_4px} />
             </div>

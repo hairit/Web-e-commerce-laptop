@@ -17,6 +17,8 @@ import bnphmc3 from "../../../Images/bnphmc3.png";
 import thanhgapkeycap from "../../../Images/thanhgapkeycap.png";
 import prev_50px from "../../../Images/prev_50px.png";
 import next_50px from "../../../Images/next_50px.png";
+import GioHangCss from "../../../CSS/GioHangCss.css";
+import home from "../../../Images/home.png"
 import promotion_32px from "../../../Images/promotion_32px.png";
 import insurance_24px from "../../../Images/insurance_24px.png";
 import whatsapp_32px from "../../../Images/whatsapp_32px.png";
@@ -102,10 +104,15 @@ export default function DetailProductsKeyboard({idUser, match, addProductToCart 
           {/* {isEmptyObj === false && (
               <> */}
           <div className="ttchung">
-            <div className="col-md-15 colors tops">
-              <div className="section-heading">
-                <div className="line-dec" />
-                <h1>{detail.ten}</h1>
+          <div className="col-md-15 tops">
+              <div className="home-icon">
+                <NavLink to="/" className="img-backhome">
+                  <img className="icon-home"  src={home}/>
+                  </NavLink>
+                  <p> {">"} </p>
+                  <div className="title-carticon">
+                    <div className="title-txt">{detail.ten} {" "} {detail.keyboardDetail && detail.keyboardDetail.motaden} </div>
+                  </div>
               </div>
             </div>
             <div className=" row imagesPro">

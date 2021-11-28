@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import details from "../../../CSS/ProductsCss/details.css";
 import Solver from "../../../Classes/Solver";
+import GioHangCss from "../../../CSS/GioHangCss.css";
+import home from "../../../Images/home.png"
 import { withRouter } from "react-router";
 import PhuKienMuaCung from "./PhuKienMuaCung";
 import freeshipping_4px from "../../../Images/freeshipping_4px.png";
@@ -92,10 +94,15 @@ console.log("kokoo",detail)
           {/* {isEmptyObj === false && (
               <> */}
           <div className="ttchung">
-            <div className="col-md-15 colors tops">
-              <div className="section-heading">
-                <div className="line-dec" />
-                <h1>{detail.ten}</h1>
+            <div className="col-md-15 tops">
+              <div className="home-icon">
+                <NavLink to="/" className="img-backhome">
+                  <img className="icon-home"  src={home}/>
+                  </NavLink>
+                  <p> {">"} </p>
+                  <div className="title-carticon">
+                    <div className="title-txt">{detail.ten} {" "} {detail.laptopDescription && detail.laptopDescription.hdh} </div>
+                  </div>
               </div>
             </div>
             <div className=" row imagesPro">

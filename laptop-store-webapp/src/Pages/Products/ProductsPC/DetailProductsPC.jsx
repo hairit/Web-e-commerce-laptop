@@ -5,6 +5,8 @@ import Solver from "../../../Classes/Solver";
 import shield_24px from "../../../Images/shield_24px.png";
 import replace_24px from "../../../Images/replace_24px.png";
 import SanPhamKhac from "./SanPhamKhac"
+import GioHangCss from "../../../CSS/GioHangCss.css";
+import home from "../../../Images/home.png"
 import prev_50px from "../../../Images/prev_50px.png";
 import next_50px from "../../../Images/next_50px.png";
 import promotion_32px from "../../../Images/promotion_32px.png";
@@ -71,10 +73,15 @@ export default function DetailProductsPC({idUser, match, addProductToCart}) {
         <div className="row row-top">
         
           <div className="ttchung">
-            <div className="col-md-15 colors tops">
-              <div className="section-heading">
-                <div className="line-dec" />
-                <h1>{detail.ten}</h1>
+          <div className="col-md-15 tops">
+              <div className="home-icon">
+                <NavLink to="/" className="img-backhome">
+                  <img className="icon-home"  src={home}/>
+                  </NavLink>
+                  <p> {">"} </p>
+                  <div className="title-carticon">
+                    <div className="title-txt">{detail.ten} {" "} {detail.pcdetail && detail.pcdetail.detailcpu} </div>
+                  </div>
               </div>
             </div>
             <div className=" row imagesPro">

@@ -4,6 +4,8 @@ import details from "../../../CSS/ProductsCss/details.css";
 import Solver from "../../../Classes/Solver";
 import { withRouter } from "react-router";
 import SanPhamKhac from "./SanPhamKhac";
+import GioHangCss from "../../../CSS/GioHangCss.css";
+import home from "../../../Images/home.png"
 import prev_50px from "../../../Images/prev_50px.png";
 import next_50px from "../../../Images/next_50px.png";
 import freeshipping_4px from "../../../Images/freeshipping_4px.png";
@@ -90,10 +92,15 @@ export default function DetailProductsHeadphone({idUser, match, addProductToCart
           {/* {isEmptyObj === false && (
               <> */}
           <div className="ttchung">
-            <div className="col-md-15 colors tops">
-              <div className="section-heading">
-                <div className="line-dec" />
-                <h1>{detail.ten}</h1>
+          <div className="col-md-15 tops">
+              <div className="home-icon">
+                <NavLink to="/" className="img-backhome">
+                  <img className="icon-home"  src={home}/>
+                  </NavLink>
+                  <p> {">"} </p>
+                  <div className="title-carticon">
+                    <div className="title-txt">{detail.ten}</div>
+                  </div>
               </div>
             </div>
             <div className=" row imagesPro">

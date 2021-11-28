@@ -11,13 +11,13 @@ import DellLogo1 from "../../../Images/DellLogo1.png"
 import HPLogo1 from "../../../Images/HPLogo1.png"
 import AcerLogo1 from "../../../Images/AcerLogo1.png"
 import DareuLogo1 from "../../../Images/DareuLogo1.png"
-import { useHistory } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 const solver = new Solver();
 export default function Laptops({idUser,match,addProductToCart}) {
   const history = useHistory();
   const [pros, setPros] = useState([]);
-  const [user, setUser] = useState(null);
-  const [sort, setSort] = useState();
+  const [sort, setSort] = useState("/data/product/type=laptop/brand=");
+  // const [sort, setSort] = useState();
   useEffect(() => {
     if(match !== undefined){
       var API;
@@ -36,6 +36,22 @@ export default function Laptops({idUser,match,addProductToCart}) {
   }, []);
   function addProductInCart(id,gia){
     addProductToCart(idUser,id,gia);
+  }
+
+  function sortLaptop(e){
+    var url = "/data/product/type=laptop/brand="
+    var brand = e.target.value
+    if(brand === "asus"){
+      setSort(sort + brand)
+      history.push(url + brand)
+      console.log(sort + brand );
+    } else if(brand === "dell"){
+      console.log(sort + brand );
+    } else if(brand === "hp"){
+      console.log(sort + brand );
+    } else{
+      console.log(sort + brand );
+    }
   }
   return (
     <div className="wrapper">
@@ -63,16 +79,18 @@ export default function Laptops({idUser,match,addProductToCart}) {
                 <div className="loc">
                   <div className="title-sort">Thương hiệu</div>
                   <div className="btn-right">
-                    <button type="button" className="btn-sort" >
+                    {/* <NavLink to={sort}> */}
+                    <button type="button" className="btn-sort" value="asus" onClick={(e) => sortLaptop(e)}>
                       Asus
                     </button>
-                    <button type="button" className="btn-sort" >
+                    {/* </NavLink> */}
+                    <button type="button" className="btn-sort" value="dell" onClick={(e) => sortLaptop(e)} >
                       Dell
                     </button>
-                    <button type="button" className="btn-sort">
+                    <button type="button" className="btn-sort" value="hp" onClick={(e) => sortLaptop(e)}>
                       HP
                     </button>
-                    <button type="button" className="btn-sort">
+                    <button type="button" className="btn-sort" value="acer" onClick={(e) => sortLaptop(e)}>
                       Acer
                     </button>
                   </div>

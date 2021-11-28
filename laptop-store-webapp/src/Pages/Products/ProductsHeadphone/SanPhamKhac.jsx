@@ -19,8 +19,8 @@ export default function SanPhamKhac() {
     <>
       {sanpham.map((kb, index) => {
         return (
-          <div className="col_2" key={index}>
-            <NavLink to={`/laptop/${kb.id}`}>
+          <div className="col_2 slide-item" key={index}>
+            <NavLink to={`/keyboard/${kb.id}`}>
               <div className="imgname inf-price">
                 <img
                   className="imgkb"
@@ -28,12 +28,13 @@ export default function SanPhamKhac() {
                 />
               </div>
             </NavLink>
-            <div className="ten-id-gia inf-price">
+            <div className="ten-id-gia lt">
               <a>
                 {kb.ten} {kb.id}
               </a>
             </div>
-            <div className="ten-id-gia sce">
+
+            <div className="inf-price">
               <p>{solver.formatCurrency("vi-VN", "currency", "VND", kb.gia)}</p>
               <img src={freeshipping_4px} />
             </div>
