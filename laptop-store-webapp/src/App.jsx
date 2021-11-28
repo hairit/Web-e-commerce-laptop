@@ -4,6 +4,7 @@ import Header from "./Pages/Header.jsx";
 import Keyboard from "./Pages/Products/ProductsKeyboard/Keyboard";
 import { useState, useEffect ,useCallback , useRef} from "react";
 import Login from "./Pages/Login/Login";
+import Admin from "./Pages/AdminPages/Admin";
 import Body from "./Pages/Body";
 import Lienhe from "./Pages/Lienhe";
 import Tintuc from "./Pages/Tintuc";
@@ -35,12 +36,16 @@ import DetailProductsHeadphone from "./Pages/Products/ProductsHeadphone/DetailPr
 function App() {
   const history = useHistory();
   const [blur, setblur] = useState(false);
+  const [adminMode, setAdminMode] = useState(false);
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState(null);
   const [userCookie, setUserCookie ,removeCookie] = useCookies(["user"]);
   const [updateDataUser, setUpdateDataUser] = useState(0);
   const cartDetails = useRef([]);
-  const [bill, setBill] = useState({id : '',iduser : '',tongtien : 0,ngaydat : '',diachinhan :'',billDetails : []})
+  const [bill, setBill] = useState({id : '',iduser : '',tongtien : 0,ngaydat : '',diachinhan :'',billDetails : []});
+  useEffect(() => {
+    setAdminMode(false);
+  }, [])
   useEffect(() => {
     if (userCookie.id !== undefined) {
       axios
@@ -55,7 +60,6 @@ function App() {
   }, []);
   useEffect(() => {
       if(user !== null) {
-        console.log("Reload");
         call('GET',`data/user/${user.id}`,null)
            .then((res) => {
               cartDetails.current = res.data.cartDetails;
@@ -75,6 +79,10 @@ function App() {
   const logout = () => {
     removeCookie('id');
     setUser(null);
+  }
+  const changeAdminMode = (action) => {
+    if(action === 'off') setAdminMode(false);
+    else setAdminMode(true);
   }
   const clickblur = (isblur) => {
     setblur(isblur);
@@ -147,7 +155,6 @@ function App() {
     }
   }
 
-  
   const addQuantityProduct = (idProduct , price )=>{
     setTimeout(()=>{
       setLoading(false);
@@ -238,9 +245,9 @@ function App() {
     <Router>
       {loadQuantity()}
       <ScrollToTop />
-      
       <div className="App">
-        <Header user={user} logout={logout} clickblur={clickblur} />
+            <Header user={user} adminMode={adminMode} logout={logout} clickblur={clickblur} />
+            <Route path="/admin" component={()=><Admin changeAdminMode={changeAdminMode} />}></Route>
             <Route path="/"                               exact component={() => <Body blur={blur} idUser={user !== null ? user.id : null} addProductToCart={addProductToCart} />}></Route>
 
             <Route path="/laptop"                         exact component={() => <Laptops addProductToCart={addProductToCart} />}></Route>
@@ -254,9 +261,9 @@ function App() {
             <Route path="/screen/:attribute/:value"       exact component={(match) => <Screen match={match} addProductToCart={addProductToCart} />}></Route>
             <Route path="/screen/:attribute/:from/:to"    exact component={(match) => <Screen match={match} addProductToCart={addProductToCart} />}></Route>
             
-            <Route path="/headphone"                         exact component={() => <Headphone addProductToCart={addProductToCart} />}></Route>
-            <Route path="/headphone/:attribute/:value"       exact component={(match) => <Headphone match={match} addProductToCart={addProductToCart} />}></Route>
-            <Route path="/headphone/:attribute/:from/:to"    exact component={(match) => <Headphone match={match} addProductToCart={addProductToCart} />}></Route>
+            <Route path="/headphone"                      exact component={() => <Headphone addProductToCart={addProductToCart} />}></Route>
+            <Route path="/headphone/:attribute/:value"    exact component={(match) => <Headphone match={match} addProductToCart={addProductToCart} />}></Route>
+            <Route path="/headphone/:attribute/:from/:to" exact component={(match) => <Headphone match={match} addProductToCart={addProductToCart} />}></Route>
 
 
             <Route path="/pc"                             exact component={() =>         <PC addProductToCart={addProductToCart} />}></Route>
@@ -272,21 +279,21 @@ function App() {
             <Route path="/mouse/:id"                      exact component={(match) => <DetailProductsMouse addProductToCart={addProductToCart} match={match} />}></Route>
 
             <Route path="/cart"                           exact component={() => <GioHang
-                                                          user={user} 
-                                                          deleteProductFromCart={deleteProductFromCart} 
-                                                          deleteCartItem={deleteCartItem} 
-                                                          addQuantityProduct={addQuantityProduct}
-                                                          addProductToCart={addProductToCart} 
-                                                          idUser={ user !== null ? user.id : null } 
-                                                          createBill={createBill} 
+                                                              user={user} 
+                                                              deleteProductFromCart={deleteProductFromCart} 
+                                                              deleteCartItem={deleteCartItem} 
+                                                              addQuantityProduct={addQuantityProduct}
+                                                              addProductToCart={addProductToCart} 
+                                                              idUser={ user !== null ? user.id : null } 
+                                                              createBill={createBill} 
                                                           />}></Route>
                                                           
             <Route path="/login"                          exact component={(match) => <Login  login={login} match={match} /> } ></Route>
-            <Route path="/bill"                                 component={() => <DonHang idUser={ user !== null ? user.id : null } />}></Route>
-            <Route path="/lienhe"                               component={() => <Lienhe   />}></Route>
-            <Route path="/tincongnghe"                          component={() => <Tintuc   />}></Route>
-            <Route path="/showroom"                             component={() => <Showroom />}></Route>
-        <Footer />
+            <Route path="/bill"                                 component={() =>      <DonHang idUser={ user !== null ? user.id : null } />}></Route>
+            <Route path="/lienhe"                               component={() =>      <Lienhe   />}></Route>
+            <Route path="/tincongnghe"                          component={() =>      <Tintuc   />}></Route>
+            <Route path="/showroom"                             component={() =>      <Showroom />}></Route>
+        <Footer adminMode={adminMode}/>
       </div>
     </Router>
   );

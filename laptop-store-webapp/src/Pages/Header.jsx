@@ -33,7 +33,7 @@ const nullUser = () => {
     </div>
   );
 };
-export default function Header({ user , logout, clickblur , updateData }){
+export default function Header({ user , adminMode , logout, clickblur , updateData }){
   const [statusHeader, setStatusHeader] = useState(false);
   const history = useHistory();
   const [usermenu, setusermenu] = useState(false);
@@ -48,8 +48,6 @@ export default function Header({ user , logout, clickblur , updateData }){
     if(window.scrollY >= 42) setStatusHeader(true);
     else setStatusHeader(false);
   }
-  console.log(user);
-  console.log("reload header");
   const usermenuclick = () =>{
     clickblur(usermenu);
     return (
@@ -182,7 +180,7 @@ export default function Header({ user , logout, clickblur , updateData }){
     setusertemp(user);
   }
   return (
-    <div className="header">
+    <div className={adminMode === false ? "header" : "header-hide"}>
       <div className="header-top">
         <NavLink className="header-top-item" to="/tincongnghe">
           <RiComputerFill className="header-top-item-icon" />
