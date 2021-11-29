@@ -169,9 +169,10 @@ function App() {
     setLoading(true);
   }
   const addProductToCart = useCallback(
-    (idUser, idProduct, price) => {
-      if (idUser === null) {
-        alert("Bạn cần đăng nhập để thêm sản phẩm vào giỏ hàng");
+    (idUser,idProduct,price)=>{
+      if(idUser === null)
+      {
+        Swal.fire('Bạn cần đăng nhập để mua hàng')
       }
       else {
         axios.get(`https://localhost:44343/data/cartdetail/action=add/iduser=${idUser}/idproduct=${idProduct}/tongtien=${price}`, null)
@@ -191,7 +192,7 @@ function App() {
     },
     [],
   )
-  console.log(cartDetails.current);
+  // console.log(cartDetails.current);
   const checkExistCartDetail = (idProduct) => {
     var exist = false;
     cartDetails.current.forEach(element => {
@@ -241,9 +242,9 @@ function App() {
   console.log(adminMode);
   return (
     <Router>
-      {loadQuantity()}
       <ScrollToTop />
       <div className="App">
+      {loadQuantity()}
         <Header user={user} adminMode={adminMode} logout={logout} clickblur={clickblur} />
         <Route path="/admin"  component={() => <Admin changeAdminMode={changeAdminMode} />}></Route>
 

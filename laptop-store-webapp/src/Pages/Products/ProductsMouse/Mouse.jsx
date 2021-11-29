@@ -22,6 +22,13 @@ export default function Mouse({ idUser,addProductToCart }) {
   function addProductInCart(id, gia) {
     addProductToCart(idUser,id, gia);
   }
+
+  function sortMouse(e){
+    var sorts = e.target.value
+    axios.get("https://localhost:44343/data/mouse/" + sorts,null)
+    .then((res) => setPros(res.data))
+    .catch((err) => console.log(err))
+}
   return (
     <div className="wrapper">
       <div className="container_fullwidth">
@@ -52,55 +59,46 @@ export default function Mouse({ idUser,addProductToCart }) {
                 <div className="loc">
                   <div className="title-sort">Thương hiệu</div>
                   <div className="btn-right">
-                    <button type="button" className="btn-sort">
+                    <button type="button" value="brand=razer"  onClick={(e) => sortMouse(e)} className="btn-sort">
                       RAZER
                     </button>
-                    <button type="button" className="btn-sort">
+                    <button type="button" value="brand=logitech"  onClick={(e) => sortMouse(e)} className="btn-sort">
                       Logitech
                     </button>
-                    <button type="button" className="btn-sort">
+                    <button type="button" value="brand=corsair"  onClick={(e) => sortMouse(e)} className="btn-sort">
                       CORSAIR
                     </button>
-                    <button type="button" className="btn-sort">
+                    <button type="button" value="brand=akko"  onClick={(e) => sortMouse(e)} className="btn-sort">
                       AKKO
                     </button>
-                    <button type="button" className="btn-sort">
+                    <button type="button" value="brand=asus"  onClick={(e) => sortMouse(e)} className="btn-sort">
                       ASUS
                     </button>
-                    <button type="button" className="btn-sort">
+                    <button type="button" value="brand=steelseries"  onClick={(e) => sortMouse(e)} className="btn-sort">
                       SteelSeries
                     </button>
                   </div>
                 </div>
                 <div className="loc">
-                  <div className="title-sort">Màu</div>
+                  <div className="title-sort">Led</div>
                   <div className="btn-right">
-                    <button type="button" className="btn-sort">
-                      Đen
+                    <button type="button" className="btn-sort" value="led=rgb"  onClick={(e) => sortMouse(e)}>
+                      RGB
                     </button>
-                    <button type="button" className="btn-sort">
-                      Trắng
-                    </button>
-                    <button type="button" className="btn-sort">
-                      Đỏ
-                    </button>
-                    <button type="button" className="btn-sort">
-                      Hồng
-                    </button>
-                    <button type="button" className="btn-sort">
+                    <button type="button" className="btn-sort" value="led=xanh"  onClick={(e) => sortMouse(e)}>
                       Xanh
                     </button>
                   </div>
                 </div>
 
                 <div className="loc">
-                  <div className="title-sort">Năm sản xuất</div>
+                  <div className="title-sort">Kết nối</div>
                   <div className="btn-right">
-                    <button type="button" className="btn-sort">
-                      2020
+                    <button type="button" className="btn-sort" value="ketnoi=usb"  onClick={(e) => sortMouse(e)}>
+                      Chuột có dây
                     </button>
-                    <button type="button" className="btn-sort">
-                      2021
+                    <button type="button" className="btn-sort" value="ketnoi=wireless"  onClick={(e) => sortMouse(e)}>
+                      Chuột không dây
                     </button>
                   </div>
                 </div>

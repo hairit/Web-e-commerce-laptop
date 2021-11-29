@@ -19,7 +19,6 @@ export default function ListProductLaptop({pros,addProductInCart}) {
   function handleViewDetails(detail) {
     history.push(`/laptop/${detail.id}`);
   }
-  console.log('lololo',pros)
   return (
     <div className="row prolst">
       {pros.map((pro, index) => {
