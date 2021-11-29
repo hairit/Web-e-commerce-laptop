@@ -48,6 +48,18 @@ export default function Header({ user, adminMode, logout, clickblur, updateData 
     if (window.scrollY >= 42) setStatusHeader(true);
     else setStatusHeader(false);
   }
+  const hide = {
+    display:"none"
+  } 
+
+  const show = {
+    display:"block"
+  }
+
+  const clickAdmin = () => {
+    console.log("Click");
+  }
+
   const usermenuclick = () => {
     clickblur(usermenu);
     return (
@@ -62,9 +74,9 @@ export default function Header({ user, adminMode, logout, clickblur, updateData 
   const bottomUserMenu = () => {
     if (info === "changepass") return (showchangepass(info))
     else if (info === "changeinfo") return (showchangeinfo(info))
-    else return showinfo(info);
+    else return showinfo(info,clickAdmin);
   }
-  const showinfo = (info) => {
+  const showinfo = (info, clickAdmin) => {
     return (
       <div className={info === null ? "user-menu-page" : "user-menu-page-hide"}>
         <div className="user-menu-info">
@@ -88,6 +100,7 @@ export default function Header({ user, adminMode, logout, clickblur, updateData 
         </div>
         <button className="user-menu-button" onClick={() => setinfo("changeinfo")}>Sửa thông tin</button>
         <button className="user-menu-button" onClick={() => setinfo("changepass")}>Đổi mật khẩu</button>
+        <button className="user-menu-button" onclick={() => clickAdmin} style={user.mode!=="CUSTOMER"?show:hide}> Trang quản trị</button>
         <button className="user-menu-button" onClick={() => logoutHandle()}>Đăng xuất</button>
       </div>
     )
