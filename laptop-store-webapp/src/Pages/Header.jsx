@@ -48,18 +48,6 @@ export default function Header({ user, adminMode, logout, clickblur, updateData 
     if (window.scrollY >= 42) setStatusHeader(true);
     else setStatusHeader(false);
   }
-  const hide = {
-    display:"none"
-  } 
-
-  const show = {
-    display:"block"
-  }
-
-  const clickAdmin = () => {
-    console.log("Click");
-  }
-
   const usermenuclick = () => {
     clickblur(usermenu);
     return (
@@ -74,9 +62,9 @@ export default function Header({ user, adminMode, logout, clickblur, updateData 
   const bottomUserMenu = () => {
     if (info === "changepass") return (showchangepass(info))
     else if (info === "changeinfo") return (showchangeinfo(info))
-    else return showinfo(info,clickAdmin);
+    else return showinfo(info);
   }
-  const showinfo = (info, clickAdmin) => {
+  const showinfo = (info) => {
     return (
       <div className={info === null ? "user-menu-page" : "user-menu-page-hide"}>
         <div className="user-menu-info">
@@ -100,7 +88,6 @@ export default function Header({ user, adminMode, logout, clickblur, updateData 
         </div>
         <button className="user-menu-button" onClick={() => setinfo("changeinfo")}>Sửa thông tin</button>
         <button className="user-menu-button" onClick={() => setinfo("changepass")}>Đổi mật khẩu</button>
-        <button className="user-menu-button" onclick={() => clickAdmin} style={user.mode!=="CUSTOMER"?show:hide}> Trang quản trị</button>
         <button className="user-menu-button" onClick={() => logoutHandle()}>Đăng xuất</button>
       </div>
     )
@@ -187,7 +174,7 @@ export default function Header({ user, adminMode, logout, clickblur, updateData 
   }
   if (adminMode === false)
     return (
-      <div className="header" className={adminMode === false ? "header" : "header-hide"}>
+      <div className={adminMode === false ? "header" : "header-hide"}>
         <div className="header-top">
           <NavLink className="header-top-item" to="/tincongnghe">
             <RiComputerFill className="header-top-item-icon" />

@@ -245,11 +245,7 @@ function App() {
       <ScrollToTop />
       <div className="App">
         <Header user={user} adminMode={adminMode} logout={logout} clickblur={clickblur} />
-<<<<<<< HEAD
         <Route path="/admin"  component={() => <Admin changeAdminMode={changeAdminMode} />}></Route>
-=======
-        <Route path="/admin" component={() => <Admin changeAdminMode={changeAdminMode} />}></Route>
->>>>>>> 2eacd4f77ba4768920cbdef9c2faab5073724234
 
         <Route path="/" exact component={() => <Body blur={blur} idUser={user !== null ? user.id : null} addProductToCart={addProductToCart} />}></Route>
 

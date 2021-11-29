@@ -5,7 +5,7 @@ export default function Customer({ }) {
 
     return (
         <div className="admin-customer">
-            abc
+            Customer
         </div>
     )
 }
