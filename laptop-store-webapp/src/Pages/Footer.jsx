@@ -5,9 +5,9 @@ import facebook from "../Images/facebook.png";
 import twitter from "../Images/twitter.png";
 import linkedin from "../Images/linkedin.png";
 import youtube from "../Images/youtube.png";
-export default function Footer() {
+export default function Footer({adminMode}) {
     return (
-        <div className="footer">
+        <div className={adminMode === false ? "footer" : "footer-hide"}>
         <div className="footer-info">
           <div className="container">
             <div className="row">

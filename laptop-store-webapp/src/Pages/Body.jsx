@@ -27,6 +27,9 @@ const styleUnBlur ={
     filter: "none"
 }
 function Body({idUser,addProductToCart,blur}) {
+    useEffect(() => {
+        window.addEventListener('scroll',changeStatusRightItem);
+    }, [])
     const [user, setUser] = useState(null)
     const [display, setDisplay] = useState(false);
     const changeStatusRightItem = () => {
@@ -43,8 +46,11 @@ function Body({idUser,addProductToCart,blur}) {
                     <img className="right-scroll-panel-item" src={phoneicon} />
                     <img className="right-scroll-panel-item" src={emailicon} />
                     <img className="right-scroll-panel-item" src={addressicon} />
+                    <img  className="right-scroll-panel-item" src={up} onClick={()=>window.scrollTo(0, 0)} />
                 </div>
-                <img  className={display === true ? "scroll-to-top" : "scroll-to-top-hide"} src={up} onClick={()=>window.scrollTo(0, 0)} />
+                <img className="event-scroll-left" src={`${URL}/Images/Panels/black-friday.png`} />
+                <img className="event-scroll-right" src={`${URL}/Images/Panels/black-friday.png`} />
+                {/* <img  className={display === true ? "scroll-to-top" : "scroll-to-top-hide"} src={up} onClick={()=>window.scrollTo(0, 0)} /> */}
                 <MainPanel />
                 <LaptopPanel addCart={addCart}/>
                 <div className="event-laptop">
@@ -54,6 +60,23 @@ function Body({idUser,addProductToCart,blur}) {
                 <ScreenPanel addCart={addCart}/>
                 <div className="event"><img className="event-img" src={`${URL}/Images/Panels/event-22-12-2021.png`}/></div>
                 <PCPanel addCart={addCart} />
+                <div className="event-2">
+                    <div className="event-2-item">
+                        <div className="event-2-item-image">
+                            <img className="event-2-item-image-img" src={`${URL}/Images/Panels/event-item1.png`} />
+                        </div>
+                    </div>
+                    <div className="event-2-item">
+                        <div className="event-2-item-image">
+                             <img className="event-2-item-image-img" src={`${URL}/Images/Panels/event-item2.png`} />
+                        </div>
+                    </div>
+                    <div className="event-2-item">
+                        <div className="event-2-item-image">
+                             <img className="event-2-item-image-img" src={`${URL}/Images/Panels/event-item3.png`} />
+                        </div>
+                    </div>
+                </div>
                 <KeyboardPanel addCart={addCart}/>
                 <MousePanel addCart={addCart}/>
                 <HeadphonePanel addCart={addCart}/> 
