@@ -11,21 +11,23 @@ export default function Sidebar() {
             <div className="sidebarMenu">
                 <h3 className="sidebarTitle">Admin Dashboard</h3>
                 <div className="sidebarList">
-                    <div className="slidebarListItem" onclick={()=>history.push("/admin")}>
+                    <ul>
+                    <li className="slidebarListItem" onclick={()=>history.push("/admin")}>
                         <AiFillHome className="slidebarIcon" />
                         Trang chủ
-                    </div>
-                    <div className="slidebarListItem" onclick={()=>history.push("/admin/customer")}>
-                        <AiOutlineUser className="slidebarICon" />
+                    </li>
+                    <li className="slidebarListItem" >
+                        <AiOutlineUser className="slidebarICon" onclick={()=>history.push("/admin/customer")}/>
                         Khách hàng  
-                    </div>
-                    <div className="slidebarListItem" onclick={()=>history.push("/admin/order")}>
+                    </li>
+                    <li className="slidebarListItem" onclick={()=>history.push("/admin/order")}>
                         <FaClipboardList className="slidebarICon" />
                         Đơn hàng
-                    </div>
-                    <div className="slidebarListItem" onclick={()=>history.push("/admin/product")}>
+                    </li>
+                    <li className="slidebarListItem" onclick={()=>history.push("/admin/product")}>
                         <FaBox className="slidebarICon" />Sản phẩm
-                    </div>
+                    </li>
+                    </ul>
                 </div>
             </div>
         </div >

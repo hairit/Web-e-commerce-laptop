@@ -174,7 +174,7 @@ export default function Header({ user, adminMode, logout, clickblur, updateData 
   }
   if (adminMode === false)
     return (
-      <div className="header" className={adminMode === false ? "header" : "header-hide"}>
+      <div className={adminMode === false ? "header" : "header-hide"}>
         <div className="header-top">
           <NavLink className="header-top-item" to="/tincongnghe">
             <RiComputerFill className="header-top-item-icon" />

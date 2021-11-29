@@ -5,7 +5,7 @@ export default function Order({ }) {
 
     return (
         <div className="admin-order">
-            abc
+            Order
         </div>
     )
 }
