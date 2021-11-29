@@ -405,3 +405,6 @@ D:\Do an web\Web-e-commerce-laptop\Laptop-store-e-commerce (Server)\Laptop-store
 D:\Do an web\Web-e-commerce-laptop\Laptop-store-e-commerce (Server)\Laptop-store-e-comerce\obj\Debug\net5.0\Laptop-store-e-comerce.csproj.CopyComplete
 >>>>>>> 8be21a4fd0bb937c851a0b1e3c7debf630b344bf
 >>>>>>> c4a2e6e7a807e5f01c5b3404ae13843e2f964eb0
+D:\Data\Web-e-commerce-laptop\Laptop-store-e-commerce (Server)\Laptop-store-e-comerce\bin\Debug\net5.0\Microsoft.Bcl.AsyncInterfaces.dll
+D:\Data\Web-e-commerce-laptop\Laptop-store-e-commerce (Server)\Laptop-store-e-comerce\bin\Debug\net5.0\runtimes\win-arm\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
+D:\Data\Web-e-commerce-laptop\Laptop-store-e-commerce (Server)\Laptop-store-e-comerce\bin\Debug\net5.0\runtimes\win-arm64\lib\net5.0\dotnet-aspnet-codegenerator-design.exe

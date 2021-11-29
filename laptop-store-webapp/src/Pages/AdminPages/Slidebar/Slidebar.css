@@ -1,0 +1,36 @@
+.sidebar{
+    flex: 1;
+    height: calc(100vh - 50px);
+    background-color: rgb(251, 251, 255);
+    position: sticky;
+    float: left;
+    top: 50px;
+    font-size: 16px;
+    width: 15vw;
+}
+
+.sidebarTitle{
+    font-size: 25px;
+    text-align: center;
+}
+
+.sidebarWrapper{
+    padding: 20px;
+    color: #555;
+}
+.sidebarMenu{
+    display: block;
+}
+.slidebarListItem{
+    width: 100%;
+    height: 10vh;
+    font-size: 25px;
+    text-align: center;
+    margin-bottom: 5px;
+}
+.slidebarICon
+{
+    padding-right: 10px;
+    font-size: 30px;
+    margin-top: 5px
+}
