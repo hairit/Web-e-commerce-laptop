@@ -45,9 +45,6 @@ function App() {
   const cartDetails = useRef([]);
   const [bill, setBill] = useState({ id: '', iduser: '', tongtien: 0, ngaydat: '', diachinhan: '', billDetails: [] });
   useEffect(() => {
-    setAdminMode(false);
-  }, [])
-  useEffect(() => {
     if (userCookie.id !== undefined) {
       axios
         .get(`https://localhost:44343/data/user/${userCookie.id}`)
@@ -241,14 +238,14 @@ function App() {
         .catch((err) => console.log("Dell xoa duoc", err))
     }
   }
+  console.log(adminMode);
   return (
     <Router>
       {loadQuantity()}
-
       <ScrollToTop />
       <div className="App">
         <Header user={user} adminMode={adminMode} logout={logout} clickblur={clickblur} />
-        <Route path="/admin" exact component={() => <Admin changeAdminMode={changeAdminMode} />}></Route>
+        <Route path="/admin" component={() => <Admin changeAdminMode={changeAdminMode} />}></Route>
 
         <Route path="/" exact component={() => <Body blur={blur} idUser={user !== null ? user.id : null} addProductToCart={addProductToCart} />}></Route>
 
