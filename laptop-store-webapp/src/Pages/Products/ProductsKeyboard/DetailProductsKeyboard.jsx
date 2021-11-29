@@ -117,34 +117,19 @@ export default function DetailProductsKeyboard({idUser, match, addProductToCart 
             </div>
             <div className=" row imagesPro">
               <div className="col-md-6 product-slider imgsl">
-                <div className="flexslider">
-                  <ul className="slides">
-                    <li>
-                      <img
-                        src={`https://localhost:44343/Images/Products/${detail.nameimage}`}
-                      />
-                    </li>
-                  </ul>
+              <div className="slider">
+                <div className="images">
+                    <input type="radio" name="slide" id="img1" />
+                    <input type="radio" name="slide" id="img2" />
+                    <input type="radio" name="slide" id="img3" />
+                    <img src={`https://localhost:44343/Images/Products/${detail.nameimage}`} className="m1" alt="img1" />
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5Pw3JdXE3VZ7PnPdLap4TcatSzg6ofJzVxQ&usqp=CAU" className="m2" alt="img2" />
                 </div>
-                <div id="carousel" className="flexslider bdbt">
-                  <ul className="slides ">
-                    <li>
-                      <img
-                        src={`https://localhost:44343/Images/Products/${detail.nameimage}`}
-                      />
-                    </li>
-                    <li>
-                      <img
-                        src={`https://localhost:44343/Images/Products/${detail.nameimage}`}
-                      />
-                    </li>
-                    <li>
-                      <img
-                        src={`https://localhost:44343/Images/Products/${detail.nameimage}`}
-                      />
-                    </li>
-                  </ul>
+                <div className="dots">
+                    <label for="img1"><img src={`https://localhost:44343/Images/Products/${detail.nameimage}`} className="m1" alt="img1" /></label>
+                    <label for="img2"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5Pw3JdXE3VZ7PnPdLap4TcatSzg6ofJzVxQ&usqp=CAU" className="m2" alt="img2" /></label>
                 </div>
+              </div>
                 <div className="col detail-pro">
                   <p>
                     - Đèn: {detail.keyboardDetail && detail.keyboardDetail.den}
