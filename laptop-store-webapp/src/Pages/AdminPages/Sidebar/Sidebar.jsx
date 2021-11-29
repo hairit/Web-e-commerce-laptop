@@ -1,4 +1,4 @@
-import "./Slidebar.css"
+import "./Sidebar.css"
 
 import { Link } from "react-router-dom";
 import { AiOutlineUser, AiFillHome } from "react-icons/ai";
@@ -25,7 +25,6 @@ export default function Sidebar() {
                     </div>
                     <div className="slidebarListItem" onclick={()=>history.push("/admin/product")}>
                         <FaBox className="slidebarICon" />Sản phẩm
-
                     </div>
                 </div>
             </div>

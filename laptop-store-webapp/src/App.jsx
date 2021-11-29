@@ -31,11 +31,7 @@ import load from "./Images/load.gif"
 import GioHangCss from "./CSS/GioHangCss.css"
 import Headphone from "./Pages/Products/ProductsHeadphone/Headphone";
 import DetailProductsHeadphone from "./Pages/Products/ProductsHeadphone/DetailProductsHeadphone";
-import Slidebar from "./Pages/AdminPages/Slidebar/Slidebar";
-import Customer from "./Pages/AdminPages/Customer/Customer";
-import Order from "./Pages/AdminPages/Order/Order"
-import Product from "./Pages/AdminPages/Product/Product"
-import User from "./Pages/AdminPages/User/User"
+
 
 
 function App() {
@@ -252,12 +248,8 @@ function App() {
       <ScrollToTop />
       <div className="App">
         <Header user={user} adminMode={adminMode} logout={logout} clickblur={clickblur} />
-        {adminMode === true ? <Slidebar /> : " "}
-        <Route path="/admin" component={() => <Admin changeAdminMode={changeAdminMode} />}></Route>
-        <Route path="/admin/customer" component={() => <Customer />}></Route>
-        <Route path="/admin/order" component={() => <Order />}></Route>
-        <Route path="/admin/product" component={() => <Product />}></Route>
-        <Route path="/admin/user" component={() => <User />}></Route>
+        <Route path="/admin" exact component={() => <Admin changeAdminMode={changeAdminMode} />}></Route>
+
         <Route path="/" exact component={() => <Body blur={blur} idUser={user !== null ? user.id : null} addProductToCart={addProductToCart} />}></Route>
 
         <Route path="/laptop" exact component={() => <Laptops idUser={user !== null ? user.id : null} addProductToCart={addProductToCart} />}></Route>

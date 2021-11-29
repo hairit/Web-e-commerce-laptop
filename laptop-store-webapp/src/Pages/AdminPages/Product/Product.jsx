@@ -5,7 +5,7 @@ export default function Product({ }) {
 
     return (
         <div className="admin-product">
-            abc
+            Product
         </div>
     )
 }
