@@ -20,13 +20,7 @@ import phoneicon from '../Images/phone-icon.png'
 import addressicon from '../Images/address.png'
 import URL from '../DATA/URL'
 import HeadphonePanel from './BodyPages/HeadphonePanel'
-const styleBlur ={
-    filter: "blur(3px)"
-}
-const styleUnBlur ={
-    filter: "none"
-}
-function Body({idUser,addProductToCart,blur}) {
+function Body({idUser,addProductToCart}) {
     useEffect(() => {
         window.addEventListener('scroll',changeStatusRightItem);
     }, [])
@@ -40,7 +34,7 @@ function Body({idUser,addProductToCart,blur}) {
         addProductToCart(idUser,idProduct,priceProduct);
     }
     return(
-        <div className="body" style={blur===false?styleUnBlur:styleBlur}>
+        <div className="body">
                 <div className={display === true ? "right-scroll-panel" : "right-scroll-panel-hide"}>
                     <img className="right-scroll-panel-item" src={facebookicon} />
                     <img className="right-scroll-panel-item" src={phoneicon} />

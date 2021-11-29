@@ -18,23 +18,16 @@ import ship from '../Images/ship.png'
 import daxem from '../Images/daxem.png'
 import chinhhang from '../Images/chinhhang.png'
 import tuvan from '../Images/tuvan.png'
-import axios from "axios";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   NavLink,
 } from "react-router-dom";
-const nullUser = () => {
-  return (
-    <div>
-      <HiOutlineUserCircle className="header-center-right-menu-item-icon" />
-      <p className="login-text" >Đăng nhập</p>
-    </div>
-  );
-};
-export default function Header({ user, adminMode, logout, updateData }) {
+import UserPanel from "./UserPanel";
+export default function Header({ user , adminMode, logout , updateData ,setUser}) {
   const [statusHeader, setStatusHeader] = useState(false);
+  const [userPanel, setUserPanel] = useState(false);
   const history = useHistory();
   useEffect(() => {
     window.addEventListener('scroll', changeStatusHeader);
@@ -43,9 +36,9 @@ export default function Header({ user, adminMode, logout, updateData }) {
     if (window.scrollY >= 42) setStatusHeader(true);
     else setStatusHeader(false);
   }
-  function logoutHandle() {
-    logout();
-    history.push("/");
+  const changeStatusUserPanel = () => {
+    if(userPanel === false) setUserPanel(true);
+    else setUserPanel(false);
   }
     return (
       <div className={adminMode === false ? "header" : "header-hide"}>
@@ -91,7 +84,8 @@ export default function Header({ user, adminMode, logout, updateData }) {
                   <p className="login-text">Đăng nhập</p>
                 </NavLink>
               ) : (
-                <div className="header-center-right-menu-item" >
+                <div className="header-center-right-menu-item user-drop-down">
+                 <UserPanel user={user} changeStatusPanelUser={changeStatusUserPanel} userPanel={userPanel} updateData={updateData} setUser={setUser} />
                   {user.nameimage !== null ? (
                     <img
                       src={URL + `/Images/UserAvatar/${user.nameimage}`}
@@ -108,7 +102,7 @@ export default function Header({ user, adminMode, logout, updateData }) {
                   <p className="login-text">
                     {user.firstname + " " + user.lastname}
                   </p>
-                  <AiOutlineCaretDown id="drop-user" />
+                  <AiOutlineCaretDown id="drop-user" onClick={()=>changeStatusUserPanel()} />
                   
                 </div>
               )}

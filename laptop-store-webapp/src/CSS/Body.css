@@ -55,6 +55,7 @@
 }
 .event-img {
   transition: 0.5s;
+  width: 100%;
 }
 .event-img:hover {
   transform: scale(104%);
@@ -101,11 +102,13 @@
 }
 .event-scroll-left {
   position: fixed;
-  top: 175px;
+  top: 160px;
   left: 40px;
+  transform: scale(80%);
 }
 .event-scroll-right {
   position: fixed;
-  top: 175px;
+  top: 160px;
   right: 40px;
+  transform: scale(80%);
 }
