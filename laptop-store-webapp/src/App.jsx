@@ -154,9 +154,9 @@ function App() {
     }, 900)
     axios.get(`https://localhost:44343/data/cartdetail/action=add/iduser=${user.id}/idproduct=${idProduct}/tongtien=${price}`,null)
       .then(res => {
-        console.log(res);
+        // console.log(res);
         if(res.status === 201){
-          console.log("Da them vao gio hang",user.id,idProduct,price); 
+          // console.log("Da them vao gio hang",user.id,idProduct,price); 
           updateData();
           setLoading(true);
         }
@@ -168,7 +168,7 @@ function App() {
     (idUser,idProduct,price)=>{
       if(idUser === null)
       {
-        alert("Bạn cần đăng nhập để thêm sản phẩm vào giỏ hàng");
+        Swal.fire('Bạn cần đăng nhập để mua hàng')
       }
       else{
       axios.get(`https://localhost:44343/data/cartdetail/action=add/iduser=${idUser}/idproduct=${idProduct}/tongtien=${price}`,null)
@@ -188,7 +188,7 @@ function App() {
     },
     [],
   )
-  console.log(cartDetails.current);
+  // console.log(cartDetails.current);
   const checkExistCartDetail = (idProduct) => {
       var exist = false;
       cartDetails.current.forEach(element => {
@@ -237,10 +237,10 @@ function App() {
   }
   return (
     <Router>
-      {loadQuantity()}
       <ScrollToTop />
       
       <div className="App">
+      {loadQuantity()}
         <Header user={user} logout={logout} clickblur={clickblur} />
             <Route path="/"                               exact component={() => <Body blur={blur} idUser={user !== null ? user.id : null} addProductToCart={addProductToCart} />}></Route>
 

@@ -48,8 +48,8 @@ export default function Header({ user , logout, clickblur , updateData }){
     if(window.scrollY >= 42) setStatusHeader(true);
     else setStatusHeader(false);
   }
-  console.log(user);
-  console.log("reload header");
+  // console.log(user);
+  // console.log("reload header");
   const usermenuclick = () =>{
     clickblur(usermenu);
     return (

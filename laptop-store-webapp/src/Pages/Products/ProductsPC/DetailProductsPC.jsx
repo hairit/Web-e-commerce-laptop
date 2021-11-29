@@ -67,6 +67,7 @@ export default function DetailProductsPC({idUser, match, addProductToCart}) {
       index--;
     }
   }
+  console.log(detail);
   return (
     <div className="single-product">
       <div className="container">
