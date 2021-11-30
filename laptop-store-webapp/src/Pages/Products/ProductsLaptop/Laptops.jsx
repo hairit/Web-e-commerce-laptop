@@ -219,15 +219,6 @@ export default function Laptops({idUser,match,addProductToCart}) {
               <li>
                 <a href="#">Laptop Gaming</a>
               </li>
-              <li>
-                <a href="#">Bàn phím cơ</a>
-              </li>
-              <li>
-                <a href="#">Bàn phím Gaming</a>
-              </li>
-              <li>
-                <a href="#">Bàn phím giá rẻ</a>
-              </li>
             </ul>
           </div>
           <div className="our-brand">

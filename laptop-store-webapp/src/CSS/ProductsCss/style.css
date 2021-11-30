@@ -33,30 +33,6 @@ img {
   max-width: 100%;
   height: auto;
 }
-/* .center-text {
-  text-align: center;
-}
-.left-text {
-  text-align: left;
-}
-.right-text {
-  text-align: right;
-}
-.relative {
-  position: relative;
-}
-.absolute {
-  position: absolute;
-}
-.light-red {
-  color: #fe5252;
-}
-.gray {
-  color: #ccc;
-}
-.red {
-  color: #ff3a3a;
-} */
 
 /*Transition Animation*/
 
@@ -164,18 +140,7 @@ img {
   -webkit-box-shadow: 0 0 5px 1px #d3d3d3;
   box-shadow: 0 0 5px 1px #d3d3d3;
 }
-/* .offer {
-  position: absolute;
-  right: 15px;
-  top: 15px;
-  z-index: 99;
-  padding: 10px;
-  font-size: 18px;
-  color: #fff;
-  background: #f7544a;
-  -webkit-border-radius: 10px;
-  border-radius: 10px;
-} */
+
 .thumbnail {
   float: left;
   min-height: 29.5rem;
@@ -338,15 +303,6 @@ img {
   width: 100%;
   margin-bottom: 10px;
 }
-/* .brand-logo {
-  float: left;
-  border: 1px solid #dcdcdc;
-  -webkit-border-radius: 10px;
-  border-radius: 10px;
-  width: 100%;
-  padding: 10px;
-  text-align: center;
-} */
 
 #braldLogo .brand_item li {
   padding: 7px;
@@ -355,7 +311,7 @@ img {
   display: inline-block;
   display: inline;
   margin-right: 2%;
-  width: 18.4%;
+  width: 15%;
 }
 #braldLogo .brand_item li:last-child {
   margin-right: 0;
@@ -379,10 +335,7 @@ img {
   overflow: hidden;
   clear: both;
 }
-/* .leftbar .title {
-  font-size: 16px;
-  text-transform: uppercase;
-} */
+
 /*!~~~~~~~~~~~~ PRODUCT TAGS ~~~~~~~~~~~~~*/
 
 .product-tag ul {
@@ -484,7 +437,6 @@ img {
 }
 .support li {
   display: list-item;
-  list-style: disc inside;
   color: #f7544a;
   margin-bottom: 5px;
 }
@@ -833,13 +785,47 @@ option {
   margin: 10px 0 auto 6rem;
   position: absolute;
 }
-
+.col-logo {
+  width: 17% !important;
+}
 .news img {
   float: right;
   width: 85%;
   clear: both;
 }
-
+.footer-info-top {
+  border-bottom: 1px dashed #b6b6b6;
+  padding-bottom: 20px;
+}
+.txt-ft {
+  padding: 5px 0 5px 55px;
+}
+.txt-ft strong {
+  color: black;
+}
+.ft-item {
+  width: 25%;
+}
+.ft-item img {
+  float: left;
+  width: 13%;
+}
+.footer-top {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  flex-flow: row;
+  padding-left: 70px;
+}
+.ft {
+  display: flex;
+  flex-flow: column;
+  width: 90% !important;
+  padding-top: 20px;
+}
+.ft-center {
+  width: 15%;
+}
 @media (min-width: 768px) {
   .container {
     width: 750px;
