@@ -237,7 +237,7 @@ function App() {
         .catch((err) => console.log("Dell xoa duoc", err))
     }
   }
-  console.log(adminMode);
+
   return (
     <Router>
       <ScrollToTop />

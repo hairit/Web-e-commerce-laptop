@@ -18,20 +18,17 @@ import ship from '../Images/ship.png'
 import daxem from '../Images/daxem.png'
 import chinhhang from '../Images/chinhhang.png'
 import tuvan from '../Images/tuvan.png'
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  NavLink,
-} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import UserPanel from "./UserPanel";
 export default function Header({ user , adminMode, logout , updateData ,setUser}) {
   const [statusHeader, setStatusHeader] = useState(false);
   const [userPanel, setUserPanel] = useState(false);
   const history = useHistory();
   useEffect(() => {
+    console.log(123);
     window.addEventListener('scroll', changeStatusHeader);
   }, [])
+  console.log(userPanel);
   const changeStatusHeader = () => {
     if (window.scrollY >= 42) setStatusHeader(true);
     else setStatusHeader(false);
@@ -85,7 +82,7 @@ export default function Header({ user , adminMode, logout , updateData ,setUser}
                 </NavLink>
               ) : (
                 <div className="header-center-right-menu-item user-drop-down">
-                 <UserPanel user={user} changeStatusPanelUser={changeStatusUserPanel} userPanel={userPanel} updateData={updateData} setUser={setUser} />
+                 <UserPanel user={user} changeStatusPanelUser={changeStatusUserPanel} userPanel={userPanel} updateData={updateData} setUser={setUser} logout={logout}/>
                   {user.nameimage !== null ? (
                     <img
                       src={URL + `/Images/UserAvatar/${user.nameimage}`}
