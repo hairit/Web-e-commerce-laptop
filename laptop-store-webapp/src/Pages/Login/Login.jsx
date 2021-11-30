@@ -49,7 +49,7 @@ export default function Login({login,userCookie}) {
         else {
             axios.get(`https://localhost:44343/data/user/login/${user.email}/${user.pass}`)
                            .then(res => {
-                                        if(res.data.mode === "ADMIN"){
+                                        if(res.data.mode === "ADMIN" || res.data.mode ==="STAFF"){
                                             history.push(`/admin/${res.data.id}`);
                                             return;
                                         }

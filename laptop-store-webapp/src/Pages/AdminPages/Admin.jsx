@@ -34,15 +34,16 @@ export default function Admin({ changeAdminMode , match , logout}) {
                     <NavLink className="admin-tab" to="/admin"><FaHome className="admin-tab-icon" /><p>Trang chủ</p></NavLink>
                     <NavLink className="admin-tab" to="/admin/customer"><FaUserFriends className="admin-tab-icon"/><p>Khách hàng</p></NavLink>
                     {user === null ? <div></div>
-                        :      
+                        :
                         user.mode === "STAFF" ? <NavLink className="admin-tab" to="/sell">
                                                     <RiBillLine className="admin-tab-icon" />
                                                     <p>Sell</p>
-                                                </NavLink> : <div></div>
+                                                </NavLink> : <> 
+                                                        <NavLink className="admin-tab" to="/admin/product"><GrProductHunt className="admin-tab-icon" /><p>Sản phẩm</p></NavLink>
+                                                        <NavLink className="admin-tab" to="/admin/user"><FaUser className="admin-tab-icon"/><p>Người dùng</p></NavLink>
+                                                        <NavLink className="admin-tab" to="/admin/report"><FcStatistics className="admin-tab-icon"/><p>Thống kê</p></NavLink>   
+                                                </>
                     }
-                    <NavLink className="admin-tab" to="/admin/product"><GrProductHunt className="admin-tab-icon"/><p>Sản phẩm</p></NavLink>
-                    <NavLink className="admin-tab" to="/admin/user"><FaUser className="admin-tab-icon"/><p>Người dùng</p></NavLink>
-                    <NavLink className="admin-tab" to="/admin/report"><FcStatistics className="admin-tab-icon"/><p>Thống kê</p></NavLink>
                 </div>
                 <div className="admin-pages">
                     <div className="admin-pages-header">

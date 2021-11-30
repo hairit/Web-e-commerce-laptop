@@ -24,7 +24,6 @@ function Body({idUser,addProductToCart}) {
     useEffect(() => {
         window.addEventListener('scroll',changeStatusRightItem);
     }, [])
-    const [user, setUser] = useState(null)
     const [display, setDisplay] = useState(false);
     const changeStatusRightItem = () => {
         if(window.scrollY >= 400) setDisplay(true);
