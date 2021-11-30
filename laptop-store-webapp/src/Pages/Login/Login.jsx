@@ -4,6 +4,7 @@ import '../../CSS/Login.css'
 //import '@fortawesome/fontawesome-free/css/all.min.css';
 import axios from 'axios';
 export default function Login({login,userCookie}) {
+    const history = useHistory();
     const [flag, setFlag] = useState(false);
     const [flag2, setFlag2] = useState(false);
     const [reqpass, setreqpass] = useState(false);
@@ -33,7 +34,7 @@ export default function Login({login,userCookie}) {
                                             mode: "CUSTOMER",
                                             nameimage: ""
                                         });
-    let history = useHistory();
+
 
     /*user = id, lastname, firtstname, email, sdt, pass, diachi, img*/
     function handleClick(e) {
@@ -48,14 +49,16 @@ export default function Login({login,userCookie}) {
         else {
             axios.get(`https://localhost:44343/data/user/login/${user.email}/${user.pass}`)
                            .then(res => {
-                                console.log(res.data);
-                                console.log(res.status);
-                                if(res.status === 404) alert("Tài khoản hoặc mật khẩu không đúng");
-                                else {
-                                    login(res.data);
-                                    history.goBack();
+                                        if(res.data.mode === "ADMIN"){
+                                            history.push(`/admin/${res.data.id}`);
+                                            return;
+                                        }
+                                        console.log("cust");
+                                        console.log(res.data.mode);
+                                        login(res.data);
+                                        history.goBack();
                                 }
-                           })
+                           )
                            .catch(err => 
                             {
                                 console.log(err);

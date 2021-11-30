@@ -14,6 +14,7 @@ import { CgSearch } from "react-icons/cg";
 import { HiOutlineUserCircle } from "react-icons/hi";
 import { BiMenuAltLeft } from "react-icons/bi"
 import { IoIosNotificationsOutline } from "react-icons/io";
+import {MdAdminPanelSettings} from 'react-icons/md';
 import ship from '../Images/ship.png'
 import daxem from '../Images/daxem.png'
 import chinhhang from '../Images/chinhhang.png'
@@ -25,10 +26,8 @@ export default function Header({ user , adminMode, logout , updateData ,setUser}
   const [userPanel, setUserPanel] = useState(false);
   const history = useHistory();
   useEffect(() => {
-    console.log(123);
     window.addEventListener('scroll', changeStatusHeader);
   }, [])
-  console.log(userPanel);
   const changeStatusHeader = () => {
     if (window.scrollY >= 42) setStatusHeader(true);
     else setStatusHeader(false);
@@ -55,7 +54,7 @@ export default function Header({ user , adminMode, logout , updateData ,setUser}
           <NavLink className="header-top-item" to="/showroom">
             <MdLocationOn className="header-top-item-icon" />
             <p className="header-top-item-content">Hệ thống showroom</p>
-          </NavLink>
+          </NavLink>         
         </div>
         <div className="header-center-container">
           <div className={statusHeader === false ? "header-center header-item" : "header-center-scroll"}>

@@ -54,10 +54,10 @@ export default function UserPanel({user , changeStatusPanelUser , userPanel ,set
             }
             call('PUT','data/user',userChange).then(res =>{
                 setUser(res.data);
-                setStatusEdit(true)
+                setStatusEdit(true);
+                changeStatusPanelUser();
                 alert("Đổi mật khẩu thành công");
             }).catch(() => setUser(saveUser));
-            changeStatusPanelUser();
         }
     }
     return (
@@ -71,7 +71,7 @@ export default function UserPanel({user , changeStatusPanelUser , userPanel ,set
                                     <p className="user-label">Họ</p>
                                     {statusEdit === false ? <input className="user-input firstName-user" readOnly value={user.lastname}/> 
                                                         : <input className="user-input firstName-user user-input-active" placeholder={user.lastname}
-                                                                                                                        onChange={(e)=>setUserChange({...userChange, lastname : e.target.value.toString() })}/>}
+                                                                                                                         onChange={(e)=>setUserChange({...userChange, lastname : e.target.value.toString() })}/>}
                             </div>
                             <div className="name-panel-item">
                                     <p className="user-label">Tên</p>

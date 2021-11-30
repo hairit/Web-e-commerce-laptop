@@ -161,7 +161,7 @@ namespace Laptop_store_e_comerce.Controllers
             {
                 return NotFound();
             }
-            /*if(pro.Idloai == "laptop")
+            if(pro.Idloai == "laptop")
             {
                 database.LaptopDetails.Remove(await database.LaptopDetails.FindAsync(id));
                 database.LaptopDescriptions.Remove(await database.LaptopDescriptions.FindAsync(id));
@@ -169,10 +169,28 @@ namespace Laptop_store_e_comerce.Controllers
             if(pro.Idloai == "keyboard")
             {
                 database.KeyboardDetails.Remove(await database.KeyboardDetails.FindAsync(id));
-            }*/
-            database.Products.Remove(pro);
-            await database.SaveChangesAsync();
-
+            }
+            if(pro.Idloai == "screen")
+            {
+                database.ScreenDetails.Remove(await database.ScreenDetails.FindAsync(id));
+            }
+            if (pro.Idloai == "mouse")
+            {
+                database.MouseDetails.Remove(await database.MouseDetails.FindAsync(id));
+            }
+            if (pro.Idloai == "headphone")
+            {
+                database.HeadphoneDetails.Remove(await database.HeadphoneDetails.FindAsync(id));
+            }
+            if (pro.Idloai == "pc")
+            {
+                database.Pcdetails.Remove(await database.Pcdetails.FindAsync(id));
+            }
+            try
+            {
+                database.Products.Remove(pro);
+                await database.SaveChangesAsync();
+            }catch { return BadRequest(); }
             return pro;
         }
         private bool existID(string id)
