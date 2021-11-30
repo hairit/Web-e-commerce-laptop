@@ -105,34 +105,19 @@ export default function DetailProductsHeadphone({idUser, match, addProductToCart
             </div>
             <div className=" row imagesPro">
               <div className="col-md-6 product-slider imgsl">
-                <div className="flexslider">
-                  <ul className="slides">
-                    <li>
-                      <img
-                        src={`https://localhost:44343/Images/Products/${detail.nameimage}`}
-                      />
-                    </li>
-                  </ul>
+              <div className="slider">
+                <div className="images">
+                    <input type="radio" name="slide" id="img1" />
+                    <input type="radio" name="slide" id="img2" />
+                    <input type="radio" name="slide" id="img3" />
+                    <img src={`https://localhost:44343/Images/Products/${detail.nameimage}`} className="m1" alt="img1" />
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRigExH88LigwLQQPt6DFM1KaQX6cCuw9DylA&usqp=CAU" className="m2" alt="img2" />
                 </div>
-                <div id="carousel" className="flexslider bdbt">
-                  <ul className="slides ">
-                    <li>
-                      <img
-                        src={`https://localhost:44343/Images/Products/${detail.nameimage}`}
-                      />
-                    </li>
-                    <li>
-                      <img
-                        src={`https://localhost:44343/Images/Products/${detail.nameimage}`}
-                      />
-                    </li>
-                    <li>
-                      <img
-                        src={`https://localhost:44343/Images/Products/${detail.nameimage}`}
-                      />
-                    </li>
-                  </ul>
+                <div className="dots">
+                    <label for="img1"><img src={`https://localhost:44343/Images/Products/${detail.nameimage}`} className="m1" alt="img1" /></label>
+                    <label for="img2"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRigExH88LigwLQQPt6DFM1KaQX6cCuw9DylA&usqp=CAU" className="m2" alt="img2" /></label>
                 </div>
+              </div>
                 <div className="col detail-pro">
                   <p>
                     - Kiểu tai nghe:{" "}
@@ -430,12 +415,7 @@ export default function DetailProductsHeadphone({idUser, match, addProductToCart
               </div>
             </div>
             <div className="col-md-6 addressm">
-              <iframe
-                className="bando"
-                src="https://www.google.com/maps/embed?pb=!1m12!1m8!1m3!1d3918.2315764536306!2d106.5962233!3d10.8699833!3m2!1i1024!2i768!4f13.1!2m1!1zMTUvMSDhuqRwIENow6FuaCAyLCB4w6MgVMOibiBYdcOibiwgSMOzYyBNw7RuLCBUaMOgbmggcGjhu5EgSOG7kyBDaMOtIE1pbmg!5e0!3m2!1svi!2s!4v1636881359200!5m2!1svi!2s"
-                allowfullscreen=""
-                loading="lazy"
-              ></iframe>
+            <iframe className="bando" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.6696584237025!2d106.68006961509548!3d10.759922362439628!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f1b7c3ed289%3A0xa06651894598e488!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBTw6BpIEfDsm4!5e0!3m2!1svi!2s!4v1638173238125!5m2!1svi!2s" allowfullscreen="" loading="lazy"></iframe>
             </div>
           </div>
         </div>

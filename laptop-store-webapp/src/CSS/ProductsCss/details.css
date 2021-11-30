@@ -558,6 +558,54 @@ strong {
 .banner-laptop img {
   width: 80%;
 }
+/* ------------------------------------------------------Slide Product----------------------------------------------*/
+
+.slider {
+  position: relative;
+  width: auto;
+  overflow: hidden;
+}
+.images {
+  display: flex;
+  width: 100%;
+}
+.images img {
+  width: 100%;
+  transition: all 0.3s ease;
+  margin-right: 36px;
+}
+.images input {
+  display: none;
+}
+.dots {
+  display: flex;
+  justify-content: center;
+  margin: 5px;
+}
+.dots label {
+  width: 15%;
+  border-radius: 3px;
+  border: 1px solid rgb(163, 163, 163);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  margin: 5px;
+}
+.dots label:hover {
+  border-color: #0029e2;
+}
+#img1:checked ~ .m1 {
+  margin-left: 0;
+}
+#img2:checked ~ .m2 {
+  margin-left: -105%;
+}
+/* #img3:checked ~ .m3 {
+  margin-left: -200%;
+}
+#img4:checked ~ .m4 {
+  margin-left: -300%;
+} */
+
 /* ------------------------------------------------------------------------------------------------------*/
 
 /* --------------------------------------- Css Laptop -------------------------------------------------*/

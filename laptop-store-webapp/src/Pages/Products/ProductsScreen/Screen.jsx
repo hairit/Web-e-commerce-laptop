@@ -32,6 +32,14 @@ export default function Screen({idUser,match,addProductToCart}) {
   function addProductInCart(id,gia){
     addProductToCart(idUser,id,gia)
   }
+
+  function sortLaptop(e){
+    var sorts = e.target.value
+    axios.get("https://localhost:44343/data/screen/" + sorts,null)
+    .then((res) => setPros(res.data))
+    .catch((err) => console.log(err))
+}
+console.log("aa",pros)
   return (
     <div className="wrapper">
       <div className="container_fullwidth">
@@ -70,35 +78,66 @@ export default function Screen({idUser,match,addProductToCart}) {
                 <div className="loc">
                   <div className="title-sort">Thương hiệu</div>
                   <div className="btn-right">
-                    <button type="button" className="btn-sort">
+                    <button type="button" value="brand=lg"  onClick={(e) => sortLaptop(e)} className="btn-sort">
                       LG
                     </button>
-                    <button type="button" className="btn-sort">
+                    <button type="button" value="brand=dell"  onClick={(e) => sortLaptop(e)} className="btn-sort">
                       DELL
                     </button>
-                    <button type="button" className="btn-sort">
+                    <button type="button" value="brand=acer"  onClick={(e) => sortLaptop(e)} className="btn-sort">
                       ACER
                     </button>
-                    <button type="button" className="btn-sort">
+                    <button type="button" value="brand=lcd"  onClick={(e) => sortLaptop(e)} className="btn-sort">
                       LCD
                     </button>
-                    <button type="button" className="btn-sort">
+                    <button type="button" value="brand=asus"  onClick={(e) => sortLaptop(e)} className="btn-sort">
                       ASUS
                     </button>
                   </div>
                 </div>
 
                 <div className="loc">
-                  <div className="title-sort">Năm sản xuất</div>
+                  <div className="title-sort">Kích thước</div>
                   <div className="btn-right">
-                    <button type="button" className="btn-sort">
-                      2019
+                    <button type="button" value="kichthuoc/from=18to=19"  onClick={(e) => sortLaptop(e)} className="btn-sort">
+                      18.5 inch
                     </button>
-                    <button type="button" className="btn-sort">
-                      2020
+                    <button type="button" value="kichthuoc/from=19to=20"  onClick={(e) => sortLaptop(e)} className="btn-sort">
+                      19.5 inch
                     </button>
-                    <button type="button" className="btn-sort">
-                      2021
+                    <button type="button" value="kichthuoc/from=20to=22"  onClick={(e) => sortLaptop(e)} className="btn-sort">
+                      21.5 inch
+                    </button>
+                    <button type="button" value="kichthuoc/from=23to=25"  onClick={(e) => sortLaptop(e)} className="btn-sort">
+                      23.8 inch
+                    </button>
+                    <button type="button" value="kichthuoc/from=25to=28"  onClick={(e) => sortLaptop(e)} className="btn-sort">
+                      27 inch
+                    </button>
+                  </div>
+                </div>
+                <div className="loc">
+                  <div className="title-sort">Độ phân giải</div>
+                  <div className="btn-right">
+                    <button type="button" className="btn-sort" value="dophangiai=HD" onClick={(e) => sortLaptop(e)}>
+                      HD 1366x768
+                    </button>
+                    <button type="button" className="btn-sort" value="dophangiai=HD+" onClick={(e) => sortLaptop(e)}>
+                      HD+ 1600x900
+                    </button>
+                    <button type="button" className="btn-sort" value="dophangiai=FHD" onClick={(e) => sortLaptop(e)}>
+                      FHD 1920x1080
+                    </button>
+                  </div>
+                </div>
+                <div className="loc">
+                  <div className="title-sort">Tần số</div>
+                  <div className="btn-right">
+                    <button type="button" className="btn-sort" value="tanso=60" onClick={(e) => sortLaptop(e)}>
+                    60 Hz
+                    </button>
+                    <button type="button" className="btn-sort" value="tanso=75" onClick={(e) => sortLaptop(e)}>
+                    75 Hz
                     </button>
                   </div>
                 </div>

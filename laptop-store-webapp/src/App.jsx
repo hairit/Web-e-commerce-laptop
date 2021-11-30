@@ -32,8 +32,6 @@ import GioHangCss from "./CSS/GioHangCss.css"
 import Headphone from "./Pages/Products/ProductsHeadphone/Headphone";
 import DetailProductsHeadphone from "./Pages/Products/ProductsHeadphone/DetailProductsHeadphone";
 
-
-
 function App() {
   const history = useHistory();
   const [blur, setblur] = useState(false);
@@ -45,6 +43,7 @@ function App() {
   const cartDetails = useRef([]);
   const [bill, setBill] = useState({ id: '', iduser: '', tongtien: 0, ngaydat: '', diachinhan: '', billDetails: [] });
   useEffect(() => {
+    console.log("effect none dependence");
     if (userCookie.id !== undefined) {
       axios
         .get(`https://localhost:44343/data/user/${userCookie.id}`)
@@ -56,10 +55,12 @@ function App() {
     }
   }, []);
   useEffect(() => {
+    console.log("effect dêpndency");
     if (user !== null) {
       call('GET', `data/user/${user.id}`, null)
         .then((res) => {
           cartDetails.current = res.data.cartDetails;
+        
           setUser(res.data)
         })
         .catch((err) => console.log("Reload User" + err));
@@ -151,7 +152,6 @@ function App() {
       <div></div>
     }
   }
-
   const addQuantityProduct = (idProduct, price) => {
     setTimeout(() => {
       setLoading(false);
@@ -169,9 +169,10 @@ function App() {
     setLoading(true);
   }
   const addProductToCart = useCallback(
-    (idUser, idProduct, price) => {
-      if (idUser === null) {
-        alert("Bạn cần đăng nhập để thêm sản phẩm vào giỏ hàng");
+    (idUser,idProduct,price)=>{
+      if(idUser === null)
+      {
+        Swal.fire('Bạn cần đăng nhập để mua hàng')
       }
       else {
         axios.get(`https://localhost:44343/data/cartdetail/action=add/iduser=${idUser}/idproduct=${idProduct}/tongtien=${price}`, null)
@@ -181,7 +182,6 @@ function App() {
                 cartDetails.current.push(res.data);
                 document.getElementById("quantity-cartdetails-user").textContent = cartDetails.current.length
                 document.getElementById("quantity-cartdetails-user").style.display = 'block';
-
               }
               showLoadAddCart();
             }
@@ -191,7 +191,6 @@ function App() {
     },
     [],
   )
-  console.log(cartDetails.current);
   const checkExistCartDetail = (idProduct) => {
     var exist = false;
     cartDetails.current.forEach(element => {
@@ -241,13 +240,13 @@ function App() {
   console.log(adminMode);
   return (
     <Router>
-      {loadQuantity()}
       <ScrollToTop />
       <div className="App">
-        <Header user={user} adminMode={adminMode} logout={logout} clickblur={clickblur} />
+      {loadQuantity()}
+        <Header user={user} adminMode={adminMode} logout={logout} clickblur={clickblur} setUser={setUser} />
         <Route path="/admin"  component={() => <Admin changeAdminMode={changeAdminMode} />}></Route>
 
-        <Route path="/" exact component={() => <Body blur={blur} idUser={user !== null ? user.id : null} addProductToCart={addProductToCart} />}></Route>
+        <Route path="/" exact component={() => <Body idUser={user !== null ? user.id : null} addProductToCart={addProductToCart} />}></Route>
 
         <Route path="/laptop" exact component={() => <Laptops idUser={user !== null ? user.id : null} addProductToCart={addProductToCart} />}></Route>
         <Route path="/laptop/:attribute/:value" exact component={(match) => <Laptops match={match} addProductToCart={addProductToCart} />} ></Route>

@@ -16,7 +16,7 @@ const solver = new Solver();
 export default function Laptops({idUser,match,addProductToCart}) {
   const history = useHistory();
   const [pros, setPros] = useState([]);
-  const [sort, setSort] = useState("/data/product/type=laptop/brand=");
+  const [load, setLoad] = useState(0);
   // const [sort, setSort] = useState();
   useEffect(() => {
     if(match !== undefined){
@@ -37,21 +37,20 @@ export default function Laptops({idUser,match,addProductToCart}) {
   function addProductInCart(id,gia){
     addProductToCart(idUser,id,gia);
   }
-
-  function sortLaptop(e){
-    var url = "/data/product/type=laptop/brand="
-    var brand = e.target.value
-    if(brand === "asus"){
-      setSort(sort + brand)
-      history.push(url + brand)
-      console.log(sort + brand );
-    } else if(brand === "dell"){
-      console.log(sort + brand );
-    } else if(brand === "hp"){
-      console.log(sort + brand );
-    } else{
-      console.log(sort + brand );
+  
+  function reload() {
+    if(load === 0 ){
+      setLoad(1)
+    }else{
+      setLoad(0)
     }
+  }
+  
+  function sortLaptop(e){
+      var sorts = e.target.value
+      axios.get("https://localhost:44343/data/laptop/" + sorts,null)
+      .then((res) => setPros(res.data))
+      .catch((err) => console.log(err))
   }
   return (
     <div className="wrapper">
@@ -80,17 +79,17 @@ export default function Laptops({idUser,match,addProductToCart}) {
                   <div className="title-sort">Thương hiệu</div>
                   <div className="btn-right">
                     {/* <NavLink to={sort}> */}
-                    <button type="button" className="btn-sort" value="asus" onClick={(e) => sortLaptop(e)}>
+                    <button type="button" className="btn-sort" value="brand=asus"  onClick={(e) => sortLaptop(e)}>
                       Asus
                     </button>
                     {/* </NavLink> */}
-                    <button type="button" className="btn-sort" value="dell" onClick={(e) => sortLaptop(e)} >
+                    <button type="button" className="btn-sort" value="brand=dell" onClick={(e) => sortLaptop(e)} >
                       Dell
                     </button>
-                    <button type="button" className="btn-sort" value="hp" onClick={(e) => sortLaptop(e)}>
+                    <button type="button" className="btn-sort" value="brand=hp" onClick={(e) => sortLaptop(e)}>
                       HP
                     </button>
-                    <button type="button" className="btn-sort" value="acer" onClick={(e) => sortLaptop(e)}>
+                    <button type="button" className="btn-sort" value="brand=acer" onClick={(e) => sortLaptop(e)}>
                       Acer
                     </button>
                   </div>
@@ -98,16 +97,16 @@ export default function Laptops({idUser,match,addProductToCart}) {
                 <div className="loc">
                   <div className="title-sort">CPU</div>
                   <div className="btn-right">
-                    <button type="button" className="btn-sort">
+                    <button type="button" className="btn-sort" value="cpu=i3" onClick={(e) => sortLaptop(e)}>
                       Corei3
                     </button>
-                    <button type="button" className="btn-sort">
+                    <button type="button" className="btn-sort" value="cpu=i5" onClick={(e) => sortLaptop(e)}>
                       Corei5
                     </button>
-                    <button type="button" className="btn-sort">
+                    <button type="button" className="btn-sort" value="cpu=i7" onClick={(e) => sortLaptop(e)}>
                       Corei7
                     </button>
-                    <button type="button" className="btn-sort">
+                    <button type="button" className="btn-sort" value="cpu=i9" onClick={(e) => sortLaptop(e)}>
                       Corei9
                     </button>
                   </div>
@@ -116,13 +115,13 @@ export default function Laptops({idUser,match,addProductToCart}) {
                 <div className="loc">
                   <div className="title-sort">Ram</div>
                   <div className="btn-right">
-                    <button type="button" className="btn-sort">
+                    <button type="button" className="btn-sort" value="ram=4" onClick={(e) => sortLaptop(e)}>
                       4GB
                     </button>
-                    <button type="button" className="btn-sort">
+                    <button type="button" className="btn-sort" value="ram=8" onClick={(e) => sortLaptop(e)}>
                       8GB
                     </button>
-                    <button type="button" className="btn-sort">
+                    <button type="button" className="btn-sort" value="ram=16" onClick={(e) => sortLaptop(e)}>
                       16GB
                     </button>
                   </div>
@@ -131,8 +130,11 @@ export default function Laptops({idUser,match,addProductToCart}) {
                 <div className="loc">
                   <div className="title-sort">VAG</div>
                   <div className="btn-right">
-                    <button type="button" className="btn-sort">
+                    <button type="button" className="btn-sort" value="vga=nvidia" onClick={(e) => sortLaptop(e)}>
                       NVIDIA
+                    </button>
+                    <button type="button" className="btn-sort" value="vga=amd" onClick={(e) => sortLaptop(e)}>
+                      AMD
                     </button>
                   </div>
                 </div>
@@ -140,16 +142,16 @@ export default function Laptops({idUser,match,addProductToCart}) {
                 <div className="loc">
                   <div className="title-sort">Màn hình</div>
                   <div className="btn-right">
-                    <button type="button" className="btn-sort">
+                    <button type="button" className="btn-sort" value="manhinh=13.3" onClick={(e) => sortLaptop(e)}>
                       13.3 inch
                     </button>
-                    <button type="button" className="btn-sort">
+                    <button type="button" className="btn-sort" value="manhinh=14" onClick={(e) => sortLaptop(e)}>
                       14 inch
                     </button>
-                    <button type="button" className="btn-sort">
+                    <button type="button" className="btn-sort" value="manhinh=15" onClick={(e) => sortLaptop(e)}>
                       15 inch
                     </button>
-                    <button type="button" className="btn-sort">
+                    <button type="button" className="btn-sort" value="manhinh=15.6" onClick={(e) => sortLaptop(e)}>
                       15.6 inch
                     </button>
                   </div>
@@ -216,15 +218,6 @@ export default function Laptops({idUser,match,addProductToCart}) {
               </li>
               <li>
                 <a href="#">Laptop Gaming</a>
-              </li>
-              <li>
-                <a href="#">Bàn phím cơ</a>
-              </li>
-              <li>
-                <a href="#">Bàn phím Gaming</a>
-              </li>
-              <li>
-                <a href="#">Bàn phím giá rẻ</a>
               </li>
             </ul>
           </div>

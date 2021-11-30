@@ -33,6 +33,13 @@ export default function PC({idUser,addProductToCart,match}) {
     addProductToCart(idUser,id,gia)
   }
 
+  function sortPC(e){
+    var sorts = e.target.value
+    axios.get("https://localhost:44343/data/pc/" + sorts ,null)
+    .then((res) => setPros(res.data))
+    .catch((err) => console.log(err))   
+  }
+
   return (
     <div className="wrapper">
       <div className="container_fullwidth">
@@ -60,33 +67,59 @@ export default function PC({idUser,addProductToCart,match}) {
                 <p>Bộ lọc</p>
               </div>
               <div className="col-12 ">
-                <div className="loc">
-                  <div className="title-sort">Màu</div>
+              <div className="loc">
+                  <div className="title-sort">Thương hiệu</div>
                   <div className="btn-right">
-                    <button type="button" className="btn-sort">
-                      Đen
-                    </button>
-                    <button type="button" className="btn-sort">
-                      Trắng
-                    </button>
-                    <button type="button" className="btn-sort">
-                      Đỏ
-                    </button>
-                    <button type="button" className="btn-sort">
-                      Xanh
+                    <button type="button" value="brand=acer" onClick={(e) => sortPC(e)} className="btn-sort">
+                      Acer
                     </button>
                   </div>
                 </div>
-
                 <div className="loc">
-                  <div className="title-sort">Năm sản xuất</div>
+                  <div className="title-sort">Ram</div>
                   <div className="btn-right">
-                    <button type="button" className="btn-sort">
-                      2020
+                    <button type="button" className="btn-sort" value="ram=4" onClick={(e) => sortPC(e)}>
+                      4GB
                     </button>
-                    <button type="button" className="btn-sort">
-                      2021
+                    <button type="button" className="btn-sort" value="ram=8" onClick={(e) => sortPC(e)}>
+                      8GB
                     </button>
+                  </div>
+                </div>
+                <div className="loc">
+                  <div className="title-sort">CPU</div>
+                  <div className="btn-right">
+                    <button type="button" value="cpu=i3" onClick={(e) => sortPC(e)} className="btn-sort">
+                    Core i3
+                    </button>
+                    <button type="button" value="cpu=i5" onClick={(e) => sortPC(e)} className="btn-sort">
+                      Core i5
+                    </button>
+                  </div>
+                </div>
+                <div className="loc">
+                  <div className="title-sort">Mainboard</div>
+                  <div className="btn-right">
+                    <button type="button" value="mainboard=acer" onClick={(e) => sortPC(e)} className="btn-sort">
+                    Acer
+                    </button>
+                    <button type="button" value="mainboard=asus" onClick={(e) => sortPC(e)} className="btn-sort">
+                      Asus
+                    </button>
+                    <button type="button" value="mainboard=gigabyte" onClick={(e) => sortPC(e)} className="btn-sort">
+                    Gigabyte
+                    </button>
+                  </div>
+                </div>
+                <div className="loc">
+                  <div className="title-sort">Vga</div>
+                  <div className="btn-right">
+                    <button type="button" value="vgatype=nvidia" onClick={(e) => sortPC(e)} className="btn-sort">
+                    NVIDIA
+                    </button>
+                    {/* <button type="button" value="vgatype=amd" onClick={(e) => sortPC(e)} className="btn-sort">
+                      AMD
+                    </button> */}
                   </div>
                 </div>
               </div>

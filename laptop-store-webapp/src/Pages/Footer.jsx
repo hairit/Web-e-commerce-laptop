@@ -5,29 +5,83 @@ import facebook from "../Images/facebook.png";
 import twitter from "../Images/twitter.png";
 import linkedin from "../Images/linkedin.png";
 import youtube from "../Images/youtube.png";
+import Shipper from "../Images/Shipper.png";
+import exchange from "../Images/exchange.png";
+import cardPay from "../Images/cardPay.png";
+import chat from "../Images/chat.png";
 export default function Footer({adminMode}) {
     return (
         <div className={adminMode === false ? "footer" : "footer-hide"}>
         <div className="footer-info">
-          <div className="container">
+          <div className="footer-info-top">
+            <div className="footer-top">
+                <div className="ft-item">
+                  <img src={Shipper}/>
+                  <div className="txt-ft">
+                    <strong>CHÍNH SÁCH GIAO HÀNG</strong>
+                    <p>Nhận hàng và thanh toán tại nhà</p>
+                  </div>
+                </div>
+                <div className="ft-item">
+                <img src={exchange}/>
+                  <div className="txt-ft">
+                    <strong>ĐỔI TRẢ DỄ DÀNG</strong>
+                    <p>1 đổi 1 trong 15 ngày</p>
+                  </div>
+                </div>
+                <div className="ft-item">
+                <img src={cardPay}/>
+                  <div className="txt-ft">
+                    <strong>THANH TOÁN TIỆN LỢI</strong>
+                    <p>Trả tiền mặt, CK, trả góp 0%</p>
+                  </div>
+                </div>
+                <div className="ft-item">
+                <img src={chat}/>
+                  <div className="txt-ft">
+                    <strong>HỖ TRỢ NHIỆT TÌNH</strong>
+                    <p>Tư vấn, giải đáp mọi thắc mắc</p>
+                  </div>
+                </div>
+            </div>
+          </div>
+          <div className="container ft">
+            
             <div className="row">
-              <div className="col-md-3">
+              <div className="col-md-3 col-logo">
                 <div className="footer-logo">
                   <a href="#">
                     <img src={LogoFT} alt="" />
                   </a>
                 </div>
               </div>
-              <div className="col-md-3 col-sm-6 p">
+              <div className="col-md-3 col-sm-6 ft-center">
                 <h4 className="title">
-                  Thông tin
-                  <strong> liên hệ</strong>
+                <strong>Chính sách </strong>
+                  chung
                 </h4>
-                <p>273, An Dương Vương, phường 3, quận 5, TP Hồ Chí Minh</p>
-                <p>Call Us : 0988 777 666</p>
-                <p>Email : info@gmail.com</p>
+                <ul className="support">
+                  <li>
+                    <a href="#">Chính sách, quy định chung</a>
+                  </li>
+                  <li>
+                    <a href="#">Chính sách vận chuyển</a>
+                  </li>
+                  <li>
+                    <a href="#">Chính sách bảo hành</a>
+                  </li>
+                  <li>
+                    <a href="#">Chính sách cho doanh nghiệp</a>
+                  </li>
+                  <li>
+                    <a href="#">Chính sách hàng chính hãng</a>
+                  </li>
+                  <li>
+                    <a href="#">Bảo mật thông tin khách hàng</a>
+                  </li>
+                </ul>
               </div>
-              <div className="col-md-3 col-sm-6">
+              <div className="col-md-3 col-sm-6 ft-center">
                 <h4 className="title">
                   Chăm sóc
                   <strong> Khách hàng</strong>
@@ -44,7 +98,33 @@ export default function Footer({adminMode}) {
                   </li>
                 </ul>
               </div>
-              <div className="col-md-3 p">
+              <div className="col-md-3 col-sm-6 ft-center">
+                <h4 className="title">
+                  Cộng đồng
+                  <strong> LAPPEE</strong>
+                </h4>
+                <ul className="support">
+                  <li>
+                    <a href="#">Lappee Việt Nam</a>
+                  </li>
+                  <li>
+                    <a href="#">Lappee Media</a>
+                  </li>
+                  <li>
+                    <a href="#">Ngày hội Lappee</a>
+                  </li>
+                </ul>
+              </div>
+              <div className="col-md-3 col-sm-6 p ft-center">
+                <h4 className="title">
+                  Thông tin
+                  <strong> liên hệ</strong>
+                </h4>
+                <p>273, An Dương Vương, phường 3, quận 5, TP Hồ Chí Minh</p>
+                <p>Call Us : 0988 777 666</p>
+                <p>Email : info@gmail.com</p>
+              </div>
+              <div className="col-md-3 p ft-center">
                 <h4 className="title">
                   <strong> Về chúng tôi</strong>
                 </h4>
