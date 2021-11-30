@@ -3,8 +3,6 @@ import { useHistory } from 'react-router';
 import '../../CSS/Login.css'
 //import '@fortawesome/fontawesome-free/css/all.min.css';
 import axios from 'axios';
-
-
 export default function Login({login,userCookie}) {
     const [flag, setFlag] = useState(false);
     const [flag2, setFlag2] = useState(false);

@@ -297,8 +297,10 @@
   border-radius: 3px;
   border: 0.1px rgb(199, 196, 196) solid;
   height: 35px;
+  width: 100%;
   padding-left: 10px;
   color: rgb(65, 65, 65);
+  box-sizing: border-box;
 }
 .user-address-noneEdit {
   outline: none;
@@ -313,7 +315,7 @@
 }
 .user-input-active {
   box-sizing: border-box;
-  border: #135ecf3f solid 2px;
+  border: #596ce5 solid 0.1px;
 }
 .infor-panel-text {
   color: rgb(65, 65, 65);
@@ -338,9 +340,46 @@
   margin-right: 7px;
   font-size: 20px;
 }
+.save-user-data-btn {
+  border: none;
+  height: 30px;
+  border-radius: 3px;
+  background-color: #be2d01;
+  color: #ffffff;
+  width: 100%;
+  margin-bottom: 20px;
+}
 .user-address {
   width: 100% !important;
 }
 .user-phoneNumber {
   width: 100% !important;
+}
+.edit-panel-active {
+  padding: 7px 10px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  transition: 0.3s;
+}
+.edit-panel {
+  position: absolute;
+  top: 0;
+  right: 100%;
+  transition: 0.3s;
+  display: none;
+}
+.change-pass-panel-active {
+  padding: 7px 10px;
+}
+.change-pass-item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 10px 0;
+}
+.change-pass-item-text {
+  color: rgb(65, 65, 65);
+  width: 150px;
 }
