@@ -760,18 +760,18 @@ option {
   width: 16rem;
   margin: 0 auto;
 }
-.pager a {
-  float: left;
-  margin-left: 5px;
-  min-width: 25px;
-  min-height: 25px;
-  border: 1px solid #fff;
-  -webkit-border-radius: 5px;
-  border-radius: 5px;
-  position: relative;
-  text-align: center;
-  font-size: 15px;
-  line-height: 22px;
+
+.pager button.active,
+button:hover {
+  background-color: rgb(21, 10, 170);
+  color: white;
+}
+.pager button {
+  padding: 5px;
+  width: 15%;
+  margin-left: 10px;
+  border: none;
+  border-radius: 3px;
 }
 .pager a.prev-page,
 .pager a.next-page {
@@ -780,7 +780,9 @@ option {
 .pager a.active {
   color: #f7544a;
 }
-
+.btn-previ-next {
+  width: auto !important;
+}
 .news {
   margin: 10px 0 auto 6rem;
   position: absolute;

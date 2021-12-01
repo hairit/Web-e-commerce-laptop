@@ -15,16 +15,14 @@ import { NavLink, useHistory } from "react-router-dom";
 const solver = new Solver();
 export default function Laptops({idUser,match,addProductToCart}) {
   const history = useHistory();
-  const [pros, setPros] = useState([]);
-  const [prosPage, setProsPage] = useState([]);
   const [load, setLoad] = useState(0);
   // const [page, setPage] = useState(false);
+  const [pros, setPros] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [page, setPage] = useState(10);
+  const [itemsPage, setItemsPage] = useState(10);
   // const [sort, setSort] = useState();
-  const lastPage = currentPage * page
-  const firstPage = lastPage - page
-  const currentPro = pros.slice(firstPage, lastPage)
+  // const currentPro = pros.slice(firstPage, lastPage)
+  
   useEffect(() => {
     if(match !== undefined){
       var API;
@@ -60,18 +58,38 @@ export default function Laptops({idUser,match,addProductToCart}) {
       .then((res) => setPros(res.data))
       .catch((err) => console.log(err))
   }
-  function Nextpage(){    
-    // setPros(pros.slice(soluong + 1 , soluong * 2))
+
+  const pages = []
+  for(let i=1; i<= Math.ceil(pros.length / itemsPage); i++){
+    pages.push(i)
   }
-  // function Nextpage(){    
-  //   setPros(pros.slice(11, 20))
-  // }
-  function Previouspage(){
-    reload()
-    // setPros(pros.slice(0,soluong))
-    // setPros(pros.slice(0, 10))
+
+  console.log("mkmk", pages.length)
+  const lastPage = currentPage * itemsPage
+  const firstPage = lastPage - itemsPage
+  const page = pros.slice(firstPage, lastPage)
+
+  function handleClick(e) {
+    setCurrentPage(Number(e.target.id))
   }
-  console.log("abc", pros)
+
+  const renderPageNumber = pages.map(number => {
+    return (
+      <button key={number} id={number} onClick={(e) => handleClick(e)}  className={currentPage === number ? 'active' : null}>
+      {number}
+    </button>
+    )
+  })
+  function handleNext(){
+    if(currentPage + 1 <= pages.length){
+    setCurrentPage(currentPage + 1)
+    }
+  }
+  function handlePrev(){
+    if(currentPage - 1 >= 1){
+      setCurrentPage(currentPage - 1)
+      }
+  }
   return (
     <div className="wrapper">
       <div className="container_fullwidth">
@@ -199,22 +217,13 @@ export default function Laptops({idUser,match,addProductToCart}) {
           <div className="row">
             <div className="col-md-9 prolst">
               <div className="products-grid lstlaptop">
-                <ListProductLaptop pros={currentPro}  addProductInCart={addProductInCart} />
+                <ListProductLaptop pros={page}  addProductInCart={addProductInCart} />
               </div>
               <div className="toolbar">
                 <div className="pager">
-                  <a href="#" className="prev-page">
-                    <i className="fa fa-angle-left"></i>
-                  </a>
-                  
-                  <button onClick={() => Previouspage()}  className="active">
-                    1
-                  </button>
-                  <button onClick={() => Nextpage()}>2</button>
-                 
-                  <a href="#" className="next-page">
-                    <i className="fa fa-angle-right"></i>
-                  </a>
+                 <button className="btn-previ-next" onClick={() => handlePrev()}>Sau</button>
+                  {renderPageNumber}
+                 <button className="btn-previ-next" onClick={() => handleNext()}>Trước</button>
                 </div>
               </div>
             </div>

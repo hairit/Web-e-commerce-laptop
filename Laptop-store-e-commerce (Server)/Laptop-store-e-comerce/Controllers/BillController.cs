@@ -28,8 +28,6 @@ namespace Laptop_store_e_comerce.Controllers
         public async Task<ActionResult<Bill>> GetDonHang(string id)
         {
             var bill = await _context.Bills.Include(bill => bill.BillDetails)
-                                           .ThenInclude(pro => pro.IdProductNavigation)
-                                           .ThenInclude(pro => pro.IdloaiNavigation)
                                            .FirstOrDefaultAsync(bill => bill.Id == id);
             if (bill == null)
             {
@@ -80,9 +78,7 @@ namespace Laptop_store_e_comerce.Controllers
         public async Task<ActionResult<List<Bill>>> getBillsByUserID(int id)
         {
             if (!_context.Users.Any(user => user.Id == id)) return BadRequest();
-            List<Bill> bills = await _context.Bills
-                                                   .Include(bill => bill.BillDetails).ThenInclude(bill => bill.IdProductNavigation)
-                                                   .Where(bill => bill.Iduser == id).ToListAsync();
+            List<Bill> bills = await _context.Bills.Where(bill => bill.Iduser == id).ToListAsync();
             if (bills.Count == 0) return NotFound();
             else return bills;
         }

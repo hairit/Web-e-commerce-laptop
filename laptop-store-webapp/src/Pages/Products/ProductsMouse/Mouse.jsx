@@ -12,6 +12,9 @@ import { useEffect, useState } from "react";
 import ListProductMouse from "./ListProductMouse";
 export default function Mouse({ idUser,addProductToCart }) {
   const [pros, setPros] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPage, setItemsPage] = useState(10);
+  
   useEffect(() => {
     axios
       .get("https://localhost:44343/data/Product/type=mouse", null)
@@ -29,6 +32,39 @@ export default function Mouse({ idUser,addProductToCart }) {
     .then((res) => setPros(res.data))
     .catch((err) => console.log(err))
 }
+
+const pages = []
+for(let i=1; i<= Math.ceil(pros.length / itemsPage); i++){
+  pages.push(i)
+}
+
+console.log("mkmk", pages.length)
+const lastPage = currentPage * itemsPage
+const firstPage = lastPage - itemsPage
+const page = pros.slice(firstPage, lastPage)
+
+function handleClick(e) {
+  setCurrentPage(Number(e.target.id))
+}
+
+const renderPageNumber = pages.map(number => {
+  return (
+    <button key={number} id={number} onClick={(e) => handleClick(e)}  className={currentPage === number ? 'active' : null}>
+    {number}
+  </button>
+  )
+})
+function handleNext(){
+  if(currentPage + 1 <= pages.length){
+  setCurrentPage(currentPage + 1)
+  }
+}
+function handlePrev(){
+  if(currentPage - 1 >= 1){
+    setCurrentPage(currentPage - 1)
+    }
+}
+
   return (
     <div className="wrapper">
       <div className="container_fullwidth">
@@ -127,22 +163,14 @@ export default function Mouse({ idUser,addProductToCart }) {
               <div className="products-grid lstlaptop">
                 <ListProductMouse
                   addProductInCart={addProductInCart}
-                  pros={pros}
+                  pros={page}
                 />
               </div>
               <div className="toolbar">
                 <div className="pager">
-                  <a href="#" className="prev-page">
-                    <i className="fa fa-angle-left"></i>
-                  </a>
-                  <a href="#" className="active">
-                    1
-                  </a>
-                  <a href="#">2</a>
-                  <a href="#">3</a>
-                  <a href="#" className="next-page">
-                    <i className="fa fa-angle-right"></i>
-                  </a>
+                <button className="btn-previ-next" onClick={() => handlePrev()}>Sau</button>
+                  {renderPageNumber}
+                 <button className="btn-previ-next" onClick={() => handleNext()}>Trước</button>
                 </div>
               </div>
             </div>
