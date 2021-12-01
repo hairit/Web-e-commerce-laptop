@@ -212,8 +212,8 @@ const pages = []
           </div>
           <div className="product-tag tags">
             <h3 className="title">
-              Products
-              <strong>Tags</strong>
+              Products 
+              <strong> Tags</strong>
             </h3>
             <ul>
               <li>

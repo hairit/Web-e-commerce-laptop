@@ -231,7 +231,7 @@ export default function Laptops({idUser,match,addProductToCart}) {
           <div className="product-tag tags">
             <h3 className="title">
               Products
-              <strong>Tags</strong>
+              <strong> Tags</strong>
             </h3>
             <ul>
               <li>
