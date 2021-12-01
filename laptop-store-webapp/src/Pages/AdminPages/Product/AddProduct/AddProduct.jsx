@@ -3,9 +3,40 @@ import './AddProduct.css'
 import { useState } from 'react';
 
 export default function AddProduct({ }) {
-    const [product, setproduct] = useState(null);
+    const [idloaiNavigation, setidloaiNavigation] = useState(null);
+    const [headphoneDetail, setheadphoneDetail] = useState(null);
+    const [keyboardDetail, setKeyboardDetail] = useState(null);
+    const [laptopDescription, setlaptopDescription] = useState(null);
+    const [laptopDetail, setLaptopDetail] = useState(null);
+    const [mouseDetail, setMouseDetail] = useState(null);
+    const [pcdetail, setPcdetail] = useState(null);
+    const [screenDetail, setScreenDetail] = useState(null);
     const [flag, setflag] = useState(false);
-    const [key, setkey] = useState("mouse");
+    const [key, setKey] = useState("mouse");
+    const [product, setproduct] = useState({
+        id: "",
+        ten: "",
+        gia: "",
+        idloai: key,
+        thuonghieu: "",
+        namsx: "",
+        baohanh: "",
+        hienthi: 0,
+        nameimage: "",
+        uudai: "",
+        giacu: "",
+        idloaiNavigation: null,
+        headphoneDetail: null,
+        keyboardDetail: null,
+        laptopDescription: null,
+        laptopDetail: null,
+        mouseDetail: null,
+        pcdetail: null,
+        screenDetail: null
+    });
+    const getKey = (e) => {
+        setKey(e.target.value);
+    }
     function showform() {
         if (key === "mouse")
             return (
@@ -19,7 +50,7 @@ export default function AddProduct({ }) {
                                     Kiểu kết nối:
                                 </div>
                                 <div className="input-form-input">
-                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" />
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setMouseDetail({ ...mouseDetail, kieuketnoi: e.target.value })} />
                                 </div>
                             </div>
                             <div className="input-form-item">
@@ -27,7 +58,7 @@ export default function AddProduct({ }) {
                                     LED:
                                 </div>
                                 <div className="input-form-input">
-                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" />
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setMouseDetail({ ...mouseDetail, led: e.target.value })} />
                                 </div>
                             </div>
                             <div className="input-form-item">
@@ -35,7 +66,7 @@ export default function AddProduct({ }) {
                                     Kết nối:
                                 </div>
                                 <div className="input-form-input">
-                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" />
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setMouseDetail({ ...mouseDetail, ketnoi: e.target.value })} />
                                 </div>
                             </div>
                             <div className="input-form-item">
@@ -43,7 +74,7 @@ export default function AddProduct({ }) {
                                     DPI:
                                 </div>
                                 <div className="input-form-input">
-                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" />
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setMouseDetail({ ...mouseDetail, dophangiai: e.target.value })} />
                                 </div>
                             </div>
                             <div className="input-form-item">
@@ -51,7 +82,7 @@ export default function AddProduct({ }) {
                                     Thời gian phản hồi:
                                 </div>
                                 <div className="input-form-input">
-                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" />
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setMouseDetail({ ...mouseDetail, thoigianphanhoi: e.target.value })} />
                                 </div>
                             </div>
                             <div className="input-form-item">
@@ -59,7 +90,7 @@ export default function AddProduct({ }) {
                                     Dạng cảm biến:
                                 </div>
                                 <div className="input-form-input">
-                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" />
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setMouseDetail({ ...mouseDetail, dangcambien: e.target.value })} />
                                 </div>
                             </div>
                             <div className="input-form-item">
@@ -67,7 +98,7 @@ export default function AddProduct({ }) {
                                     Kích thước:
                                 </div>
                                 <div className="input-form-input">
-                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" />
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setMouseDetail({ ...mouseDetail, kichthuoc: e.target.value })} />
                                 </div>
                             </div>
                             <div className="input-form-item">
@@ -75,7 +106,7 @@ export default function AddProduct({ }) {
                                     Khối lượng:
                                 </div>
                                 <div className="input-form-input">
-                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" />
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setMouseDetail({ ...mouseDetail, khoiluong: e.target.value })} />
                                 </div>
                             </div>
                             <div className="input-form-item">
@@ -83,7 +114,7 @@ export default function AddProduct({ }) {
                                     Số nút bấm:
                                 </div>
                                 <div className="input-form-input">
-                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" />
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setMouseDetail({ ...mouseDetail, sonutbam: e.target.value })} />
                                 </div>
                             </div>
                             <div className="input-form-item">
@@ -91,7 +122,7 @@ export default function AddProduct({ }) {
                                     Tên cảm biến:
                                 </div>
                                 <div className="input-form-input">
-                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" />
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setMouseDetail({ ...mouseDetail, tencambien: e.target.value })} />
                                 </div>
                             </div>
                             <div className="input-form-item">
@@ -99,12 +130,12 @@ export default function AddProduct({ }) {
                                     Loại chuột:
                                 </div>
                                 <div className="input-form-input">
-                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" />
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setMouseDetail({ ...mouseDetail, loaichuot: e.target.value })} />
                                 </div>
                             </div>
                         </div>
                         <div className="product-button">
-                            <button className=" product-button-page1">Tiếp theo</button>
+                            <button className=" product-button-page1" onClick={() => handleClickSend()}>Tiếp theo</button>
                             <button className="product-button-page1" onClick={() => setflag(false)}>Trở lại</button>
                         </div>
                     </div>
@@ -120,7 +151,7 @@ export default function AddProduct({ }) {
                                     Loại:
                                 </div>
                                 <div className="input-form-input">
-                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" />
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setPcdetail({ ...pcdetail, typepc: e.target.value })} />
                                 </div>
                             </div>
                             <div className="input-form-item">
@@ -128,7 +159,7 @@ export default function AddProduct({ }) {
                                     Bo mạch chủ:
                                 </div>
                                 <div className="input-form-input">
-                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" />
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setPcdetail({ ...pcdetail, mainboard: e.target.value })} />
                                 </div>
                             </div>
                             <div className="input-form-item">
@@ -136,7 +167,7 @@ export default function AddProduct({ }) {
                                     Loại CPU:
                                 </div>
                                 <div className="input-form-input">
-                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" />
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setPcdetail({ ...pcdetail, cputype: e.target.value })} />
                                 </div>
                             </div>
                             <div className="input-form-item">
@@ -144,7 +175,7 @@ export default function AddProduct({ }) {
                                     Tên CPU
                                 </div>
                                 <div className="input-form-input">
-                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" />
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setPcdetail({ ...pcdetail, cpu: e.target.value })} />
                                 </div>
                             </div>
                             <div className="input-form-item">
@@ -152,7 +183,7 @@ export default function AddProduct({ }) {
                                     Thông tin CPU:
                                 </div>
                                 <div className="input-form-input">
-                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" />
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setPcdetail({ ...pcdetail, detailcpu: e.target.value })} />
                                 </div>
                             </div>
                             <div className="input-form-item">
@@ -160,7 +191,7 @@ export default function AddProduct({ }) {
                                     RAM:
                                 </div>
                                 <div className="input-form-input">
-                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" />
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setPcdetail({ ...pcdetail, ram: e.target.value })} />
                                 </div>
                             </div>
                             <div className="input-form-item">
@@ -168,7 +199,7 @@ export default function AddProduct({ }) {
                                     Thông tin RAM:
                                 </div>
                                 <div className="input-form-input">
-                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" />
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setPcdetail({ ...pcdetail, detailram: e.target.value })} />
                                 </div>
                             </div>
                             <div className="input-form-item">
@@ -176,7 +207,7 @@ export default function AddProduct({ }) {
                                     Card màn hình:
                                 </div>
                                 <div className="input-form-input">
-                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" />
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setPcdetail({ ...pcdetail, vgatype: e.target.value })} />
                                 </div>
                             </div>
                             <div className="input-form-item">
@@ -184,7 +215,7 @@ export default function AddProduct({ }) {
                                     Thông tin card màn hình:
                                 </div>
                                 <div className="input-form-input">
-                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" />
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setPcdetail({ ...pcdetail, vganame: e.target.value })} />
                                 </div>
                             </div>
                             <div className="input-form-item">
@@ -192,7 +223,7 @@ export default function AddProduct({ }) {
                                     Nguồn:
                                 </div>
                                 <div className="input-form-input">
-                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" />
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setPcdetail({ ...pcdetail, psu: e.target.value })} />
                                 </div>
                             </div>
                             <div className="input-form-item">
@@ -200,7 +231,7 @@ export default function AddProduct({ }) {
                                     Case:
                                 </div>
                                 <div className="input-form-input">
-                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" />
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setPcdetail({ ...pcdetail, casepc: e.target.value })} />
                                 </div>
                             </div>
                             <div className="input-form-item">
@@ -208,12 +239,12 @@ export default function AddProduct({ }) {
                                     Tản nhiệt
                                 </div>
                                 <div className="input-form-input">
-                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" />
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setPcdetail({ ...pcdetail, cool: e.target.value })} />
                                 </div>
                             </div>
                         </div>
                         <div className="product-button">
-                            <button className=" product-button-page1">Tiếp theo</button>
+                            <button className=" product-button-page1" onClick={() => handleClickSend()}>Tiếp theo</button>
                             <button className="product-button-page1" onClick={() => setflag(false)}>Trở lại</button>
                         </div>
                     </div>
@@ -229,7 +260,7 @@ export default function AddProduct({ }) {
                                     Kiểu tai nghe:
                                 </div>
                                 <div className="input-form-input">
-                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" />
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setheadphoneDetail({ ...headphoneDetail, kieutainghe: e.target.value })} />
                                 </div>
                             </div>
                             <div className="input-form-item">
@@ -237,7 +268,7 @@ export default function AddProduct({ }) {
                                     Kết nối:
                                 </div>
                                 <div className="input-form-input">
-                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" />
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setheadphoneDetail({ ...headphoneDetail, ketnoi: e.target.value })} />
                                 </div>
                             </div>
                             <div className="input-form-item">
@@ -245,7 +276,7 @@ export default function AddProduct({ }) {
                                     Kiểu kết nối:
                                 </div>
                                 <div className="input-form-input">
-                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" />
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setheadphoneDetail({ ...headphoneDetail, kieuketnoi: e.target.value })} />
                                 </div>
                             </div>
                             <div className="input-form-item">
@@ -253,7 +284,7 @@ export default function AddProduct({ }) {
                                     Microphone:
                                 </div>
                                 <div className="input-form-input">
-                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" />
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setheadphoneDetail({ ...headphoneDetail, microphone: e.target.value })} />
                                 </div>
                             </div>
                             <div className="input-form-item">
@@ -261,7 +292,7 @@ export default function AddProduct({ }) {
                                     Kiểu pin:
                                 </div>
                                 <div className="input-form-input">
-                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" />
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setheadphoneDetail({ ...headphoneDetail, kieupin: e.target.value })} />
                                 </div>
                             </div>
                             <div className="input-form-item">
@@ -269,7 +300,7 @@ export default function AddProduct({ }) {
                                     Kích thước driver:
                                 </div>
                                 <div className="input-form-input">
-                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" />
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setheadphoneDetail({ ...headphoneDetail, kichthuocdriver: e.target.value })} />
                                 </div>
                             </div>
                             <div className="input-form-item">
@@ -277,7 +308,7 @@ export default function AddProduct({ }) {
                                     LED:
                                 </div>
                                 <div className="input-form-input">
-                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" />
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setheadphoneDetail({ ...headphoneDetail, led: e.target.value })} />
                                 </div>
                             </div>
                             <div className="input-form-item">
@@ -285,12 +316,12 @@ export default function AddProduct({ }) {
                                     Khối lượng:
                                 </div>
                                 <div className="input-form-input">
-                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" />
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setheadphoneDetail({ ...headphoneDetail, khoiluong: e.target.value })} />
                                 </div>
                             </div>
                         </div>
                         <div className="product-button">
-                            <button className=" product-button-page1">Tiếp theo</button>
+                            <button className=" product-button-page1" onClick={() => handleClickSend()}>Tiếp theo</button>
                             <button className="product-button-page1" onClick={() => setflag(false)}>Trở lại</button>
                         </div>
                     </div>
@@ -306,7 +337,7 @@ export default function AddProduct({ }) {
                                     Kết nối:
                                 </div>
                                 <div className="input-form-input">
-                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" />
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setKeyboardDetail({ ...keyboardDetail, ketnoi: e.target.value })} />
                                 </div>
                             </div>
                             <div className="input-form-item">
@@ -314,7 +345,7 @@ export default function AddProduct({ }) {
                                     Loại:
                                 </div>
                                 <div className="input-form-input">
-                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" />
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setKeyboardDetail({ ...keyboardDetail, loai: e.target.value })} />
                                 </div>
                             </div>
                             <div className="input-form-item">
@@ -322,7 +353,7 @@ export default function AddProduct({ }) {
                                     LED:
                                 </div>
                                 <div className="input-form-input">
-                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" />
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setKeyboardDetail({ ...keyboardDetail, den: e.target.value })} />
                                 </div>
                             </div>
                             <div className="input-form-item">
@@ -330,7 +361,7 @@ export default function AddProduct({ }) {
                                     Mô tả LED:
                                 </div>
                                 <div className="input-form-input">
-                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" />
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setKeyboardDetail({ ...keyboardDetail, motaden: e.target.value })} />
                                 </div>
                             </div>
                             <div className="input-form-item">
@@ -338,7 +369,7 @@ export default function AddProduct({ }) {
                                     Brand Switch:
                                 </div>
                                 <div className="input-form-input">
-                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" />
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setKeyboardDetail({ ...keyboardDetail, brandswitch: e.target.value })} />
                                 </div>
                             </div>
                             <div className="input-form-item">
@@ -346,7 +377,7 @@ export default function AddProduct({ }) {
                                     Loại Switch:
                                 </div>
                                 <div className="input-form-input">
-                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" />
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setKeyboardDetail({ ...keyboardDetail, typeswitch: e.target.value })} />
                                 </div>
                             </div>
                             <div className="input-form-item">
@@ -354,7 +385,7 @@ export default function AddProduct({ }) {
                                     Mô tả Switch:
                                 </div>
                                 <div className="input-form-input">
-                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" />
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setKeyboardDetail({ ...keyboardDetail, motaswitch: e.target.value })} />
                                 </div>
                             </div>
                             <div className="input-form-item">
@@ -362,7 +393,7 @@ export default function AddProduct({ }) {
                                     Layout:
                                 </div>
                                 <div className="input-form-input">
-                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" />
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setKeyboardDetail({ ...keyboardDetail, layout: e.target.value })} />
                                 </div>
                             </div>
                             <div className="input-form-item">
@@ -370,12 +401,12 @@ export default function AddProduct({ }) {
                                     Kích thước:
                                 </div>
                                 <div className="input-form-input">
-                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" />
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setKeyboardDetail({ ...keyboardDetail, size: e.target.value })} />
                                 </div>
                             </div>
                         </div>
                         <div className="product-button">
-                            <button className=" product-button-page1">Tiếp theo</button>
+                            <button className=" product-button-page1" onClick={() => handleClickSend()}>Tiếp theo</button>
                             <button className="product-button-page1" onClick={() => setflag(false)}>Trở lại</button>
                         </div>
                     </div>
@@ -391,7 +422,7 @@ export default function AddProduct({ }) {
                                     Kích thước:
                                 </div>
                                 <div className="input-form-input">
-                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" />
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setScreenDetail({ ...screenDetail, kichthuoc: e.target.value })} />
                                 </div>
                             </div>
                             <div className="input-form-item">
@@ -399,7 +430,7 @@ export default function AddProduct({ }) {
                                     Độ phân giải:
                                 </div>
                                 <div className="input-form-input">
-                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" />
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setScreenDetail({ ...screenDetail, dophangiai: e.target.value })} />
                                 </div>
                             </div>
                             <div className="input-form-item">
@@ -407,7 +438,7 @@ export default function AddProduct({ }) {
                                     Độ phân giải pixel:
                                 </div>
                                 <div className="input-form-input">
-                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" />
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setScreenDetail({ ...screenDetail, dophangiaipixel: e.target.value })} />
                                 </div>
                             </div>
                             <div className="input-form-item">
@@ -415,7 +446,7 @@ export default function AddProduct({ }) {
                                     Tấm nền:
                                 </div>
                                 <div className="input-form-input">
-                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" />
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setScreenDetail({ ...screenDetail, tamnen: e.target.value })} />
                                 </div>
                             </div>
                             <div className="input-form-item">
@@ -423,7 +454,7 @@ export default function AddProduct({ }) {
                                     Tần số:
                                 </div>
                                 <div className="input-form-input">
-                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" />
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setScreenDetail({ ...screenDetail, tanso: e.target.value })} />
                                 </div>
                             </div>
                             <div className="input-form-item">
@@ -431,7 +462,7 @@ export default function AddProduct({ }) {
                                     Kiểu màn hình:
                                 </div>
                                 <div className="input-form-input">
-                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" />
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setScreenDetail({ ...screenDetail, kieumanhinh: e.target.value })} />
                                 </div>
                             </div>
                             <div className="input-form-item">
@@ -439,7 +470,7 @@ export default function AddProduct({ }) {
                                     Thời gian phản hồi:
                                 </div>
                                 <div className="input-form-input">
-                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" />
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setScreenDetail({ ...screenDetail, thoigianphanhoi: e.target.value })} />
                                 </div>
                             </div>
                             <div className="input-form-item">
@@ -447,7 +478,7 @@ export default function AddProduct({ }) {
                                     Độ sáng:
                                 </div>
                                 <div className="input-form-input">
-                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" />
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setScreenDetail({ ...screenDetail, dosang: e.target.value })} />
                                 </div>
                             </div>
                             <div className="input-form-item">
@@ -455,7 +486,7 @@ export default function AddProduct({ }) {
                                     Góc nhìn:
                                 </div>
                                 <div className="input-form-input">
-                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" />
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setScreenDetail({ ...screenDetail, gocnhin: e.target.value })} />
                                 </div>
                             </div>
                             <div className="input-form-item">
@@ -463,7 +494,7 @@ export default function AddProduct({ }) {
                                     Màu hiển thị:
                                 </div>
                                 <div className="input-form-input">
-                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" />
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" className="input-input" onChange={(e) => setScreenDetail({ ...screenDetail, mauhienthi: e.target.value })} />
                                 </div>
                             </div>
                             <div className="input-form-item">
@@ -471,7 +502,7 @@ export default function AddProduct({ }) {
                                     Bề mặt:
                                 </div>
                                 <div className="input-form-input">
-                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" />
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" className="input-input" onChange={(e) => setScreenDetail({ ...screenDetail, bemat: e.target.value })} />
                                 </div>
                             </div>
                             <div className="input-form-item">
@@ -479,15 +510,15 @@ export default function AddProduct({ }) {
                                     HDR:
                                 </div>
                                 <div className="input-form-input">
-                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" />
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" className="input-input" onChange={(e) => setScreenDetail({ ...screenDetail, hdr: e.target.value })} />
                                 </div>
                             </div>
                             <div className="input-form-item">
                                 <div className="input-form-label">
-                                    Công suất:
+                                    Cổng xuất:
                                 </div>
                                 <div className="input-form-input">
-                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" />
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" className="input-input" onChange={(e) => setScreenDetail({ ...screenDetail, congxuat: e.target.value })} />
                                 </div>
                             </div>
                             <div className="input-form-item">
@@ -495,29 +526,194 @@ export default function AddProduct({ }) {
                                     Khối lượng:
                                 </div>
                                 <div className="input-form-input">
-                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" />
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" className="input-input" onChange={(e) => setScreenDetail({ ...screenDetail, khoiluong: e.target.value })} />
                                 </div>
                             </div>
                             <div className="input-form-item">
                                 <div className="input-form-label">
-                                    Tile:
+                                    Tỉ lệ:
                                 </div>
                                 <div className="input-form-input">
-                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" />
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" className="input-input" onChange={(e) => setScreenDetail({ ...screenDetail, tile: e.target.value })} />
                                 </div>
                             </div>
                         </div>
                         <div className="product-button">
-                            <button className=" product-button-page1">Tiếp theo</button>
+                            <button className=" product-button-page1" onClick={() => handleClickSend()}>Tiếp theo</button>
+                            <button className="product-button-page1" onClick={() => setflag(false)}>Trở lại</button>
+                        </div>
+                    </div>
+                </div>
+            ); else if (key === "laptop") return (
+                <div className={flag === true ? "product-edit-page" : "page-hide"}>
+                    <h2 className="product-edit-title">Thông tin Laptop</h2>
+                    <div className="product-input-form">
+                        <div className="product-input-subtitle"> Vui lòng nhập thông tin chi tiết:</div>
+                        <div className="product-input-form">
+                            <div className="input-form-item">
+                                <div className="input-form-label">
+                                    CPU:
+                                </div>
+                                <div className="input-form-input">
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setLaptopDetail({ ...laptopDetail, cpu: e.target.value })} />
+                                </div>
+                            </div>
+                            <div className="input-form-item">
+                                <div className="input-form-label">
+                                    Thông tin CPU:
+                                </div>
+                                <div className="input-form-input">
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setlaptopDescription({ ...laptopDescription, detailcpu: e.target.value })} />
+                                </div>
+                            </div>
+                            <div className="input-form-item">
+                                <div className="input-form-label">
+                                    RAM:
+                                </div>
+                                <div className="input-form-input">
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setLaptopDetail({ ...laptopDetail, ram: e.target.value })} />
+                                </div>
+                            </div>
+                            <div className="input-form-item">
+                                <div className="input-form-label">
+                                    Thông tin RAM:
+                                </div>
+                                <div className="input-form-input">
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setlaptopDescription({ ...laptopDescription, detailram: e.target.value })} />
+                                </div>
+                            </div>
+                            <div className="input-form-item">
+                                <div className="input-form-label">
+                                    VGA:
+                                </div>
+                                <div className="input-form-input">
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setLaptopDetail({ ...laptopDetail, vga: e.target.value })} />
+                                </div>
+                            </div>
+                            <div className="input-form-item">
+                                <div className="input-form-label">
+                                    Thông tin VGA:
+                                </div>
+                                <div className="input-form-input">
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setlaptopDescription({ ...laptopDescription, detailvga: e.target.value })} />
+                                </div>
+                            </div>
+                            <div className="input-form-item">
+                                <div className="input-form-label">
+                                    Màn hình
+                                </div>
+                                <div className="input-form-input">
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setLaptopDetail({ ...laptopDetail, manhinh: e.target.value })} />
+                                </div>
+                            </div>
+                            <div className="input-form-item">
+                                <div className="input-form-label">
+                                    Thông tin màn hình
+                                </div>
+                                <div className="input-form-input">
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setlaptopDescription({ ...laptopDescription, detailmanhinh: e.target.value })} />
+                                </div>
+                            </div>
+                            <div className="input-form-item">
+                                <div className="input-form-label">
+                                    Ổ cứng:
+                                </div>
+                                <div className="input-form-input">
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setlaptopDescription({ ...laptopDescription, ocung: e.target.value })} />
+                                </div>
+                            </div>
+                            <div className="input-form-item">
+                                <div className="input-form-label">
+                                    Kiểu khe:
+                                </div>
+                                <div className="input-form-input">
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setlaptopDescription({ ...laptopDescription, kieukhe: e.target.value })} />
+                                </div>
+                            </div>
+                            <div className="input-form-item">
+                                <div className="input-form-label">
+                                    Cổng xuất hình:
+                                </div>
+                                <div className="input-form-input">
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setlaptopDescription({ ...laptopDescription, congxuathinh: e.target.value })} />
+                                </div>
+                            </div>
+                            <div className="input-form-item">
+                                <div className="input-form-label">
+                                    Cổng kết nối:
+                                </div>
+                                <div className="input-form-input">
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setlaptopDescription({ ...laptopDescription, congketnoi: e.target.value })} />
+                                </div>
+                            </div>
+                            <div className="input-form-item">
+                                <div className="input-form-label">
+                                    Kết nối không dây:
+                                </div>
+                                <div className="input-form-input">
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setlaptopDescription({ ...laptopDescription, ketnoikhongday: e.target.value })} />
+                                </div>
+                            </div>
+                            <div className="input-form-item">
+                                <div className="input-form-label">
+                                    Hệ điều hành
+                                </div>
+                                <div className="input-form-input">
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setlaptopDescription({ ...laptopDescription, hdh: e.target.value })} />
+                                </div>
+                            </div>
+                            <div className="input-form-item">
+                                <div className="input-form-label">
+                                    Size:
+                                </div>
+                                <div className="input-form-input">
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setlaptopDescription({ ...laptopDescription, size: e.target.value })} />
+                                </div>
+                            </div>
+                            <div className="input-form-item">
+                                <div className="input-form-label">
+                                    Trọng lượng:
+                                </div>
+                                <div className="input-form-input">
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setlaptopDescription({ ...laptopDescription, khoiluong: e.target.value })} />
+                                </div>
+                            </div>
+                            <div className="input-form-item">
+                                <div className="input-form-label">
+                                    Pin:
+                                </div>
+                                <div className="input-form-input">
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setlaptopDescription({ ...laptopDescription, pin: e.target.value })} />
+                                </div>
+                            </div>
+                            <div className="input-form-item">
+                                <div className="input-form-label">
+                                    Loại laptop:
+                                </div>
+                                <div className="input-form-input">
+                                    <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setlaptopDescription({ ...laptopDescription, typelaptop: e.target.value })} />
+                                </div>
+                            </div>
+                        </div>
+                        <div className="product-button">
+                            <button className=" product-button-page1" onClick={() => handleClickSend()}>Tiếp theo</button>
                             <button className="product-button-page1" onClick={() => setflag(false)}>Trở lại</button>
                         </div>
                     </div>
                 </div>
             )
     }
+    const handleClickSend = () => {
+        if (key === "mouse") { setMouseDetail({ ...mouseDetail, idProduct: product.id }); setproduct({ ...product, mouseDetail: mouseDetail, idloai: key }) }
+        else if (key === "pc") { setPcdetail({ ...pcdetail, idProduct: product.id }); setproduct({ ...product, pcdetail: pcdetail, idloai: key }) }
+        else if (key === "laptop") { setLaptopDetail({ ...laptopDetail, idProduct: product.id }); setlaptopDescription({ ...laptopDescription, idProduct: product.id, idloai: key }); setproduct({ ...product, laptopDetail: laptopDetail, laptopDescription: laptopDescription }) }
+        else if (key === "headphone") { setheadphoneDetail({ ...headphoneDetail, idProduct: product.id }); setproduct({ ...product, headphoneDetail: headphoneDetail, idloai: key }) }
+        else if (key === "keyboard") { setKeyboardDetail({ ...keyboardDetail, idProduct: product.id }); setproduct({ ...product, keyboardDetail: keyboardDetail, idloai: key }) }
+        else { setScreenDetail({ ...screenDetail, idProduct: product.id }); setproduct({ ...product, screenDetail: screenDetail, idloai: key }) }
+        console.log(product);
+    }
     return (
         <div className="product-add">
-            <div className="produt-add-title"> Thêm sản phẩm</div>
             <div className={flag === false ? "product-edit-page" : "page-hide"}>
                 <h2 className="product-edit-title"> Thông tin chung </h2>
                 <div className="product-input-form">
@@ -528,7 +724,7 @@ export default function AddProduct({ }) {
                                 ID:
                             </div>
                             <div className="input-form-input">
-                                <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" />
+                                <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setproduct({ ...product, id: e.target.value })} />
                             </div>
                         </div>
                         <div className="input-form-item">
@@ -536,7 +732,7 @@ export default function AddProduct({ }) {
                                 Tên sản phẩm:
                             </div>
                             <div className="input-form-input">
-                                <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" />
+                                <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setproduct({ ...product, ten: e.target.value })} />
                             </div>
                         </div>
                         <div className="input-form-item">
@@ -544,7 +740,7 @@ export default function AddProduct({ }) {
                                 Giá:
                             </div>
                             <div className="input-form-input">
-                                <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" />
+                                <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setproduct({ ...product, gia: e.target.value })} />
                             </div>
                         </div>
                         <div className="input-form-item">
@@ -552,7 +748,7 @@ export default function AddProduct({ }) {
                                 Loại:
                             </div>
                             <div className="input-form-input">
-                                <select name="product type" className="input-input" onChange={(e) => setkey(e.target.value)}>
+                                <select name="product type" className="input-input" onChange={(e) => setKey(e.target.value)}>
                                     <option value="mouse" >Chuột</option>
                                     <option value="laptop">Laptop</option>
                                     <option value="screen" >Màn hình</option>
@@ -567,7 +763,7 @@ export default function AddProduct({ }) {
                                 Thương hiệu:
                             </div>
                             <div className="input-form-input">
-                                <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" />
+                                <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setproduct({ ...product, thuonghieu: e.target.value })} />
                             </div>
                         </div>
                         <div className="input-form-item">
@@ -575,7 +771,7 @@ export default function AddProduct({ }) {
                                 Năm sản xuất
                             </div>
                             <div className="input-form-input">
-                                <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" />
+                                <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setproduct({ ...product, namsx: e.target.value })} />
                             </div>
                         </div>
                         <div className="input-form-item">
@@ -583,7 +779,7 @@ export default function AddProduct({ }) {
                                 Bảo hành
                             </div>
                             <div className="input-form-input">
-                                <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" />
+                                <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setproduct({ ...product, baohanh: e.target.value })} />
                             </div>
                         </div>
                     </div>
