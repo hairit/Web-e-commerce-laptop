@@ -16,8 +16,15 @@ const solver = new Solver();
 export default function Laptops({idUser,match,addProductToCart}) {
   const history = useHistory();
   const [pros, setPros] = useState([]);
+  const [prosPage, setProsPage] = useState([]);
   const [load, setLoad] = useState(0);
+  // const [page, setPage] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [page, setPage] = useState(10);
   // const [sort, setSort] = useState();
+  const lastPage = currentPage * page
+  const firstPage = lastPage - page
+  const currentPro = pros.slice(firstPage, lastPage)
   useEffect(() => {
     if(match !== undefined){
       var API;
@@ -29,6 +36,7 @@ export default function Laptops({idUser,match,addProductToCart}) {
       }
     }
     else API = "https://localhost:44343/data/Product/type=laptop";
+   
     axios
       .get(API, null)
       .then((res) => setPros(res.data))
@@ -52,6 +60,18 @@ export default function Laptops({idUser,match,addProductToCart}) {
       .then((res) => setPros(res.data))
       .catch((err) => console.log(err))
   }
+  function Nextpage(){    
+    // setPros(pros.slice(soluong + 1 , soluong * 2))
+  }
+  // function Nextpage(){    
+  //   setPros(pros.slice(11, 20))
+  // }
+  function Previouspage(){
+    reload()
+    // setPros(pros.slice(0,soluong))
+    // setPros(pros.slice(0, 10))
+  }
+  console.log("abc", pros)
   return (
     <div className="wrapper">
       <div className="container_fullwidth">
@@ -179,18 +199,19 @@ export default function Laptops({idUser,match,addProductToCart}) {
           <div className="row">
             <div className="col-md-9 prolst">
               <div className="products-grid lstlaptop">
-                <ListProductLaptop pros={pros}  addProductInCart={addProductInCart} />
+                <ListProductLaptop pros={currentPro}  addProductInCart={addProductInCart} />
               </div>
               <div className="toolbar">
                 <div className="pager">
                   <a href="#" className="prev-page">
                     <i className="fa fa-angle-left"></i>
                   </a>
-                  <a href="#" className="active">
+                  
+                  <button onClick={() => Previouspage()}  className="active">
                     1
-                  </a>
-                  <a href="#">2</a>
-                  <a href="#">3</a>
+                  </button>
+                  <button onClick={() => Nextpage()}>2</button>
+                 
                   <a href="#" className="next-page">
                     <i className="fa fa-angle-right"></i>
                   </a>
