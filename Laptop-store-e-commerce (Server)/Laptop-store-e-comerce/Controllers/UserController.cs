@@ -38,15 +38,18 @@ namespace Laptop_store_e_comerce.Controllers
         {
             try
             {
-                List<User> users = await database.Users
-                    .Where(user => user.Firstname.Contains(value) || user.Lastname.Contains(value)).ToListAsync();
-
+                List<User> users =new List<User>();
+                await database.Users.ForEachAsync(x =>
+                {
+                    if (checkName(x, value)) users.Add(x);
+                });
                 if (users.Count != 0) return users;
                 else return NotFound();
-            }catch(Exception e) { Console.WriteLine(e.ToString()); return BadRequest(); }
+            } catch (Exception e)
+            { Console.WriteLine(e.ToString()); return BadRequest(); }
         }
         [HttpGet("login/{email}/{pass}")]
-        public async Task<ActionResult<User>> Login(string email ,string pass)
+        public async Task<ActionResult<User>> Login(string email, string pass)
         {
             var user = await database.Users.Include(user => user.Bills).ThenInclude(bill => bill.BillDetails)
                                            .Include(user => user.CartDetails)
@@ -65,7 +68,7 @@ namespace Laptop_store_e_comerce.Controllers
                 var user = await database.Users.FirstOrDefaultAsync(user => user.Email == value);
                 if (user != null) return user;
                 else return NotFound();
-            }catch(Exception e) { Console.WriteLine(e.ToString()); return BadRequest(); }
+            } catch (Exception e) { Console.WriteLine(e.ToString()); return BadRequest(); }
         }
         [HttpGet("mode={value}")]
         public async Task<ActionResult<List<User>>> getUserByMode(string value)
@@ -74,6 +77,7 @@ namespace Laptop_store_e_comerce.Controllers
             if (users.Count == 0) return NotFound();
             else return users;
         }
+     
         [HttpPut]
         public async Task<IActionResult> PutUser(User user)
         {
@@ -98,13 +102,13 @@ namespace Laptop_store_e_comerce.Controllers
         [HttpPost]
         public async Task<ActionResult<User>> PostUser(User user)
         {
-            if(existEmail(user.Email)) return Conflict();
+            if (existEmail(user.Email)) return Conflict();
             database.Users.Add(user);
             try
             {
                 await database.SaveChangesAsync();
             }
-            catch(DbUpdateException e) { Console.WriteLine(e.ToString()); return BadRequest(); }
+            catch (DbUpdateException e) { Console.WriteLine(e.ToString()); return BadRequest(); }
             return CreatedAtAction("GetUserByID", new { id = user.Id }, user);
         }
         [HttpDelete("{id}")]
@@ -127,6 +131,13 @@ namespace Laptop_store_e_comerce.Controllers
         private bool existEmail(string email)
         {
             return database.Users.Any(user => user.Email == email);
+        }
+        private bool checkName(User user ,String value)
+        {
+            String fullName = user.Firstname + " " + user.Lastname;
+            String fullName2 = user.Lastname + " " + user.Firstname;
+            if ((fullName.Contains(value) || fullName == value) || (fullName2.Contains(value) || fullName2 == value)) return true;
+            return false;
         }
     }
 }
