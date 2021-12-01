@@ -243,6 +243,7 @@ function App() {
       <div className={adminMode === false ? "App" : "App-no-scroll"}>
       {loadQuantity()}
         <Header user={user} adminMode={adminMode} logout={logout} clickblur={clickblur} setUser={setUser} />
+      
         <Route path="/admin/:idUser"  component={(match) => <Admin changeAdminMode={changeAdminMode} user={user} match={match} logout={logout}/>}></Route>
 
         <Route path="/" exact component={() => <Body idUser={user !== null ? user.id : null} addProductToCart={addProductToCart} />}></Route>

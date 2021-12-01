@@ -13,7 +13,6 @@ namespace Laptop_store_e_comerce.Models
         public int Tongtien { get; set; }
         public int Selected { get; set; }
 
-        public virtual Product IdProductNavigation { get; set; }
         public virtual User IdUserNavigation { get; set; }
     }
 }

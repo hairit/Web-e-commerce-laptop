@@ -67,6 +67,13 @@ namespace Laptop_store_e_comerce.Controllers
                 else return NotFound();
             }catch(Exception e) { Console.WriteLine(e.ToString()); return BadRequest(); }
         }
+        [HttpGet("mode={value}")]
+        public async Task<ActionResult<List<User>>> getUserByMode(string value)
+        {
+            List<User> users = await database.Users.Where(user => user.Mode == value).ToListAsync();
+            if (users.Count == 0) return NotFound();
+            else return users;
+        }
         [HttpPut]
         public async Task<IActionResult> PutUser(User user)
         {
