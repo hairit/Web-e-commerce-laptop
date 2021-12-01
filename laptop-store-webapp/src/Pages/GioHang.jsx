@@ -96,6 +96,7 @@ useEffect(() => {
 //   if(cartDetails.selected === 1){
 //     document.getElementById("check-item").checked = true;
 // }
+console.log("akaka", cartDetails)
     if(cartDetails.length > 0 ){
     return(
       
