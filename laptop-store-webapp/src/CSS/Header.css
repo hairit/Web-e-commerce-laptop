@@ -34,6 +34,7 @@
   font-size: 12px;
   font-weight: 500;
   height: 43px;
+  cursor: pointer;
   text-decoration: none;
 }
 .header-top-item-icon {

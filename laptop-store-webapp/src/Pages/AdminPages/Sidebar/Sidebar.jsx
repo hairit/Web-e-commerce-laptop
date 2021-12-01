@@ -1,11 +1,11 @@
 import "./Sidebar.css"
 
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { AiOutlineUser, AiFillHome } from "react-icons/ai";
 import { FaBox,FaClipboardList } from "react-icons/fa";
-import { useHistory } from "react-router";
+import { useHistory } from "react-router-dom";
 export default function Sidebar() {
-    let history = useHistory();
+    const history = useHistory();
     return (
         <div className="sidebar">
             <div className="sidebarMenu">

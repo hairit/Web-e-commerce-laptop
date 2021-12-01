@@ -23,9 +23,7 @@ import HeadphonePanel from './BodyPages/HeadphonePanel'
 function Body({idUser,addProductToCart}) {
     useEffect(() => {
         window.addEventListener('scroll',changeStatusRightItem);
-        console.log("1");
     }, [])
-    const [user, setUser] = useState(null)
     const [display, setDisplay] = useState(false);
     const changeStatusRightItem = () => {
         if(window.scrollY >= 400) setDisplay(true);

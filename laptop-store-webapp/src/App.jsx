@@ -43,7 +43,6 @@ function App() {
   const cartDetails = useRef([]);
   const [bill, setBill] = useState({ id: '', iduser: '', tongtien: 0, ngaydat: '', diachinhan: '', billDetails: [] });
   useEffect(() => {
-    console.log("effect none dependence");
     if (userCookie.id !== undefined) {
       axios
         .get(`https://localhost:44343/data/user/${userCookie.id}`)
@@ -55,7 +54,6 @@ function App() {
     }
   }, []);
   useEffect(() => {
-    console.log("effect dêpndency");
     if (user !== null) {
       call('GET', `data/user/${user.id}`, null)
         .then((res) => {
@@ -73,14 +71,16 @@ function App() {
   const login = (user) => {
     setUserCookie("id", user.id);
     setUser(user);
-  };
-  const logout = () => {
-    removeCookie('id');
-    setUser(null);
   }
   const changeAdminMode = (action) => {
     if (action === 'off') setAdminMode(false);
     else setAdminMode(true);
+  }
+  console.log(adminMode);
+  const logout = () => {
+    changeAdminMode('off');
+    removeCookie('id');
+    setUser(null);
   }
   const clickblur = (isblur) => {
     setblur(isblur);
@@ -237,14 +237,13 @@ function App() {
         .catch((err) => console.log("Dell xoa duoc", err))
     }
   }
-
   return (
     <Router>
       <ScrollToTop />
-      <div className="App">
+      <div className={adminMode === false ? "App" : "App-no-scroll"}>
       {loadQuantity()}
         <Header user={user} adminMode={adminMode} logout={logout} clickblur={clickblur} setUser={setUser} />
-        <Route path="/admin"  component={() => <Admin changeAdminMode={changeAdminMode} />}></Route>
+        <Route path="/admin/:idUser"  component={(match) => <Admin changeAdminMode={changeAdminMode} user={user} match={match} logout={logout}/>}></Route>
 
         <Route path="/" exact component={() => <Body idUser={user !== null ? user.id : null} addProductToCart={addProductToCart} />}></Route>
 

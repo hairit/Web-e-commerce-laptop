@@ -1,5 +1,66 @@
-.admin-home{
-    width: auto;
-    height: 100vh;
-    display: flex;
+.admin {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+.admin-page-logo {
+  width: 100%;
+  height: 150px;
+}
+.admin-tabs {
+  display: flex;
+  flex-direction: column;
+  width: 10%;
+  background-color: #596ce5;
+}
+.admin-tab {
+  width: 100%;
+  display: flex;
+  padding: 15px 0 15px 20px;
+  align-items: center;
+  color: #ffffff;
+  font-size: 15px;
+}
+.admin-tab-icon {
+  margin-right: 12px;
+  font-size: 25px;
+}
+.admin-pages {
+  width: 90%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.admin-pages-header {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  padding-right: 50px;
+  flex-direction: row-reverse;
+  align-items: center;
+}
+.admin-header-item {
+  display: flex;
+  height: 40px;
+  align-items: center;
+  color: #525050;
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0 7px;
+}
+.user-header-drop {
+  margin-left: 5px;
+}
+.user-header-img {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.admin-logout {
+  font-size: 14px;
+  font-weight: 500;
+}
+.admin-logout-icon {
+  font-size: 25px;
 }
