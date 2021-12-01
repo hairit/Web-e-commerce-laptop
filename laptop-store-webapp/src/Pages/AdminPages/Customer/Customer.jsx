@@ -7,16 +7,11 @@ export default function Customer() {
     const [customers, setCustomers] = useState([]);
     const saveCustomer = useRef(null);
     const [updateData, setUpdateData] = useState(false);
+    const [email, setEmail] = useState(null);
+    const [id, setId] = useState(null);
+    const [name, setName] = useState(null);
     const [active, setActive] = useState(false);
-    const [customer, setCustomer] = useState({
-        firstname : '',
-        lastname : '',
-        email : '',
-        pass :'',
-        sdt : null,
-        diachi : null,
-        nameimage : null
-    });
+    const [customer, setCustomer] = useState({firstname : null,lastname : null,email : null,pass :null,sdt : null,diachi : null,nameimage : null});
     useEffect(() => {
         axios.get('https://localhost:44343/data/user/mode=CUSTOMER')
             .then(res => setCustomers(res.data))
@@ -27,38 +22,96 @@ export default function Customer() {
         else setUpdateData(false);
     }
     const resetCustomer = () => {
-        setCustomer({
-            firstname : '',
-            lastname : '',
-            email : '',
-            pass :'',
-            sdt : null,
-            diachi : null,
-            nameimage : null
-        });
+        saveCustomer.current = {id : null ,firstname : null,lastname : null,email : null,pass :null,sdt : null,diachi : null,nameimage : null}
+        setCustomer({id : null ,firstname : null,lastname : null,email : null,pass :null,sdt : null,diachi : null,nameimage : null});
     }
     const addCustomer = () => {
+        if(customer.id === null ){
+            alert("Không có dữ liệu");
+            return ;
+        }
         axios.post('https://localhost:44343/data/user',customer).then((res) => {
-
-                                                                    alert("Saved");
+                                                                    alert("Added");
                                                                     reLoad();
                                                                     resetCustomer();
                                                                 })
-                                                                .catch((err)=>alert("Thêm khách hàng thất bại"+err))
+                                                                .catch((err)=>alert("Thêm khách hàng thất bại ,kiểm tra dữ liệu"));
     }
     const repairCustomer = () => {
+        if(customer.id === null ){
+            alert("Chọn đối tượng cần sửa!");
+            return ;
+        }
         if(saveCustomer.current === customer) {
             alert("Không thay đổi");
             return;
         }
         axios.put('https://localhost:44343/data/user',customer).then(() => {
                                                                     alert("Saved");
+                                                                    resetCustomer();
                                                                     reLoad();
                                                                 })
                                                                .catch(()=>alert("Sửa thông tin thất bại"))
     }
+    console.log(saveCustomer);
     console.log(customer);
-    console.log(active);
+    const deleteCustomer = () => {
+        if(customer.id===null) {
+            alert("Chọn đối tượng trước khi xóa");
+            return ;
+        }
+        if(window.confirm("Xác nhận xóa ?")){
+            axios.delete(`https://localhost:44343/data/user/${customer.id}`).then(() => {
+                reLoad();
+                resetCustomer();
+                alert("Deleted");
+            }).catch(()=>alert("Không thể xóa"));
+        }
+    }
+    const searchCustomersByName = () => {
+        if(name === null) {
+            alert("Chưa nhập dữ liệu");
+            return ;
+        }
+        axios.get(`https://localhost:44343/data/user/name=${name}`,null).then(res => {
+            alert("lấy dữ liệu thành công");
+            setCustomers(res.data);
+            reLoad();
+        }).catch((err) => {
+            alert("Không tìm thấy khách hàng");
+            console.log("getCustomersByName failed"+ err);
+        });
+    }
+    const searchCustomerByID = () => {
+        if(id === null) {
+            alert("Chưa nhập dữ liệu");
+            return ;
+        }
+        axios.get(`https://localhost:44343/data/user/${id}`,null).then(res => {
+            alert("lấy dữ liệu thành công");
+            setCustomer(res.data);
+            saveCustomer.current = res.data;
+            reLoad();
+        }).catch((err) => {
+            alert("Không tìm thấy khách hàng");
+            console.log("getCustomersByID failed"+ err);
+        });
+    }
+    const searchCustomerByEmail = () => {
+        if(email === null) {
+            alert("Chưa nhập dữ liệu");
+            return ;
+        }
+        axios.get(`https://localhost:44343/data/user/email=${email}`,null).then(res => {
+            alert("lấy dữ liệu thành công");
+            setCustomer(res.data);
+            saveCustomer.current = res.data;
+            reLoad();
+        }).catch((err) => {
+            alert("Không tìm thấy khách hàng");
+            console.log("getCustomerByEmail failed"+ err);
+        });
+    }
     return (
         <div className="admin-customer">
             <div className="customer-panel">
@@ -66,7 +119,7 @@ export default function Customer() {
                     <table className="customer-table">
                         <thead className="customer-table-head">
                             <tr className="customer-table-row">
-                                <th className="customer-table-cell cell-name">Mã</th>
+                                <th className="customer-table-cell cell-id">Mã</th>
                                 <th className="customer-table-cell cell-name">Họ Tên</th>
                                 <th className="customer-table-cell cell-email">Email</th>
                                 <th className="customer-table-cell cell-pass">Mật khẩu</th>
@@ -78,24 +131,26 @@ export default function Customer() {
                             {customers.map((item,index)=>(
                                 <tr className="customer-table-row customer-item"  key={index} 
                                 onClick={()=>{
-                                            if(item.id === customer){
-                                                if(active === false) {
-                                                    setCustomer(item);
-                                                    saveCustomer.current = item;  
+                                            if(item.id === customer.id){
+                                                if(active === false){
+                                                    saveCustomer.current = item;
                                                     setActive(true);
                                                 }else{
                                                     resetCustomer();
-                                                    saveCustomer.current = customer; 
                                                     setActive(false);
                                                 }
+                                            }else if(item.id !== customer.id){
+                                                setCustomer(item);
+                                                saveCustomer.current = item;
+                                                setActive(true);
                                             }
-                                            
                                         }}
                                 style={customer !== null ? {
                                                                 borderBottom : '0.1px solid rgb(228, 224, 224)',
                                                                 color : item.id === customer.id ? '#596ce5' : '#5c5b5b',
                                                             }
                                                          : {borderBottom : '0.1px solid rgb(228, 224, 224)'}}>
+                                    <td className="customer-table-cell">{item.id}</td>
                                     <td className="customer-table-cell">{item.firstname+" "+item.lastname}</td>
                                     <td className="customer-table-cell">{item.email}</td>
                                     <td className="customer-table-cell">{item.pass}</td>
@@ -139,18 +194,20 @@ export default function Customer() {
                         </div>
                     </div>
                     <div className="customer-search">
-                        <input className="customer-input-search" type="text" placeholder="Tên khách hàng" />
-                        <button className="customer-btn-search">Search</button>
+                        <input className="customer-input-search" type="text" placeholder="Tên khách hàng" defaultValue={name} onChange={(e) => setName(e.target.value.toString())}/>
+                        <button className="customer-btn-search" onClick={() => searchCustomersByName()}>Search</button>
                     </div>
                     <div className="customer-search">
-                        <input className="customer-input-search" type="text" placeholder="Mã" />
-                        <button className="customer-btn-search">Search</button>
+                        <input className="customer-input-search" type="text" placeholder="Mã" defaultValue={id} onChange={(e) => setId(e.target.value.toString())}/>
+                        <button className="customer-btn-search" onClick={() => searchCustomerByID()} >Search</button>
                     </div>
                     <div className="customer-search">
-                        <input className="customer-input-search" type="text" placeholder="Email" />
-                        <button className="customer-btn-search">Search</button>
+                        <input className="customer-input-search" type="text" placeholder="Email" defaultValue={email} onChange={(e) => setEmail(e.target.value.toString())}/>
+                        <button className="customer-btn-search" onClick={() => searchCustomerByEmail()}>Search</button>
                     </div>
                     <div className="customer-button-group">
+                        <button className="customer-button cartDetail-customer" onClick={() => {}}>Xem đơn hàng</button>
+                        <button className="customer-button delete-customer" onClick={() => deleteCustomer()}>Delete</button>
                         <button className="customer-button repair-customer" onClick={() => repairCustomer()}>Save</button>
                         <button className="customer-button add-customer" onClick={() => addCustomer()}>Add</button>
                     </div>

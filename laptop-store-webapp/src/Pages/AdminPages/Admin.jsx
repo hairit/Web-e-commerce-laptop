@@ -46,7 +46,7 @@ export default function Admin({ changeAdminMode , match , logout}) {
                     }
                 </div>
                 <div className="admin-pages">
-                    <div className="admin-pages-header">
+                    {/* <div className="admin-pages-header">
                             <div className="user-logout admin-header-item" onClick={()=>{
                                 history.push("/");
                                 logout();
@@ -57,7 +57,7 @@ export default function Admin({ changeAdminMode , match , logout}) {
                                     <img className="user-header-img" src={URL + `/Images/UserAvatar/${user.nameimage}`}/>
                                     <p>{user.lastname+" "+user.firstname}</p>
                             </div> : <div></div>}
-                    </div>
+                    </div> */}
                     <div className="admin-pages-main">
                         <Route path="/admin/customer" component={() => <Customer />}></Route>
                         <Route path="/admin/order" component={() => <Order />}></Route>

@@ -117,7 +117,7 @@ export default function Laptops({idUser,match,addProductToCart}) {
                   <div className="title-sort">Thương hiệu</div>
                   <div className="btn-right">
                     {/* <NavLink to={sort}> */}
-                    <button type="button" className="btn-sort" value="brand=asus"  onClick={(e) => sortLaptop(e)}>
+                    <button type="button"  className="btn-sort" value="brand=asus"  onClick={(e) => sortLaptop(e)}>
                       Asus
                     </button>
                     {/* </NavLink> */}

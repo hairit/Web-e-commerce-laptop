@@ -25,6 +25,13 @@ export default function Keyboard({idUser,addProductToCart}) {
     addProductToCart(idUser,id,gia)
   }
 
+  function sortKeyboard(e){
+    var sorts = e.target.value
+    axios.get("https://localhost:44343/data/keyboard/" + sorts,null)
+    .then((res) => setPros(res.data))
+    .catch((err) => console.log(err))
+}
+
   const pages = []
   for(let i=1; i<= Math.ceil(pros.length / itemsPage); i++){
     pages.push(i)
@@ -72,14 +79,6 @@ export default function Keyboard({idUser,addProductToCart}) {
                     />
                   </a>
                 </li>
-                {/* <li>
-                    <a href="#">
-                      <img
-                        src="https://lh3.googleusercontent.com/2B5ELE4a1XSWf4ngIKoKYfcessffjFjP-uqdPuCVs62ZGku-TGAEeKIDuiQun3yK4W0t2BbMJIRJT2VG7J1jfcIPZqIm7sdlLA=rw-w1920"
-                        alt=""
-                      />
-                    </a>
-                  </li> */}
               </ul>
             </div>
           </div>
@@ -95,40 +94,40 @@ export default function Keyboard({idUser,addProductToCart}) {
                 <div className="loc">
                   <div className="title-sort">Thương hiệu</div>
                   <div className="btn-right">
-                    <button type="button" className="btn-sort">
+                    <button type="button" className="btn-sort" value="brand=akko"  onClick={(e) => sortKeyboard(e)}>
                       AKKO
                     </button>
-                    <button type="button" className="btn-sort">
+                    <button type="button" className="btn-sort" value="brand=dareu"  onClick={(e) => sortKeyboard(e)}>
                       DareU
                     </button>
-                    <button type="button" className="btn-sort">
+                    <button type="button" className="btn-sort" value="brand=royal-kludge"  onClick={(e) => sortKeyboard(e)}>
                       Royal-Kludge
                     </button>
                   </div>
                 </div>
                 <div className="loc">
-                  <div className="title-sort">Màu</div>
+                  <div className="title-sort">Led</div>
                   <div className="btn-right">
-                    <button type="button" className="btn-sort">
-                      Cam
+                    <button type="button" className="btn-sort" value="led=rgb"  onClick={(e) => sortKeyboard(e)}>
+                      RGB
                     </button>
-                    <button type="button" className="btn-sort">
-                      Đen
-                    </button>
-                    <button type="button" className="btn-sort">
-                      Trắng
+                    <button type="button" className="btn-sort" value="led=don"  onClick={(e) => sortKeyboard(e)}>
+                      Đơn
                     </button>
                   </div>
                 </div>
 
                 <div className="loc">
-                  <div className="title-sort">Năm sản xuất</div>
+                  <div className="title-sort">Switch</div>
                   <div className="btn-right">
-                    <button type="button" className="btn-sort">
-                      2020
+                    <button type="button" className="btn-sort" value="brandswitch=dareu"  onClick={(e) => sortKeyboard(e)}>
+                      Dareu
                     </button>
-                    <button type="button" className="btn-sort">
-                      2021
+                    <button type="button" className="btn-sort" value="brandswitch=cherry"  onClick={(e) => sortKeyboard(e)}>
+                    Cherry
+                    </button>
+                    <button type="button" className="btn-sort" value="brandswitch=rk"  onClick={(e) => sortKeyboard(e)}>
+                    RK
                     </button>
                   </div>
                 </div>

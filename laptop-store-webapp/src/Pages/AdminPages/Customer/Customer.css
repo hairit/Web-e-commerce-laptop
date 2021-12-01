@@ -46,6 +46,7 @@
   width: 20%;
   text-align: center;
   border: none;
+  font-weight: 500;
   background-color: #596ce5;
   color: #ffffff;
   border-top-right-radius: 7px;
@@ -89,6 +90,9 @@
 }
 .cell-email {
   width: 300px;
+}
+.cell-id {
+  width: 60px;
 }
 .customer-inFor {
   width: 100%;
@@ -144,7 +148,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  height: 100px;
+  height: auto;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -155,9 +159,19 @@
   height: 35px;
   width: 100%;
   color: #ffffff;
+  font-size: 16px;
+  font-weight: 500;
   border-radius: 5px;
   cursor: pointer;
+  margin-bottom: 10px;
 }
-.add-customer {
-  margin-top: 5px;
+.delete-customer {
+  background-color: rgb(211, 17, 17);
+}
+.cartDetail-customer {
+  background-color: #596ce5;
+  height: 150px;
+}
+.repair-customer {
+  background-color: #dd5b1f;
 }
