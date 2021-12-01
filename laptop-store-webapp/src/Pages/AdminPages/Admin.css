@@ -26,8 +26,7 @@
   font-size: 25px;
 }
 .admin-pages {
-  width: 90%;
-  height: 100%;
+  margin: 0;
   display: flex;
   flex-direction: column;
   background-color: #e6e4e4;
@@ -69,7 +68,7 @@
 .admin-logout-icon {
   font-size: 25px;
 }
-.admin-pages-main{
+.admin-pages-main {
   width: 100%;
   height: 100%;
 }
