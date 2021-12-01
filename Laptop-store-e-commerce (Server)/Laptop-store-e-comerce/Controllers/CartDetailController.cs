@@ -27,8 +27,7 @@ namespace Laptop_store_e_comerce.Controllers
         [HttpGet("iduser={value1}/idproduct={value2}")]
         public async Task<ActionResult<CartDetail>> GetCardDetail(int value1 , string value2)
         {
-            var cartDetail = await _context.CartDetails.Include(detail => detail.IdProductNavigation).ThenInclude(pro => pro.IdloaiNavigation)
-                                                       .Where(detail => detail.IdUser == value1 && detail.IdProduct == value2)
+            var cartDetail = await _context.CartDetails.Where(detail => detail.IdUser == value1 && detail.IdProduct == value2)
                                                        .FirstOrDefaultAsync();      
             if (cartDetail == null)
             {
@@ -40,10 +39,8 @@ namespace Laptop_store_e_comerce.Controllers
         public async Task<ActionResult<List<CartDetail>>> getCardDetailsByUser(int id)
         {
             if (!_context.Users.Any(user => user.Id == id)) return BadRequest();
-            List<CartDetail> listCardDetails= await _context.CartDetails.Include(detail => detail.IdProductNavigation)
-                                                                        .ThenInclude(detail => detail.IdloaiNavigation)
-                                                                        .Where(cardDetail => cardDetail.IdUser == id)
-                                                         .ToListAsync();
+            List<CartDetail> listCardDetails= await _context.CartDetails.Where(cardDetail => cardDetail.IdUser == id)
+                                                                        .ToListAsync();
             if (listCardDetails.Count == 0) return NotFound();
             else return listCardDetails;
         }
@@ -51,9 +48,7 @@ namespace Laptop_store_e_comerce.Controllers
         public async Task<ActionResult<List<CartDetail>>> getSelectedCardDetailsByUser(int id)
         {
             if (!CartDetailsUserExist(id)) return NotFound();
-            var list = await _context.CartDetails.Include(c => c.IdProductNavigation)
-                                                 .ThenInclude(c => c.IdloaiNavigation)
-                                                 .Where(c => c.IdUser == id && c.Selected == 1).ToListAsync();
+            var list = await _context.CartDetails.Where(c => c.IdUser == id && c.Selected == 1).ToListAsync();
             if (list.Count == 0) return NotFound();
             else return list;
         }

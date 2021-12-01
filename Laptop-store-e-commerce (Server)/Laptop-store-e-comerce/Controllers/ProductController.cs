@@ -190,7 +190,7 @@ namespace Laptop_store_e_comerce.Controllers
             {
                 database.Products.Remove(pro);
                 await database.SaveChangesAsync();
-            }catch { return BadRequest(); }
+            }catch {  throw; }
             return pro;
         }
         private bool existID(string id)
