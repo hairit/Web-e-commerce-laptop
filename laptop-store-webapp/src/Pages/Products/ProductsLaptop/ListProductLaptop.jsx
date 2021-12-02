@@ -41,7 +41,6 @@ export default function ListProductLaptop({pros,addProductInCart}) {
   }
   function handleCorei7(pro){
     var cpu = pro.ten
-    console.log("ccccc", cpu)
     if(cpu.includes("Core i7") === true){
     return (
       <div className="view-cpu">

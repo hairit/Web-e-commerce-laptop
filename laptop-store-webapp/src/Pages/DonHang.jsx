@@ -51,7 +51,7 @@ export default function DonHang({idUser}) {
                                         )}
                                         <td className="info-productInBill bill-price" >{solver.formatCurrency("vi-VN","currency","VND",bill.tongtien)}</td>
                                         <td className="info-productInBill">{bill.ngaydat.split("T",1)}</td>
-                                        <td className="info-productInBill">{bill.diachi}</td>
+                                        <td className="info-productInBill">{bill.diachinhan}</td>
                                         <td className="info-productInBill">{bill.tinhtrang}</td>
                                     </tr>
                                 </tbody>
