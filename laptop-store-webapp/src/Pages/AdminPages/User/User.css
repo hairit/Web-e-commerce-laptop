@@ -1,0 +1,30 @@
+.select-mode-search {
+  background-color: #ddd8d8;
+  border: none;
+  width: 120px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.select-mode-search:focus {
+  border: none;
+  outline: none;
+}
+.select-mode-search option {
+  border-radius: 5px;
+}
+.select-mode-user {
+}
+.inFor-mode {
+  display: flex;
+  justify-content: space-between;
+}
+.user-avatar {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+}
+.name-user {
+  font-size: 13px;
+  font-weight: 500;
+  margin-top: 7px;
+}

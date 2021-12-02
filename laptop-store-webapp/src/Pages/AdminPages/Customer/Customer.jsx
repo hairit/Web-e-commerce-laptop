@@ -7,11 +7,10 @@ export default function Customer() {
     const [customers, setCustomers] = useState([]);
     const saveCustomer = useRef(null);
     const [updateData, setUpdateData] = useState(false);
-    const [email, setEmail] = useState(null);
-    const [id, setId] = useState(null);
-    const [name, setName] = useState(null);
+    const [modeSearch, setModeSearch] = useState('email');
+    const [value, setValue] = useState(null)
     const [active, setActive] = useState(false);
-    const [customer, setCustomer] = useState({firstname : null,lastname : null,email : null,pass :null,sdt : null,diachi : null,nameimage : null});
+    const [customer, setCustomer] = useState({id : null,firstname : null,lastname : null,email : null,pass :null,sdt : null,diachi : null,nameimage : null});
     useEffect(() => {
         axios.get('https://localhost:44343/data/user/mode=CUSTOMER')
             .then(res => setCustomers(res.data))
@@ -68,49 +67,11 @@ export default function Customer() {
             }).catch(()=>alert("Không thể xóa"));
         }
     }
-    const searchCustomersByName = () => {
-        if(name === null) {
+    const searchCustomer = (mode ,value) => {
+        if(value === null) {
             alert("Chưa nhập dữ liệu");
             return ;
         }
-        axios.get(`https://localhost:44343/data/user/name=${name}`,null).then(res => {
-            alert("lấy dữ liệu thành công");
-            setCustomers(res.data);
-            reLoad();
-        }).catch((err) => {
-            alert("Không tìm thấy khách hàng");
-            console.log("getCustomersByName failed"+ err);
-        });
-    }
-    const searchCustomerByID = () => {
-        if(id === null) {
-            alert("Chưa nhập dữ liệu");
-            return ;
-        }
-        axios.get(`https://localhost:44343/data/user/${id}`,null).then(res => {
-            alert("lấy dữ liệu thành công");
-            setCustomer(res.data);
-            saveCustomer.current = res.data;
-            reLoad();
-        }).catch((err) => {
-            alert("Không tìm thấy khách hàng");
-            console.log("getCustomersByID failed"+ err);
-        });
-    }
-    const searchCustomerByEmail = () => {
-        if(email === null) {
-            alert("Chưa nhập dữ liệu");
-            return ;
-        }
-        axios.get(`https://localhost:44343/data/user/email=${email}`,null).then(res => {
-            alert("lấy dữ liệu thành công");
-            setCustomer(res.data);
-            saveCustomer.current = res.data;
-            reLoad();
-        }).catch((err) => {
-            alert("Không tìm thấy khách hàng");
-            console.log("getCustomerByEmail failed"+ err);
-        });
     }
     return (
         <div className="admin-customer">
@@ -163,6 +124,13 @@ export default function Customer() {
                 </div>
                 <div className="customer-panel-flatForm">
                     <div className="customer-title">Thông tin khách hàng</div>
+                    <div className="customer-inFor-item inFor-avatar">
+                    <img className="user-avatar" src={ customer.nameimage !== null ? 
+                                             `https://localhost:44343/Images/UserAvatar/${customer.nameimage}`
+                                            :`https://localhost:44343/Images/UserAvatar/NullAvatar.png`
+                                             } alt={customer.nameimage}/>
+                                {customer.id !== null ? <p className="name-user">{customer.firstname+" "+customer.lastname}</p> : <p className="name-user">Chưa xác định</p>}
+                    </div>
                     <div className="customer-inFor">
                         <div className="customer-inFor-item inFor-name">
                                 <div className="inFor-name-item">
@@ -193,20 +161,19 @@ export default function Customer() {
                             <input className="customer-input input-address" placeholder="" defaultValue={customer.diachi} onChange={(e)=>setCustomer({...customer,diachi : e.target.value.toString()})}/>
                         </div>
                     </div>
-                    <div className="customer-search">
-                        <input className="customer-input-search" type="text" placeholder="Tên khách hàng" defaultValue={name} onChange={(e) => setName(e.target.value.toString())}/>
-                        <button className="customer-btn-search" onClick={() => searchCustomersByName()}>Search</button>
-                    </div>
-                    <div className="customer-search">
-                        <input className="customer-input-search" type="text" placeholder="Mã" defaultValue={id} onChange={(e) => setId(e.target.value.toString())}/>
-                        <button className="customer-btn-search" onClick={() => searchCustomerByID()} >Search</button>
-                    </div>
-                    <div className="customer-search">
-                        <input className="customer-input-search" type="text" placeholder="Email" defaultValue={email} onChange={(e) => setEmail(e.target.value.toString())}/>
-                        <button className="customer-btn-search" onClick={() => searchCustomerByEmail()}>Search</button>
-                    </div>
+                    
                     <div className="customer-button-group">
-                        <button className="customer-button cartDetail-customer" onClick={() => {}}>Xem đơn hàng</button>
+                    <div className="customer-button customer-search">
+                        <select  value={'email'} className="select-mode-search" onChange={(e) => setModeSearch(e.target.value.toString())}>
+                            <option value="email">Email</option>
+                            <option value="sdt">SĐT</option>
+                            <option value="name">Tên</option>
+                            <option value="id">ID</option>
+                        </select>
+                        <input className="customer-input-search" type="text" placeholder="Tìm kiếm"  defaultValue={value} onChange={(e) => setValue(e.target.value.toString())}/>
+                        <button className="customer-btn-search" onClick={() =>searchCustomer(modeSearch,value)}>Search</button>
+                    </div>
+                        {/* <button className="customer-button cartDetail-customer" onClick={() => {}}>Xem đơn hàng</button> */}
                         <button className="customer-button delete-customer" onClick={() => deleteCustomer()}>Delete</button>
                         <button className="customer-button repair-customer" onClick={() => repairCustomer()}>Save</button>
                         <button className="customer-button add-customer" onClick={() => addCustomer()}>Add</button>

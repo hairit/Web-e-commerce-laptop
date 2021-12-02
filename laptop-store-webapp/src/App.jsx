@@ -33,8 +33,6 @@ import Headphone from "./Pages/Products/ProductsHeadphone/Headphone";
 import DetailProductsHeadphone from "./Pages/Products/ProductsHeadphone/DetailProductsHeadphone";
 
 function App() {
-  const history = useHistory();
-  const [blur, setblur] = useState(false);
   const [adminMode, setAdminMode] = useState(false);
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState(null);
@@ -76,14 +74,11 @@ function App() {
     if (action === 'off') setAdminMode(false);
     else setAdminMode(true);
   }
-  console.log(adminMode);
+  
   const logout = () => {
     changeAdminMode('off');
     removeCookie('id');
     setUser(null);
-  }
-  const clickblur = (isblur) => {
-    setblur(isblur);
   }
   var ID = function () {
     return Math.random().toString(36).substr(2, 9);
@@ -124,10 +119,12 @@ function App() {
       id: ID(),
       iduser: user.id,
       tongtien: totalPrice,
+      diachinhan : user.diachi,
       ngaydat: new Date().toISOString().slice(0, 10),
       billDetails: createBillDetails(cartDetails)
     })
   }
+  console.log(new Date());
   const order = () => {
     axios.post('https://localhost:44343/data/bill/', bill)
       .then(res => {
@@ -242,11 +239,13 @@ function App() {
       <ScrollToTop />
       <div className={adminMode === false ? "App" : "App-no-scroll"}>
       {loadQuantity()}
-        <Header user={user} adminMode={adminMode} logout={logout} clickblur={clickblur} setUser={setUser} />
+        <Header user={user} adminMode={adminMode} logout={logout}  setUser={setUser} />
       
+        <Route path="/admin" exact component={() => <Login login={login}  />} ></Route>
         <Route path="/admin/:idUser"  component={(match) => <Admin changeAdminMode={changeAdminMode} user={user} match={match} logout={logout}/>}></Route>
 
-        <Route path="/" exact component={() => <Body idUser={user !== null ? user.id : null} addProductToCart={addProductToCart} />}></Route>
+
+        <Route path="/" exact component={() => <Body idUser={user !== null ? user.id : null} addProductToCart={addProductToCart} changeAdminMode={changeAdminMode}/>}></Route>
 
         <Route path="/laptop" exact component={() => <Laptops idUser={user !== null ? user.id : null} addProductToCart={addProductToCart} />}></Route>
         <Route path="/laptop/:attribute/:value" exact component={(match) => <Laptops match={match} addProductToCart={addProductToCart} />} ></Route>

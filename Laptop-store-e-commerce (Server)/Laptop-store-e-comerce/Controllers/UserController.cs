@@ -15,14 +15,11 @@ namespace Laptop_store_e_comerce.Controllers
     {
         private readonly StoreContext database;
         public UserController(StoreContext context)
-        {
-            database = context;
-        }
+        {database = context;}
         [HttpGet]
         public async Task<ActionResult<IEnumerable<User>>> GetUsers()
-        {
-            return await database.Users.ToListAsync();
-        }
+        {return await database.Users.ToListAsync();}
+
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUserByID(int id)
         {
