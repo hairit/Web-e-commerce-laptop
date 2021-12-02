@@ -16,6 +16,7 @@ import whatsapp_32px from "../../../Images/whatsapp_32px.png";
 import edit_property_32px from "../../../Images/edit_property_32px.png";
 import settings_32px from "../../../Images/settings_32px.png";
 import { NavLink } from "react-router-dom";
+import PostsMouse from "./PostsMouse";
 export default function DetailProductsMouse({idUser, match, addProductToCart }) {
   const solver = new Solver();
   const [detail, setDetail] = useState({});
@@ -260,7 +261,7 @@ export default function DetailProductsMouse({idUser, match, addProductToCart }) 
                     <td>{detail.baohanh}&nbsp;tháng</td>
                   </tr>
                   <tr>
-                    <th className="row">Thông tin chung</th>
+                    <th className="row title-detail-pro">Thông tin chung</th>
                     <td></td>
                   </tr>
                   <tr>
@@ -275,7 +276,7 @@ export default function DetailProductsMouse({idUser, match, addProductToCart }) 
                   </tr>
 
                   <tr>
-                    <th className="row">Cấu hình chi tiết</th>
+                    <th className="row title-detail-pro">Cấu hình chi tiết</th>
                     <td></td>
                   </tr>
                   <tr>
@@ -351,7 +352,7 @@ export default function DetailProductsMouse({idUser, match, addProductToCart }) 
                 <SanPhamKhac />
               </div>
             </div>
-            {/* <PostsKeyboard /> */}
+            <PostsMouse />
           </div>
           <div className="info-bottom row">
             <div className="col-md-6 supports">

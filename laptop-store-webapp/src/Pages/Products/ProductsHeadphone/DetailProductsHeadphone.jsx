@@ -277,7 +277,7 @@ export default function DetailProductsHeadphone({idUser, match, addProductToCart
                     <td>{detail.baohanh}&nbsp;tháng</td>
                   </tr>
                   <tr>
-                    <th className="row">Thông tin chung</th>
+                    <th className="row title-detail-pro">Thông tin chung</th>
                     <td></td>
                   </tr>
                   <tr>
@@ -289,7 +289,7 @@ export default function DetailProductsHeadphone({idUser, match, addProductToCart
                     <td>{detail.id}</td>
                   </tr>
                   <tr>
-                    <th className="row">Cấu hình chi tiết</th>
+                    <th className="row title-detail-pro">Cấu hình chi tiết</th>
                   </tr>
                   <tr>
                     <th className="row">Kiểu tai nghe</th>
@@ -322,7 +322,7 @@ export default function DetailProductsHeadphone({idUser, match, addProductToCart
                     </td>
                   </tr>
                   <tr>
-                    <th className="row">Thông tin khác</th>
+                    <th className="row title-detail-pro">Thông tin khác</th>
                     <td></td>
                   </tr>
                   <tr>

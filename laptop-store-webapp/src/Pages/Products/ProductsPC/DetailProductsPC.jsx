@@ -253,7 +253,7 @@ export default function DetailProductsPC({idUser, match, addProductToCart}) {
                     <td>{detail.baohanh}&nbsp;tháng</td>
                   </tr>
                   <tr>
-                    <th className="row">Cấu hình chi tiết</th>
+                    <th className="row title-detail-pro">Cấu hình chi tiết</th>
                     <td></td>
                   </tr>
                   <tr>
@@ -275,7 +275,7 @@ export default function DetailProductsPC({idUser, match, addProductToCart}) {
                     </td>
                   </tr>
                   <tr>
-                    <th className="row">Chi tiết CPU</th>
+                    <th className="row title-detail-pro">Chi tiết CPU</th>
                     <td>
                     {detail.pcdetail && detail.pcdetail.detailcpu}
                     </td>

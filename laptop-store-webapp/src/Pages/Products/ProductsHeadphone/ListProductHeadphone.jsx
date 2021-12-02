@@ -18,7 +18,21 @@ export default function ListProductHeadphone({ pros,addProductInCart }) {
   function handleViewDetails(detail) {
     history.push(`/headphone/${detail.id}`);
   }
- 
+  function handleViewPriceSave(pro) {
+    var pricesave = pro.giacu - pro.gia
+    if(pro.giacu > pro.gia){
+    return (
+        <div className="price-save">
+          <img src="https://mondaycareer.com/wp-content/uploads/2020/11/background-%C4%91%E1%BA%B9p-3-1024x682.jpg"/>
+          <div className="title-price-save">
+            <p className="pricesave-title">Tiết kiệm</p>
+            <p className="pricesave">{solver.formatCurrency("vi-VN", "currency", "VND", pricesave)}
+            </p>
+          </div>
+        </div>
+    )
+    }
+  }
   return (
     <div className="row prolst">
       {pros.map((pro, index) => {
@@ -26,6 +40,7 @@ export default function ListProductHeadphone({ pros,addProductInCart }) {
           <div className="col-md-4 col-sm-6 lstpro " key={index}>
             <div className="products">
               <div className="thumbnail">
+                {handleViewPriceSave(pro)}
                 <a className="af" onClick={() => handleViewDetails(pro)}>
                   <img
                     className="img-pro"
