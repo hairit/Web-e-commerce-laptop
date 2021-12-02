@@ -7,8 +7,4 @@ build_property.PublishSingleFile =
 build_property.IncludeAllContentForSelfExtract = 
 build_property._SupportedPlatformList = Android,iOS,Linux,macOS,Windows
 build_property.RootNamespace = Laptop_store_e_comerce
-<<<<<<< HEAD
 build_property.ProjectDir = D:\Data\Môn\Web-e-commerce-laptop\Laptop-store-e-commerce (Server)\Laptop-store-e-comerce\
-=======
-build_property.ProjectDir = D:\Do an web\Web-e-commerce-laptop\Laptop-store-e-commerce (Server)\Laptop-store-e-comerce\
->>>>>>> bdbf74c8cece6c1bb35b6b474abf80ff41348166

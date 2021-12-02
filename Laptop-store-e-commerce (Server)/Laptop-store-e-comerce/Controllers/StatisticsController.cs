@@ -32,7 +32,7 @@ namespace Laptop_store_e_comerce.Controllers
                     else return bills;
                 }catch(Exception e) { return BadRequest(); }
         }
-        [HttpGet("bill/month={month}/year={year}")]
+        [HttpGet("bill/month={month}year={year}")]
         public async Task<ActionResult<List<Bill>>> getBillsByTime(int month,int year)
         {
             try
@@ -55,7 +55,7 @@ namespace Laptop_store_e_comerce.Controllers
             }
             catch (Exception e) { return BadRequest(); }
         }
-        [HttpGet("bill/from={from}/to={to}")]
+        [HttpGet("bill/from={from}to={to}")]
         public async Task<ActionResult<List<Bill>>> getBillsByTime(String from , String to)
         {
             try
