@@ -11,8 +11,8 @@ export default function Product({ }) {
             <div className="admin-product">
                 <div className="product-layout">
                     <div className="product-title"> <div className="product-title-text"> Trang sản phẩm</div> </div>
-                    <Route path="/admin/product/list" component={() => <ListProduct />}></Route>
-                    <Route path="/admin/product/add" component={() => <AddProduct />}></Route>
+                    <Route path="/admin/product/list" exact  component={() => <ListProduct />}></Route>
+                    <Route path="/admin/product/add" exact component={() => <AddProduct />}></Route>
                 </div>
             </div >
         </Router>

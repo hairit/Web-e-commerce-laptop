@@ -7,6 +7,7 @@ import Order from "../CSS/Order.css";
 import edit from "../Images/edit.png";
 import plus from "../Images/plus.png";
 import { useEffect, useState} from "react";
+import CheckoutItem from "./CheckoutItem";
 
 export default function ThanhToan({idUser,order,updateData}) {
   const history = useHistory();
@@ -82,8 +83,6 @@ export default function ThanhToan({idUser,order,updateData}) {
       console.log("Lỗi con mẹ nó rồi", err)
     })
   }
-
-
   function savePhoneAddress(e) {
     e.preventDefault();
     axios.put("https://localhost:44343/data/user/", {
@@ -411,36 +410,7 @@ export default function ThanhToan({idUser,order,updateData}) {
                   Chỉnh sửa
                 </div>
               </div>
-              {checkout.map((pro, index) => {
-              
-                return (
-                  <div className="info-detailPro" key={index}>
-                    <div className="img-pros">
-                      <img
-                        src={`https://localhost:44343/Images/Products/${pro.idProductNavigation.nameimage}`}
-                      />
-                    </div>
-                    <div className="detail-pros">
-                      <div className="detail-name">
-                        {pro.idProductNavigation.ten}
-                      </div>
-                      <div className="detail-quantity">
-                        Số lượng: {pro.soluong}
-                      </div>
-                      <div className="detail-price" >
-                        Giá:{" "}
-                        {solver.formatCurrency(
-                          "vi-VN",
-                          "currency",
-                          "VND",
-                          pro.idProductNavigation.gia
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-              
+              {checkout.map((pro, index) => <CheckoutItem pro={pro} index={index} solver={solver}/>)}
             </div>
             <div className="pay-order">
             <div className="pay-info pay-orders">

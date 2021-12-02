@@ -25,7 +25,7 @@
   background-color: #ffffff;
 }
 .customer-search {
-  padding: 4px 20px;
+  background-color: #ffffff !important;
   width: 100%;
   display: flex;
   height: auto;
@@ -39,8 +39,6 @@
   padding-left: 17px;
   font-size: 14px;
   font-weight: 500;
-  border-top-left-radius: 7px;
-  border-bottom-left-radius: 7px;
 }
 .customer-btn-search {
   width: 20%;
@@ -174,4 +172,12 @@
 }
 .repair-customer {
   background-color: #dd5b1f;
+}
+.inFor-avatar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0;
+  height: auto;
 }
