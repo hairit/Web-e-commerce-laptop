@@ -304,7 +304,7 @@ export default function DetailProductsKeyboard({idUser, match, addProductToCart 
                     <td>{detail.baohanh}&nbsp;năm</td>
                   </tr>
                   <tr>
-                    <th className="row">Thông tin chung</th>
+                    <th className="row title-detail-pro">Thông tin chung</th>
                     <td></td>
                   </tr>
                   <tr>
@@ -316,7 +316,7 @@ export default function DetailProductsKeyboard({idUser, match, addProductToCart 
                     <td>{detail.id}</td>
                   </tr>
                   <tr>
-                    <th className="row">Cấu hình chi tiết</th>
+                    <th className="row title-detail-pro">Cấu hình chi tiết</th>
                   </tr>
                   <tr>
                     <th className="row">kết nối</th>

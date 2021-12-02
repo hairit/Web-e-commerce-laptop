@@ -93,6 +93,9 @@ export default function Laptops({idUser,match,addProductToCart}) {
   return (
     <div className="wrapper">
       <div className="container_fullwidth">
+        {/* <div className="banner-center">
+
+        </div> */}
         <div className="col-md-12 leftp">
           <div className="banner">
             <div className="bannerslide" id="bannerslide">

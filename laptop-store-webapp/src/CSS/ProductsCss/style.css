@@ -661,7 +661,41 @@ form.newsletter input[type="submit"]:hover {
 .asus {
   padding: 2px 2px;
 }
+.price-save {
+  width: 33%;
+  position: absolute;
+  z-index: 1;
+  left: 4%;
+  bottom: 7%;
+}
+.price-save img {
+  border-radius: 5px;
+}
 
+.title-price-save {
+  position: absolute;
+  z-index: 3;
+  top: 23%;
+  left: 11%;
+}
+.pricesave-title {
+  width: auto;
+  color: yellow;
+  font-size: 13px;
+  font-weight: bold;
+}
+.pricesave {
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+}
+.view-cpu {
+  padding: 10px;
+  position: absolute;
+  z-index: 3;
+  width: 26%;
+  right: 0;
+}
 .banner {
   width: 100%;
   position: relative;
@@ -923,6 +957,7 @@ button:hover {
     float: none;
     width: auto;
   }
+
   .product-list-description {
     width: auto;
   }
