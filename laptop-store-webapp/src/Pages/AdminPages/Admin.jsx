@@ -5,7 +5,7 @@ import Order from './Order/Order';
 import Product from './Product/Product';
 import User from './User/User';
 import Sidebar from './Sidebar/Sidebar';
-import { Route, BrowserRouter as Router, NavLink, useHistory } from 'react-router-dom';
+import { Route, BrowserRouter as Router, NavLink, useHistory  } from 'react-router-dom';
 import "./Admin.css"
 import { FaUser, FaHome, FaMoneyBillWave, FaUserFriends } from 'react-icons/fa'
 import { RiBillLine } from 'react-icons/ri'
@@ -17,6 +17,7 @@ import {CgLogOut} from 'react-icons/cg';
 import call from '../../API/API';
 import URL from '../../DATA/URL';
 import AddProduct from './Product/AddProduct/AddProduct';
+import BillsCustomer from './Bill/BillsCustomer';
 export default function Admin({ changeAdminMode, match, logout }) {
     const history = useHistory();
     const [user, setUser] = useState(null);
@@ -34,40 +35,30 @@ export default function Admin({ changeAdminMode, match, logout }) {
                    <div className="admin-tabs-top">
                             <div className="admin-page-logo">
                             </div>
-                            <NavLink className="admin-tab" to="/admin"><FaHome className="admin-tab-icon" /></NavLink>
+                            <NavLink className="admin-tab" to={`/admin/${match.match.params.idUser}`}><FaHome className="admin-tab-icon" /></NavLink>
                             <NavLink className="admin-tab" to={`/admin/${match.match.params.idUser}/customer`} ><FaUserFriends className="admin-tab-icon"  /></NavLink>
                             {user === null ? <div></div>
                                 :
                                 user.mode === "STAFF" ? <NavLink className="admin-tab" to="/sell">
                                     <RiBillLine className="admin-tab-icon" />
-                                    <p>Sell</p>
                                 </NavLink> : <>
                                     <NavLink className="admin-tab" to={`/admin/${match.match.params.idUser}/product/list`}><GrProductHunt className="admin-tab-icon" /></NavLink>
                                     <NavLink className="admin-tab" to={`/admin/${match.match.params.idUser}/user`}><FaUser className="admin-tab-icon" /></NavLink>
                                     <NavLink className="admin-tab" to={`/admin/${match.match.params.idUser}/report`}><FcStatistics className="admin-tab-icon" /></NavLink>
                                 </>
                             }
-
                    </div>
                    <div className="admin-tabs-bottom">
-                       <NavLink className="admin-tab" to="/login"><CgLogOut className="admin-tab-icon"/></NavLink>
+                       <div className="admin-tab" onClick={()=>{
+                           logout();
+                           history.push('/login');
+                       }} ><CgLogOut className="admin-tab-icon"/></div>
                    </div>
                 </div>
                 <div className="admin-pages">
-                    {/* <div className="admin-pages-header">
-                            <div className="user-logout admin-header-item" onClick={()=>{
-                                history.push("/");
-                                logout();
-                            }}>
-                                <BiLogOut className="admin-logout-icon" />
-                            </div>
-                            {user !== null ? <div className="user-header admin-header-item">
-                                    <img className="user-header-img" src={URL + `/Images/UserAvatar/${user.nameimage}`}/>
-                                    <p>{user.lastname+" "+user.firstname}</p>
-                            </div> : <div></div>}
-                    </div> */}
                     <div className="admin-pages-main">
-                        <Route path="/admin/:iduser/customer" component={() => <Customer />}></Route>
+                        <Route path="/admin/:iduser/customer" component={() => <Customer idUser={match.match.params.idUser} />}></Route>
+                        <Route path="/admin/:idUser/bills/customer/:idCustomer" component={(match) => <BillsCustomer match={match} />}></Route>
                         <Route path="/admin/:idUser/order" component={() => <Order />}></Route>
                         <Route path="/admin/:idUser/product" component={() => <Product />}></Route>
                         <Route path="/admin/:idUser/user" component={() => <User />}></Route>

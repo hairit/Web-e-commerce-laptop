@@ -33,6 +33,7 @@ import Headphone from "./Pages/Products/ProductsHeadphone/Headphone";
 import DetailProductsHeadphone from "./Pages/Products/ProductsHeadphone/DetailProductsHeadphone";
 
 function App() {
+  const history = useHistory();
   const [adminMode, setAdminMode] = useState(false);
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState(null);
@@ -76,9 +77,10 @@ function App() {
   }
   
   const logout = () => {
-    changeAdminMode('off');
     removeCookie('id');
     setUser(null);
+    changeAdminMode('off');
+    history.push('/');
   }
   var ID = function () {
     return Math.random().toString(36).substr(2, 9);
@@ -124,7 +126,6 @@ function App() {
       billDetails: createBillDetails(cartDetails)
     })
   }
-  console.log(new Date());
   const order = () => {
     axios.post('https://localhost:44343/data/bill/', bill)
       .then(res => {
@@ -177,7 +178,7 @@ function App() {
             if (res.status === 201) {
               if (!checkExistCartDetail(res.data.idProduct)) {
                 cartDetails.current.push(res.data);
-                document.getElementById("quantity-cartdetails-user").textContent = cartDetails.current.length
+                document.getElementById("quantity-cartdetails-user").textContent = cartDetails.current.length;
                 document.getElementById("quantity-cartdetails-user").style.display = 'block';
               }
               showLoadAddCart();

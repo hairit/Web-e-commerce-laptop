@@ -9,7 +9,7 @@ export default function User() {
     const [value, setValue] = useState(null)
     const [modeSearch, setModeSearch] = useState('html');
     const [active, setActive] = useState(false);
-    const [user, setUser] = useState({id : null ,firstname : null,lastname : null,email : null,pass :null,sdt : null,diachi : null,nameimage : null,mode : null});
+    const [user, setUser] = useState({id : null ,firstname : null,lastname : null,email : null,pass :null,sdt : null,diachi : null,nameimage : null,mode : 'CUSTOMER'});
     useEffect(() => {
         axios.get('https://localhost:44343/data/user/')
             .then(res => setUsers(res.data))
@@ -23,15 +23,48 @@ export default function User() {
         saveUser.current = {id : null ,firstname : null,lastname : null,email : null,pass :null,sdt : null,diachi : null,nameimage : null,mode : null}
         setUser({id : null ,firstname : null,lastname : null,email : null,pass :null,sdt : null,diachi : null,nameimage : null,mode : null});
     }
+    const checkPhone = (number) =>{
+        if(number.length >11) return false;
+        number.forEach(element => {
+            if(element <= '0' || element >= '9') return false;
+        });
+        return true;
+    }
+    console.log(user);
     const addUser = () => {
-        if(user.id === null ){
-            alert("Không có dữ liệu");
+        if(active === true) {
+            alert("Bỏ chọn người dùng để thêm người dùng mới");
             return ;
         }
-        axios.post('https://localhost:44343/data/user',user).then(() => {
+        if(!user.firstname || !user.lastname || !user.email || !user.pass || !user.mode){
+            alert("Kiểm tra lại dữ liệu");
+            return ;
+        }
+        if(!user.email.includes('@')){
+            alert("Định dạng email không đúng");
+            return ;
+        }
+        if(user.pass.length <= 8){
+            alert("Mật khẩu ít nhất 8 ký tự");
+            return;
+        }
+        if(!checkPhone(user.sdt)) {
+            alert("Số điện thoại không hợp lệ");
+            return ;
+        }
+        axios.post('https://localhost:44343/data/user',{
+            firstname : user.firstname,
+            lastname : user.lastname,
+            email : user.email,
+            pass : user.pass,
+            sdt : user.sdt,
+            diachi : user.diachi,
+            nameimage : user.nameimage ? user.nameimage : null ,
+            mode : user.mode
+        }).then(() => {
                                                                     alert("Added");
-                                                                    reLoad();
                                                                     resetUser();
+                                                                    reLoad();
                                                                 })
                                                                 .catch((err)=>alert("Thêm Người dùng thất bại ,kiểm tra dữ liệu"));
     }
@@ -46,12 +79,10 @@ export default function User() {
         }
         axios.put('https://localhost:44343/data/user',user).then(() => {
                                                                     alert("Saved");
-                                                                    resetUser();
                                                                     reLoad();
                                                                 })
                                                                .catch(()=>alert("Sửa thông tin thất bại"))
     }
-    console.log(modeSearch);
     const deleteUser = () => {
         if(user.id===null){
             alert("Chọn đối tượng trước khi xóa");
@@ -65,13 +96,22 @@ export default function User() {
             }).catch(()=>alert("Không thể xóa"));
         }
     }
-    const searchUser = (mode,value) => {
-        console.log(mode);
+    const searchUserWithMode = (mode) => {
+        axios.get(`https://localhost:44343/data/user/mode=${mode}`,null).then(res => {
+                alert("lấy dữ liệu thành công");
+                setUsers(res.data);
+            }).catch((err) => {
+                alert("Không tìm thấy người dùng");
+                console.log("getCustomersByMode failed"+ err);
+            });
+    }
+    const searchUser = (modeSearch,value) => {
+        console.log(modeSearch);
         if(value === null) {
             alert("Chưa nhập dữ liệu");
             return ;
         }
-        if(mode === 'id'){
+        if(modeSearch === 'id'){
             axios.get(`https://localhost:44343/data/user/${value}`,null).then(res => {
                 alert("lấy dữ liệu thành công");
                 setUser(res.data);
@@ -81,7 +121,7 @@ export default function User() {
                 console.log("getCustomersByName failed"+ err);
             });
         }
-        if(mode === 'email'){
+        if(modeSearch === 'email'){
             console.log('email');
             axios.get(`https://localhost:44343/data/user/email=${value}`,null).then(res => {
                 alert("lấy dữ liệu thành công");
@@ -92,7 +132,7 @@ export default function User() {
                 console.log("getCustomersByName failed"+ err);
             });
         }
-        if(mode === 'sdt'){
+        if(modeSearch === 'sdt'){
             axios.get(`https://localhost:44343/data/user/sdt=${value}`,null).then(res => {
                 alert("lấy dữ liệu thành công");
                 setUsers(res.data);
@@ -101,7 +141,7 @@ export default function User() {
                 console.log("getCustomersByName failed"+ err);
             });
         }
-        if(mode === 'name'){
+        if(modeSearch === 'name'){
             axios.get(`https://localhost:44343/data/user/name=${value}`,null).then(res => {
                 alert("lấy dữ liệu thành công");
                 setUsers(res.data);
@@ -112,7 +152,6 @@ export default function User() {
         }
         
     }
-    console.log(user.mode);
     return (
         <div className="admin-customer">
             <div className="customer-panel">
@@ -189,7 +228,8 @@ export default function User() {
                         <div className="customer-inFor-item inFor-name">
                                 <div className="inFor-name-item">
                                     <p className="inFor-item-text" >SĐT</p>
-                                    <input className="customer-input input-name" placeholder=""  defaultValue={user.sdt} onChange={(e)=>setUser({...user,sdt : e.target.value.toString()})}/>
+                                    <input className="customer-input input-name" placeholder=""  defaultValue={user.sdt} onChange={(e)=>setUser({...user,sdt : e.target.value.toString()})}
+                                                                                                                         />
                                 </div>
                                 <div className="inFor-name-item">
                                     <p className="inFor-item-text" style={{paddingLeft : '10px'}}>Pass</p>
@@ -213,11 +253,20 @@ export default function User() {
                     </div>
                     <div className="customer-button-group">
                     <div className="customer-button customer-search">
-                        <select  value={modeSearch} className="select-mode-search" onChange={(e) => setModeSearch(e.target.value.toString())}>
+                        <select  value={modeSearch} className="select-mode-search" onChange={(e) => {
+                                if(e.target.value.toString() === 'ADMIN' || 'CUSTOMER' || 'STAFF'){
+                                    searchUserWithMode(e.target.value.toString());
+                                }else {
+                                    setModeSearch(e.target.value.toString());
+                                }
+                        }}>
                             <option value="email">Email</option>
                             <option value="sdt">SĐT</option>
                             <option value="name">Tên</option>
                             <option value="id">ID</option>
+                            <option value="ADMIN">Admin</option>
+                            <option value="CUSTOMER">Customer</option>
+                            <option value="STAFF">Staff</option>
                         </select>
                         <input className="customer-input-search" type="text" placeholder="value" defaultValue={value} onChange={(e) => setValue(e.target.value.toString())}/>
                         <button className="customer-btn-search" onClick={() =>searchUser(modeSearch,value)}>Search</button>

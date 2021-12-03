@@ -42,7 +42,7 @@ namespace Laptop_store_e_comerce.Controllers
             if (bill == null) return NotFound();
             if(action == "accept")
             {
-                  bill.Tinhtrang = "Đã xác nhận";
+                  bill.Tinhtrang = "Đã duyệt";
                   try
                   {
                         _context.Entry(bill).State = EntityState.Modified;
@@ -78,7 +78,7 @@ namespace Laptop_store_e_comerce.Controllers
         public async Task<ActionResult<List<Bill>>> getBillsByUserID(int id)
         {
             if (!_context.Users.Any(user => user.Id == id)) return BadRequest();
-            List<Bill> bills = await _context.Bills.Where(bill => bill.Iduser == id).ToListAsync();
+            List<Bill> bills = await _context.Bills.Include(bill => bill.IduserNavigation).Where(bill => bill.Iduser == id).ToListAsync();
             if (bills.Count == 0) return NotFound();
             else return bills;
         }

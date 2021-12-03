@@ -1,0 +1,133 @@
+.bills-customer {
+  width: 100%;
+  height: 100%;
+}
+.bills-customer {
+  display: flex;
+  flex-direction: column;
+}
+.panel-bills {
+  width: 100%;
+  height: 70%;
+  padding: 12px 20px;
+  display: flex;
+  flex-direction: row;
+}
+.panel-billDetails {
+  width: 100%;
+  height: 30%;
+  padding: 12px 20px;
+  display: flex;
+  flex-direction: row;
+}
+.panel-bills-table {
+  width: 70%;
+  height: 100%;
+  background-color: #ffffff;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.table-bills {
+  width: 100%;
+  height: max-content;
+  max-height: 100%;
+}
+.table-bills-head {
+  height: 40px;
+  background-color: #596ce5;
+  color: #ffffff;
+}
+.table-bills-head th {
+  padding-left: 10px;
+}
+.table-bills-cell {
+  padding-left: 5px 10px 5px 10px !important;
+  border: none !important;
+  height: 35px !important;
+}
+.table-bills-row {
+  border-bottom: 0.1px solid rgb(161, 159, 159);
+  max-height: 35px !important;
+  cursor: pointer;
+}
+.table-bills-body td {
+  color: #6e6e6e;
+  font-size: 13px;
+  font-weight: 600;
+  user-select: none;
+}
+.panel-bills-inFor {
+  padding: 0 10px 0 10px;
+  width: 30%;
+  height: 100%;
+  position: relative;
+}
+.panel-bills-inFor-form {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.bill-title {
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  justify-content: center;
+  height: 40px;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  background-color: #596ce5;
+}
+.bill-inFor-item {
+  padding: 15px 20px;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: auto;
+  font-weight: 600;
+}
+.inFor-customer-title {
+  color: rgb(216, 18, 18);
+}
+.inFor-customer-bill {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 500;
+}
+.inFor-customer-bill-item {
+  padding: 7px 10px;
+  display: flex;
+  justify-content: space-between !important;
+}
+.bill-inFor-button-group {
+  position: absolute;
+  padding: 10px 20px;
+  left: 20px;
+  right: 20px;
+  bottom: 0;
+  height: 90px;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  padding: 15px 0;
+}
+.bill-button {
+  padding: 8px 30px;
+  border-radius: 5px;
+  border: none;
+  color: #ffffff;
+}
+.accept-bill {
+  background-color: #596ce5;
+}
+.cancel-bill {
+  margin-right: 8px;
+  background-color: rgb(190, 14, 14);
+}
