@@ -14,6 +14,8 @@ export default function Mouse({ idUser,addProductToCart }) {
   const [pros, setPros] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPage, setItemsPage] = useState(10);
+  const [firstprice, setFirstprice] = useState();
+  const [lastprice, setLastprice] = useState();
   
   useEffect(() => {
     axios
@@ -64,7 +66,19 @@ function handlePrev(){
     setCurrentPage(currentPage - 1)
     }
 }
-
+function handleprice(e){
+  const value = e.target.id
+  if(value === "firstPrice"){
+  setFirstprice(e.target.value)
+  }else{
+  setLastprice(e.target.value)
+  }
+}
+function showProWithPrice(){
+  axios.get(`https://localhost:44343/data/product/type=mouse/from=${firstprice}to=${lastprice}`)
+  .then((res) => setPros(res.data))
+  .catch((err) =>console.error(err))
+}
   return (
     <div className="wrapper">
       <div className="container_fullwidth">
@@ -143,18 +157,12 @@ function handlePrev(){
             <div className="col-md-3 sorfprice">
               <div className="price-filter leftbar">
                 <h3 className="title">Giá</h3>
-                <form className="pricing">
-                  <label>
-                    $
-                    <input type="number" />
-                  </label>
+                <div className="pricing">
+                  <input  type="text" onChange={(e) => handleprice(e)} id="firstPrice" value={firstprice} placeholder="Giá thấp nhất"/>
                   <span className="separate">-</span>
-                  <label>
-                    $
-                    <input type="number" />
-                  </label>
-                  <input type="submit" defaultValue="Go" />
-                </form>
+                  <input  type="text" onChange={(e) => handleprice(e)} id="lastPrice" value={lastprice} placeholder="Giá cao nhất"/>
+                  <button type="button" className="" onClick={() => showProWithPrice()}>Tìm</button>
+                </div>
               </div>
             </div>
           </div>
@@ -182,19 +190,16 @@ function handlePrev(){
             </h3>
             <ul>
               <li>
-                <a href="#">Bàn phím cơ</a>
+                <a href="#">Chuột Gaming</a>
               </li>
               <li>
-                <a href="#">Bàn phím</a>
+                <a href="#">Chuột giá rẻ</a>
               </li>
               <li>
-                <a href="#">Bàn phím cơ Dareu</a>
+                <a href="#">Chuột không dây</a>
               </li>
               <li>
-                <a href="#">Bàn phím cơ giá rẻ</a>
-              </li>
-              <li>
-                <a href="#">Bàn phím Gaming</a>
+                <a href="#">Chuột Logitech</a>
               </li>
             </ul>
           </div>

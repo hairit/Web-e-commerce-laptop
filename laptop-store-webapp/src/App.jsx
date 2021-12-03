@@ -123,6 +123,7 @@ function App() {
       tongtien: totalPrice,
       diachinhan : user.diachi,
       ngaydat: new Date().toISOString().slice(0, 10),
+      diachinhan: user.diachi,
       billDetails: createBillDetails(cartDetails)
     })
   }
