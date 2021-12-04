@@ -10,7 +10,7 @@ export default function BillDetail({item,index}) {
             setProduct(null);
             console.log("Billdetail getProduct errol : "+err);
         });
-    }, [])
+    }, []);
     return (
         <tr className="table-bill-details-row" key={index}>
             <td className="table-bill-details-cell">{item.idProduct}</td>
