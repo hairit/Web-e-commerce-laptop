@@ -25,7 +25,6 @@
   height: 100%;
   background-color: #ffffff;
   border-radius: 5px;
-  overflow: hidden;
 }
 .table-bills {
   width: 100%;
@@ -130,4 +129,31 @@
 .cancel-bill {
   margin-right: 8px;
   background-color: rgb(190, 14, 14);
+}
+.panel-billDetails-table {
+  width: 70%;
+  height: 100%;
+  background-color: #ffffff;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.table-bill-details {
+  height: max-content;
+  width: 100%;
+  max-height: 100%;
+}
+.table-bill-details-head {
+  background-color: #596ce5;
+  color: #ffffff;
+  height: 40px;
+}
+.table-bill-details-row {
+  height: 50px;
+  border-bottom: 0.1px solid rgb(168, 167, 167);
+  cursor: pointer;
+}
+.table-bill-details-cell {
+  font-size: 13px;
+  padding-left: 15px;
+  border: none !important;
 }

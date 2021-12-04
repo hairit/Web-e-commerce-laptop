@@ -2,6 +2,7 @@ import React from 'react';
 import './BillsCustomer.css';
 import {useState , useEffect} from 'react' ;
 import axios from 'axios';
+import BillDetail from './BillDetail'
 export default function BillsCustomer({match}) {
     const [bills, setBills] = useState([]);
     const [bill, setBill] = useState(null);
@@ -14,7 +15,8 @@ export default function BillsCustomer({match}) {
                     setBills([]);
                     console.log("BillsCustomers :" +err);
                 })
-    }, [])
+    }, []);
+    console.log(bill);
     const reLoad = () => {
         if(updateData === false) setUpdateData(true);
         else setUpdateData(false);
@@ -134,7 +136,23 @@ export default function BillsCustomer({match}) {
                     </div>
                 </div>
             </div>
-            <div className="panel-billDetails"></div>
+            <div className="panel-billDetails">
+               <div className="panel-billDetails-table">
+                <table className="table-bill-details">
+                        <thead className="table-bill-details-head">
+                            <tr>
+                                <th className="table-bill-details-cell">Mã SP</th>
+                                <th className="table-bill-details-cell">Tên sản phẩm</th>
+                                <th className="table-bill-details-cell">Số lượng</th>
+                                <th className="table-bill-details-cell">Tổng tiền</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {bill !== null ? bill.billDetails.map((item,index)=> <BillDetail item={item} index={index} /> ) : <div></div>}
+                        </tbody>
+                    </table>
+               </div>
+            </div>
         </div>
     )
 }
