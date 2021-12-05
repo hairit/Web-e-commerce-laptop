@@ -62,11 +62,12 @@ useEffect(() => {
       .catch((err) => console.error("Không thể unchecker",err));
     }
   }
+  console.log("z",cartDetails)
   function btnThanhToan(){
     var tongprice = thanhtien(cartDetails)
     if(tongprice !== 0 ){
-      return (
-          <NavLink to="/checkout" onClick={()=>createBill(cartDetails,thanhtien(cartDetails))}  >
+      return ( //onClick={()=>createBill(cartDetails,thanhtien(cartDetails))}
+          <NavLink to="/checkout"   >
             <button className="btn-pay btn btn-outline-primary"  >
               Tiếp tục thanh toán
             </button>

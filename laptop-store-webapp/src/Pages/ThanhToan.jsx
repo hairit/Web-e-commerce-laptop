@@ -9,7 +9,7 @@ import plus from "../Images/plus.png";
 import { useEffect, useState} from "react";
 import CheckoutItem from "./CheckoutItem";
 
-export default function ThanhToan({idUser,order,updateData}) {
+export default function ThanhToan({ updateData,createBill,idUser,order}) {
   const history = useHistory();
   const solver = new Solver();
   const [address, setAddress] = useState(false);
@@ -30,6 +30,7 @@ export default function ThanhToan({idUser,order,updateData}) {
         else setReload(0);
       }
   useEffect(() =>{
+    console.log("zzz")
       axios.get(`https://localhost:44343/data/user/${idUser}`)
          .then((res) => 
          setUserorder(res.data))
@@ -77,7 +78,7 @@ export default function ThanhToan({idUser,order,updateData}) {
       cartDetails: [ ]
     }).then(res => {
       setEditinfo(false)
-      reLoad()
+      updateData()
       console.log(res.data);
     }).catch(err => {
       console.log("Lỗi con mẹ nó rồi", err)
@@ -98,7 +99,7 @@ export default function ThanhToan({idUser,order,updateData}) {
       bills: [ ],
       cartDetails: [ ]
     }).then(res => {
-      reLoad()
+      updateData()
       // console.log(res.data);
     }).catch(err => {
       console.log("Lỗi con mẹ nó rồi", err)
@@ -156,7 +157,7 @@ export default function ThanhToan({idUser,order,updateData}) {
                 </div>
               </div>
               <div className="btn-form">
-                <button className="btn btn-primary" >Lưu thông tin</button>
+                <button className="btn btn-primary">Lưu thông tin</button>
                 <button className="btn btn-primary" onClick={() => btnSaveEditInfo()} >Thoát</button>
                 </div>
             </form>
@@ -316,6 +317,7 @@ export default function ThanhToan({idUser,order,updateData}) {
             setTimeout(()=>{
               history.push("/bill");
             }, 1700)
+            createBill(checkout,totalPrice(checkout))
             order()}} >Đặt hàng ngay </button>
       )
   }else{

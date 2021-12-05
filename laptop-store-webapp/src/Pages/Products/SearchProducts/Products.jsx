@@ -4,7 +4,6 @@ import URL from '../../../DATA/URL'
 import "../../../CSS/ProductsCss/bootstrap.css";
 import "../../../CSS/ProductsCss/style.css";
 import { useEffect, useState } from "react";
-import ListProductLaptop from "./ListProductLaptop";
 import Solver from "../../../Classes/Solver";
 import AsusLogo1 from "../../../Images/AsusLogo1.png"
 import DellLogo1 from "../../../Images/DellLogo1.png"
@@ -14,8 +13,9 @@ import DareuLogo1 from "../../../Images/DareuLogo1.png"
 import Swal from "sweetalert2";
 
 import { NavLink, useHistory } from "react-router-dom";
+import ListProducts from "./ListProductLaptop";
 const solver = new Solver();
-export default function Laptops({idUser,match,addProductToCart}) {
+export default function Products({idUser,match,addProductToCart}) {
   const history = useHistory();
   const [load, setLoad] = useState(0);
   const [firstprice, setFirstprice] = useState();
@@ -235,7 +235,7 @@ export default function Laptops({idUser,match,addProductToCart}) {
           <div className="row">
             <div className="col-md-9 prolst">
               <div className="products-grid lstlaptop">
-                <ListProductLaptop pros={page}  addProductInCart={addProductInCart} />
+                <ListProducts pros={page}  addProductInCart={addProductInCart} />
               </div>
               <div className="toolbar">
                 <div className="pager">

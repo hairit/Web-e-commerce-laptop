@@ -106,13 +106,13 @@ function App() {
   const createBillDetails = (cartDetails) => {
     var BillDetails = [];
     cartDetails.forEach(element => {
-      if (element.selected === 1) {
+      // if (element.selected === 1) {
         BillDetails.push({
           idProduct: element.idProduct,
           soluong: element.soluong,
           tongtien: element.tongtien
         });
-      }
+      // }
     });
     return BillDetails;
   }
@@ -121,7 +121,7 @@ function App() {
       id: ID(),
       iduser: user.id,
       tongtien: totalPrice,
-      diachinhan : user.diachi,
+      // diachinhan : user.diachi,
       ngaydat: new Date().toISOString().slice(0, 10),
       diachinhan: user.diachi,
       billDetails: createBillDetails(cartDetails)
@@ -270,7 +270,7 @@ function App() {
         <Route path="/pc/:attribute/:from/:to" exact component={(match) => <PC addProductToCart={addProductToCart} match={match} />}></Route>
         <Route path="/pc/:id" exact component={(match) => <DetailProductsPC idUser={user !== null ? user.id : null} addProductToCart={addProductToCart} match={match} />}></Route>
 
-        <Route path="/checkout" exact component={() => <ThanhToan idUser={user !== null ? user.id : null} updateData={updateData} order={order} />}></Route>
+        <Route path="/checkout" exact component={() => <ThanhToan updateData={updateData} createBill={createBill} idUser={user !== null ? user.id : null} order={order} />}></Route>
         <Route path="/laptop/:id" exact component={(match) => <DetailProductsLaptop idUser={user !== null ? user.id : null} addProductToCart={addProductToCart} match={match} />}></Route>
         <Route path="/keyboard/:id" exact component={(match) => <DetailProductsKeyboard idUser={user !== null ? user.id : null} addProductToCart={addProductToCart} match={match} />} ></Route>
         <Route path="/screen/:id" exact component={(match) => <DetailProductsScreen idUser={user !== null ? user.id : null} addProductToCart={addProductToCart} match={match} />}></Route>

@@ -21,9 +21,13 @@ import chinhhang from '../Images/chinhhang.png'
 import tuvan from '../Images/tuvan.png'
 import {NavLink} from "react-router-dom";
 import UserPanel from "./UserPanel";
+import axios from "axios";
+
 export default function Header({ user , adminMode, logout , updateData ,setUser}) {
   const [statusHeader, setStatusHeader] = useState(false);
   const [userPanel, setUserPanel] = useState(false);
+  const [search, setSearch] = useState([]);
+  const [namepro, setNamePro] = useState();
   useEffect(() => {
     window.addEventListener('scroll', changeStatusHeader);
   }, [])
@@ -34,6 +38,17 @@ export default function Header({ user , adminMode, logout , updateData ,setUser}
   const changeStatusUserPanel = () => {
     if(userPanel === false) setUserPanel(true);
     else setUserPanel(false);
+  }
+
+  function btnSearch() {
+    axios.get(`https://localhost:44343/data/product/name=${namepro}`,null)
+    .then((res) => setNamePro(res.data))
+      .catch((err) => console.log(err))
+      console.log("ttt", namepro);
+  }
+  function handleSearch(e) {
+    setNamePro(e.target.value)
+    console.log("aq",namepro)
   }
     return (
       <div className={adminMode === false ? "header" : "header-hide"}>
@@ -63,10 +78,12 @@ export default function Header({ user , adminMode, logout , updateData ,setUser}
               </NavLink>
               <div className="panel-search-product">
                 <input
+                onChange={(e) => handleSearch(e)}
+                id="namepro" value={namepro}
                   className="input-search-product"
                   placeholder="Nhập sản phẩm bạn muốn tìm !"
                 />
-                <button className="button-search-product">
+                <button onClick={() => btnSearch()} className="button-search-product">
                   <CgSearch id="button-search-product-icon" />
                   <p>Tìm kiếm</p>
                 </button>
