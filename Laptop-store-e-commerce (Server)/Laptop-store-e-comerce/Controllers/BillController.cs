@@ -82,15 +82,30 @@ namespace Laptop_store_e_comerce.Controllers
 
             var product = await _context.Products.FindAsync(value2);
             if (product == null) return BadRequest();
-            if(action == "add")
+
+            var bill = await _context.Bills.FindAsync(value1);
+            if(action == "increase")
             {
                 billDetail.Soluong += 1;
                 billDetail.Tongtien += product.Gia;
+                bill.Tongtien += product.Gia;
             }
-            if(action == "delete")
+            if(action == "decrease")
             {
                 billDetail.Soluong -= 1;
                 billDetail.Tongtien -= product.Gia;
+                bill.Tongtien -= product.Gia;
+            }
+            if(action == "delete")
+            {
+                CartDetail restore = new CartDetail();
+                restore.IdUser = bill.Iduser;
+                restore.IdProduct = product.Id;
+                restore.Selected = 1;
+                restore.Soluong = billDetail.Soluong;
+                restore.Tongtien = billDetail.Tongtien;
+                _context.CartDetails.Add(restore);
+                _context.BillDetails.Remove(billDetail);
             }
             try
             {
@@ -130,17 +145,13 @@ namespace Laptop_store_e_comerce.Controllers
         public async Task<ActionResult<Bill>> PostDonHang(Bill donHang)
         {
             if (DonHangExists(donHang.Id)) return Conflict();
-            try
-            {
+            try{
                 _context.Bills.Add(donHang);
                 var cartOrders = await _context.CartDetails.Where(detail => detail.IdUser == donHang.Iduser && detail.Selected == 1).ToListAsync();
                 _context.CartDetails.RemoveRange(cartOrders);
-                await _context.SaveChangesAsync();
-            }
+                await _context.SaveChangesAsync();}
             catch (Exception)
-            {
-                throw;
-            }
+            {throw;}
             return CreatedAtAction("GetDonHang", new { id = donHang.Id }, donHang);
         }
         [HttpDelete("{id}")]

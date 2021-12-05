@@ -1,25 +1,40 @@
 import React from 'react';
 import './BillsCustomer.css';
-import {useState , useEffect} from 'react' ;
+import {useState , useEffect ,useRef} from 'react' ;
 import axios from 'axios';
 import BillDetail from './BillDetail'
 export default function BillsCustomer({match}) {
     const [bills, setBills] = useState([]);
     const [bill, setBill] = useState(null);
+    const saveIDBill = useRef(null);
     const [active, setActive] = useState(false);
     const [updateData, setUpdateData] = useState(false);
     useEffect(() => {
         axios.get(`https://localhost:44343/data/bill/iduser=${match.match.params.idCustomer}`)
-                .then(res => setBills(res.data))
+                .then(res => {
+                    if(bill === null){
+                        setBills(res.data);
+                    }else{
+                        setBills(res.data);
+                        setBill(newBill(res.data,bill.id));
+                    }
+                })
                 .catch((err)=>{
                     setBills([]);
                     console.log("BillsCustomers :" +err);
                 })
-    }, []);
+    }, [updateData]);
     console.log(bill);
     const reLoad = () => {
         if(updateData === false) setUpdateData(true);
         else setUpdateData(false);
+    }
+    const newBill = (newBills,id) => {
+        var newBill = null;
+        newBills.forEach(element => {
+            if(element.id === id) newBill=element; 
+        });
+        return newBill;
     }
     const acceptBill = () => {
         if(bill.tinhtrang === "Đã duyệt"){
@@ -28,7 +43,6 @@ export default function BillsCustomer({match}) {
         }
         axios.get(`https://localhost:44343/data/bill/action=accept/${bill.id}`,null)
             .then((res) => {
-                setBill(res.data);
                 reLoad();
                 alert("Đã xác nhận");
             })
@@ -37,9 +51,10 @@ export default function BillsCustomer({match}) {
                 console.log("accept bill errol :"+err);
             })
     }
-    const cancelBill = () => {
+    const deleteBill = () => {
         axios.get(`https://localhost:44343/data/bill/action=cancel/${bill.id}`,null)
             .then((res) => {
+                setBill(null);
                 reLoad();
                 alert("Hủy xác nhận thành công");
             })
@@ -47,6 +62,28 @@ export default function BillsCustomer({match}) {
                 alert("Xóa đơn hàng thất bại");
                 console.log("accept bill errol :"+err);
             })
+    }
+    const deleteBillDetail= (idBill,idProduct) => {
+        if(bill.billDetails.length === 1){
+            if(window.confirm("Xác nhận xóa đơn hàng ?")){
+                deleteBill();
+            }else {
+                return ;
+            }
+        }else {
+            if(window.confirm("Xác nhận xóa 1 sản phẩm trong đơn hàng")){
+                axios.get(`https://localhost:44343/data/bill/action=delete/billdetail/idbill=${idBill}/idproduct=${idProduct}`)
+                .then(res =>{ if(res.status === 204){
+                    reLoad();
+                }})
+                .catch(err => {
+                    alert("Có lỗi xảy ra");
+                    console.log("Add billdetail quantity errol"+err);
+                })
+            }else {
+                return;
+            }
+        }
     }
     return(
         <div className="bills-customer">
@@ -69,17 +106,21 @@ export default function BillsCustomer({match}) {
                                                                                         if(bill.id === item.id){
                                                                                             if(active == false){
                                                                                                 setBill(item);
+                                                                                                saveIDBill.current = item.id;
                                                                                                 setActive(true);
                                                                                             }else {
                                                                                                 setBill(null);
+                                                                                                saveIDBill.current = null;
                                                                                                 setActive(false);
                                                                                             }
                                                                                         }else {
                                                                                             setBill(item);
+                                                                                            saveIDBill.current = item.id;
                                                                                             setActive(true);
                                                                                         }
-                                                                                    }else {
+                                                                                    }else{
                                                                                         setBill(item);
+                                                                                        saveIDBill.current = item.id;
                                                                                         setActive(true);
                                                                                     }
                                                                                 }}
@@ -126,7 +167,7 @@ export default function BillsCustomer({match}) {
                         <div className="bill-inFor-button-group">
                                 {bill? <>
                                 <button className="bill-button accept-bill" onClick={()=>{acceptBill()}}>Xác nhận</button>
-                                <button className="bill-button cancel-bill" onClick={()=>{cancelBill()}}>Hủy xác nhận</button>
+                                <button className="bill-button cancel-bill" onClick={()=>{deleteBill()}}>Hủy xác nhận</button>
                                 </> :
                                 <>
                                 <button className="bill-button accept-bill" onClick={()=>{}}>Xác nhận</button>
@@ -141,14 +182,16 @@ export default function BillsCustomer({match}) {
                 <table className="table-bill-details">
                         <thead className="table-bill-details-head">
                             <tr>
-                                <th className="table-bill-details-cell">Mã SP</th>
-                                <th className="table-bill-details-cell">Tên sản phẩm</th>
-                                <th className="table-bill-details-cell">Số lượng</th>
-                                <th className="table-bill-details-cell">Tổng tiền</th>
+                                <th className="table-bill-details-cell ">Mã SP</th>
+                                <th className="table-bill-details-cell ">Tên sản phẩm</th>
+                                <th className="table-bill-details-cell ">Phân loại hàng</th>
+                                <th className="table-bill-details-cell ">Số lượng</th>
+                                <th className="table-bill-details-cell ">Tổng tiền</th>
+                                <th className="table-bill-details-cell "></th>
                             </tr>
                         </thead>
                         <tbody>
-                            {bill !== null ? bill.billDetails.map((item,index)=> <BillDetail item={item} index={index} /> ) : <div></div>}
+                            {bill !== null ? bill.billDetails.map((item,index)=> <BillDetail item={item} index={index} reLoad={reLoad} deleteBillDetail={deleteBillDetail}/> ) : <div></div>}
                         </tbody>
                     </table>
                </div>
