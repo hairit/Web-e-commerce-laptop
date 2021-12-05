@@ -3,9 +3,11 @@ import { MdAddBox, MdDelete, MdEdit } from "react-icons/md"
 import { useState, useEffect } from 'react';
 import "./Product.css"
 import axios from 'axios';
+import { useHistory, Link } from 'react-router-dom'
 
 
-export default function Product({ }) {
+export default function Product({ idUser, clickEditProduct }) {
+    let history = useHistory();
     const [pros, setpros] = useState([]);
     const [type, settype] = useState("");
     const [page, setPage] = useState(1);
@@ -63,7 +65,7 @@ export default function Product({ }) {
     const renderTable = () => {
         return (
             pros.map((pro, index) => {
-                if (index <= 12 * page && index >= 12 * (page - 1))
+                if (index <= 10 * page && index >= 10 * (page - 1))
                     return (
                         <tr key={pro.id} className="product-list-item">
                             <td>{<input type="checkbox" onClick={(e) => handleCheckBox(e, pro.id)} />}</td>
@@ -73,10 +75,14 @@ export default function Product({ }) {
                             <td>{pro.gia}</td>
                             <td>{pro.idloai}</td>
                             <td>{pro.hienthi === 1 ? <input type="checkbox" checked onClick={(e) => setShowItem(e, pro.id)} /> : <input type="checkbox" onClick={(e) => setShowItem(e, pro.id)} />}</td>
-                            <td><MdEdit className="product-item-icon" /></td>
+                            <td><MdEdit className="product-item-icon" onClick={() => clickEdit(pro.id)} /></td>
                         </tr>
                     )
             }));
+    }
+    const clickEdit = (id) => {
+        clickEditProduct(id);
+        history.push(`/admin/${idUser}/product/edit/${id}`)
     }
     return (
         <div className="product-layout">
@@ -91,7 +97,7 @@ export default function Product({ }) {
                     <option value="pc" >Máy tính để bàn</option>
                 </select>
                 <div className="product-button-button">
-                    <MdAddBox className="product-button-icon" />
+                    <Link to={`/admin/${idUser}/product/add`} > <MdAddBox className="product-button-icon" /> </Link>
                     <MdDelete className="product-button-icon" onClick={() => delectItem()} />
                 </div>
 
