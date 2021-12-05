@@ -52,8 +52,9 @@ export default function BillsCustomer({match}) {
             })
     }
     const deleteBill = () => {
-        axios.get(`https://localhost:44343/data/bill/action=cancel/${bill.id}`,null)
-            .then((res) => {
+        if(window.confirm("Đơn hàng chưa được xác nhận ! thao tác này sẽ xóa đơn hàng ! Xác nhận xóa ?\n")){
+                axios.get(`https://localhost:44343/data/bill/action=cancel/${bill.id}`,null)
+                .then((res) => {
                 setBill(null);
                 reLoad();
                 alert("Hủy xác nhận thành công");
@@ -62,6 +63,8 @@ export default function BillsCustomer({match}) {
                 alert("Xóa đơn hàng thất bại");
                 console.log("accept bill errol :"+err);
             })
+        }
+    
     }
     const deleteBillDetail= (idBill,idProduct) => {
         if(bill.billDetails.length === 1){

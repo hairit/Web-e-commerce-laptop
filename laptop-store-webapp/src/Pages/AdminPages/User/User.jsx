@@ -202,14 +202,13 @@ export default function User() {
                     </table>
                 </div>
                 <div className="customer-panel-flatForm">
-                    <div className="customer-title">Thông tin người dùng</div>
-                    <div className="customer-inFor-item inFor-avatar">
+                    {/* <div className="customer-inFor-item inFor-avatar">
                     <img className="user-avatar" src={ user.nameimage !== null ? 
                                              `https://localhost:44343/Images/UserAvatar/${user.nameimage}`
                                             :`https://localhost:44343/Images/UserAvatar/NullAvatar.png`
                                              } alt={user.nameimage}/>
                                 {user.id !== null ? <p className="name-user">{user.firstname+" "+user.lastname}</p> : <p className="name-user">Chưa xác định</p>}
-                    </div>
+                    </div> */}
                     <div className="customer-inFor">
                         <div className="customer-inFor-item inFor-name">
                                 <div className="inFor-name-item">
@@ -249,31 +248,31 @@ export default function User() {
                             </select>
                         </div>
                         <div className="customer-inFor-item customer-image-upload">
+                        <div className="customer-button-group">
+                        <div className="customer-inFor-item customer-search">
+                            <select  value={modeSearch} className="select-mode-search" onChange={(e) => {
+                                    if(e.target.value.toString() === 'ADMIN' || 'CUSTOMER' || 'STAFF'){
+                                        searchUserWithMode(e.target.value.toString());
+                                    }else {
+                                        setModeSearch(e.target.value.toString());
+                                    }
+                            }}>
+                                <option value="email">Email</option>
+                                <option value="sdt">SĐT</option>
+                                <option value="name">Tên</option>
+                                <option value="id">ID</option>
+                                <option value="ADMIN">Admin</option>
+                                <option value="CUSTOMER">Customer</option>
+                                <option value="STAFF">Staff</option>
+                            </select>
+                            <input className="customer-input-search" type="text" placeholder="value" defaultValue={value} onChange={(e) => setValue(e.target.value.toString())}/>
+                            <button className="customer-btn-search" onClick={() =>searchUser(modeSearch,value)}>Search</button>
                         </div>
-                    </div>
-                    <div className="customer-button-group">
-                    <div className="customer-button customer-search">
-                        <select  value={modeSearch} className="select-mode-search" onChange={(e) => {
-                                if(e.target.value.toString() === 'ADMIN' || 'CUSTOMER' || 'STAFF'){
-                                    searchUserWithMode(e.target.value.toString());
-                                }else {
-                                    setModeSearch(e.target.value.toString());
-                                }
-                        }}>
-                            <option value="email">Email</option>
-                            <option value="sdt">SĐT</option>
-                            <option value="name">Tên</option>
-                            <option value="id">ID</option>
-                            <option value="ADMIN">Admin</option>
-                            <option value="CUSTOMER">Customer</option>
-                            <option value="STAFF">Staff</option>
-                        </select>
-                        <input className="customer-input-search" type="text" placeholder="value" defaultValue={value} onChange={(e) => setValue(e.target.value.toString())}/>
-                        <button className="customer-btn-search" onClick={() =>searchUser(modeSearch,value)}>Search</button>
-                    </div>
                         <button className="customer-button delete-customer" onClick={() => deleteUser()}>Delete</button>
                         <button className="customer-button repair-customer" onClick={() => repairUser()}>Save</button>
                         <button className="customer-button add-customer" onClick={() => addUser()}>Add</button>
+                    </div>
+                        </div>
                     </div>
                 </div>
             </div>
