@@ -4,6 +4,7 @@ import Customer from './Customer/Customer';
 import Order from './Order/Order';
 import Product from './Product/Product';
 import User from './User/User';
+import Bills from './Bills/Bills'
 import Sidebar from './Sidebar/Sidebar';
 import { Route, BrowserRouter as Router, NavLink, useHistory  } from 'react-router-dom';
 import "./Admin.css"
@@ -44,6 +45,7 @@ export default function Admin({ changeAdminMode, match, logout }) {
                                 </NavLink> : <>
                                     <NavLink className="admin-tab" to={`/admin/${match.match.params.idUser}/product/list`}><GrProductHunt className="admin-tab-icon" /></NavLink>
                                     <NavLink className="admin-tab" to={`/admin/${match.match.params.idUser}/user`}><FaUser className="admin-tab-icon" /></NavLink>
+                                    <NavLink className="admin-tab" to={`/admin/${match.match.params.idUser}/bills`}><FaMoneyBillWave className="admin-tab-icon" /></NavLink>
                                     <NavLink className="admin-tab" to={`/admin/${match.match.params.idUser}/report`}><FcStatistics className="admin-tab-icon" /></NavLink>
                                 </>
                             }
@@ -61,6 +63,7 @@ export default function Admin({ changeAdminMode, match, logout }) {
                         <Route path="/admin/:idUser/bills/customer/:idCustomer" component={(match) => <BillsCustomer match={match} />}></Route>
                         <Route path="/admin/:idUser/order" component={() => <Order />}></Route>
                         <Route path="/admin/:idUser/product" component={() => <Product />}></Route>
+                        <Route path="/admin/:idUser/bills" component={() => <Bills />}></Route>
                         <Route path="/admin/:idUser/user" component={() => <User />}></Route>
                         <Route path="/product/addproduct" component={() => <AddProduct />}> </Route>
                     </div>

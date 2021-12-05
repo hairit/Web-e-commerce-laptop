@@ -24,7 +24,6 @@
   width: 70%;
   height: 100%;
   background-color: #ffffff;
-  border-radius: 5px;
 }
 .table-bills {
   width: 100%;
@@ -45,7 +44,7 @@
   height: 35px !important;
 }
 .table-bills-row {
-  border-bottom: 0.1px solid rgb(161, 159, 159);
+  border-bottom: 0.1px solid rgb(224, 224, 224);
   max-height: 35px !important;
   cursor: pointer;
 }
@@ -56,10 +55,10 @@
   user-select: none;
 }
 .panel-bills-inFor {
-  padding: 0 10px 0 10px;
   width: 30%;
   height: 100%;
   position: relative;
+  background-color: #e2dfdf;
 }
 .panel-bills-inFor-form {
   background-color: #ffffff;
@@ -67,7 +66,6 @@
   flex-direction: column;
   width: 100%;
   height: 100%;
-  border-radius: 5px;
   overflow: hidden;
 }
 .bill-title {
@@ -131,10 +129,9 @@
   background-color: rgb(190, 14, 14);
 }
 .panel-billDetails-table {
-  width: 70%;
+  width: 100%;
   height: 100%;
   background-color: #ffffff;
-  border-radius: 5px;
   overflow: hidden;
 }
 .table-bill-details {
@@ -149,11 +146,34 @@
 }
 .table-bill-details-row {
   height: 50px;
-  border-bottom: 0.1px solid rgb(168, 167, 167);
+  border-bottom: 0.1px solid rgb(206, 204, 204);
   cursor: pointer;
 }
 .table-bill-details-cell {
   font-size: 13px;
   padding-left: 15px;
   border: none !important;
+}
+.quantity-input {
+  height: 30px;
+  width: 30px;
+  text-align: center;
+  font-size: 13px;
+  border: none;
+  background-color: rgb(229, 231, 229);
+}
+.quantity-cell-button {
+  height: 30px;
+  width: 30px;
+  font-size: 13px;
+  border: none;
+  background-color: rgb(229, 231, 229);
+}
+.add-billDetail {
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+.delete-billDetail {
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
 }

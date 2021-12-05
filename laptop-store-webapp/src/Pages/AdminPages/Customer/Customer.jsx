@@ -92,7 +92,7 @@ export default function Customer({idUser}) {
                                     <td className="customer-table-cell">{item.pass}</td>
                                     <td className="customer-table-cell"><button className="button-bills-customer" onClick={()=>{
                                                 history.push(`/admin/${idUser}/bills/customer/${item.id}`);
-                                    }}>Quản lý đơn hàng</button></td>
+                                    }}>Đơn hàng</button></td>
                                     </tr>
                             ))}
                         </tbody>
