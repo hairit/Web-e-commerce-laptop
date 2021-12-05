@@ -81,7 +81,7 @@ export default function Laptops({idUser,match,addProductToCart}) {
     return (
       <button key={number} id={number} onClick={(e) => handleClick(e)}  className={currentPage === number ? 'active' : null}>
       {number}
-    </button>
+      </button>
     )
   })
   function handleNext(){

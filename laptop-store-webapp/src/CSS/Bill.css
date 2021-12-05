@@ -67,8 +67,8 @@
   font-weight: 500;
   line-height: 31px;
 }
-/* .info-bill {
-  font-size: 15px;
+/* .info-bill:hover {
+  background-color: #cad7ff;
 } */
 .thongtinsanpham {
   float: left;

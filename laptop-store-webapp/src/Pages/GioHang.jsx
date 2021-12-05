@@ -67,7 +67,7 @@ useEffect(() => {
     var tongprice = thanhtien(cartDetails)
     if(tongprice !== 0 ){
       return ( //onClick={()=>createBill(cartDetails,thanhtien(cartDetails))}
-          <NavLink to="/checkout"   >
+          <NavLink to="/checkout"  onClick={()=>createBill(cartDetails,thanhtien(cartDetails),null)} >
             <button className="btn-pay btn btn-outline-primary"  >
               Tiếp tục thanh toán
             </button>

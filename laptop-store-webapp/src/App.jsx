@@ -116,14 +116,15 @@ function App() {
     });
     return BillDetails;
   }
-  const createBill = (cartDetails, totalPrice) => {
+  
+  const createBill = (cartDetails, totalPrice, diachi) => {
+  // console.log("1", user.diachi)
     setBill({
       id: ID(),
       iduser: user.id,
       tongtien: totalPrice,
-      // diachinhan : user.diachi,
       ngaydat: new Date().toISOString().slice(0, 10),
-      diachinhan: user.diachi,
+      diachinhan: diachi ? diachi : user.diachi,
       billDetails: createBillDetails(cartDetails)
     })
   }
@@ -132,7 +133,7 @@ function App() {
       .then(res => {
         //if(res.status === 201){
         console.log(res.data);
-        updateData();
+        // updateData();
         showLoadOrder()
         //}
       })
