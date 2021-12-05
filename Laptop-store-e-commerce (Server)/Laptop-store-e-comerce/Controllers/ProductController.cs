@@ -23,19 +23,30 @@ namespace Laptop_store_e_comerce.Controllers
         {
             return await database.Products.ToListAsync();
         }
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Product>> getproductByID(string id)
+        {
+            Product pro = await database.Products.Include(pro => pro.IdloaiNavigation)
+                                                 .FirstOrDefaultAsync(pro => pro.Id == id);
+            if (pro == null) return NotFound();
+            else return pro;
+        }
         [HttpGet("type={type}/{id}")]
         public async Task<ActionResult<Product>> getProductByID(string type,string id)
         {
             if (!existType(type)) return NotFound();
             Product pro = null;
-            if(type =="laptop")  pro = await database.Products.Include(pro => pro.LaptopDetail)
+            if(type =="laptop")  pro = await database.Products.Include(pro => pro.IdloaiNavigation)
+                                                              .Include(pro => pro.LaptopDetail)
                                                               .Include(pro => pro.LaptopDescription)
                                                               .Where(pro => pro.Id == id)
                                                               .FirstOrDefaultAsync();
-            if(type =="keyboard") pro = await database.Products.Include(pro => pro.KeyboardDetail)
+            if(type =="keyboard") pro = await database.Products.Include(pro => pro.IdloaiNavigation)
+                                                               .Include(pro => pro.KeyboardDetail)
                                                                .Where(pro => pro.Id == id)
                                                                .FirstOrDefaultAsync();
-            if (type == "screen") pro = await database.Products.Include(pro => pro.ScreenDetail)
+            if (type == "screen") pro = await database.Products.Include(pro => pro.IdloaiNavigation)
+                                                               .Include(pro => pro.ScreenDetail)
                                                                .Where(pro => pro.Id == id)
                                                                .FirstOrDefaultAsync();
             if (type == "pc") pro = await database.Products.Include(pro => pro.Pcdetail)
@@ -43,11 +54,13 @@ namespace Laptop_store_e_comerce.Controllers
                                                                .Where(pro => pro.Idloai == type)
                                                                .Where(pro => pro.Id == id)
                                                                .FirstOrDefaultAsync();
-            if (type == "mouse") pro = await database.Products.Include(pro => pro.MouseDetail)
+            if (type == "mouse") pro = await database.Products.Include(pro => pro.IdloaiNavigation)
+                                                                  .Include(pro => pro.MouseDetail)
                                                                   .Where(pro => pro.Idloai == type)
                                                                   .Where(pro => pro.Id == id)
                                                                   .FirstOrDefaultAsync();
-            if (type == "headphone") pro = await database.Products.Include(pro => pro.HeadphoneDetail)
+            if (type == "headphone") pro = await database.Products.Include(pro => pro.IdloaiNavigation)
+                                                                    .Include(pro => pro.HeadphoneDetail)
                                                                     .Where(pro => pro.Idloai == type)
                                                                     .Where(pro => pro.Id == id)
                                                                     .FirstOrDefaultAsync();

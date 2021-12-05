@@ -14,6 +14,8 @@ export default function Headphone({idUser,match,addProductToCart}) {
   const [pros, setPros] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPage, setItemsPage] = useState(10);
+  const [firstprice, setFirstprice] = useState();
+  const [lastprice, setLastprice] = useState();
 
   useEffect(() => {
     var API;
@@ -66,7 +68,19 @@ export default function Headphone({idUser,match,addProductToCart}) {
       setCurrentPage(currentPage - 1)
       }
   }
-
+  function handleprice(e){
+    const value = e.target.id
+    if(value === "firstPrice"){
+    setFirstprice(e.target.value)
+    }else{
+    setLastprice(e.target.value)
+    }
+  }
+  function showProWithPrice(){
+    axios.get(`https://localhost:44343/data/product/type=headphone/from=${firstprice}to=${lastprice}`)
+    .then((res) => setPros(res.data))
+    .catch((err) =>console.error(err))
+  }
   return (
     <div className="wrapper">
       <div className="container_fullwidth">
@@ -167,18 +181,12 @@ export default function Headphone({idUser,match,addProductToCart}) {
             <div className="col-md-3 sorfprice">
               <div className="price-filter leftbar">
                 <h3 className="title">Giá</h3>
-                <form className="pricing">
-                  <label>
-                    $
-                    <input type="number" />
-                  </label>
+                <div className="pricing">
+                  <input  type="text" onChange={(e) => handleprice(e)} id="firstPrice" value={firstprice} placeholder="Giá thấp nhất"/>
                   <span className="separate">-</span>
-                  <label>
-                    $
-                    <input type="number" />
-                  </label>
-                  <input type="submit" defaultValue="Go" />
-                </form>
+                  <input  type="text" onChange={(e) => handleprice(e)} id="lastPrice" value={lastprice} placeholder="Giá cao nhất"/>
+                  <button type="button" className="" onClick={() => showProWithPrice()}>Tìm</button>
+                </div>
               </div>
             </div>
           </div>
@@ -203,19 +211,13 @@ export default function Headphone({idUser,match,addProductToCart}) {
             </h3>
             <ul>
               <li>
-                <a href="#">Màn hình</a>
+                <a href="#">Tai nghe Gaming</a>
               </li>
               <li>
-                <a href="#">Màn hình đẹp</a>
+                <a href="#">Tai nghe giá rẻ</a>
               </li>
               <li>
-                <a href="#">Màn hình HD</a>
-              </li>
-              <li>
-                <a href="#">Màn hình LCD</a>
-              </li>
-              <li>
-                <a href="#">Màn hình giá rẻ</a>
+                <a href="#">Tai nghe Logitech</a>
               </li>
             </ul>
           </div>

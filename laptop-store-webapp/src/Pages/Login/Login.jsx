@@ -3,6 +3,7 @@ import { useHistory } from 'react-router';
 import '../../CSS/Login.css'
 //import '@fortawesome/fontawesome-free/css/all.min.css';
 import axios from 'axios';
+import { IoMdShuffle } from 'react-icons/io';
 export default function Login({login,userCookie}) {
     const history = useHistory();
     const [flag, setFlag] = useState(false);
@@ -49,14 +50,18 @@ export default function Login({login,userCookie}) {
         else {
             axios.get(`https://localhost:44343/data/user/login/${user.email}/${user.pass}`)
                            .then(res => {
-                                        if(res.data.mode === "ADMIN" || res.data.mode ==="STAFF"){
-                                            history.push(`/admin/${res.data.id}`);
-                                            return;
-                                        }
-                                        console.log("cust");
-                                        console.log(res.data.mode);
-                                        login(res.data);
-                                        history.goBack();
+                               console.log(res.data);
+                                        if(res.data.mode === 'CUSTOMER'){
+                                            console.log("cust");
+                                            console.log(res.data.mode);
+                                            login(res.data);
+                                            history.push('/');
+                                        }else {
+                                            if(res.data.mode === "ADMIN" || res.data.mode ==="STAFF"){
+                                                history.push(`/admin/${res.data.id}`);
+                                                return;
+                                            }
+                                        }       
                                 }
                            )
                            .catch(err => 

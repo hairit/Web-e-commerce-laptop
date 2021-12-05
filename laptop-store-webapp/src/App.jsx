@@ -34,7 +34,6 @@ import DetailProductsHeadphone from "./Pages/Products/ProductsHeadphone/DetailPr
 
 function App() {
   const history = useHistory();
-  const [blur, setblur] = useState(false);
   const [adminMode, setAdminMode] = useState(false);
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState(null);
@@ -76,14 +75,12 @@ function App() {
     if (action === 'off') setAdminMode(false);
     else setAdminMode(true);
   }
-  console.log(adminMode);
+  
   const logout = () => {
-    changeAdminMode('off');
     removeCookie('id');
     setUser(null);
-  }
-  const clickblur = (isblur) => {
-    setblur(isblur);
+    changeAdminMode('off');
+    history.push('/');
   }
   var ID = function () {
     return Math.random().toString(36).substr(2, 9);
@@ -124,7 +121,9 @@ function App() {
       id: ID(),
       iduser: user.id,
       tongtien: totalPrice,
+      diachinhan : user.diachi,
       ngaydat: new Date().toISOString().slice(0, 10),
+      diachinhan: user.diachi,
       billDetails: createBillDetails(cartDetails)
     })
   }
@@ -180,7 +179,7 @@ function App() {
             if (res.status === 201) {
               if (!checkExistCartDetail(res.data.idProduct)) {
                 cartDetails.current.push(res.data);
-                document.getElementById("quantity-cartdetails-user").textContent = cartDetails.current.length
+                document.getElementById("quantity-cartdetails-user").textContent = cartDetails.current.length;
                 document.getElementById("quantity-cartdetails-user").style.display = 'block';
               }
               showLoadAddCart();
@@ -242,11 +241,13 @@ function App() {
       <ScrollToTop />
       <div className={adminMode === false ? "App" : "App-no-scroll"}>
       {loadQuantity()}
-        <Header user={user} adminMode={adminMode} logout={logout} clickblur={clickblur} setUser={setUser} />
+        <Header user={user} adminMode={adminMode} logout={logout}  setUser={setUser} />
       
+        <Route path="/admin" exact component={() => <Login login={login}  />} ></Route>
         <Route path="/admin/:idUser"  component={(match) => <Admin changeAdminMode={changeAdminMode} user={user} match={match} logout={logout}/>}></Route>
 
-        <Route path="/" exact component={() => <Body idUser={user !== null ? user.id : null} addProductToCart={addProductToCart} />}></Route>
+
+        <Route path="/" exact component={() => <Body idUser={user !== null ? user.id : null} addProductToCart={addProductToCart} changeAdminMode={changeAdminMode}/>}></Route>
 
         <Route path="/laptop" exact component={() => <Laptops idUser={user !== null ? user.id : null} addProductToCart={addProductToCart} />}></Route>
         <Route path="/laptop/:attribute/:value" exact component={(match) => <Laptops match={match} addProductToCart={addProductToCart} />} ></Route>

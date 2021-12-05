@@ -20,9 +20,10 @@ import phoneicon from '../Images/phone-icon.png'
 import addressicon from '../Images/address.png'
 import URL from '../DATA/URL'
 import HeadphonePanel from './BodyPages/HeadphonePanel'
-function Body({idUser,addProductToCart}) {
+function Body({idUser,addProductToCart,changeAdminMode}) {
     useEffect(() => {
         window.addEventListener('scroll',changeStatusRightItem);
+        changeAdminMode('off');
     }, [])
     const [display, setDisplay] = useState(false);
     const changeStatusRightItem = () => {

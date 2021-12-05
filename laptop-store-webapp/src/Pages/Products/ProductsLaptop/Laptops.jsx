@@ -16,6 +16,8 @@ const solver = new Solver();
 export default function Laptops({idUser,match,addProductToCart}) {
   const history = useHistory();
   const [load, setLoad] = useState(0);
+  const [firstprice, setFirstprice] = useState();
+  const [lastprice, setLastprice] = useState();
   // const [page, setPage] = useState(false);
   const [pros, setPros] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -64,7 +66,7 @@ export default function Laptops({idUser,match,addProductToCart}) {
     pages.push(i)
   }
 
-  console.log("mkmk", pages.length)
+  // console.log("mkmk", pages.length)
   const lastPage = currentPage * itemsPage
   const firstPage = lastPage - itemsPage
   const page = pros.slice(firstPage, lastPage)
@@ -89,6 +91,19 @@ export default function Laptops({idUser,match,addProductToCart}) {
     if(currentPage - 1 >= 1){
       setCurrentPage(currentPage - 1)
       }
+  }
+  function handleprice(e){
+    const value = e.target.id
+    if(value === "firstPrice"){
+    setFirstprice(e.target.value)
+    }else{
+    setLastprice(e.target.value)
+    }
+  }
+  function showProWithPrice(){
+    axios.get(`https://localhost:44343/data/product/type=laptop/from=${firstprice}to=${lastprice}`)
+    .then((res) => setPros(res.data))
+    .catch((err) =>console.error(err))
   }
   return (
     <div className="wrapper">
@@ -116,11 +131,9 @@ export default function Laptops({idUser,match,addProductToCart}) {
                 <div className="loc">
                   <div className="title-sort">Thương hiệu</div>
                   <div className="btn-right">
-                    {/* <NavLink to={sort}> */}
                     <button type="button"  className="btn-sort" value="brand=asus"  onClick={(e) => sortLaptop(e)}>
                       Asus
                     </button>
-                    {/* </NavLink> */}
                     <button type="button" className="btn-sort" value="brand=dell" onClick={(e) => sortLaptop(e)} >
                       Dell
                     </button>
@@ -199,18 +212,12 @@ export default function Laptops({idUser,match,addProductToCart}) {
             <div className="col-md-3 sorfprice">
               <div className="price-filter leftbar">
                 <h3 className="title">Giá</h3>
-                <form className="pricing">
-                  <label>
-                    $
-                    <input type="number" />
-                  </label>
+                <div className="pricing">
+                  <input  type="text" onChange={(e) => handleprice(e)} id="firstPrice" value={firstprice} placeholder="Giá thấp nhất"/>
                   <span className="separate">-</span>
-                  <label>
-                    $
-                    <input type="number" />
-                  </label>
-                  <input type="submit" defaultValue="Go" />
-                </form>
+                  <input  type="text" onChange={(e) => handleprice(e)} id="lastPrice" value={lastprice} placeholder="Giá cao nhất"/>
+                  <button type="button" className="" onClick={() => showProWithPrice()}>Tìm</button>
+                </div>
               </div>
             </div>
           </div>

@@ -42,7 +42,7 @@ namespace Laptop_store_e_comerce.Controllers
             if (bill == null) return NotFound();
             if(action == "accept")
             {
-                  bill.Tinhtrang = "Đã xác nhận";
+                  bill.Tinhtrang = "Đã duyệt";
                   try
                   {
                         _context.Entry(bill).State = EntityState.Modified;
@@ -74,11 +74,37 @@ namespace Laptop_store_e_comerce.Controllers
             }
             return bill;
         }
+        [HttpGet("action={action}/billdetail/idbill={value1}/idproduct={value2}")]
+        public async Task<ActionResult<Object>> addABillDetail (String action,String value1,String value2)
+        {
+            var billDetail = await _context.BillDetails.FirstOrDefaultAsync(detail => detail.IdBill == value1 && detail.IdProduct == value2);
+            if (billDetail == null) return NotFound();
+
+            var product = await _context.Products.FindAsync(value2);
+            if (product == null) return BadRequest();
+            if(action == "add")
+            {
+                billDetail.Soluong += 1;
+                billDetail.Tongtien += product.Gia;
+            }
+            if(action == "delete")
+            {
+                billDetail.Soluong -= 1;
+                billDetail.Tongtien -= product.Gia;
+            }
+            try
+            {
+                await _context.SaveChangesAsync();
+
+            }catch(Exception) {return BadRequest();
+            }
+            return NoContent();
+        }
         [HttpGet("iduser={id}")]
         public async Task<ActionResult<List<Bill>>> getBillsByUserID(int id)
         {
             if (!_context.Users.Any(user => user.Id == id)) return BadRequest();
-            List<Bill> bills = await _context.Bills.Where(bill => bill.Iduser == id).ToListAsync();
+            List<Bill> bills = await _context.Bills.Include(bill => bill.BillDetails).Include(bill => bill.IduserNavigation).Where(bill => bill.Iduser == id).ToListAsync();
             if (bills.Count == 0) return NotFound();
             else return bills;
         }

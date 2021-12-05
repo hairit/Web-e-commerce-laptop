@@ -9,7 +9,7 @@
 }
 .customer-panel {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 .customer-title {
   padding: 12px 20px;
@@ -19,13 +19,13 @@
 }
 .customer-panel-main {
   margin: 20px 10px;
-  width: 70%;
-  overflow: scroll;
+  width: auto;
+  height: 85%;
   border-radius: 5px;
   background-color: #ffffff;
 }
 .customer-search {
-  padding: 4px 20px;
+  background-color: #ffffff !important;
   width: 100%;
   display: flex;
   height: auto;
@@ -39,8 +39,6 @@
   padding-left: 17px;
   font-size: 14px;
   font-weight: 500;
-  border-top-left-radius: 7px;
-  border-bottom-left-radius: 7px;
 }
 .customer-btn-search {
   width: 20%;
@@ -53,7 +51,7 @@
   border-bottom-right-radius: 7px;
 }
 .customer-table {
-  width: 150%;
+  width: 100%;
   height: auto;
   max-height: 100%;
   max-width: 150% !important;
@@ -70,7 +68,7 @@
 }
 .customer-table-cell {
   user-select: none;
-  height: 30px;
+  /* height: 30px; */
   font-size: 13px;
   padding: 10px 20px !important;
   border: none !important;
@@ -86,44 +84,50 @@
   width: 150px;
 }
 .cell-name {
-  width: 200px;
+  width: 150px;
 }
 .cell-email {
-  width: 300px;
+  width: 90px;
 }
 .cell-id {
   width: 60px;
+}
+.cell-data {
+  width: 150px;
 }
 .customer-inFor {
   width: 100%;
   flex-wrap: wrap;
   display: flex;
+  align-items: center;
   flex-direction: row;
 }
 .customer-panel-flatForm {
-  width: 30%;
-  margin: 20px 10px;
+  width: auto;
+  display: flex;
+  height: 15%;
+  justify-content: center;
+  align-items: center;
+  margin: 5px 10px;
   position: relative;
   background-color: #ffffff;
   border-radius: 5px;
 }
 .customer-inFor-item {
   display: flex;
-  justify-content: space-between;
   height: 50px;
-  width: 100%;
   padding: 25px 20px;
   align-items: center;
 }
 .inFor-item-text {
-  width: 30%;
+  width: auto;
   font-size: 14px;
   font-weight: 500;
+  margin-right: 10px;
 }
 .inFor-name {
   display: flex;
   flex-direction: row !important;
-  justify-content: space-between !important;
 }
 .customer-input {
   width: 70%;
@@ -132,7 +136,6 @@
   display: flex;
   align-items: center;
   flex-direction: row;
-  width: 50%;
 }
 .customer-input {
   height: 32px;
@@ -144,7 +147,6 @@
 .customer-button-group {
   padding: 0 20px;
   display: flex;
-  position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
@@ -174,4 +176,90 @@
 }
 .repair-customer {
   background-color: #dd5b1f;
+}
+.inFor-avatar {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0;
+  height: auto;
+}
+.input-name {
+  width: 150px;
+}
+.input-email {
+  width: 300px;
+}
+.input-sdt {
+  width: 150px;
+}
+.search-customer {
+  position: relative;
+}
+.search-customer-input {
+  width: 300px;
+  border-radius: 5px;
+  border: none;
+  background-color: #f5f0f0;
+  height: 40px;
+  outline: none;
+  padding-left: 10px;
+}
+.search-customer-button {
+  position: absolute;
+  width: 100px;
+  background-color: #596ce5;
+  color: #ffffff;
+  border: none;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  bottom: 0;
+  left: 90%;
+  top: 0;
+}
+.select-search-customer {
+  position: absolute;
+  top: 0;
+  left: -150px;
+  background-color: #f5f0f0;
+  border: none;
+  outline: none;
+  width: 160px;
+  bottom: 0;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  padding-left: 10px;
+}
+.cell-td-address {
+  position: relative;
+  width: 250px;
+}
+.cell-td-address:hover .cell-address-content {
+  display: flex;
+  align-items: center;
+}
+.cell-address-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 600px;
+  height: auto;
+  padding: 7px 20px;
+  border-radius: 3px;
+  background-color: rgb(236, 215, 144);
+  color: rgb(90, 87, 87);
+  display: none;
+}
+.button-bills-customer {
+  background-color: #198b09;
+  border: none;
+  color: #ffffff;
+  border-radius: 3px;
+  padding: 4px 20px;
+}
+.button-bills-customer:hover {
+  background-color: #198b09 !important;
 }

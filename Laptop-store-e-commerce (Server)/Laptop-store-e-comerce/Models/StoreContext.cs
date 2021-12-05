@@ -11,12 +11,10 @@ namespace Laptop_store_e_comerce.Models
         public StoreContext()
         {
         }
-
         public StoreContext(DbContextOptions<StoreContext> options)
             : base(options)
         {
         }
-
         public virtual DbSet<Bill> Bills { get; set; }
         public virtual DbSet<BillDetail> BillDetails { get; set; }
         public virtual DbSet<CartDetail> CartDetails { get; set; }
@@ -54,6 +52,11 @@ namespace Laptop_store_e_comerce.Models
                     .IsUnicode(false)
                     .HasColumnName("id");
 
+                entity.Property(e => e.Diachinhan)
+                    .IsRequired()
+                    .HasMaxLength(300)
+                    .HasColumnName("diachinhan");
+
                 entity.Property(e => e.Iduser).HasColumnName("iduser");
 
                 entity.Property(e => e.Ngaydat)
@@ -84,7 +87,7 @@ namespace Laptop_store_e_comerce.Models
             modelBuilder.Entity<BillDetail>(entity =>
             {
                 entity.HasKey(e => new { e.IdBill, e.IdProduct })
-                    .HasName("PK__BillDeta__E317F40594B5FD09");
+                    .HasName("PK__BillDeta__E317F4054E196D4D");
 
                 entity.ToTable("BillDetail");
 
@@ -112,7 +115,7 @@ namespace Laptop_store_e_comerce.Models
             modelBuilder.Entity<CartDetail>(entity =>
             {
                 entity.HasKey(e => new { e.IdUser, e.IdProduct })
-                    .HasName("PK__CartDeta__32F90E1FFC21FCD8");
+                    .HasName("PK__CartDeta__32F90E1FCCD3D94F");
 
                 entity.ToTable("CartDetail");
 
@@ -155,7 +158,7 @@ namespace Laptop_store_e_comerce.Models
             modelBuilder.Entity<HeadphoneDetail>(entity =>
             {
                 entity.HasKey(e => e.IdProduct)
-                    .HasName("PK__Headphon__5EEC79D181257192");
+                    .HasName("PK__Headphon__5EEC79D122880B0C");
 
                 entity.ToTable("HeadphoneDetail");
 
@@ -231,7 +234,7 @@ namespace Laptop_store_e_comerce.Models
             modelBuilder.Entity<KeyboardDetail>(entity =>
             {
                 entity.HasKey(e => e.IdProduct)
-                    .HasName("PK__Keyboard__5EEC79D11B0D4C21");
+                    .HasName("PK__Keyboard__5EEC79D104963643");
 
                 entity.ToTable("KeyboardDetail");
 
@@ -284,7 +287,7 @@ namespace Laptop_store_e_comerce.Models
             modelBuilder.Entity<LaptopDescription>(entity =>
             {
                 entity.HasKey(e => e.IdProduct)
-                    .HasName("PK__LaptopDe__5EEC79D1172AE939");
+                    .HasName("PK__LaptopDe__5EEC79D1A39B1584");
 
                 entity.ToTable("LaptopDescription");
 
@@ -359,7 +362,7 @@ namespace Laptop_store_e_comerce.Models
             modelBuilder.Entity<LaptopDetail>(entity =>
             {
                 entity.HasKey(e => e.IdProduct)
-                    .HasName("PK__LaptopDe__5EEC79D18AEB87CB");
+                    .HasName("PK__LaptopDe__5EEC79D17F884A8D");
 
                 entity.ToTable("LaptopDetail");
 
@@ -394,7 +397,7 @@ namespace Laptop_store_e_comerce.Models
             modelBuilder.Entity<MouseDetail>(entity =>
             {
                 entity.HasKey(e => e.IdProduct)
-                    .HasName("PK__MouseDet__5EEC79D12A8D7A77");
+                    .HasName("PK__MouseDet__5EEC79D16053FFFE");
 
                 entity.ToTable("MouseDetail");
 
@@ -455,7 +458,7 @@ namespace Laptop_store_e_comerce.Models
             modelBuilder.Entity<Pcdetail>(entity =>
             {
                 entity.HasKey(e => e.IdProduct)
-                    .HasName("PK__PCDetail__5EEC79D10BD37E46");
+                    .HasName("PK__PCDetail__5EEC79D175579697");
 
                 entity.ToTable("PCDetail");
 
@@ -579,7 +582,7 @@ namespace Laptop_store_e_comerce.Models
             modelBuilder.Entity<ScreenDetail>(entity =>
             {
                 entity.HasKey(e => e.IdProduct)
-                    .HasName("PK__ScreenDe__5EEC79D13B22C4B2");
+                    .HasName("PK__ScreenDe__5EEC79D15816850D");
 
                 entity.ToTable("ScreenDetail");
 

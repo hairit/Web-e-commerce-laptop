@@ -1,0 +1,46 @@
+.select-mode-search {
+  background-color: #e4e3e3;
+  border: none;
+  width: 120px;
+  font-size: 13px;
+  padding-left: 10px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.select-mode-search:focus {
+  border: none;
+  outline: none;
+}
+.select-mode-search option {
+  border-radius: 5px;
+  font-size: 13px;
+}
+.select-mode-user {
+  height: 35px;
+  padding-left: 10px;
+  font-size: 13px;
+  border-radius: 3px;
+  border: none;
+  background-color: #e4e3e3;
+  outline: none;
+}
+.select-mode-user option {
+  height: 30px;
+  padding-left: 10px;
+  font-size: 12px;
+}
+
+.inFor-mode {
+  display: flex;
+  justify-content: space-between;
+}
+.user-avatar {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+}
+.name-user {
+  font-size: 13px;
+  font-weight: 500;
+  margin-top: 7px;
+}

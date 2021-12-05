@@ -90,9 +90,9 @@ img {
 .title {
   float: left;
   position: relative;
-  width: 100%;
+  width: auto;
   margin-bottom: 15px;
-  font-size: 24px;
+  font-size: 20px;
   color: #2f2f2f;
   font-weight: 300;
   padding-bottom: 5px;
@@ -325,21 +325,30 @@ img {
 }
 
 .leftbar {
+  display: flex;
+  flex-direction: row;
   border-top: solid 1px rgb(233, 233, 233);
   border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
   margin-bottom: 13px;
-  position: relative;
+  /* position: relative; */
   background: white;
-  padding: 15px;
+  padding: 10px;
   overflow: hidden;
   clear: both;
 }
 
 /*!~~~~~~~~~~~~ PRODUCT TAGS ~~~~~~~~~~~~~*/
-
+.product-tag {
+  display: flex;
+  flex-direction: row;
+}
 .product-tag ul {
+  margin-top: auto;
+  padding-left: 10px;
+  /* margin: 0 auto; */
   position: relative;
+  margin-bottom: auto;
 }
 .product-tag ul li {
   float: left;
@@ -487,10 +496,10 @@ form.newsletter input[type="submit"]:hover {
 .copyright-info a {
   color: #f7544a;
 }
-.social-icon {
+/* .social-icon {
   float: right;
   padding-top: 4px;
-}
+} */
 .social-icon li {
   display: inline-block;
   margin-right: 10px;
@@ -530,35 +539,34 @@ form.newsletter input[type="submit"]:hover {
   margin-bottom: 0;
   text-align: center;
 }
-.pricing label {
-  float: left;
-  margin-right: 5px;
-  color: #f7544a;
-  font-size: 16px;
+.pricing {
+  display: flex;
+  flex-direction: row;
+  /* padding: 0 10px; */
+  margin-top: auto;
+  margin-bottom: auto;
 }
-.pricing .separate {
-  float: left;
-  margin: 0 10px 0 5px;
-  font-size: 24px;
-  font-weight: 700;
-  color: #bfbfbf;
+
+.pricing input[type="text"] {
+  border: 1px solid rgb(196, 196, 196);
+  border-radius: 3px;
+  width: 25%;
+  height: 25px;
+  margin: 0 10px;
+  padding: 10px;
 }
-.pricing input[type="number"],
-.pricing input[type="submit"] {
-  width: 40px;
-  height: 30px;
-  border: 1px solid #d2d2d2;
-  -webkit-border-radius: 5px;
-  border-radius: 5px;
+.pricing input[type="text"]::placeholder {
   text-align: center;
-  padding: 5px;
-  margin-left: 5px;
-  font-size: 14px;
 }
-.pricing input[type="submit"] {
-  border: 1px solid #f7544a;
-  background: #f7544a;
-  color: #fff;
+.pricing button {
+  width: 10%;
+  color: white;
+  border-radius: 3px;
+  background-color: #1435c3;
+}
+.separate {
+  margin-top: auto;
+  margin-bottom: auto;
 }
 .clolr-filter {
   position: relative;
@@ -661,7 +669,41 @@ form.newsletter input[type="submit"]:hover {
 .asus {
   padding: 2px 2px;
 }
+.price-save {
+  width: 33%;
+  position: absolute;
+  z-index: 1;
+  left: 4%;
+  bottom: 7%;
+}
+.price-save img {
+  border-radius: 5px;
+}
 
+.title-price-save {
+  position: absolute;
+  z-index: 3;
+  top: 23%;
+  left: 11%;
+}
+.pricesave-title {
+  width: auto;
+  color: yellow;
+  font-size: 13px;
+  font-weight: bold;
+}
+.pricesave {
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+}
+.view-cpu {
+  padding: 10px;
+  position: absolute;
+  z-index: 3;
+  width: 26%;
+  right: 0;
+}
 .banner {
   width: 100%;
   position: relative;
@@ -762,7 +804,7 @@ option {
 }
 
 .pager button.active,
-button:hover {
+.pager button:hover {
   background-color: rgb(21, 10, 170);
   color: white;
 }
@@ -826,6 +868,8 @@ button:hover {
   padding-top: 20px;
 }
 .ft-center {
+  display: flex;
+  flex-direction: column;
   width: 15%;
 }
 @media (min-width: 768px) {
@@ -923,6 +967,7 @@ button:hover {
     float: none;
     width: auto;
   }
+
   .product-list-description {
     width: auto;
   }

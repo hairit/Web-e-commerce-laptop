@@ -311,7 +311,7 @@ console.log("kokoo",detail)
                     <td>{detail.baohanh}&nbsp;năm</td>
                   </tr>
                   <tr>
-                    <th className="row">Thông tin chung</th>
+                    <th className="row title-detail-pro">Thông tin chung</th>
                     <td></td>
                   </tr>
                   <tr>
@@ -323,7 +323,7 @@ console.log("kokoo",detail)
                     <td>{detail.id}</td>
                   </tr>
                   <tr>
-                    <th className="row">Cấu hình chi tiết</th>
+                    <th className="row title-detail-pro">Cấu hình chi tiết</th>
                   </tr>
                   <tr>
                     <th className="row">Thế hệ CPU</th>
@@ -368,7 +368,7 @@ console.log("kokoo",detail)
                     </td>
                   </tr>
                   <tr>
-                    <th className="row">Kiểu lọt khe</th>
+                    <th className="row">Kiểu khe</th>
                     <td>
                       {detail.laptopDescription &&
                         detail.laptopDescription.kieukhe}
@@ -401,7 +401,7 @@ console.log("kokoo",detail)
                     </td>
                   </tr>
                   <tr>
-                    <th className="row">Thông tin khác</th>
+                    <th className="row title-detail-pro">Thông tin khác</th>
                   </tr>
                   <tr>
                     <th className="row">Kết nối không dây</th>

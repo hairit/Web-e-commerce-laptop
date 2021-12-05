@@ -24,7 +24,6 @@ import UserPanel from "./UserPanel";
 export default function Header({ user , adminMode, logout , updateData ,setUser}) {
   const [statusHeader, setStatusHeader] = useState(false);
   const [userPanel, setUserPanel] = useState(false);
-  const history = useHistory();
   useEffect(() => {
     window.addEventListener('scroll', changeStatusHeader);
   }, [])

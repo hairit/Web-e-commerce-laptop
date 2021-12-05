@@ -10,6 +10,7 @@ import { useHistory } from "react-router-dom";
 import tk_shopping_img from "../Images/tk_shopping_img.png";
 import { useEffect, useState } from "react";
 import ThanhToan from "./ThanhToan";
+import CartDetail from "./CartDetail";
 export default function GioHang({ idUser,addQuantityProduct, deleteCartItem ,deleteProductFromCart , createBill}) {
   const solver = new Solver();
   const history = useHistory();
@@ -96,7 +97,6 @@ useEffect(() => {
 //   if(cartDetails.selected === 1){
 //     document.getElementById("check-item").checked = true;
 // }
-console.log("akaka", cartDetails)
     if(cartDetails.length > 0 ){
     return(
       
@@ -117,58 +117,8 @@ console.log("akaka", cartDetails)
           </div>
           <div className="center-card">
             <div className="carts">
-              {cartDetails.map((item, index) => {
-                return(
-                  <div className="info-cart" key={index}>
-                    <div className="info-donhang">
-                      <div className="info-chitiet">
-                      <div className="info-check">
-                        <input class="check-item" type="checkbox"   name="hobby"  id="check-item" defaultChecked={item.selected === 1 ? checked : ""}
-                        onChange={(e)=> { checktien(e, item.idProductNavigation.gia,item.soluong,item.idProduct,idUser, item.selected); }}   />
-                      
-                        </div>
-                        <div className="info-image">
-                          <div className="img-name">
-                            <a>
-                              <div className="imag" onClick={() => handleViewDetails(item)}>
-                                <img
-                                  src={`https://localhost:44343/Images/Products/${item.idProductNavigation.nameimage}`}
-                                alt="img laptop"/>
-                              </div>
-                            </a>
-                            <div className="name" onClick={() => handleViewDetails(item)}>
-                              <a>{item.idProductNavigation.ten}</a>
-                              <div className="">ID: {item.idProduct}</div>
-                              <div className="">Loại: {item.idProductNavigation.idloaiNavigation.ten}</div>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="info-editquantity">
-                          <div className="btn-quantity">
-                          <button type="button"class="btn-tru" name="btn-giam" onClick={() => deleteProductFromCart(idUser,item.idProduct,item.idProductNavigation.gia,item.soluong)}>
-                             -
-                          </button>
-                          <input type="text" class="finput-edit" placeholder={item.soluong} disabled />
-                          <button type="button" name="btn-tang" className="btn-cong"
-                          onClick={() => addQuantityProduct(item.idProduct,item.idProductNavigation.gia )}> + </button>
-                          </div>
-                          <div className="delet">
-                            <button type="button" className="btn-del" onClick={() => deleteCartItem(idUser,item.idProduct)}>Xóa</button>
-                          </div>
-                        </div>
-                        <div className="info-price">
-                          <strong className="tongtien-price">
-                            {solver.formatCurrency("vi-VN","currency","VND",item.tongtien)}
-                          </strong>
-                          <strong className="giagoc">
-                            {solver.formatCurrency("vi-VN","currency","VND", item.idProductNavigation.gia)}
-                          </strong>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
+              {cartDetails.map((item, index) => <CartDetail item={item} index={index} checktien={checktien} handleViewDetails={handleViewDetails} checked={checked} idUser={idUser} addQuantityProduct={addQuantityProduct} deleteCartItem={deleteCartItem} deleteProductFromCart={deleteProductFromCart} solver={solver}/>
+            )}
             </div>
             <div className="payment">
                 <div className="payment-sum">

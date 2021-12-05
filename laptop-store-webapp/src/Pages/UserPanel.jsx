@@ -95,18 +95,18 @@ export default function UserPanel({user , changeStatusPanelUser , userPanel ,set
                     <div className="change-pass-panel-active">
                             <p className="user-panel-title">Đổi mật khẩu</p>
                             <div className="change-pass-item">
-                                <p className="change-pass-item-text">Mật khẩu hiện tại</p>""
-                                {statusEdit === true ? <input className="user-input " readOnly value=""  /> : <input className="user-input user-input-active" required placeholder=""
+                               
+                                {statusEdit === true ? <input className="user-input " readOnly value="" placeholder="Mật khẩu cũ" /> : <input className="user-input user-input-active" required placeholder="Mật khẩu cũ"
                                                                                                                                                     onChange={(e) => setNewPass({...newPass , old : e.target.value.toString()})} />}
                             </div>
                             <div className="change-pass-item">
-                                <p className="change-pass-item-text">Mật khẩu mới</p>"
-                                {statusEdit === true ? <input className="user-input " readOnly value=""/> : <input className="user-input user-input-active" required placeholder=""
+                                
+                                {statusEdit === true ? <input className="user-input " readOnly value="" placeholder="Mật khẩu mới"/> : <input className="user-input user-input-active" required placeholder="Mật khẩu mới"
                                                                                                                                                     onChange={(e) => setUserChange({...userChange, pass : e.target.value.toString()})} />}
                             </div>
                             <div className="change-pass-item">
-                                <p className="change-pass-item-text">Nhập lại mật khẩu mới</p>
-                                {statusEdit === true ? <input className="user-input " readOnly value=""/> : <input className="user-input user-input-active"  required placeholder=""
+                                
+                                {statusEdit === true ? <input className="user-input " readOnly value="" placeholder="Nhập lại mật khẩu mới"/> : <input className="user-input user-input-active"  required placeholder="Nhập lại mật khẩu mới"
                                                                                                                                                     onChange={(e) => setNewPass({...newPass ,conFirm : e.target.value.toString()})} />}
                             </div>
                             <button className="save-user-data-btn" onClick={()=>changeUserData('password')}>Lưu thay đổi</button>
