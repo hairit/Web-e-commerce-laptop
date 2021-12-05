@@ -51,6 +51,7 @@
 }
 .input-form{
     display:block;
+    height: 100%;
     overflow: auto;
 }
 .input-form-item{

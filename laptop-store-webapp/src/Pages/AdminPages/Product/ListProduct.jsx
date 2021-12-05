@@ -3,9 +3,11 @@ import { MdAddBox, MdDelete, MdEdit } from "react-icons/md"
 import { useState, useEffect } from 'react';
 import "./Product.css"
 import axios from 'axios';
+import { useHistory } from 'react-router-dom'
 
 
 export default function Product({ }) {
+    let history = useHistory();
     const [pros, setpros] = useState([]);
     const [type, settype] = useState("");
     const [page, setPage] = useState(1);
@@ -91,7 +93,7 @@ export default function Product({ }) {
                     <option value="pc" >Máy tính để bàn</option>
                 </select>
                 <div className="product-button-button">
-                    <MdAddBox className="product-button-icon" />
+                    <a href="/admin/product/add"><MdAddBox className="product-button-icon" /></a>
                     <MdDelete className="product-button-icon" onClick={() => delectItem()} />
                 </div>
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import './AddProduct.css'
 import { useState } from 'react';
+import axios from 'axios';
 
 export default function AddProduct({ }) {
     const [idloaiNavigation, setidloaiNavigation] = useState(null);
@@ -34,8 +35,27 @@ export default function AddProduct({ }) {
         pcdetail: null,
         screenDetail: null
     });
-    const getKey = (e) => {
-        setKey(e.target.value);
+
+    const hanndleClickNext = () => {
+        /*if (key === "mouse") { setMouseDetail({ ...mouseDetail, idProduct: product.id }); }
+        else if (key === "pc") { setPcdetail({ ...pcdetail, idProduct: product.id }); }
+        else if (key === "laptop") { setLaptopDetail({ ...laptopDetail, idProduct: product.id }); setlaptopDescription({ ...laptopDescription, idproduct: product.id }) }
+        else if (key === "headphone") { setheadphoneDetail({ ...headphoneDetail, idProduct: product.id }); }
+        else if (key === "keyboard") { setKeyboardDetail({ ...keyboardDetail, idProduct: product.id }); }
+        else { setScreenDetail({ ...screenDetail, idProduct: product.id }); }*/
+        setproduct({ ...product, idloai: key });
+        setflag(true);
+        console.log(product);
+    }
+    const createProduct = () => {
+        axios.post(`https://localhost:44343/data/product/`, product)
+            .then((res) => {
+                console.log(res);
+                alert("Thành công");
+            })
+            .catch((err) => {
+                console.log(err);
+            })
     }
     function showform() {
         if (key === "mouse")
@@ -704,12 +724,13 @@ export default function AddProduct({ }) {
             )
     }
     const handleClickSend = () => {
-        if (key === "mouse") { setMouseDetail({ ...mouseDetail, idProduct: product.id }); setproduct({ ...product, mouseDetail: mouseDetail, idloai: key }) }
-        else if (key === "pc") { setPcdetail({ ...pcdetail, idProduct: product.id }); setproduct({ ...product, pcdetail: pcdetail, idloai: key }) }
-        else if (key === "laptop") { setLaptopDetail({ ...laptopDetail, idProduct: product.id }); setlaptopDescription({ ...laptopDescription, idProduct: product.id, idloai: key }); setproduct({ ...product, laptopDetail: laptopDetail, laptopDescription: laptopDescription }) }
-        else if (key === "headphone") { setheadphoneDetail({ ...headphoneDetail, idProduct: product.id }); setproduct({ ...product, headphoneDetail: headphoneDetail, idloai: key }) }
-        else if (key === "keyboard") { setKeyboardDetail({ ...keyboardDetail, idProduct: product.id }); setproduct({ ...product, keyboardDetail: keyboardDetail, idloai: key }) }
-        else { setScreenDetail({ ...screenDetail, idProduct: product.id }); setproduct({ ...product, screenDetail: screenDetail, idloai: key }) }
+        if (key === "mouse") { setproduct({ ...product, mouseDetail: mouseDetail }) }
+        else if (key === "pc") { setproduct({ ...product, pcdetail: pcdetail }) }
+        else if (key === "laptop") { setproduct({ ...product, laptopDetail: laptopDetail, laptopDescription: laptopDescription }) }
+        else if (key === "headphone") { setproduct({ ...product, headphoneDetail: headphoneDetail }) }
+        else if (key === "keyboard") { setproduct({ ...product, keyboardDetail: keyboardDetail }) }
+        else { setproduct({ ...product, screenDetail: screenDetail }) }
+        createProduct();
         console.log(product);
     }
     return (
@@ -785,7 +806,7 @@ export default function AddProduct({ }) {
                     </div>
                 </div>
                 <div className="product-button">
-                    <button className=" product-button-page1" onClick={() => setflag(true)}>Tiếp theo</button>
+                    <button className=" product-button-page1" onClick={() => hanndleClickNext()}>Tiếp theo</button>
                 </div>
             </div>
             {showform()}
