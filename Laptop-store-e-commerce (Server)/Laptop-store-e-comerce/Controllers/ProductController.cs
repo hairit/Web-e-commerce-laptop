@@ -123,17 +123,18 @@ namespace Laptop_store_e_comerce.Controllers
         public async Task<IActionResult> PutProduct(Product pro)
         {
             database.Entry(pro).State = EntityState.Modified;
-            if(pro.Idloai == "laptop")
-            {
-                database.Entry(pro.LaptopDetail).State = EntityState.Modified;
-                database.Entry(pro.LaptopDescription).State = EntityState.Modified;
-            }
-            if (pro.Idloai == "pc") database.Entry(pro.Pcdetail).State = EntityState.Modified;
-            if (pro.Idloai == "screen") database.Entry(pro.ScreenDetail).State = EntityState.Modified;
-            if (pro.Idloai == "mouse") database.Entry(pro.MouseDetail).State = EntityState.Modified;
-            if (pro.Idloai == "keyboard") database.Entry(pro.KeyboardDetail).State = EntityState.Modified;
             try
             {
+                if (pro.Idloai == "laptop")
+                {
+                database.Entry(pro.LaptopDetail).State = EntityState.Modified;
+                database.Entry(pro.LaptopDescription).State = EntityState.Modified;
+                }
+                if (pro.Idloai == "pc") database.Entry(pro.Pcdetail).State = EntityState.Modified;
+                if (pro.Idloai == "screen") database.Entry(pro.ScreenDetail).State = EntityState.Modified;
+                if (pro.Idloai == "mouse") database.Entry(pro.MouseDetail).State = EntityState.Modified;
+
+                if (pro.Idloai == "keyboard") database.Entry(pro.KeyboardDetail).State = EntityState.Modified;
                 await database.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
@@ -213,11 +214,6 @@ namespace Laptop_store_e_comerce.Controllers
         private bool existType(string type)
         {
             return database.TypeProducts.Any(h => h.Id == type);
-        }
-        [HttpGet("test/entity")]
-        public async Task<ActionResult<Product>> testEntity()
-        {
-            return await database.Products.Where(pro => pro.Id == "ABC").FirstOrDefaultAsync();
         }
     }
     

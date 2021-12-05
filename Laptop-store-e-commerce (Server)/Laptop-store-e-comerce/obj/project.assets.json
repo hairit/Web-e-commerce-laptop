@@ -7270,11 +7270,30 @@
     ]
   },
   "packageFolders": {
+<<<<<<< HEAD
     "C:\\Users\\pc\\.nuget\\packages\\": {}
+=======
+<<<<<<< HEAD
+    "C:\\Users\\TuongHai\\.nuget\\packages\\": {}
+=======
+<<<<<<< HEAD
+    "C:\\Users\\pc\\.nuget\\packages\\": {}
+=======
+    "C:\\Users\\thanh\\.nuget\\packages\\": {}
+>>>>>>> 3e82710a22636d241cf40e7f4be8cc98e09a5eab
+>>>>>>> 5467a0fe6c57cf03e134a7146a7e6cd5eb7a0787
+>>>>>>> b78753e85a38c8ff702f5ea7fd1c98150a3b7775
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+      "projectUniqueName": "D:\\Data\\Môn\\Web-e-commerce-laptop\\Laptop-store-e-commerce (Server)\\Laptop-store-e-comerce\\Laptop-store-e-comerce.csproj",
+=======
+<<<<<<< HEAD
+>>>>>>> b78753e85a38c8ff702f5ea7fd1c98150a3b7775
       "projectUniqueName": "D:\\Do an web\\Web-e-commerce-laptop\\Laptop-store-e-commerce (Server)\\Laptop-store-e-comerce\\Laptop-store-e-comerce.csproj",
       "projectName": "Laptop-store-e-comerce",
       "projectPath": "D:\\Do an web\\Web-e-commerce-laptop\\Laptop-store-e-commerce (Server)\\Laptop-store-e-comerce\\Laptop-store-e-comerce.csproj",
@@ -7283,6 +7302,24 @@
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\pc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+<<<<<<< HEAD
+=======
+=======
+      "projectUniqueName": "D:\\Data\\Web-e-commerce-laptop\\Laptop-store-e-commerce (Server)\\Laptop-store-e-comerce\\Laptop-store-e-comerce.csproj",
+>>>>>>> 5467a0fe6c57cf03e134a7146a7e6cd5eb7a0787
+      "projectName": "Laptop-store-e-comerce",
+      "projectPath": "D:\\Data\\Môn\\Web-e-commerce-laptop\\Laptop-store-e-commerce (Server)\\Laptop-store-e-comerce\\Laptop-store-e-comerce.csproj",
+      "packagesPath": "C:\\Users\\TuongHai\\.nuget\\packages\\",
+      "outputPath": "D:\\Data\\Môn\\Web-e-commerce-laptop\\Laptop-store-e-commerce (Server)\\Laptop-store-e-comerce\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+<<<<<<< HEAD
+        "C:\\Users\\TuongHai\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+        "C:\\Users\\thanh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> 3e82710a22636d241cf40e7f4be8cc98e09a5eab
+>>>>>>> 5467a0fe6c57cf03e134a7146a7e6cd5eb7a0787
+>>>>>>> b78753e85a38c8ff702f5ea7fd1c98150a3b7775
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -7354,6 +7391,7 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
       }
     }
+<<<<<<< HEAD
   },
   "logs": [
     {
@@ -7363,4 +7401,7 @@
       "message": "Problem reading the cache file D:\\Do an web\\Web-e-commerce-laptop\\Laptop-store-e-commerce (Server)\\Laptop-store-e-comerce\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
     }
   ]
+=======
+  }
+>>>>>>> b78753e85a38c8ff702f5ea7fd1c98150a3b7775
 }

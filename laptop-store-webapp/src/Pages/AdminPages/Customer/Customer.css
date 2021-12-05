@@ -107,7 +107,6 @@
   display: flex;
   height: 15%;
   justify-content: center;
-  align-items: center;
   margin: 5px 10px;
   position: relative;
   background-color: #ffffff;
@@ -147,13 +146,8 @@
 .customer-button-group {
   padding: 0 20px;
   display: flex;
-  bottom: 0;
-  left: 0;
-  right: 0;
   height: auto;
-  flex-direction: column;
   justify-content: center;
-  align-items: center;
 }
 .customer-button {
   background-color: #596ce5;
