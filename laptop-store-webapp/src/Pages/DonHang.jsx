@@ -4,6 +4,7 @@ import bill from "../Images/bill.png"
 import { useEffect, useState } from "react";
 import axios from 'axios';
 import Solver from "../Classes/Solver";
+import DetailBill from './DetailBill';
 
 export default function DonHang({idUser}) {
     const solver = new Solver();
@@ -14,7 +15,7 @@ export default function DonHang({idUser}) {
         .then((res) => setBills(res.data))
         .catch((err) =>console.error("Del mua ma doi co bill",err))
     },[])
-    console.log(bills)
+    console.log("aaa",bills.billDetails)
     return (
         <div className="wrapper billInfo">
             <div className="container-bill">
@@ -42,12 +43,8 @@ export default function DonHang({idUser}) {
                                     <tbody key={index}>
                                     <tr className="info-bill">
                                         <td className="id-bill">{bill.id}</td> 
-                                        {bill.billDetails.map((data,index) => 
-                                        <td className="info-proDetail" key={index}>
-                                            <td className="info-productInBill">{data.idProductNavigation.ten}</td>
-                                            <td className="info-productInBill">Số lượng: {data.soluong}</td>
-                                            <td className="info-productInBill bill-thanhtien">Thành tiền: {solver.formatCurrency("vi-VN","currency","VND",data.tongtien)}</td>
-                                        </td>
+                                        {bill.billDetails.map((item,index) => 
+                                            <DetailBill item={item} index={index}/>
                                         )}
                                         <td className="info-productInBill bill-price" >{solver.formatCurrency("vi-VN","currency","VND",bill.tongtien)}</td>
                                         <td className="info-productInBill">{bill.ngaydat.split("T",1)}</td>
