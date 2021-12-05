@@ -241,7 +241,6 @@ export default function ThanhToan({ updateData,createBill,idUser,order}) {
  
 // ===========================================================================================================
 
-  
   function Address(){
     if(userOrder.diachi && userOrder.sdt !== null){
       return (

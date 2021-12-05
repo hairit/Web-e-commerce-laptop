@@ -130,11 +130,9 @@ function App() {
   const order = () => {
     axios.post('https://localhost:44343/data/bill/', bill)
       .then(res => {
-        //if(res.status === 201){
         console.log(res.data);
         updateData();
-        showLoadOrder()
-        //}
+        showLoadOrder();
       })
       .catch((err) => {
         alert("Đặt hàng thất bại");

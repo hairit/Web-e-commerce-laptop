@@ -104,11 +104,11 @@
   position: fixed;
   top: 160px;
   left: 40px;
-  transform: scale(80%);
+  transform: scale(100%);
 }
 .event-scroll-right {
   position: fixed;
   top: 160px;
   right: 40px;
-  transform: scale(80%);
+  transform: scale(100%);
 }
