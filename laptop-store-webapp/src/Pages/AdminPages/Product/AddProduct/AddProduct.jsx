@@ -37,12 +37,6 @@ export default function AddProduct({ }) {
     });
 
     const hanndleClickNext = () => {
-        /*if (key === "mouse") { setMouseDetail({ ...mouseDetail, idProduct: product.id }); }
-        else if (key === "pc") { setPcdetail({ ...pcdetail, idProduct: product.id }); }
-        else if (key === "laptop") { setLaptopDetail({ ...laptopDetail, idProduct: product.id }); setlaptopDescription({ ...laptopDescription, idproduct: product.id }) }
-        else if (key === "headphone") { setheadphoneDetail({ ...headphoneDetail, idProduct: product.id }); }
-        else if (key === "keyboard") { setKeyboardDetail({ ...keyboardDetail, idProduct: product.id }); }
-        else { setScreenDetail({ ...screenDetail, idProduct: product.id }); }*/
         setproduct({ ...product, idloai: key });
         setflag(true);
         console.log(product);
@@ -801,6 +795,14 @@ export default function AddProduct({ }) {
                             </div>
                             <div className="input-form-input">
                                 <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setproduct({ ...product, baohanh: e.target.value })} />
+                            </div>
+                        </div>
+                        <div className="input-form-item">
+                            <div className="input-form-label">
+                                Ưu đãi
+                            </div>
+                            <div className="input-form-input">
+                                <input type="text" placeholder="Nhập vào đây" size="large" className="input-input" onChange={(e) => setproduct({ ...product, uudai: e.target.value })} />
                             </div>
                         </div>
                     </div>

@@ -1,7 +1,6 @@
 .admin-product{
     width: 100%;
     height: 100%;
-    float: right;
     display:flex;
 }
 .product-layout{
