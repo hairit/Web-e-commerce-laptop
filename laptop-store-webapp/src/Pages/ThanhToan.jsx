@@ -142,6 +142,8 @@ export default function ThanhToan({ updateData,createBill,idUser,order}) {
           onClick={()=>{
             setTimeout(()=>{
               history.push("/bill");
+              updateData()
+
             }, 1700)
             order()
             }} >Đặt hàng ngay </button>

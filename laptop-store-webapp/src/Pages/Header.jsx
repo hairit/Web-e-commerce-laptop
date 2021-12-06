@@ -42,7 +42,7 @@ export default function Header({ user , adminMode, logout , updateData ,setUser}
   }
   function btnSearch() {
       history.push(`/products/${namepro}`)
-      // updateData()
+      updateData()
 
   }
   function handleSearch(e) {

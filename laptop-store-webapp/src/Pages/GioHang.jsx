@@ -67,7 +67,7 @@ useEffect(() => {
     var tongprice = thanhtien(cartDetails)
     if(tongprice !== 0 ){
       return ( //onClick={()=>createBill(cartDetails,thanhtien(cartDetails))}
-          <NavLink to="/checkout"  onClick={()=>createBill(cartDetails,thanhtien(cartDetails),null)} >
+          <NavLink to="/checkout"  onClick={()=>createBill(cartDetails,tongprice,null)} >
             <button className="btn-pay btn btn-outline-primary"  >
               Tiếp tục thanh toán
             </button>
@@ -82,22 +82,7 @@ useEffect(() => {
       )
     }
   }
-  function handleViewDetails(detail) {
-    if(detail.idProductNavigation.idloai === "laptop"){
-    history.push(`/laptop/${detail.idProduct}`);
-    } else if(detail.idProductNavigation.idloai === "keyboard"){
-        history.push(`/keyboard/${detail.idProduct}`);
-      }else if(detail.idProductNavigation.idloai === "screen"){
-          history.push(`/screen/${detail.idProduct}`);
-        }else if(detail.idProductNavigation.idloai === "mouse"){
-           history.push(`/mouse/${detail.idProduct}`);
-         }else{
-            history.push(`/pc/${detail.idProduct}`);
-          }
-  }
-//   if(cartDetails.selected === 1){
-//     document.getElementById("check-item").checked = true;
-// }
+  
     if(cartDetails.length > 0 ){
     return(
       
@@ -118,7 +103,7 @@ useEffect(() => {
           </div>
           <div className="center-card">
             <div className="carts">
-              {cartDetails.map((item, index) => <CartDetail item={item} index={index} checktien={checktien} handleViewDetails={handleViewDetails} checked={checked} idUser={idUser} addQuantityProduct={addQuantityProduct} deleteCartItem={deleteCartItem} deleteProductFromCart={deleteProductFromCart} solver={solver}/>
+              {cartDetails.map((item, index) => <CartDetail item={item} index={index} checktien={checktien}  checked={checked} idUser={idUser} addQuantityProduct={addQuantityProduct} deleteCartItem={deleteCartItem} deleteProductFromCart={deleteProductFromCart} solver={solver}/>
             )}
             </div>
             <div className="payment">
