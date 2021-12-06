@@ -106,19 +106,16 @@ function App() {
   const createBillDetails = (cartDetails) => {
     var BillDetails = [];
     cartDetails.forEach(element => {
-      // if (element.selected === 1) {
         BillDetails.push({
           idProduct: element.idProduct,
           soluong: element.soluong,
           tongtien: element.tongtien
         });
-      // }
     });
     return BillDetails;
   }
   
   const createBill = (cartDetails, totalPrice, diachi) => {
-  // console.log("1", user.diachi)
     setBill({
       id: ID(),
       iduser: user.id,
@@ -128,7 +125,7 @@ function App() {
       billDetails: createBillDetails(cartDetails)
     })
   }
-  const order = () => {
+  const order = () =>{
     axios.post('https://localhost:44343/data/bill/', bill)
       .then(res => {
         console.log(res.data);
