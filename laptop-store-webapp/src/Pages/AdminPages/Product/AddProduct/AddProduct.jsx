@@ -18,7 +18,7 @@ export default function AddProduct({ }) {
         id: "",
         ten: "",
         gia: "",
-        idloai: key,
+        idloai: "",
         thuonghieu: "",
         namsx: "",
         baohanh: "",
@@ -26,7 +26,6 @@ export default function AddProduct({ }) {
         nameimage: "",
         uudai: "",
         giacu: "",
-        idloaiNavigation: null,
         headphoneDetail: null,
         keyboardDetail: null,
         laptopDescription: null,
@@ -35,21 +34,38 @@ export default function AddProduct({ }) {
         pcdetail: null,
         screenDetail: null
     });
-
+    const [pro, setPro] = useState(null);
+    console.log(product);
     const hanndleClickNext = () => {
         setproduct({ ...product, idloai: key });
         setflag(true);
         console.log(product);
     }
+    const handleClickSend = () => {
+        console.log(mouseDetail);
+        console.log(key === "mouse");
+        if (key === "mouse") { setproduct({ ...product, mouseDetail: mouseDetail }) }
+        else if (key === "pc") { setproduct({ ...product, pcdetail: pcdetail }) }
+        else if (key === "laptop") { setproduct({ ...product, laptopDetail: laptopDetail, laptopDescription: laptopDescription }) }
+        else if (key === "headphone") { setproduct({ ...product, headphoneDetail: headphoneDetail }) }
+        else if (key === "keyboard") { setproduct({ ...product, keyboardDetail: keyboardDetail }) }
+        else { setproduct({ ...product, screenDetail: screenDetail }) }
+        setKey("");
+    }
+
     const createProduct = () => {
         axios.post(`https://localhost:44343/data/product/`, product)
             .then((res) => {
                 console.log(res);
                 alert("Thành công");
+                setflag(false);
             })
             .catch((err) => {
                 console.log(err);
             })
+    }
+    const handleClickPost = () => {
+        createProduct();
     }
     function showform() {
         if (key === "mouse")
@@ -715,18 +731,18 @@ export default function AddProduct({ }) {
                         </div>
                     </div>
                 </div>
+            ); else if (key === "") return (
+                <div className={flag === true ? "product-edit-page" : "page-hide"}>
+                    <h2 className="product-edit-title">Xác nhận</h2>
+                    <div className="product-button">
+                        <button className=" product-button-page1" onClick={() => handleClickPost()}>Xác nhận</button>
+                        <button className="product-button-page1" onClick={() => setflag(false)}>Hủy</button>
+                    </div>
+                </div>
             )
     }
-    const handleClickSend = () => {
-        if (key === "mouse") { setproduct({ ...product, mouseDetail: mouseDetail }) }
-        else if (key === "pc") { setproduct({ ...product, pcdetail: pcdetail }) }
-        else if (key === "laptop") { setproduct({ ...product, laptopDetail: laptopDetail, laptopDescription: laptopDescription }) }
-        else if (key === "headphone") { setproduct({ ...product, headphoneDetail: headphoneDetail }) }
-        else if (key === "keyboard") { setproduct({ ...product, keyboardDetail: keyboardDetail }) }
-        else { setproduct({ ...product, screenDetail: screenDetail }) }
-        createProduct();
-        console.log(product);
-    }
+
+
     return (
         <div className="product-add">
             <div className={flag === false ? "product-edit-page" : "page-hide"}>
@@ -763,7 +779,7 @@ export default function AddProduct({ }) {
                                 Loại:
                             </div>
                             <div className="input-form-input">
-                                <select name="product type" className="input-input" onChange={(e) => setKey(e.target.value)}>
+                                <select name="product type" className="input-input" onChange={(e) => { setKey(e.target.value); setproduct({ ...product, idloai: e.target.value }) }}>
                                     <option value="mouse" >Chuột</option>
                                     <option value="laptop">Laptop</option>
                                     <option value="screen" >Màn hình</option>
