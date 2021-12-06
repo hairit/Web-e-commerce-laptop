@@ -60,7 +60,7 @@ export default function ThanhToan({ updateData,createBill,idUser,order}) {
     const newdata = {...userinfo}
     newdata[e.target.id] = e.target.value
     setUserinfo(newdata)
-    console.log("llllll", newdata)
+    // console.log("llllll", newdata)
 }
  function saveInfoUser(e){
     e.preventDefault();
@@ -77,11 +77,13 @@ export default function ThanhToan({ updateData,createBill,idUser,order}) {
       bills: [ ],
       cartDetails: [ ]
     }).then(res => {
+      createBill(checkout,totalPrice(checkout), res.data.diachi)
       setEditinfo(false)
       updateData()
+      reLoad()
       console.log(res.data);
     }).catch(err => {
-      console.log("Lỗi con mẹ nó rồi", err)
+      console.log("Lỗi", err)
     })
   }
   function savePhoneAddress(e) {
@@ -99,10 +101,11 @@ export default function ThanhToan({ updateData,createBill,idUser,order}) {
       bills: [ ],
       cartDetails: [ ]
     }).then(res => {
-      updateData()
+      // updateData()
+      reLoad()
       // console.log(res.data);
     }).catch(err => {
-      console.log("Lỗi con mẹ nó rồi", err)
+      console.log("Lỗi", err)
     })
   }
 
@@ -120,13 +123,44 @@ export default function ThanhToan({ updateData,createBill,idUser,order}) {
       return renderFormEditInfo()
     }
   }
+  function editCart() {
+    history.goBack();
+  }
+
+  function AddressAndPhone(){
+    if(userOrder.diachi && userOrder.sdt !== null){
+      // setBtndis(true)
+      return showAddAdress();
+    }else{
+      return  renderFormAddAdressAndPhone();
+    }
+  }
  
+ function btnOrder(){
+  if(userOrder.diachi && userOrder.sdt !== null){
+      return (
+          <button type="button"className="btn-pay btn btn-outline-primary" 
+          onClick={()=>{
+            setTimeout(()=>{
+              history.push("/bill");
+            }, 1700)
+            order()
+            }} >Đặt hàng ngay </button>
+      )
+  }else{
+    return (
+          <button type="button"className="btn-pay btn btn-outline-primary" onClick={()=>order()}  disabled >
+            Đặt hàng ngay
+          </button>
+      )
+  }
+ }
   function renderFormEditInfo() {
     return (
       <div className="formAddAdress">
         <div className="formEdit">
           <div className="info-editAdress">
-             <form className="form-edit" onSubmit={(e) => saveInfoUser(e) } >
+             <form className="form-edit" onSubmit={(e) => saveInfoUser(e)  }  >
               <div className="form-center">
                 <div className="title-formEdit">Sửa thông tin người nhận hàng</div>
                 <div className="form-editName">
@@ -157,7 +191,7 @@ export default function ThanhToan({ updateData,createBill,idUser,order}) {
                 </div>
               </div>
               <div className="btn-form">
-                <button className="btn btn-primary">Lưu thông tin</button>
+                <button className="btn btn-primary" >Lưu thông tin</button>
                 <button className="btn btn-primary" onClick={() => btnSaveEditInfo()} >Thoát</button>
                 </div>
             </form>
@@ -294,39 +328,7 @@ export default function ThanhToan({ updateData,createBill,idUser,order}) {
     );
   }
  
-  function editCart() {
-    history.goBack();
-  }
 
-  function AddressAndPhone(){
-    if(userOrder.diachi && userOrder.sdt !== null){
-      // setBtndis(true)
-      return showAddAdress();
-    }else{
-      return  renderFormAddAdressAndPhone();
-    }
-  }
- 
-
- function btnOrder(){
-  if(userOrder.diachi && userOrder.sdt !== null){
-      return (
-          <button type="button"className="btn-pay btn btn-outline-primary" 
-          onClick={()=>{
-            setTimeout(()=>{
-              history.push("/bill");
-            }, 1700)
-            createBill(checkout,totalPrice(checkout))
-            order()}} >Đặt hàng ngay </button>
-      )
-  }else{
-    return (
-          <button type="button"className="btn-pay btn btn-outline-primary" onClick={()=>order()}  disabled >
-            Đặt hàng ngay
-          </button>
-      )
-  }
- }
   return (
     <div className="wrapper order">
       <div className="container-order">
