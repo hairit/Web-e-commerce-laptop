@@ -116,6 +116,7 @@ function App() {
   }
   
   const createBill = (cartDetails, totalPrice, diachi) => {
+  // console.log("1", user.diachi)
     setBill({
       id: ID(),
       iduser: user.id,
@@ -129,8 +130,9 @@ function App() {
     axios.post('https://localhost:44343/data/bill/', bill)
       .then(res => {
         console.log(res.data);
-        updateData();
-        showLoadOrder();
+        // updateData();
+        showLoadOrder()
+        //}
       })
       .catch((err) => {
         alert("Đặt hàng thất bại");
