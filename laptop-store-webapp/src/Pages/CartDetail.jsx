@@ -1,14 +1,33 @@
 import axios from 'axios';
 import React from 'react'
+import { NavLink, useHistory } from "react-router-dom";
 import { useState , useEffect } from 'react';
 export default function CartDetail({item,checktien,index,handleViewDetails,checked,idUser,addQuantityProduct,deleteCartItem,deleteProductFromCart,solver}) {
     const [product, setProduct] = useState(null);
+    const history = useHistory();
+
     useEffect(() => {
         axios.get(`https://localhost:44343/data/product/${item.idProduct}`,null)
                 .then(res => setProduct(res.data))
                 .catch(()=>setProduct(null));
     }, [])
-    console.log(product);
+    function handleViewDetails(type) {
+     
+        if(type === "laptop"){
+          history.push(`/laptop/${item.idProduct}`);
+        }else if(type === "keyboard"){
+          history.push(`/keyboard/${item.idProduct}`);
+        }else if(type === "screen"){
+            history.push(`/screen/${item.idProduct}`);
+          }else if(type === "mouse"){
+             history.push(`/mouse/${item.idProduct}`);
+           }else if(type === "headphone"){
+            history.push(`/headphone/${item.idProduct}`);
+          }
+           else{
+          history.push(`/pc/${item.idProduct}`);
+         }
+    }
     return (
         <div className="info-cart" key={index}>
                     <div className="info-donhang">
@@ -20,15 +39,15 @@ export default function CartDetail({item,checktien,index,handleViewDetails,check
                         <div className="info-image">
                           <div className="img-name">
                             <a>
-                              <div className="imag" onClick={() => handleViewDetails(item)}>
+                              <div className="imag" onClick={() => handleViewDetails(product.idloaiNavigation.id)}>
                                 <img
                                   src={product !== null ? `https://localhost:44343/Images/Products/${product.nameimage}` 
                                                         : ""}
                                 alt="img laptop"/>
                               </div>
                             </a>
-                            <div className="name" onClick={() => handleViewDetails(item)}>
-                              <a>{product !== null ? product.ten : ""}</a>
+                            <div className="name" >
+                              <a onClick={() => handleViewDetails(product.idloaiNavigation.id)}>{product !== null ? product.ten : ""}</a>
                               <div className="">ID: {item.idProduct}</div>
                               <div className="">Loại: {product !== null ? product.idloaiNavigation.ten : ""}</div>
                             </div>

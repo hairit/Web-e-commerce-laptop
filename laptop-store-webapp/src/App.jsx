@@ -107,13 +107,13 @@ function App() {
   const createBillDetails = (cartDetails) => {
     var BillDetails = [];
     cartDetails.forEach(element => {
-      // if (element.selected === 1) {
+      if (element.selected === 1) {
         BillDetails.push({
           idProduct: element.idProduct,
           soluong: element.soluong,
           tongtien: element.tongtien
         });
-      // }
+      }
     });
     return BillDetails;
   }
