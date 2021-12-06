@@ -13,9 +13,9 @@ import DareuLogo1 from "../../../Images/DareuLogo1.png"
 import Swal from "sweetalert2";
 
 import { NavLink, useHistory } from "react-router-dom";
-import ListProducts from "./ListProductLaptop";
+import ListProducts from "./ListProducts";
 const solver = new Solver();
-export default function Products({idUser,match,addProductToCart}) {
+export default function Products({match}) {
   const history = useHistory();
   const [load, setLoad] = useState(0);
   const [firstprice, setFirstprice] = useState();
@@ -24,30 +24,38 @@ export default function Products({idUser,match,addProductToCart}) {
   const [pros, setPros] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPage, setItemsPage] = useState(10);
+
+  
   // const [sort, setSort] = useState();
   // const currentPro = pros.slice(firstPage, lastPage)
   
-  useEffect(() => {
-    if(match !== undefined){
-      var API;
-      if(match.match.params.attribute === "gia") {
-        API = `${URL}/data/product/type=laptop/from=${match.match.params.from}to=${match.match.params.to}`;
-      }
-      else if(match.match.params.attribute !== "gia") {
-        API =  `${URL}/data/laptop/${match.match.params.attribute}=${match.match.params.value}`;
-      }
-    }
-    else API = "https://localhost:44343/data/Product/type=laptop";
+  // useEffect(() => {
+  //   if(match !== undefined){
+  //     var API;
+  //     if(match.match.params.attribute === "gia") {
+  //       API = `${URL}/data/product/type=laptop/from=${match.match.params.from}to=${match.match.params.to}`;
+  //     }
+  //     else if(match.match.params.attribute !== "gia") {
+  //       API =  `${URL}/data/laptop/${match.match.params.attribute}=${match.match.params.value}`;
+  //     }
+  //   }
+  //   else API = "https://localhost:44343/data/Product/type=laptop";
    
-    axios
-      .get(API, null)
-      .then((res) => setPros(res.data))
-      .catch((err) => console.log(err));
-  }, []);
-  function addProductInCart(id,gia){
-    addProductToCart(idUser,id,gia);
-  }
-  
+  //   axios
+  //     .get(API, null)
+  //     .then((res) => setPros(res.data))
+  //     .catch((err) => console.log(err));
+  // }, []);
+  // function addProductInCart(id,gia){
+  //   addProductToCart(idUser,id,gia);
+  // }
+  useEffect(() => {
+    axios.get(`https://localhost:44343/data/product/name=${match.match.params.namepro}`,null)
+    .then((res) => setPros(res.data))
+      .catch((err) => console.log(err))
+      }, []);
+      console.log("ttt", pros)
+
   function reload() {
     if(load === 0 ){
       setLoad(1)
@@ -55,7 +63,7 @@ export default function Products({idUser,match,addProductToCart}) {
       setLoad(0)
     }
   }
-  
+  console.log("pp",match.match.params.namepro)
   function sortLaptop(e){
       var sorts = e.target.value
       axios.get("https://localhost:44343/data/laptop/" + sorts,null)
@@ -157,51 +165,6 @@ export default function Products({idUser,match,addProductToCart}) {
                   </div>
                 </div>
                 <div className="loc">
-                  <div className="title-sort">CPU</div>
-                  <div className="btn-right">
-                    <button type="button" className="btn-sort" value="cpu=i3" onClick={(e) => sortLaptop(e)}>
-                      Corei3
-                    </button>
-                    <button type="button" className="btn-sort" value="cpu=i5" onClick={(e) => sortLaptop(e)}>
-                      Corei5
-                    </button>
-                    <button type="button" className="btn-sort" value="cpu=i7" onClick={(e) => sortLaptop(e)}>
-                      Corei7
-                    </button>
-                    <button type="button" className="btn-sort" value="cpu=i9" onClick={(e) => sortLaptop(e)}>
-                      Corei9
-                    </button>
-                  </div>
-                </div>
-
-                <div className="loc">
-                  <div className="title-sort">Ram</div>
-                  <div className="btn-right">
-                    <button type="button" className="btn-sort" value="ram=4" onClick={(e) => sortLaptop(e)}>
-                      4GB
-                    </button>
-                    <button type="button" className="btn-sort" value="ram=8" onClick={(e) => sortLaptop(e)}>
-                      8GB
-                    </button>
-                    <button type="button" className="btn-sort" value="ram=16" onClick={(e) => sortLaptop(e)}>
-                      16GB
-                    </button>
-                  </div>
-                </div>
-
-                <div className="loc">
-                  <div className="title-sort">VAG</div>
-                  <div className="btn-right">
-                    <button type="button" className="btn-sort" value="vga=nvidia" onClick={(e) => sortLaptop(e)}>
-                      NVIDIA
-                    </button>
-                    <button type="button" className="btn-sort" value="vga=amd" onClick={(e) => sortLaptop(e)}>
-                      AMD
-                    </button>
-                  </div>
-                </div>
-
-                <div className="loc">
                   <div className="title-sort">Màn hình</div>
                   <div className="btn-right">
                     <button type="button" className="btn-sort" value="manhinh=13.3" onClick={(e) => sortLaptop(e)}>
@@ -235,7 +198,7 @@ export default function Products({idUser,match,addProductToCart}) {
           <div className="row">
             <div className="col-md-9 prolst">
               <div className="products-grid lstlaptop">
-                <ListProducts pros={page}  addProductInCart={addProductInCart} />
+                <ListProducts  pros={page}  />
               </div>
               <div className="toolbar">
                 <div className="pager">

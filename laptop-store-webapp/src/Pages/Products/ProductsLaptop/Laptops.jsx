@@ -188,7 +188,6 @@ export default function Laptops({idUser,match,addProductToCart}) {
                     </button>
                   </div>
                 </div>
-
                 <div className="loc">
                   <div className="title-sort">VAG</div>
                   <div className="btn-right">
