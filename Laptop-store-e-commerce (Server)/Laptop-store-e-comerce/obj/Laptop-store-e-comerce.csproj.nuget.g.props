@@ -6,6 +6,12 @@
     <ProjectAssetsFile Condition=" '$(ProjectAssetsFile)' == '' ">$(MSBuildThisFileDirectory)project.assets.json</ProjectAssetsFile>
     <NuGetPackageRoot Condition=" '$(NuGetPackageRoot)' == '' ">$(UserProfile)\.nuget\packages\</NuGetPackageRoot>
 <<<<<<< HEAD
+    <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">C:\Users\thanh\.nuget\packages\</NuGetPackageFolders>
+=======
+<<<<<<< HEAD
+    <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">C:\Users\pc\.nuget\packages\</NuGetPackageFolders>
+=======
+<<<<<<< HEAD
     <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">C:\Users\TuongHai\.nuget\packages\</NuGetPackageFolders>
 =======
 <<<<<<< HEAD
@@ -25,12 +31,21 @@
 >>>>>>> 5467a0fe6c57cf03e134a7146a7e6cd5eb7a0787
 >>>>>>> b78753e85a38c8ff702f5ea7fd1c98150a3b7775
 >>>>>>> 20aaabceadcb9524b9e153c526008b526945a3aa
+<<<<<<< HEAD
+>>>>>>> 00032472ddae27a953146a09bc3d91930c67bec6
+=======
 >>>>>>> 00032472ddae27a953146a09bc3d91930c67bec6
     <NuGetProjectStyle Condition=" '$(NuGetProjectStyle)' == '' ">PackageReference</NuGetProjectStyle>
     <NuGetToolVersion Condition=" '$(NuGetToolVersion)' == '' ">5.11.1</NuGetToolVersion>
   </PropertyGroup>
   <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
 <<<<<<< HEAD
+    <SourceRoot Include="C:\Users\thanh\.nuget\packages\" />
+=======
+<<<<<<< HEAD
+    <SourceRoot Include="C:\Users\pc\.nuget\packages\" />
+=======
+<<<<<<< HEAD
     <SourceRoot Include="C:\Users\TuongHai\.nuget\packages\" />
 =======
 <<<<<<< HEAD
@@ -50,6 +65,9 @@
 >>>>>>> 5467a0fe6c57cf03e134a7146a7e6cd5eb7a0787
 >>>>>>> b78753e85a38c8ff702f5ea7fd1c98150a3b7775
 >>>>>>> 20aaabceadcb9524b9e153c526008b526945a3aa
+<<<<<<< HEAD
+>>>>>>> 00032472ddae27a953146a09bc3d91930c67bec6
+=======
 >>>>>>> 00032472ddae27a953146a09bc3d91930c67bec6
   </ItemGroup>
   <PropertyGroup>
@@ -60,6 +78,14 @@
   </ImportGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
 <<<<<<< HEAD
+    <PkgMicrosoft_CodeAnalysis_Analyzers Condition=" '$(PkgMicrosoft_CodeAnalysis_Analyzers)' == '' ">C:\Users\thanh\.nuget\packages\microsoft.codeanalysis.analyzers\3.0.0</PkgMicrosoft_CodeAnalysis_Analyzers>
+    <PkgMicrosoft_EntityFrameworkCore_Tools Condition=" '$(PkgMicrosoft_EntityFrameworkCore_Tools)' == '' ">C:\Users\thanh\.nuget\packages\microsoft.entityframeworkcore.tools\5.0.12</PkgMicrosoft_EntityFrameworkCore_Tools>
+=======
+<<<<<<< HEAD
+    <PkgMicrosoft_CodeAnalysis_Analyzers Condition=" '$(PkgMicrosoft_CodeAnalysis_Analyzers)' == '' ">C:\Users\pc\.nuget\packages\microsoft.codeanalysis.analyzers\3.0.0</PkgMicrosoft_CodeAnalysis_Analyzers>
+    <PkgMicrosoft_EntityFrameworkCore_Tools Condition=" '$(PkgMicrosoft_EntityFrameworkCore_Tools)' == '' ">C:\Users\pc\.nuget\packages\microsoft.entityframeworkcore.tools\5.0.12</PkgMicrosoft_EntityFrameworkCore_Tools>
+=======
+<<<<<<< HEAD
     <PkgMicrosoft_CodeAnalysis_Analyzers Condition=" '$(PkgMicrosoft_CodeAnalysis_Analyzers)' == '' ">C:\Users\TuongHai\.nuget\packages\microsoft.codeanalysis.analyzers\3.0.0</PkgMicrosoft_CodeAnalysis_Analyzers>
     <PkgMicrosoft_EntityFrameworkCore_Tools Condition=" '$(PkgMicrosoft_EntityFrameworkCore_Tools)' == '' ">C:\Users\TuongHai\.nuget\packages\microsoft.entityframeworkcore.tools\5.0.12</PkgMicrosoft_EntityFrameworkCore_Tools>
 =======
@@ -85,6 +111,9 @@
 >>>>>>> 5467a0fe6c57cf03e134a7146a7e6cd5eb7a0787
 >>>>>>> b78753e85a38c8ff702f5ea7fd1c98150a3b7775
 >>>>>>> 20aaabceadcb9524b9e153c526008b526945a3aa
+<<<<<<< HEAD
+>>>>>>> 00032472ddae27a953146a09bc3d91930c67bec6
+=======
 >>>>>>> 00032472ddae27a953146a09bc3d91930c67bec6
   </PropertyGroup>
 </Project>
