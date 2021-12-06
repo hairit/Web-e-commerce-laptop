@@ -153,18 +153,18 @@ export default function User() {
 
     }
     return (
-        <div className="admin-user">
-            <div className="customer-panel">
-                <div className="customer-panel-main">
-                    <table className="customer-table">
-                        <thead className="customer-table-head">
-                            <tr className="customer-table-row">
-                                <th className="customer-table-cell cell-id">Mã</th>
-                                <th className="customer-table-cell cell-name">Họ Tên</th>
-                                <th className="customer-table-cell cell-email">Email</th>
-                                <th className="customer-table-cell cell-pass">Mật khẩu</th>
-                                <th className="customer-table-cell cell-address">Địa chỉ</th>
-                                <th className="customer-table-cell cell-phone">Số điện thoại</th>
+        <div className="admin-userncd">
+            <div className="userncd-panel">
+                <div className="userncd-panel-main">
+                    <table className="userncd-table">
+                        <thead className="userncd-table-head">
+                            <tr className="userncd-table-row">
+                                <th className="userncd-table-cell cell-id">Mã</th>
+                                <th className="userncd-table-cell cell-name">Họ Tên</th>
+                                <th className="userncd-table-cell cell-email">Email</th>
+                                <th className="userncd-table-cell cell-pass">Mật khẩu</th>
+                                <th className="userncd-table-cell cell-address">Địa chỉ</th>
+                                <th className="userncd-table-cell cell-phone">Số điện thoại</th>
                             </tr>
                         </thead>
                         <tbody className="customer-table-body">
@@ -190,18 +190,18 @@ export default function User() {
                                         color: item.id === user.id ? '#596ce5' : '#5c5b5b',
                                     }
                                         : { borderBottom: '0.1px solid rgb(228, 224, 224)' }}>
-                                    <td className="customer-table-cell">{item.id}</td>
-                                    <td className="customer-table-cell">{item.firstname + " " + item.lastname}</td>
-                                    <td className="customer-table-cell">{item.email}</td>
-                                    <td className="customer-table-cell">{item.pass}</td>
-                                    <td className="customer-table-cell">{item.diachi}</td>
-                                    <td className="customer-table-cell">{item.sdt}</td>
+                                    <td className="userncd-table-cell">{item.id}</td>
+                                    <td className="userncd-table-cell">{item.firstname + " " + item.lastname}</td>
+                                    <td className="userncd-table-cell">{item.email}</td>
+                                    <td className="userncd-table-cell">{item.pass}</td>
+                                    <td className="userncd-table-cell">{item.diachi}</td>
+                                    <td className="userncd-table-cell">{item.sdt}</td>
                                 </tr>
                             ))}
                         </tbody>
                     </table>
                 </div>
-                <div className="user-panel-flatForm">
+                <div className="userncd-panel-flatForm">
                     {/* <div className="customer-inFor-item inFor-avatar">
                     <img className="user-avatar" src={ user.nameimage !== null ? 
                                              `https://localhost:44343/Images/UserAvatar/${user.nameimage}`
@@ -209,47 +209,47 @@ export default function User() {
                                              } alt={user.nameimage}/>
                                 {user.id !== null ? <p className="name-user">{user.firstname+" "+user.lastname}</p> : <p className="name-user">Chưa xác định</p>}
                     </div> */}
-                    <div className="user-inFor">
-                        <div className="user-inFor-item inFor-name">
+                    <div className="userncd-inFor">
+                        <div className="customer-inFor-item inFor-name">
                             <div className="inFor-name-item">
                                 <p className="inFor-item-text" >Họ</p>
-                                <input className="user-input input-name" placeholder="" defaultValue={user.firstname} onChange={(e) => setUser({ ...user, firstname: e.target.value.toString() })} />
+                                <input className="userncd-input input-name" placeholder="" defaultValue={user.firstname} onChange={(e) => setUser({ ...user, firstname: e.target.value.toString() })} />
                             </div>
                             <div className="inFor-name-item">
                                 <p className="inFor-item-text" style={{ paddingLeft: '10px' }}>Tên</p>
-                                <input className="user-input input-name" placeholder="" defaultValue={user.lastname} onChange={(e) => setUser({ ...user, lastname: e.target.value.toString() })} />
+                                <input className="userncd-input input-name" placeholder="" defaultValue={user.lastname} onChange={(e) => setUser({ ...user, lastname: e.target.value.toString() })} />
                             </div>
                         </div>
                         <div className="customer-inFor-item">
                             <p className="inFor-item-text">Email</p>
-                            <input className="user-input input-email" placeholder="" defaultValue={user.email} onChange={(e) => setUser({ ...user, email: e.target.value.toString() })} />
+                            <input className="userncd-input input-email" placeholder="" defaultValue={user.email} onChange={(e) => setUser({ ...user, email: e.target.value.toString() })} />
                         </div>
                         <div className="customer-inFor-item inFor-name">
                             <div className="inFor-name-item">
                                 <p className="inFor-item-text" style={{ paddingLeft: '10px' }}>Pass</p>
-                                <input className="customer-input input-name" placeholder="" defaultValue={user.pass} onChange={(e) => setUser({ ...user, pass: e.target.value.toString() })} />
+                                <input className="userncd-input input-name" placeholder="" defaultValue={user.pass} onChange={(e) => setUser({ ...user, pass: e.target.value.toString() })} />
                             </div>
                             <div className="customer-inFor-item">
                                 <p className="inFor-item-text">Địa chỉ</p>
-                                <input className="user-input input-address" placeholder="" defaultValue={user.diachi} onChange={(e) => setUser({ ...user, diachi: e.target.value.toString() })} />
+                                <input className="userncd-input input-address" placeholder="" defaultValue={user.diachi} onChange={(e) => setUser({ ...user, diachi: e.target.value.toString() })} />
                             </div>
                         </div>
                         <div className="inFor-name-item">
                             <p className="inFor-item-text" >SĐT</p>
-                            <input className="customer-input input-name" placeholder="" defaultValue={user.sdt} onChange={(e) => setUser({ ...user, sdt: e.target.value.toString() })}
+                            <input className="userncd-input input-name" placeholder="" defaultValue={user.sdt} onChange={(e) => setUser({ ...user, sdt: e.target.value.toString() })}
                             />
                         </div>
                         <div className="customer-inFor-item inFor-mode">
                             <p className="inFor-item-text">Chức vụ</p>
-                            <select className="select-mode-user" value={user.mode} onChange={(e) => setUser({ ...user, mode: e.target.value.toString() })}>
+                            <select className="select-mode-userncd" value={user.mode} onChange={(e) => setUser({ ...user, mode: e.target.value.toString() })}>
                                 <option value="ADMIN">Admin</option>
                                 <option value="STAFF">Staff</option>
                                 <option value="CUSTOMER">Customer</option>
                             </select>
                         </div>
                         <div className="customer-inFor-item customer-image-upload">
-                            <div className="user-button-group">
-                                <div className="user-inFor-item user-search">
+                            <div className="userncd-button-group">
+                                <div className="customer-inFor-item customer-search">
                                     <select value={modeSearch} className="select-mode-search" onChange={(e) => {
                                         if (e.target.value.toString() === 'ADMIN' || 'CUSTOMER' || 'STAFF') {
                                             searchUserWithMode(e.target.value.toString());
@@ -265,13 +265,13 @@ export default function User() {
                                         <option value="CUSTOMER">Customer</option>
                                         <option value="STAFF">Staff</option>
                                     </select>
-                                    <input className="user-input-search" type="text" placeholder="value" defaultValue={value} onChange={(e) => setValue(e.target.value.toString())} />
-                                    <button className="user-btn-search" onClick={() => searchUser(modeSearch, value)}>Search</button>
+                                    <input className="userncd-input-search" type="text" placeholder="value" defaultValue={value} onChange={(e) => setValue(e.target.value.toString())} />
+                                    <button className="userncd-btn-search" onClick={() => searchUser(modeSearch, value)}>Search</button>
                                 </div>
-                                <div className="user-button-group">
-                                    <button className="user-button delete-user" onClick={() => deleteUser()}>Delete</button>
-                                    <button className="user-button save-user" onClick={() => repairUser()}>Save</button>
-                                    <button className="user-button add-user" onClick={() => addUser()}>Add</button>
+                                <div className="userncd-button-group">
+                                    <button className="userncd-button delete-userncd" onClick={() => deleteUser()}>Delete</button>
+                                    <button className="userncd-button save-userncd" onClick={() => repairUser()}>Save</button>
+                                    <button className="userncd-button add-userncd" onClick={() => addUser()}>Add</button>
                                 </div>
                             </div>
                         </div>
