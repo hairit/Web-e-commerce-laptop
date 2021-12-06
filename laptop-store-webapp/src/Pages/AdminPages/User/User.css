@@ -20,18 +20,32 @@
   font-size: 13px;
 }
 
+<<<<<<< HEAD
 .select-mode-user {
   height: 35px;
   padding-left: 10px;
   font-size: 13px;
   border-radius: 3px;
   border: none;
+=======
+.select-mode-userncd {
+  height          : 35px;
+  padding-left    : 10px;
+  font-size       : 13px;
+  border-radius   : 3px;
+  border          : none;
+>>>>>>> 1f4ad3b51130407ea1ea77174868ad6012c92a56
   background-color: #e4e3e3;
   outline: none;
 }
 
+<<<<<<< HEAD
 .select-mode-user option {
   height: 30px;
+=======
+.select-mode-userncd option {
+  height      : 30px;
+>>>>>>> 1f4ad3b51130407ea1ea77174868ad6012c92a56
   padding-left: 10px;
   font-size: 12px;
 }
@@ -41,6 +55,7 @@
   justify-content: space-between;
 }
 
+<<<<<<< HEAD
 .user-avatar {
   width: 70px;
   height: 70px;
@@ -49,10 +64,23 @@
 
 .name-user {
   font-size: 13px;
+=======
+/*
+.userncd-avatar {
+  width        : 70px;
+  height       : 70px;
+  border-radius: 50%;
+}
+
+.name-userncd {
+  font-size  : 13px;
+>>>>>>> 1f4ad3b51130407ea1ea77174868ad6012c92a56
   font-weight: 500;
   margin-top: 7px;
 }
+*/
 
+<<<<<<< HEAD
 .user-table {
   width: 100%;
   height: auto;
@@ -64,15 +92,28 @@
 
 .user-table-head {
   z-index: 2;
+=======
+.userncd-table {
+  width           : 100%;
+  height          : auto;
+  max-height      : 100%;
+  max-width       : 150% !important;
+  padding         : 14px 0;
+  background-color: #ffffff;
+}
+
+.userncd-table-head {
+  z-index         : 2;
+>>>>>>> 1f4ad3b51130407ea1ea77174868ad6012c92a56
   background-color: #596ce5 !important;
   color: #ffffff;
 }
 
-.user-table-row {
+.userncd-table-row {
   cursor: pointer;
 }
 
-.user-table-cell {
+.userncd-table-cell {
   user-select: none;
   /* height  : 30px; */
   font-size: 13px;
@@ -80,6 +121,7 @@
   border: none !important;
 }
 
+<<<<<<< HEAD
 .user-panel-flatForm {
   width: auto;
   display: flex;
@@ -87,11 +129,20 @@
   justify-content: center;
   margin: 5px 10px;
   position: relative;
+=======
+.userncd-panel-flatForm {
+  width           : auto;
+  display         : flex;
+  height          : 15%;
+  justify-content : center;
+  margin          : 5px 10px;
+  position        : relative;
+>>>>>>> 1f4ad3b51130407ea1ea77174868ad6012c92a56
   background-color: #ffffff;
   border-radius: 5px;
 }
 
-.user-inFor {
+.userncd-inFor {
   justify-content: center;
   width: 100%;
   flex-wrap: wrap;
@@ -122,20 +173,32 @@
   width: 150px;
 }
 
+<<<<<<< HEAD
 .user-input {
   height: 32px;
   border: #c5c4c4 solid 0.1px;
+=======
+.userncd-input {
+  height       : 32px;
+  border       : #c5c4c4 solid 0.1px;
+>>>>>>> 1f4ad3b51130407ea1ea77174868ad6012c92a56
   border-radius: 5px;
   padding-left: 8px;
   outline: none;
 }
 
+<<<<<<< HEAD
 .admin-user {
+=======
+
+.admin-userncd {
+>>>>>>> 1f4ad3b51130407ea1ea77174868ad6012c92a56
   display: flex;
   width: 100%;
   height: 100%;
 }
 
+<<<<<<< HEAD
 .user-panel {
   width: 100%;
   height: 100%;
@@ -158,11 +221,36 @@
   margin-left: 20px;
   display: flex;
   height: auto;
+=======
+.userncd-panel {
+  width : 100%;
+  height: 100%;
+}
+
+.userncd-panel {
+  display       : flex;
+  flex-direction: column;
+}
+
+.userncd-panel-main {
+  margin          : 20px 10px;
+  width           : auto;
+  height          : 85%;
+  border-radius   : 5px;
+  background-color: #ffffff;
+}
+
+.userncd-button-group {
+  margin-left    : 20px;
+  display        : flex;
+  height         : auto;
+>>>>>>> 1f4ad3b51130407ea1ea77174868ad6012c92a56
   justify-content: center;
   width: auto;
   text-align: center;
 }
 
+<<<<<<< HEAD
 .user-inFor-item {
   display: flex;
   height: 50px;
@@ -171,14 +259,34 @@
 }
 .user-search {
   display: flex;
+=======
+.userncd-inFor-item {
+  display    : flex;
+  height     : 50px;
+  padding    : 25px 10px;
+  align-items: center;
+}
+
+.userncd-search {
+  display   : flex;
+>>>>>>> 1f4ad3b51130407ea1ea77174868ad6012c92a56
   margin-top: 7px;
   height: 35px;
 }
+<<<<<<< HEAD
 .user-input-search {
   width: 80%;
   height: 35px;
   border: #c5c4c4 solid 0.1px;
   border-radius: 5px;
+=======
+
+.userncd-input-search {
+  width           : 80%;
+  height          : 35px;
+  border          : #c5c4c4 solid 0.1px;
+  border-radius   : 5px;
+>>>>>>> 1f4ad3b51130407ea1ea77174868ad6012c92a56
   background-color: #ffffff;
   outline: none;
   padding-left: 17px;
@@ -186,7 +294,12 @@
   font-weight: 500;
   margin-bottom: 15px;
 }
+<<<<<<< HEAD
 .user-btn-search {
+=======
+
+.userncd-btn-search {
+>>>>>>> 1f4ad3b51130407ea1ea77174868ad6012c92a56
   background-color: #596ce5;
   border: none;
   height: 35px;
@@ -198,7 +311,12 @@
   cursor: pointer;
   margin-bottom: 15px;
 }
+<<<<<<< HEAD
 .user-button {
+=======
+
+.userncd-button {
+>>>>>>> 1f4ad3b51130407ea1ea77174868ad6012c92a56
   background-color: #596ce5;
   border: none;
   margin-top: 7px;
@@ -211,38 +329,75 @@
   cursor: pointer;
   margin-bottom: 10px;
 }
+<<<<<<< HEAD
 .delete-user {
   background-color: rgb(211, 17, 17);
 }
 .save-user {
+=======
+
+.delete-userncd {
+  background-color: rgb(211, 17, 17);
+}
+
+.save-userncd {
+>>>>>>> 1f4ad3b51130407ea1ea77174868ad6012c92a56
   background-color: #dd5b1f;
   margin-left: 5px;
 }
+<<<<<<< HEAD
 .add-user {
+=======
+
+.add-userncd {
+>>>>>>> 1f4ad3b51130407ea1ea77174868ad6012c92a56
   background-color: seagreen;
   margin-left: 5px;
 }
 
+<<<<<<< HEAD
 .user-input.input-email {
   width: 200px;
   height: 32px;
   border: #c5c4c4 solid 0.1px;
+=======
+.userncd-input.input-email {
+  width        : 200px;
+  height       : 32px;
+  border       : #c5c4c4 solid 0.1px;
+>>>>>>> 1f4ad3b51130407ea1ea77174868ad6012c92a56
   border-radius: 5px;
   padding-left: 8px;
   outline: none;
 }
+<<<<<<< HEAD
 .user-input.input-address {
   width: 200px;
   height: 32px;
   border: #c5c4c4 solid 0.1px;
+=======
+
+.userncd-input.input-address {
+  width        : 200px;
+  height       : 32px;
+  border       : #c5c4c4 solid 0.1px;
+>>>>>>> 1f4ad3b51130407ea1ea77174868ad6012c92a56
   border-radius: 5px;
   padding-left: 8px;
   outline: none;
 }
+<<<<<<< HEAD
 .user-input.input-name {
   width: 160px;
   height: 32px;
   border: #c5c4c4 solid 0.1px;
+=======
+
+.userncd-input.input-name {
+  width        : 160px;
+  height       : 32px;
+  border       : #c5c4c4 solid 0.1px;
+>>>>>>> 1f4ad3b51130407ea1ea77174868ad6012c92a56
   border-radius: 5px;
   padding-left: 8px;
   outline: none;
