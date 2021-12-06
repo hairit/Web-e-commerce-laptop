@@ -15,22 +15,23 @@ const renderLaptopItem = (pro, index ,addCart,history) => {
         <div className="laptop-image">
           <NavLink to={`/laptop/${pro.id}`}><img className="laptop-image-img" src={URL + `/Images/Products/${pro.nameimage}`} alt={pro.nameimage} /></NavLink>
           </div>
-        <div className="laptop-detail">
-          <NavLink to={`/laptop/${pro.id}`}  className="laptop-detail-item laptop-name">{pro.ten}</NavLink>
-          <div className="laptop-detail-item laptop-price">
-            <div className="laptop-price-value" >
-              {solver.formatCurrency("vi-VN", "currency", "VND", pro.gia)}
+          <div className="laptop-detail">
+            <NavLink to={`/laptop/${pro.id}`}  className="laptop-detail-item laptop-name">{pro.ten}</NavLink>
+            <div className="laptop-detail-item laptop-price">
+              <div className="laptop-price-value" >
+                {solver.formatCurrency("vi-VN", "currency", "VND", pro.gia)}
+              </div>
+              <div className="laptop-old-price-value old-price">{solver.formatCurrency("vi-VN", "currency", "VND", pro.giacu)}</div>
             </div>
-            <div className="laptop-old-price-value old-price">{solver.formatCurrency("vi-VN", "currency", "VND", pro.giacu)}</div>
           </div>
-        </div>
-        <div className="laptop-gift"><p>{pro.uudai}</p></div>
-        <div className="laptop-btn-group">
-          <button className="laptop-btn laptop-buy" onClick={()=>{
-                  addCart(pro.id,pro.gia)
-          }}>Mua ngay</button>
-          <button className="laptop-btn laptop-addCart" onClick={()=>addCart(pro.id,pro.gia)}>Thêm vào giỏ</button>
-        </div>
+          <div className="laptop-gift"><p>{pro.uudai}</p></div>
+          <div className="laptop-btn-group">
+            <button className="laptop-btn laptop-buy" onClick={()=>{
+                    addCart(pro.id,pro.gia);
+                    history.push('/cart');
+            }}>Mua ngay</button>
+            <button className="laptop-btn laptop-addCart" onClick={()=>addCart(pro.id,pro.gia)}>Thêm vào giỏ</button>
+          </div>
       </div>
     </div>
   );

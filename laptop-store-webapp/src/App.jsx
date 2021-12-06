@@ -78,8 +78,8 @@ function App() {
   
   const logout = () => {
     removeCookie('id');
-    setUser(null);
     changeAdminMode('off');
+    setUser(null);
     history.push('/');
   }
   var ID = function () {
@@ -285,7 +285,7 @@ function App() {
           createBill={createBill}
         />}></Route>
 
-        <Route path="/login" exact component={(match) => <Login login={login} match={match} />} ></Route>
+        <Route path="/login" exact component={(match) => <Login login={login} match={match} changeAdminMode={changeAdminMode}/>} ></Route>
         <Route path="/bill" component={() => <DonHang idUser={user !== null ? user.id : null} />}></Route>
         <Route path="/lienhe" component={() => <Lienhe />}></Route>
         <Route path="/tincongnghe" component={() => <Tintuc />}></Route>
