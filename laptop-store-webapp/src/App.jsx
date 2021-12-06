@@ -31,6 +31,7 @@ import load from "./Images/load.gif"
 import GioHangCss from "./CSS/GioHangCss.css"
 import Headphone from "./Pages/Products/ProductsHeadphone/Headphone";
 import DetailProductsHeadphone from "./Pages/Products/ProductsHeadphone/DetailProductsHeadphone";
+import Products from "./Pages/Products/SearchProducts/Products";
 
 function App() {
   const history = useHistory();
@@ -242,7 +243,7 @@ function App() {
       <ScrollToTop />
       <div className={adminMode === false ? "App" : "App-no-scroll"}>
       {loadQuantity()}
-        <Header user={user} adminMode={adminMode} logout={logout}  setUser={setUser} />
+        <Header user={user} adminMode={adminMode} logout={logout}  setUser={setUser} updateData={updateData}/>
       
         <Route path="/admin" exact component={() => <Login login={login}  />} ></Route>
         <Route path="/admin/:idUser"  component={(match) => <Admin changeAdminMode={changeAdminMode} user={user} match={match} logout={logout}/>}></Route>
@@ -290,6 +291,7 @@ function App() {
 
         <Route path="/login" exact component={(match) => <Login login={login} match={match} />} ></Route>
         <Route path="/bill" component={() => <DonHang idUser={user !== null ? user.id : null} />}></Route>
+        <Route path="/products/:namepro" exact component={(match) => <Products match={match} />}></Route>
         <Route path="/lienhe" component={() => <Lienhe />}></Route>
         <Route path="/tincongnghe" component={() => <Tintuc />}></Route>
         <Route path="/showroom" component={() => <Showroom />}></Route>

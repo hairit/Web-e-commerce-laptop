@@ -26,8 +26,9 @@ import axios from "axios";
 export default function Header({ user , adminMode, logout , updateData ,setUser}) {
   const [statusHeader, setStatusHeader] = useState(false);
   const [userPanel, setUserPanel] = useState(false);
-  const [search, setSearch] = useState([]);
-  const [namepro, setNamePro] = useState();
+  const [namepro, setNamePro] = useState([]);
+  const history = useHistory();
+
   useEffect(() => {
     window.addEventListener('scroll', changeStatusHeader);
   }, [])
@@ -39,12 +40,10 @@ export default function Header({ user , adminMode, logout , updateData ,setUser}
     if(userPanel === false) setUserPanel(true);
     else setUserPanel(false);
   }
-
   function btnSearch() {
-    axios.get(`https://localhost:44343/data/product/name=${namepro}`,null)
-    .then((res) => setNamePro(res.data))
-      .catch((err) => console.log(err))
-      console.log("ttt", namepro);
+      history.push(`/products/${namepro}`)
+      // updateData()
+
   }
   function handleSearch(e) {
     setNamePro(e.target.value)
