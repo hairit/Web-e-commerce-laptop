@@ -49,7 +49,6 @@ export default function ThanhToan({ updateData,createBill,idUser,order}) {
     }
   }, [reload]);
   console.log(checkout);
-  // console.log('kkkkkkkkkkkkk', address)
   function totalPrice(carts) {
     var tongtien = 0;
     carts.forEach(cart => {
@@ -61,7 +60,6 @@ export default function ThanhToan({ updateData,createBill,idUser,order}) {
     const newdata = {...userinfo}
     newdata[e.target.id] = e.target.value
     setUserinfo(newdata)
-    // console.log("llllll", newdata)
 }
  function saveInfoUser(e){
     e.preventDefault();

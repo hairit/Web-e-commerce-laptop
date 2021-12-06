@@ -58,7 +58,7 @@ function App() {
       call('GET', `data/user/${user.id}`, null)
         .then((res) => {
           cartDetails.current = res.data.cartDetails;
-        
+          console.log(cartDetails.current);
           setUser(res.data)
         })
         .catch((err) => console.log("Reload User" + err));
@@ -131,12 +131,11 @@ function App() {
   const order = () =>{
     axios.post('https://localhost:44343/data/bill/', bill)
       .then(res => {
-        console.log(res.data);
         updateData();
         showLoadOrder();
       })
       .catch((err) => {
-        alert("Đặt hàng thất bại");
+        alert("Đặt hàng thất bại"+err);
       })
   }
   function loadQuantity() {
@@ -158,7 +157,6 @@ function App() {
       .then(res => {
         console.log(res);
         if (res.status === 201) {
-          console.log("Da them vao gio hang", user.id, idProduct, price);
           updateData();
           setLoading(true);
         }
