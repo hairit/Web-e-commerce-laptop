@@ -98,13 +98,6 @@ namespace Laptop_store_e_comerce.Controllers
             }
             if(action == "delete")
             {
-                CartDetail restore = new CartDetail();
-                restore.IdUser = bill.Iduser;
-                restore.IdProduct = product.Id;
-                restore.Selected = 1;
-                restore.Soluong = billDetail.Soluong;
-                restore.Tongtien = billDetail.Tongtien;
-                _context.CartDetails.Add(restore);
                 _context.BillDetails.Remove(billDetail);
             }
             try

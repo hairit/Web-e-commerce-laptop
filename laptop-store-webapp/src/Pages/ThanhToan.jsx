@@ -33,7 +33,7 @@ export default function ThanhToan({ updateData,createBill,idUser,order}) {
     console.log("zzz")
       axios.get(`https://localhost:44343/data/user/${idUser}`)
          .then((res) => 
-         setUserorder(res.data))
+          setUserorder(res.data))
          .catch((err) => console.log("Reload User"+err));
 }, [reload])
 // console.log("aaa", userOrder)
@@ -48,6 +48,7 @@ export default function ThanhToan({ updateData,createBill,idUser,order}) {
           .catch((err) => console.log(err));
     }
   }, [reload]);
+  console.log(checkout);
   // console.log('kkkkkkkkkkkkk', address)
   function totalPrice(carts) {
     var tongtien = 0;

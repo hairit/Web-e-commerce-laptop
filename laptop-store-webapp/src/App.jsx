@@ -104,19 +104,20 @@ function App() {
       timer: 1500
     })
   }
-  const createBillDetails = (cartDetails) => {
+  const createBillDetails = (SelectedCartDetails) => {
     var BillDetails = [];
-    cartDetails.forEach(element => {
-        BillDetails.push({
-          idProduct: element.idProduct,
-          soluong: element.soluong,
-          tongtien: element.tongtien
-        });
+    SelectedCartDetails.forEach(element => {
+        if(element.selected === 1){
+          BillDetails.push({
+            idProduct: element.idProduct,
+            soluong: element.soluong,
+            tongtien: element.tongtien
+          });
+        }
     });
     return BillDetails;
   }
-  
-  const createBill = (cartDetails, totalPrice, diachi) => {
+  const createBill = (SelectedCartDetails, totalPrice, diachi) => {
   // console.log("1", user.diachi)
     setBill({
       id: ID(),
@@ -124,16 +125,15 @@ function App() {
       tongtien: totalPrice,
       ngaydat: new Date().toISOString().slice(0, 10),
       diachinhan: diachi ? diachi : user.diachi,
-      billDetails: createBillDetails(cartDetails)
+      billDetails: createBillDetails(SelectedCartDetails)
     })
   }
   const order = () =>{
     axios.post('https://localhost:44343/data/bill/', bill)
       .then(res => {
         console.log(res.data);
-        // updateData();
-        showLoadOrder()
-        //}
+        updateData();
+        showLoadOrder();
       })
       .catch((err) => {
         alert("Đặt hàng thất bại");

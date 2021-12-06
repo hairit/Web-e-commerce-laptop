@@ -70,7 +70,7 @@ export default function UserPanel({user , changeStatusPanelUser , userPanel ,set
     return (
         <>
             <div className={userPanel === false ? "cover-panel-hide" : "cover-panel"} onClick={()=> turnOffUserPanel()} ></div>
-            <div className={userPanel === false ? "user-panel-hide" : "user-panel"} > 
+            <div className={userPanel === false ? "user-panel-hide" : "user-panel-drop-down"} > 
                     <div className="edit-panel-active">
                         <p className="user-panel-title">Thông tin tài khoản</p>
                         <div className="name-panel">
@@ -114,7 +114,7 @@ export default function UserPanel({user , changeStatusPanelUser , userPanel ,set
                             <div className="change-pass-item">
                                 
                                 {statusEdit === true ? <input className="user-input " readOnly value="" placeholder="Nhập lại mật khẩu mới"/> : <input className="user-input user-input-active"  required placeholder="Nhập lại mật khẩu mới"
-                                                                                                                                                    onChange={(e) => setNewPass({...newPass ,conFirm : e.target.value.toString()})} />}
+                                                                                                                         onChange={(e) => setNewPass({...newPass ,conFirm : e.target.value.toString()})} />}
                             </div>
                             <button className="save-user-data-btn" onClick={()=>changeUserData('password')}>Lưu thay đổi</button>
                     </div>
