@@ -10,7 +10,7 @@ import Solver from '../../Classes/Solver';
 const LoadingSelectPanelCenter = (item,index) => {
     return (
         <div className="select-panel-col" key={index}>
-            <NavLink key={index} to="laptop" className="select-panel-col-item select-panel-col-title">{item.name}</NavLink>
+            <NavLink key={index} to="" className="select-panel-col-item select-panel-col-title">{item.name}</NavLink>
             {item.datas.map((data,index)=><NavLink to={data.path} className="select-panel-col-item" key={index}>{data.name}</NavLink>)}
         </div>
     )

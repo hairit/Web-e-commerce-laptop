@@ -79,8 +79,8 @@ function App() {
   
   const logout = () => {
     removeCookie('id');
-    setUser(null);
     changeAdminMode('off');
+    setUser(null);
     history.push('/');
   }
   var ID = function () {
@@ -104,21 +104,20 @@ function App() {
       timer: 1500
     })
   }
-  const createBillDetails = (cartDetails) => {
+  const createBillDetails = (SelectedCartDetails) => {
     var BillDetails = [];
-    cartDetails.forEach(element => {
-      if (element.selected === 1) {
-        BillDetails.push({
-          idProduct: element.idProduct,
-          soluong: element.soluong,
-          tongtien: element.tongtien
-        });
-      }
+    SelectedCartDetails.forEach(element => {
+        if(element.selected === 1){
+          BillDetails.push({
+            idProduct: element.idProduct,
+            soluong: element.soluong,
+            tongtien: element.tongtien
+          });
+        }
     });
     return BillDetails;
   }
-  
-  const createBill = (cartDetails, totalPrice, diachi) => {
+  const createBill = (SelectedCartDetails, totalPrice, diachi) => {
   // console.log("1", user.diachi)
     setBill({
       id: ID(),
@@ -126,17 +125,15 @@ function App() {
       tongtien: totalPrice,
       ngaydat: new Date().toISOString().slice(0, 10),
       diachinhan: diachi ? diachi : user.diachi,
-      billDetails: createBillDetails(cartDetails)
+      billDetails: createBillDetails(SelectedCartDetails)
     })
   }
-  const order = () => {
+  const order = () =>{
     axios.post('https://localhost:44343/data/bill/', bill)
       .then(res => {
-        //if(res.status === 201){
         console.log(res.data);
-        // updateData();
-        showLoadOrder()
-        //}
+        updateData();
+        showLoadOrder();
       })
       .catch((err) => {
         alert("Đặt hàng thất bại");
@@ -288,8 +285,7 @@ function App() {
           idUser={user !== null ? user.id : null}
           createBill={createBill}
         />}></Route>
-
-        <Route path="/login" exact component={(match) => <Login login={login} match={match} />} ></Route>
+        <Route path="/login" exact component={(match) => <Login login={login} match={match} changeAdminMode={changeAdminMode}/>} ></Route>
         <Route path="/bill" component={() => <DonHang idUser={user !== null ? user.id : null} />}></Route>
         <Route path="/products/:namepro" exact component={(match) => <Products match={match} />}></Route>
         <Route path="/lienhe" component={() => <Lienhe />}></Route>

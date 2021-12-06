@@ -153,7 +153,6 @@ namespace Laptop_store_e_comerce.Controllers
         [HttpPost()]
         public async Task<ActionResult<Product>> PostProduct(Product pro)
         {
-            
             if (existID(pro.Id)) return Conflict();
             if (!existType(pro.Idloai)) return BadRequest();
             try

@@ -6,7 +6,7 @@ import call from '../../API/API';
 import Solver from '../../Classes/Solver';
 import URL from '../../DATA/URL';
 const renderMouseItem = (mouse,index,solver,history,addCart)=> {
-    return (
+    return(
         <div className="col-10 c-10-2 mouse-item" key={index}>
             <div className="mouse-infor">
                 <div className="mouse-image">
@@ -21,6 +21,7 @@ const renderMouseItem = (mouse,index,solver,history,addCart)=> {
                 <div className="mouse-button-group">
                     <div className="mouse-button mouse-button-buy" onClick={()=>{
                             addCart(mouse.id,mouse.gia);
+                            history.push('/cart');
                     }}>Mua ngay</div>
                     <div className="mouse-button mouse-button-add" onClick={()=>addCart(mouse.id,mouse.gia)}>Thêm vào giỏ</div>
                 </div>

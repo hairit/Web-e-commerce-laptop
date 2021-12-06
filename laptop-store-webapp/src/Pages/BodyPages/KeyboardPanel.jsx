@@ -27,7 +27,8 @@ const renderKeyboardItem = (pro,index,addCart,history) => {
                     <div className="keyboard-gift">{pro.uudai}</div>
                     <div className="keyboard-button-group">
                         <button className="keyboard-button keyboard-button-buy" onClick={()=>{
-                            addCart(pro.id,pro.gia)
+                            addCart(pro.id,pro.gia);
+                            history.push('/cart');
                         }}>Mua ngay</button>
                         <button className="keyboard-button keyboard-button-add" onClick={()=>addCart(pro.id,pro.gia)}>Thêm vào giỏ</button>
                     </div>

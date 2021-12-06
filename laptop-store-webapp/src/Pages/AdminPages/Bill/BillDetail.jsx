@@ -37,7 +37,6 @@ export default function BillDetail({item,index,reLoad,deleteBillDetail}) {
             })
         }
     }
-    
     return (
         <tr className="table-bill-details-row" key={index}>
             <td className="table-bill-details-cell">{item.idProduct}</td>

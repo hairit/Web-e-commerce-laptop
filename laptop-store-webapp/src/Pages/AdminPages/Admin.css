@@ -34,6 +34,7 @@
 }
 .admin-tab-icon {
   font-size: 20px !important;
+  cursor: pointer;
 }
 .admin-pages {
   width: 100%;

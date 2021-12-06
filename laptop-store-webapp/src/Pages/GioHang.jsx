@@ -28,7 +28,7 @@ useEffect(() => {
       .get(`https://localhost:44343/data/cartdetail/iduser=${idUser}`, null)
       .then((res) => {
         if (res.status === 200) {
-          setCartDetails(res.data);   
+          setCartDetails(res.data);
         }
       })
       .catch((err) => setCartDetails([]) );

@@ -191,6 +191,11 @@
 }
 .search-customer {
   position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .search-customer-input {
   width: 300px;
@@ -202,11 +207,11 @@
   padding-left: 10px;
 }
 .search-customer-button {
-  position: absolute;
   width: 100px;
   background-color: #596ce5;
   color: #ffffff;
   border: none;
+  height: 40px;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
   bottom: 0;
@@ -214,13 +219,13 @@
   top: 0;
 }
 .select-search-customer {
-  position: absolute;
   top: 0;
   left: -150px;
   background-color: #f5f0f0;
   border: none;
   outline: none;
   width: 160px;
+  height: 40px;
   bottom: 0;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;

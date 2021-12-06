@@ -9,9 +9,10 @@ export default function BillsCustomer({match}) {
     const saveIDBill = useRef(null);
     const [active, setActive] = useState(false);
     const [updateData, setUpdateData] = useState(false);
+    const [customer, setCustomer] = useState(null);
     useEffect(() => {
         axios.get(`https://localhost:44343/data/bill/iduser=${match.match.params.idCustomer}`)
-                .then(res => {
+                .then(res =>{
                     if(bill === null){
                         setBills(res.data);
                     }else{
@@ -24,18 +25,23 @@ export default function BillsCustomer({match}) {
                     console.log("BillsCustomers :" +err);
                 })
     }, [updateData]);
-    console.log(bill);
+    useEffect(()=>{
+        axios.get(`https://localhost:44343/data/user/${match.match.params.idCustomer}`,null)
+                .then(res =>  setCustomer(res.data))
+                .catch(() =>  setCustomer(null));
+    }, []);
     const reLoad = () => {
         if(updateData === false) setUpdateData(true);
         else setUpdateData(false);
     }
-    const newBill = (newBills,id) => {
+    const newBill = (newBills,id) =>{
         var newBill = null;
         newBills.forEach(element => {
             if(element.id === id) newBill=element; 
         });
         return newBill;
     }
+    
     const acceptBill = () => {
         if(bill.tinhtrang === "Đã duyệt"){
             alert("Đơn hàng đã xác nhận");
@@ -64,16 +70,14 @@ export default function BillsCustomer({match}) {
                 console.log("accept bill errol :"+err);
             })
         }
-    
     }
     const deleteBillDetail= (idBill,idProduct) => {
         if(bill.billDetails.length === 1){
             if(window.confirm("Xác nhận xóa đơn hàng ?")){
                 deleteBill();
-            }else {
-                return ;
-            }
-        }else {
+            }else
+            {return;}
+        }else{
             if(window.confirm("Xác nhận xóa 1 sản phẩm trong đơn hàng")){
                 axios.get(`https://localhost:44343/data/bill/action=delete/billdetail/idbill=${idBill}/idproduct=${idProduct}`)
                 .then(res =>{ if(res.status === 204){
@@ -111,7 +115,7 @@ export default function BillsCustomer({match}) {
                                                                                                 setBill(item);
                                                                                                 saveIDBill.current = item.id;
                                                                                                 setActive(true);
-                                                                                            }else {
+                                                                                            }else{
                                                                                                 setBill(null);
                                                                                                 saveIDBill.current = null;
                                                                                                 setActive(false);
@@ -136,7 +140,7 @@ export default function BillsCustomer({match}) {
                                     <td className="table-bills-cell" style={{color : item.tinhtrang === "Chờ xác nhận" ? 'rgb(216, 18, 18)' : '#596ce5'}}>{item.tinhtrang}</td>
                                 </tr>
                             ))
-                        }  
+                        }
                     </tbody>
                 </table>
                 </div>
@@ -145,33 +149,33 @@ export default function BillsCustomer({match}) {
                         <div className="bill-title">Thông tin hóa đơn</div>
                         <div className="bill-inFor-item inFor-customer-title"><p>Thông tin người nhận</p></div>
                         <div className="inFor-customer-bill">
-                            <div className="inFor-customer-bill-item"><p style={{width : '35%'}}>Tên người nhận :</p><p>{bill?
-                                bill.iduserNavigation.firstname+" "+bill.iduserNavigation.lastname
+                            <div className="inFor-customer-bill-item"><p style={{width : '35%'}}>Tên người nhận :</p><p>{customer?
+                                customer.firstname+" "+customer.lastname
                                 : ""
                                 }</p>
                             </div>
-                            <div className="inFor-customer-bill-item"><p style={{width : '35%'}}>Email :</p><p>{bill?
-                                bill.iduserNavigation.email
+                            <div className="inFor-customer-bill-item"><p style={{width : '35%'}}>Email :</p><p>{customer?
+                                customer.email
                                 : ""
                                 }</p>
                             </div>
-                            <div className="inFor-customer-bill-item"><p style={{width : '35%'}}>Số điện thoại :</p><p>{bill?
-                                bill.iduserNavigation.sdt
+                            <div className="inFor-customer-bill-item"><p style={{width : '35%'}}>Số điện thoại :</p><p>{customer?
+                                customer.sdt
                                 : ""
                                 }</p>
                             </div>
-                               
                         </div>
                         <div className="bill-inFor-item inFor-customer-title"><p>Thông tin giao hàng</p></div>
                         <div className="bill-inFor-item"><p>Ngày đặt : </p> <p>{bill? bill.ngaydat : ''}</p></div>
-                        <div className="bill-inFor-item"><p>Địa chỉ giao hàng : </p><p>{bill? bill.diachinhan : ''}</p></div>
+                        <div className="bill-inFor-item"><p style={{width : '150px'}}>Địa chỉ giao: </p><p >{bill? bill.diachinhan : ''}</p></div>
                         <div className="bill-inFor-item"><p>Phương thức thanh toán : </p><p>{bill  ? bill.phuongthucthanhtoan : ''}</p></div>
                         <div className="bill-inFor-item"><p>Tình trạng : </p><p>{bill ? <p style={{color : bill.tinhtrang === "Chờ xác nhận" ? 'red' : bill.tinhtrang === "Đã duyệt" ? '#596ce5' : ''}}> {bill.tinhtrang}</p> : ""}</p></div>
                         <div className="bill-inFor-button-group">
                                 {bill? <>
                                 <button className="bill-button accept-bill" onClick={()=>{acceptBill()}}>Xác nhận</button>
                                 <button className="bill-button cancel-bill" onClick={()=>{deleteBill()}}>Hủy xác nhận</button>
-                                </> :
+                                </>
+                                :
                                 <>
                                 <button className="bill-button accept-bill" onClick={()=>{}}>Xác nhận</button>
                                 <button className="bill-button cancel-bill" onClick={()=>{}}>Hủy xác nhận</button>

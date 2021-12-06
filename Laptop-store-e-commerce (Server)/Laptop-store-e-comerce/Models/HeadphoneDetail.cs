@@ -16,7 +16,6 @@ namespace Laptop_store_e_comerce.Models
         public string Kichthuocdriver { get; set; }
         public string Led { get; set; }
         public string Khoiluong { get; set; }
-
         public virtual Product IdProductNavigation { get; set; }
     }
 }
