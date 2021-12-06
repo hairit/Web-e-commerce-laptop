@@ -14,7 +14,6 @@ export default function UserPanel({user , changeStatusPanelUser , userPanel ,set
         conFirm : ''
     })
     useEffect(() => {
-        console.log("reload user panel");
         saveUser.current = user;
         setUserChange(user);
         setStatusEdit(true);
@@ -24,8 +23,6 @@ export default function UserPanel({user , changeStatusPanelUser , userPanel ,set
         setUserChange(saveUser.current);
         changeStatusPanelUser();
     }
-    console.log(saveUser.current.pass);
-    console.log(newPass.old);
     const changeUserData = (action) => {
         if(action === 'data'){
             if(!userChange.firstname || !userChange.lastname || !userChange.sdt){

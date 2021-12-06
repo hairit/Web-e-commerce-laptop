@@ -44,3 +44,23 @@
   display: flex;
   align-items: center;
 }
+.headphone-button-group {
+  display: flex;
+  justify-content: center;
+}
+.headphone-button {
+  width: 40%;
+  padding: 7px 0;
+  text-align: center;
+  border: none;
+  border-radius: 3px;
+}
+.buy-headphone {
+  margin-right: 5px;
+  background-color: #596ce5;
+  color: #ffffff;
+}
+.add-headphone:hover {
+  background-color: red;
+  color: #ffffff;
+}

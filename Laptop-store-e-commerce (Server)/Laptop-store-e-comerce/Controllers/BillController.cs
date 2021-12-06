@@ -52,20 +52,8 @@ namespace Laptop_store_e_comerce.Controllers
             }
             if (action == "cancel")
             {
-                List<CartDetail> carts = new List<CartDetail>();
-                bill.BillDetails.ToList().ForEach(item =>
-                {
-                    CartDetail cart = new CartDetail();
-                    cart.IdUser = bill.Iduser;
-                    cart.Tongtien = item.Tongtien;
-                    cart.IdProduct = item.IdProduct;
-                    cart.Soluong = item.Soluong;
-                    cart.Selected = 1;
-                    carts.Add(cart);
-                });
                 try
                 {
-                    _context.CartDetails.AddRange(carts);
                     _context.BillDetails.RemoveRange(bill.BillDetails);
                     _context.Bills.Remove(bill);
                     await _context.SaveChangesAsync();
